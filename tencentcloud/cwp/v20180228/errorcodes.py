@@ -44,6 +44,9 @@ FAILEDOPERATION_NOPROFESSIONHOST = 'FailedOperation.NoProfessionHost'
 # Isolation of multiple hosts partially or completely failed.
 FAILEDOPERATION_PARTSEPARATE = 'FailedOperation.PartSeparate'
 
+# Failed to enable protection.
+FAILEDOPERATION_PROTECTSTARTFAIL = 'FailedOperation.ProtectStartFail'
+
 # Failed to respond to the Trojan.
 FAILEDOPERATION_RECOVER = 'FailedOperation.Recover'
 

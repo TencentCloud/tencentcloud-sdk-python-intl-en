@@ -49,6 +49,29 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ApplyOcrToken(self, request):
+        r"""This API retrieves a token before each call to the OCR SDK verification service. Save the token to initiate the verification process and retrieve the verification result after the process completes.
+
+        :param request: Request instance for ApplyOcrToken.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.ApplyOcrTokenRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.ApplyOcrTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApplyOcrToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.ApplyOcrTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExtractDocMulti(self, request):
         r"""This API supports identifying and extracting field information in structured scenarios such as complex scenarios and multiple formats. Key scenarios include: finance, health care, transportation, travel, insurance. Click [experience now](https://ocrdemo.cloud.tencent.com/).
         This API is used to set the alias SmartStructuralPro.
@@ -147,6 +170,29 @@ class OcrClient(AbstractClient):
             body = self.call("GetCardVerificationExternalResult", params, headers=headers)
             response = json.loads(body)
             model = models.GetCardVerificationExternalResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetOcrVerificationResult(self, request):
+        r"""This API retrieves the SDK verification result.
+
+        :param request: Request instance for GetOcrVerificationResult.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.GetOcrVerificationResultRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GetOcrVerificationResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetOcrVerificationResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetOcrVerificationResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -704,7 +750,9 @@ class OcrClient(AbstractClient):
 
 
     def RecognizeThaiIDCardOCR(self, request):
-        r"""This API is used to recognize the fields on a Thai identity card, including name in Thai, name in English, address, date of birth, identification number, date of issue, and date of expiry.
+        r"""Domain name for API request: ocr.intl.tencentcloudapi.com.
+
+        This API is used to recognize the fields on a Thai identity card, including name in Thai, name in English, address, date of birth, identification number, date of issue, and date of expiry.
 
         A maximum of 10 requests can be initiated per second for this API.
 

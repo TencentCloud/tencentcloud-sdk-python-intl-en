@@ -19,38 +19,44 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CreateInput(AbstractModel):
-    r"""Configuration information of the created input.
+    r"""Create input configuration message.
 
     """
 
     def __init__(self):
         r"""
-        :param _InputName: Input name, which can contain 1 to 32 letters, digits, and underscores.
+        :param _InputName: Enter a name. It can contain uppercase letters, lowercase letters, digits, and underscores. Length: [1, 32].
         :type InputName: str
-        :param _Protocol: Input protocol. Valid values: `SRT`, `RTP`, `RTMP`, `RTMP_PULL`, `RTSP_PULL `, `HLS_PULL`.
+        :param _Protocol: Input protocol. Selectable: [SRT|RTP|RTMP|RTMP_PULL|RTSP_PULL|RIST].
         :type Protocol: str
-        :param _Description: Input description. Length: [0, 255].
+        :param _Description: Enter description. Length: [0, 255].
         :type Description: str
-        :param _AllowIpList: Allowlist of input IPs in CIDR format.
+        :param _AllowIpList: Input IP allowlist in CIDR format.
         :type AllowIpList: list of str
-        :param _SRTSettings: SRT configuration information of input.
+        :param _SRTSettings: SRT configuration information of the input.
         :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputSRTSettings`
-        :param _RTPSettings: RTP configuration information of input.
+        :param _RTPSettings: Input RTP configuration message.
         :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTPSettings`
-        :param _FailOver: Input failover. Valid values: `OPEN`, `CLOSE` (default)
+        :param _FailOver: Primary/replica switch input. Selectable values: `OPEN` and `CLOSE`. Default value: `CLOSE`.
         :type FailOver: str
-        :param _RTMPPullSettings: Input RTMP_PULL configuration information.
+        :param _RTMPPullSettings: Input RTMP_PULL configuration message.
         :type RTMPPullSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTMPPullSettings`
-        :param _RTSPPullSettings: Input RTSP_PULL configuration information.
+        :param _RTSPPullSettings: Input RTSP_PULL configuration message.
         :type RTSPPullSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTSPPullSettings`
-        :param _HLSPullSettings: Input HLS_PULL configuration information.
+        :param _HLSPullSettings: Input HLS_PULL configuration message.
         :type HLSPullSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputHLSPullSettings`
-        :param _ResilientStream: Delayed broadcast smooth streaming configuration information.
+        :param _ResilientStream: Configuration message for smooth streaming during delayed broadcasting.
         :type ResilientStream: :class:`tencentcloud.mdc.v20200828.models.ResilientStreamConf`
-        :param _SecurityGroupIds: The bound security group IDs.
+        :param _SecurityGroupIds: Bound input security group ID.
         :type SecurityGroupIds: list of str
-        :param _Zones: Availability zone, optional. If disaster recovery is enabled, you must enter two different availability zones. Otherwise, you can only enter one availability zone at most.
+        :param _Zones: Availability zone. This parameter is optional. If disaster recovery is enabled, two different availability zones must be input. Otherwise, only one availability zone can be input.
         :type Zones: list of str
+        :param _RISTSettings: Input RIST configuration message.
+        :type RISTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRISTSettings`
+        :param _InputRegion: Region of the input node
+        :type InputRegion: str
+        :param _FailOverOption: Hot/cold backup
+        :type FailOverOption: :class:`tencentcloud.mdc.v20200828.models.FailOverOption`
         """
         self._InputName = None
         self._Protocol = None
@@ -65,10 +71,13 @@ class CreateInput(AbstractModel):
         self._ResilientStream = None
         self._SecurityGroupIds = None
         self._Zones = None
+        self._RISTSettings = None
+        self._InputRegion = None
+        self._FailOverOption = None
 
     @property
     def InputName(self):
-        r"""Input name, which can contain 1 to 32 letters, digits, and underscores.
+        r"""Enter a name. It can contain uppercase letters, lowercase letters, digits, and underscores. Length: [1, 32].
         :rtype: str
         """
         return self._InputName
@@ -79,7 +88,7 @@ class CreateInput(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""Input protocol. Valid values: `SRT`, `RTP`, `RTMP`, `RTMP_PULL`, `RTSP_PULL `, `HLS_PULL`.
+        r"""Input protocol. Selectable: [SRT|RTP|RTMP|RTMP_PULL|RTSP_PULL|RIST].
         :rtype: str
         """
         return self._Protocol
@@ -90,7 +99,7 @@ class CreateInput(AbstractModel):
 
     @property
     def Description(self):
-        r"""Input description. Length: [0, 255].
+        r"""Enter description. Length: [0, 255].
         :rtype: str
         """
         return self._Description
@@ -101,7 +110,7 @@ class CreateInput(AbstractModel):
 
     @property
     def AllowIpList(self):
-        r"""Allowlist of input IPs in CIDR format.
+        r"""Input IP allowlist in CIDR format.
         :rtype: list of str
         """
         return self._AllowIpList
@@ -112,7 +121,7 @@ class CreateInput(AbstractModel):
 
     @property
     def SRTSettings(self):
-        r"""SRT configuration information of input.
+        r"""SRT configuration information of the input.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateInputSRTSettings`
         """
         return self._SRTSettings
@@ -123,7 +132,7 @@ class CreateInput(AbstractModel):
 
     @property
     def RTPSettings(self):
-        r"""RTP configuration information of input.
+        r"""Input RTP configuration message.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTPSettings`
         """
         return self._RTPSettings
@@ -134,7 +143,7 @@ class CreateInput(AbstractModel):
 
     @property
     def FailOver(self):
-        r"""Input failover. Valid values: `OPEN`, `CLOSE` (default)
+        r"""Primary/replica switch input. Selectable values: `OPEN` and `CLOSE`. Default value: `CLOSE`.
         :rtype: str
         """
         return self._FailOver
@@ -145,7 +154,7 @@ class CreateInput(AbstractModel):
 
     @property
     def RTMPPullSettings(self):
-        r"""Input RTMP_PULL configuration information.
+        r"""Input RTMP_PULL configuration message.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTMPPullSettings`
         """
         return self._RTMPPullSettings
@@ -156,7 +165,7 @@ class CreateInput(AbstractModel):
 
     @property
     def RTSPPullSettings(self):
-        r"""Input RTSP_PULL configuration information.
+        r"""Input RTSP_PULL configuration message.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTSPPullSettings`
         """
         return self._RTSPPullSettings
@@ -167,7 +176,7 @@ class CreateInput(AbstractModel):
 
     @property
     def HLSPullSettings(self):
-        r"""Input HLS_PULL configuration information.
+        r"""Input HLS_PULL configuration message.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateInputHLSPullSettings`
         """
         return self._HLSPullSettings
@@ -178,7 +187,7 @@ class CreateInput(AbstractModel):
 
     @property
     def ResilientStream(self):
-        r"""Delayed broadcast smooth streaming configuration information.
+        r"""Configuration message for smooth streaming during delayed broadcasting.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.ResilientStreamConf`
         """
         return self._ResilientStream
@@ -189,7 +198,7 @@ class CreateInput(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""The bound security group IDs.
+        r"""Bound input security group ID.
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -200,7 +209,7 @@ class CreateInput(AbstractModel):
 
     @property
     def Zones(self):
-        r"""Availability zone, optional. If disaster recovery is enabled, you must enter two different availability zones. Otherwise, you can only enter one availability zone at most.
+        r"""Availability zone. This parameter is optional. If disaster recovery is enabled, two different availability zones must be input. Otherwise, only one availability zone can be input.
         :rtype: list of str
         """
         return self._Zones
@@ -208,6 +217,39 @@ class CreateInput(AbstractModel):
     @Zones.setter
     def Zones(self, Zones):
         self._Zones = Zones
+
+    @property
+    def RISTSettings(self):
+        r"""Input RIST configuration message.
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateInputRISTSettings`
+        """
+        return self._RISTSettings
+
+    @RISTSettings.setter
+    def RISTSettings(self, RISTSettings):
+        self._RISTSettings = RISTSettings
+
+    @property
+    def InputRegion(self):
+        r"""Region of the input node
+        :rtype: str
+        """
+        return self._InputRegion
+
+    @InputRegion.setter
+    def InputRegion(self, InputRegion):
+        self._InputRegion = InputRegion
+
+    @property
+    def FailOverOption(self):
+        r"""Hot/cold backup
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.FailOverOption`
+        """
+        return self._FailOverOption
+
+    @FailOverOption.setter
+    def FailOverOption(self, FailOverOption):
+        self._FailOverOption = FailOverOption
 
 
     def _deserialize(self, params):
@@ -236,6 +278,13 @@ class CreateInput(AbstractModel):
             self._ResilientStream._deserialize(params.get("ResilientStream"))
         self._SecurityGroupIds = params.get("SecurityGroupIds")
         self._Zones = params.get("Zones")
+        if params.get("RISTSettings") is not None:
+            self._RISTSettings = CreateInputRISTSettings()
+            self._RISTSettings._deserialize(params.get("RISTSettings"))
+        self._InputRegion = params.get("InputRegion")
+        if params.get("FailOverOption") is not None:
+            self._FailOverOption = FailOverOption()
+            self._FailOverOption._deserialize(params.get("FailOverOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -247,20 +296,20 @@ class CreateInput(AbstractModel):
 
 
 class CreateInputHLSPullSettings(AbstractModel):
-    r"""
+    r"""Configuration message of the created input HLS pull.
 
     """
 
     def __init__(self):
         r"""
-        :param _SourceAddresses: 
+        :param _SourceAddresses: HLS origin server address. Only one is allowed.
         :type SourceAddresses: list of HLSPullSourceAddress
         """
         self._SourceAddresses = None
 
     @property
     def SourceAddresses(self):
-        r"""
+        r"""HLS origin server address. Only one is allowed.
         :rtype: list of HLSPullSourceAddress
         """
         return self._SourceAddresses
@@ -287,21 +336,87 @@ class CreateInputHLSPullSettings(AbstractModel):
         
 
 
-class CreateInputRTMPPullSettings(AbstractModel):
-    r"""
+class CreateInputRISTSettings(AbstractModel):
+    r"""Input RIST configuration message created.
 
     """
 
     def __init__(self):
         r"""
-        :param _SourceAddresses: 
+        :param _Mode: RIST mode. Valid value: `LISTENER`. Default value: `LISTENER`.
+        :type Mode: str
+        :param _Profile: RIST configuration solution. Options: [MAIN|SIMPLE]. Default: MAIN.
+        :type Profile: str
+        :param _Buffer: RIST buffer size in milliseconds. Minimum value: 50 ms. Maximum value: 5000 ms. Default value: 120.
+        :type Buffer: int
+        """
+        self._Mode = None
+        self._Profile = None
+        self._Buffer = None
+
+    @property
+    def Mode(self):
+        r"""RIST mode. Valid value: `LISTENER`. Default value: `LISTENER`.
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Profile(self):
+        r"""RIST configuration solution. Options: [MAIN|SIMPLE]. Default: MAIN.
+        :rtype: str
+        """
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def Buffer(self):
+        r"""RIST buffer size in milliseconds. Minimum value: 50 ms. Maximum value: 5000 ms. Default value: 120.
+        :rtype: int
+        """
+        return self._Buffer
+
+    @Buffer.setter
+    def Buffer(self, Buffer):
+        self._Buffer = Buffer
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._Profile = params.get("Profile")
+        self._Buffer = params.get("Buffer")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInputRTMPPullSettings(AbstractModel):
+    r"""Configuration message of the created input RTMP pull.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceAddresses: RTMP origin server address. Only one is allowed.
         :type SourceAddresses: list of RTMPPullSourceAddress
         """
         self._SourceAddresses = None
 
     @property
     def SourceAddresses(self):
-        r"""
+        r"""RTMP origin server address. Only one is allowed.
         :rtype: list of RTMPPullSourceAddress
         """
         return self._SourceAddresses
@@ -329,15 +444,15 @@ class CreateInputRTMPPullSettings(AbstractModel):
 
 
 class CreateInputRTPSettings(AbstractModel):
-    r"""RTP configuration information of the created input.
+    r"""Configuration message for creating an input RTP.
 
     """
 
     def __init__(self):
         r"""
-        :param _FEC: Default value: none. Valid values: ['none'].
+        :param _FEC: Default value: "none". Available value: ['none'].
         :type FEC: str
-        :param _IdleTimeout: Idle timeout period in ms. Default value: 5000. Value range: [1000, 10000].
+        :param _IdleTimeout: Idle timeout. Default value: 5000 ms. Range: [1000, 10000].
         :type IdleTimeout: int
         """
         self._FEC = None
@@ -345,7 +460,7 @@ class CreateInputRTPSettings(AbstractModel):
 
     @property
     def FEC(self):
-        r"""Default value: none. Valid values: ['none'].
+        r"""Default value: "none". Available value: ['none'].
         :rtype: str
         """
         return self._FEC
@@ -356,7 +471,7 @@ class CreateInputRTPSettings(AbstractModel):
 
     @property
     def IdleTimeout(self):
-        r"""Idle timeout period in ms. Default value: 5000. Value range: [1000, 10000].
+        r"""Idle timeout. Default value: 5000 ms. Range: [1000, 10000].
         :rtype: int
         """
         return self._IdleTimeout
@@ -380,20 +495,20 @@ class CreateInputRTPSettings(AbstractModel):
 
 
 class CreateInputRTSPPullSettings(AbstractModel):
-    r"""
+    r"""Configuration message of the created input RTSP pull stream.
 
     """
 
     def __init__(self):
         r"""
-        :param _SourceAddresses: 
+        :param _SourceAddresses: Origin server address of the RTSP origin server. Only one is allowed.
         :type SourceAddresses: list of RTSPPullSourceAddress
         """
         self._SourceAddresses = None
 
     @property
     def SourceAddresses(self):
-        r"""
+        r"""Origin server address of the RTSP origin server. Only one is allowed.
         :rtype: list of RTSPPullSourceAddress
         """
         return self._SourceAddresses
@@ -421,30 +536,32 @@ class CreateInputRTSPPullSettings(AbstractModel):
 
 
 class CreateInputSRTSettings(AbstractModel):
-    r"""SRT configuration information of the created input.
+    r"""Configuration message of the created input SRT.
 
     """
 
     def __init__(self):
         r"""
-        :param _Mode: The SRT mode. Valid values: LISTENER (default), CALLER.
+        :param _Mode: SRT mode. Options: [LISTENER|CALLER]. Default value: LISTENER.
         :type Mode: str
-        :param _StreamId: Stream ID, which can contain 0 to 512 letters, digits, and special characters (.#!:&,=_-).
+        :param _StreamId: Stream Id. It can contain upper- and lower-case letters, digits, and special characters (.#!:&,=_-), with a length of 0 to 512. For the specific format, see: https://github.com/Haivision/srt/blob/master/docs/features/access-control.md#standard-keys.	
         :type StreamId: str
-        :param _Latency: Latency in ms. Default value: 0. Value range: [0, 3000].
+        :param _Latency: Delay. Default value: 0. Unit: ms. Range: [0, 3000].
         :type Latency: int
-        :param _RecvLatency: Receive latency in ms. Default value: 120. Value range: [0, 3000].
+        :param _RecvLatency: Receive latency. Default value: 120. Unit: ms. Range: [0, 3000].
         :type RecvLatency: int
-        :param _PeerLatency: Peer latency in ms. Default value: 0. Value range: [0, 3000].
+        :param _PeerLatency: Peer delay. Default value: 0. Unit: ms. Range: [0, 3000].
         :type PeerLatency: int
-        :param _PeerIdleTimeout: Peer timeout period in ms. Default value: 5000. Value range: [1000, 10000].
+        :param _PeerIdleTimeout: Peer timeout. Default value: 5000 ms. Range: [1000, 10000].
         :type PeerIdleTimeout: int
-        :param _Passphrase: Decryption key, which is empty by default, indicating not to encrypt. Only ASCII codes can be filled. Length: [10, 79].
+        :param _Passphrase: Decryption key. Empty by default, which means not encrypted. Only ascii characters are supported. Length range: [10, 79].
         :type Passphrase: str
-        :param _PbKeyLen: Key length. Default value: 0. Valid values: 0, 16, 24, 32.
+        :param _PbKeyLen: Key length. Default value: 0. Options: [0|16|24|32].
         :type PbKeyLen: int
-        :param _SourceAddresses: The SRT peer address, which is required if `Mode` is `CALLER`. Only one address is allowed.
+        :param _SourceAddresses: SRT peer address. Required when Mode is CALLER, and can only contain 1 group.
         :type SourceAddresses: list of SRTSourceAddressReq
+        :param _FEC: SRT FEC settings
+        :type FEC: :class:`tencentcloud.mdc.v20200828.models.SRTFECSimpleOptions`
         """
         self._Mode = None
         self._StreamId = None
@@ -455,10 +572,11 @@ class CreateInputSRTSettings(AbstractModel):
         self._Passphrase = None
         self._PbKeyLen = None
         self._SourceAddresses = None
+        self._FEC = None
 
     @property
     def Mode(self):
-        r"""The SRT mode. Valid values: LISTENER (default), CALLER.
+        r"""SRT mode. Options: [LISTENER|CALLER]. Default value: LISTENER.
         :rtype: str
         """
         return self._Mode
@@ -469,7 +587,7 @@ class CreateInputSRTSettings(AbstractModel):
 
     @property
     def StreamId(self):
-        r"""Stream ID, which can contain 0 to 512 letters, digits, and special characters (.#!:&,=_-).
+        r"""Stream Id. It can contain upper- and lower-case letters, digits, and special characters (.#!:&,=_-), with a length of 0 to 512. For the specific format, see: https://github.com/Haivision/srt/blob/master/docs/features/access-control.md#standard-keys.	
         :rtype: str
         """
         return self._StreamId
@@ -480,7 +598,7 @@ class CreateInputSRTSettings(AbstractModel):
 
     @property
     def Latency(self):
-        r"""Latency in ms. Default value: 0. Value range: [0, 3000].
+        r"""Delay. Default value: 0. Unit: ms. Range: [0, 3000].
         :rtype: int
         """
         return self._Latency
@@ -491,7 +609,7 @@ class CreateInputSRTSettings(AbstractModel):
 
     @property
     def RecvLatency(self):
-        r"""Receive latency in ms. Default value: 120. Value range: [0, 3000].
+        r"""Receive latency. Default value: 120. Unit: ms. Range: [0, 3000].
         :rtype: int
         """
         return self._RecvLatency
@@ -502,7 +620,7 @@ class CreateInputSRTSettings(AbstractModel):
 
     @property
     def PeerLatency(self):
-        r"""Peer latency in ms. Default value: 0. Value range: [0, 3000].
+        r"""Peer delay. Default value: 0. Unit: ms. Range: [0, 3000].
         :rtype: int
         """
         return self._PeerLatency
@@ -513,7 +631,7 @@ class CreateInputSRTSettings(AbstractModel):
 
     @property
     def PeerIdleTimeout(self):
-        r"""Peer timeout period in ms. Default value: 5000. Value range: [1000, 10000].
+        r"""Peer timeout. Default value: 5000 ms. Range: [1000, 10000].
         :rtype: int
         """
         return self._PeerIdleTimeout
@@ -524,7 +642,7 @@ class CreateInputSRTSettings(AbstractModel):
 
     @property
     def Passphrase(self):
-        r"""Decryption key, which is empty by default, indicating not to encrypt. Only ASCII codes can be filled. Length: [10, 79].
+        r"""Decryption key. Empty by default, which means not encrypted. Only ascii characters are supported. Length range: [10, 79].
         :rtype: str
         """
         return self._Passphrase
@@ -535,7 +653,7 @@ class CreateInputSRTSettings(AbstractModel):
 
     @property
     def PbKeyLen(self):
-        r"""Key length. Default value: 0. Valid values: 0, 16, 24, 32.
+        r"""Key length. Default value: 0. Options: [0|16|24|32].
         :rtype: int
         """
         return self._PbKeyLen
@@ -546,7 +664,7 @@ class CreateInputSRTSettings(AbstractModel):
 
     @property
     def SourceAddresses(self):
-        r"""The SRT peer address, which is required if `Mode` is `CALLER`. Only one address is allowed.
+        r"""SRT peer address. Required when Mode is CALLER, and can only contain 1 group.
         :rtype: list of SRTSourceAddressReq
         """
         return self._SourceAddresses
@@ -554,6 +672,17 @@ class CreateInputSRTSettings(AbstractModel):
     @SourceAddresses.setter
     def SourceAddresses(self, SourceAddresses):
         self._SourceAddresses = SourceAddresses
+
+    @property
+    def FEC(self):
+        r"""SRT FEC settings
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.SRTFECSimpleOptions`
+        """
+        return self._FEC
+
+    @FEC.setter
+    def FEC(self, FEC):
+        self._FEC = FEC
 
 
     def _deserialize(self, params):
@@ -571,6 +700,9 @@ class CreateInputSRTSettings(AbstractModel):
                 obj = SRTSourceAddressReq()
                 obj._deserialize(item)
                 self._SourceAddresses.append(obj)
+        if params.get("FEC") is not None:
+            self._FEC = SRTFECSimpleOptions()
+            self._FEC._deserialize(params.get("FEC"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -582,34 +714,45 @@ class CreateInputSRTSettings(AbstractModel):
 
 
 class CreateOutputInfo(AbstractModel):
-    r"""The information of the output to create.
+    r"""Configuration message for creating an output.
 
     """
 
     def __init__(self):
         r"""
-        :param _OutputName: The output name.
+        :param _OutputName: Output name.
         :type OutputName: str
-        :param _Description: Description of the output.
+        :param _Description: Output description.
         :type Description: str
-        :param _Protocol: The output protocol. Valid values: SRT, RTP, RTMP, RTMP_PULL.
+        :param _Protocol: Output relay protocol. Supports SRT, RTP, RTMP, RTMP_PULL, RTSP_PULL, and RIST.
         :type Protocol: str
-        :param _OutputRegion: The output region.
+        :param _OutputRegion: Output region.
         :type OutputRegion: str
-        :param _SRTSettings: The SRT configuration.
+        :param _SRTSettings: Configuration of the output SRT.
         :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputSrtSettings`
-        :param _RTMPSettings: The RTMP configuration.
+        :param _RTMPSettings: Configuration of the output RTMP.
         :type RTMPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRTMPSettings`
-        :param _RTPSettings: The RTP configuration.
+        :param _RTPSettings: Configuration of the output RTP.
         :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputInfoRTPSettings`
-        :param _AllowIpList: IP whitelist, in CIDR format, such as 0.0.0.0/0. This is valid when Protocol is RTMP_PULL, and empty means no restriction on client IP.
+        :param _AllowIpList: IP whitelist list in CIDR format, for example, 0.0.0.0/0.
+Valid when Protocol is RTMP_PULL. If empty, it represents no limit on client IP.
         :type AllowIpList: list of str
-        :param _MaxConcurrent: The maximum number of concurrent stream pulls is 4, and the default value is 4.
+        :param _MaxConcurrent: Maximum number of concurrent stream pulls. Maximum value: 4. Default value: 4.
         :type MaxConcurrent: int
-        :param _SecurityGroupIds: The bound security group IDs.
+        :param _SecurityGroupIds: ID of the bound input security group.
         :type SecurityGroupIds: list of str
-        :param _Zones: Availability zone: output supports at most one availability zone as input.
+        :param _Zones: Availability zone. output supports a maximum of one user-submitted input availability zone.
         :type Zones: list of str
+        :param _OutputType: Output type: Internet/TencentCSS/StreamLive
+        :type OutputType: str
+        :param _RISTSettings: Output RIST configuration.
+        :type RISTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRistSettings`
+        :param _PidSelector: For streams with multiple audio/video tracks, you can specify the track to be used
+        :type PidSelector: :class:`tencentcloud.mdc.v20200828.models.PidSelector`
+        :param _OutputKind: Output module type, including Pinpoint (single-point output, supports up to four concurrent outputs); MultiMesh (multiple streams output, supports more than four concurrent outputs, currently up to 200). The default type is Pinpoint output. For a single Flow, only one MultiMesh output is allowed per zone.
+        :type OutputKind: str
+        :param _StreamSelector: For streams with multiple audio/video tracks, you can specify the track to be used
+        :type StreamSelector: :class:`tencentcloud.mdc.v20200828.models.StreamSelector`
         """
         self._OutputName = None
         self._Description = None
@@ -622,10 +765,15 @@ class CreateOutputInfo(AbstractModel):
         self._MaxConcurrent = None
         self._SecurityGroupIds = None
         self._Zones = None
+        self._OutputType = None
+        self._RISTSettings = None
+        self._PidSelector = None
+        self._OutputKind = None
+        self._StreamSelector = None
 
     @property
     def OutputName(self):
-        r"""The output name.
+        r"""Output name.
         :rtype: str
         """
         return self._OutputName
@@ -636,7 +784,7 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def Description(self):
-        r"""Description of the output.
+        r"""Output description.
         :rtype: str
         """
         return self._Description
@@ -647,7 +795,7 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""The output protocol. Valid values: SRT, RTP, RTMP, RTMP_PULL.
+        r"""Output relay protocol. Supports SRT, RTP, RTMP, RTMP_PULL, RTSP_PULL, and RIST.
         :rtype: str
         """
         return self._Protocol
@@ -658,7 +806,7 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def OutputRegion(self):
-        r"""The output region.
+        r"""Output region.
         :rtype: str
         """
         return self._OutputRegion
@@ -669,7 +817,7 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def SRTSettings(self):
-        r"""The SRT configuration.
+        r"""Configuration of the output SRT.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateOutputSrtSettings`
         """
         return self._SRTSettings
@@ -680,7 +828,7 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def RTMPSettings(self):
-        r"""The RTMP configuration.
+        r"""Configuration of the output RTMP.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRTMPSettings`
         """
         return self._RTMPSettings
@@ -691,7 +839,7 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def RTPSettings(self):
-        r"""The RTP configuration.
+        r"""Configuration of the output RTP.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateOutputInfoRTPSettings`
         """
         return self._RTPSettings
@@ -702,7 +850,8 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def AllowIpList(self):
-        r"""IP whitelist, in CIDR format, such as 0.0.0.0/0. This is valid when Protocol is RTMP_PULL, and empty means no restriction on client IP.
+        r"""IP whitelist list in CIDR format, for example, 0.0.0.0/0.
+Valid when Protocol is RTMP_PULL. If empty, it represents no limit on client IP.
         :rtype: list of str
         """
         return self._AllowIpList
@@ -713,7 +862,7 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def MaxConcurrent(self):
-        r"""The maximum number of concurrent stream pulls is 4, and the default value is 4.
+        r"""Maximum number of concurrent stream pulls. Maximum value: 4. Default value: 4.
         :rtype: int
         """
         return self._MaxConcurrent
@@ -724,7 +873,7 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""The bound security group IDs.
+        r"""ID of the bound input security group.
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -735,7 +884,7 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def Zones(self):
-        r"""Availability zone: output supports at most one availability zone as input.
+        r"""Availability zone. output supports a maximum of one user-submitted input availability zone.
         :rtype: list of str
         """
         return self._Zones
@@ -743,6 +892,65 @@ class CreateOutputInfo(AbstractModel):
     @Zones.setter
     def Zones(self, Zones):
         self._Zones = Zones
+
+    @property
+    def OutputType(self):
+        r"""Output type: Internet/TencentCSS/StreamLive
+        :rtype: str
+        """
+        return self._OutputType
+
+    @OutputType.setter
+    def OutputType(self, OutputType):
+        self._OutputType = OutputType
+
+    @property
+    def RISTSettings(self):
+        r"""Output RIST configuration.
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRistSettings`
+        """
+        return self._RISTSettings
+
+    @RISTSettings.setter
+    def RISTSettings(self, RISTSettings):
+        self._RISTSettings = RISTSettings
+
+    @property
+    def PidSelector(self):
+        warnings.warn("parameter `PidSelector` is deprecated", DeprecationWarning) 
+
+        r"""For streams with multiple audio/video tracks, you can specify the track to be used
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.PidSelector`
+        """
+        return self._PidSelector
+
+    @PidSelector.setter
+    def PidSelector(self, PidSelector):
+        warnings.warn("parameter `PidSelector` is deprecated", DeprecationWarning) 
+
+        self._PidSelector = PidSelector
+
+    @property
+    def OutputKind(self):
+        r"""Output module type, including Pinpoint (single-point output, supports up to four concurrent outputs); MultiMesh (multiple streams output, supports more than four concurrent outputs, currently up to 200). The default type is Pinpoint output. For a single Flow, only one MultiMesh output is allowed per zone.
+        :rtype: str
+        """
+        return self._OutputKind
+
+    @OutputKind.setter
+    def OutputKind(self, OutputKind):
+        self._OutputKind = OutputKind
+
+    @property
+    def StreamSelector(self):
+        r"""For streams with multiple audio/video tracks, you can specify the track to be used
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.StreamSelector`
+        """
+        return self._StreamSelector
+
+    @StreamSelector.setter
+    def StreamSelector(self, StreamSelector):
+        self._StreamSelector = StreamSelector
 
 
     def _deserialize(self, params):
@@ -763,6 +971,17 @@ class CreateOutputInfo(AbstractModel):
         self._MaxConcurrent = params.get("MaxConcurrent")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
         self._Zones = params.get("Zones")
+        self._OutputType = params.get("OutputType")
+        if params.get("RISTSettings") is not None:
+            self._RISTSettings = CreateOutputRistSettings()
+            self._RISTSettings._deserialize(params.get("RISTSettings"))
+        if params.get("PidSelector") is not None:
+            self._PidSelector = PidSelector()
+            self._PidSelector._deserialize(params.get("PidSelector"))
+        self._OutputKind = params.get("OutputKind")
+        if params.get("StreamSelector") is not None:
+            self._StreamSelector = StreamSelector()
+            self._StreamSelector._deserialize(params.get("StreamSelector"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -774,17 +993,17 @@ class CreateOutputInfo(AbstractModel):
 
 
 class CreateOutputInfoRTPSettings(AbstractModel):
-    r"""The RTP configuration of the output to create.
+    r"""Create the RTP configuration for the output of a media transmission stream.
 
     """
 
     def __init__(self):
         r"""
-        :param _Destinations: The relay destination addresses. One or two addresses are allowed.
+        :param _Destinations: Destination address. You can enter 1 to 2 addresses.
         :type Destinations: list of CreateOutputRTPSettingsDestinations
-        :param _FEC: This parameter must be set to `none`.
+        :param _FEC: Can only be filled in with none.
         :type FEC: str
-        :param _IdleTimeout: The timeout period (ms).
+        :param _IdleTimeout: Idle timeout period, in milliseconds.
         :type IdleTimeout: int
         """
         self._Destinations = None
@@ -793,7 +1012,7 @@ class CreateOutputInfoRTPSettings(AbstractModel):
 
     @property
     def Destinations(self):
-        r"""The relay destination addresses. One or two addresses are allowed.
+        r"""Destination address. You can enter 1 to 2 addresses.
         :rtype: list of CreateOutputRTPSettingsDestinations
         """
         return self._Destinations
@@ -804,7 +1023,7 @@ class CreateOutputInfoRTPSettings(AbstractModel):
 
     @property
     def FEC(self):
-        r"""This parameter must be set to `none`.
+        r"""Can only be filled in with none.
         :rtype: str
         """
         return self._FEC
@@ -815,7 +1034,7 @@ class CreateOutputInfoRTPSettings(AbstractModel):
 
     @property
     def IdleTimeout(self):
-        r"""The timeout period (ms).
+        r"""Idle timeout period, in milliseconds.
         :rtype: int
         """
         return self._IdleTimeout
@@ -845,15 +1064,15 @@ class CreateOutputInfoRTPSettings(AbstractModel):
 
 
 class CreateOutputRTMPSettings(AbstractModel):
-    r"""The RTMP configuration of the output to create.
+    r"""RTMP configuration for creating the output of a media transmission stream.
 
     """
 
     def __init__(self):
         r"""
-        :param _Destinations: The relay destination addresses. One or two addresses are allowed.
+        :param _Destinations: Target address for repost. You can enter 1 to 2 addresses.
         :type Destinations: list of CreateOutputRtmpSettingsDestinations
-        :param _ChunkSize: The RTMP chunk size. Value range: [4096, 40960].
+        :param _ChunkSize: Chunk size of RTMP, ranging from 4096 to 40960.
         :type ChunkSize: int
         """
         self._Destinations = None
@@ -861,7 +1080,7 @@ class CreateOutputRTMPSettings(AbstractModel):
 
     @property
     def Destinations(self):
-        r"""The relay destination addresses. One or two addresses are allowed.
+        r"""Target address for repost. You can enter 1 to 2 addresses.
         :rtype: list of CreateOutputRtmpSettingsDestinations
         """
         return self._Destinations
@@ -872,7 +1091,7 @@ class CreateOutputRTMPSettings(AbstractModel):
 
     @property
     def ChunkSize(self):
-        r"""The RTMP chunk size. Value range: [4096, 40960].
+        r"""Chunk size of RTMP, ranging from 4096 to 40960.
         :rtype: int
         """
         return self._ChunkSize
@@ -901,15 +1120,15 @@ class CreateOutputRTMPSettings(AbstractModel):
 
 
 class CreateOutputRTPSettingsDestinations(AbstractModel):
-    r"""The RTP destination address of the output to create.
+    r"""Create the RTP destination address for the output of a media transmission stream.
 
     """
 
     def __init__(self):
         r"""
-        :param _Ip: The relay destination IP.
+        :param _Ip: Destination IP for repush.
         :type Ip: str
-        :param _Port: The relay destination port.
+        :param _Port: Destination port for push.
         :type Port: int
         """
         self._Ip = None
@@ -917,7 +1136,7 @@ class CreateOutputRTPSettingsDestinations(AbstractModel):
 
     @property
     def Ip(self):
-        r"""The relay destination IP.
+        r"""Destination IP for repush.
         :rtype: str
         """
         return self._Ip
@@ -928,7 +1147,7 @@ class CreateOutputRTPSettingsDestinations(AbstractModel):
 
     @property
     def Port(self):
-        r"""The relay destination port.
+        r"""Destination port for push.
         :rtype: int
         """
         return self._Port
@@ -952,17 +1171,17 @@ class CreateOutputRTPSettingsDestinations(AbstractModel):
 
 
 class CreateOutputRistSettings(AbstractModel):
-    r"""
+    r"""Create the RIST configuration for the output of a media transmission stream.
 
     """
 
     def __init__(self):
         r"""
-        :param _Mode: 
+        :param _Mode: RIST mode. Selectable: [LISTENER|CALLER]. Default: LISTENER.
         :type Mode: str
-        :param _Profile: 
+        :param _Profile: RIST configuration solution. Options: [MAIN|SIMPLE]. Default: MAIN.
         :type Profile: str
-        :param _Buffer: 
+        :param _Buffer: RIST buffer size in milliseconds. Minimum value: 50 ms. Maximum value: 5000 ms. Default value: 120
         :type Buffer: int
         """
         self._Mode = None
@@ -971,7 +1190,7 @@ class CreateOutputRistSettings(AbstractModel):
 
     @property
     def Mode(self):
-        r"""
+        r"""RIST mode. Selectable: [LISTENER|CALLER]. Default: LISTENER.
         :rtype: str
         """
         return self._Mode
@@ -982,7 +1201,7 @@ class CreateOutputRistSettings(AbstractModel):
 
     @property
     def Profile(self):
-        r"""
+        r"""RIST configuration solution. Options: [MAIN|SIMPLE]. Default: MAIN.
         :rtype: str
         """
         return self._Profile
@@ -993,7 +1212,7 @@ class CreateOutputRistSettings(AbstractModel):
 
     @property
     def Buffer(self):
-        r"""
+        r"""RIST buffer size in milliseconds. Minimum value: 50 ms. Maximum value: 5000 ms. Default value: 120
         :rtype: int
         """
         return self._Buffer
@@ -1018,15 +1237,15 @@ class CreateOutputRistSettings(AbstractModel):
 
 
 class CreateOutputRtmpSettingsDestinations(AbstractModel):
-    r"""The RTMP destination address of the output to create.
+    r"""RTMP destination address for creating the output of a media transmission stream.
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: The relay URL. Format: `rtmp://domain/live`.
+        :param _Url: URL for push forwarding, in the format of rtmp://domain/live.
         :type Url: str
-        :param _StreamKey: The `StreamKey` for relay. Format: `stream?key=value`.
+        :param _StreamKey: StreamKey for republishing, in the format of: stream?key=value.
         :type StreamKey: str
         """
         self._Url = None
@@ -1034,7 +1253,7 @@ class CreateOutputRtmpSettingsDestinations(AbstractModel):
 
     @property
     def Url(self):
-        r"""The relay URL. Format: `rtmp://domain/live`.
+        r"""URL for push forwarding, in the format of rtmp://domain/live.
         :rtype: str
         """
         return self._Url
@@ -1045,7 +1264,7 @@ class CreateOutputRtmpSettingsDestinations(AbstractModel):
 
     @property
     def StreamKey(self):
-        r"""The `StreamKey` for relay. Format: `stream?key=value`.
+        r"""StreamKey for republishing, in the format of: stream?key=value.
         :rtype: str
         """
         return self._StreamKey
@@ -1069,32 +1288,38 @@ class CreateOutputRtmpSettingsDestinations(AbstractModel):
 
 
 class CreateOutputSrtSettings(AbstractModel):
-    r"""The SRT configuration of the output to create.
+    r"""Create the SRT configuration for the output of a media transmission stream.
 
     """
 
     def __init__(self):
         r"""
-        :param _Destinations: The relay destination address, which is required if `Mode` is `CALLER`. Only one address is allowed.
+        :param _Destinations: Target address for push. Required when Mode is CALLER. Only 1 group can be filled in.
         :type Destinations: list of CreateOutputSrtSettingsDestinations
-        :param _StreamId: The stream ID for relay, which can contain 0 to 512 letters, digits, and special characters (.#!:&,=_-).
-        :type StreamId: str
-        :param _Latency: The total latency (ms) of SRT relay. Value range: [0, 3000]. Default: 0.
-        :type Latency: int
-        :param _RecvLatency: The receive latency (ms) of SRT relay. Value range: [0, 3000]. Default: 120.
-        :type RecvLatency: int
-        :param _PeerLatency: The peer-to-peer latency (ms) of SRT relay. Value range: [0, 3000]. Default: 0.
-        :type PeerLatency: int
-        :param _PeerIdleTimeout: The timeout period (ms) for the SRT relay peer. Value range: [1000, 10000]. Default: 5000.
-        :type PeerIdleTimeout: int
-        :param _Passphrase: The encryption key for SRT relay, which is empty by default, indicating not to encrypt. Only ASCII codes are allowed. Length: [10, 79].
-        :type Passphrase: str
-        :param _PbKeyLen: The key length for SRT relay. Valid values: 0 (default), 16, 24, 32.
-        :type PbKeyLen: int
-        :param _Mode: The SRT mode. Valid values: LISTENER, CALLER (default).
+        :param _Mode: SRT mode. Valid values: `LISTENER` and `CALLER`. Default value: `CALLER`.
         :type Mode: str
+        :param _StreamId: Stream Id for SRT retransmission. It can contain upper- and lower-case letters, digits, and special characters (.#!:&,=_-), with a length of 0 to 512.
+        :type StreamId: str
+        :param _Latency: Total delay for SRT retransmission. Default value: 0. Unit: ms. Range: [0, 3000]. This parameter simultaneously sets the sender and recipient delays (recvlatency and peerlatency) to the same value. Recommended configuration: at least 3 times the RTT to ensure effective handling of packet retransmission and confirmation during network congestion.
+        :type Latency: int
+        :param _RecvLatency: Receive latency for SRT relay. Default value: 120. Unit: ms. Range: [0, 3000].
+This parameter indicates the time length for the recipient to cache data packets.
+        :type RecvLatency: int
+        :param _PeerLatency: Peer delay for SRT retransmission. Default value: 0. Unit: ms. Range: [0, 3000].
+This parameter is set by the sender to inform the recipient of the expected buffer time for delay.
+        :type PeerLatency: int
+        :param _PeerIdleTimeout: Idle timeout for SRT relay. Default value: 5000 ms. Range: [1000, 10000].
+If there is no activity on a connection within the set timeout period, it will be closed.
+        :type PeerIdleTimeout: int
+        :param _Passphrase: Encryption key for SRT retweet. It is empty by default, indicating not encrypted. Only ascii characters are allowed, with a length of [10, 79].
+        :type Passphrase: str
+        :param _PbKeyLen: Key length for SRT retransmission. Default value: 0. Options: [0|16|24|32].
+        :type PbKeyLen: int
+        :param _FEC: SRT FEC settings
+        :type FEC: :class:`tencentcloud.mdc.v20200828.models.SRTFECFullOptions`
         """
         self._Destinations = None
+        self._Mode = None
         self._StreamId = None
         self._Latency = None
         self._RecvLatency = None
@@ -1102,11 +1327,11 @@ class CreateOutputSrtSettings(AbstractModel):
         self._PeerIdleTimeout = None
         self._Passphrase = None
         self._PbKeyLen = None
-        self._Mode = None
+        self._FEC = None
 
     @property
     def Destinations(self):
-        r"""The relay destination address, which is required if `Mode` is `CALLER`. Only one address is allowed.
+        r"""Target address for push. Required when Mode is CALLER. Only 1 group can be filled in.
         :rtype: list of CreateOutputSrtSettingsDestinations
         """
         return self._Destinations
@@ -1116,8 +1341,19 @@ class CreateOutputSrtSettings(AbstractModel):
         self._Destinations = Destinations
 
     @property
+    def Mode(self):
+        r"""SRT mode. Valid values: `LISTENER` and `CALLER`. Default value: `CALLER`.
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
     def StreamId(self):
-        r"""The stream ID for relay, which can contain 0 to 512 letters, digits, and special characters (.#!:&,=_-).
+        r"""Stream Id for SRT retransmission. It can contain upper- and lower-case letters, digits, and special characters (.#!:&,=_-), with a length of 0 to 512.
         :rtype: str
         """
         return self._StreamId
@@ -1128,7 +1364,7 @@ class CreateOutputSrtSettings(AbstractModel):
 
     @property
     def Latency(self):
-        r"""The total latency (ms) of SRT relay. Value range: [0, 3000]. Default: 0.
+        r"""Total delay for SRT retransmission. Default value: 0. Unit: ms. Range: [0, 3000]. This parameter simultaneously sets the sender and recipient delays (recvlatency and peerlatency) to the same value. Recommended configuration: at least 3 times the RTT to ensure effective handling of packet retransmission and confirmation during network congestion.
         :rtype: int
         """
         return self._Latency
@@ -1139,7 +1375,8 @@ class CreateOutputSrtSettings(AbstractModel):
 
     @property
     def RecvLatency(self):
-        r"""The receive latency (ms) of SRT relay. Value range: [0, 3000]. Default: 120.
+        r"""Receive latency for SRT relay. Default value: 120. Unit: ms. Range: [0, 3000].
+This parameter indicates the time length for the recipient to cache data packets.
         :rtype: int
         """
         return self._RecvLatency
@@ -1150,7 +1387,8 @@ class CreateOutputSrtSettings(AbstractModel):
 
     @property
     def PeerLatency(self):
-        r"""The peer-to-peer latency (ms) of SRT relay. Value range: [0, 3000]. Default: 0.
+        r"""Peer delay for SRT retransmission. Default value: 0. Unit: ms. Range: [0, 3000].
+This parameter is set by the sender to inform the recipient of the expected buffer time for delay.
         :rtype: int
         """
         return self._PeerLatency
@@ -1161,7 +1399,8 @@ class CreateOutputSrtSettings(AbstractModel):
 
     @property
     def PeerIdleTimeout(self):
-        r"""The timeout period (ms) for the SRT relay peer. Value range: [1000, 10000]. Default: 5000.
+        r"""Idle timeout for SRT relay. Default value: 5000 ms. Range: [1000, 10000].
+If there is no activity on a connection within the set timeout period, it will be closed.
         :rtype: int
         """
         return self._PeerIdleTimeout
@@ -1172,7 +1411,7 @@ class CreateOutputSrtSettings(AbstractModel):
 
     @property
     def Passphrase(self):
-        r"""The encryption key for SRT relay, which is empty by default, indicating not to encrypt. Only ASCII codes are allowed. Length: [10, 79].
+        r"""Encryption key for SRT retweet. It is empty by default, indicating not encrypted. Only ascii characters are allowed, with a length of [10, 79].
         :rtype: str
         """
         return self._Passphrase
@@ -1183,7 +1422,7 @@ class CreateOutputSrtSettings(AbstractModel):
 
     @property
     def PbKeyLen(self):
-        r"""The key length for SRT relay. Valid values: 0 (default), 16, 24, 32.
+        r"""Key length for SRT retransmission. Default value: 0. Options: [0|16|24|32].
         :rtype: int
         """
         return self._PbKeyLen
@@ -1193,15 +1432,15 @@ class CreateOutputSrtSettings(AbstractModel):
         self._PbKeyLen = PbKeyLen
 
     @property
-    def Mode(self):
-        r"""The SRT mode. Valid values: LISTENER, CALLER (default).
-        :rtype: str
+    def FEC(self):
+        r"""SRT FEC settings
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.SRTFECFullOptions`
         """
-        return self._Mode
+        return self._FEC
 
-    @Mode.setter
-    def Mode(self, Mode):
-        self._Mode = Mode
+    @FEC.setter
+    def FEC(self, FEC):
+        self._FEC = FEC
 
 
     def _deserialize(self, params):
@@ -1211,6 +1450,7 @@ class CreateOutputSrtSettings(AbstractModel):
                 obj = CreateOutputSrtSettingsDestinations()
                 obj._deserialize(item)
                 self._Destinations.append(obj)
+        self._Mode = params.get("Mode")
         self._StreamId = params.get("StreamId")
         self._Latency = params.get("Latency")
         self._RecvLatency = params.get("RecvLatency")
@@ -1218,7 +1458,9 @@ class CreateOutputSrtSettings(AbstractModel):
         self._PeerIdleTimeout = params.get("PeerIdleTimeout")
         self._Passphrase = params.get("Passphrase")
         self._PbKeyLen = params.get("PbKeyLen")
-        self._Mode = params.get("Mode")
+        if params.get("FEC") is not None:
+            self._FEC = SRTFECFullOptions()
+            self._FEC._deserialize(params.get("FEC"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1230,15 +1472,15 @@ class CreateOutputSrtSettings(AbstractModel):
 
 
 class CreateOutputSrtSettingsDestinations(AbstractModel):
-    r"""The SRT destination address of the output to create.
+    r"""Create the SRT destination address for the output of a media transmission stream.
 
     """
 
     def __init__(self):
         r"""
-        :param _Ip: The output IP.
+        :param _Ip: Output IP or domain.
         :type Ip: str
-        :param _Port: The output port.
+        :param _Port: Output port.
         :type Port: int
         """
         self._Ip = None
@@ -1246,7 +1488,7 @@ class CreateOutputSrtSettingsDestinations(AbstractModel):
 
     @property
     def Ip(self):
-        r"""The output IP.
+        r"""Output IP or domain.
         :rtype: str
         """
         return self._Ip
@@ -1257,7 +1499,7 @@ class CreateOutputSrtSettingsDestinations(AbstractModel):
 
     @property
     def Port(self):
-        r"""The output port.
+        r"""Output port.
         :rtype: int
         """
         return self._Port
@@ -1287,15 +1529,15 @@ class CreateStreamLinkFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowName: Flow name
+        :param _FlowName: Stream name.
         :type FlowName: str
-        :param _MaxBandwidth: Maximum bandwidth in bps. Valid values: `10000000`, `20000000`, `50000000`
+        :param _MaxBandwidth: Maximum bandwidth in bps. Options: [10000000, 20000000].
         :type MaxBandwidth: int
-        :param _InputGroup: Flow input group
+        :param _InputGroup: Input group of a stream.
         :type InputGroup: list of CreateInput
-        :param _EventId: The media transmission event ID associated with the Flow. Each flow can only be associated with one event.
+        :param _EventId: Media transmission Event ID associated with the Flow. Each Flow can only be associated with one Event.
         :type EventId: str
-        :param _OutputGroup: Flow output group.
+        :param _OutputGroup: Output group of the stream.
         :type OutputGroup: list of CreateOutputInfo
         """
         self._FlowName = None
@@ -1306,7 +1548,7 @@ class CreateStreamLinkFlowRequest(AbstractModel):
 
     @property
     def FlowName(self):
-        r"""Flow name
+        r"""Stream name.
         :rtype: str
         """
         return self._FlowName
@@ -1317,7 +1559,7 @@ class CreateStreamLinkFlowRequest(AbstractModel):
 
     @property
     def MaxBandwidth(self):
-        r"""Maximum bandwidth in bps. Valid values: `10000000`, `20000000`, `50000000`
+        r"""Maximum bandwidth in bps. Options: [10000000, 20000000].
         :rtype: int
         """
         return self._MaxBandwidth
@@ -1328,7 +1570,7 @@ class CreateStreamLinkFlowRequest(AbstractModel):
 
     @property
     def InputGroup(self):
-        r"""Flow input group
+        r"""Input group of a stream.
         :rtype: list of CreateInput
         """
         return self._InputGroup
@@ -1339,7 +1581,7 @@ class CreateStreamLinkFlowRequest(AbstractModel):
 
     @property
     def EventId(self):
-        r"""The media transmission event ID associated with the Flow. Each flow can only be associated with one event.
+        r"""Media transmission Event ID associated with the Flow. Each Flow can only be associated with one Event.
         :rtype: str
         """
         return self._EventId
@@ -1350,7 +1592,7 @@ class CreateStreamLinkFlowRequest(AbstractModel):
 
     @property
     def OutputGroup(self):
-        r"""Flow output group.
+        r"""Output group of the stream.
         :rtype: list of CreateOutputInfo
         """
         return self._OutputGroup
@@ -1393,7 +1635,7 @@ class CreateStreamLinkFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Info: Information of the created flow
+        :param _Info: Information of the created Flow.
         :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeFlow`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -1403,7 +1645,7 @@ class CreateStreamLinkFlowResponse(AbstractModel):
 
     @property
     def Info(self):
-        r"""Information of the created flow
+        r"""Information of the created Flow.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeFlow`
         """
         return self._Info
@@ -1438,9 +1680,9 @@ class CreateStreamLinkInputRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: StreamLink stream ID.
+        :param _FlowId: <p>Media transmission stream ID.</p>
         :type FlowId: str
-        :param _InputGroup: The input group of the Flow.
+        :param _InputGroup: <p>Input group of a stream.</p>
         :type InputGroup: list of CreateInput
         """
         self._FlowId = None
@@ -1448,7 +1690,7 @@ class CreateStreamLinkInputRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""StreamLink stream ID.
+        r"""<p>Media transmission stream ID.</p>
         :rtype: str
         """
         return self._FlowId
@@ -1459,7 +1701,7 @@ class CreateStreamLinkInputRequest(AbstractModel):
 
     @property
     def InputGroup(self):
-        r"""The input group of the Flow.
+        r"""<p>Input group of a stream.</p>
         :rtype: list of CreateInput
         """
         return self._InputGroup
@@ -1494,7 +1736,7 @@ class CreateStreamLinkInputResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Info: Created Flow information.
+        :param _Info: <p>Information of the created Flow.</p>
         :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeFlow`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -1504,7 +1746,7 @@ class CreateStreamLinkInputResponse(AbstractModel):
 
     @property
     def Info(self):
-        r"""Created Flow information.
+        r"""<p>Information of the created Flow.</p>
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeFlow`
         """
         return self._Info
@@ -1539,9 +1781,9 @@ class CreateStreamLinkOutputInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: The flow ID.
+        :param _FlowId: Transport stream Id.
         :type FlowId: str
-        :param _Output: The output configuration of the flow.
+        :param _Output: Output configuration of the transport stream.
         :type Output: :class:`tencentcloud.mdc.v20200828.models.CreateOutputInfo`
         """
         self._FlowId = None
@@ -1549,7 +1791,7 @@ class CreateStreamLinkOutputInfoRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""The flow ID.
+        r"""Transport stream Id.
         :rtype: str
         """
         return self._FlowId
@@ -1560,7 +1802,7 @@ class CreateStreamLinkOutputInfoRequest(AbstractModel):
 
     @property
     def Output(self):
-        r"""The output configuration of the flow.
+        r"""Output configuration of the transport stream.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateOutputInfo`
         """
         return self._Output
@@ -1592,7 +1834,7 @@ class CreateStreamLinkOutputInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Info: The information of the created output.
+        :param _Info: Output information after creation.
         :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeOutput`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -1602,7 +1844,7 @@ class CreateStreamLinkOutputInfoResponse(AbstractModel):
 
     @property
     def Info(self):
-        r"""The information of the created output.
+        r"""Output information after creation.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeOutput`
         """
         return self._Info
@@ -1630,6 +1872,100 @@ class CreateStreamLinkOutputInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateStreamLinkSecurityGroupRequest(AbstractModel):
+    r"""CreateStreamLinkSecurityGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>Security group name, supporting letters, digits, and underscores, unique within a Region.</p>
+        :type Name: str
+        :param _Whitelist: <p>Allowlist, maximum number: 10.</p>
+        :type Whitelist: list of str
+        """
+        self._Name = None
+        self._Whitelist = None
+
+    @property
+    def Name(self):
+        r"""<p>Security group name, supporting letters, digits, and underscores, unique within a Region.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Whitelist(self):
+        r"""<p>Allowlist, maximum number: 10.</p>
+        :rtype: list of str
+        """
+        return self._Whitelist
+
+    @Whitelist.setter
+    def Whitelist(self, Whitelist):
+        self._Whitelist = Whitelist
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Whitelist = params.get("Whitelist")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStreamLinkSecurityGroupResponse(AbstractModel):
+    r"""CreateStreamLinkSecurityGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>Security group ID.</p>
+        :type Id: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>Security group ID.</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteStreamLinkFlowRequest(AbstractModel):
     r"""DeleteStreamLinkFlow request structure.
 
@@ -1637,14 +1973,14 @@ class DeleteStreamLinkFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: Flow ID
+        :param _FlowId: <p>Transport stream Id.</p>
         :type FlowId: str
         """
         self._FlowId = None
 
     @property
     def FlowId(self):
-        r"""Flow ID
+        r"""<p>Transport stream Id.</p>
         :rtype: str
         """
         return self._FlowId
@@ -1701,9 +2037,9 @@ class DeleteStreamLinkOutputRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: Flow ID
+        :param _FlowId: Stream Id.
         :type FlowId: str
-        :param _OutputId: Output ID
+        :param _OutputId: Output Id.
         :type OutputId: str
         """
         self._FlowId = None
@@ -1711,7 +2047,7 @@ class DeleteStreamLinkOutputRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""Flow ID
+        r"""Stream Id.
         :rtype: str
         """
         return self._FlowId
@@ -1722,7 +2058,7 @@ class DeleteStreamLinkOutputRequest(AbstractModel):
 
     @property
     def OutputId(self):
-        r"""Output ID
+        r"""Output Id.
         :rtype: str
         """
         return self._OutputId
@@ -1774,27 +2110,32 @@ class DeleteStreamLinkOutputResponse(AbstractModel):
 
 
 class DescribeFlow(AbstractModel):
-    r"""Configuration information of the queried flow.
+    r"""Query the Flow configuration information.
 
     """
 
     def __init__(self):
         r"""
-        :param _FlowId: Flow ID.
+        :param _FlowId: Stream Id.
         :type FlowId: str
-        :param _FlowName: Flow name.
+        :param _FlowName: Stream name.
         :type FlowName: str
-        :param _State: Flow status. Valid values: `IDLE`, `RUNNING`
+        :param _State: Stream status. Valid values: IDLE, RUNNING.
         :type State: str
-        :param _MaxBandwidth: Maximum bandwidth value.
+        :param _MaxBandwidth: Maximum bandwidth.
         :type MaxBandwidth: int
         :param _InputGroup: Input group.
         :type InputGroup: list of DescribeInput
         :param _OutputGroup: Output group.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type OutputGroup: list of DescribeOutput
-        :param _EventId: EventId of the StreamLink event associated with this Flow.
+        :param _EventId: EventId of the media transmission event associated with this Flow.
         :type EventId: str
+        :param _CreateTime: Creation time of the Flow in UTC format.
+        :type CreateTime: str
+        :param _AllowedInputProtocols: Input protocols that can be created for this Flow.
+        :type AllowedInputProtocols: list of str
+        :param _AllowedOutputProtocols: Output protocols allowed to be created by this Flow
+        :type AllowedOutputProtocols: list of str
         """
         self._FlowId = None
         self._FlowName = None
@@ -1803,10 +2144,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._InputGroup = None
         self._OutputGroup = None
         self._EventId = None
+        self._CreateTime = None
+        self._AllowedInputProtocols = None
+        self._AllowedOutputProtocols = None
 
     @property
     def FlowId(self):
-        r"""Flow ID.
+        r"""Stream Id.
         :rtype: str
         """
         return self._FlowId
@@ -1817,7 +2161,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FlowName(self):
-        r"""Flow name.
+        r"""Stream name.
         :rtype: str
         """
         return self._FlowName
@@ -1828,7 +2172,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def State(self):
-        r"""Flow status. Valid values: `IDLE`, `RUNNING`
+        r"""Stream status. Valid values: IDLE, RUNNING.
         :rtype: str
         """
         return self._State
@@ -1839,7 +2183,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxBandwidth(self):
-        r"""Maximum bandwidth value.
+        r"""Maximum bandwidth.
         :rtype: int
         """
         return self._MaxBandwidth
@@ -1862,7 +2206,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def OutputGroup(self):
         r"""Output group.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of DescribeOutput
         """
         return self._OutputGroup
@@ -1873,7 +2216,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventId(self):
-        r"""EventId of the StreamLink event associated with this Flow.
+        r"""EventId of the media transmission event associated with this Flow.
         :rtype: str
         """
         return self._EventId
@@ -1881,6 +2224,39 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @EventId.setter
     def EventId(self, EventId):
         self._EventId = EventId
+
+    @property
+    def CreateTime(self):
+        r"""Creation time of the Flow in UTC format.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def AllowedInputProtocols(self):
+        r"""Input protocols that can be created for this Flow.
+        :rtype: list of str
+        """
+        return self._AllowedInputProtocols
+
+    @AllowedInputProtocols.setter
+    def AllowedInputProtocols(self, AllowedInputProtocols):
+        self._AllowedInputProtocols = AllowedInputProtocols
+
+    @property
+    def AllowedOutputProtocols(self):
+        r"""Output protocols allowed to be created by this Flow
+        :rtype: list of str
+        """
+        return self._AllowedOutputProtocols
+
+    @AllowedOutputProtocols.setter
+    def AllowedOutputProtocols(self, AllowedOutputProtocols):
+        self._AllowedOutputProtocols = AllowedOutputProtocols
 
 
     def _deserialize(self, params):
@@ -1901,6 +2277,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._OutputGroup.append(obj)
         self._EventId = params.get("EventId")
+        self._CreateTime = params.get("CreateTime")
+        self._AllowedInputProtocols = params.get("AllowedInputProtocols")
+        self._AllowedOutputProtocols = params.get("AllowedOutputProtocols")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1912,20 +2291,20 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeHLSPullSourceAddress(AbstractModel):
-    r"""
+    r"""Query input HLS configuration message.
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: 
+        :param _Url: Url of the HLS origin server.
         :type Url: str
         """
         self._Url = None
 
     @property
     def Url(self):
-        r"""
+        r"""Url of the HLS origin server.
         :rtype: str
         """
         return self._Url
@@ -1948,55 +2327,51 @@ class DescribeHLSPullSourceAddress(AbstractModel):
 
 
 class DescribeInput(AbstractModel):
-    r"""Configuration information of the queried input.
+    r"""Query input configuration message.
 
     """
 
     def __init__(self):
         r"""
-        :param _InputId: Input ID.
+        :param _InputId: Input Id.
         :type InputId: str
         :param _InputName: Input name.
         :type InputName: str
         :param _Description: Input description.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type Description: str
         :param _Protocol: Input protocol.
         :type Protocol: str
-        :param _InputAddressList: Input address list.
+        :param _InputAddressList: Input the address list.
         :type InputAddressList: list of InputAddress
-        :param _AllowIpList: Input IP allowlist.
+        :param _AllowIpList: Input the IP whitelist list.
         :type AllowIpList: list of str
-        :param _SRTSettings: SRT configuration information of input.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _SRTSettings: SRT configuration information of the input.
         :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputSRTSettings`
-        :param _RTPSettings: RTP configuration information of input.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _RTPSettings: Input RTP configuration message.
         :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTPSettings`
         :param _InputRegion: Input region.
         :type InputRegion: str
-        :param _RTMPSettings: RTMP configuration information of an input
+        :param _RTMPSettings: Input RTMP configuration message.
         :type RTMPSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTMPSettings`
-        :param _FailOver: Input failover
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _FailOver: Primary/replica switch input.
         :type FailOver: str
-        :param _Zones: Available Zone Configuration: Under disaster recovery conditions, up to two are supported, corresponding to pipeline 0 and 1 in order. Otherwise, only one available zone is allowed.
+        :param _Zones: Availability zone configuration. In the current situation with disaster recovery enabled, there can be up to two, corresponding to pipeline 0 and 1 in sequence. Otherwise, there is only one availability zone.
         :type Zones: list of str
-        :param _RTMPPullSettings: The input RTMP_PULL configuration information.
+        :param _RTMPPullSettings: Input RTMP_PULL configuration message.
         :type RTMPPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTMPPullSettings`
-        :param _RTSPPullSettings: The RTSP_PULL configuration information entered.
+        :param _RTSPPullSettings: Input RTSP_PULL configuration message.
         :type RTSPPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTSPPullSettings`
-        :param _HLSPullSettings: The input HLS-PULL configuration information.
+        :param _HLSPullSettings: Input HLS_PULL configuration message.
         :type HLSPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputHLSPullSettings`
-        :param _ResilientStream: Extended smooth streaming configuration information.
+        :param _ResilientStream: Configuration message for smooth streaming during delayed broadcasting.
         :type ResilientStream: :class:`tencentcloud.mdc.v20200828.models.ResilientStreamConf`
-        :param _SecurityGroupIds: The bound security group ID.
+        :param _SecurityGroupIds: Bound input security group ID.	
         :type SecurityGroupIds: list of str
-        :param _RISTSettings: The input RIST configuration information.
+        :param _RISTSettings: Input RIST configuration message.
         :type RISTSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRISTSettings`
-        :param _StreamUrls: Enter URL information related to module configuration, including the provided streaming address or the configured third-party source address
+        :param _StreamUrls: Input URL information related to module settings, including the provided streaming address or the configured third-party source stream URL.
         :type StreamUrls: list of StreamUrlDetail
-        :param _FailOverOption: Disaster recovery configuration items
+        :param _FailOverOption: Disaster recovery configuration item
         :type FailOverOption: :class:`tencentcloud.mdc.v20200828.models.FailOverOption`
         """
         self._InputId = None
@@ -2022,7 +2397,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def InputId(self):
-        r"""Input ID.
+        r"""Input Id.
         :rtype: str
         """
         return self._InputId
@@ -2045,7 +2420,6 @@ Note: this field may return `null`, indicating that no valid value was found.
     @property
     def Description(self):
         r"""Input description.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Description
@@ -2067,7 +2441,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InputAddressList(self):
-        r"""Input address list.
+        r"""Input the address list.
         :rtype: list of InputAddress
         """
         return self._InputAddressList
@@ -2078,7 +2452,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AllowIpList(self):
-        r"""Input IP allowlist.
+        r"""Input the IP whitelist list.
         :rtype: list of str
         """
         return self._AllowIpList
@@ -2089,8 +2463,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SRTSettings(self):
-        r"""SRT configuration information of input.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""SRT configuration information of the input.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeInputSRTSettings`
         """
         return self._SRTSettings
@@ -2101,8 +2474,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RTPSettings(self):
-        r"""RTP configuration information of input.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Input RTP configuration message.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTPSettings`
         """
         return self._RTPSettings
@@ -2124,7 +2496,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RTMPSettings(self):
-        r"""RTMP configuration information of an input
+        r"""Input RTMP configuration message.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTMPSettings`
         """
         return self._RTMPSettings
@@ -2135,8 +2507,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FailOver(self):
-        r"""Input failover
-Note: this field may return `null`, indicating that no valid value was found.
+        r"""Primary/replica switch input.
         :rtype: str
         """
         return self._FailOver
@@ -2147,7 +2518,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def Zones(self):
-        r"""Available Zone Configuration: Under disaster recovery conditions, up to two are supported, corresponding to pipeline 0 and 1 in order. Otherwise, only one available zone is allowed.
+        r"""Availability zone configuration. In the current situation with disaster recovery enabled, there can be up to two, corresponding to pipeline 0 and 1 in sequence. Otherwise, there is only one availability zone.
         :rtype: list of str
         """
         return self._Zones
@@ -2158,7 +2529,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def RTMPPullSettings(self):
-        r"""The input RTMP_PULL configuration information.
+        r"""Input RTMP_PULL configuration message.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTMPPullSettings`
         """
         return self._RTMPPullSettings
@@ -2169,7 +2540,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def RTSPPullSettings(self):
-        r"""The RTSP_PULL configuration information entered.
+        r"""Input RTSP_PULL configuration message.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTSPPullSettings`
         """
         return self._RTSPPullSettings
@@ -2180,7 +2551,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def HLSPullSettings(self):
-        r"""The input HLS-PULL configuration information.
+        r"""Input HLS_PULL configuration message.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeInputHLSPullSettings`
         """
         return self._HLSPullSettings
@@ -2191,7 +2562,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def ResilientStream(self):
-        r"""Extended smooth streaming configuration information.
+        r"""Configuration message for smooth streaming during delayed broadcasting.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.ResilientStreamConf`
         """
         return self._ResilientStream
@@ -2202,7 +2573,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def SecurityGroupIds(self):
-        r"""The bound security group ID.
+        r"""Bound input security group ID.	
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -2213,7 +2584,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def RISTSettings(self):
-        r"""The input RIST configuration information.
+        r"""Input RIST configuration message.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRISTSettings`
         """
         return self._RISTSettings
@@ -2224,7 +2595,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def StreamUrls(self):
-        r"""Enter URL information related to module configuration, including the provided streaming address or the configured third-party source address
+        r"""Input URL information related to module settings, including the provided streaming address or the configured third-party source stream URL.
         :rtype: list of StreamUrlDetail
         """
         return self._StreamUrls
@@ -2235,7 +2606,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def FailOverOption(self):
-        r"""Disaster recovery configuration items
+        r"""Disaster recovery configuration item
         :rtype: :class:`tencentcloud.mdc.v20200828.models.FailOverOption`
         """
         return self._FailOverOption
@@ -2305,20 +2676,20 @@ Note: this field may return `null`, indicating that no valid value was found.
 
 
 class DescribeInputHLSPullSettings(AbstractModel):
-    r"""
+    r"""Query the configuration message of the input HLS.
 
     """
 
     def __init__(self):
         r"""
-        :param _SourceAddresses: 
+        :param _SourceAddresses: HLS origin server address information.
         :type SourceAddresses: list of DescribeHLSPullSourceAddress
         """
         self._SourceAddresses = None
 
     @property
     def SourceAddresses(self):
-        r"""
+        r"""HLS origin server address information.
         :rtype: list of DescribeHLSPullSourceAddress
         """
         return self._SourceAddresses
@@ -2346,17 +2717,17 @@ class DescribeInputHLSPullSettings(AbstractModel):
 
 
 class DescribeInputRISTSettings(AbstractModel):
-    r"""
+    r"""Query the RIST configuration message of the input.
 
     """
 
     def __init__(self):
         r"""
-        :param _Mode: 
+        :param _Mode: RIST mode. Options: [LISTENER|CALLER]. Default value: LISTENER.
         :type Mode: str
-        :param _Profile: 
+        :param _Profile: RIST configuration solution. Options: [MAIN|SIMPLE]. Default: MAIN.
         :type Profile: str
-        :param _Buffer: 
+        :param _Buffer: RIST buffer size in milliseconds. Minimum value: 50 ms. Maximum value: 5000 ms. Default value: 120.
         :type Buffer: int
         """
         self._Mode = None
@@ -2365,7 +2736,7 @@ class DescribeInputRISTSettings(AbstractModel):
 
     @property
     def Mode(self):
-        r"""
+        r"""RIST mode. Options: [LISTENER|CALLER]. Default value: LISTENER.
         :rtype: str
         """
         return self._Mode
@@ -2376,7 +2747,7 @@ class DescribeInputRISTSettings(AbstractModel):
 
     @property
     def Profile(self):
-        r"""
+        r"""RIST configuration solution. Options: [MAIN|SIMPLE]. Default: MAIN.
         :rtype: str
         """
         return self._Profile
@@ -2387,7 +2758,7 @@ class DescribeInputRISTSettings(AbstractModel):
 
     @property
     def Buffer(self):
-        r"""
+        r"""RIST buffer size in milliseconds. Minimum value: 50 ms. Maximum value: 5000 ms. Default value: 120.
         :rtype: int
         """
         return self._Buffer
@@ -2412,20 +2783,20 @@ class DescribeInputRISTSettings(AbstractModel):
 
 
 class DescribeInputRTMPPullSettings(AbstractModel):
-    r"""
+    r"""Query the input RTMP configuration message.
 
     """
 
     def __init__(self):
         r"""
-        :param _SourceAddresses: 
+        :param _SourceAddresses: RTMP origin server address information.
         :type SourceAddresses: list of DescribeRTMPPullSourceAddress
         """
         self._SourceAddresses = None
 
     @property
     def SourceAddresses(self):
-        r"""
+        r"""RTMP origin server address information.
         :rtype: list of DescribeRTMPPullSourceAddress
         """
         return self._SourceAddresses
@@ -2453,17 +2824,16 @@ class DescribeInputRTMPPullSettings(AbstractModel):
 
 
 class DescribeInputRTMPSettings(AbstractModel):
-    r"""RTMP configuration information of the queried input
+    r"""Query the input RTMP configuration message.
 
     """
 
     def __init__(self):
         r"""
-        :param _AppName: Path for RTMP stream pushing
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _AppName: RTMP push path.
         :type AppName: str
-        :param _StreamKey: StreamKey for RTMP stream pushing
-Format of an RTMP stream pushing URL: rtmp://IP address:1935/AppName/StreamKey
+        :param _StreamKey: RTMP push StreamKey.
+RTMP push URL splicing rule: rtmp://Ip:1935/AppName/StreamKey
         :type StreamKey: str
         """
         self._AppName = None
@@ -2471,8 +2841,7 @@ Format of an RTMP stream pushing URL: rtmp://IP address:1935/AppName/StreamKey
 
     @property
     def AppName(self):
-        r"""Path for RTMP stream pushing
-Note: this field may return `null`, indicating that no valid value was found.
+        r"""RTMP push path.
         :rtype: str
         """
         return self._AppName
@@ -2483,8 +2852,8 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def StreamKey(self):
-        r"""StreamKey for RTMP stream pushing
-Format of an RTMP stream pushing URL: rtmp://IP address:1935/AppName/StreamKey
+        r"""RTMP push StreamKey.
+RTMP push URL splicing rule: rtmp://Ip:1935/AppName/StreamKey
         :rtype: str
         """
         return self._StreamKey
@@ -2508,13 +2877,13 @@ Format of an RTMP stream pushing URL: rtmp://IP address:1935/AppName/StreamKey
 
 
 class DescribeInputRTPSettings(AbstractModel):
-    r"""RTP configuration information of the queried input.
+    r"""Query the configuration message of the input RTP.
 
     """
 
     def __init__(self):
         r"""
-        :param _FEC: Whether it is FEC.
+        :param _FEC: Whether to enable FEC.
         :type FEC: str
         :param _IdleTimeout: Idle timeout period.
         :type IdleTimeout: int
@@ -2524,7 +2893,7 @@ class DescribeInputRTPSettings(AbstractModel):
 
     @property
     def FEC(self):
-        r"""Whether it is FEC.
+        r"""Whether to enable FEC.
         :rtype: str
         """
         return self._FEC
@@ -2559,20 +2928,20 @@ class DescribeInputRTPSettings(AbstractModel):
 
 
 class DescribeInputRTSPPullSettings(AbstractModel):
-    r"""
+    r"""Query the input RTSP configuration message.
 
     """
 
     def __init__(self):
         r"""
-        :param _SourceAddresses: 
+        :param _SourceAddresses: RTSP origin server address.
         :type SourceAddresses: list of DescribeRTSPPullSourceAddress
         """
         self._SourceAddresses = None
 
     @property
     def SourceAddresses(self):
-        r"""
+        r"""RTSP origin server address.
         :rtype: list of DescribeRTSPPullSourceAddress
         """
         return self._SourceAddresses
@@ -2600,32 +2969,32 @@ class DescribeInputRTSPPullSettings(AbstractModel):
 
 
 class DescribeInputSRTSettings(AbstractModel):
-    r"""SRT configuration information of the queried input.
+    r"""Query the input SRT configuration information.
 
     """
 
     def __init__(self):
         r"""
-        :param _Mode: The SRT mode.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Mode: SRT mode.
         :type Mode: str
-        :param _StreamId: Stream ID.
+        :param _StreamId: Stream Id.
         :type StreamId: str
-        :param _Latency: Latency.
+        :param _Latency: Delay.
         :type Latency: int
-        :param _RecvLatency: Receive latency.
+        :param _RecvLatency: Receive delay.
         :type RecvLatency: int
-        :param _PeerLatency: Peer latency.
+        :param _PeerLatency: Peer delay.
         :type PeerLatency: int
-        :param _PeerIdleTimeout: Peer idle timeout period.
+        :param _PeerIdleTimeout: Idle timeout period of the peer.
         :type PeerIdleTimeout: int
         :param _Passphrase: Decryption key.
         :type Passphrase: str
         :param _PbKeyLen: Key length.
         :type PbKeyLen: int
-        :param _SourceAddresses: The SRT peer address.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _SourceAddresses: SRT peer address.
         :type SourceAddresses: list of SRTSourceAddressResp
+        :param _FEC: FEC settings
+        :type FEC: :class:`tencentcloud.mdc.v20200828.models.SRTFECSimpleOptions`
         """
         self._Mode = None
         self._StreamId = None
@@ -2636,11 +3005,11 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._Passphrase = None
         self._PbKeyLen = None
         self._SourceAddresses = None
+        self._FEC = None
 
     @property
     def Mode(self):
-        r"""The SRT mode.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""SRT mode.
         :rtype: str
         """
         return self._Mode
@@ -2651,7 +3020,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def StreamId(self):
-        r"""Stream ID.
+        r"""Stream Id.
         :rtype: str
         """
         return self._StreamId
@@ -2662,7 +3031,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Latency(self):
-        r"""Latency.
+        r"""Delay.
         :rtype: int
         """
         return self._Latency
@@ -2673,7 +3042,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RecvLatency(self):
-        r"""Receive latency.
+        r"""Receive delay.
         :rtype: int
         """
         return self._RecvLatency
@@ -2684,7 +3053,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def PeerLatency(self):
-        r"""Peer latency.
+        r"""Peer delay.
         :rtype: int
         """
         return self._PeerLatency
@@ -2695,7 +3064,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def PeerIdleTimeout(self):
-        r"""Peer idle timeout period.
+        r"""Idle timeout period of the peer.
         :rtype: int
         """
         return self._PeerIdleTimeout
@@ -2728,8 +3097,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def SourceAddresses(self):
-        r"""The SRT peer address.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""SRT peer address.
         :rtype: list of SRTSourceAddressResp
         """
         return self._SourceAddresses
@@ -2737,6 +3105,17 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     @SourceAddresses.setter
     def SourceAddresses(self, SourceAddresses):
         self._SourceAddresses = SourceAddresses
+
+    @property
+    def FEC(self):
+        r"""FEC settings
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.SRTFECSimpleOptions`
+        """
+        return self._FEC
+
+    @FEC.setter
+    def FEC(self, FEC):
+        self._FEC = FEC
 
 
     def _deserialize(self, params):
@@ -2754,6 +3133,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
                 obj = SRTSourceAddressResp()
                 obj._deserialize(item)
                 self._SourceAddresses.append(obj)
+        if params.get("FEC") is not None:
+            self._FEC = SRTFECSimpleOptions()
+            self._FEC._deserialize(params.get("FEC"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2765,62 +3147,58 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DescribeOutput(AbstractModel):
-    r"""Configuration information of the queried output.
+    r"""Configuration message for querying an output.
 
     """
 
     def __init__(self):
         r"""
-        :param _OutputId: Output ID.
+        :param _OutputId: <p>Output Id.</p>
         :type OutputId: str
-        :param _OutputName: Output name.
+        :param _OutputName: <p>Output name.</p>
         :type OutputName: str
-        :param _OutputType: Output type.
+        :param _OutputType: <p>Output type.</p>
         :type OutputType: str
-        :param _Description: Output description.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Description: <p>Output description.</p>
         :type Description: str
-        :param _Protocol: Output protocol.
+        :param _Protocol: <p>Output protocol.</p>
         :type Protocol: str
-        :param _OutputAddressList: Output destination address information list.
+        :param _OutputAddressList: <p>List of output egress address information.</p>
         :type OutputAddressList: list of OutputAddress
-        :param _OutputRegion: Output region.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _OutputRegion: <p>Output region.</p>
         :type OutputRegion: str
-        :param _SRTSettings: SRT configuration information of output.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _SRTSettings: <p>SRT configuration information of the output.</p>
         :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputSRTSettings`
-        :param _RTPSettings: RTP configuration information of output.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _RTPSettings: <p>Output RTP configuration message.</p>
         :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTPSettings`
-        :param _RTMPSettings: RTMP configuration information of output.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _RTMPSettings: <p>Output RTMP configuration message.</p>
         :type RTMPSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTMPSettings`
-        :param _RTMPPullSettings: RTMP pull configuration of the output
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _RTMPPullSettings: <p>Output RTMP pull configuration message.</p>
         :type RTMPPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTMPPullSettings`
-        :param _AllowIpList: CIDR Whitelist List. Effective when Protocol is RTMP_PULL. Empty means no restriction on client IP.
+        :param _AllowIpList: <p>CIDR allowlist.<br>Valid when Protocol is RTMP_PULL. If empty, it represents no limit on client IP.</p>
         :type AllowIpList: list of str
-        :param _RTSPPullSettings: The output RTSP streaming configuration information.
+        :param _RTSPPullSettings: <p>Output RTSP pull stream configuration message.</p>
         :type RTSPPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTSPPullSettings`
-        :param _HLSPullSettings: Output the HLS streaming configuration information.
+        :param _HLSPullSettings: <p>Output HLS pull configuration message.</p>
         :type HLSPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputHLSPullSettings`
-        :param _MaxConcurrent: The maximum number of concurrent streams is 4, with a default of 4.
+        :param _MaxConcurrent: <p>Maximum number of concurrent stream pulls. Maximum value: 4. Default value: 4.</p>
         :type MaxConcurrent: int
-        :param _SecurityGroupIds: The bound security group IDs.
+        :param _SecurityGroupIds: <p>ID of the bound security group.</p>
         :type SecurityGroupIds: list of str
-        :param _Zones: The available zone currently only supports a maximum of one output.
+        :param _Zones: <p>Availability zone. output currently supports a maximum of one.</p>
         :type Zones: list of str
-        :param _RISTSettings: Output RIST configuration information.
+        :param _RISTSettings: <p>Output RIST configuration message.</p>
         :type RISTSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRISTSettings`
-        :param _PidSelector: For streams containing multiple audio/video tracks, you can specify the tracks that need to be used
+        :param _PidSelector: <p>For streams with multiple audio/video tracks, you can specify the track to be used</p>
         :type PidSelector: :class:`tencentcloud.mdc.v20200828.models.PidSelector`
-        :param _OutputKind: Output module types, including Pinpoint (single point output, supporting up to four concurrent outputs); MultiMesh (Multi output, supports concurrent outputs greater than four, currently up to 200). The default type is Pinpoint output. For a single Flow, a region can only have a maximum of one MultiMesh output.
+        :param _OutputKind: <p>Output module type, including Pinpoint (single-point output, supports up to four concurrent outputs); MultiMesh (multiple streams output, supports more than four concurrent outputs, currently up to 200). The default type is Pinpoint output. For one Flow, only one MultiMesh output is allowed in one zone.</p>
         :type OutputKind: str
-        :param _StreamUrls: Output module configuration, relevant URLs, including provided streaming addresses or configured output to third-party forwarding addresses
+        :param _StreamUrls: <p>Output module configuration, related URLs, including the provided pull stream address or the configured relay address for output to a third party</p>
         :type StreamUrls: list of StreamUrlDetail
-        :param _StreamSelector: For streams containing multiple audio/video tracks, you can specify the tracks that need to be used
+        :param _StreamSelector: <p>For streams with multiple audio/video tracks, you can specify the track to be used</p>
         :type StreamSelector: :class:`tencentcloud.mdc.v20200828.models.StreamSelector`
+        :param _State: <p>Output status.</p><p>Enumeration values:</p><ul><li>DISABLED</li><li>ENABLED</li></ul>
+        :type State: str
         """
         self._OutputId = None
         self._OutputName = None
@@ -2844,10 +3222,11 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._OutputKind = None
         self._StreamUrls = None
         self._StreamSelector = None
+        self._State = None
 
     @property
     def OutputId(self):
-        r"""Output ID.
+        r"""<p>Output Id.</p>
         :rtype: str
         """
         return self._OutputId
@@ -2858,7 +3237,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def OutputName(self):
-        r"""Output name.
+        r"""<p>Output name.</p>
         :rtype: str
         """
         return self._OutputName
@@ -2869,7 +3248,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def OutputType(self):
-        r"""Output type.
+        r"""<p>Output type.</p>
         :rtype: str
         """
         return self._OutputType
@@ -2880,8 +3259,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Description(self):
-        r"""Output description.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Output description.</p>
         :rtype: str
         """
         return self._Description
@@ -2892,7 +3270,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
-        r"""Output protocol.
+        r"""<p>Output protocol.</p>
         :rtype: str
         """
         return self._Protocol
@@ -2903,7 +3281,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputAddressList(self):
-        r"""Output destination address information list.
+        r"""<p>List of output egress address information.</p>
         :rtype: list of OutputAddress
         """
         return self._OutputAddressList
@@ -2914,8 +3292,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputRegion(self):
-        r"""Output region.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Output region.</p>
         :rtype: str
         """
         return self._OutputRegion
@@ -2926,8 +3303,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SRTSettings(self):
-        r"""SRT configuration information of output.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>SRT configuration information of the output.</p>
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputSRTSettings`
         """
         return self._SRTSettings
@@ -2938,8 +3314,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RTPSettings(self):
-        r"""RTP configuration information of output.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Output RTP configuration message.</p>
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTPSettings`
         """
         return self._RTPSettings
@@ -2950,8 +3325,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RTMPSettings(self):
-        r"""RTMP configuration information of output.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Output RTMP configuration message.</p>
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTMPSettings`
         """
         return self._RTMPSettings
@@ -2962,8 +3336,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RTMPPullSettings(self):
-        r"""RTMP pull configuration of the output
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Output RTMP pull configuration message.</p>
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTMPPullSettings`
         """
         return self._RTMPPullSettings
@@ -2974,7 +3347,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AllowIpList(self):
-        r"""CIDR Whitelist List. Effective when Protocol is RTMP_PULL. Empty means no restriction on client IP.
+        r"""<p>CIDR allowlist.<br>Valid when Protocol is RTMP_PULL. If empty, it represents no limit on client IP.</p>
         :rtype: list of str
         """
         return self._AllowIpList
@@ -2985,7 +3358,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RTSPPullSettings(self):
-        r"""The output RTSP streaming configuration information.
+        r"""<p>Output RTSP pull stream configuration message.</p>
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTSPPullSettings`
         """
         return self._RTSPPullSettings
@@ -2996,7 +3369,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def HLSPullSettings(self):
-        r"""Output the HLS streaming configuration information.
+        r"""<p>Output HLS pull configuration message.</p>
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputHLSPullSettings`
         """
         return self._HLSPullSettings
@@ -3007,7 +3380,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def MaxConcurrent(self):
-        r"""The maximum number of concurrent streams is 4, with a default of 4.
+        r"""<p>Maximum number of concurrent stream pulls. Maximum value: 4. Default value: 4.</p>
         :rtype: int
         """
         return self._MaxConcurrent
@@ -3018,7 +3391,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SecurityGroupIds(self):
-        r"""The bound security group IDs.
+        r"""<p>ID of the bound security group.</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -3029,7 +3402,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Zones(self):
-        r"""The available zone currently only supports a maximum of one output.
+        r"""<p>Availability zone. output currently supports a maximum of one.</p>
         :rtype: list of str
         """
         return self._Zones
@@ -3040,7 +3413,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RISTSettings(self):
-        r"""Output RIST configuration information.
+        r"""<p>Output RIST configuration message.</p>
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRISTSettings`
         """
         return self._RISTSettings
@@ -3053,7 +3426,7 @@ Note: This field may return `null`, indicating that no valid value was found.
     def PidSelector(self):
         warnings.warn("parameter `PidSelector` is deprecated", DeprecationWarning) 
 
-        r"""For streams containing multiple audio/video tracks, you can specify the tracks that need to be used
+        r"""<p>For streams with multiple audio/video tracks, you can specify the track to be used</p>
         :rtype: :class:`tencentcloud.mdc.v20200828.models.PidSelector`
         """
         return self._PidSelector
@@ -3066,7 +3439,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def OutputKind(self):
-        r"""Output module types, including Pinpoint (single point output, supporting up to four concurrent outputs); MultiMesh (Multi output, supports concurrent outputs greater than four, currently up to 200). The default type is Pinpoint output. For a single Flow, a region can only have a maximum of one MultiMesh output.
+        r"""<p>Output module type, including Pinpoint (single-point output, supports up to four concurrent outputs); MultiMesh (multiple streams output, supports more than four concurrent outputs, currently up to 200). The default type is Pinpoint output. For one Flow, only one MultiMesh output is allowed in one zone.</p>
         :rtype: str
         """
         return self._OutputKind
@@ -3077,7 +3450,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def StreamUrls(self):
-        r"""Output module configuration, relevant URLs, including provided streaming addresses or configured output to third-party forwarding addresses
+        r"""<p>Output module configuration, related URLs, including the provided pull stream address or the configured relay address for output to a third party</p>
         :rtype: list of StreamUrlDetail
         """
         return self._StreamUrls
@@ -3088,7 +3461,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def StreamSelector(self):
-        r"""For streams containing multiple audio/video tracks, you can specify the tracks that need to be used
+        r"""<p>For streams with multiple audio/video tracks, you can specify the track to be used</p>
         :rtype: :class:`tencentcloud.mdc.v20200828.models.StreamSelector`
         """
         return self._StreamSelector
@@ -3096,6 +3469,17 @@ Note: This field may return `null`, indicating that no valid value was found.
     @StreamSelector.setter
     def StreamSelector(self, StreamSelector):
         self._StreamSelector = StreamSelector
+
+    @property
+    def State(self):
+        r"""<p>Output status.</p><p>Enumeration values:</p><ul><li>DISABLED</li><li>ENABLED</li></ul>
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
 
 
     def _deserialize(self, params):
@@ -3149,6 +3533,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         if params.get("StreamSelector") is not None:
             self._StreamSelector = StreamSelector()
             self._StreamSelector._deserialize(params.get("StreamSelector"))
+        self._State = params.get("State")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3160,20 +3545,20 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DescribeOutputHLSPullServerUrl(AbstractModel):
-    r"""
+    r"""Query the output HLS pull URL information.
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: 
+        :param _Url: Url of the HLS pull address.
         :type Url: str
         """
         self._Url = None
 
     @property
     def Url(self):
-        r"""
+        r"""Url of the HLS pull address.
         :rtype: str
         """
         return self._Url
@@ -3196,20 +3581,20 @@ class DescribeOutputHLSPullServerUrl(AbstractModel):
 
 
 class DescribeOutputHLSPullSettings(AbstractModel):
-    r"""
+    r"""Query the configuration message of the output HLS pull.
 
     """
 
     def __init__(self):
         r"""
-        :param _ServerUrls: 
+        :param _ServerUrls: List of HLS pull addresses.
         :type ServerUrls: list of DescribeOutputHLSPullServerUrl
         """
         self._ServerUrls = None
 
     @property
     def ServerUrls(self):
-        r"""
+        r"""List of HLS pull addresses.
         :rtype: list of DescribeOutputHLSPullServerUrl
         """
         return self._ServerUrls
@@ -3237,19 +3622,19 @@ class DescribeOutputHLSPullSettings(AbstractModel):
 
 
 class DescribeOutputRISTSettings(AbstractModel):
-    r"""
+    r"""Query the output RIST pull stream configuration message.
 
     """
 
     def __init__(self):
         r"""
-        :param _Mode: 
+        :param _Mode: RIST mode. Valid values: `LISTENER`, `CALLER`. Default value: `LISTENER`.
         :type Mode: str
-        :param _Profile: 
+        :param _Profile: RIST configuration solution. Options: [MAIN|SIMPLE]. Default: MAIN.
         :type Profile: str
-        :param _Buffer: 
+        :param _Buffer: RIST buffer size in milliseconds. Minimum value: 50 ms. Maximum value: 5000 ms. Default value: 120.
         :type Buffer: int
-        :param _SourceAddresses: 
+        :param _SourceAddresses: Server listening address, used when the RIST mode is LISTENER.
         :type SourceAddresses: list of OutputRISTSourceAddressResp
         """
         self._Mode = None
@@ -3259,7 +3644,7 @@ class DescribeOutputRISTSettings(AbstractModel):
 
     @property
     def Mode(self):
-        r"""
+        r"""RIST mode. Valid values: `LISTENER`, `CALLER`. Default value: `LISTENER`.
         :rtype: str
         """
         return self._Mode
@@ -3270,7 +3655,7 @@ class DescribeOutputRISTSettings(AbstractModel):
 
     @property
     def Profile(self):
-        r"""
+        r"""RIST configuration solution. Options: [MAIN|SIMPLE]. Default: MAIN.
         :rtype: str
         """
         return self._Profile
@@ -3281,7 +3666,7 @@ class DescribeOutputRISTSettings(AbstractModel):
 
     @property
     def Buffer(self):
-        r"""
+        r"""RIST buffer size in milliseconds. Minimum value: 50 ms. Maximum value: 5000 ms. Default value: 120.
         :rtype: int
         """
         return self._Buffer
@@ -3292,7 +3677,7 @@ class DescribeOutputRISTSettings(AbstractModel):
 
     @property
     def SourceAddresses(self):
-        r"""
+        r"""Server listening address, used when the RIST mode is LISTENER.
         :rtype: list of OutputRISTSourceAddressResp
         """
         return self._SourceAddresses
@@ -3323,15 +3708,15 @@ class DescribeOutputRISTSettings(AbstractModel):
 
 
 class DescribeOutputRTMPPullServerUrl(AbstractModel):
-    r"""RTMP pull URL of the output
+    r"""Query the RTMP pull URL information in the output.
 
     """
 
     def __init__(self):
         r"""
-        :param _TcUrl: `tcUrl` of the RTMP pull URL
+        :param _TcUrl: tcUrl of the RTMP pull address.
         :type TcUrl: str
-        :param _StreamKey: Stream key of the RTMP pull URL
+        :param _StreamKey: Stream key of the RTMP pull address.
         :type StreamKey: str
         """
         self._TcUrl = None
@@ -3339,7 +3724,7 @@ class DescribeOutputRTMPPullServerUrl(AbstractModel):
 
     @property
     def TcUrl(self):
-        r"""`tcUrl` of the RTMP pull URL
+        r"""tcUrl of the RTMP pull address.
         :rtype: str
         """
         return self._TcUrl
@@ -3350,7 +3735,7 @@ class DescribeOutputRTMPPullServerUrl(AbstractModel):
 
     @property
     def StreamKey(self):
-        r"""Stream key of the RTMP pull URL
+        r"""Stream key of the RTMP pull address.
         :rtype: str
         """
         return self._StreamKey
@@ -3374,22 +3759,20 @@ class DescribeOutputRTMPPullServerUrl(AbstractModel):
 
 
 class DescribeOutputRTMPPullSettings(AbstractModel):
-    r"""RTMP pull configuration of the output
+    r"""Query the output RTMP pull stream configuration message.
 
     """
 
     def __init__(self):
         r"""
-        :param _ServerUrls: List of pull URLs
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _ServerUrls: List of pull addresses.
         :type ServerUrls: list of DescribeOutputRTMPPullServerUrl
         """
         self._ServerUrls = None
 
     @property
     def ServerUrls(self):
-        r"""List of pull URLs
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""List of pull addresses.
         :rtype: list of DescribeOutputRTMPPullServerUrl
         """
         return self._ServerUrls
@@ -3417,20 +3800,17 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DescribeOutputRTMPSettings(AbstractModel):
-    r"""RTMP configuration information of the queried output.
+    r"""Query the output RTMP configuration message.
 
     """
 
     def __init__(self):
         r"""
         :param _IdleTimeout: Idle timeout period.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type IdleTimeout: int
         :param _ChunkSize: Chunk size.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type ChunkSize: int
-        :param _Destinations: Destination address information list of RTMP push.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Destinations: List of target address information for RTMP repush.
         :type Destinations: list of RTMPAddressDestination
         """
         self._IdleTimeout = None
@@ -3440,7 +3820,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def IdleTimeout(self):
         r"""Idle timeout period.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._IdleTimeout
@@ -3452,7 +3831,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def ChunkSize(self):
         r"""Chunk size.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._ChunkSize
@@ -3463,8 +3841,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Destinations(self):
-        r"""Destination address information list of RTMP push.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""List of target address information for RTMP repush.
         :rtype: list of RTMPAddressDestination
         """
         return self._Destinations
@@ -3494,20 +3871,17 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeOutputRTPSettings(AbstractModel):
-    r"""RTP configuration information of the queried output.
+    r"""Query the configuration message of the output RTP.
 
     """
 
     def __init__(self):
         r"""
-        :param _Destinations: Destination address information list of RTP push.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Destinations: List of target address information for RTP repush.
         :type Destinations: list of RTPAddressDestination
-        :param _FEC: Whether it is FEC.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _FEC: Whether to enable FEC.
         :type FEC: str
         :param _IdleTimeout: Idle timeout period.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type IdleTimeout: int
         """
         self._Destinations = None
@@ -3516,8 +3890,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Destinations(self):
-        r"""Destination address information list of RTP push.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""List of target address information for RTP repush.
         :rtype: list of RTPAddressDestination
         """
         return self._Destinations
@@ -3528,8 +3901,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FEC(self):
-        r"""Whether it is FEC.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Whether to enable FEC.
         :rtype: str
         """
         return self._FEC
@@ -3541,7 +3913,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def IdleTimeout(self):
         r"""Idle timeout period.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._IdleTimeout
@@ -3571,20 +3942,20 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeOutputRTSPPullServerUrl(AbstractModel):
-    r"""
+    r"""Query the RTSP pull URL information in the output.
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: 
+        :param _Url: RTSP pull Url.
         :type Url: str
         """
         self._Url = None
 
     @property
     def Url(self):
-        r"""
+        r"""RTSP pull Url.
         :rtype: str
         """
         return self._Url
@@ -3607,20 +3978,20 @@ class DescribeOutputRTSPPullServerUrl(AbstractModel):
 
 
 class DescribeOutputRTSPPullSettings(AbstractModel):
-    r"""
+    r"""Query the output RTSP pull stream configuration message.
 
     """
 
     def __init__(self):
         r"""
-        :param _ServerUrls: 
+        :param _ServerUrls: List of RTSP pull addresses.
         :type ServerUrls: list of DescribeOutputRTSPPullServerUrl
         """
         self._ServerUrls = None
 
     @property
     def ServerUrls(self):
-        r"""
+        r"""List of RTSP pull addresses.
         :rtype: list of DescribeOutputRTSPPullServerUrl
         """
         return self._ServerUrls
@@ -3648,42 +4019,34 @@ class DescribeOutputRTSPPullSettings(AbstractModel):
 
 
 class DescribeOutputSRTSettings(AbstractModel):
-    r"""SRT configuration information of the queried output.
+    r"""Query the output SRT configuration information.
 
     """
 
     def __init__(self):
         r"""
-        :param _Destinations: A list of the destination addresses for relay. This parameter is valid if `Mode` is `CALLER`.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Destinations: Destination address list. Used when the SRT mode is CALLER.
         :type Destinations: list of SRTAddressDestination
-        :param _StreamId: Stream ID.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _StreamId: Stream Id.
         :type StreamId: str
-        :param _Latency: Latency.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Latency: Delay.
         :type Latency: int
-        :param _RecvLatency: Receive latency.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _RecvLatency: Receive delay.
         :type RecvLatency: int
-        :param _PeerLatency: Peer latency.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _PeerLatency: Peer delay.
         :type PeerLatency: int
-        :param _PeerIdleTimeout: Peer idle timeout period.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _PeerIdleTimeout: Idle timeout period of the peer.
         :type PeerIdleTimeout: int
         :param _Passphrase: Encryption key.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type Passphrase: str
         :param _PbKeyLen: Encryption key length.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type PbKeyLen: int
-        :param _Mode: The SRT mode.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Mode: SRT mode.
         :type Mode: str
-        :param _SourceAddresses: The server’s listen address, which is valid if `Mode` is `LISTENER`.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _SourceAddresses: Server listening address, used when the SRT mode is LISTENER.
         :type SourceAddresses: list of OutputSRTSourceAddressResp
+        :param _FEC: SRT FEC configuration
+        :type FEC: :class:`tencentcloud.mdc.v20200828.models.SRTFECFullOptions`
         """
         self._Destinations = None
         self._StreamId = None
@@ -3695,11 +4058,11 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._PbKeyLen = None
         self._Mode = None
         self._SourceAddresses = None
+        self._FEC = None
 
     @property
     def Destinations(self):
-        r"""A list of the destination addresses for relay. This parameter is valid if `Mode` is `CALLER`.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Destination address list. Used when the SRT mode is CALLER.
         :rtype: list of SRTAddressDestination
         """
         return self._Destinations
@@ -3710,8 +4073,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def StreamId(self):
-        r"""Stream ID.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Stream Id.
         :rtype: str
         """
         return self._StreamId
@@ -3722,8 +4084,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Latency(self):
-        r"""Latency.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Delay.
         :rtype: int
         """
         return self._Latency
@@ -3734,8 +4095,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecvLatency(self):
-        r"""Receive latency.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Receive delay.
         :rtype: int
         """
         return self._RecvLatency
@@ -3746,8 +4106,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PeerLatency(self):
-        r"""Peer latency.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Peer delay.
         :rtype: int
         """
         return self._PeerLatency
@@ -3758,8 +4117,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PeerIdleTimeout(self):
-        r"""Peer idle timeout period.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Idle timeout period of the peer.
         :rtype: int
         """
         return self._PeerIdleTimeout
@@ -3771,7 +4129,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def Passphrase(self):
         r"""Encryption key.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Passphrase
@@ -3783,7 +4140,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def PbKeyLen(self):
         r"""Encryption key length.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._PbKeyLen
@@ -3794,8 +4150,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Mode(self):
-        r"""The SRT mode.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""SRT mode.
         :rtype: str
         """
         return self._Mode
@@ -3806,8 +4161,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def SourceAddresses(self):
-        r"""The server’s listen address, which is valid if `Mode` is `LISTENER`.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Server listening address, used when the SRT mode is LISTENER.
         :rtype: list of OutputSRTSourceAddressResp
         """
         return self._SourceAddresses
@@ -3815,6 +4169,17 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     @SourceAddresses.setter
     def SourceAddresses(self, SourceAddresses):
         self._SourceAddresses = SourceAddresses
+
+    @property
+    def FEC(self):
+        r"""SRT FEC configuration
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.SRTFECFullOptions`
+        """
+        return self._FEC
+
+    @FEC.setter
+    def FEC(self, FEC):
+        self._FEC = FEC
 
 
     def _deserialize(self, params):
@@ -3838,6 +4203,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
                 obj = OutputSRTSourceAddressResp()
                 obj._deserialize(item)
                 self._SourceAddresses.append(obj)
+        if params.get("FEC") is not None:
+            self._FEC = SRTFECFullOptions()
+            self._FEC._deserialize(params.get("FEC"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3849,15 +4217,16 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DescribeRTMPPullSourceAddress(AbstractModel):
-    r"""
+    r"""Query the input RTMP configuration message.
 
     """
 
     def __init__(self):
         r"""
-        :param _TcUrl: 
+        :param _TcUrl: TcUrl of the RTMP origin server.
         :type TcUrl: str
-        :param _StreamKey: 
+        :param _StreamKey: StreamKey of the RTMP origin server.
+RTMP origin server URL splicing rule: $TcUrl/$StreamKey.
         :type StreamKey: str
         """
         self._TcUrl = None
@@ -3865,7 +4234,7 @@ class DescribeRTMPPullSourceAddress(AbstractModel):
 
     @property
     def TcUrl(self):
-        r"""
+        r"""TcUrl of the RTMP origin server.
         :rtype: str
         """
         return self._TcUrl
@@ -3876,7 +4245,8 @@ class DescribeRTMPPullSourceAddress(AbstractModel):
 
     @property
     def StreamKey(self):
-        r"""
+        r"""StreamKey of the RTMP origin server.
+RTMP origin server URL splicing rule: $TcUrl/$StreamKey.
         :rtype: str
         """
         return self._StreamKey
@@ -3900,20 +4270,20 @@ class DescribeRTMPPullSourceAddress(AbstractModel):
 
 
 class DescribeRTSPPullSourceAddress(AbstractModel):
-    r"""
+    r"""Query the input RTSP configuration message.
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: 
+        :param _Url: Url of the RTSP origin server.
         :type Url: str
         """
         self._Url = None
 
     @property
     def Url(self):
-        r"""
+        r"""Url of the RTSP origin server.
         :rtype: str
         """
         return self._Url
@@ -3942,23 +4312,21 @@ class DescribeStreamLinkFlowLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: The flow ID.
+        :param _FlowId: <p>Transport stream Id.</p>
         :type FlowId: str
-        :param _StartTime: The start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
-It must be in UTC format, such as `2020-01-01T12:00:00Z`.
+        :param _StartTime: <p>Start time for statistics, defaults to the last hour, supports querying up to the last 7 days.<br>UTC time, for example, '2020-01-01T12:00:00Z'.</p>
         :type StartTime: str
-        :param _EndTime: The end time for query, which is 1 hour after the start time by default. The longest time range allowed for query is 24 hours.
-It must be in UTC format, such as `2020-01-01T12:00:00Z`.
+        :param _EndTime: <p>End time for statistics, defaulting to one hour after StartTime, with support for querying up to 24 hours of data.<br>UTC time, for example, '2020-01-01T12:00:00Z'.</p>
         :type EndTime: str
-        :param _Type: Whether to query the inputs or outputs. Valid values: input, output.
+        :param _Type: <p>Input or output type. Valid values: `input`, `output`.</p>
         :type Type: list of str
-        :param _Pipeline: Whether to query the primary or backup pipeline. Valid values: 0, 1.
+        :param _Pipeline: <p>Primary or backup channel. Option [0|1].</p>
         :type Pipeline: list of str
-        :param _PageSize: The page size. Value range: [1, 1000]. Default: 100.
+        :param _PageSize: <p>Size per page. Default value: 100. Value range: [1, 1000].</p>
         :type PageSize: int
-        :param _SortType: Whether to sort the records by timestamp in descending or ascending order. Valid values: desc (default), asc.
+        :param _SortType: <p>Sort by Timestamp in ascending or descending order. The default is descending order. Options: [desc|asc].</p>
         :type SortType: str
-        :param _PageNum: The page number. Value range: [1, 1000]. Default: 1.
+        :param _PageNum: <p>Page number. Default value: 1. Value range: [1, 1000].</p>
         :type PageNum: int
         """
         self._FlowId = None
@@ -3972,7 +4340,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def FlowId(self):
-        r"""The flow ID.
+        r"""<p>Transport stream Id.</p>
         :rtype: str
         """
         return self._FlowId
@@ -3983,8 +4351,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def StartTime(self):
-        r"""The start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
-It must be in UTC format, such as `2020-01-01T12:00:00Z`.
+        r"""<p>Start time for statistics, defaults to the last hour, supports querying up to the last 7 days.<br>UTC time, for example, '2020-01-01T12:00:00Z'.</p>
         :rtype: str
         """
         return self._StartTime
@@ -3995,8 +4362,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def EndTime(self):
-        r"""The end time for query, which is 1 hour after the start time by default. The longest time range allowed for query is 24 hours.
-It must be in UTC format, such as `2020-01-01T12:00:00Z`.
+        r"""<p>End time for statistics, defaulting to one hour after StartTime, with support for querying up to 24 hours of data.<br>UTC time, for example, '2020-01-01T12:00:00Z'.</p>
         :rtype: str
         """
         return self._EndTime
@@ -4007,7 +4373,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def Type(self):
-        r"""Whether to query the inputs or outputs. Valid values: input, output.
+        r"""<p>Input or output type. Valid values: `input`, `output`.</p>
         :rtype: list of str
         """
         return self._Type
@@ -4018,7 +4384,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def Pipeline(self):
-        r"""Whether to query the primary or backup pipeline. Valid values: 0, 1.
+        r"""<p>Primary or backup channel. Option [0|1].</p>
         :rtype: list of str
         """
         return self._Pipeline
@@ -4029,7 +4395,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def PageSize(self):
-        r"""The page size. Value range: [1, 1000]. Default: 100.
+        r"""<p>Size per page. Default value: 100. Value range: [1, 1000].</p>
         :rtype: int
         """
         return self._PageSize
@@ -4040,7 +4406,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def SortType(self):
-        r"""Whether to sort the records by timestamp in descending or ascending order. Valid values: desc (default), asc.
+        r"""<p>Sort by Timestamp in ascending or descending order. The default is descending order. Options: [desc|asc].</p>
         :rtype: str
         """
         return self._SortType
@@ -4051,7 +4417,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def PageNum(self):
-        r"""The page number. Value range: [1, 1000]. Default: 1.
+        r"""<p>Page number. Default value: 1. Value range: [1, 1000].</p>
         :rtype: int
         """
         return self._PageNum
@@ -4087,15 +4453,15 @@ class DescribeStreamLinkFlowLogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Infos: A list of the logs.
+        :param _Infos: <p>Log information list.</p>
         :type Infos: list of FlowLogInfo
-        :param _PageNum: The current page number.
+        :param _PageNum: <p>Current page.</p>
         :type PageNum: int
-        :param _PageSize: The number of records per page.
+        :param _PageSize: <p>Size per page.</p>
         :type PageSize: int
-        :param _TotalNum: The total number of records.
+        :param _TotalNum: <p>Total quantity.</p>
         :type TotalNum: int
-        :param _TotalPage: The total number of pages.
+        :param _TotalPage: <p>Total number of pages.</p>
         :type TotalPage: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4109,7 +4475,7 @@ class DescribeStreamLinkFlowLogsResponse(AbstractModel):
 
     @property
     def Infos(self):
-        r"""A list of the logs.
+        r"""<p>Log information list.</p>
         :rtype: list of FlowLogInfo
         """
         return self._Infos
@@ -4120,7 +4486,7 @@ class DescribeStreamLinkFlowLogsResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        r"""The current page number.
+        r"""<p>Current page.</p>
         :rtype: int
         """
         return self._PageNum
@@ -4131,7 +4497,7 @@ class DescribeStreamLinkFlowLogsResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""The number of records per page.
+        r"""<p>Size per page.</p>
         :rtype: int
         """
         return self._PageSize
@@ -4142,7 +4508,7 @@ class DescribeStreamLinkFlowLogsResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        r"""The total number of records.
+        r"""<p>Total quantity.</p>
         :rtype: int
         """
         return self._TotalNum
@@ -4153,7 +4519,7 @@ class DescribeStreamLinkFlowLogsResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        r"""The total number of pages.
+        r"""<p>Total number of pages.</p>
         :rtype: int
         """
         return self._TotalPage
@@ -4195,22 +4561,24 @@ class DescribeStreamLinkFlowMediaStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: The flow ID.
+        :param _FlowId: Transport stream ID.
         :type FlowId: str
-        :param _Type: Whether to query the inputs or outputs. Valid values: input, output.
+        :param _Type: Input or output type. Valid values: `input`, `output`.
         :type Type: str
-        :param _InputOutputId: The input or output ID.
+        :param _InputOutputId: Input or output Id.
         :type InputOutputId: str
-        :param _Pipeline: Whether to query the primary or backup pipeline. Valid values: 0, 1.
+        :param _Pipeline: Primary or backup channel. Valid values: 0 and 1.
         :type Pipeline: str
-        :param _Period: The query interval. Valid values: 5s, 1min, 5min, 15min.
+        :param _Period: Query interval. Options: [5s|1min|5min|15min].
         :type Period: str
-        :param _StartTime: The start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
-It must be in UTC format, such as `2020-01-01T12:00:00Z`.
+        :param _StartTime: Start time for statistics. Default value: last hour. You can query data from the last 7 days at most.
+UTC time, for example, '2020-01-01T12:00:00Z'.
         :type StartTime: str
-        :param _EndTime: The end time for query, which is 1 hour after the start time by default. The longest time range allowed for query is 24 hours.
-It must be in UTC format, such as `2020-01-01T12:00:00Z`.
+        :param _EndTime: End time for statistics. Defaults to one hour after `StartTime`. You can query the data of up to 24 hours.
+UTC time, for example, '2020-01-01T12:00:00Z'.
         :type EndTime: str
+        :param _RemoteIp: Peer IP address.
+        :type RemoteIp: str
         """
         self._FlowId = None
         self._Type = None
@@ -4219,10 +4587,11 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
         self._Period = None
         self._StartTime = None
         self._EndTime = None
+        self._RemoteIp = None
 
     @property
     def FlowId(self):
-        r"""The flow ID.
+        r"""Transport stream ID.
         :rtype: str
         """
         return self._FlowId
@@ -4233,7 +4602,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def Type(self):
-        r"""Whether to query the inputs or outputs. Valid values: input, output.
+        r"""Input or output type. Valid values: `input`, `output`.
         :rtype: str
         """
         return self._Type
@@ -4244,7 +4613,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def InputOutputId(self):
-        r"""The input or output ID.
+        r"""Input or output Id.
         :rtype: str
         """
         return self._InputOutputId
@@ -4255,7 +4624,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def Pipeline(self):
-        r"""Whether to query the primary or backup pipeline. Valid values: 0, 1.
+        r"""Primary or backup channel. Valid values: 0 and 1.
         :rtype: str
         """
         return self._Pipeline
@@ -4266,7 +4635,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def Period(self):
-        r"""The query interval. Valid values: 5s, 1min, 5min, 15min.
+        r"""Query interval. Options: [5s|1min|5min|15min].
         :rtype: str
         """
         return self._Period
@@ -4277,8 +4646,8 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def StartTime(self):
-        r"""The start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
-It must be in UTC format, such as `2020-01-01T12:00:00Z`.
+        r"""Start time for statistics. Default value: last hour. You can query data from the last 7 days at most.
+UTC time, for example, '2020-01-01T12:00:00Z'.
         :rtype: str
         """
         return self._StartTime
@@ -4289,8 +4658,8 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def EndTime(self):
-        r"""The end time for query, which is 1 hour after the start time by default. The longest time range allowed for query is 24 hours.
-It must be in UTC format, such as `2020-01-01T12:00:00Z`.
+        r"""End time for statistics. Defaults to one hour after `StartTime`. You can query the data of up to 24 hours.
+UTC time, for example, '2020-01-01T12:00:00Z'.
         :rtype: str
         """
         return self._EndTime
@@ -4298,6 +4667,17 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
     @EndTime.setter
     def EndTime(self, EndTime):
         self._EndTime = EndTime
+
+    @property
+    def RemoteIp(self):
+        r"""Peer IP address.
+        :rtype: str
+        """
+        return self._RemoteIp
+
+    @RemoteIp.setter
+    def RemoteIp(self, RemoteIp):
+        self._RemoteIp = RemoteIp
 
 
     def _deserialize(self, params):
@@ -4308,6 +4688,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
         self._Period = params.get("Period")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._RemoteIp = params.get("RemoteIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4325,7 +4706,7 @@ class DescribeStreamLinkFlowMediaStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Infos: A list of the media data.
+        :param _Infos: List of media data in the transport stream.
         :type Infos: list of FlowMediaInfo
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4335,7 +4716,7 @@ class DescribeStreamLinkFlowMediaStatisticsResponse(AbstractModel):
 
     @property
     def Infos(self):
-        r"""A list of the media data.
+        r"""List of media data in the transport stream.
         :rtype: list of FlowMediaInfo
         """
         return self._Infos
@@ -4373,11 +4754,11 @@ class DescribeStreamLinkFlowRealtimeStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: The flow ID.
+        :param _FlowId: <p>Stream ID.</p>
         :type FlowId: str
-        :param _InputIds: The IDs of the inputs to query. If this parameter and `OutputIds` are both empty, all inputs and outputs are queried.
+        :param _InputIds: <p>Input an id array. If both the input and output arrays are empty, it signifies a full query.</p>
         :type InputIds: list of str
-        :param _OutputIds: The IDs of the outputs to query. If this parameter and `OutputIds` are both empty, all inputs and outputs are queried.
+        :param _OutputIds: <p>Output id array. If both input and output arrays are empty, it signifies a full query.</p>
         :type OutputIds: list of str
         """
         self._FlowId = None
@@ -4386,7 +4767,7 @@ class DescribeStreamLinkFlowRealtimeStatusRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""The flow ID.
+        r"""<p>Stream ID.</p>
         :rtype: str
         """
         return self._FlowId
@@ -4397,7 +4778,7 @@ class DescribeStreamLinkFlowRealtimeStatusRequest(AbstractModel):
 
     @property
     def InputIds(self):
-        r"""The IDs of the inputs to query. If this parameter and `OutputIds` are both empty, all inputs and outputs are queried.
+        r"""<p>Input an id array. If both the input and output arrays are empty, it signifies a full query.</p>
         :rtype: list of str
         """
         return self._InputIds
@@ -4408,7 +4789,7 @@ class DescribeStreamLinkFlowRealtimeStatusRequest(AbstractModel):
 
     @property
     def OutputIds(self):
-        r"""The IDs of the outputs to query. If this parameter and `OutputIds` are both empty, all inputs and outputs are queried.
+        r"""<p>Output id array. If both input and output arrays are empty, it signifies a full query.</p>
         :rtype: list of str
         """
         return self._OutputIds
@@ -4439,9 +4820,9 @@ class DescribeStreamLinkFlowRealtimeStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Timestamp: The timestamp (seconds) of the query.
+        :param _Timestamp: <p>Inquiry time. Unit: s.</p>
         :type Timestamp: int
-        :param _Datas: A list of the real-time data.
+        :param _Datas: <p>Real-time data information list.</p>
         :type Datas: list of FlowRealtimeStatusItem
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4452,7 +4833,7 @@ class DescribeStreamLinkFlowRealtimeStatusResponse(AbstractModel):
 
     @property
     def Timestamp(self):
-        r"""The timestamp (seconds) of the query.
+        r"""<p>Inquiry time. Unit: s.</p>
         :rtype: int
         """
         return self._Timestamp
@@ -4463,7 +4844,7 @@ class DescribeStreamLinkFlowRealtimeStatusResponse(AbstractModel):
 
     @property
     def Datas(self):
-        r"""A list of the real-time data.
+        r"""<p>Real-time data information list.</p>
         :rtype: list of FlowRealtimeStatusItem
         """
         return self._Datas
@@ -4502,14 +4883,14 @@ class DescribeStreamLinkFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: Flow ID
+        :param _FlowId: <p>Stream Id.</p>
         :type FlowId: str
         """
         self._FlowId = None
 
     @property
     def FlowId(self):
-        r"""Flow ID
+        r"""<p>Stream Id.</p>
         :rtype: str
         """
         return self._FlowId
@@ -4538,7 +4919,7 @@ class DescribeStreamLinkFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Info: Configuration information of a flow
+        :param _Info: <p>Configuration information of the stream.</p>
         :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeFlow`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4548,7 +4929,7 @@ class DescribeStreamLinkFlowResponse(AbstractModel):
 
     @property
     def Info(self):
-        r"""Configuration information of a flow
+        r"""<p>Configuration information of the stream.</p>
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeFlow`
         """
         return self._Info
@@ -4583,23 +4964,23 @@ class DescribeStreamLinkFlowSRTStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: The flow ID.
+        :param _FlowId: Transport stream ID.
         :type FlowId: str
-        :param _Type: Whether to query the inputs or outputs. Valid values: input, output.
+        :param _Type: Input or output type. Valid values: `input`, `output`.
         :type Type: str
-        :param _InputOutputId: The input or output ID.
+        :param _InputOutputId: Input or output Id.
         :type InputOutputId: str
-        :param _Pipeline: Whether to query the primary or backup pipeline. Valid values: 0, 1.
+        :param _Pipeline: Primary or backup channel. Valid values: 0 and 1.
         :type Pipeline: str
-        :param _StartTime: The start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
-It must be in UTC format, such as `2020-01-01T12:00:00Z`.
+        :param _StartTime: Start time for statistics. Default value: last hour. You can query data from the last 7 days at most.
+UTC time, for example, '2020-01-01T12:00:00Z'.
         :type StartTime: str
-        :param _EndTime: The end time for query, which is 1 hour after the start time by default. The longest time range allowed for query is 24 hours.
-It must be in UTC format, such as `2020-01-01T12:00:00Z`.
+        :param _EndTime: End time for statistics. Default value: one hour after `StartTime`. You can query data up to 24 hours.
+UTC time, for example, '2020-01-01T12:00:00Z'.
         :type EndTime: str
-        :param _Period: The query interval. Valid values: 5s, 1min, 5min, 15min.
+        :param _Period: Query interval. Options: [5s|1min|5min|15min].
         :type Period: str
-        :param _RemoteIp: Peer IP address
+        :param _RemoteIp: Peer IP address.
         :type RemoteIp: str
         """
         self._FlowId = None
@@ -4613,7 +4994,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def FlowId(self):
-        r"""The flow ID.
+        r"""Transport stream ID.
         :rtype: str
         """
         return self._FlowId
@@ -4624,7 +5005,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def Type(self):
-        r"""Whether to query the inputs or outputs. Valid values: input, output.
+        r"""Input or output type. Valid values: `input`, `output`.
         :rtype: str
         """
         return self._Type
@@ -4635,7 +5016,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def InputOutputId(self):
-        r"""The input or output ID.
+        r"""Input or output Id.
         :rtype: str
         """
         return self._InputOutputId
@@ -4646,7 +5027,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def Pipeline(self):
-        r"""Whether to query the primary or backup pipeline. Valid values: 0, 1.
+        r"""Primary or backup channel. Valid values: 0 and 1.
         :rtype: str
         """
         return self._Pipeline
@@ -4657,8 +5038,8 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def StartTime(self):
-        r"""The start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
-It must be in UTC format, such as `2020-01-01T12:00:00Z`.
+        r"""Start time for statistics. Default value: last hour. You can query data from the last 7 days at most.
+UTC time, for example, '2020-01-01T12:00:00Z'.
         :rtype: str
         """
         return self._StartTime
@@ -4669,8 +5050,8 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def EndTime(self):
-        r"""The end time for query, which is 1 hour after the start time by default. The longest time range allowed for query is 24 hours.
-It must be in UTC format, such as `2020-01-01T12:00:00Z`.
+        r"""End time for statistics. Default value: one hour after `StartTime`. You can query data up to 24 hours.
+UTC time, for example, '2020-01-01T12:00:00Z'.
         :rtype: str
         """
         return self._EndTime
@@ -4681,7 +5062,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def Period(self):
-        r"""The query interval. Valid values: 5s, 1min, 5min, 15min.
+        r"""Query interval. Options: [5s|1min|5min|15min].
         :rtype: str
         """
         return self._Period
@@ -4692,7 +5073,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def RemoteIp(self):
-        r"""Peer IP address
+        r"""Peer IP address.
         :rtype: str
         """
         return self._RemoteIp
@@ -4728,7 +5109,7 @@ class DescribeStreamLinkFlowSRTStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Infos: A list of the SRT streaming performance data.
+        :param _Infos: List of SRT quality data in the transport stream.
         :type Infos: list of FlowSRTInfo
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4738,7 +5119,7 @@ class DescribeStreamLinkFlowSRTStatisticsResponse(AbstractModel):
 
     @property
     def Infos(self):
-        r"""A list of the SRT streaming performance data.
+        r"""List of SRT quality data in the transport stream.
         :rtype: list of FlowSRTInfo
         """
         return self._Infos
@@ -4776,22 +5157,24 @@ class DescribeStreamLinkFlowStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: The flow ID.
+        :param _FlowId: Transport stream ID.
         :type FlowId: str
-        :param _Type: Whether to query the inputs or outputs. Valid values: input, output.
+        :param _Type: Input or output type. Valid values: `input`, `output`.
         :type Type: str
-        :param _InputOutputId: The input or output ID.
+        :param _InputOutputId: Input or output Id.
         :type InputOutputId: str
-        :param _Pipeline: Whether to query the primary or backup pipeline. Valid values: 0, 1.
+        :param _Pipeline: Primary or backup channel. Valid values: 0 and 1.
         :type Pipeline: str
-        :param _Period: The query interval. Valid values: 5s, 1min, 5min, 15min.
+        :param _Period: Query interval. Option: [5s|1min|5min|15min].
         :type Period: str
-        :param _StartTime: The start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
-It must be in UTC format, such as `2020-01-01T12:00:00Z`.
+        :param _StartTime: Start time for statistics. Default value: last hour. You can query data from the last 7 days at most.
+UTC time, for example, '2020-01-01T12:00:00Z'.
         :type StartTime: str
-        :param _EndTime: The end time for query, which is 1 hour after the start time by default. The longest time range allowed for query is 24 hours.
-It must be in UTC format, such as `2020-01-01T12:00:00Z`.
+        :param _EndTime: End time for statistics. Defaults to one hour after `StartTime`. You can query the data of up to 24 hours.
+UTC time, for example, '2020-01-01T12:00:00Z'.
         :type EndTime: str
+        :param _RemoteIp: Peer client or server IP address.
+        :type RemoteIp: str
         """
         self._FlowId = None
         self._Type = None
@@ -4800,10 +5183,11 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
         self._Period = None
         self._StartTime = None
         self._EndTime = None
+        self._RemoteIp = None
 
     @property
     def FlowId(self):
-        r"""The flow ID.
+        r"""Transport stream ID.
         :rtype: str
         """
         return self._FlowId
@@ -4814,7 +5198,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def Type(self):
-        r"""Whether to query the inputs or outputs. Valid values: input, output.
+        r"""Input or output type. Valid values: `input`, `output`.
         :rtype: str
         """
         return self._Type
@@ -4825,7 +5209,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def InputOutputId(self):
-        r"""The input or output ID.
+        r"""Input or output Id.
         :rtype: str
         """
         return self._InputOutputId
@@ -4836,7 +5220,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def Pipeline(self):
-        r"""Whether to query the primary or backup pipeline. Valid values: 0, 1.
+        r"""Primary or backup channel. Valid values: 0 and 1.
         :rtype: str
         """
         return self._Pipeline
@@ -4847,7 +5231,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def Period(self):
-        r"""The query interval. Valid values: 5s, 1min, 5min, 15min.
+        r"""Query interval. Option: [5s|1min|5min|15min].
         :rtype: str
         """
         return self._Period
@@ -4858,8 +5242,8 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def StartTime(self):
-        r"""The start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
-It must be in UTC format, such as `2020-01-01T12:00:00Z`.
+        r"""Start time for statistics. Default value: last hour. You can query data from the last 7 days at most.
+UTC time, for example, '2020-01-01T12:00:00Z'.
         :rtype: str
         """
         return self._StartTime
@@ -4870,8 +5254,8 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
 
     @property
     def EndTime(self):
-        r"""The end time for query, which is 1 hour after the start time by default. The longest time range allowed for query is 24 hours.
-It must be in UTC format, such as `2020-01-01T12:00:00Z`.
+        r"""End time for statistics. Defaults to one hour after `StartTime`. You can query the data of up to 24 hours.
+UTC time, for example, '2020-01-01T12:00:00Z'.
         :rtype: str
         """
         return self._EndTime
@@ -4879,6 +5263,17 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
     @EndTime.setter
     def EndTime(self, EndTime):
         self._EndTime = EndTime
+
+    @property
+    def RemoteIp(self):
+        r"""Peer client or server IP address.
+        :rtype: str
+        """
+        return self._RemoteIp
+
+    @RemoteIp.setter
+    def RemoteIp(self, RemoteIp):
+        self._RemoteIp = RemoteIp
 
 
     def _deserialize(self, params):
@@ -4889,6 +5284,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
         self._Period = params.get("Period")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._RemoteIp = params.get("RemoteIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4906,7 +5302,7 @@ class DescribeStreamLinkFlowStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Infos: A list of the media data.
+        :param _Infos: List of media data in the transport stream.
         :type Infos: list of FlowStatisticsArray
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4916,7 +5312,7 @@ class DescribeStreamLinkFlowStatisticsResponse(AbstractModel):
 
     @property
     def Infos(self):
-        r"""A list of the media data.
+        r"""List of media data in the transport stream.
         :rtype: list of FlowStatisticsArray
         """
         return self._Infos
@@ -4954,9 +5350,9 @@ class DescribeStreamLinkFlowsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PageNum: Number of the current page. Default value: `1`
+        :param _PageNum: Current page number. Default value: 1.
         :type PageNum: int
-        :param _PageSize: Number of entries per page. Default value: `10`
+        :param _PageSize: Size per page. Default value: 10.
         :type PageSize: int
         """
         self._PageNum = None
@@ -4964,7 +5360,7 @@ class DescribeStreamLinkFlowsRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        r"""Number of the current page. Default value: `1`
+        r"""Current page number. Default value: 1.
         :rtype: int
         """
         return self._PageNum
@@ -4975,7 +5371,7 @@ class DescribeStreamLinkFlowsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""Number of entries per page. Default value: `10`
+        r"""Size per page. Default value: 10.
         :rtype: int
         """
         return self._PageSize
@@ -5005,15 +5401,15 @@ class DescribeStreamLinkFlowsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Infos: List of the configuration information of the flows
+        :param _Infos: Configuration information list of the stream.
         :type Infos: list of DescribeFlow
-        :param _PageNum: Number of the current page
+        :param _PageNum: Current page number.
         :type PageNum: int
-        :param _PageSize: Number of entries per page
+        :param _PageSize: Size per page.
         :type PageSize: int
-        :param _TotalNum: Total number of entries
+        :param _TotalNum: Total quantity.
         :type TotalNum: int
-        :param _TotalPage: Total number of pages
+        :param _TotalPage: Total number of pages.
         :type TotalPage: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -5027,7 +5423,7 @@ class DescribeStreamLinkFlowsResponse(AbstractModel):
 
     @property
     def Infos(self):
-        r"""List of the configuration information of the flows
+        r"""Configuration information list of the stream.
         :rtype: list of DescribeFlow
         """
         return self._Infos
@@ -5038,7 +5434,7 @@ class DescribeStreamLinkFlowsResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        r"""Number of the current page
+        r"""Current page number.
         :rtype: int
         """
         return self._PageNum
@@ -5049,7 +5445,7 @@ class DescribeStreamLinkFlowsResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""Number of entries per page
+        r"""Size per page.
         :rtype: int
         """
         return self._PageSize
@@ -5060,7 +5456,7 @@ class DescribeStreamLinkFlowsResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        r"""Total number of entries
+        r"""Total quantity.
         :rtype: int
         """
         return self._TotalNum
@@ -5071,7 +5467,7 @@ class DescribeStreamLinkFlowsResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        r"""Total number of pages
+        r"""Total number of pages.
         :rtype: int
         """
         return self._TotalPage
@@ -5119,7 +5515,7 @@ class DescribeStreamLinkRegionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Info: StreamLink region information
+        :param _Info: Media transmission region information.
         :type Info: :class:`tencentcloud.mdc.v20200828.models.StreamLinkRegionInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -5129,7 +5525,7 @@ class DescribeStreamLinkRegionsResponse(AbstractModel):
 
     @property
     def Info(self):
-        r"""StreamLink region information
+        r"""Media transmission region information.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.StreamLinkRegionInfo`
         """
         return self._Info
@@ -5158,20 +5554,22 @@ class DescribeStreamLinkRegionsResponse(AbstractModel):
 
 
 class FailOverOption(AbstractModel):
-    r"""
+    r"""type FailOverOption struct {
+    	FailOverType string `json:"FailOverType"` // Newly-added cold/standby COLDSTANDBY, HOTSTANDBY
+    }
 
     """
 
     def __init__(self):
         r"""
-        :param _FailOverType: 
+        :param _FailOverType: Hot backup
         :type FailOverType: str
         """
         self._FailOverType = None
 
     @property
     def FailOverType(self):
-        r"""
+        r"""Hot backup
         :rtype: str
         """
         return self._FailOverType
@@ -5194,17 +5592,17 @@ class FailOverOption(AbstractModel):
 
 
 class FlowAudio(AbstractModel):
-    r"""The audio data of the flow.
+    r"""Audio data of the stream.
 
     """
 
     def __init__(self):
         r"""
-        :param _Fps: The frame rate.
+        :param _Fps: Frame rate.
         :type Fps: int
-        :param _Rate: The bitrate (bps).
+        :param _Rate: Bitrate in bps.
         :type Rate: int
-        :param _Pid: The audio PID.
+        :param _Pid: Audio Pid.
         :type Pid: int
         """
         self._Fps = None
@@ -5213,7 +5611,7 @@ class FlowAudio(AbstractModel):
 
     @property
     def Fps(self):
-        r"""The frame rate.
+        r"""Frame rate.
         :rtype: int
         """
         return self._Fps
@@ -5224,7 +5622,7 @@ class FlowAudio(AbstractModel):
 
     @property
     def Rate(self):
-        r"""The bitrate (bps).
+        r"""Bitrate in bps.
         :rtype: int
         """
         return self._Rate
@@ -5235,7 +5633,7 @@ class FlowAudio(AbstractModel):
 
     @property
     def Pid(self):
-        r"""The audio PID.
+        r"""Audio Pid.
         :rtype: int
         """
         return self._Pid
@@ -5260,31 +5658,31 @@ class FlowAudio(AbstractModel):
 
 
 class FlowLogInfo(AbstractModel):
-    r"""The logs of a flow.
+    r"""Transmit streaming log information.
 
     """
 
     def __init__(self):
         r"""
-        :param _Timestamp: The timestamp (seconds).
+        :param _Timestamp: Timestamp in seconds.
         :type Timestamp: int
-        :param _Type: Whether it is an input or output.
+        :param _Type: Input/output type. Valid values: `input`, `output`.
         :type Type: str
-        :param _InputOutputId: The input or output ID.
+        :param _InputOutputId: Input or output Id.
         :type InputOutputId: str
-        :param _Protocol: The protocol.
+        :param _Protocol: Protocol.
         :type Protocol: str
-        :param _EventCode: The event code.
+        :param _EventCode: Event code.
         :type EventCode: str
-        :param _EventMessage: The event information.
+        :param _EventMessage: Event information.
         :type EventMessage: str
-        :param _RemoteIp: The peer IP.
+        :param _RemoteIp: Peer IP.
         :type RemoteIp: str
-        :param _RemotePort: The peer port.
+        :param _RemotePort: Peer port.
         :type RemotePort: str
-        :param _Pipeline: Whether it is a primary or backup pipeline. Valid values: 0 (primary), 1 (backup).
+        :param _Pipeline: Primary/secondary tunnel. 0: primary, 1: backup.
         :type Pipeline: str
-        :param _InputOutputName: The input or output name.
+        :param _InputOutputName: Input or output name.
         :type InputOutputName: str
         """
         self._Timestamp = None
@@ -5300,7 +5698,7 @@ class FlowLogInfo(AbstractModel):
 
     @property
     def Timestamp(self):
-        r"""The timestamp (seconds).
+        r"""Timestamp in seconds.
         :rtype: int
         """
         return self._Timestamp
@@ -5311,7 +5709,7 @@ class FlowLogInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""Whether it is an input or output.
+        r"""Input/output type. Valid values: `input`, `output`.
         :rtype: str
         """
         return self._Type
@@ -5322,7 +5720,7 @@ class FlowLogInfo(AbstractModel):
 
     @property
     def InputOutputId(self):
-        r"""The input or output ID.
+        r"""Input or output Id.
         :rtype: str
         """
         return self._InputOutputId
@@ -5333,7 +5731,7 @@ class FlowLogInfo(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""The protocol.
+        r"""Protocol.
         :rtype: str
         """
         return self._Protocol
@@ -5344,7 +5742,7 @@ class FlowLogInfo(AbstractModel):
 
     @property
     def EventCode(self):
-        r"""The event code.
+        r"""Event code.
         :rtype: str
         """
         return self._EventCode
@@ -5355,7 +5753,7 @@ class FlowLogInfo(AbstractModel):
 
     @property
     def EventMessage(self):
-        r"""The event information.
+        r"""Event information.
         :rtype: str
         """
         return self._EventMessage
@@ -5366,7 +5764,7 @@ class FlowLogInfo(AbstractModel):
 
     @property
     def RemoteIp(self):
-        r"""The peer IP.
+        r"""Peer IP.
         :rtype: str
         """
         return self._RemoteIp
@@ -5377,7 +5775,7 @@ class FlowLogInfo(AbstractModel):
 
     @property
     def RemotePort(self):
-        r"""The peer port.
+        r"""Peer port.
         :rtype: str
         """
         return self._RemotePort
@@ -5388,7 +5786,7 @@ class FlowLogInfo(AbstractModel):
 
     @property
     def Pipeline(self):
-        r"""Whether it is a primary or backup pipeline. Valid values: 0 (primary), 1 (backup).
+        r"""Primary/secondary tunnel. 0: primary, 1: backup.
         :rtype: str
         """
         return self._Pipeline
@@ -5399,7 +5797,7 @@ class FlowLogInfo(AbstractModel):
 
     @property
     def InputOutputName(self):
-        r"""The input or output name.
+        r"""Input or output name.
         :rtype: str
         """
         return self._InputOutputName
@@ -5431,19 +5829,19 @@ class FlowLogInfo(AbstractModel):
 
 
 class FlowMediaAudio(AbstractModel):
-    r"""The audio data of a flow.
+    r"""Transmit audio data of streaming media.
 
     """
 
     def __init__(self):
         r"""
-        :param _Fps: The frame rate.
+        :param _Fps: Frame rate.
         :type Fps: int
-        :param _Rate: The bitrate (bps).
+        :param _Rate: Bitrate in bps.
         :type Rate: int
-        :param _Pid: The audio PID.
+        :param _Pid: Audio Pid.
         :type Pid: int
-        :param _SessionId: The ID of a push session.
+        :param _SessionId: Flag of the same push.
         :type SessionId: str
         """
         self._Fps = None
@@ -5453,7 +5851,7 @@ class FlowMediaAudio(AbstractModel):
 
     @property
     def Fps(self):
-        r"""The frame rate.
+        r"""Frame rate.
         :rtype: int
         """
         return self._Fps
@@ -5464,7 +5862,7 @@ class FlowMediaAudio(AbstractModel):
 
     @property
     def Rate(self):
-        r"""The bitrate (bps).
+        r"""Bitrate in bps.
         :rtype: int
         """
         return self._Rate
@@ -5475,7 +5873,7 @@ class FlowMediaAudio(AbstractModel):
 
     @property
     def Pid(self):
-        r"""The audio PID.
+        r"""Audio Pid.
         :rtype: int
         """
         return self._Pid
@@ -5486,7 +5884,7 @@ class FlowMediaAudio(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""The ID of a push session.
+        r"""Flag of the same push.
         :rtype: str
         """
         return self._SessionId
@@ -5512,23 +5910,23 @@ class FlowMediaAudio(AbstractModel):
 
 
 class FlowMediaInfo(AbstractModel):
-    r"""The media data of a flow.
+    r"""Media data in the transport stream.
 
     """
 
     def __init__(self):
         r"""
-        :param _Timestamp: The timestamp (seconds).
+        :param _Timestamp: Timestamp in seconds.
         :type Timestamp: int
-        :param _Network: The total bandwidth.
+        :param _Network: Total bandwidth.
         :type Network: int
-        :param _Video: The video data of the flow.
+        :param _Video: Video data of the transport stream.
         :type Video: list of FlowMediaVideo
-        :param _Audio: The audio data of the flow.
+        :param _Audio: Audio data of the transport stream.
         :type Audio: list of FlowMediaAudio
-        :param _SessionId: The ID of a push session.
+        :param _SessionId: Flag of the same push.
         :type SessionId: str
-        :param _ClientIp: The client IP.
+        :param _ClientIp: Client IP.
         :type ClientIp: str
         """
         self._Timestamp = None
@@ -5540,7 +5938,7 @@ class FlowMediaInfo(AbstractModel):
 
     @property
     def Timestamp(self):
-        r"""The timestamp (seconds).
+        r"""Timestamp in seconds.
         :rtype: int
         """
         return self._Timestamp
@@ -5551,7 +5949,7 @@ class FlowMediaInfo(AbstractModel):
 
     @property
     def Network(self):
-        r"""The total bandwidth.
+        r"""Total bandwidth.
         :rtype: int
         """
         return self._Network
@@ -5562,7 +5960,7 @@ class FlowMediaInfo(AbstractModel):
 
     @property
     def Video(self):
-        r"""The video data of the flow.
+        r"""Video data of the transport stream.
         :rtype: list of FlowMediaVideo
         """
         return self._Video
@@ -5573,7 +5971,7 @@ class FlowMediaInfo(AbstractModel):
 
     @property
     def Audio(self):
-        r"""The audio data of the flow.
+        r"""Audio data of the transport stream.
         :rtype: list of FlowMediaAudio
         """
         return self._Audio
@@ -5584,7 +5982,7 @@ class FlowMediaInfo(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""The ID of a push session.
+        r"""Flag of the same push.
         :rtype: str
         """
         return self._SessionId
@@ -5595,7 +5993,7 @@ class FlowMediaInfo(AbstractModel):
 
     @property
     def ClientIp(self):
-        r"""The client IP.
+        r"""Client IP.
         :rtype: str
         """
         return self._ClientIp
@@ -5633,19 +6031,19 @@ class FlowMediaInfo(AbstractModel):
 
 
 class FlowMediaVideo(AbstractModel):
-    r"""The video data of a flow.
+    r"""Transmit video data of streaming media.
 
     """
 
     def __init__(self):
         r"""
-        :param _Fps: The frame rate.
+        :param _Fps: Frame rate.
         :type Fps: int
-        :param _Rate: The bitrate (bps).
+        :param _Rate: Bitrate in bps.
         :type Rate: int
-        :param _Pid: The video PID.
+        :param _Pid: Video Pid.
         :type Pid: int
-        :param _SessionId: The ID of a push session.
+        :param _SessionId: Flag of the same push.
         :type SessionId: str
         """
         self._Fps = None
@@ -5655,7 +6053,7 @@ class FlowMediaVideo(AbstractModel):
 
     @property
     def Fps(self):
-        r"""The frame rate.
+        r"""Frame rate.
         :rtype: int
         """
         return self._Fps
@@ -5666,7 +6064,7 @@ class FlowMediaVideo(AbstractModel):
 
     @property
     def Rate(self):
-        r"""The bitrate (bps).
+        r"""Bitrate in bps.
         :rtype: int
         """
         return self._Rate
@@ -5677,7 +6075,7 @@ class FlowMediaVideo(AbstractModel):
 
     @property
     def Pid(self):
-        r"""The video PID.
+        r"""Video Pid.
         :rtype: int
         """
         return self._Pid
@@ -5688,7 +6086,7 @@ class FlowMediaVideo(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""The ID of a push session.
+        r"""Flag of the same push.
         :rtype: str
         """
         return self._SessionId
@@ -5714,21 +6112,21 @@ class FlowMediaVideo(AbstractModel):
 
 
 class FlowRealtimeStatusCommon(AbstractModel):
-    r"""The common real-time status information of a flow.
+    r"""Common status information for querying stream status in real time.
 
     """
 
     def __init__(self):
         r"""
-        :param _State: The connection status. Valid values: Connected, Waiting, Idle.
+        :param _State: Current connection status. Connected | Waiting | Idle.
         :type State: str
-        :param _Mode: The connection mode. Valid values: Listener, Caller.
+        :param _Mode: Connection mode. Listener|Caller.
         :type Mode: str
-        :param _ConnectedTime: The connected time.
+        :param _ConnectedTime: Connection duration, unit: ms.
         :type ConnectedTime: int
-        :param _Bitrate: The real-time bitrate (bps).
+        :param _Bitrate: Real-time bitrate, unit in bps.
         :type Bitrate: int
-        :param _Reconnections: The number of retries.
+        :param _Reconnections: Number of retries.
         :type Reconnections: int
         """
         self._State = None
@@ -5739,7 +6137,7 @@ class FlowRealtimeStatusCommon(AbstractModel):
 
     @property
     def State(self):
-        r"""The connection status. Valid values: Connected, Waiting, Idle.
+        r"""Current connection status. Connected | Waiting | Idle.
         :rtype: str
         """
         return self._State
@@ -5750,7 +6148,7 @@ class FlowRealtimeStatusCommon(AbstractModel):
 
     @property
     def Mode(self):
-        r"""The connection mode. Valid values: Listener, Caller.
+        r"""Connection mode. Listener|Caller.
         :rtype: str
         """
         return self._Mode
@@ -5761,7 +6159,7 @@ class FlowRealtimeStatusCommon(AbstractModel):
 
     @property
     def ConnectedTime(self):
-        r"""The connected time.
+        r"""Connection duration, unit: ms.
         :rtype: int
         """
         return self._ConnectedTime
@@ -5772,7 +6170,7 @@ class FlowRealtimeStatusCommon(AbstractModel):
 
     @property
     def Bitrate(self):
-        r"""The real-time bitrate (bps).
+        r"""Real-time bitrate, unit in bps.
         :rtype: int
         """
         return self._Bitrate
@@ -5783,7 +6181,7 @@ class FlowRealtimeStatusCommon(AbstractModel):
 
     @property
     def Reconnections(self):
-        r"""The number of retries.
+        r"""Number of retries.
         :rtype: int
         """
         return self._Reconnections
@@ -5810,34 +6208,31 @@ class FlowRealtimeStatusCommon(AbstractModel):
 
 
 class FlowRealtimeStatusItem(AbstractModel):
-    r"""The real-time status information of a flow.
+    r"""Stream status information of the real-time stream status query API.
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: Whether it is an input or output. Valid values: Input, Output.
+        :param _Type: Type. Valid values: `Input`, `Output`.
         :type Type: str
-        :param _InputId: The input ID, which is not empty if `Type` is `Input`.
+        :param _InputId: Input Id. If Type is Input, this field is not empty.
         :type InputId: str
-        :param _OutputId: The output ID, which is not empty if `Type` is `Output`.
+        :param _OutputId: Output Id. If Type is Output, this field is not empty.
         :type OutputId: str
-        :param _FlowId: The flow ID.
+        :param _FlowId: Stream Id.
         :type FlowId: str
-        :param _Protocol: The protocol used. Valid values: SRT, RTP, RTMP.
+        :param _Protocol: Protocol. SRT | RTMP.
         :type Protocol: str
-        :param _CommonStatus: The common status information.
+        :param _CommonStatus: Common status information.
         :type CommonStatus: :class:`tencentcloud.mdc.v20200828.models.FlowRealtimeStatusCommon`
-        :param _SRTStatus: This parameter is returned if `Protocol` is `SRT`.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _SRTStatus: If it is the SRT Protocol, this field will be present.
         :type SRTStatus: :class:`tencentcloud.mdc.v20200828.models.FlowRealtimeStatusSRT`
-        :param _RTMPStatus: This parameter is returned if `Protocol` is `RTMP`.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _RTMPStatus: If it is the RTMP protocol, this field exists.
         :type RTMPStatus: :class:`tencentcloud.mdc.v20200828.models.FlowRealtimeStatusRTMP`
-        :param _ConnectServerIP: The server IP.
+        :param _ConnectServerIP: Server IP address.
         :type ConnectServerIP: str
-        :param _RTPStatus: This parameter is returned if the RTP protocol is used.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _RTPStatus: If it is the RTP protocol, this field exists.
         :type RTPStatus: :class:`tencentcloud.mdc.v20200828.models.FlowRealtimeStatusRTP`
         """
         self._Type = None
@@ -5853,7 +6248,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Type(self):
-        r"""Whether it is an input or output. Valid values: Input, Output.
+        r"""Type. Valid values: `Input`, `Output`.
         :rtype: str
         """
         return self._Type
@@ -5864,7 +6259,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def InputId(self):
-        r"""The input ID, which is not empty if `Type` is `Input`.
+        r"""Input Id. If Type is Input, this field is not empty.
         :rtype: str
         """
         return self._InputId
@@ -5875,7 +6270,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def OutputId(self):
-        r"""The output ID, which is not empty if `Type` is `Output`.
+        r"""Output Id. If Type is Output, this field is not empty.
         :rtype: str
         """
         return self._OutputId
@@ -5886,7 +6281,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def FlowId(self):
-        r"""The flow ID.
+        r"""Stream Id.
         :rtype: str
         """
         return self._FlowId
@@ -5897,7 +6292,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Protocol(self):
-        r"""The protocol used. Valid values: SRT, RTP, RTMP.
+        r"""Protocol. SRT | RTMP.
         :rtype: str
         """
         return self._Protocol
@@ -5908,7 +6303,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CommonStatus(self):
-        r"""The common status information.
+        r"""Common status information.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.FlowRealtimeStatusCommon`
         """
         return self._CommonStatus
@@ -5919,8 +6314,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def SRTStatus(self):
-        r"""This parameter is returned if `Protocol` is `SRT`.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""If it is the SRT Protocol, this field will be present.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.FlowRealtimeStatusSRT`
         """
         return self._SRTStatus
@@ -5931,8 +6325,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RTMPStatus(self):
-        r"""This parameter is returned if `Protocol` is `RTMP`.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""If it is the RTMP protocol, this field exists.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.FlowRealtimeStatusRTMP`
         """
         return self._RTMPStatus
@@ -5943,7 +6336,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ConnectServerIP(self):
-        r"""The server IP.
+        r"""Server IP address.
         :rtype: str
         """
         return self._ConnectServerIP
@@ -5954,8 +6347,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RTPStatus(self):
-        r"""This parameter is returned if the RTP protocol is used.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""If it is the RTP protocol, this field exists.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.FlowRealtimeStatusRTP`
         """
         return self._RTPStatus
@@ -5995,15 +6387,15 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class FlowRealtimeStatusRTMP(AbstractModel):
-    r"""The real-time RTMP streaming information of a flow.
+    r"""RTMP information of the real-time stream status query API.
 
     """
 
     def __init__(self):
         r"""
-        :param _VideoFPS: The video frame rate.
+        :param _VideoFPS: Video frame rate.
         :type VideoFPS: int
-        :param _AudioFPS: The audio frame rate.
+        :param _AudioFPS: Audio frame rate.
         :type AudioFPS: int
         """
         self._VideoFPS = None
@@ -6011,7 +6403,7 @@ class FlowRealtimeStatusRTMP(AbstractModel):
 
     @property
     def VideoFPS(self):
-        r"""The video frame rate.
+        r"""Video frame rate.
         :rtype: int
         """
         return self._VideoFPS
@@ -6022,7 +6414,7 @@ class FlowRealtimeStatusRTMP(AbstractModel):
 
     @property
     def AudioFPS(self):
-        r"""The audio frame rate.
+        r"""Audio frame rate.
         :rtype: int
         """
         return self._AudioFPS
@@ -6046,20 +6438,20 @@ class FlowRealtimeStatusRTMP(AbstractModel):
 
 
 class FlowRealtimeStatusRTP(AbstractModel):
-    r"""The real-time RTP streaming information of a flow.
+    r"""RTP stream status information of the real-time stream status query API.
 
     """
 
     def __init__(self):
         r"""
-        :param _Packets: The number of packets transmitted.
+        :param _Packets: Number of transmitted packets
         :type Packets: int
         """
         self._Packets = None
 
     @property
     def Packets(self):
-        r"""The number of packets transmitted.
+        r"""Number of transmitted packets
         :rtype: int
         """
         return self._Packets
@@ -6082,25 +6474,25 @@ class FlowRealtimeStatusRTP(AbstractModel):
 
 
 class FlowRealtimeStatusSRT(AbstractModel):
-    r"""The real-time SRT streaming information of a flow.
+    r"""SRT information of the real-time stream status query API.
 
     """
 
     def __init__(self):
         r"""
-        :param _Latency: The latency (ms).
+        :param _Latency: Delay in ms.
         :type Latency: int
-        :param _RTT: RTT (ms).
+        :param _RTT: RTT in ms.
         :type RTT: int
-        :param _Packets: The number of packets sent or received.
+        :param _Packets: Number of packets sent or received in real time.
         :type Packets: int
-        :param _PacketLossRate: The packet loss rate.
+        :param _PacketLossRate: Packet loss rate.
         :type PacketLossRate: float
-        :param _RetransmitRate: The retransmission rate.
+        :param _RetransmitRate: Retransmission rate.
         :type RetransmitRate: float
-        :param _DroppedPackets: The number of packets dropped.
+        :param _DroppedPackets: Real-time packet loss count.
         :type DroppedPackets: int
-        :param _Encryption: Whether to encrypt the stream. Valid values: On, Off.
+        :param _Encryption: Whether to encrypt. On | Off.
         :type Encryption: str
         """
         self._Latency = None
@@ -6113,7 +6505,7 @@ class FlowRealtimeStatusSRT(AbstractModel):
 
     @property
     def Latency(self):
-        r"""The latency (ms).
+        r"""Delay in ms.
         :rtype: int
         """
         return self._Latency
@@ -6124,7 +6516,7 @@ class FlowRealtimeStatusSRT(AbstractModel):
 
     @property
     def RTT(self):
-        r"""RTT (ms).
+        r"""RTT in ms.
         :rtype: int
         """
         return self._RTT
@@ -6135,7 +6527,7 @@ class FlowRealtimeStatusSRT(AbstractModel):
 
     @property
     def Packets(self):
-        r"""The number of packets sent or received.
+        r"""Number of packets sent or received in real time.
         :rtype: int
         """
         return self._Packets
@@ -6146,7 +6538,7 @@ class FlowRealtimeStatusSRT(AbstractModel):
 
     @property
     def PacketLossRate(self):
-        r"""The packet loss rate.
+        r"""Packet loss rate.
         :rtype: float
         """
         return self._PacketLossRate
@@ -6157,7 +6549,7 @@ class FlowRealtimeStatusSRT(AbstractModel):
 
     @property
     def RetransmitRate(self):
-        r"""The retransmission rate.
+        r"""Retransmission rate.
         :rtype: float
         """
         return self._RetransmitRate
@@ -6168,7 +6560,7 @@ class FlowRealtimeStatusSRT(AbstractModel):
 
     @property
     def DroppedPackets(self):
-        r"""The number of packets dropped.
+        r"""Real-time packet loss count.
         :rtype: int
         """
         return self._DroppedPackets
@@ -6179,7 +6571,7 @@ class FlowRealtimeStatusSRT(AbstractModel):
 
     @property
     def Encryption(self):
-        r"""Whether to encrypt the stream. Valid values: On, Off.
+        r"""Whether to encrypt. On | Off.
         :rtype: str
         """
         return self._Encryption
@@ -6208,60 +6600,64 @@ class FlowRealtimeStatusSRT(AbstractModel):
 
 
 class FlowSRTInfo(AbstractModel):
-    r"""The SRT streaming performance data.
+    r"""SRT quality data in the transport stream.
 
     """
 
     def __init__(self):
         r"""
-        :param _Timestamp: The timestamp (seconds).
+        :param _Timestamp: <p>Timestamp in seconds.</p>
         :type Timestamp: int
-        :param _SendPacketLossRate: The packet loss rate for sending.
+        :param _SendPacketLossRate: <p>Packet loss rate on transmitting.</p>
         :type SendPacketLossRate: int
-        :param _SendRetransmissionRate: The retry rate for sending.
+        :param _SendRetransmissionRate: <p>Retransmission rate.</p>
         :type SendRetransmissionRate: int
-        :param _RecvPacketLossRate: The packet loss rate for receiving.
+        :param _RecvPacketLossRate: <p>Packet loss rate on receiving.</p>
         :type RecvPacketLossRate: int
-        :param _RecvRetransmissionRate: The retry rate for receiving.
+        :param _RecvRetransmissionRate: <p>Receiving retransmission rate.</p>
         :type RecvRetransmissionRate: int
-        :param _RTT: The peer RTT.
+        :param _RTT: <p>RTT latency to the peer.</p>
         :type RTT: int
-        :param _SessionId: The ID of a push session.
+        :param _SessionId: <p>Flag the same streaming session.</p>
         :type SessionId: str
-        :param _SendPacketDropNumber: The number of dropped packets for sending.
+        :param _SendPacketDropNumber: <p>Number of discarded packets on sending.</p>
         :type SendPacketDropNumber: int
-        :param _RecvPacketDropNumber: The number of dropped packets for receiving.
+        :param _RecvPacketDropNumber: <p>Number of received dropped packets.</p>
         :type RecvPacketDropNumber: int
-        :param _Bandwidth: Bandwidth
+        :param _Bandwidth: <p>Bandwidth.</p>
         :type Bandwidth: float
-        :param _SendBandwidth: transmit bandwidth
+        :param _SendBandwidth: <p>Transmit bandwidth</p>
         :type SendBandwidth: float
-        :param _RecvBandwidth: Receiving bandwidth
+        :param _RecvBandwidth: <p>Receiving bandwidth</p>
         :type RecvBandwidth: float
-        :param _SendPackets: Sent packet count
+        :param _SendPackets: <p>Sent packet count</p>
         :type SendPackets: int
-        :param _RecvPackets: Received packets
+        :param _RecvPackets: <p>Number of received packets</p>
         :type RecvPackets: int
-        :param _SendLostPackets: Sent lost packets
+        :param _SendLostPackets: <p>Sending lost packets</p>
         :type SendLostPackets: int
-        :param _RecvLostPackets: accept lost packets
+        :param _RecvLostPackets: <p>Accept lost packets</p>
         :type RecvLostPackets: int
-        :param _SendRetransmitPackets: Retransmitted packet count
+        :param _SendRetransmitPackets: <p>Sent retransmission packet count</p>
         :type SendRetransmitPackets: int
-        :param _RecvRetransmitPackets: Retransmitted packets received
+        :param _RecvRetransmitPackets: <p>Number of received retransmission packets</p>
         :type RecvRetransmitPackets: int
-        :param _FlightSize: Window size
+        :param _FlightSize: <p>Flight window size</p>
         :type FlightSize: int
-        :param _CongestionWindow: Congestion window
+        :param _CongestionWindow: <p>Congestion window.</p>
         :type CongestionWindow: int
-        :param _SendBuffer: Sending buffer (ms)
+        :param _SendBuffer: <p>Sending buffer (ms)</p>
         :type SendBuffer: int
-        :param _RecvBuffer: Receive buffer (ms)
+        :param _RecvBuffer: <p>Receive buffer (ms)</p>
         :type RecvBuffer: int
-        :param _SendLatency: Send delay
+        :param _SendLatency: <p>Sending delay</p>
         :type SendLatency: int
-        :param _RecvLatency: receive latency
+        :param _RecvLatency: <p>Receive latency</p>
         :type RecvLatency: int
+        :param _SendNAKPackets: <p>Sent NAK packet count</p>
+        :type SendNAKPackets: int
+        :param _RecvNAKPackets: <p>Number of received NAK packets</p>
+        :type RecvNAKPackets: int
         """
         self._Timestamp = None
         self._SendPacketLossRate = None
@@ -6287,10 +6683,12 @@ class FlowSRTInfo(AbstractModel):
         self._RecvBuffer = None
         self._SendLatency = None
         self._RecvLatency = None
+        self._SendNAKPackets = None
+        self._RecvNAKPackets = None
 
     @property
     def Timestamp(self):
-        r"""The timestamp (seconds).
+        r"""<p>Timestamp in seconds.</p>
         :rtype: int
         """
         return self._Timestamp
@@ -6301,7 +6699,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def SendPacketLossRate(self):
-        r"""The packet loss rate for sending.
+        r"""<p>Packet loss rate on transmitting.</p>
         :rtype: int
         """
         return self._SendPacketLossRate
@@ -6312,7 +6710,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def SendRetransmissionRate(self):
-        r"""The retry rate for sending.
+        r"""<p>Retransmission rate.</p>
         :rtype: int
         """
         return self._SendRetransmissionRate
@@ -6323,7 +6721,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def RecvPacketLossRate(self):
-        r"""The packet loss rate for receiving.
+        r"""<p>Packet loss rate on receiving.</p>
         :rtype: int
         """
         return self._RecvPacketLossRate
@@ -6334,7 +6732,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def RecvRetransmissionRate(self):
-        r"""The retry rate for receiving.
+        r"""<p>Receiving retransmission rate.</p>
         :rtype: int
         """
         return self._RecvRetransmissionRate
@@ -6345,7 +6743,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def RTT(self):
-        r"""The peer RTT.
+        r"""<p>RTT latency to the peer.</p>
         :rtype: int
         """
         return self._RTT
@@ -6356,7 +6754,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""The ID of a push session.
+        r"""<p>Flag the same streaming session.</p>
         :rtype: str
         """
         return self._SessionId
@@ -6367,7 +6765,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def SendPacketDropNumber(self):
-        r"""The number of dropped packets for sending.
+        r"""<p>Number of discarded packets on sending.</p>
         :rtype: int
         """
         return self._SendPacketDropNumber
@@ -6378,7 +6776,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def RecvPacketDropNumber(self):
-        r"""The number of dropped packets for receiving.
+        r"""<p>Number of received dropped packets.</p>
         :rtype: int
         """
         return self._RecvPacketDropNumber
@@ -6389,7 +6787,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def Bandwidth(self):
-        r"""Bandwidth
+        r"""<p>Bandwidth.</p>
         :rtype: float
         """
         return self._Bandwidth
@@ -6400,7 +6798,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def SendBandwidth(self):
-        r"""transmit bandwidth
+        r"""<p>Transmit bandwidth</p>
         :rtype: float
         """
         return self._SendBandwidth
@@ -6411,7 +6809,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def RecvBandwidth(self):
-        r"""Receiving bandwidth
+        r"""<p>Receiving bandwidth</p>
         :rtype: float
         """
         return self._RecvBandwidth
@@ -6422,7 +6820,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def SendPackets(self):
-        r"""Sent packet count
+        r"""<p>Sent packet count</p>
         :rtype: int
         """
         return self._SendPackets
@@ -6433,7 +6831,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def RecvPackets(self):
-        r"""Received packets
+        r"""<p>Number of received packets</p>
         :rtype: int
         """
         return self._RecvPackets
@@ -6444,7 +6842,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def SendLostPackets(self):
-        r"""Sent lost packets
+        r"""<p>Sending lost packets</p>
         :rtype: int
         """
         return self._SendLostPackets
@@ -6455,7 +6853,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def RecvLostPackets(self):
-        r"""accept lost packets
+        r"""<p>Accept lost packets</p>
         :rtype: int
         """
         return self._RecvLostPackets
@@ -6466,7 +6864,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def SendRetransmitPackets(self):
-        r"""Retransmitted packet count
+        r"""<p>Sent retransmission packet count</p>
         :rtype: int
         """
         return self._SendRetransmitPackets
@@ -6477,7 +6875,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def RecvRetransmitPackets(self):
-        r"""Retransmitted packets received
+        r"""<p>Number of received retransmission packets</p>
         :rtype: int
         """
         return self._RecvRetransmitPackets
@@ -6488,7 +6886,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def FlightSize(self):
-        r"""Window size
+        r"""<p>Flight window size</p>
         :rtype: int
         """
         return self._FlightSize
@@ -6499,7 +6897,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def CongestionWindow(self):
-        r"""Congestion window
+        r"""<p>Congestion window.</p>
         :rtype: int
         """
         return self._CongestionWindow
@@ -6510,7 +6908,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def SendBuffer(self):
-        r"""Sending buffer (ms)
+        r"""<p>Sending buffer (ms)</p>
         :rtype: int
         """
         return self._SendBuffer
@@ -6521,7 +6919,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def RecvBuffer(self):
-        r"""Receive buffer (ms)
+        r"""<p>Receive buffer (ms)</p>
         :rtype: int
         """
         return self._RecvBuffer
@@ -6532,7 +6930,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def SendLatency(self):
-        r"""Send delay
+        r"""<p>Sending delay</p>
         :rtype: int
         """
         return self._SendLatency
@@ -6543,7 +6941,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def RecvLatency(self):
-        r"""receive latency
+        r"""<p>Receive latency</p>
         :rtype: int
         """
         return self._RecvLatency
@@ -6551,6 +6949,28 @@ class FlowSRTInfo(AbstractModel):
     @RecvLatency.setter
     def RecvLatency(self, RecvLatency):
         self._RecvLatency = RecvLatency
+
+    @property
+    def SendNAKPackets(self):
+        r"""<p>Sent NAK packet count</p>
+        :rtype: int
+        """
+        return self._SendNAKPackets
+
+    @SendNAKPackets.setter
+    def SendNAKPackets(self, SendNAKPackets):
+        self._SendNAKPackets = SendNAKPackets
+
+    @property
+    def RecvNAKPackets(self):
+        r"""<p>Number of received NAK packets</p>
+        :rtype: int
+        """
+        return self._RecvNAKPackets
+
+    @RecvNAKPackets.setter
+    def RecvNAKPackets(self, RecvNAKPackets):
+        self._RecvNAKPackets = RecvNAKPackets
 
 
     def _deserialize(self, params):
@@ -6578,6 +6998,8 @@ class FlowSRTInfo(AbstractModel):
         self._RecvBuffer = params.get("RecvBuffer")
         self._SendLatency = params.get("SendLatency")
         self._RecvLatency = params.get("RecvLatency")
+        self._SendNAKPackets = params.get("SendNAKPackets")
+        self._RecvNAKPackets = params.get("RecvNAKPackets")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6589,21 +7011,21 @@ class FlowSRTInfo(AbstractModel):
 
 
 class FlowStatistics(AbstractModel):
-    r"""The flow statistics.
+    r"""Stream stats.
 
     """
 
     def __init__(self):
         r"""
-        :param _SessionId: The session ID.
+        :param _SessionId: Session ID.
         :type SessionId: str
-        :param _ClientIp: The peer IP.
+        :param _ClientIp: Peer IP.
         :type ClientIp: str
-        :param _Network: The total bandwidth.
+        :param _Network: Total bandwidth.
         :type Network: int
-        :param _Video: The video data.
+        :param _Video: Video data.
         :type Video: list of FlowVideo
-        :param _Audio: The audio data.
+        :param _Audio: Audio data.
         :type Audio: list of FlowAudio
         """
         self._SessionId = None
@@ -6614,7 +7036,7 @@ class FlowStatistics(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""The session ID.
+        r"""Session ID.
         :rtype: str
         """
         return self._SessionId
@@ -6625,7 +7047,7 @@ class FlowStatistics(AbstractModel):
 
     @property
     def ClientIp(self):
-        r"""The peer IP.
+        r"""Peer IP.
         :rtype: str
         """
         return self._ClientIp
@@ -6636,7 +7058,7 @@ class FlowStatistics(AbstractModel):
 
     @property
     def Network(self):
-        r"""The total bandwidth.
+        r"""Total bandwidth.
         :rtype: int
         """
         return self._Network
@@ -6647,7 +7069,7 @@ class FlowStatistics(AbstractModel):
 
     @property
     def Video(self):
-        r"""The video data.
+        r"""Video data.
         :rtype: list of FlowVideo
         """
         return self._Video
@@ -6658,7 +7080,7 @@ class FlowStatistics(AbstractModel):
 
     @property
     def Audio(self):
-        r"""The audio data.
+        r"""Audio data.
         :rtype: list of FlowAudio
         """
         return self._Audio
@@ -6695,15 +7117,15 @@ class FlowStatistics(AbstractModel):
 
 
 class FlowStatisticsArray(AbstractModel):
-    r"""A list of the flow statistics.
+    r"""List of the stream's statistical data.
 
     """
 
     def __init__(self):
         r"""
-        :param _Timestamp: The timestamp.
+        :param _Timestamp: Timestamp.
         :type Timestamp: int
-        :param _FlowStatistics: The statistics of all the sessions.
+        :param _FlowStatistics: Statistics for each session.
         :type FlowStatistics: list of FlowStatistics
         """
         self._Timestamp = None
@@ -6711,7 +7133,7 @@ class FlowStatisticsArray(AbstractModel):
 
     @property
     def Timestamp(self):
-        r"""The timestamp.
+        r"""Timestamp.
         :rtype: int
         """
         return self._Timestamp
@@ -6722,7 +7144,7 @@ class FlowStatisticsArray(AbstractModel):
 
     @property
     def FlowStatistics(self):
-        r"""The statistics of all the sessions.
+        r"""Statistics for each session.
         :rtype: list of FlowStatistics
         """
         return self._FlowStatistics
@@ -6751,17 +7173,17 @@ class FlowStatisticsArray(AbstractModel):
 
 
 class FlowVideo(AbstractModel):
-    r"""The video data of a flow.
+    r"""Video data of the stream.
 
     """
 
     def __init__(self):
         r"""
-        :param _Fps: The frame rate.
+        :param _Fps: Frame rate.
         :type Fps: int
-        :param _Rate: The bitrate (bps).
+        :param _Rate: Bitrate in bps.
         :type Rate: int
-        :param _Pid: The audio PID.
+        :param _Pid: Audio Pid.
         :type Pid: int
         """
         self._Fps = None
@@ -6770,7 +7192,7 @@ class FlowVideo(AbstractModel):
 
     @property
     def Fps(self):
-        r"""The frame rate.
+        r"""Frame rate.
         :rtype: int
         """
         return self._Fps
@@ -6781,7 +7203,7 @@ class FlowVideo(AbstractModel):
 
     @property
     def Rate(self):
-        r"""The bitrate (bps).
+        r"""Bitrate in bps.
         :rtype: int
         """
         return self._Rate
@@ -6792,7 +7214,7 @@ class FlowVideo(AbstractModel):
 
     @property
     def Pid(self):
-        r"""The audio PID.
+        r"""Audio Pid.
         :rtype: int
         """
         return self._Pid
@@ -6817,20 +7239,20 @@ class FlowVideo(AbstractModel):
 
 
 class HLSPullSourceAddress(AbstractModel):
-    r"""
+    r"""Configuration message of the created input HLS pull source station.
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: 
+        :param _Url: Url of the HLS origin server.
         :type Url: str
         """
         self._Url = None
 
     @property
     def Url(self):
-        r"""
+        r"""Url of the HLS origin server.
         :rtype: str
         """
         return self._Url
@@ -6859,9 +7281,9 @@ class InputAddress(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ip: Input address IP.
+        :param _Ip: IP of the input address.
         :type Ip: str
-        :param _Port: Input address port.
+        :param _Port: The port of the input address.
         :type Port: int
         """
         self._Ip = None
@@ -6869,7 +7291,7 @@ class InputAddress(AbstractModel):
 
     @property
     def Ip(self):
-        r"""Input address IP.
+        r"""IP of the input address.
         :rtype: str
         """
         return self._Ip
@@ -6880,7 +7302,7 @@ class InputAddress(AbstractModel):
 
     @property
     def Port(self):
-        r"""Input address port.
+        r"""The port of the input address.
         :rtype: int
         """
         return self._Port
@@ -6904,43 +7326,46 @@ class InputAddress(AbstractModel):
 
 
 class ModifyInput(AbstractModel):
-    r"""The new input configuration.
+    r"""Modify the parameters of the input.
 
     """
 
     def __init__(self):
         r"""
-        :param _InputId: The input ID.
+        :param _InputId: Input Id.
         :type InputId: str
-        :param _InputName: The input name.
+        :param _InputName: Enter a name.
         :type InputName: str
-        :param _Description: The description of the input.
+        :param _Description: Input description.
         :type Description: str
-        :param _AllowIpList: The IP addresses (CIDR) allowed to push streams.
+        :param _AllowIpList: IPs allowed for push, in CIDR format.
         :type AllowIpList: list of str
-        :param _SRTSettings: The SRT configuration information.
+        :param _SRTSettings: Configuration of SRT.
         :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputSRTSettings`
-        :param _RTPSettings: The RTP configuration information.
+        :param _RTPSettings: Configuration message of RTP.
         :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTPSettings`
-        :param _Protocol: The input protocol. Valid values: SRT, RTP, RTMP.
-If there is an RTP input, the output must be RTP.
-If there is an RTMP input, the output must be SRT or RTMP.
-If there is an SRT input, the output must be SRT.
+        :param _Protocol: Input protocol. Options: SRT, RTP, RTMP, RTMP_PULL, RTSP_PULL, RIST.
         :type Protocol: str
-        :param _FailOver: Whether to enable input failover. Valid values: OPEN, CLOSE.
+        :param _FailOver: Input primary/replica switch. Option: [OPEN|CLOSE].
         :type FailOver: str
-        :param _RTMPPullSettings: Configuration information for RTMP_PULL.
+        :param _RTMPPullSettings: Configuration message of RTMP_PULL.
         :type RTMPPullSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTMPPullSettings`
-        :param _RTSPPullSettings: Configuration information of RTSP_PULL.
+        :param _RTSPPullSettings: Configuration message of RTSP_PULL.
         :type RTSPPullSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTSPPullSettings`
-        :param _HLSPullSettings: HLS_PULL configuration information.
+        :param _HLSPullSettings: Configuration message of HLS_PULL.
         :type HLSPullSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputHLSPullSettings`
-        :param _ResilientStream: Delayed broadcast smooth streaming configuration information.
+        :param _ResilientStream: Configuration message for smooth stream output during delayed playback.
         :type ResilientStream: :class:`tencentcloud.mdc.v20200828.models.ResilientStreamConf`
-        :param _SecurityGroupIds: The ID of the input security group to bind. Only one security group can be associated.
+        :param _SecurityGroupIds: ID of the bound input security group. Only one security group can be associated.
         :type SecurityGroupIds: list of str
-        :param _Zones: Availability zone, optional, supports up to two availability zones. For interfaces that need to be changed, the second availability zone will participate in resource allocation. This is effective if disaster recovery is enabled for input or RTSP_PULL protocol switching is involved (addresses will be reallocated).
+        :param _Zones: Availability zone. Optional. input limit: two availability zones. For this API, only the second availability zone participates in resource allocation. It is valid if disaster recovery is enabled or the RTSP_PULL protocol is involved during switching. The address will be reallocated.	
         :type Zones: list of str
+        :param _RISTSettings: Configuration information of RIST.
+        :type RISTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRISTSettings`
+        :param _InputRegion: Region of the input node.
+        :type InputRegion: str
+        :param _FailOverOption: Hot/cold backup related
+        :type FailOverOption: :class:`tencentcloud.mdc.v20200828.models.FailOverOption`
         """
         self._InputId = None
         self._InputName = None
@@ -6956,10 +7381,13 @@ If there is an SRT input, the output must be SRT.
         self._ResilientStream = None
         self._SecurityGroupIds = None
         self._Zones = None
+        self._RISTSettings = None
+        self._InputRegion = None
+        self._FailOverOption = None
 
     @property
     def InputId(self):
-        r"""The input ID.
+        r"""Input Id.
         :rtype: str
         """
         return self._InputId
@@ -6970,7 +7398,7 @@ If there is an SRT input, the output must be SRT.
 
     @property
     def InputName(self):
-        r"""The input name.
+        r"""Enter a name.
         :rtype: str
         """
         return self._InputName
@@ -6981,7 +7409,7 @@ If there is an SRT input, the output must be SRT.
 
     @property
     def Description(self):
-        r"""The description of the input.
+        r"""Input description.
         :rtype: str
         """
         return self._Description
@@ -6992,7 +7420,7 @@ If there is an SRT input, the output must be SRT.
 
     @property
     def AllowIpList(self):
-        r"""The IP addresses (CIDR) allowed to push streams.
+        r"""IPs allowed for push, in CIDR format.
         :rtype: list of str
         """
         return self._AllowIpList
@@ -7003,7 +7431,7 @@ If there is an SRT input, the output must be SRT.
 
     @property
     def SRTSettings(self):
-        r"""The SRT configuration information.
+        r"""Configuration of SRT.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateInputSRTSettings`
         """
         return self._SRTSettings
@@ -7014,7 +7442,7 @@ If there is an SRT input, the output must be SRT.
 
     @property
     def RTPSettings(self):
-        r"""The RTP configuration information.
+        r"""Configuration message of RTP.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTPSettings`
         """
         return self._RTPSettings
@@ -7025,10 +7453,7 @@ If there is an SRT input, the output must be SRT.
 
     @property
     def Protocol(self):
-        r"""The input protocol. Valid values: SRT, RTP, RTMP.
-If there is an RTP input, the output must be RTP.
-If there is an RTMP input, the output must be SRT or RTMP.
-If there is an SRT input, the output must be SRT.
+        r"""Input protocol. Options: SRT, RTP, RTMP, RTMP_PULL, RTSP_PULL, RIST.
         :rtype: str
         """
         return self._Protocol
@@ -7039,7 +7464,7 @@ If there is an SRT input, the output must be SRT.
 
     @property
     def FailOver(self):
-        r"""Whether to enable input failover. Valid values: OPEN, CLOSE.
+        r"""Input primary/replica switch. Option: [OPEN|CLOSE].
         :rtype: str
         """
         return self._FailOver
@@ -7050,7 +7475,7 @@ If there is an SRT input, the output must be SRT.
 
     @property
     def RTMPPullSettings(self):
-        r"""Configuration information for RTMP_PULL.
+        r"""Configuration message of RTMP_PULL.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTMPPullSettings`
         """
         return self._RTMPPullSettings
@@ -7061,7 +7486,7 @@ If there is an SRT input, the output must be SRT.
 
     @property
     def RTSPPullSettings(self):
-        r"""Configuration information of RTSP_PULL.
+        r"""Configuration message of RTSP_PULL.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTSPPullSettings`
         """
         return self._RTSPPullSettings
@@ -7072,7 +7497,7 @@ If there is an SRT input, the output must be SRT.
 
     @property
     def HLSPullSettings(self):
-        r"""HLS_PULL configuration information.
+        r"""Configuration message of HLS_PULL.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateInputHLSPullSettings`
         """
         return self._HLSPullSettings
@@ -7083,7 +7508,7 @@ If there is an SRT input, the output must be SRT.
 
     @property
     def ResilientStream(self):
-        r"""Delayed broadcast smooth streaming configuration information.
+        r"""Configuration message for smooth stream output during delayed playback.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.ResilientStreamConf`
         """
         return self._ResilientStream
@@ -7094,7 +7519,7 @@ If there is an SRT input, the output must be SRT.
 
     @property
     def SecurityGroupIds(self):
-        r"""The ID of the input security group to bind. Only one security group can be associated.
+        r"""ID of the bound input security group. Only one security group can be associated.
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -7105,7 +7530,7 @@ If there is an SRT input, the output must be SRT.
 
     @property
     def Zones(self):
-        r"""Availability zone, optional, supports up to two availability zones. For interfaces that need to be changed, the second availability zone will participate in resource allocation. This is effective if disaster recovery is enabled for input or RTSP_PULL protocol switching is involved (addresses will be reallocated).
+        r"""Availability zone. Optional. input limit: two availability zones. For this API, only the second availability zone participates in resource allocation. It is valid if disaster recovery is enabled or the RTSP_PULL protocol is involved during switching. The address will be reallocated.	
         :rtype: list of str
         """
         return self._Zones
@@ -7113,6 +7538,39 @@ If there is an SRT input, the output must be SRT.
     @Zones.setter
     def Zones(self, Zones):
         self._Zones = Zones
+
+    @property
+    def RISTSettings(self):
+        r"""Configuration information of RIST.
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateInputRISTSettings`
+        """
+        return self._RISTSettings
+
+    @RISTSettings.setter
+    def RISTSettings(self, RISTSettings):
+        self._RISTSettings = RISTSettings
+
+    @property
+    def InputRegion(self):
+        r"""Region of the input node.
+        :rtype: str
+        """
+        return self._InputRegion
+
+    @InputRegion.setter
+    def InputRegion(self, InputRegion):
+        self._InputRegion = InputRegion
+
+    @property
+    def FailOverOption(self):
+        r"""Hot/cold backup related
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.FailOverOption`
+        """
+        return self._FailOverOption
+
+    @FailOverOption.setter
+    def FailOverOption(self, FailOverOption):
+        self._FailOverOption = FailOverOption
 
 
     def _deserialize(self, params):
@@ -7142,6 +7600,13 @@ If there is an SRT input, the output must be SRT.
             self._ResilientStream._deserialize(params.get("ResilientStream"))
         self._SecurityGroupIds = params.get("SecurityGroupIds")
         self._Zones = params.get("Zones")
+        if params.get("RISTSettings") is not None:
+            self._RISTSettings = CreateInputRISTSettings()
+            self._RISTSettings._deserialize(params.get("RISTSettings"))
+        self._InputRegion = params.get("InputRegion")
+        if params.get("FailOverOption") is not None:
+            self._FailOverOption = FailOverOption()
+            self._FailOverOption._deserialize(params.get("FailOverOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7153,43 +7618,44 @@ If there is an SRT input, the output must be SRT.
 
 
 class ModifyOutputInfo(AbstractModel):
-    r"""The new output configuration.
+    r"""Modify the Output configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _OutputId: The ID of the output to modify.
+        :param _OutputId: Id of the Output to be modified.
         :type OutputId: str
-        :param _OutputName: The output name.
+        :param _OutputName: Output name.
         :type OutputName: str
-        :param _Description: The description of the output.
+        :param _Description: Output description.
         :type Description: str
-        :param _Protocol: The output protocol. Valid values: SRT, RTP, RTMP.
+        :param _Protocol: Output relay protocol. Supports SRT, RTP, RTMP, RTMP_PULL, RTSP_PULL, and RIST.
         :type Protocol: str
-        :param _OutputType: Output Type: Internet/Tencent CSS/StreamLive
+        :param _OutputType: Output type: Internet/TencentCSS/StreamLive
         :type OutputType: str
-        :param _OutputKind: Output module types include Pinpoint (single-point output, supporting up to four concurrent outputs) and MultiMesh (multi-output, supporting concurrent outputs exceeding four, currently capable of reaching 200 channels). The default type is Pinpoint output. For a single Flow, only one MultiMesh output can be assigned per region.
+        :param _OutputKind: Output module type, including Pinpoint (single-point output, supports up to four concurrent outputs); MultiMesh (multiple outputs, supports more than four concurrent outputs, currently up to 200). The default type is Pinpoint output. For a single Flow, only one MultiMesh output is allowed in one zone.
         :type OutputKind: str
-        :param _SRTSettings: The SRT relay configuration.
+        :param _SRTSettings: Configuration of the relayed SRT.
         :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputSrtSettings`
-        :param _RTPSettings: The RTP relay configuration.
+        :param _RTPSettings: Configuration of the relayed RTP.
         :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputInfoRTPSettings`
-        :param _RTMPSettings: The RTMP relay configuration.
+        :param _RTMPSettings: Configuration for relaying RTMP.
         :type RTMPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRTMPSettings`
-        :param _AllowIpList: IP whitelist, in CIDR format, such as 0.0.0.0/0. This is valid when Protocol is RTMP_PULL, and empty means no restriction on client IP.
+        :param _AllowIpList: IP whitelist list in CIDR format, for example, 0.0.0.0/0.
+Valid when Protocol is RTMP_PULL. If empty, it represents no limit on client IP.
         :type AllowIpList: list of str
-        :param _MaxConcurrent: The maximum number of concurrent stream pulls is 4, and the default value is 4.
+        :param _MaxConcurrent: Maximum number of concurrent stream pulls. Maximum value: 4. Default value: 4.
         :type MaxConcurrent: int
-        :param _SecurityGroupIds: The bound security group IDs.
+        :param _SecurityGroupIds: ID of the bound security group. Only one security group can be associated.	
         :type SecurityGroupIds: list of str
-        :param _Zones: Availability Zone
+        :param _Zones: AZ.
         :type Zones: list of str
-        :param _RISTSettings: Transfer the configuration of RIST.
+        :param _RISTSettings: Relay RIST configuration.
         :type RISTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRistSettings`
-        :param _PidSelector: For streams containing multiple audio/video tracks, you can specify the tracks that need to be used
+        :param _PidSelector: For streams with multiple audio/video tracks, you can specify the track to be used.
         :type PidSelector: :class:`tencentcloud.mdc.v20200828.models.PidSelector`
-        :param _StreamSelector: For streams containing multiple audio/video tracks, you can specify the tracks that need to be used
+        :param _StreamSelector: For streams with multiple audio/video tracks, you can specify the track to be used.
         :type StreamSelector: :class:`tencentcloud.mdc.v20200828.models.StreamSelector`
         """
         self._OutputId = None
@@ -7211,7 +7677,7 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def OutputId(self):
-        r"""The ID of the output to modify.
+        r"""Id of the Output to be modified.
         :rtype: str
         """
         return self._OutputId
@@ -7222,7 +7688,7 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def OutputName(self):
-        r"""The output name.
+        r"""Output name.
         :rtype: str
         """
         return self._OutputName
@@ -7233,7 +7699,7 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def Description(self):
-        r"""The description of the output.
+        r"""Output description.
         :rtype: str
         """
         return self._Description
@@ -7244,7 +7710,7 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""The output protocol. Valid values: SRT, RTP, RTMP.
+        r"""Output relay protocol. Supports SRT, RTP, RTMP, RTMP_PULL, RTSP_PULL, and RIST.
         :rtype: str
         """
         return self._Protocol
@@ -7255,7 +7721,7 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def OutputType(self):
-        r"""Output Type: Internet/Tencent CSS/StreamLive
+        r"""Output type: Internet/TencentCSS/StreamLive
         :rtype: str
         """
         return self._OutputType
@@ -7266,7 +7732,7 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def OutputKind(self):
-        r"""Output module types include Pinpoint (single-point output, supporting up to four concurrent outputs) and MultiMesh (multi-output, supporting concurrent outputs exceeding four, currently capable of reaching 200 channels). The default type is Pinpoint output. For a single Flow, only one MultiMesh output can be assigned per region.
+        r"""Output module type, including Pinpoint (single-point output, supports up to four concurrent outputs); MultiMesh (multiple outputs, supports more than four concurrent outputs, currently up to 200). The default type is Pinpoint output. For a single Flow, only one MultiMesh output is allowed in one zone.
         :rtype: str
         """
         return self._OutputKind
@@ -7277,7 +7743,7 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def SRTSettings(self):
-        r"""The SRT relay configuration.
+        r"""Configuration of the relayed SRT.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateOutputSrtSettings`
         """
         return self._SRTSettings
@@ -7288,7 +7754,7 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def RTPSettings(self):
-        r"""The RTP relay configuration.
+        r"""Configuration of the relayed RTP.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateOutputInfoRTPSettings`
         """
         return self._RTPSettings
@@ -7299,7 +7765,7 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def RTMPSettings(self):
-        r"""The RTMP relay configuration.
+        r"""Configuration for relaying RTMP.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRTMPSettings`
         """
         return self._RTMPSettings
@@ -7310,7 +7776,8 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def AllowIpList(self):
-        r"""IP whitelist, in CIDR format, such as 0.0.0.0/0. This is valid when Protocol is RTMP_PULL, and empty means no restriction on client IP.
+        r"""IP whitelist list in CIDR format, for example, 0.0.0.0/0.
+Valid when Protocol is RTMP_PULL. If empty, it represents no limit on client IP.
         :rtype: list of str
         """
         return self._AllowIpList
@@ -7321,7 +7788,7 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def MaxConcurrent(self):
-        r"""The maximum number of concurrent stream pulls is 4, and the default value is 4.
+        r"""Maximum number of concurrent stream pulls. Maximum value: 4. Default value: 4.
         :rtype: int
         """
         return self._MaxConcurrent
@@ -7332,7 +7799,7 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""The bound security group IDs.
+        r"""ID of the bound security group. Only one security group can be associated.	
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -7343,7 +7810,7 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def Zones(self):
-        r"""Availability Zone
+        r"""AZ.
         :rtype: list of str
         """
         return self._Zones
@@ -7354,7 +7821,7 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def RISTSettings(self):
-        r"""Transfer the configuration of RIST.
+        r"""Relay RIST configuration.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRistSettings`
         """
         return self._RISTSettings
@@ -7367,7 +7834,7 @@ class ModifyOutputInfo(AbstractModel):
     def PidSelector(self):
         warnings.warn("parameter `PidSelector` is deprecated", DeprecationWarning) 
 
-        r"""For streams containing multiple audio/video tracks, you can specify the tracks that need to be used
+        r"""For streams with multiple audio/video tracks, you can specify the track to be used.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.PidSelector`
         """
         return self._PidSelector
@@ -7380,7 +7847,7 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def StreamSelector(self):
-        r"""For streams containing multiple audio/video tracks, you can specify the tracks that need to be used
+        r"""For streams with multiple audio/video tracks, you can specify the track to be used.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.StreamSelector`
         """
         return self._StreamSelector
@@ -7436,9 +7903,9 @@ class ModifyStreamLinkFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: Flow ID
+        :param _FlowId: Stream Id.
         :type FlowId: str
-        :param _FlowName: Name of the flow to modify
+        :param _FlowName: Stream name to be modified.
         :type FlowName: str
         """
         self._FlowId = None
@@ -7446,7 +7913,7 @@ class ModifyStreamLinkFlowRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""Flow ID
+        r"""Stream Id.
         :rtype: str
         """
         return self._FlowId
@@ -7457,7 +7924,7 @@ class ModifyStreamLinkFlowRequest(AbstractModel):
 
     @property
     def FlowName(self):
-        r"""Name of the flow to modify
+        r"""Stream name to be modified.
         :rtype: str
         """
         return self._FlowName
@@ -7515,9 +7982,9 @@ class ModifyStreamLinkInputRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: The flow ID.
+        :param _FlowId: Stream Id.
         :type FlowId: str
-        :param _Input: The input information to modify.
+        :param _Input: Input information that needs to be modified.
         :type Input: :class:`tencentcloud.mdc.v20200828.models.ModifyInput`
         """
         self._FlowId = None
@@ -7525,7 +7992,7 @@ class ModifyStreamLinkInputRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""The flow ID.
+        r"""Stream Id.
         :rtype: str
         """
         return self._FlowId
@@ -7536,7 +8003,7 @@ class ModifyStreamLinkInputRequest(AbstractModel):
 
     @property
     def Input(self):
-        r"""The input information to modify.
+        r"""Input information that needs to be modified.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.ModifyInput`
         """
         return self._Input
@@ -7568,7 +8035,7 @@ class ModifyStreamLinkInputResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Info: The input information after modification.
+        :param _Info: Input information after modification.
         :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeInput`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -7578,7 +8045,7 @@ class ModifyStreamLinkInputResponse(AbstractModel):
 
     @property
     def Info(self):
-        r"""The input information after modification.
+        r"""Input information after modification.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeInput`
         """
         return self._Info
@@ -7613,9 +8080,9 @@ class ModifyStreamLinkOutputInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: The flow ID.
+        :param _FlowId: 01937702ecc509dc0f3269ca3420
         :type FlowId: str
-        :param _Output: The output configuration to modify.
+        :param _Output: Output configuration that needs to be modified.
         :type Output: :class:`tencentcloud.mdc.v20200828.models.ModifyOutputInfo`
         """
         self._FlowId = None
@@ -7623,7 +8090,7 @@ class ModifyStreamLinkOutputInfoRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""The flow ID.
+        r"""01937702ecc509dc0f3269ca3420
         :rtype: str
         """
         return self._FlowId
@@ -7634,7 +8101,7 @@ class ModifyStreamLinkOutputInfoRequest(AbstractModel):
 
     @property
     def Output(self):
-        r"""The output configuration to modify.
+        r"""Output configuration that needs to be modified.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.ModifyOutputInfo`
         """
         return self._Output
@@ -7666,7 +8133,7 @@ class ModifyStreamLinkOutputInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Info: The output configuration after modification.
+        :param _Info: Output configuration after modification.
         :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeOutput`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -7676,7 +8143,7 @@ class ModifyStreamLinkOutputInfoResponse(AbstractModel):
 
     @property
     def Info(self):
-        r"""The output configuration after modification.
+        r"""Output configuration after modification.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeOutput`
         """
         return self._Info
@@ -7705,20 +8172,20 @@ class ModifyStreamLinkOutputInfoResponse(AbstractModel):
 
 
 class OutputAddress(AbstractModel):
-    r"""Output destination address.
+    r"""Egress address of the output.
 
     """
 
     def __init__(self):
         r"""
-        :param _Ip: Output destination IP.
+        :param _Ip: Outbound IP address.
         :type Ip: str
         """
         self._Ip = None
 
     @property
     def Ip(self):
-        r"""Output destination IP.
+        r"""Outbound IP address.
         :rtype: str
         """
         return self._Ip
@@ -7741,15 +8208,15 @@ class OutputAddress(AbstractModel):
 
 
 class OutputRISTSourceAddressResp(AbstractModel):
-    r"""
+    r"""Listening address for RIST output.
 
     """
 
     def __init__(self):
         r"""
-        :param _Ip: 
+        :param _Ip: Listening IP.
         :type Ip: str
-        :param _Port: 
+        :param _Port: Listening port.
         :type Port: int
         """
         self._Ip = None
@@ -7757,7 +8224,7 @@ class OutputRISTSourceAddressResp(AbstractModel):
 
     @property
     def Ip(self):
-        r"""
+        r"""Listening IP.
         :rtype: str
         """
         return self._Ip
@@ -7768,7 +8235,7 @@ class OutputRISTSourceAddressResp(AbstractModel):
 
     @property
     def Port(self):
-        r"""
+        r"""Listening port.
         :rtype: int
         """
         return self._Port
@@ -7792,15 +8259,15 @@ class OutputRISTSourceAddressResp(AbstractModel):
 
 
 class OutputSRTSourceAddressResp(AbstractModel):
-    r"""The listen address for an SRT output.
+    r"""SRT output listening address.
 
     """
 
     def __init__(self):
         r"""
-        :param _Ip: The listen IP.
+        :param _Ip: Listening IP.
         :type Ip: str
-        :param _Port: The listen port.
+        :param _Port: Listening port.
         :type Port: int
         """
         self._Ip = None
@@ -7808,7 +8275,7 @@ class OutputSRTSourceAddressResp(AbstractModel):
 
     @property
     def Ip(self):
-        r"""The listen IP.
+        r"""Listening IP.
         :rtype: str
         """
         return self._Ip
@@ -7819,7 +8286,7 @@ class OutputSRTSourceAddressResp(AbstractModel):
 
     @property
     def Port(self):
-        r"""The listen port.
+        r"""Listening port.
         :rtype: int
         """
         return self._Port
@@ -7843,15 +8310,15 @@ class OutputSRTSourceAddressResp(AbstractModel):
 
 
 class PidSelector(AbstractModel):
-    r"""
+    r"""For streams with multiple audio/video tracks, you can specify the tracks to use.
 
     """
 
     def __init__(self):
         r"""
-        :param _AudioPID: 
+        :param _AudioPID: For streams containing multiple audio tracks, specify the audio track to use by entering a PID. The PID can be a positive integer between 1 and 8191.
         :type AudioPID: list of int
-        :param _VideoPID: 
+        :param _VideoPID: For streams containing multiple video tracks, specify the video track to be used by entering a PID. You can enter a positive integer between 1 and 8191 for the PID.
         :type VideoPID: list of int
         """
         self._AudioPID = None
@@ -7859,7 +8326,7 @@ class PidSelector(AbstractModel):
 
     @property
     def AudioPID(self):
-        r"""
+        r"""For streams containing multiple audio tracks, specify the audio track to use by entering a PID. The PID can be a positive integer between 1 and 8191.
         :rtype: list of int
         """
         return self._AudioPID
@@ -7870,7 +8337,7 @@ class PidSelector(AbstractModel):
 
     @property
     def VideoPID(self):
-        r"""
+        r"""For streams containing multiple video tracks, specify the video track to be used by entering a PID. You can enter a positive integer between 1 and 8191 for the PID.
         :rtype: list of int
         """
         return self._VideoPID
@@ -7894,15 +8361,15 @@ class PidSelector(AbstractModel):
 
 
 class RTMPAddressDestination(AbstractModel):
-    r"""Destination address information of RTMP push.
+    r"""Target address information for RTMP repush.
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: Destination URL of RTMP push in the format of 'rtmp://domain/live'.
+        :param _Url: Destination Url for RTMP repush, in the format of 'RTMP://domain/live'.
         :type Url: str
-        :param _StreamKey: Destination `StreamKey` of RTMP push in the format of 'streamid?key=value'.
+        :param _StreamKey: Target StreamKey for RTMP republishing, in the format of 'steamid?key=value'.
         :type StreamKey: str
         """
         self._Url = None
@@ -7910,7 +8377,7 @@ class RTMPAddressDestination(AbstractModel):
 
     @property
     def Url(self):
-        r"""Destination URL of RTMP push in the format of 'rtmp://domain/live'.
+        r"""Destination Url for RTMP repush, in the format of 'RTMP://domain/live'.
         :rtype: str
         """
         return self._Url
@@ -7921,7 +8388,7 @@ class RTMPAddressDestination(AbstractModel):
 
     @property
     def StreamKey(self):
-        r"""Destination `StreamKey` of RTMP push in the format of 'streamid?key=value'.
+        r"""Target StreamKey for RTMP republishing, in the format of 'steamid?key=value'.
         :rtype: str
         """
         return self._StreamKey
@@ -7945,15 +8412,15 @@ class RTMPAddressDestination(AbstractModel):
 
 
 class RTMPPullSourceAddress(AbstractModel):
-    r"""
+    r"""Configuration message of the created input RTMP pull source station.
 
     """
 
     def __init__(self):
         r"""
-        :param _TcUrl: 
+        :param _TcUrl: TcUrl of the RTMP origin server.
         :type TcUrl: str
-        :param _StreamKey: 
+        :param _StreamKey: StreamKey information of the RTMP origin server.
         :type StreamKey: str
         """
         self._TcUrl = None
@@ -7961,7 +8428,7 @@ class RTMPPullSourceAddress(AbstractModel):
 
     @property
     def TcUrl(self):
-        r"""
+        r"""TcUrl of the RTMP origin server.
         :rtype: str
         """
         return self._TcUrl
@@ -7972,7 +8439,7 @@ class RTMPPullSourceAddress(AbstractModel):
 
     @property
     def StreamKey(self):
-        r"""
+        r"""StreamKey information of the RTMP origin server.
         :rtype: str
         """
         return self._StreamKey
@@ -7996,15 +8463,15 @@ class RTMPPullSourceAddress(AbstractModel):
 
 
 class RTPAddressDestination(AbstractModel):
-    r"""Destination address information of RTP push.
+    r"""Target address information for RTP repush.
 
     """
 
     def __init__(self):
         r"""
-        :param _Ip: Push destination address IP.
+        :param _Ip: IP of the destination address for repush.
         :type Ip: str
-        :param _Port: Push destination address port.
+        :param _Port: Port of the destination address for push.
         :type Port: int
         """
         self._Ip = None
@@ -8012,7 +8479,7 @@ class RTPAddressDestination(AbstractModel):
 
     @property
     def Ip(self):
-        r"""Push destination address IP.
+        r"""IP of the destination address for repush.
         :rtype: str
         """
         return self._Ip
@@ -8023,7 +8490,7 @@ class RTPAddressDestination(AbstractModel):
 
     @property
     def Port(self):
-        r"""Push destination address port.
+        r"""Port of the destination address for push.
         :rtype: int
         """
         return self._Port
@@ -8047,20 +8514,20 @@ class RTPAddressDestination(AbstractModel):
 
 
 class RTSPPullSourceAddress(AbstractModel):
-    r"""
+    r"""Configuration message of the created input RTSP pull source station.
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: 
+        :param _Url: Url of the RTSP origin server.
         :type Url: str
         """
         self._Url = None
 
     @property
     def Url(self):
-        r"""
+        r"""Url of the RTSP origin server.
         :rtype: str
         """
         return self._Url
@@ -8083,20 +8550,20 @@ class RTSPPullSourceAddress(AbstractModel):
 
 
 class RegionInfo(AbstractModel):
-    r"""Region information
+    r"""Region information.
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: Region name
+        :param _Name: Zone name.
         :type Name: str
         """
         self._Name = None
 
     @property
     def Name(self):
-        r"""Region name
+        r"""Zone name.
         :rtype: str
         """
         return self._Name
@@ -8119,15 +8586,15 @@ class RegionInfo(AbstractModel):
 
 
 class ResilientStreamConf(AbstractModel):
-    r"""
+    r"""Configure smooth stream output for delayed playback.
 
     """
 
     def __init__(self):
         r"""
-        :param _Enable: 
+        :param _Enable: Whether to enable smooth delivery during delayed streaming. true: enable; false: disable. Not enabled by default.
         :type Enable: bool
-        :param _BufferTime: 
+        :param _BufferTime: Delay time in seconds, ranging from 10 to 300 for the time being.
         :type BufferTime: int
         """
         self._Enable = None
@@ -8135,7 +8602,7 @@ class ResilientStreamConf(AbstractModel):
 
     @property
     def Enable(self):
-        r"""
+        r"""Whether to enable smooth delivery during delayed streaming. true: enable; false: disable. Not enabled by default.
         :rtype: bool
         """
         return self._Enable
@@ -8146,7 +8613,7 @@ class ResilientStreamConf(AbstractModel):
 
     @property
     def BufferTime(self):
-        r"""
+        r"""Delay time in seconds, ranging from 10 to 300 for the time being.
         :rtype: int
         """
         return self._BufferTime
@@ -8170,15 +8637,15 @@ class ResilientStreamConf(AbstractModel):
 
 
 class SRTAddressDestination(AbstractModel):
-    r"""Push destination address information.
+    r"""Target address information for repush.
 
     """
 
     def __init__(self):
         r"""
-        :param _Ip: Destination address IP.
+        :param _Ip: IP of the target address.
         :type Ip: str
-        :param _Port: Destination address port.
+        :param _Port: The port of the destination address.
         :type Port: int
         """
         self._Ip = None
@@ -8186,7 +8653,7 @@ class SRTAddressDestination(AbstractModel):
 
     @property
     def Ip(self):
-        r"""Destination address IP.
+        r"""IP of the target address.
         :rtype: str
         """
         return self._Ip
@@ -8197,7 +8664,7 @@ class SRTAddressDestination(AbstractModel):
 
     @property
     def Port(self):
-        r"""Destination address port.
+        r"""The port of the destination address.
         :rtype: int
         """
         return self._Port
@@ -8220,16 +8687,148 @@ class SRTAddressDestination(AbstractModel):
         
 
 
-class SRTSourceAddressReq(AbstractModel):
-    r"""The SRT input address.
+class SRTFECFullOptions(AbstractModel):
+    r"""SRT FEC advanced configuration
 
     """
 
     def __init__(self):
         r"""
-        :param _Ip: The peer IP.
+        :param _Enable: Whether to enable FEC.
+        :type Enable: bool
+        :param _Cols: Number of FEC data packet Layout columns. Value range: >0
+        :type Cols: int
+        :param _Rows: Number of FEC data packet Layout rows. Value ranges from >=2 or <=-2.
+        :type Rows: int
+        :param _ARQ: ARQ policy when FEC is enabled. Value: "always", "onreq", "never".
+        :type ARQ: str
+        :param _Layout: FEC data packet Layout organization. Value: "even", "staircase"
+        :type Layout: str
+        """
+        self._Enable = None
+        self._Cols = None
+        self._Rows = None
+        self._ARQ = None
+        self._Layout = None
+
+    @property
+    def Enable(self):
+        r"""Whether to enable FEC.
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Cols(self):
+        r"""Number of FEC data packet Layout columns. Value range: >0
+        :rtype: int
+        """
+        return self._Cols
+
+    @Cols.setter
+    def Cols(self, Cols):
+        self._Cols = Cols
+
+    @property
+    def Rows(self):
+        r"""Number of FEC data packet Layout rows. Value ranges from >=2 or <=-2.
+        :rtype: int
+        """
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def ARQ(self):
+        r"""ARQ policy when FEC is enabled. Value: "always", "onreq", "never".
+        :rtype: str
+        """
+        return self._ARQ
+
+    @ARQ.setter
+    def ARQ(self, ARQ):
+        self._ARQ = ARQ
+
+    @property
+    def Layout(self):
+        r"""FEC data packet Layout organization. Value: "even", "staircase"
+        :rtype: str
+        """
+        return self._Layout
+
+    @Layout.setter
+    def Layout(self, Layout):
+        self._Layout = Layout
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._Cols = params.get("Cols")
+        self._Rows = params.get("Rows")
+        self._ARQ = params.get("ARQ")
+        self._Layout = params.get("Layout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SRTFECSimpleOptions(AbstractModel):
+    r"""SRT FEC settings
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: Whether FEC is enabled
+        :type Enable: bool
+        """
+        self._Enable = None
+
+    @property
+    def Enable(self):
+        r"""Whether FEC is enabled
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SRTSourceAddressReq(AbstractModel):
+    r"""SRT input source address.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ip: Peer IP or domain
         :type Ip: str
-        :param _Port: The peer port.
+        :param _Port: Peer port.
         :type Port: int
         """
         self._Ip = None
@@ -8237,7 +8836,7 @@ class SRTSourceAddressReq(AbstractModel):
 
     @property
     def Ip(self):
-        r"""The peer IP.
+        r"""Peer IP or domain
         :rtype: str
         """
         return self._Ip
@@ -8248,7 +8847,7 @@ class SRTSourceAddressReq(AbstractModel):
 
     @property
     def Port(self):
-        r"""The peer port.
+        r"""Peer port.
         :rtype: int
         """
         return self._Port
@@ -8272,15 +8871,15 @@ class SRTSourceAddressReq(AbstractModel):
 
 
 class SRTSourceAddressResp(AbstractModel):
-    r"""The SRT input address.
+    r"""SRT input source address.
 
     """
 
     def __init__(self):
         r"""
-        :param _Ip: The peer IP.
+        :param _Ip: Peer IP.
         :type Ip: str
-        :param _Port: The peer port.
+        :param _Port: Peer port.
         :type Port: int
         """
         self._Ip = None
@@ -8288,7 +8887,7 @@ class SRTSourceAddressResp(AbstractModel):
 
     @property
     def Ip(self):
-        r"""The peer IP.
+        r"""Peer IP.
         :rtype: str
         """
         return self._Ip
@@ -8299,7 +8898,7 @@ class SRTSourceAddressResp(AbstractModel):
 
     @property
     def Port(self):
-        r"""The peer port.
+        r"""Peer port.
         :rtype: int
         """
         return self._Port
@@ -8329,14 +8928,14 @@ class StartStreamLinkFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: Flow ID
+        :param _FlowId: <p>Stream Id.</p>
         :type FlowId: str
         """
         self._FlowId = None
 
     @property
     def FlowId(self):
-        r"""Flow ID
+        r"""<p>Stream Id.</p>
         :rtype: str
         """
         return self._FlowId
@@ -8393,14 +8992,14 @@ class StopStreamLinkFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: Flow ID
+        :param _FlowId: <p>Stream Id.</p>
         :type FlowId: str
         """
         self._FlowId = None
 
     @property
     def FlowId(self):
-        r"""Flow ID
+        r"""<p>Stream Id.</p>
         :rtype: str
         """
         return self._FlowId
@@ -8451,20 +9050,20 @@ class StopStreamLinkFlowResponse(AbstractModel):
 
 
 class StreamLinkRegionInfo(AbstractModel):
-    r"""StreamLink region information
+    r"""Region information for media transmission.
 
     """
 
     def __init__(self):
         r"""
-        :param _Regions: List of StreamLink regions
+        :param _Regions: List of region information for media direct transmission.
         :type Regions: list of RegionInfo
         """
         self._Regions = None
 
     @property
     def Regions(self):
-        r"""List of StreamLink regions
+        r"""List of region information for media direct transmission.
         :rtype: list of RegionInfo
         """
         return self._Regions
@@ -8492,17 +9091,17 @@ class StreamLinkRegionInfo(AbstractModel):
 
 
 class StreamSelector(AbstractModel):
-    r"""
+    r"""Select the specified audio track or video output
 
     """
 
     def __init__(self):
         r"""
-        :param _SelectorType: 
+        :param _SelectorType: Selection type: PID | TRACK
         :type SelectorType: str
-        :param _PidSelector: 
+        :param _PidSelector: Based on the PID configuration selector
         :type PidSelector: :class:`tencentcloud.mdc.v20200828.models.PidSelector`
-        :param _TrackSelector: 
+        :param _TrackSelector: Select a selector based on the Track configuration
         :type TrackSelector: :class:`tencentcloud.mdc.v20200828.models.TrackSelector`
         """
         self._SelectorType = None
@@ -8511,7 +9110,7 @@ class StreamSelector(AbstractModel):
 
     @property
     def SelectorType(self):
-        r"""
+        r"""Selection type: PID | TRACK
         :rtype: str
         """
         return self._SelectorType
@@ -8522,7 +9121,7 @@ class StreamSelector(AbstractModel):
 
     @property
     def PidSelector(self):
-        r"""
+        r"""Based on the PID configuration selector
         :rtype: :class:`tencentcloud.mdc.v20200828.models.PidSelector`
         """
         return self._PidSelector
@@ -8533,7 +9132,7 @@ class StreamSelector(AbstractModel):
 
     @property
     def TrackSelector(self):
-        r"""
+        r"""Select a selector based on the Track configuration
         :rtype: :class:`tencentcloud.mdc.v20200828.models.TrackSelector`
         """
         return self._TrackSelector
@@ -8562,17 +9161,18 @@ class StreamSelector(AbstractModel):
 
 
 class StreamUrlDetail(AbstractModel):
-    r"""
+    r"""Description of the complete URL information
 
     """
 
     def __init__(self):
         r"""
-        :param _Label: 
+        :param _Label: Describes carrier information and other details.
         :type Label: str
         :param _Url: URL 
         :type Url: str
-        :param _Type: 
+        :param _Type: Playback: stream playback address;
+RelayDestination: relay destination address; SourceCaptureUrl: source pull stream address; IngestEndpoint: streaming address
         :type Type: str
         """
         self._Label = None
@@ -8581,7 +9181,7 @@ class StreamUrlDetail(AbstractModel):
 
     @property
     def Label(self):
-        r"""
+        r"""Describes carrier information and other details.
         :rtype: str
         """
         return self._Label
@@ -8603,7 +9203,8 @@ class StreamUrlDetail(AbstractModel):
 
     @property
     def Type(self):
-        r"""
+        r"""Playback: stream playback address;
+RelayDestination: relay destination address; SourceCaptureUrl: source pull stream address; IngestEndpoint: streaming address
         :rtype: str
         """
         return self._Type
@@ -8628,15 +9229,15 @@ class StreamUrlDetail(AbstractModel):
 
 
 class TrackSelector(AbstractModel):
-    r"""
+    r"""Audio and video track selection
 
     """
 
     def __init__(self):
         r"""
-        :param _VideoIndex: 
+        :param _VideoIndex: Video track serial number. It starts from 1. Maximum value: 32.
         :type VideoIndex: list of int
-        :param _AudioIndex: 
+        :param _AudioIndex: Video track serial number. Starts from 1. Maximum value: 32.
         :type AudioIndex: list of int
         """
         self._VideoIndex = None
@@ -8644,7 +9245,7 @@ class TrackSelector(AbstractModel):
 
     @property
     def VideoIndex(self):
-        r"""
+        r"""Video track serial number. It starts from 1. Maximum value: 32.
         :rtype: list of int
         """
         return self._VideoIndex
@@ -8655,7 +9256,7 @@ class TrackSelector(AbstractModel):
 
     @property
     def AudioIndex(self):
-        r"""
+        r"""Video track serial number. Starts from 1. Maximum value: 32.
         :rtype: list of int
         """
         return self._AudioIndex

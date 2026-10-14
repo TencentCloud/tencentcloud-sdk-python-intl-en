@@ -155,7 +155,7 @@ INTERNALERROR = 'InternalError'
 # For the transcoding template adding API.
 INTERNALERROR_ARGSNOTMATCH = 'InternalError.ArgsNotMatch'
 
-# Error calling internal service.
+# Internal service call error.
 INTERNALERROR_CALLOTHERSVRERROR = 'InternalError.CallOtherSvrError'
 
 # Chinese domain names are not supported currently. Please check the domain name format.
@@ -194,7 +194,7 @@ INTERNALERROR_CRTDOMAINNOTFOUND = 'InternalError.CrtDomainNotFound'
 # The certificate key does not match.
 INTERNALERROR_CRTKEYNOTMATCH = 'InternalError.CrtKeyNotMatch'
 
-# DB execution error.
+# DB Execution Error.
 INTERNALERROR_DBERROR = 'InternalError.DBError'
 
 # The domain name is already connected elsewhere. Please check whether the entered domain name is correct, and if yes, you can add it again after successful ownership verification.
@@ -221,16 +221,16 @@ INTERNALERROR_DOMAINNOTEXIST = 'InternalError.DomainNotExist'
 # The domain name length exceeds the limit.
 INTERNALERROR_DOMAINTOOLONG = 'InternalError.DomainTooLong'
 
-# Error getting user account.
+# Error obtaining the user account.
 INTERNALERROR_GETBIZIDERROR = 'InternalError.GetBizidError'
 
 # Error getting the configuration.
 INTERNALERROR_GETCONFIGERROR = 'InternalError.GetConfigError'
 
-# Failed to get the stream information.
+# Failed to get stream information.
 INTERNALERROR_GETSTREAMINFOERROR = 'InternalError.GetStreamInfoError'
 
-# Error getting the live stream source information.
+# Error retrieving live stream source information.
 INTERNALERROR_GETUPSTREAMINFOERROR = 'InternalError.GetUpstreamInfoError'
 
 # An error occurred while getting the watermark.
@@ -257,7 +257,7 @@ INTERNALERROR_NETWORKERROR = 'InternalError.NetworkError'
 # The record does not exist.
 INTERNALERROR_NOTFOUND = 'InternalError.NotFound'
 
-# No permission to operate.
+# There is no permission to operate.
 INTERNALERROR_NOTPERMMITOPERAT = 'InternalError.NotPermmitOperat'
 
 # The playback domain name does not exist.
@@ -287,13 +287,13 @@ INTERNALERROR_RULENOTFOUND = 'InternalError.RuleNotFound'
 # The rule exceeds the limit.
 INTERNALERROR_RULEOUTLIMIT = 'InternalError.RuleOutLimit'
 
-# Exceptional stream status.
+# Stream status anomaly.
 INTERNALERROR_STREAMSTATUSERROR = 'InternalError.StreamStatusError'
 
 # Internal system error.
 INTERNALERROR_SYSTEMERROR = 'InternalError.SystemError'
 
-# Failed to update data.
+# Data update failed.
 INTERNALERROR_UPDATEDATAERROR = 'InternalError.UpdateDataError'
 
 # Failed to add the watermark.
@@ -305,7 +305,7 @@ INTERNALERROR_WATERMARKEDITERROR = 'InternalError.WatermarkEditError'
 # The watermark does not exist.
 INTERNALERROR_WATERMARKNOTEXIST = 'InternalError.WatermarkNotExist'
 
-# Invalid parameter.
+# Parameter error.
 INVALIDPARAMETER = 'InvalidParameter'
 
 # Incorrect template name.
@@ -482,7 +482,7 @@ RESOURCEINUSE = 'ResourceInUse'
 # Insufficient resources.
 RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 
-# The resource is not found.
+# The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
 
 # The channel does not exist.
@@ -503,13 +503,13 @@ RESOURCENOTFOUND_DOMAINNOTEXIST = 'ResourceNotFound.DomainNotExist'
 # Data is empty.
 RESOURCENOTFOUND_EMPTYDATA = 'ResourceNotFound.EmptyData'
 
-# You are blocked.
+# Disabled user.
 RESOURCENOTFOUND_FORBIDSERVICE = 'ResourceNotFound.ForbidService'
 
-# Service suspended.
+# User service is frozen.
 RESOURCENOTFOUND_FREEZESERVICE = 'ResourceNotFound.FreezeService'
 
-# This API is not supported for the user.
+# The user does not support this API.
 RESOURCENOTFOUND_INVALIDUSER = 'ResourceNotFound.InvalidUser'
 
 # The playback domain name does not exist.
@@ -518,13 +518,13 @@ RESOURCENOTFOUND_PLAYDOMAINNORECORD = 'ResourceNotFound.PlayDomainNoRecord'
 # The push domain name does not exist.
 RESOURCENOTFOUND_PUSHDOMAINNORECORD = 'ResourceNotFound.PushDomainNoRecord'
 
-# The service has been suspended due to account arrears. Please top up it to a positive balance to activate the service first.
+# Services for the account has been stopped. Please first top up to enable the service before reoperating.
 RESOURCENOTFOUND_STOPSERVICE = 'ResourceNotFound.StopService'
 
 # The `TaskId` does not exist.
 RESOURCENOTFOUND_TASKID = 'ResourceNotFound.TaskId'
 
-# You disabled the service.
+# User proactively suspended the service.
 RESOURCENOTFOUND_USERDISABLESERVICE = 'ResourceNotFound.UserDisableService'
 
 # The CSS service has not been activated.

@@ -9275,184 +9275,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
-class DescribeLiveForbidStreamListRequest(AbstractModel):
-    r"""DescribeLiveForbidStreamList request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _PageNum: Page number to get. Default value: 1.
-        :type PageNum: int
-        :param _PageSize: Number of entries per page. Maximum value: 100. 
-Value: any integer between 1 and 100.
-Default value: 10.
-        :type PageSize: int
-        :param _StreamName: Stream name for query
-        :type StreamName: str
-        """
-        self._PageNum = None
-        self._PageSize = None
-        self._StreamName = None
-
-    @property
-    def PageNum(self):
-        r"""Page number to get. Default value: 1.
-        :rtype: int
-        """
-        return self._PageNum
-
-    @PageNum.setter
-    def PageNum(self, PageNum):
-        self._PageNum = PageNum
-
-    @property
-    def PageSize(self):
-        r"""Number of entries per page. Maximum value: 100. 
-Value: any integer between 1 and 100.
-Default value: 10.
-        :rtype: int
-        """
-        return self._PageSize
-
-    @PageSize.setter
-    def PageSize(self, PageSize):
-        self._PageSize = PageSize
-
-    @property
-    def StreamName(self):
-        r"""Stream name for query
-        :rtype: str
-        """
-        return self._StreamName
-
-    @StreamName.setter
-    def StreamName(self, StreamName):
-        self._StreamName = StreamName
-
-
-    def _deserialize(self, params):
-        self._PageNum = params.get("PageNum")
-        self._PageSize = params.get("PageSize")
-        self._StreamName = params.get("StreamName")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeLiveForbidStreamListResponse(AbstractModel):
-    r"""DescribeLiveForbidStreamList response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TotalNum: Total number of eligible ones.
-        :type TotalNum: int
-        :param _TotalPage: Total number of pages.
-        :type TotalPage: int
-        :param _PageNum: Page number.
-        :type PageNum: int
-        :param _PageSize: Number of entries displayed per page.
-        :type PageSize: int
-        :param _ForbidStreamList: List of forbidden streams.
-        :type ForbidStreamList: list of ForbidStreamInfo
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._TotalNum = None
-        self._TotalPage = None
-        self._PageNum = None
-        self._PageSize = None
-        self._ForbidStreamList = None
-        self._RequestId = None
-
-    @property
-    def TotalNum(self):
-        r"""Total number of eligible ones.
-        :rtype: int
-        """
-        return self._TotalNum
-
-    @TotalNum.setter
-    def TotalNum(self, TotalNum):
-        self._TotalNum = TotalNum
-
-    @property
-    def TotalPage(self):
-        r"""Total number of pages.
-        :rtype: int
-        """
-        return self._TotalPage
-
-    @TotalPage.setter
-    def TotalPage(self, TotalPage):
-        self._TotalPage = TotalPage
-
-    @property
-    def PageNum(self):
-        r"""Page number.
-        :rtype: int
-        """
-        return self._PageNum
-
-    @PageNum.setter
-    def PageNum(self, PageNum):
-        self._PageNum = PageNum
-
-    @property
-    def PageSize(self):
-        r"""Number of entries displayed per page.
-        :rtype: int
-        """
-        return self._PageSize
-
-    @PageSize.setter
-    def PageSize(self, PageSize):
-        self._PageSize = PageSize
-
-    @property
-    def ForbidStreamList(self):
-        r"""List of forbidden streams.
-        :rtype: list of ForbidStreamInfo
-        """
-        return self._ForbidStreamList
-
-    @ForbidStreamList.setter
-    def ForbidStreamList(self, ForbidStreamList):
-        self._ForbidStreamList = ForbidStreamList
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._TotalNum = params.get("TotalNum")
-        self._TotalPage = params.get("TotalPage")
-        self._PageNum = params.get("PageNum")
-        self._PageSize = params.get("PageSize")
-        if params.get("ForbidStreamList") is not None:
-            self._ForbidStreamList = []
-            for item in params.get("ForbidStreamList"):
-                obj = ForbidStreamInfo()
-                obj._deserialize(item)
-                self._ForbidStreamList.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeLivePlayAuthKeyRequest(AbstractModel):
     r"""DescribeLivePlayAuthKey request structure.
 
@@ -12383,6 +12205,70 @@ class DescribeLiveWatermarksResponse(AbstractModel):
                 obj = WatermarkInfo()
                 obj._deserialize(item)
                 self._WatermarkList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOriginWhiteIpListRequest(AbstractModel):
+    r"""DescribeOriginWhiteIpList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: <p>Playback domain</p>
+        :type Domain: str
+        """
+        self._Domain = None
+
+    @property
+    def Domain(self):
+        r"""<p>Playback domain</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOriginWhiteIpListResponse(AbstractModel):
+    r"""DescribeOriginWhiteIpList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -16321,110 +16207,6 @@ class ForbidLiveStreamResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
-
-
-class ForbidStreamInfo(AbstractModel):
-    r"""List of forbidden streams
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _StreamName: Stream name.
-        :type StreamName: str
-        :param _CreateTime: The creation time.
-Note: Beijing time (UTC+8) is used.
-        :type CreateTime: str
-        :param _ExpireTime: The end time.
-Note: Beijing time (UTC+8) is used.
-        :type ExpireTime: str
-        :param _AppName: The push path.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type AppName: str
-        :param _DomainName: The push domain name.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type DomainName: str
-        """
-        self._StreamName = None
-        self._CreateTime = None
-        self._ExpireTime = None
-        self._AppName = None
-        self._DomainName = None
-
-    @property
-    def StreamName(self):
-        r"""Stream name.
-        :rtype: str
-        """
-        return self._StreamName
-
-    @StreamName.setter
-    def StreamName(self, StreamName):
-        self._StreamName = StreamName
-
-    @property
-    def CreateTime(self):
-        r"""The creation time.
-Note: Beijing time (UTC+8) is used.
-        :rtype: str
-        """
-        return self._CreateTime
-
-    @CreateTime.setter
-    def CreateTime(self, CreateTime):
-        self._CreateTime = CreateTime
-
-    @property
-    def ExpireTime(self):
-        r"""The end time.
-Note: Beijing time (UTC+8) is used.
-        :rtype: str
-        """
-        return self._ExpireTime
-
-    @ExpireTime.setter
-    def ExpireTime(self, ExpireTime):
-        self._ExpireTime = ExpireTime
-
-    @property
-    def AppName(self):
-        r"""The push path.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._AppName
-
-    @AppName.setter
-    def AppName(self, AppName):
-        self._AppName = AppName
-
-    @property
-    def DomainName(self):
-        r"""The push domain name.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._DomainName
-
-    @DomainName.setter
-    def DomainName(self, DomainName):
-        self._DomainName = DomainName
-
-
-    def _deserialize(self, params):
-        self._StreamName = params.get("StreamName")
-        self._CreateTime = params.get("CreateTime")
-        self._ExpireTime = params.get("ExpireTime")
-        self._AppName = params.get("AppName")
-        self._DomainName = params.get("DomainName")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class GroupProIspDataInfo(AbstractModel):

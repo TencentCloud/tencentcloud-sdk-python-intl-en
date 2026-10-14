@@ -43,22 +43,3 @@ class AiartClient(AbstractClient):
         kwargs["opts"] = opts or {}
         
         return await self.call_and_deserialize(**kwargs)
-        
-    async def ImageToImage(
-            self,
-            request: models.ImageToImageRequest,
-            opts: Dict = None,
-    ) -> models.ImageToImageResponse:
-        """
-        This API is used to transfer the image style based on the image to image technology. Images with small figures, complex gestures or too many figures are not recommended.
-        It supports 3 concurrency by default, which means that up to 3 submitted tasks can be processed simultaneously. Subsequent tasks can be processed only after ongoing ones are completed.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ImageToImage"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ImageToImageResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)

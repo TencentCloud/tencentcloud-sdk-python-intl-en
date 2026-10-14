@@ -18,39 +18,162 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
-class BackingIndexMetaField(AbstractModel):
-    r"""Backing index metadata fields
+class AutoScaleDiskInfo(AbstractModel):
+    r"""Auto capacity expansion parameter for cvm
 
     """
 
     def __init__(self):
         r"""
-        :param _IndexName: Backing index name
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _NodeType: Node type. Valid values: `hotData`, `warmData`.
+        :type NodeType: str
+        :param _ScaleType: 0: Percentage-based scale-out; 1: Absolute value-based scale-out
+        :type ScaleType: int
+        :param _Threshold: Trigger threshold. Unit: %. For example, 80%.
+        :type Threshold: int
+        :param _Duration: Trigger duration in minutes, for example, 60
+        :type Duration: int
+        :param _PercentSize: Expansion ratio per time, unit: %, for example, 20%
+        :type PercentSize: int
+        :param _FixSize: Absolute value-based scale-out, in GB, for example, 100 GB
+        :type FixSize: int
+        :param _MaxSize: Capacity limit for scale-out, in GB, for example, 500 GB
+        :type MaxSize: int
+        """
+        self._NodeType = None
+        self._ScaleType = None
+        self._Threshold = None
+        self._Duration = None
+        self._PercentSize = None
+        self._FixSize = None
+        self._MaxSize = None
+
+    @property
+    def NodeType(self):
+        r"""Node type. Valid values: `hotData`, `warmData`.
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def ScaleType(self):
+        r"""0: Percentage-based scale-out; 1: Absolute value-based scale-out
+        :rtype: int
+        """
+        return self._ScaleType
+
+    @ScaleType.setter
+    def ScaleType(self, ScaleType):
+        self._ScaleType = ScaleType
+
+    @property
+    def Threshold(self):
+        r"""Trigger threshold. Unit: %. For example, 80%.
+        :rtype: int
+        """
+        return self._Threshold
+
+    @Threshold.setter
+    def Threshold(self, Threshold):
+        self._Threshold = Threshold
+
+    @property
+    def Duration(self):
+        r"""Trigger duration in minutes, for example, 60
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def PercentSize(self):
+        r"""Expansion ratio per time, unit: %, for example, 20%
+        :rtype: int
+        """
+        return self._PercentSize
+
+    @PercentSize.setter
+    def PercentSize(self, PercentSize):
+        self._PercentSize = PercentSize
+
+    @property
+    def FixSize(self):
+        r"""Absolute value-based scale-out, in GB, for example, 100 GB
+        :rtype: int
+        """
+        return self._FixSize
+
+    @FixSize.setter
+    def FixSize(self, FixSize):
+        self._FixSize = FixSize
+
+    @property
+    def MaxSize(self):
+        r"""Capacity limit for scale-out, in GB, for example, 500 GB
+        :rtype: int
+        """
+        return self._MaxSize
+
+    @MaxSize.setter
+    def MaxSize(self, MaxSize):
+        self._MaxSize = MaxSize
+
+
+    def _deserialize(self, params):
+        self._NodeType = params.get("NodeType")
+        self._ScaleType = params.get("ScaleType")
+        self._Threshold = params.get("Threshold")
+        self._Duration = params.get("Duration")
+        self._PercentSize = params.get("PercentSize")
+        self._FixSize = params.get("FixSize")
+        self._MaxSize = params.get("MaxSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackingIndexMetaField(AbstractModel):
+    r"""Backup index metadata field
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IndexName: <p>Backing index name</p>
         :type IndexName: str
-        :param _IndexStatus: Backing index status
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _IndexStatus: <p>Backup index status</p>
         :type IndexStatus: str
-        :param _IndexStorage: Backing index size
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _IndexStorage: <p>Backup index storage size</p>
         :type IndexStorage: int
-        :param _IndexPhrase: Current lifecycle phase of backing index
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _IndexPhrase: <p>Backup index current lifecycle</p>
         :type IndexPhrase: str
-        :param _IndexCreateTime: Backing index creation time
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _IndexCreateTime: <p>Backup index creation time</p>
         :type IndexCreateTime: str
+        :param _IndexUuid: <p>Index Uuid</p>
+        :type IndexUuid: str
         """
         self._IndexName = None
         self._IndexStatus = None
         self._IndexStorage = None
         self._IndexPhrase = None
         self._IndexCreateTime = None
+        self._IndexUuid = None
 
     @property
     def IndexName(self):
-        r"""Backing index name
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""<p>Backing index name</p>
         :rtype: str
         """
         return self._IndexName
@@ -61,8 +184,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexStatus(self):
-        r"""Backing index status
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""<p>Backup index status</p>
         :rtype: str
         """
         return self._IndexStatus
@@ -73,8 +195,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexStorage(self):
-        r"""Backing index size
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""<p>Backup index storage size</p>
         :rtype: int
         """
         return self._IndexStorage
@@ -85,8 +206,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexPhrase(self):
-        r"""Current lifecycle phase of backing index
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""<p>Backup index current lifecycle</p>
         :rtype: str
         """
         return self._IndexPhrase
@@ -97,8 +217,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexCreateTime(self):
-        r"""Backing index creation time
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""<p>Backup index creation time</p>
         :rtype: str
         """
         return self._IndexCreateTime
@@ -107,6 +226,17 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     def IndexCreateTime(self, IndexCreateTime):
         self._IndexCreateTime = IndexCreateTime
 
+    @property
+    def IndexUuid(self):
+        r"""<p>Index Uuid</p>
+        :rtype: str
+        """
+        return self._IndexUuid
+
+    @IndexUuid.setter
+    def IndexUuid(self, IndexUuid):
+        self._IndexUuid = IndexUuid
+
 
     def _deserialize(self, params):
         self._IndexName = params.get("IndexName")
@@ -114,6 +244,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._IndexStorage = params.get("IndexStorage")
         self._IndexPhrase = params.get("IndexPhrase")
         self._IndexCreateTime = params.get("IndexCreateTime")
+        self._IndexUuid = params.get("IndexUuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -125,7 +256,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class ClusterView(AbstractModel):
-    r"""Cluster view data
+    r"""Cluster dimension view data
 
     """
 
@@ -135,47 +266,45 @@ class ClusterView(AbstractModel):
         :type Health: float
         :param _Visible: Whether the cluster is visible
         :type Visible: float
-        :param _Break: Whether the cluster encounters circuit breaking
+        :param _Break: Whether to fuse the cluster
         :type Break: float
-        :param _AvgDiskUsage: Average disk usage
+        :param _AvgDiskUsage: Average Disk Usage
         :type AvgDiskUsage: float
-        :param _AvgMemUsage: Average memory usage
+        :param _AvgMemUsage: Average memory utilization
         :type AvgMemUsage: float
-        :param _AvgCpuUsage: Average CPU usage
+        :param _AvgCpuUsage: Average CPU Usage
         :type AvgCpuUsage: float
-        :param _TotalDiskSize: Total disk size of the cluster
+        :param _TotalDiskSize: Total storage size of a cluster.
         :type TotalDiskSize: int
-        :param _TargetNodeTypes: Types of nodes to receive client requests
+        :param _TargetNodeTypes: Client request node
         :type TargetNodeTypes: list of str
         :param _NodeNum: Number of online nodes
         :type NodeNum: int
         :param _TotalNodeNum: Total number of nodes
         :type TotalNodeNum: int
-        :param _DataNodeNum: Number of data nodes
+        :param _DataNodeNum: Number of Data Nodes
         :type DataNodeNum: int
-        :param _IndexNum: Number of indices
+        :param _IndexNum: Index count
         :type IndexNum: int
         :param _DocNum: Number of documents
         :type DocNum: int
-        :param _DiskUsedInBytes: Used disk size (in bytes)
+        :param _DiskUsedInBytes: Used bytes of the disk
         :type DiskUsedInBytes: int
         :param _ShardNum: Number of shards
         :type ShardNum: int
         :param _PrimaryShardNum: Number of primary shards
         :type PrimaryShardNum: int
-        :param _RelocatingShardNum: Number of relocating shards
+        :param _RelocatingShardNum: Number of migrating shards
         :type RelocatingShardNum: int
-        :param _InitializingShardNum: Number of initializing shards
+        :param _InitializingShardNum: Number of initializing shards.
         :type InitializingShardNum: int
         :param _UnassignedShardNum: Number of unassigned shards
         :type UnassignedShardNum: int
-        :param _TotalCosStorage: Total COS storage of an enterprise cluster, in GB
+        :param _TotalCosStorage: Enterprise Edition COS storage capacity size in GB
         :type TotalCosStorage: int
-        :param _SearchableSnapshotCosBucket: Name of the COS bucket that stores searchable snapshots of an enterprise cluster
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _SearchableSnapshotCosBucket: bucket name for storing cos searchable snapshots in the Enterprise Edition cluster
         :type SearchableSnapshotCosBucket: str
-        :param _SearchableSnapshotCosAppId: COS app ID of the searchable snapshots of an enterprise cluster
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _SearchableSnapshotCosAppId: App ID of the cos bucket for searchable snapshots in the Enterprise Edition cluster
         :type SearchableSnapshotCosAppId: str
         """
         self._Health = None
@@ -225,7 +354,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Break(self):
-        r"""Whether the cluster encounters circuit breaking
+        r"""Whether to fuse the cluster
         :rtype: float
         """
         return self._Break
@@ -236,7 +365,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AvgDiskUsage(self):
-        r"""Average disk usage
+        r"""Average Disk Usage
         :rtype: float
         """
         return self._AvgDiskUsage
@@ -247,7 +376,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AvgMemUsage(self):
-        r"""Average memory usage
+        r"""Average memory utilization
         :rtype: float
         """
         return self._AvgMemUsage
@@ -258,7 +387,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AvgCpuUsage(self):
-        r"""Average CPU usage
+        r"""Average CPU Usage
         :rtype: float
         """
         return self._AvgCpuUsage
@@ -269,7 +398,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TotalDiskSize(self):
-        r"""Total disk size of the cluster
+        r"""Total storage size of a cluster.
         :rtype: int
         """
         return self._TotalDiskSize
@@ -280,7 +409,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TargetNodeTypes(self):
-        r"""Types of nodes to receive client requests
+        r"""Client request node
         :rtype: list of str
         """
         return self._TargetNodeTypes
@@ -313,7 +442,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DataNodeNum(self):
-        r"""Number of data nodes
+        r"""Number of Data Nodes
         :rtype: int
         """
         return self._DataNodeNum
@@ -324,7 +453,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def IndexNum(self):
-        r"""Number of indices
+        r"""Index count
         :rtype: int
         """
         return self._IndexNum
@@ -346,7 +475,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DiskUsedInBytes(self):
-        r"""Used disk size (in bytes)
+        r"""Used bytes of the disk
         :rtype: int
         """
         return self._DiskUsedInBytes
@@ -379,7 +508,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RelocatingShardNum(self):
-        r"""Number of relocating shards
+        r"""Number of migrating shards
         :rtype: int
         """
         return self._RelocatingShardNum
@@ -390,7 +519,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InitializingShardNum(self):
-        r"""Number of initializing shards
+        r"""Number of initializing shards.
         :rtype: int
         """
         return self._InitializingShardNum
@@ -412,7 +541,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TotalCosStorage(self):
-        r"""Total COS storage of an enterprise cluster, in GB
+        r"""Enterprise Edition COS storage capacity size in GB
         :rtype: int
         """
         return self._TotalCosStorage
@@ -423,8 +552,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SearchableSnapshotCosBucket(self):
-        r"""Name of the COS bucket that stores searchable snapshots of an enterprise cluster
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""bucket name for storing cos searchable snapshots in the Enterprise Edition cluster
         :rtype: str
         """
         return self._SearchableSnapshotCosBucket
@@ -435,8 +563,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SearchableSnapshotCosAppId(self):
-        r"""COS app ID of the searchable snapshots of an enterprise cluster
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""App ID of the cos bucket for searchable snapshots in the Enterprise Edition cluster
         :rtype: str
         """
         return self._SearchableSnapshotCosAppId
@@ -480,48 +607,54 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class CosBackup(AbstractModel):
-    r"""Auto-backup to COS for ES
+    r"""ES cos auto backup information
 
     """
 
     def __init__(self):
         r"""
-        :param _IsAutoBackup: Whether to enable auto-backup to COS
+        :param _IsAutoBackup: <p>Whether to enable cos automatic backup</p>
         :type IsAutoBackup: bool
-        :param _BackupTime: Auto-backup time (accurate down to the hour), such as "22:00"
+        :param _BackupTime: <p>Automatic backup execution time (accurate to the hour), e.g. "22:00"</p>
         :type BackupTime: str
-        :param _SnapshotName: Backup snapshot prefix.
+        :param _SnapshotName: <p>Backup snapshot prefix</p>
         :type SnapshotName: str
-        :param _EsRepositoryType: Valid values: 0 (Tencent Cloud repository) and 1 (customer repository).
+        :param _EsRepositoryType: <p>0 (Tencent Cloud repository); 1 (customer repository)</p>
         :type EsRepositoryType: int
-        :param _PaasEsRepository: Managed snapshot repository name.
+        :param _PaasEsRepository: <p>Managed snapshot repository name.</p>
         :type PaasEsRepository: str
-        :param _UserEsRepository: Customer snapshot repository name.
+        :param _UserEsRepository: <p>Customer snapshot repository name</p>
         :type UserEsRepository: str
-        :param _CosBasePath: COS storage folder directory.
+        :param _CosBasePath: <p>cos storage folder directory</p>
         :type CosBasePath: str
-        :param _StorageDuration: Snapshot storage cycle in days.
+        :param _StorageDuration: <p>Snapshot storage cycle in days</p>
         :type StorageDuration: int
-        :param _AutoBackupInterval: Auto backup frequency in hours.
+        :param _AutoBackupInterval: <p>Auto backup frequency in hours.</p>
         :type AutoBackupInterval: int
-        :param _CosRetention: Backup lock. Valid values: 0 (not locked) and 1 (locked).
+        :param _CosRetention: <p>Backup lock. Valid values: 0 (not locked) and 1 (locked).</p>
         :type CosRetention: int
-        :param _RetainUntilDate: Lock expiration date, such as 2022-12-10T08:34:48.000Z.
+        :param _RetainUntilDate: <p>Lock expiration date, such as 2022-12-10T08:34:48.000Z.</p>
         :type RetainUntilDate: str
-        :param _RetentionGraceTime: Lock grace period.
+        :param _RetentionGraceTime: <p>Lock grace period</p>
         :type RetentionGraceTime: int
-        :param _RemoteCos: Cross-region backup. Valid values: 0 (disabled) and 1 (enabled).
+        :param _RemoteCos: <p>Cross-region backup. Valid values: 0 (disabled) and 1 (enabled).</p>
         :type RemoteCos: int
-        :param _RemoteCosRegion: Region name for cross-region backup, such as ap-guangzhou.
+        :param _RemoteCosRegion: <p>Region name for cross-regional backup, such as ap-guangzhou.</p>
         :type RemoteCosRegion: str
-        :param _StrategyName: Policy name.
+        :param _StrategyName: <p>Policy name.</p>
         :type StrategyName: str
-        :param _Indices: Backup index list. If left empty, it means to back up all indexes.
+        :param _Indices: <p>Backup index list. If left empty, it means to back up all indexes.</p>
         :type Indices: str
-        :param _MultiAz: 
+        :param _MultiAz: <p>cos multi-AZ backup. 0: single AZ; 1: multi-AZ</p>
         :type MultiAz: int
-        :param _CreateTime: Policy creation time.
+        :param _MaxSnapshotPerSec: <p>Maximum speed of write to the repository per node max_snapshot_bytes_per_sec, default 40m</p>
+        :type MaxSnapshotPerSec: str
+        :param _MaxRestorePerSec: <p>Maximum speed of reading the repository per node max_restore_bytes_per_sec. Default is 40m before 710, and default unlimited from 710 onwards</p>
+        :type MaxRestorePerSec: str
+        :param _CreateTime: <p>Policy creation time</p>
         :type CreateTime: str
+        :param _InstanceId: <p>Instance ID.</p>
+        :type InstanceId: str
         """
         self._IsAutoBackup = None
         self._BackupTime = None
@@ -540,11 +673,14 @@ class CosBackup(AbstractModel):
         self._StrategyName = None
         self._Indices = None
         self._MultiAz = None
+        self._MaxSnapshotPerSec = None
+        self._MaxRestorePerSec = None
         self._CreateTime = None
+        self._InstanceId = None
 
     @property
     def IsAutoBackup(self):
-        r"""Whether to enable auto-backup to COS
+        r"""<p>Whether to enable cos automatic backup</p>
         :rtype: bool
         """
         return self._IsAutoBackup
@@ -555,7 +691,7 @@ class CosBackup(AbstractModel):
 
     @property
     def BackupTime(self):
-        r"""Auto-backup time (accurate down to the hour), such as "22:00"
+        r"""<p>Automatic backup execution time (accurate to the hour), e.g. "22:00"</p>
         :rtype: str
         """
         return self._BackupTime
@@ -566,7 +702,7 @@ class CosBackup(AbstractModel):
 
     @property
     def SnapshotName(self):
-        r"""Backup snapshot prefix.
+        r"""<p>Backup snapshot prefix</p>
         :rtype: str
         """
         return self._SnapshotName
@@ -577,7 +713,7 @@ class CosBackup(AbstractModel):
 
     @property
     def EsRepositoryType(self):
-        r"""Valid values: 0 (Tencent Cloud repository) and 1 (customer repository).
+        r"""<p>0 (Tencent Cloud repository); 1 (customer repository)</p>
         :rtype: int
         """
         return self._EsRepositoryType
@@ -588,7 +724,7 @@ class CosBackup(AbstractModel):
 
     @property
     def PaasEsRepository(self):
-        r"""Managed snapshot repository name.
+        r"""<p>Managed snapshot repository name.</p>
         :rtype: str
         """
         return self._PaasEsRepository
@@ -599,7 +735,7 @@ class CosBackup(AbstractModel):
 
     @property
     def UserEsRepository(self):
-        r"""Customer snapshot repository name.
+        r"""<p>Customer snapshot repository name</p>
         :rtype: str
         """
         return self._UserEsRepository
@@ -610,7 +746,7 @@ class CosBackup(AbstractModel):
 
     @property
     def CosBasePath(self):
-        r"""COS storage folder directory.
+        r"""<p>cos storage folder directory</p>
         :rtype: str
         """
         return self._CosBasePath
@@ -621,7 +757,7 @@ class CosBackup(AbstractModel):
 
     @property
     def StorageDuration(self):
-        r"""Snapshot storage cycle in days.
+        r"""<p>Snapshot storage cycle in days</p>
         :rtype: int
         """
         return self._StorageDuration
@@ -632,7 +768,7 @@ class CosBackup(AbstractModel):
 
     @property
     def AutoBackupInterval(self):
-        r"""Auto backup frequency in hours.
+        r"""<p>Auto backup frequency in hours.</p>
         :rtype: int
         """
         return self._AutoBackupInterval
@@ -643,7 +779,7 @@ class CosBackup(AbstractModel):
 
     @property
     def CosRetention(self):
-        r"""Backup lock. Valid values: 0 (not locked) and 1 (locked).
+        r"""<p>Backup lock. Valid values: 0 (not locked) and 1 (locked).</p>
         :rtype: int
         """
         return self._CosRetention
@@ -654,7 +790,7 @@ class CosBackup(AbstractModel):
 
     @property
     def RetainUntilDate(self):
-        r"""Lock expiration date, such as 2022-12-10T08:34:48.000Z.
+        r"""<p>Lock expiration date, such as 2022-12-10T08:34:48.000Z.</p>
         :rtype: str
         """
         return self._RetainUntilDate
@@ -665,7 +801,7 @@ class CosBackup(AbstractModel):
 
     @property
     def RetentionGraceTime(self):
-        r"""Lock grace period.
+        r"""<p>Lock grace period</p>
         :rtype: int
         """
         return self._RetentionGraceTime
@@ -676,7 +812,7 @@ class CosBackup(AbstractModel):
 
     @property
     def RemoteCos(self):
-        r"""Cross-region backup. Valid values: 0 (disabled) and 1 (enabled).
+        r"""<p>Cross-region backup. Valid values: 0 (disabled) and 1 (enabled).</p>
         :rtype: int
         """
         return self._RemoteCos
@@ -687,7 +823,7 @@ class CosBackup(AbstractModel):
 
     @property
     def RemoteCosRegion(self):
-        r"""Region name for cross-region backup, such as ap-guangzhou.
+        r"""<p>Region name for cross-regional backup, such as ap-guangzhou.</p>
         :rtype: str
         """
         return self._RemoteCosRegion
@@ -698,7 +834,7 @@ class CosBackup(AbstractModel):
 
     @property
     def StrategyName(self):
-        r"""Policy name.
+        r"""<p>Policy name.</p>
         :rtype: str
         """
         return self._StrategyName
@@ -709,7 +845,7 @@ class CosBackup(AbstractModel):
 
     @property
     def Indices(self):
-        r"""Backup index list. If left empty, it means to back up all indexes.
+        r"""<p>Backup index list. If left empty, it means to back up all indexes.</p>
         :rtype: str
         """
         return self._Indices
@@ -720,7 +856,7 @@ class CosBackup(AbstractModel):
 
     @property
     def MultiAz(self):
-        r"""
+        r"""<p>cos multi-AZ backup. 0: single AZ; 1: multi-AZ</p>
         :rtype: int
         """
         return self._MultiAz
@@ -730,8 +866,30 @@ class CosBackup(AbstractModel):
         self._MultiAz = MultiAz
 
     @property
+    def MaxSnapshotPerSec(self):
+        r"""<p>Maximum speed of write to the repository per node max_snapshot_bytes_per_sec, default 40m</p>
+        :rtype: str
+        """
+        return self._MaxSnapshotPerSec
+
+    @MaxSnapshotPerSec.setter
+    def MaxSnapshotPerSec(self, MaxSnapshotPerSec):
+        self._MaxSnapshotPerSec = MaxSnapshotPerSec
+
+    @property
+    def MaxRestorePerSec(self):
+        r"""<p>Maximum speed of reading the repository per node max_restore_bytes_per_sec. Default is 40m before 710, and default unlimited from 710 onwards</p>
+        :rtype: str
+        """
+        return self._MaxRestorePerSec
+
+    @MaxRestorePerSec.setter
+    def MaxRestorePerSec(self, MaxRestorePerSec):
+        self._MaxRestorePerSec = MaxRestorePerSec
+
+    @property
     def CreateTime(self):
-        r"""Policy creation time.
+        r"""<p>Policy creation time</p>
         :rtype: str
         """
         return self._CreateTime
@@ -739,6 +897,17 @@ class CosBackup(AbstractModel):
     @CreateTime.setter
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
+
+    @property
+    def InstanceId(self):
+        r"""<p>Instance ID.</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
@@ -759,7 +928,10 @@ class CosBackup(AbstractModel):
         self._StrategyName = params.get("StrategyName")
         self._Indices = params.get("Indices")
         self._MultiAz = params.get("MultiAz")
+        self._MaxSnapshotPerSec = params.get("MaxSnapshotPerSec")
+        self._MaxRestorePerSec = params.get("MaxRestorePerSec")
         self._CreateTime = params.get("CreateTime")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -875,15 +1047,15 @@ class CreateIndexRequest(AbstractModel):
         r"""
         :param _InstanceId: ES cluster ID
         :type InstanceId: str
-        :param _IndexType: Type of the index to create. `auto`: Automated; `normal`: General.
+        :param _IndexType: Index type of the created index. auto: autonomous index; normal: general index
         :type IndexType: str
-        :param _IndexName: Name of the index to create
+        :param _IndexName: Index name of the created index
         :type IndexName: str
-        :param _IndexMetaJson: JSON-formatted index metadata to create, such as `mappings` and `settings`
+        :param _IndexMetaJson: [Required] JSON-formatted index metadata created, such as mappings and settings
         :type IndexMetaJson: str
-        :param _Username: Username for cluster access
+        :param _Username: Cluster access username.
         :type Username: str
-        :param _Password: Password for cluster access
+        :param _Password: Cluster access password
         :type Password: str
         """
         self._InstanceId = None
@@ -906,7 +1078,7 @@ class CreateIndexRequest(AbstractModel):
 
     @property
     def IndexType(self):
-        r"""Type of the index to create. `auto`: Automated; `normal`: General.
+        r"""Index type of the created index. auto: autonomous index; normal: general index
         :rtype: str
         """
         return self._IndexType
@@ -917,7 +1089,7 @@ class CreateIndexRequest(AbstractModel):
 
     @property
     def IndexName(self):
-        r"""Name of the index to create
+        r"""Index name of the created index
         :rtype: str
         """
         return self._IndexName
@@ -928,7 +1100,7 @@ class CreateIndexRequest(AbstractModel):
 
     @property
     def IndexMetaJson(self):
-        r"""JSON-formatted index metadata to create, such as `mappings` and `settings`
+        r"""[Required] JSON-formatted index metadata created, such as mappings and settings
         :rtype: str
         """
         return self._IndexMetaJson
@@ -939,7 +1111,7 @@ class CreateIndexRequest(AbstractModel):
 
     @property
     def Username(self):
-        r"""Username for cluster access
+        r"""Cluster access username.
         :rtype: str
         """
         return self._Username
@@ -950,7 +1122,7 @@ class CreateIndexRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""Password for cluster access
+        r"""Cluster access password
         :rtype: str
         """
         return self._Password
@@ -1012,82 +1184,94 @@ class CreateInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: Availability Zone
+        :param _Zone: <p>AZ.</p>
         :type Zone: str
-        :param _EsVersion: Instance version. Valid values: `5.6.4`, `6.4.3`, `6.8.2`, `7.5.1`, `7.10.1`
+        :param _EsVersion: <p>Instance version (supported: "5.6.4", "6.4.3", "6.8.2", "7.5.1", "7.10.1")</p>
         :type EsVersion: str
-        :param _VpcId: VPC ID
+        :param _VpcId: <p>VPC ID</p>
         :type VpcId: str
-        :param _SubnetId: Subnet ID
+        :param _SubnetId: <p>Subnet ID.</p>
         :type SubnetId: str
-        :param _Password: Access password, which must contain 8 to 16 characters, and include at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]
+        :param _Password: <p>Access password (8-16 characters, including at least two of the following: [a-z,A-Z], [0-9], and special characters in [-!@#$%&amp;^*+=_:;,.?])</p>
         :type Password: str
-        :param _InstanceName: Instance name, which can contain 1 to 50 English letters, Chinese characters, digits, dashes (-), or underscores (_)
+        :param _InstanceName: <p>Instance name (1-50 English letters, Chinese characters, digits, hyphens -, or underscores _)</p>
         :type InstanceName: str
-        :param _NodeNum: This parameter has been disused. Please use `NodeInfoList`
-Number of nodes (2-50)
+        :param _NodeNum: <p>Abandoned. Please use NodeInfoList<br>Node quantity (2-50)</p>
         :type NodeNum: int
-        :param _ChargeType: Billing mode <li>POSTPAID_BY_HOUR: Pay-as-you-go hourly </li>Default value: POSTPAID_BY_HOUR
+        :param _ChargeType: <p>Billing type<li>PREPAID: prepaid, i.e., monthly subscription</li><li>POSTPAID_BY_HOUR: pay-as-you-go by hour</li>Default value: POSTPAID_BY_HOUR</p>
         :type ChargeType: str
-        :param _ChargePeriod: This parameter is not used on the global website
+        :param _ChargePeriod: <p>Annual and monthly subscription duration (unit determined by the TimeUnit parameter)</p>
         :type ChargePeriod: int
-        :param _RenewFlag: This parameter is not used on the global website
+        :param _RenewFlag: <p>Auto-renewal flag<li>RENEW_FLAG_AUTO: auto renewal</li><li>RENEW_FLAG_MANUAL: no auto-renewal, user renews manually</li>This needs to be set when ChargeType is PREPAID. If this parameter is not passed, no automatic renewal by default for general users, and auto renewal for SVIP users</p>
         :type RenewFlag: str
-        :param _NodeType: This parameter has been disused. Please use `NodeInfoList`
-Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+        :param _NodeType: <p>Abandoned. Please use NodeInfoList<br>Node specification<li>ES.S1.SMALL2: 1-core 2G</li><li>ES.S1.MEDIUM4: 2-core 4G</li><li>ES.S1.MEDIUM8: 2-core 8G</li><li>ES.S1.LARGE16: 4-core 16G</li><li>ES.S1.2XLARGE32: 8-core 32G</li><li>ES.S1.4XLARGE32: 16-core 32G</li><li>ES.S1.4XLARGE64: 16-core 64G</li></p>
         :type NodeType: str
-        :param _DiskType: This parameter has been disused. Please use `NodeInfoList`
-Node storage type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: premium cloud storage </li>Default value: CLOUD_SSD
+        :param _DiskType: <p>Abandoned. Please use NodeInfoList<br>Node disk type<li>CLOUD_SSD: ssd cloud disk</li><li>CLOUD_PREMIUM: high-performance cloud block storage</li><li>CLOUD_HSSD: enhanced SSD cloud disk</li><li>CLOUD_BSSD: universal type SSD cloud disk</li>Default value: CLOUD_SSD</p>
         :type DiskType: str
-        :param _DiskSize: This parameter has been disused. Please use `NodeInfoList`
-Node disk size in GB
+        :param _DiskSize: <p>Abandoned. Please use NodeInfoList<br>Node disk capacity (unit: GB)</p>
         :type DiskSize: int
-        :param _TimeUnit: This parameter is not used on the global website
+        :param _TimeUnit: <p>Billing duration unit (needs to be set when ChargeType is PREPAID. Default value: "m", which means month. Currently only support "m")</p>
         :type TimeUnit: str
-        :param _AutoVoucher: Whether to automatically use vouchers <li>0: No </li><li>1: Yes </li>Default value: 0
+        :param _AutoVoucher: <p>Indicates whether to use vouchers automatically<li>0: Do not use automatically.</li><li>1: Use automatically.</li>Default value: 0.</p>
         :type AutoVoucher: int
-        :param _VoucherIds: List of voucher IDs (only one voucher can be specified at a time currently)
+        :param _VoucherIds: <p>Voucher ID list. Only one voucher can be specified.</p>
         :type VoucherIds: list of str
-        :param _EnableDedicatedMaster: This parameter has been disused. Please use `NodeInfoList`
-Whether to create a dedicated primary node <li>true: yes </li><li>false: no </li>Default value: false
+        :param _EnableDedicatedMaster: <p>Abandoned. Please use NodeInfoList<br>Whether to create a dedicated master node<li>true: enable a dedicated master node</li><li>false: disable a dedicated master node</li>Default value: false</p>
         :type EnableDedicatedMaster: bool
-        :param _MasterNodeNum: This parameter has been disused. Please use `NodeInfoList`
-Number of dedicated primary nodes (only 3 and 5 are supported. This value must be passed in if `EnableDedicatedMaster` is `true`)
+        :param _MasterNodeNum: <p>Abandoned. Please use NodeInfoList<br>Number of dedicated primary nodes (supports only 3 or 5. Required if EnableDedicatedMaster is true)</p>
         :type MasterNodeNum: int
-        :param _MasterNodeType: This parameter has been disused. Please use `NodeInfoList`
-Dedicated primary node type, which must be passed in if `EnableDedicatedMaster` is `true` <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
+        :param _MasterNodeType: <p>Abandoned. Please use NodeInfoList<br>Dedicated primary node type (required if EnableDedicatedMaster is true)<li>ES.S1.SMALL2: 1-core 2G</li><li>ES.S1.MEDIUM4: 2-core 4G</li><li>ES.S1.MEDIUM8: 2-core 8G</li><li>ES.S1.LARGE16: 4-core 16G</li><li>ES.S1.2XLARGE32: 8-core 32G</li><li>ES.S1.4XLARGE32: 16-core 32G</li><li>ES.S1.4XLARGE64: 16-core 64G</li></p>
         :type MasterNodeType: str
-        :param _MasterNodeDiskSize: This parameter has been disused. Please use `NodeInfoList`
-Dedicated primary node disk size in GB, which is optional. If passed in, it can only be 50 and cannot be customized currently
+        :param _MasterNodeDiskSize: <p>Abandoned. Please use NodeInfoList<br>Dedicated primary node disk size (in GB, optional; if transmitted, it must be 50. Customization is not supported temporarily)</p>
         :type MasterNodeDiskSize: int
-        :param _ClusterNameInConf: ClusterName in the cluster configuration file, which is the instance ID by default and currently cannot be customized
+        :param _ClusterNameInConf: <p>ClusterName in the cluster configuration file (system default configuration is the instance ID, customization is not supported temporarily)</p>
         :type ClusterNameInConf: str
-        :param _DeployMode: Cluster deployment mode <li>0: single-AZ deployment </li><li>1: multi-AZ deployment </li>Default value: 0
+        :param _DeployMode: <p>Cluster deployment method<li>0: single-AZ deployment</li><li>1: multi-AZ deployment, Beijing, Shanghai, Shanghai Finance, Guangzhou, Nanjing, Hong Kong, Singapore, Frankfurt (allowlist control)</li>Default value: 0</p>
         :type DeployMode: int
-        :param _MultiZoneInfo: Details of AZs in multi-AZ deployment mode (which is required when DeployMode is 1)
+        :param _MultiZoneInfo: <p>Detailed information of availability zones in multi-AZ deployment (required when DeployMode is 1)</p>
         :type MultiZoneInfo: list of ZoneDetail
-        :param _LicenseType: License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum
+        :param _LicenseType: <p>License type<li>oss: open source edition</li><li>basic: basic version</li><li>platinum: platinum version</li>Default value: platinum</p>
         :type LicenseType: str
-        :param _NodeInfoList: Node information list, which is used to describe the specification information of various types of nodes in the cluster, such as node type, node quantity, node specification, disk type, and disk size
+        :param _NodeInfoList: <p>Node information list, for description of the specification information of various types of nodes in the cluster, such as node type, number of nodes, node specification, disk type, and disk size</p>
         :type NodeInfoList: list of NodeInfo
-        :param _TagList: Node tag information list
+        :param _TagList: <p>Node tag information list</p>
         :type TagList: list of TagInfo
-        :param _BasicSecurityType: Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
+        :param _BasicSecurityType: <p>Whether xpack security authentication is enabled for basic version 6.8 (and above versions)<li>1: not enabled</li><li>2: enabled</li></p>
         :type BasicSecurityType: int
-        :param _SceneType: Scenario template type. 0: not enabled; 1: general; 2: log; 3: search
+        :param _SceneType: <p>Scenario template type 0: disabled 1: common 2: log 3: search</p>
         :type SceneType: int
-        :param _WebNodeTypeInfo: Visual node configuration
+        :param _WebNodeTypeInfo: <p>Visualize node configuration</p>
         :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
-        :param _Protocol: Valid values: `https`, `http` (default)
+        :param _Protocol: <p>Create an https cluster. http is selected by default.</p>
         :type Protocol: str
-        :param _OperationDuration: The maintenance time slot
+        :param _OperationDuration: <p>Maintenance time slot</p>
         :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDuration`
-        :param _EnableHybridStorage: Whether to enable the storage-computing separation feature.
+        :param _EnableHybridStorage: <p>Whether storage-compute separation is enabled</p>
         :type EnableHybridStorage: bool
-        :param _DiskEnhance: Whether to enable enhanced SSD
+        :param _DiskEnhance: <p>Additional hard disk performance</p>
         :type DiskEnhance: int
-        :param _EnableDiagnose: Whether to enable smart inspection.
+        :param _EnableDiagnose: <p>Whether intelligent check is enabled</p>
         :type EnableDiagnose: bool
+        :param _EnableCosBackup: <p>Whether to enable automatic backup</p>
+        :type EnableCosBackup: bool
+        :param _CdcId: <p>cdcId, pass it when using a CDC subnet</p>
+        :type CdcId: str
+        :param _DisasterRecoverGroupAffinity: <p>Placement group affinity. Value range: [0,10]. 0 indicates disabled.</p>
+        :type DisasterRecoverGroupAffinity: int
+        :param _SubProductCode: <p>Enumeration values of sub-product ID: open source edition: "sp_es_io2", basic version: "sp_es_basic", platinum version: "sp_es_platinum", enterprise edition: "sp_es_enterprise", CDC platinum version: "sp_es_CDC_platinum", Log Enhancement Edition: "sp_es_enlogging", tsearch: "sp_tsearch_io2", logstash: "sp_es_logstash". It can be empty. When it is empty, the backend maps this field based on LicenseType.</p>
+        :type SubProductCode: str
+        :param _ReadWriteMode: <p>Read-write separation mode: 0: not enabled; 1: local read/write separation; 2: remote read/write separation.</p>
+        :type ReadWriteMode: int
+        :param _EnableScheduleRecoverGroup: <p>Whether the placement group has asynchronous tasks enabled</p>
+        :type EnableScheduleRecoverGroup: bool
+        :param _EnableScheduleOperationDuration: <p>Maintenance time slot for enabling async tasks in a placement group</p>
+        :type EnableScheduleOperationDuration: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
+        :param _AutoScaleDiskInfoList: <p>Auto capacity expansion parameter list</p>
+        :type AutoScaleDiskInfoList: list of AutoScaleDiskInfo
+        :param _EnableKibanaPublicAccess: <p>Whether to enable public network access to kibana. Enabled by default if not passed</p>
+        :type EnableKibanaPublicAccess: str
+        :param _AlarmPolicyIds: <p>Existing cloud monitoring and alarm policy ID</p>
+        :type AlarmPolicyIds: list of str
         """
         self._Zone = None
         self._EsVersion = None
@@ -1123,10 +1307,20 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
         self._EnableHybridStorage = None
         self._DiskEnhance = None
         self._EnableDiagnose = None
+        self._EnableCosBackup = None
+        self._CdcId = None
+        self._DisasterRecoverGroupAffinity = None
+        self._SubProductCode = None
+        self._ReadWriteMode = None
+        self._EnableScheduleRecoverGroup = None
+        self._EnableScheduleOperationDuration = None
+        self._AutoScaleDiskInfoList = None
+        self._EnableKibanaPublicAccess = None
+        self._AlarmPolicyIds = None
 
     @property
     def Zone(self):
-        r"""Availability Zone
+        r"""<p>AZ.</p>
         :rtype: str
         """
         return self._Zone
@@ -1137,7 +1331,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def EsVersion(self):
-        r"""Instance version. Valid values: `5.6.4`, `6.4.3`, `6.8.2`, `7.5.1`, `7.10.1`
+        r"""<p>Instance version (supported: "5.6.4", "6.4.3", "6.8.2", "7.5.1", "7.10.1")</p>
         :rtype: str
         """
         return self._EsVersion
@@ -1148,7 +1342,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def VpcId(self):
-        r"""VPC ID
+        r"""<p>VPC ID</p>
         :rtype: str
         """
         return self._VpcId
@@ -1159,7 +1353,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def SubnetId(self):
-        r"""Subnet ID
+        r"""<p>Subnet ID.</p>
         :rtype: str
         """
         return self._SubnetId
@@ -1170,7 +1364,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def Password(self):
-        r"""Access password, which must contain 8 to 16 characters, and include at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]
+        r"""<p>Access password (8-16 characters, including at least two of the following: [a-z,A-Z], [0-9], and special characters in [-!@#$%&amp;^*+=_:;,.?])</p>
         :rtype: str
         """
         return self._Password
@@ -1181,7 +1375,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def InstanceName(self):
-        r"""Instance name, which can contain 1 to 50 English letters, Chinese characters, digits, dashes (-), or underscores (_)
+        r"""<p>Instance name (1-50 English letters, Chinese characters, digits, hyphens -, or underscores _)</p>
         :rtype: str
         """
         return self._InstanceName
@@ -1192,8 +1386,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def NodeNum(self):
-        r"""This parameter has been disused. Please use `NodeInfoList`
-Number of nodes (2-50)
+        r"""<p>Abandoned. Please use NodeInfoList<br>Node quantity (2-50)</p>
         :rtype: int
         """
         return self._NodeNum
@@ -1204,7 +1397,7 @@ Number of nodes (2-50)
 
     @property
     def ChargeType(self):
-        r"""Billing mode <li>POSTPAID_BY_HOUR: Pay-as-you-go hourly </li>Default value: POSTPAID_BY_HOUR
+        r"""<p>Billing type<li>PREPAID: prepaid, i.e., monthly subscription</li><li>POSTPAID_BY_HOUR: pay-as-you-go by hour</li>Default value: POSTPAID_BY_HOUR</p>
         :rtype: str
         """
         return self._ChargeType
@@ -1215,7 +1408,7 @@ Number of nodes (2-50)
 
     @property
     def ChargePeriod(self):
-        r"""This parameter is not used on the global website
+        r"""<p>Annual and monthly subscription duration (unit determined by the TimeUnit parameter)</p>
         :rtype: int
         """
         return self._ChargePeriod
@@ -1226,7 +1419,7 @@ Number of nodes (2-50)
 
     @property
     def RenewFlag(self):
-        r"""This parameter is not used on the global website
+        r"""<p>Auto-renewal flag<li>RENEW_FLAG_AUTO: auto renewal</li><li>RENEW_FLAG_MANUAL: no auto-renewal, user renews manually</li>This needs to be set when ChargeType is PREPAID. If this parameter is not passed, no automatic renewal by default for general users, and auto renewal for SVIP users</p>
         :rtype: str
         """
         return self._RenewFlag
@@ -1237,8 +1430,7 @@ Number of nodes (2-50)
 
     @property
     def NodeType(self):
-        r"""This parameter has been disused. Please use `NodeInfoList`
-Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+        r"""<p>Abandoned. Please use NodeInfoList<br>Node specification<li>ES.S1.SMALL2: 1-core 2G</li><li>ES.S1.MEDIUM4: 2-core 4G</li><li>ES.S1.MEDIUM8: 2-core 8G</li><li>ES.S1.LARGE16: 4-core 16G</li><li>ES.S1.2XLARGE32: 8-core 32G</li><li>ES.S1.4XLARGE32: 16-core 32G</li><li>ES.S1.4XLARGE64: 16-core 64G</li></p>
         :rtype: str
         """
         return self._NodeType
@@ -1249,8 +1441,7 @@ Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 
 
     @property
     def DiskType(self):
-        r"""This parameter has been disused. Please use `NodeInfoList`
-Node storage type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: premium cloud storage </li>Default value: CLOUD_SSD
+        r"""<p>Abandoned. Please use NodeInfoList<br>Node disk type<li>CLOUD_SSD: ssd cloud disk</li><li>CLOUD_PREMIUM: high-performance cloud block storage</li><li>CLOUD_HSSD: enhanced SSD cloud disk</li><li>CLOUD_BSSD: universal type SSD cloud disk</li>Default value: CLOUD_SSD</p>
         :rtype: str
         """
         return self._DiskType
@@ -1261,8 +1452,7 @@ Node storage type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: premi
 
     @property
     def DiskSize(self):
-        r"""This parameter has been disused. Please use `NodeInfoList`
-Node disk size in GB
+        r"""<p>Abandoned. Please use NodeInfoList<br>Node disk capacity (unit: GB)</p>
         :rtype: int
         """
         return self._DiskSize
@@ -1273,7 +1463,7 @@ Node disk size in GB
 
     @property
     def TimeUnit(self):
-        r"""This parameter is not used on the global website
+        r"""<p>Billing duration unit (needs to be set when ChargeType is PREPAID. Default value: "m", which means month. Currently only support "m")</p>
         :rtype: str
         """
         return self._TimeUnit
@@ -1284,7 +1474,7 @@ Node disk size in GB
 
     @property
     def AutoVoucher(self):
-        r"""Whether to automatically use vouchers <li>0: No </li><li>1: Yes </li>Default value: 0
+        r"""<p>Indicates whether to use vouchers automatically<li>0: Do not use automatically.</li><li>1: Use automatically.</li>Default value: 0.</p>
         :rtype: int
         """
         return self._AutoVoucher
@@ -1295,7 +1485,7 @@ Node disk size in GB
 
     @property
     def VoucherIds(self):
-        r"""List of voucher IDs (only one voucher can be specified at a time currently)
+        r"""<p>Voucher ID list. Only one voucher can be specified.</p>
         :rtype: list of str
         """
         return self._VoucherIds
@@ -1306,8 +1496,7 @@ Node disk size in GB
 
     @property
     def EnableDedicatedMaster(self):
-        r"""This parameter has been disused. Please use `NodeInfoList`
-Whether to create a dedicated primary node <li>true: yes </li><li>false: no </li>Default value: false
+        r"""<p>Abandoned. Please use NodeInfoList<br>Whether to create a dedicated master node<li>true: enable a dedicated master node</li><li>false: disable a dedicated master node</li>Default value: false</p>
         :rtype: bool
         """
         return self._EnableDedicatedMaster
@@ -1318,8 +1507,7 @@ Whether to create a dedicated primary node <li>true: yes </li><li>false: no </li
 
     @property
     def MasterNodeNum(self):
-        r"""This parameter has been disused. Please use `NodeInfoList`
-Number of dedicated primary nodes (only 3 and 5 are supported. This value must be passed in if `EnableDedicatedMaster` is `true`)
+        r"""<p>Abandoned. Please use NodeInfoList<br>Number of dedicated primary nodes (supports only 3 or 5. Required if EnableDedicatedMaster is true)</p>
         :rtype: int
         """
         return self._MasterNodeNum
@@ -1330,8 +1518,7 @@ Number of dedicated primary nodes (only 3 and 5 are supported. This value must b
 
     @property
     def MasterNodeType(self):
-        r"""This parameter has been disused. Please use `NodeInfoList`
-Dedicated primary node type, which must be passed in if `EnableDedicatedMaster` is `true` <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
+        r"""<p>Abandoned. Please use NodeInfoList<br>Dedicated primary node type (required if EnableDedicatedMaster is true)<li>ES.S1.SMALL2: 1-core 2G</li><li>ES.S1.MEDIUM4: 2-core 4G</li><li>ES.S1.MEDIUM8: 2-core 8G</li><li>ES.S1.LARGE16: 4-core 16G</li><li>ES.S1.2XLARGE32: 8-core 32G</li><li>ES.S1.4XLARGE32: 16-core 32G</li><li>ES.S1.4XLARGE64: 16-core 64G</li></p>
         :rtype: str
         """
         return self._MasterNodeType
@@ -1342,8 +1529,7 @@ Dedicated primary node type, which must be passed in if `EnableDedicatedMaster` 
 
     @property
     def MasterNodeDiskSize(self):
-        r"""This parameter has been disused. Please use `NodeInfoList`
-Dedicated primary node disk size in GB, which is optional. If passed in, it can only be 50 and cannot be customized currently
+        r"""<p>Abandoned. Please use NodeInfoList<br>Dedicated primary node disk size (in GB, optional; if transmitted, it must be 50. Customization is not supported temporarily)</p>
         :rtype: int
         """
         return self._MasterNodeDiskSize
@@ -1354,7 +1540,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def ClusterNameInConf(self):
-        r"""ClusterName in the cluster configuration file, which is the instance ID by default and currently cannot be customized
+        r"""<p>ClusterName in the cluster configuration file (system default configuration is the instance ID, customization is not supported temporarily)</p>
         :rtype: str
         """
         return self._ClusterNameInConf
@@ -1365,7 +1551,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def DeployMode(self):
-        r"""Cluster deployment mode <li>0: single-AZ deployment </li><li>1: multi-AZ deployment </li>Default value: 0
+        r"""<p>Cluster deployment method<li>0: single-AZ deployment</li><li>1: multi-AZ deployment, Beijing, Shanghai, Shanghai Finance, Guangzhou, Nanjing, Hong Kong, Singapore, Frankfurt (allowlist control)</li>Default value: 0</p>
         :rtype: int
         """
         return self._DeployMode
@@ -1376,7 +1562,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def MultiZoneInfo(self):
-        r"""Details of AZs in multi-AZ deployment mode (which is required when DeployMode is 1)
+        r"""<p>Detailed information of availability zones in multi-AZ deployment (required when DeployMode is 1)</p>
         :rtype: list of ZoneDetail
         """
         return self._MultiZoneInfo
@@ -1387,7 +1573,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def LicenseType(self):
-        r"""License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum
+        r"""<p>License type<li>oss: open source edition</li><li>basic: basic version</li><li>platinum: platinum version</li>Default value: platinum</p>
         :rtype: str
         """
         return self._LicenseType
@@ -1398,7 +1584,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def NodeInfoList(self):
-        r"""Node information list, which is used to describe the specification information of various types of nodes in the cluster, such as node type, node quantity, node specification, disk type, and disk size
+        r"""<p>Node information list, for description of the specification information of various types of nodes in the cluster, such as node type, number of nodes, node specification, disk type, and disk size</p>
         :rtype: list of NodeInfo
         """
         return self._NodeInfoList
@@ -1409,7 +1595,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def TagList(self):
-        r"""Node tag information list
+        r"""<p>Node tag information list</p>
         :rtype: list of TagInfo
         """
         return self._TagList
@@ -1420,7 +1606,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def BasicSecurityType(self):
-        r"""Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
+        r"""<p>Whether xpack security authentication is enabled for basic version 6.8 (and above versions)<li>1: not enabled</li><li>2: enabled</li></p>
         :rtype: int
         """
         return self._BasicSecurityType
@@ -1431,7 +1617,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def SceneType(self):
-        r"""Scenario template type. 0: not enabled; 1: general; 2: log; 3: search
+        r"""<p>Scenario template type 0: disabled 1: common 2: log 3: search</p>
         :rtype: int
         """
         return self._SceneType
@@ -1442,7 +1628,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def WebNodeTypeInfo(self):
-        r"""Visual node configuration
+        r"""<p>Visualize node configuration</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
         """
         return self._WebNodeTypeInfo
@@ -1453,7 +1639,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def Protocol(self):
-        r"""Valid values: `https`, `http` (default)
+        r"""<p>Create an https cluster. http is selected by default.</p>
         :rtype: str
         """
         return self._Protocol
@@ -1464,7 +1650,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def OperationDuration(self):
-        r"""The maintenance time slot
+        r"""<p>Maintenance time slot</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.OperationDuration`
         """
         return self._OperationDuration
@@ -1475,7 +1661,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def EnableHybridStorage(self):
-        r"""Whether to enable the storage-computing separation feature.
+        r"""<p>Whether storage-compute separation is enabled</p>
         :rtype: bool
         """
         return self._EnableHybridStorage
@@ -1486,7 +1672,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def DiskEnhance(self):
-        r"""Whether to enable enhanced SSD
+        r"""<p>Additional hard disk performance</p>
         :rtype: int
         """
         return self._DiskEnhance
@@ -1497,7 +1683,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def EnableDiagnose(self):
-        r"""Whether to enable smart inspection.
+        r"""<p>Whether intelligent check is enabled</p>
         :rtype: bool
         """
         return self._EnableDiagnose
@@ -1505,6 +1691,116 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
     @EnableDiagnose.setter
     def EnableDiagnose(self, EnableDiagnose):
         self._EnableDiagnose = EnableDiagnose
+
+    @property
+    def EnableCosBackup(self):
+        r"""<p>Whether to enable automatic backup</p>
+        :rtype: bool
+        """
+        return self._EnableCosBackup
+
+    @EnableCosBackup.setter
+    def EnableCosBackup(self, EnableCosBackup):
+        self._EnableCosBackup = EnableCosBackup
+
+    @property
+    def CdcId(self):
+        r"""<p>cdcId, pass it when using a CDC subnet</p>
+        :rtype: str
+        """
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
+
+    @property
+    def DisasterRecoverGroupAffinity(self):
+        r"""<p>Placement group affinity. Value range: [0,10]. 0 indicates disabled.</p>
+        :rtype: int
+        """
+        return self._DisasterRecoverGroupAffinity
+
+    @DisasterRecoverGroupAffinity.setter
+    def DisasterRecoverGroupAffinity(self, DisasterRecoverGroupAffinity):
+        self._DisasterRecoverGroupAffinity = DisasterRecoverGroupAffinity
+
+    @property
+    def SubProductCode(self):
+        r"""<p>Enumeration values of sub-product ID: open source edition: "sp_es_io2", basic version: "sp_es_basic", platinum version: "sp_es_platinum", enterprise edition: "sp_es_enterprise", CDC platinum version: "sp_es_CDC_platinum", Log Enhancement Edition: "sp_es_enlogging", tsearch: "sp_tsearch_io2", logstash: "sp_es_logstash". It can be empty. When it is empty, the backend maps this field based on LicenseType.</p>
+        :rtype: str
+        """
+        return self._SubProductCode
+
+    @SubProductCode.setter
+    def SubProductCode(self, SubProductCode):
+        self._SubProductCode = SubProductCode
+
+    @property
+    def ReadWriteMode(self):
+        r"""<p>Read-write separation mode: 0: not enabled; 1: local read/write separation; 2: remote read/write separation.</p>
+        :rtype: int
+        """
+        return self._ReadWriteMode
+
+    @ReadWriteMode.setter
+    def ReadWriteMode(self, ReadWriteMode):
+        self._ReadWriteMode = ReadWriteMode
+
+    @property
+    def EnableScheduleRecoverGroup(self):
+        r"""<p>Whether the placement group has asynchronous tasks enabled</p>
+        :rtype: bool
+        """
+        return self._EnableScheduleRecoverGroup
+
+    @EnableScheduleRecoverGroup.setter
+    def EnableScheduleRecoverGroup(self, EnableScheduleRecoverGroup):
+        self._EnableScheduleRecoverGroup = EnableScheduleRecoverGroup
+
+    @property
+    def EnableScheduleOperationDuration(self):
+        r"""<p>Maintenance time slot for enabling async tasks in a placement group</p>
+        :rtype: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
+        """
+        return self._EnableScheduleOperationDuration
+
+    @EnableScheduleOperationDuration.setter
+    def EnableScheduleOperationDuration(self, EnableScheduleOperationDuration):
+        self._EnableScheduleOperationDuration = EnableScheduleOperationDuration
+
+    @property
+    def AutoScaleDiskInfoList(self):
+        r"""<p>Auto capacity expansion parameter list</p>
+        :rtype: list of AutoScaleDiskInfo
+        """
+        return self._AutoScaleDiskInfoList
+
+    @AutoScaleDiskInfoList.setter
+    def AutoScaleDiskInfoList(self, AutoScaleDiskInfoList):
+        self._AutoScaleDiskInfoList = AutoScaleDiskInfoList
+
+    @property
+    def EnableKibanaPublicAccess(self):
+        r"""<p>Whether to enable public network access to kibana. Enabled by default if not passed</p>
+        :rtype: str
+        """
+        return self._EnableKibanaPublicAccess
+
+    @EnableKibanaPublicAccess.setter
+    def EnableKibanaPublicAccess(self, EnableKibanaPublicAccess):
+        self._EnableKibanaPublicAccess = EnableKibanaPublicAccess
+
+    @property
+    def AlarmPolicyIds(self):
+        r"""<p>Existing cloud monitoring and alarm policy ID</p>
+        :rtype: list of str
+        """
+        return self._AlarmPolicyIds
+
+    @AlarmPolicyIds.setter
+    def AlarmPolicyIds(self, AlarmPolicyIds):
+        self._AlarmPolicyIds = AlarmPolicyIds
 
 
     def _deserialize(self, params):
@@ -1561,6 +1857,23 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
         self._EnableHybridStorage = params.get("EnableHybridStorage")
         self._DiskEnhance = params.get("DiskEnhance")
         self._EnableDiagnose = params.get("EnableDiagnose")
+        self._EnableCosBackup = params.get("EnableCosBackup")
+        self._CdcId = params.get("CdcId")
+        self._DisasterRecoverGroupAffinity = params.get("DisasterRecoverGroupAffinity")
+        self._SubProductCode = params.get("SubProductCode")
+        self._ReadWriteMode = params.get("ReadWriteMode")
+        self._EnableScheduleRecoverGroup = params.get("EnableScheduleRecoverGroup")
+        if params.get("EnableScheduleOperationDuration") is not None:
+            self._EnableScheduleOperationDuration = EnableScheduleOperationDuration()
+            self._EnableScheduleOperationDuration._deserialize(params.get("EnableScheduleOperationDuration"))
+        if params.get("AutoScaleDiskInfoList") is not None:
+            self._AutoScaleDiskInfoList = []
+            for item in params.get("AutoScaleDiskInfoList"):
+                obj = AutoScaleDiskInfo()
+                obj._deserialize(item)
+                self._AutoScaleDiskInfoList.append(obj)
+        self._EnableKibanaPublicAccess = params.get("EnableKibanaPublicAccess")
+        self._AlarmPolicyIds = params.get("AlarmPolicyIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1578,10 +1891,9 @@ class CreateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: <p>Instance ID.</p>
         :type InstanceId: str
-        :param _DealName: Order ID
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _DealName: <p>Order ID.</p>
         :type DealName: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -1592,7 +1904,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""<p>Instance ID.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -1603,8 +1915,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DealName(self):
-        r"""Order ID
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Order ID.</p>
         :rtype: str
         """
         return self._DealName
@@ -1732,18 +2043,20 @@ class DeleteIndexRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ES cluster ID
+        :param _InstanceId: <p>ES cluster ID</p>
         :type InstanceId: str
-        :param _IndexType: Type of the index to delete. `auto`: Automated; `normal`: General.
+        :param _IndexType: <p>Deleted index type. auto: autonomous index; normal: general index</p>
         :type IndexType: str
-        :param _IndexName: Name of the index to delete
+        :param _IndexName: <p>Name of the deleted index</p>
         :type IndexName: str
-        :param _Username: Username for cluster access
+        :param _Username: <p>Cluster access username.</p>
         :type Username: str
-        :param _Password: Password for cluster access
+        :param _Password: <p>Cluster access password</p>
         :type Password: str
-        :param _BackingIndexName: Backing index name
+        :param _BackingIndexName: <p>Backing index name</p>
         :type BackingIndexName: str
+        :param _IndexPhrase: <p>Index life cycle</p>
+        :type IndexPhrase: str
         """
         self._InstanceId = None
         self._IndexType = None
@@ -1751,10 +2064,11 @@ class DeleteIndexRequest(AbstractModel):
         self._Username = None
         self._Password = None
         self._BackingIndexName = None
+        self._IndexPhrase = None
 
     @property
     def InstanceId(self):
-        r"""ES cluster ID
+        r"""<p>ES cluster ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -1765,7 +2079,7 @@ class DeleteIndexRequest(AbstractModel):
 
     @property
     def IndexType(self):
-        r"""Type of the index to delete. `auto`: Automated; `normal`: General.
+        r"""<p>Deleted index type. auto: autonomous index; normal: general index</p>
         :rtype: str
         """
         return self._IndexType
@@ -1776,7 +2090,7 @@ class DeleteIndexRequest(AbstractModel):
 
     @property
     def IndexName(self):
-        r"""Name of the index to delete
+        r"""<p>Name of the deleted index</p>
         :rtype: str
         """
         return self._IndexName
@@ -1787,7 +2101,7 @@ class DeleteIndexRequest(AbstractModel):
 
     @property
     def Username(self):
-        r"""Username for cluster access
+        r"""<p>Cluster access username.</p>
         :rtype: str
         """
         return self._Username
@@ -1798,7 +2112,7 @@ class DeleteIndexRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""Password for cluster access
+        r"""<p>Cluster access password</p>
         :rtype: str
         """
         return self._Password
@@ -1809,7 +2123,7 @@ class DeleteIndexRequest(AbstractModel):
 
     @property
     def BackingIndexName(self):
-        r"""Backing index name
+        r"""<p>Backing index name</p>
         :rtype: str
         """
         return self._BackingIndexName
@@ -1817,6 +2131,17 @@ class DeleteIndexRequest(AbstractModel):
     @BackingIndexName.setter
     def BackingIndexName(self, BackingIndexName):
         self._BackingIndexName = BackingIndexName
+
+    @property
+    def IndexPhrase(self):
+        r"""<p>Index life cycle</p>
+        :rtype: str
+        """
+        return self._IndexPhrase
+
+    @IndexPhrase.setter
+    def IndexPhrase(self, IndexPhrase):
+        self._IndexPhrase = IndexPhrase
 
 
     def _deserialize(self, params):
@@ -1826,6 +2151,7 @@ class DeleteIndexRequest(AbstractModel):
         self._Username = params.get("Username")
         self._Password = params.get("Password")
         self._BackingIndexName = params.get("BackingIndexName")
+        self._IndexPhrase = params.get("IndexPhrase")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1871,14 +2197,20 @@ class DeleteInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: <p>Instance ID.</p>
         :type InstanceId: str
+        :param _LockEnabled: <p>Recycle bin lock settings. If true, it cannot be manually terminated and will be automatically destroyed after the preset time.</p><p>Default value: false</p>
+        :type LockEnabled: bool
+        :param _LockDuration: <p>Lock time after being put into the recycle bin</p><p>Value range: [1, 7]</p><p>Unit: day</p><p>Default value: 1</p>
+        :type LockDuration: int
         """
         self._InstanceId = None
+        self._LockEnabled = None
+        self._LockDuration = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""<p>Instance ID.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -1887,9 +2219,33 @@ class DeleteInstanceRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def LockEnabled(self):
+        r"""<p>Recycle bin lock settings. If true, it cannot be manually terminated and will be automatically destroyed after the preset time.</p><p>Default value: false</p>
+        :rtype: bool
+        """
+        return self._LockEnabled
+
+    @LockEnabled.setter
+    def LockEnabled(self, LockEnabled):
+        self._LockEnabled = LockEnabled
+
+    @property
+    def LockDuration(self):
+        r"""<p>Lock time after being put into the recycle bin</p><p>Value range: [1, 7]</p><p>Unit: day</p><p>Default value: 1</p>
+        :rtype: int
+        """
+        return self._LockDuration
+
+    @LockDuration.setter
+    def LockDuration(self, LockDuration):
+        self._LockDuration = LockDuration
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._LockEnabled = params.get("LockEnabled")
+        self._LockDuration = params.get("LockDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2019,25 +2375,25 @@ class DescribeIndexListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IndexType: Index type. `auto`: Automated; `normal`: General.
+        :param _IndexType: Index type. auto: autonomous index; normal: general index
         :type IndexType: str
         :param _InstanceId: ES cluster ID
         :type InstanceId: str
-        :param _IndexName: Index name. `null` indicates that all indexes are requested.
+        :param _IndexName: Index name. If this parameter is left empty, all indexes are obtained.
         :type IndexName: str
-        :param _Username: Username for cluster access
+        :param _Username: Cluster access username.
         :type Username: str
-        :param _Password: Password for cluster access
+        :param _Password: Cluster access password
         :type Password: str
-        :param _Offset: The starting position of paging
+        :param _Offset: Paging start position
         :type Offset: int
-        :param _Limit: The number of results per page
+        :param _Limit: Number of items displayed per page
         :type Limit: int
-        :param _OrderBy: Sorting condition field, which can be `IndexName`, `IndexStorage`, or `IndexCreateTime`.
+        :param _OrderBy: Sorting fields, which support the following index names: IndexName, IndexStorage, and IndexCreateTime.
         :type OrderBy: str
-        :param _IndexStatusList: Filtering by index status
+        :param _IndexStatusList: Filter by index status
         :type IndexStatusList: list of str
-        :param _Order: Sorting mode, which can be `asc` and `desc`.
+        :param _Order: Sort order. Supports asc and desc. Defaults to desc. Data format: "asc", "desc"
         :type Order: str
         """
         self._IndexType = None
@@ -2053,7 +2409,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def IndexType(self):
-        r"""Index type. `auto`: Automated; `normal`: General.
+        r"""Index type. auto: autonomous index; normal: general index
         :rtype: str
         """
         return self._IndexType
@@ -2075,7 +2431,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def IndexName(self):
-        r"""Index name. `null` indicates that all indexes are requested.
+        r"""Index name. If this parameter is left empty, all indexes are obtained.
         :rtype: str
         """
         return self._IndexName
@@ -2086,7 +2442,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def Username(self):
-        r"""Username for cluster access
+        r"""Cluster access username.
         :rtype: str
         """
         return self._Username
@@ -2097,7 +2453,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""Password for cluster access
+        r"""Cluster access password
         :rtype: str
         """
         return self._Password
@@ -2108,7 +2464,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""The starting position of paging
+        r"""Paging start position
         :rtype: int
         """
         return self._Offset
@@ -2119,7 +2475,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""The number of results per page
+        r"""Number of items displayed per page
         :rtype: int
         """
         return self._Limit
@@ -2130,7 +2486,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""Sorting condition field, which can be `IndexName`, `IndexStorage`, or `IndexCreateTime`.
+        r"""Sorting fields, which support the following index names: IndexName, IndexStorage, and IndexCreateTime.
         :rtype: str
         """
         return self._OrderBy
@@ -2141,7 +2497,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def IndexStatusList(self):
-        r"""Filtering by index status
+        r"""Filter by index status
         :rtype: list of str
         """
         return self._IndexStatusList
@@ -2152,7 +2508,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""Sorting mode, which can be `asc` and `desc`.
+        r"""Sort order. Supports asc and desc. Defaults to desc. Data format: "asc", "desc"
         :rtype: str
         """
         return self._Order
@@ -2191,10 +2547,8 @@ class DescribeIndexListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _IndexMetaFields: Index metadata field
-Note: This field may return `null`, indicating that no valid value can be obtained.
         :type IndexMetaFields: list of IndexMetaField
-        :param _TotalCount: Total number of results
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _TotalCount: Total query count
         :type TotalCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2206,7 +2560,6 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     @property
     def IndexMetaFields(self):
         r"""Index metadata field
-Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of IndexMetaField
         """
         return self._IndexMetaFields
@@ -2217,8 +2570,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TotalCount(self):
-        r"""Total number of results
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Total query count
         :rtype: int
         """
         return self._TotalCount
@@ -2259,13 +2611,13 @@ class DescribeIndexMetaRequest(AbstractModel):
         r"""
         :param _InstanceId: ES cluster ID
         :type InstanceId: str
-        :param _IndexType: Index type. `auto`: Automated; `normal`: General.
+        :param _IndexType: Index type. auto: autonomous index; normal: general index
         :type IndexType: str
-        :param _IndexName: Index name. `null` indicates that all indexes are requested.
+        :param _IndexName: Index name. If this parameter is left empty, all indexes are obtained.
         :type IndexName: str
-        :param _Username: Username for cluster access
+        :param _Username: Cluster access username.
         :type Username: str
-        :param _Password: Password for cluster access
+        :param _Password: Cluster access password
         :type Password: str
         """
         self._InstanceId = None
@@ -2287,7 +2639,7 @@ class DescribeIndexMetaRequest(AbstractModel):
 
     @property
     def IndexType(self):
-        r"""Index type. `auto`: Automated; `normal`: General.
+        r"""Index type. auto: autonomous index; normal: general index
         :rtype: str
         """
         return self._IndexType
@@ -2298,7 +2650,7 @@ class DescribeIndexMetaRequest(AbstractModel):
 
     @property
     def IndexName(self):
-        r"""Index name. `null` indicates that all indexes are requested.
+        r"""Index name. If this parameter is left empty, all indexes are obtained.
         :rtype: str
         """
         return self._IndexName
@@ -2309,7 +2661,7 @@ class DescribeIndexMetaRequest(AbstractModel):
 
     @property
     def Username(self):
-        r"""Username for cluster access
+        r"""Cluster access username.
         :rtype: str
         """
         return self._Username
@@ -2320,7 +2672,7 @@ class DescribeIndexMetaRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""Password for cluster access
+        r"""Cluster access password
         :rtype: str
         """
         return self._Password
@@ -2354,7 +2706,6 @@ class DescribeIndexMetaResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _IndexMetaField: Index metadata field
-Note: This field may return `null`, indicating that no valid value can be obtained.
         :type IndexMetaField: :class:`tencentcloud.es.v20180416.models.IndexMetaField`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2365,7 +2716,6 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     @property
     def IndexMetaField(self):
         r"""Index metadata field
-Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.es.v20180416.models.IndexMetaField`
         """
         return self._IndexMetaField
@@ -2400,28 +2750,38 @@ class DescribeInstanceLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Cluster instance ID
+        :param _InstanceId: Cluster instance ID.
         :type InstanceId: str
-        :param _LogType: Log type. Default value: 1
-<li>1: primary log</li>
-<li>2: search slow log</li>
-<li>3: index slow log</li>
-<li>4: GC log</li>
+        :param _LogType: Log type. Default value: 1.
+<li>1, master log</li>
+<li>2. Search slow logs</li>
+<li>3. Index slow log</li>
+<li>4. GC log</li>
         :type LogType: int
-        :param _SearchKey: Search keyword, which supports LUCENE syntax, such as `level:WARN`, `ip:1.1.1.1`, and `message:test-index`
+        :param _SearchKey: Search term. LUCENE grammar is supported, for example, level:WARN, ip:1.1.1.1, message:test-index
         :type SearchKey: str
-        :param _StartTime: Log start time in the format of YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53
+        :param _StartTime: Log start time in the format of YYYY-MM-DD HH:MM:SS, for example, 2019-01-22 20:15:53
         :type StartTime: str
-        :param _EndTime: Log end time in the format of YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53
+        :param _EndTime: Log end time in the format of YYYY-MM-DD HH:MM:SS, for example, 2019-01-22 20:15:53
         :type EndTime: str
-        :param _Offset: Pagination start value. Default value: 0
+        :param _Offset: Pagination starting value. Default value: 0.
         :type Offset: int
-        :param _Limit: Number of entries per page. Default value: 100. Maximum value: 100
+        :param _Limit: Pagination size. Default value: 100. Maximum value: 100.
         :type Limit: int
-        :param _OrderByType: Time sorting order. Default value: 0
-<li>0: descending</li>
-<li>1: ascending</li>
+        :param _OrderByType: Time sort method. Default value: 0.
+<li>0: descending order</li>
+<li>1, ascending</li>
         :type OrderByType: int
+        :param _LogLevels: Log level
+        :type LogLevels: list of str
+        :param _NodeIds: Node ID.
+        :type NodeIds: list of str
+        :param _IndexName: Slow log index name
+        :type IndexName: str
+        :param _ShardId: Slow log index shards
+        :type ShardId: str
+        :param _QueryCost: Slow log query time
+        :type QueryCost: int
         """
         self._InstanceId = None
         self._LogType = None
@@ -2431,10 +2791,15 @@ class DescribeInstanceLogsRequest(AbstractModel):
         self._Offset = None
         self._Limit = None
         self._OrderByType = None
+        self._LogLevels = None
+        self._NodeIds = None
+        self._IndexName = None
+        self._ShardId = None
+        self._QueryCost = None
 
     @property
     def InstanceId(self):
-        r"""Cluster instance ID
+        r"""Cluster instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -2445,11 +2810,11 @@ class DescribeInstanceLogsRequest(AbstractModel):
 
     @property
     def LogType(self):
-        r"""Log type. Default value: 1
-<li>1: primary log</li>
-<li>2: search slow log</li>
-<li>3: index slow log</li>
-<li>4: GC log</li>
+        r"""Log type. Default value: 1.
+<li>1, master log</li>
+<li>2. Search slow logs</li>
+<li>3. Index slow log</li>
+<li>4. GC log</li>
         :rtype: int
         """
         return self._LogType
@@ -2460,7 +2825,7 @@ class DescribeInstanceLogsRequest(AbstractModel):
 
     @property
     def SearchKey(self):
-        r"""Search keyword, which supports LUCENE syntax, such as `level:WARN`, `ip:1.1.1.1`, and `message:test-index`
+        r"""Search term. LUCENE grammar is supported, for example, level:WARN, ip:1.1.1.1, message:test-index
         :rtype: str
         """
         return self._SearchKey
@@ -2471,7 +2836,7 @@ class DescribeInstanceLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Log start time in the format of YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53
+        r"""Log start time in the format of YYYY-MM-DD HH:MM:SS, for example, 2019-01-22 20:15:53
         :rtype: str
         """
         return self._StartTime
@@ -2482,7 +2847,7 @@ class DescribeInstanceLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""Log end time in the format of YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53
+        r"""Log end time in the format of YYYY-MM-DD HH:MM:SS, for example, 2019-01-22 20:15:53
         :rtype: str
         """
         return self._EndTime
@@ -2493,7 +2858,7 @@ class DescribeInstanceLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Pagination start value. Default value: 0
+        r"""Pagination starting value. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -2504,7 +2869,7 @@ class DescribeInstanceLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of entries per page. Default value: 100. Maximum value: 100
+        r"""Pagination size. Default value: 100. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -2515,9 +2880,9 @@ class DescribeInstanceLogsRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        r"""Time sorting order. Default value: 0
-<li>0: descending</li>
-<li>1: ascending</li>
+        r"""Time sort method. Default value: 0.
+<li>0: descending order</li>
+<li>1, ascending</li>
         :rtype: int
         """
         return self._OrderByType
@@ -2525,6 +2890,61 @@ class DescribeInstanceLogsRequest(AbstractModel):
     @OrderByType.setter
     def OrderByType(self, OrderByType):
         self._OrderByType = OrderByType
+
+    @property
+    def LogLevels(self):
+        r"""Log level
+        :rtype: list of str
+        """
+        return self._LogLevels
+
+    @LogLevels.setter
+    def LogLevels(self, LogLevels):
+        self._LogLevels = LogLevels
+
+    @property
+    def NodeIds(self):
+        r"""Node ID.
+        :rtype: list of str
+        """
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
+
+    @property
+    def IndexName(self):
+        r"""Slow log index name
+        :rtype: str
+        """
+        return self._IndexName
+
+    @IndexName.setter
+    def IndexName(self, IndexName):
+        self._IndexName = IndexName
+
+    @property
+    def ShardId(self):
+        r"""Slow log index shards
+        :rtype: str
+        """
+        return self._ShardId
+
+    @ShardId.setter
+    def ShardId(self, ShardId):
+        self._ShardId = ShardId
+
+    @property
+    def QueryCost(self):
+        r"""Slow log query time
+        :rtype: int
+        """
+        return self._QueryCost
+
+    @QueryCost.setter
+    def QueryCost(self, QueryCost):
+        self._QueryCost = QueryCost
 
 
     def _deserialize(self, params):
@@ -2536,6 +2956,11 @@ class DescribeInstanceLogsRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._OrderByType = params.get("OrderByType")
+        self._LogLevels = params.get("LogLevels")
+        self._NodeIds = params.get("NodeIds")
+        self._IndexName = params.get("IndexName")
+        self._ShardId = params.get("ShardId")
+        self._QueryCost = params.get("QueryCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2553,9 +2978,9 @@ class DescribeInstanceLogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Number of returned logs
+        :param _TotalCount: Number of returned log entries
         :type TotalCount: int
-        :param _InstanceLogList: Log details list
+        :param _InstanceLogList: List of log details
         :type InstanceLogList: list of InstanceLog
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2566,7 +2991,7 @@ class DescribeInstanceLogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Number of returned logs
+        r"""Number of returned log entries
         :rtype: int
         """
         return self._TotalCount
@@ -2577,7 +3002,7 @@ class DescribeInstanceLogsResponse(AbstractModel):
 
     @property
     def InstanceLogList(self):
-        r"""Log details list
+        r"""List of log details
         :rtype: list of InstanceLog
         """
         return self._InstanceLogList
@@ -2616,15 +3041,15 @@ class DescribeInstanceOperationsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Cluster instance ID
+        :param _InstanceId: Cluster instance ID.
         :type InstanceId: str
-        :param _StartTime: Start time, such as "2019-03-07 16:30:39"
+        :param _StartTime: Start time, e.g., "2019-03-07 16:30:39"
         :type StartTime: str
-        :param _EndTime: End time, such as "2019-03-30 20:18:03"
+        :param _EndTime: End time, e.g., "2019-03-30 20:18:03"
         :type EndTime: str
-        :param _Offset: Pagination start value
+        :param _Offset: Paging Starting Value
         :type Offset: int
-        :param _Limit: Number of entries per page
+        :param _Limit: Pagination size.
         :type Limit: int
         """
         self._InstanceId = None
@@ -2635,7 +3060,7 @@ class DescribeInstanceOperationsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Cluster instance ID
+        r"""Cluster instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -2646,7 +3071,7 @@ class DescribeInstanceOperationsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Start time, such as "2019-03-07 16:30:39"
+        r"""Start time, e.g., "2019-03-07 16:30:39"
         :rtype: str
         """
         return self._StartTime
@@ -2657,7 +3082,7 @@ class DescribeInstanceOperationsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""End time, such as "2019-03-30 20:18:03"
+        r"""End time, e.g., "2019-03-30 20:18:03"
         :rtype: str
         """
         return self._EndTime
@@ -2668,7 +3093,7 @@ class DescribeInstanceOperationsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Pagination start value
+        r"""Paging Starting Value
         :rtype: int
         """
         return self._Offset
@@ -2679,7 +3104,7 @@ class DescribeInstanceOperationsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of entries per page
+        r"""Pagination size.
         :rtype: int
         """
         return self._Limit
@@ -2714,7 +3139,7 @@ class DescribeInstanceOperationsResponse(AbstractModel):
         r"""
         :param _TotalCount: Total number of operation records
         :type TotalCount: int
-        :param _Operations: Operation history
+        :param _Operations: Operation record
         :type Operations: list of Operation
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2736,7 +3161,7 @@ class DescribeInstanceOperationsResponse(AbstractModel):
 
     @property
     def Operations(self):
-        r"""Operation history
+        r"""Operation record
         :rtype: list of Operation
         """
         return self._Operations
@@ -2775,30 +3200,34 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: AZ of the cluster instance. If this is not passed in, all AZs are used by default
+        :param _Zone: <p>AZ to which the cluster instance belongs. All AZs are selected by default if this parameter is not specified.</p>
         :type Zone: str
-        :param _InstanceIds: List of cluster instance IDs
+        :param _InstanceIds: <p>Cluster instance ID list</p>
         :type InstanceIds: list of str
-        :param _InstanceNames: List of cluster instance names
+        :param _InstanceNames: <p>Cluster instance name list.</p>
         :type InstanceNames: list of str
-        :param _Offset: Pagination start value. Default value: 0
+        :param _Offset: <p>Pagination starting value. Default value: 0</p>
         :type Offset: int
-        :param _Limit: Number of entries per page. Default value: 20
+        :param _Limit: <p>Page size. Default value: 20</p>
         :type Limit: int
-        :param _OrderByKey: The sorting field. <li>1: Instance ID </li><li>2: Instance name </li><li>3: AZ </li><li>4: Creation time </li>If `OrderByKey` is not passed in, sorting is performed by creation time in descending order.
+        :param _OrderByKey: <p>Sorting field<li>1: Instance ID</li><li>2: Instance name</li><li>3: Availability zone</li><li>4: Creation time</li>If orderByKey is not transmitted, sort by creation time in descending order</p>
         :type OrderByKey: int
-        :param _OrderByType: Sorting order <li>0: ascending </li><li>1: descending </li>If orderByKey is passed in but orderByType is not, ascending order is used by default
+        :param _OrderByType: <p>Sorting method<li>0: ascending</li><li>1: descending</li>If orderByKey is passed but orderByType is not, ascending by default</p>
         :type OrderByType: int
-        :param _TagList: Node tag information list
+        :param _TagList: <p>Node tag information list</p>
         :type TagList: list of TagInfo
-        :param _IpList: VPC VIP list
+        :param _IpList: <p>Private network vip list</p>
         :type IpList: list of str
-        :param _ZoneList: List of availability zones
+        :param _NodeIps: <p>IP list of cluster nodes</p>
+        :type NodeIps: list of str
+        :param _ZoneList: <p>Availability zone list</p>
         :type ZoneList: list of str
-        :param _HealthStatus: The health status filter. Valid values: `0` (green), `1` (yellow), `2` (red), `-1` (unknown).
+        :param _HealthStatus: <p>Health status filter list: 0 represents green, 1 represents yellow, 2 represents red, -1 represents unknown</p>
         :type HealthStatus: list of int
-        :param _VpcIds: VPC IDs
+        :param _VpcIds: <p>Vpc list filter item</p>
         :type VpcIds: list of str
+        :param _CdcId: <p>cdc cluster id</p>
+        :type CdcId: str
         """
         self._Zone = None
         self._InstanceIds = None
@@ -2809,13 +3238,15 @@ class DescribeInstancesRequest(AbstractModel):
         self._OrderByType = None
         self._TagList = None
         self._IpList = None
+        self._NodeIps = None
         self._ZoneList = None
         self._HealthStatus = None
         self._VpcIds = None
+        self._CdcId = None
 
     @property
     def Zone(self):
-        r"""AZ of the cluster instance. If this is not passed in, all AZs are used by default
+        r"""<p>AZ to which the cluster instance belongs. All AZs are selected by default if this parameter is not specified.</p>
         :rtype: str
         """
         return self._Zone
@@ -2826,7 +3257,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""List of cluster instance IDs
+        r"""<p>Cluster instance ID list</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -2837,7 +3268,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceNames(self):
-        r"""List of cluster instance names
+        r"""<p>Cluster instance name list.</p>
         :rtype: list of str
         """
         return self._InstanceNames
@@ -2848,7 +3279,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Pagination start value. Default value: 0
+        r"""<p>Pagination starting value. Default value: 0</p>
         :rtype: int
         """
         return self._Offset
@@ -2859,7 +3290,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of entries per page. Default value: 20
+        r"""<p>Page size. Default value: 20</p>
         :rtype: int
         """
         return self._Limit
@@ -2870,7 +3301,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def OrderByKey(self):
-        r"""The sorting field. <li>1: Instance ID </li><li>2: Instance name </li><li>3: AZ </li><li>4: Creation time </li>If `OrderByKey` is not passed in, sorting is performed by creation time in descending order.
+        r"""<p>Sorting field<li>1: Instance ID</li><li>2: Instance name</li><li>3: Availability zone</li><li>4: Creation time</li>If orderByKey is not transmitted, sort by creation time in descending order</p>
         :rtype: int
         """
         return self._OrderByKey
@@ -2881,7 +3312,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        r"""Sorting order <li>0: ascending </li><li>1: descending </li>If orderByKey is passed in but orderByType is not, ascending order is used by default
+        r"""<p>Sorting method<li>0: ascending</li><li>1: descending</li>If orderByKey is passed but orderByType is not, ascending by default</p>
         :rtype: int
         """
         return self._OrderByType
@@ -2892,7 +3323,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def TagList(self):
-        r"""Node tag information list
+        r"""<p>Node tag information list</p>
         :rtype: list of TagInfo
         """
         return self._TagList
@@ -2903,7 +3334,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def IpList(self):
-        r"""VPC VIP list
+        r"""<p>Private network vip list</p>
         :rtype: list of str
         """
         return self._IpList
@@ -2913,8 +3344,19 @@ class DescribeInstancesRequest(AbstractModel):
         self._IpList = IpList
 
     @property
+    def NodeIps(self):
+        r"""<p>IP list of cluster nodes</p>
+        :rtype: list of str
+        """
+        return self._NodeIps
+
+    @NodeIps.setter
+    def NodeIps(self, NodeIps):
+        self._NodeIps = NodeIps
+
+    @property
     def ZoneList(self):
-        r"""List of availability zones
+        r"""<p>Availability zone list</p>
         :rtype: list of str
         """
         return self._ZoneList
@@ -2925,7 +3367,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def HealthStatus(self):
-        r"""The health status filter. Valid values: `0` (green), `1` (yellow), `2` (red), `-1` (unknown).
+        r"""<p>Health status filter list: 0 represents green, 1 represents yellow, 2 represents red, -1 represents unknown</p>
         :rtype: list of int
         """
         return self._HealthStatus
@@ -2936,7 +3378,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def VpcIds(self):
-        r"""VPC IDs
+        r"""<p>Vpc list filter item</p>
         :rtype: list of str
         """
         return self._VpcIds
@@ -2944,6 +3386,17 @@ class DescribeInstancesRequest(AbstractModel):
     @VpcIds.setter
     def VpcIds(self, VpcIds):
         self._VpcIds = VpcIds
+
+    @property
+    def CdcId(self):
+        r"""<p>cdc cluster id</p>
+        :rtype: str
+        """
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
 
 
     def _deserialize(self, params):
@@ -2961,9 +3414,11 @@ class DescribeInstancesRequest(AbstractModel):
                 obj._deserialize(item)
                 self._TagList.append(obj)
         self._IpList = params.get("IpList")
+        self._NodeIps = params.get("NodeIps")
         self._ZoneList = params.get("ZoneList")
         self._HealthStatus = params.get("HealthStatus")
         self._VpcIds = params.get("VpcIds")
+        self._CdcId = params.get("CdcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2981,9 +3436,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Number of returned instances
+        :param _TotalCount: <p>Number of returned instances</p>
         :type TotalCount: int
-        :param _InstanceList: List of instance details
+        :param _InstanceList: <p>Instance detail list</p>
         :type InstanceList: list of InstanceInfo
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2994,7 +3449,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Number of returned instances
+        r"""<p>Number of returned instances</p>
         :rtype: int
         """
         return self._TotalCount
@@ -3005,7 +3460,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        r"""List of instance details
+        r"""<p>Instance detail list</p>
         :rtype: list of InstanceInfo
         """
         return self._InstanceList
@@ -3044,14 +3499,14 @@ class DescribeViewsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Cluster instance ID
+        :param _InstanceId: Cluster instance ID.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""Cluster instance ID
+        r"""Cluster instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -3080,14 +3535,11 @@ class DescribeViewsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterView: Cluster view
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _ClusterView: Cluster dimension view
         :type ClusterView: :class:`tencentcloud.es.v20180416.models.ClusterView`
-        :param _NodesView: Node view
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _NodesView: Node dimension view
         :type NodesView: list of NodeView
-        :param _KibanasView: Kibana view
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _KibanasView: Kibana dimensional view
         :type KibanasView: list of KibanaView
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3099,8 +3551,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ClusterView(self):
-        r"""Cluster view
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""Cluster dimension view
         :rtype: :class:`tencentcloud.es.v20180416.models.ClusterView`
         """
         return self._ClusterView
@@ -3111,8 +3562,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def NodesView(self):
-        r"""Node view
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""Node dimension view
         :rtype: list of NodeView
         """
         return self._NodesView
@@ -3123,8 +3573,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def KibanasView(self):
-        r"""Kibana view
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""Kibana dimensional view
         :rtype: list of KibanaView
         """
         return self._KibanasView
@@ -3165,17 +3614,17 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DictInfo(AbstractModel):
-    r"""Information of the IK plugin dictionary
+    r"""ik plug-in dictionary information
 
     """
 
     def __init__(self):
         r"""
-        :param _Key: Dictionary key value
+        :param _Key: Dictionary key-value
         :type Key: str
         :param _Name: Dictionary name
         :type Name: str
-        :param _Size: Dictionary size in B
+        :param _Size: Dictionary size. Unit: B.
         :type Size: int
         """
         self._Key = None
@@ -3184,7 +3633,7 @@ class DictInfo(AbstractModel):
 
     @property
     def Key(self):
-        r"""Dictionary key value
+        r"""Dictionary key-value
         :rtype: str
         """
         return self._Key
@@ -3206,7 +3655,7 @@ class DictInfo(AbstractModel):
 
     @property
     def Size(self):
-        r"""Dictionary size in B
+        r"""Dictionary size. Unit: B.
         :rtype: int
         """
         return self._Size
@@ -3230,6 +3679,87 @@ class DictInfo(AbstractModel):
         
 
 
+class EnableScheduleOperationDuration(AbstractModel):
+    r"""Placement group async task maintenance time period
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Periods: Date when enabling an asynchronous task is supported
+        :type Periods: list of str
+        :param _TimeStart: Enable async start time
+        :type TimeStart: str
+        :param _TimeEnd: Supports enabling asynchronous termination time
+        :type TimeEnd: str
+        :param _TimeZone: Enable async time zone
+        :type TimeZone: str
+        """
+        self._Periods = None
+        self._TimeStart = None
+        self._TimeEnd = None
+        self._TimeZone = None
+
+    @property
+    def Periods(self):
+        r"""Date when enabling an asynchronous task is supported
+        :rtype: list of str
+        """
+        return self._Periods
+
+    @Periods.setter
+    def Periods(self, Periods):
+        self._Periods = Periods
+
+    @property
+    def TimeStart(self):
+        r"""Enable async start time
+        :rtype: str
+        """
+        return self._TimeStart
+
+    @TimeStart.setter
+    def TimeStart(self, TimeStart):
+        self._TimeStart = TimeStart
+
+    @property
+    def TimeEnd(self):
+        r"""Supports enabling asynchronous termination time
+        :rtype: str
+        """
+        return self._TimeEnd
+
+    @TimeEnd.setter
+    def TimeEnd(self, TimeEnd):
+        self._TimeEnd = TimeEnd
+
+    @property
+    def TimeZone(self):
+        r"""Enable async time zone
+        :rtype: str
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+
+    def _deserialize(self, params):
+        self._Periods = params.get("Periods")
+        self._TimeStart = params.get("TimeStart")
+        self._TimeEnd = params.get("TimeEnd")
+        self._TimeZone = params.get("TimeZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EsAcl(AbstractModel):
     r"""ES cluster configuration item
 
@@ -3237,9 +3767,9 @@ class EsAcl(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BlackIpList: Kibana access blocklist
+        :param _BlackIpList: kibana access blocklist
         :type BlackIpList: list of str
-        :param _WhiteIpList: Kibana access allowlist
+        :param _WhiteIpList: kibana access allowlist
         :type WhiteIpList: list of str
         """
         self._BlackIpList = None
@@ -3247,7 +3777,7 @@ class EsAcl(AbstractModel):
 
     @property
     def BlackIpList(self):
-        r"""Kibana access blocklist
+        r"""kibana access blocklist
         :rtype: list of str
         """
         return self._BlackIpList
@@ -3258,7 +3788,7 @@ class EsAcl(AbstractModel):
 
     @property
     def WhiteIpList(self):
-        r"""Kibana access allowlist
+        r"""kibana access allowlist
         :rtype: list of str
         """
         return self._WhiteIpList
@@ -3282,13 +3812,13 @@ class EsAcl(AbstractModel):
 
 
 class EsConfigSetInfo(AbstractModel):
-    r"""Configuration set information
+    r"""Configuration group information
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: Configuration set type, such as `LDAP` and `AD`.
+        :param _Type: Configuration group type, for example, ldap and ad
         :type Type: str
         :param _EsConfig: "{\"order\":0,\"url\":\"ldap://10.0.1.72:389\",\"bind_dn\":\"cn=admin,dc=tencent,dc=com\",\"user_search.base_dn\":\"dc=tencent,dc=com\",\"user_search.filter\":\"(cn={0})\",\"group_search.base_dn\":\"dc=tencent,dc=com\"}"
         :type EsConfig: str
@@ -3298,7 +3828,7 @@ class EsConfigSetInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""Configuration set type, such as `LDAP` and `AD`.
+        r"""Configuration group type, for example, ldap and ad
         :rtype: str
         """
         return self._Type
@@ -3333,32 +3863,44 @@ class EsConfigSetInfo(AbstractModel):
 
 
 class EsDictionaryInfo(AbstractModel):
-    r"""ES dictionary information
+    r"""ES library information
 
     """
 
     def __init__(self):
         r"""
-        :param _MainDict: List of non-stop words
+        :param _MainDict: List of enabled word dictionaries
         :type MainDict: list of DictInfo
-        :param _Stopwords: List of stop words
+        :param _Stopwords: List of stopword dictionaries
         :type Stopwords: list of DictInfo
-        :param _QQDict: QQ dictionary list
+        :param _QQDict: List of QQ word segmentation dictionaries
         :type QQDict: list of DictInfo
-        :param _Synonym: Synonym dictionary list
+        :param _Synonym: List of synonym dictionaries
         :type Synonym: list of DictInfo
-        :param _UpdateType: Update dictionary type
+        :param _UpdateType: Update the dictionary type
         :type UpdateType: str
+        :param _AnsjMain: List of ansj enabled word dictionaries
+        :type AnsjMain: list of DictInfo
+        :param _AnsjStop: List of ansj stopword dictionaries
+        :type AnsjStop: list of DictInfo
+        :param _AnsjAmbiguity: List of ansj ambiguity lexicons
+        :type AnsjAmbiguity: list of DictInfo
+        :param _AnsjSynonyms: List of ansj synonym dictionaries
+        :type AnsjSynonyms: list of DictInfo
         """
         self._MainDict = None
         self._Stopwords = None
         self._QQDict = None
         self._Synonym = None
         self._UpdateType = None
+        self._AnsjMain = None
+        self._AnsjStop = None
+        self._AnsjAmbiguity = None
+        self._AnsjSynonyms = None
 
     @property
     def MainDict(self):
-        r"""List of non-stop words
+        r"""List of enabled word dictionaries
         :rtype: list of DictInfo
         """
         return self._MainDict
@@ -3369,7 +3911,7 @@ class EsDictionaryInfo(AbstractModel):
 
     @property
     def Stopwords(self):
-        r"""List of stop words
+        r"""List of stopword dictionaries
         :rtype: list of DictInfo
         """
         return self._Stopwords
@@ -3380,7 +3922,7 @@ class EsDictionaryInfo(AbstractModel):
 
     @property
     def QQDict(self):
-        r"""QQ dictionary list
+        r"""List of QQ word segmentation dictionaries
         :rtype: list of DictInfo
         """
         return self._QQDict
@@ -3391,7 +3933,7 @@ class EsDictionaryInfo(AbstractModel):
 
     @property
     def Synonym(self):
-        r"""Synonym dictionary list
+        r"""List of synonym dictionaries
         :rtype: list of DictInfo
         """
         return self._Synonym
@@ -3402,7 +3944,7 @@ class EsDictionaryInfo(AbstractModel):
 
     @property
     def UpdateType(self):
-        r"""Update dictionary type
+        r"""Update the dictionary type
         :rtype: str
         """
         return self._UpdateType
@@ -3410,6 +3952,50 @@ class EsDictionaryInfo(AbstractModel):
     @UpdateType.setter
     def UpdateType(self, UpdateType):
         self._UpdateType = UpdateType
+
+    @property
+    def AnsjMain(self):
+        r"""List of ansj enabled word dictionaries
+        :rtype: list of DictInfo
+        """
+        return self._AnsjMain
+
+    @AnsjMain.setter
+    def AnsjMain(self, AnsjMain):
+        self._AnsjMain = AnsjMain
+
+    @property
+    def AnsjStop(self):
+        r"""List of ansj stopword dictionaries
+        :rtype: list of DictInfo
+        """
+        return self._AnsjStop
+
+    @AnsjStop.setter
+    def AnsjStop(self, AnsjStop):
+        self._AnsjStop = AnsjStop
+
+    @property
+    def AnsjAmbiguity(self):
+        r"""List of ansj ambiguity lexicons
+        :rtype: list of DictInfo
+        """
+        return self._AnsjAmbiguity
+
+    @AnsjAmbiguity.setter
+    def AnsjAmbiguity(self, AnsjAmbiguity):
+        self._AnsjAmbiguity = AnsjAmbiguity
+
+    @property
+    def AnsjSynonyms(self):
+        r"""List of ansj synonym dictionaries
+        :rtype: list of DictInfo
+        """
+        return self._AnsjSynonyms
+
+    @AnsjSynonyms.setter
+    def AnsjSynonyms(self, AnsjSynonyms):
+        self._AnsjSynonyms = AnsjSynonyms
 
 
     def _deserialize(self, params):
@@ -3438,6 +4024,30 @@ class EsDictionaryInfo(AbstractModel):
                 obj._deserialize(item)
                 self._Synonym.append(obj)
         self._UpdateType = params.get("UpdateType")
+        if params.get("AnsjMain") is not None:
+            self._AnsjMain = []
+            for item in params.get("AnsjMain"):
+                obj = DictInfo()
+                obj._deserialize(item)
+                self._AnsjMain.append(obj)
+        if params.get("AnsjStop") is not None:
+            self._AnsjStop = []
+            for item in params.get("AnsjStop"):
+                obj = DictInfo()
+                obj._deserialize(item)
+                self._AnsjStop.append(obj)
+        if params.get("AnsjAmbiguity") is not None:
+            self._AnsjAmbiguity = []
+            for item in params.get("AnsjAmbiguity"):
+                obj = DictInfo()
+                obj._deserialize(item)
+                self._AnsjAmbiguity.append(obj)
+        if params.get("AnsjSynonyms") is not None:
+            self._AnsjSynonyms = []
+            for item in params.get("AnsjSynonyms"):
+                obj = DictInfo()
+                obj._deserialize(item)
+                self._AnsjSynonyms.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3449,13 +4059,13 @@ class EsDictionaryInfo(AbstractModel):
 
 
 class EsPublicAcl(AbstractModel):
-    r"""Public network ACL information of ES
+    r"""ES public network access control information
 
     """
 
     def __init__(self):
         r"""
-        :param _BlackIpList: Access blocklist
+        :param _BlackIpList: Access the blocklist
         :type BlackIpList: list of str
         :param _WhiteIpList: Access allowlist
         :type WhiteIpList: list of str
@@ -3465,7 +4075,7 @@ class EsPublicAcl(AbstractModel):
 
     @property
     def BlackIpList(self):
-        r"""Access blocklist
+        r"""Access the blocklist
         :rtype: list of str
         """
         return self._BlackIpList
@@ -3506,14 +4116,14 @@ class GetRequestTargetNodeTypesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: Instance ID
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -3542,7 +4152,7 @@ class GetRequestTargetNodeTypesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetNodeTypes: A list of node types used to receive requests.
+        :param _TargetNodeTypes: List of target node types that receive requests
         :type TargetNodeTypes: list of str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3552,7 +4162,7 @@ class GetRequestTargetNodeTypesResponse(AbstractModel):
 
     @property
     def TargetNodeTypes(self):
-        r"""A list of node types used to receive requests.
+        r"""List of target node types that receive requests
         :rtype: list of str
         """
         return self._TargetNodeTypes
@@ -3578,6 +4188,57 @@ class GetRequestTargetNodeTypesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GpuInfo(AbstractModel):
+    r"""Gpu information of the node
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GpuCount: Number of Gpu blocks
+        :type GpuCount: int
+        :param _GpuType: GPU type.
+        :type GpuType: str
+        """
+        self._GpuCount = None
+        self._GpuType = None
+
+    @property
+    def GpuCount(self):
+        r"""Number of Gpu blocks
+        :rtype: int
+        """
+        return self._GpuCount
+
+    @GpuCount.setter
+    def GpuCount(self, GpuCount):
+        self._GpuCount = GpuCount
+
+    @property
+    def GpuType(self):
+        r"""GPU type.
+        :rtype: str
+        """
+        return self._GpuType
+
+    @GpuType.setter
+    def GpuType(self, GpuType):
+        self._GpuType = GpuType
+
+
+    def _deserialize(self, params):
+        self._GpuCount = params.get("GpuCount")
+        self._GpuType = params.get("GpuType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IndexMetaField(AbstractModel):
     r"""Index metadata field
 
@@ -3586,48 +4247,36 @@ class IndexMetaField(AbstractModel):
     def __init__(self):
         r"""
         :param _IndexType: Index type
-Note: This field may return `null`, indicating that no valid value can be obtained.
         :type IndexType: str
         :param _IndexName: Index name
-Note: This field may return `null`, indicating that no valid value can be obtained.
         :type IndexName: str
-        :param _IndexMetaJson: 
+        :param _IndexMetaJson: JSON-formatted index metadata
         :type IndexMetaJson: str
         :param _IndexStatus: Index status
-Note: This field may return `null`, indicating that no valid value can be obtained.
         :type IndexStatus: str
-        :param _IndexStorage: Index size (in byte)
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _IndexStorage: Index storage size in bytes
         :type IndexStorage: int
         :param _IndexCreateTime: Index creation time
-Note: This field may return `null`, indicating that no valid value can be obtained.
         :type IndexCreateTime: str
-        :param _BackingIndices: Backing index
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _BackingIndices: Backup index
         :type BackingIndices: list of BackingIndexMetaField
-        :param _ClusterId: Cluster ID
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _ClusterId: Cluster ID of the index
         :type ClusterId: str
-        :param _ClusterName: Cluster name
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _ClusterName: Cluster name of the index
         :type ClusterName: str
-        :param _ClusterVersion: Cluster version
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _ClusterVersion: Version number of the cluster to which the index belongs
         :type ClusterVersion: str
-        :param _IndexPolicyField: Index lifecycle policy field
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _IndexPolicyField: Index lifecycle field
         :type IndexPolicyField: :class:`tencentcloud.es.v20180416.models.IndexPolicyField`
-        :param _IndexOptionsField: Index automation field
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _IndexOptionsField: Index autonomous field
         :type IndexOptionsField: :class:`tencentcloud.es.v20180416.models.IndexOptionsField`
-        :param _IndexSettingsField: Index setting field
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _IndexSettingsField: Index configuration field
         :type IndexSettingsField: :class:`tencentcloud.es.v20180416.models.IndexSettingsField`
-        :param _AppId: Cluster APP ID
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _IndexAliasesField: Index alias field
+        :type IndexAliasesField: list of str
+        :param _AppId: APP ID of the cluster to which the index belongs
         :type AppId: int
-        :param _IndexDocs: The number of index docs.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _IndexDocs: Number of indexed documents
         :type IndexDocs: int
         """
         self._IndexType = None
@@ -3643,13 +4292,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._IndexPolicyField = None
         self._IndexOptionsField = None
         self._IndexSettingsField = None
+        self._IndexAliasesField = None
         self._AppId = None
         self._IndexDocs = None
 
     @property
     def IndexType(self):
         r"""Index type
-Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._IndexType
@@ -3661,7 +4310,6 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     @property
     def IndexName(self):
         r"""Index name
-Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._IndexName
@@ -3672,7 +4320,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexMetaJson(self):
-        r"""
+        r"""JSON-formatted index metadata
         :rtype: str
         """
         return self._IndexMetaJson
@@ -3684,7 +4332,6 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     @property
     def IndexStatus(self):
         r"""Index status
-Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._IndexStatus
@@ -3695,8 +4342,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexStorage(self):
-        r"""Index size (in byte)
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Index storage size in bytes
         :rtype: int
         """
         return self._IndexStorage
@@ -3708,7 +4354,6 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     @property
     def IndexCreateTime(self):
         r"""Index creation time
-Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._IndexCreateTime
@@ -3719,8 +4364,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def BackingIndices(self):
-        r"""Backing index
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Backup index
         :rtype: list of BackingIndexMetaField
         """
         return self._BackingIndices
@@ -3731,8 +4375,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ClusterId(self):
-        r"""Cluster ID
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Cluster ID of the index
         :rtype: str
         """
         return self._ClusterId
@@ -3743,8 +4386,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ClusterName(self):
-        r"""Cluster name
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Cluster name of the index
         :rtype: str
         """
         return self._ClusterName
@@ -3755,8 +4397,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ClusterVersion(self):
-        r"""Cluster version
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Version number of the cluster to which the index belongs
         :rtype: str
         """
         return self._ClusterVersion
@@ -3767,8 +4408,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexPolicyField(self):
-        r"""Index lifecycle policy field
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Index lifecycle field
         :rtype: :class:`tencentcloud.es.v20180416.models.IndexPolicyField`
         """
         return self._IndexPolicyField
@@ -3779,8 +4419,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexOptionsField(self):
-        r"""Index automation field
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Index autonomous field
         :rtype: :class:`tencentcloud.es.v20180416.models.IndexOptionsField`
         """
         return self._IndexOptionsField
@@ -3791,8 +4430,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexSettingsField(self):
-        r"""Index setting field
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Index configuration field
         :rtype: :class:`tencentcloud.es.v20180416.models.IndexSettingsField`
         """
         return self._IndexSettingsField
@@ -3802,9 +4440,19 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._IndexSettingsField = IndexSettingsField
 
     @property
+    def IndexAliasesField(self):
+        r"""Index alias field
+        :rtype: list of str
+        """
+        return self._IndexAliasesField
+
+    @IndexAliasesField.setter
+    def IndexAliasesField(self, IndexAliasesField):
+        self._IndexAliasesField = IndexAliasesField
+
+    @property
     def AppId(self):
-        r"""Cluster APP ID
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""APP ID of the cluster to which the index belongs
         :rtype: int
         """
         return self._AppId
@@ -3815,8 +4463,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexDocs(self):
-        r"""The number of index docs.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Number of indexed documents
         :rtype: int
         """
         return self._IndexDocs
@@ -3851,6 +4498,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("IndexSettingsField") is not None:
             self._IndexSettingsField = IndexSettingsField()
             self._IndexSettingsField._deserialize(params.get("IndexSettingsField"))
+        self._IndexAliasesField = params.get("IndexAliasesField")
         self._AppId = params.get("AppId")
         self._IndexDocs = params.get("IndexDocs")
         memeber_set = set(params.keys())
@@ -3864,33 +4512,32 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class IndexOptionsField(AbstractModel):
-    r"""Index automation field
+    r"""Index autonomous field
 
     """
 
     def __init__(self):
         r"""
-        :param _ExpireMaxAge: Max age for expiry purpose
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _ExpireMaxAge: <p>Expiration time.</p>
         :type ExpireMaxAge: str
-        :param _ExpireMaxSize: Max size for expiry purpose
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _ExpireMaxSize: <p>Expiration size</p>
         :type ExpireMaxSize: str
-        :param _RolloverMaxAge: Rollover cycle
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _RolloverMaxAge: <p>Rollover period</p>
         :type RolloverMaxAge: str
-        :param _RolloverDynamic: Whether to enable the dynamic rollover
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _RolloverDynamic: <p>Whether to enable dynamic scrolling</p>
         :type RolloverDynamic: str
-        :param _ShardNumDynamic: Whether to enable dynamic sharding
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _ShardNumDynamic: <p>Whether to enable dynamic sharding</p>
         :type ShardNumDynamic: str
-        :param _TimestampField: Timestamp field
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _TimestampField: <p>Time partition field</p>
         :type TimestampField: str
-        :param _WriteMode: Write mode
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _WriteMode: <p>Write mode</p>
         :type WriteMode: str
+        :param _FullOffloadedEnable: <p>Whether to enable complete uninstallation</p><p>Enumeration values:</p><ul><li>true: enable complete uninstallation</li><li>false: disable complete uninstallation</li></ul>
+        :type FullOffloadedEnable: str
+        :param _FullOffloadedMaxAge: <p>Full uninstall lifecycle</p>
+        :type FullOffloadedMaxAge: str
+        :param _FullOffloadedRetrieveMaxAge: <p>Completely uninstall the lifecycle after backup index retrieval</p>
+        :type FullOffloadedRetrieveMaxAge: str
         """
         self._ExpireMaxAge = None
         self._ExpireMaxSize = None
@@ -3899,11 +4546,13 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._ShardNumDynamic = None
         self._TimestampField = None
         self._WriteMode = None
+        self._FullOffloadedEnable = None
+        self._FullOffloadedMaxAge = None
+        self._FullOffloadedRetrieveMaxAge = None
 
     @property
     def ExpireMaxAge(self):
-        r"""Max age for expiry purpose
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""<p>Expiration time.</p>
         :rtype: str
         """
         return self._ExpireMaxAge
@@ -3914,8 +4563,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ExpireMaxSize(self):
-        r"""Max size for expiry purpose
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""<p>Expiration size</p>
         :rtype: str
         """
         return self._ExpireMaxSize
@@ -3926,8 +4574,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RolloverMaxAge(self):
-        r"""Rollover cycle
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""<p>Rollover period</p>
         :rtype: str
         """
         return self._RolloverMaxAge
@@ -3938,8 +4585,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RolloverDynamic(self):
-        r"""Whether to enable the dynamic rollover
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""<p>Whether to enable dynamic scrolling</p>
         :rtype: str
         """
         return self._RolloverDynamic
@@ -3950,8 +4596,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ShardNumDynamic(self):
-        r"""Whether to enable dynamic sharding
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""<p>Whether to enable dynamic sharding</p>
         :rtype: str
         """
         return self._ShardNumDynamic
@@ -3962,8 +4607,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TimestampField(self):
-        r"""Timestamp field
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""<p>Time partition field</p>
         :rtype: str
         """
         return self._TimestampField
@@ -3974,8 +4618,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def WriteMode(self):
-        r"""Write mode
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""<p>Write mode</p>
         :rtype: str
         """
         return self._WriteMode
@@ -3983,6 +4626,39 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     @WriteMode.setter
     def WriteMode(self, WriteMode):
         self._WriteMode = WriteMode
+
+    @property
+    def FullOffloadedEnable(self):
+        r"""<p>Whether to enable complete uninstallation</p><p>Enumeration values:</p><ul><li>true: enable complete uninstallation</li><li>false: disable complete uninstallation</li></ul>
+        :rtype: str
+        """
+        return self._FullOffloadedEnable
+
+    @FullOffloadedEnable.setter
+    def FullOffloadedEnable(self, FullOffloadedEnable):
+        self._FullOffloadedEnable = FullOffloadedEnable
+
+    @property
+    def FullOffloadedMaxAge(self):
+        r"""<p>Full uninstall lifecycle</p>
+        :rtype: str
+        """
+        return self._FullOffloadedMaxAge
+
+    @FullOffloadedMaxAge.setter
+    def FullOffloadedMaxAge(self, FullOffloadedMaxAge):
+        self._FullOffloadedMaxAge = FullOffloadedMaxAge
+
+    @property
+    def FullOffloadedRetrieveMaxAge(self):
+        r"""<p>Completely uninstall the lifecycle after backup index retrieval</p>
+        :rtype: str
+        """
+        return self._FullOffloadedRetrieveMaxAge
+
+    @FullOffloadedRetrieveMaxAge.setter
+    def FullOffloadedRetrieveMaxAge(self, FullOffloadedRetrieveMaxAge):
+        self._FullOffloadedRetrieveMaxAge = FullOffloadedRetrieveMaxAge
 
 
     def _deserialize(self, params):
@@ -3993,6 +4669,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._ShardNumDynamic = params.get("ShardNumDynamic")
         self._TimestampField = params.get("TimestampField")
         self._WriteMode = params.get("WriteMode")
+        self._FullOffloadedEnable = params.get("FullOffloadedEnable")
+        self._FullOffloadedMaxAge = params.get("FullOffloadedMaxAge")
+        self._FullOffloadedRetrieveMaxAge = params.get("FullOffloadedRetrieveMaxAge")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4004,32 +4683,25 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class IndexPolicyField(AbstractModel):
-    r"""Index lifecycle policy field
+    r"""Index lifecycle field
 
     """
 
     def __init__(self):
         r"""
-        :param _WarmEnable: Whether to enable the warm phase
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _WarmEnable: Whether the warm phase is enabled
         :type WarmEnable: str
-        :param _WarmMinAge: Min age before data transitions to the warm phase
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _WarmMinAge: Transfer time to the warm phase
         :type WarmMinAge: str
-        :param _ColdEnable: Whether to enable the cold phase
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _ColdEnable: Whether the cold phase is enabled
         :type ColdEnable: str
-        :param _ColdMinAge: Min age before data transitions to the cold phase
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _ColdMinAge: Transfer time to the cold phase
         :type ColdMinAge: str
-        :param _FrozenEnable: Whether to enable the frozen phase
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _FrozenEnable: Whether the frozen phase is enabled
         :type FrozenEnable: str
-        :param _FrozenMinAge: Min age before data transitions to the frozen phase
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _FrozenMinAge: Time of transfer to the frozen stage
         :type FrozenMinAge: str
         :param _ColdAction: /
-Note: This field may return null, indicating that no valid value can be obtained.
         :type ColdAction: str
         """
         self._WarmEnable = None
@@ -4042,8 +4714,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def WarmEnable(self):
-        r"""Whether to enable the warm phase
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Whether the warm phase is enabled
         :rtype: str
         """
         return self._WarmEnable
@@ -4054,8 +4725,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def WarmMinAge(self):
-        r"""Min age before data transitions to the warm phase
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Transfer time to the warm phase
         :rtype: str
         """
         return self._WarmMinAge
@@ -4066,8 +4736,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ColdEnable(self):
-        r"""Whether to enable the cold phase
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Whether the cold phase is enabled
         :rtype: str
         """
         return self._ColdEnable
@@ -4078,8 +4747,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ColdMinAge(self):
-        r"""Min age before data transitions to the cold phase
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Transfer time to the cold phase
         :rtype: str
         """
         return self._ColdMinAge
@@ -4090,8 +4758,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def FrozenEnable(self):
-        r"""Whether to enable the frozen phase
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Whether the frozen phase is enabled
         :rtype: str
         """
         return self._FrozenEnable
@@ -4102,8 +4769,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def FrozenMinAge(self):
-        r"""Min age before data transitions to the frozen phase
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Time of transfer to the frozen stage
         :rtype: str
         """
         return self._FrozenMinAge
@@ -4115,7 +4781,6 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     @property
     def ColdAction(self):
         r"""/
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._ColdAction
@@ -4144,20 +4809,17 @@ Note: This field may return null, indicating that no valid value can be obtained
 
 
 class IndexSettingsField(AbstractModel):
-    r"""Index configuration fields
+    r"""Index configuration field
 
     """
 
     def __init__(self):
         r"""
-        :param _NumberOfShards: Number of primary shards
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _NumberOfShards: Number of index primary shards
         :type NumberOfShards: str
-        :param _NumberOfReplicas: Number of replica shards
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _NumberOfReplicas: Replica shard count of an index
         :type NumberOfReplicas: str
-        :param _RefreshInterval: Index refresh interval
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _RefreshInterval: Index refresh frequency
         :type RefreshInterval: str
         """
         self._NumberOfShards = None
@@ -4166,8 +4828,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def NumberOfShards(self):
-        r"""Number of primary shards
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Number of index primary shards
         :rtype: str
         """
         return self._NumberOfShards
@@ -4178,8 +4839,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def NumberOfReplicas(self):
-        r"""Number of replica shards
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Replica shard count of an index
         :rtype: str
         """
         return self._NumberOfReplicas
@@ -4190,8 +4850,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RefreshInterval(self):
-        r"""Index refresh interval
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Index refresh frequency
         :rtype: str
         """
         return self._RefreshInterval
@@ -4222,213 +4881,222 @@ class InstanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: <p>Instance ID.</p>
         :type InstanceId: str
-        :param _InstanceName: Instance name
+        :param _InstanceName: <p>Instance name.</p>
         :type InstanceName: str
-        :param _Region: Region
+        :param _Region: <p>Region.</p>
         :type Region: str
-        :param _Zone: Availability Zone
+        :param _Zone: <p>AZ.</p>
         :type Zone: str
-        :param _AppId: User ID
+        :param _AppId: <p>uid</p>
         :type AppId: int
-        :param _Uin: User UIN
+        :param _Uin: <p>User UIN.</p>
         :type Uin: str
-        :param _VpcUid: UID of the VPC where the instance resides
+        :param _VpcUid: <p>UID of the VPC to which the instance belongs</p>
         :type VpcUid: str
-        :param _SubnetUid: UID of the subnet where the instance resides
+        :param _SubnetUid: <p>UID of the subnet to which the instance belongs</p>
         :type SubnetUid: str
-        :param _Status: Instance status. `0`: Processing; `1`: Normal; `-1`: `Stopped`; `-2`: Being terminated; `-3`: Terminated; `2`: Initializing during the cluster creation.
+        :param _Status: <p>Instance status. 0: processing, 1: normal, -1: stopped, -2: being destroyed, -3: terminated, -4: isolated, 2: initializing when creating a cluster</p>
         :type Status: int
-        :param _RenewFlag: This parameter is not used on the global website
+        :param _RenewFlag: <p>Auto-renewal flag. Value range: <br>RENEW_FLAG_AUTO: auto renewal<br>RENEW_FLAG_MANUAL: no auto-renewal<br>Default value: <br>RENEW_FLAG_DEFAULT: no auto-renewal<br>If this parameter is set to RENEW_FLAG_AUTO, the instance will automatically renew on a monthly basis after expiration if the account balance is sufficient.</p>
         :type RenewFlag: str
-        :param _ChargeType: Instance billing method. Valid values: POSTPAID_BY_HOUR (pay-as-you-go hourly); CDHPAID (billed based on CDH, i.e., only CDH is billed but not the instances on CDH)
+        :param _ChargeType: <p>Instance billing mode. Value ranges: PREPAID: prepaid mode, i.e., monthly subscription. POSTPAID_BY_HOUR: postpaid, i.e., pay-as-you-go. CDHPAID: CDH-paid mode, i.e., only charges for CDH, without charging for instances on CDH.</p>
         :type ChargeType: str
-        :param _ChargePeriod: This parameter is not used on the global website
+        :param _ChargePeriod: <p>Annual and monthly subscription duration, unit: month</p>
         :type ChargePeriod: int
-        :param _NodeType: Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+        :param _NodeType: <p>Node specification<li>ES.S1.SMALL2: 1-core 2G</li><li>ES.S1.MEDIUM4: 2-core 4G</li><li>ES.S1.MEDIUM8: 2-core 8G</li><li>ES.S1.LARGE16: 4-core 16G</li><li>ES.S1.2XLARGE32: 8-core 32G</li><li>ES.S1.4XLARGE32: 16-core 32G</li><li>ES.S1.4XLARGE64: 16-core 64G</li></p>
         :type NodeType: str
-        :param _NodeNum: Number of nodes
+        :param _NodeNum: <p>Number of nodes</p>
         :type NodeNum: int
-        :param _CpuNum: Number of CPU cores of the node
+        :param _CpuNum: <p>Number of node CPU cores.</p>
         :type CpuNum: int
-        :param _MemSize: Node memory size in GB
+        :param _MemSize: <p>Node memory size (GB).</p>
         :type MemSize: int
-        :param _DiskType: Node disk type
+        :param _DiskType: <p>Node disk type</p>
         :type DiskType: str
-        :param _DiskSize: Node disk size in GB
+        :param _DiskSize: <p>Node disk size (GB).</p>
         :type DiskSize: int
-        :param _EsDomain: ES domain name
+        :param _EsDomain: <p>ES domain name</p>
         :type EsDomain: str
-        :param _EsVip: ES VIP
+        :param _EsVip: <p>ES VIP</p>
         :type EsVip: str
-        :param _EsPort: ES port
+        :param _EsPort: <p>ES port</p>
         :type EsPort: int
-        :param _KibanaUrl: Kibana access URL
+        :param _KibanaUrl: <p>Kibana access url</p>
         :type KibanaUrl: str
-        :param _EsVersion: ES version number
+        :param _EsVersion: <p>ES version number</p>
         :type EsVersion: str
-        :param _EsConfig: ES configuration item
+        :param _EsConfig: <p>ES configuration item</p>
         :type EsConfig: str
-        :param _EsAcl: Kibana access control configuration
+        :param _EsAcl: <p>Kibana Access Control Configuration</p>
         :type EsAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`
-        :param _CreateTime: Instance creation time
+        :param _CreateTime: <p>Instance creation time</p>
         :type CreateTime: str
-        :param _UpdateTime: Last modified time of the instance
+        :param _UpdateTime: <p>Last modification time of the instance</p>
         :type UpdateTime: str
-        :param _Deadline: This parameter is not used on the global website
+        :param _Deadline: <p>Instance expiration time</p>
         :type Deadline: str
-        :param _InstanceType: Instance type (instance type identifier, which can be only 1 or 2 currently)
+        :param _InstanceType: <p>Instance type (instance type flag, currently only 1 and 2)</p>
         :type InstanceType: int
-        :param _IkConfig: IK analyzer configuration
+        :param _IkConfig: <p>Ik analyzer configuration</p>
         :type IkConfig: :class:`tencentcloud.es.v20180416.models.EsDictionaryInfo`
-        :param _MasterNodeInfo: Dedicated primary node configuration
+        :param _MasterNodeInfo: <p>Dedicated master node configuration</p>
         :type MasterNodeInfo: :class:`tencentcloud.es.v20180416.models.MasterNodeInfo`
-        :param _CosBackup: Auto-backup to COS configuration
+        :param _CosBackup: <p>cos automatic backup configuration</p>
         :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`
-        :param _AllowCosBackup: Whether to allow auto-backup to COS
+        :param _AllowCosBackup: <p>Whether cos automatic backup is allowed</p>
         :type AllowCosBackup: bool
-        :param _TagList: List of tags owned by the instance
+        :param _TagList: <p>Tag list of the instance</p>
         :type TagList: list of TagInfo
-        :param _LicenseType: License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum
+        :param _LicenseType: <p>License type<li>oss: open source edition</li><li>basic: basic version</li><li>platinum: platinum version</li>Default value: platinum</p>
         :type LicenseType: str
-        :param _EnableHotWarmMode: Whether it is a hot/warm cluster <li>true: yes </li><li>false: no</li>
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _RealLicenseType: <p>License type<li>oss: open source edition</li><li>basic: basic version</li><li>platinum: platinum version</li><li>enterprise: enterprise edition</li>Default value: platinum</p>
+        :type RealLicenseType: str
+        :param _EnableHotWarmMode: <p>Whether it is a hot-cold cluster<li>true: Hot-cold cluster</li><li>false: Non-hot-cold cluster</li></p>
         :type EnableHotWarmMode: bool
-        :param _WarmNodeType: Warm node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _WarmNodeType: <p>Warm node specification<li>ES.S1.SMALL2: 1-core 2G</li><li>ES.S1.MEDIUM4: 2-core 4G</li><li>ES.S1.MEDIUM8: 2-core 8G</li><li>ES.S1.LARGE16: 4-core 16G</li><li>ES.S1.2XLARGE32: 8-core 32G</li><li>ES.S1.4XLARGE32: 16-core 32G</li><li>ES.S1.4XLARGE64: 16-core 64G</li></p>
         :type WarmNodeType: str
-        :param _WarmNodeNum: Number of warm nodes
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _WarmNodeNum: <p>Number of warm nodes</p>
         :type WarmNodeNum: int
-        :param _WarmCpuNum: Number of warm node CPU cores
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _WarmCpuNum: <p>Warm node CPU cores</p>
         :type WarmCpuNum: int
-        :param _WarmMemSize: Warm node memory size (in GB)
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _WarmMemSize: <p>Warm node memory size (GB).</p>
         :type WarmMemSize: int
-        :param _WarmDiskType: Warm node disk type
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _WarmDiskType: <p>Warm node disk type</p>
         :type WarmDiskType: str
-        :param _WarmDiskSize: Warm node disk size (in GB)
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _WarmDiskSize: <p>Warm node disk size (GB).</p>
         :type WarmDiskSize: int
-        :param _NodeInfoList: Cluster node information list
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _NodeInfoList: <p>Cluster node information list</p>
         :type NodeInfoList: list of NodeInfo
-        :param _EsPublicUrl: ES public IP address
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _EsPublicUrl: <p>Es public network address</p>
         :type EsPublicUrl: str
-        :param _MultiZoneInfo: Multi-AZ network information
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MultiZoneInfo: <p>Multi-AZ network info</p>
         :type MultiZoneInfo: list of ZoneDetail
-        :param _DeployMode: Deployment mode <li>0: single-AZ </li><li>1: multi-AZ</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DeployMode: <p>Deployment mode<li>0: single availability zone</li><li>1: multi-availability zone, Beijing, Shanghai, Shanghai Finance, Guangzhou, Nanjing, Hong Kong, Singapore, Frankfurt (allowlist control)</li></p>
         :type DeployMode: int
-        :param _PublicAccess: ES public access status <li>OPEN: enabled </li><li>CLOSE: disabled
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PublicAccess: <p>ES public access status<li>OPEN: enable</li><li>CLOSE: disable</li></p>
         :type PublicAccess: str
-        :param _EsPublicAcl: ES public access control configuration
+        :param _EsPublicAcl: <p>ES public network access control configuration</p>
         :type EsPublicAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`
-        :param _KibanaPrivateUrl: Kibana private IP address
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _KibanaPrivateUrl: <p>Kibana private network address</p>
         :type KibanaPrivateUrl: str
-        :param _KibanaPublicAccess: Kibana public access status <li>OPEN: enabled </li><li>CLOSE: disabled
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _KibanaPublicAccess: <p>Kibana public access status<li>OPEN: enabled</li><li>CLOSE: disabled</li></p>
         :type KibanaPublicAccess: str
-        :param _KibanaPrivateAccess: Kibana private access status <li>OPEN: enabled </li><li>CLOSE: disabled
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _KibanaPrivateAccess: <p>Kibana internal access status<li>OPEN: enable</li><li>CLOSE: disable</li></p>
         :type KibanaPrivateAccess: str
-        :param _SecurityType: Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SecurityType: <p>Whether xpack security authentication is enabled for basic version 6.8 (and above versions)<li>1: not enabled</li><li>2: enabled</li></p>
         :type SecurityType: int
-        :param _SceneType: Scenario template type. 0: not enabled; 1: general scenario; 2: log scenario; 3: search scenario
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _SceneType: <p>Scenario template type: 0, not enabled; 1, common scenarios; 2, log scenario; 3, search scenario</p>
         :type SceneType: int
-        :param _KibanaConfig: Kibana configuration item.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _KibanaConfig: <p>Kibana configuration item</p>
         :type KibanaConfig: str
-        :param _KibanaNodeInfo: Kibana node information
-Note: this field may return `null`, indicating that no valid value can be obtained.
+        :param _KibanaNodeInfo: <p>Kibana node information</p>
         :type KibanaNodeInfo: :class:`tencentcloud.es.v20180416.models.KibanaNodeInfo`
-        :param _WebNodeTypeInfo: Visual node configuration
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _WebNodeTypeInfo: <p>Visualize node configuration</p>
         :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
-        :param _Jdk: JDK type. Valid values: `oracle`, `kona`
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _Jdk: <p>JDK type. Valid values: oracle, kona</p>
         :type Jdk: str
-        :param _Protocol: Cluster network communication protocol
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _Protocol: <p>Cluster network communication protocol</p>
         :type Protocol: str
-        :param _SecurityGroups: Security group ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _SecurityGroups: <p>Security group id</p>
         :type SecurityGroups: list of str
-        :param _ColdNodeType: Cold node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _ColdNodeType: <p>Cold node specification<li>ES.S1.SMALL2: 1-core 2G</li><li>ES.S1.MEDIUM4: 2-core 4G</li><li>ES.S1.MEDIUM8: 2-core 8G</li><li>ES.S1.LARGE16: 4-core 16G</li><li>ES.S1.2XLARGE32: 8-core 32G</li><li>ES.S1.4XLARGE32: 16-core 32G</li><li>ES.S1.4XLARGE64: 16-core 64G</li></p>
         :type ColdNodeType: str
-        :param _ColdNodeNum: Number of cold nodes
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _ColdNodeNum: <p>Number of cold nodes</p>
         :type ColdNodeNum: int
-        :param _ColdCpuNum: Number of cold node CPU cores
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _ColdCpuNum: <p>Cold node CPU cores</p>
         :type ColdCpuNum: int
-        :param _ColdMemSize: Cold node memory size (in GB)
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _ColdMemSize: <p>Cold node memory size (GB).</p>
         :type ColdMemSize: int
-        :param _ColdDiskType: Cold node disk type
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _ColdDiskType: <p>Cold node disk type</p>
         :type ColdDiskType: str
-        :param _ColdDiskSize: Cold node disk size (in GB)
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _ColdDiskSize: <p>Cold node disk size (GB).</p>
         :type ColdDiskSize: int
-        :param _FrozenNodeType: Frozen node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _FrozenNodeType: <p>Frozen node specification<li>ES.S1.SMALL2: 1-core 2GB</li><li>ES.S1.MEDIUM4: 2-core 4GB</li><li>ES.S1.MEDIUM8: 2-core 8GB</li><li>ES.S1.LARGE16: 4-core 16GB</li><li>ES.S1.2XLARGE32: 8-core 32GB</li><li>ES.S1.4XLARGE32: 16-core 32GB</li><li>ES.S1.4XLARGE64: 16-core 64GB</li></p>
         :type FrozenNodeType: str
-        :param _FrozenNodeNum: Number of frozen nodes
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _FrozenNodeNum: <p>Number of frozen nodes</p>
         :type FrozenNodeNum: int
-        :param _FrozenCpuNum: Number of frozen node CPU cores
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _FrozenCpuNum: <p>Frozen node CPU cores</p>
         :type FrozenCpuNum: int
-        :param _FrozenMemSize: Frozen node memory size (GB)
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _FrozenMemSize: <p>Frozen node memory size (GB).</p>
         :type FrozenMemSize: int
-        :param _FrozenDiskType: Frozen node disk type
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _FrozenDiskType: <p>Frozen node disk type</p>
         :type FrozenDiskType: str
-        :param _FrozenDiskSize: Frozen node disk size (in GB)
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _FrozenDiskSize: <p>Frozen node disk size (GB).</p>
         :type FrozenDiskSize: int
-        :param _HealthStatus: Cluster health status. `-1`: Unknown; `0`: Green; `1`: Yellow; `2`: Red
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _HealthStatus: <p>Cluster health status: -1 unknown; 0 Green; 1 Yellow; 2 Red</p>
         :type HealthStatus: int
-        :param _EsPrivateUrl: Private URL of the HTTPS cluster
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _EsPrivateUrl: <p>Intracluster network url for https.</p>
         :type EsPrivateUrl: str
-        :param _EsPrivateDomain: Private domain of the HTTPS cluster
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _EsPrivateDomain: <p>https cluster private network domain name</p>
         :type EsPrivateDomain: str
-        :param _EsConfigSets: Configuration set info of the cluster.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _EsConfigSets: <p>Cluster configuration group information.</p>
         :type EsConfigSets: list of EsConfigSetInfo
-        :param _OperationDuration: The maintenance time slot of the cluster
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _OperationDuration: <p>Cluster maintenance time slot</p>
         :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDuration`
-        :param _OptionalWebServiceInfos: Web node list
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _OptionalWebServiceInfos: <p>web node list</p>
         :type OptionalWebServiceInfos: list of OptionalWebServiceInfo
-        :param _AutoIndexEnabled: Autonomous index option
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AutoIndexEnabled: <p>Autonomous index switch</p>
         :type AutoIndexEnabled: bool
-        :param _EnableHybridStorage: Whether the storage-computing separation feature is enabled.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _EnableHybridStorage: <p>Whether storage and computation separation is supported.</p>
         :type EnableHybridStorage: bool
-        :param _ProcessPercent: The process progress
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProcessPercent: <p>Process progress.</p>
         :type ProcessPercent: float
-        :param _KibanaAlteringPublicAccess: The alerting policy of Kibana over the public network. <li>`OPEN`: Enable the policy;</li><li>`CLOSE`: Disable the policy.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _KibanaAlteringPublicAccess: <p>Kibana alerting public network alert policy<li>OPEN: enable</li><li>CLOSE: disable</li></p>
         :type KibanaAlteringPublicAccess: str
+        :param _HasKernelUpgrade: <p>Whether there is a kernel update this month: false (no) and true (yes).</p>
+        :type HasKernelUpgrade: bool
+        :param _CdcId: <p>cdcId, pass it when using a CDC subnet</p>
+        :type CdcId: str
+        :param _KibanaPrivateVip: <p>kibana intranet vip</p>
+        :type KibanaPrivateVip: str
+        :param _CustomKibanaPrivateUrl: <p>Customize the private network url of kibana</p>
+        :type CustomKibanaPrivateUrl: str
+        :param _OutboundPublicAcls: <p>Node outbound access detailed information.</p>
+        :type OutboundPublicAcls: list of OutboundPublicAcl
+        :param _NetConnectScheme: <p>Network connection solution</p>
+        :type NetConnectScheme: str
+        :param _DisasterRecoverGroupAffinity: <p>Placement group related parameters</p>
+        :type DisasterRecoverGroupAffinity: int
+        :param _SubProductCode: <p>Sub-product ID enumeration values: open source edition: "sp_es_io2", basic version: "sp_es_basic", platinum version: "sp_es_platinum", AI Search Enhancement Edition: "sp_es_aisearch", enterprise edition: "sp_es_enterprise", CDC platinum version: "sp_es_CDC_platinum", Log Enhancement Edition: "sp_es_enlogging", tsearch: "sp_tsearch_io2", logstash: "sp_es_logstash". It can be empty. When it is empty, the backend maps this field based on LicenseType.</p>
+        :type SubProductCode: str
+        :param _CosBucketStorageSize: <p>Storage-compute separation cos usage, Unit: M</p>
+        :type CosBucketStorageSize: int
+        :param _ReadWriteMode: <p>Read-write separation mode: 0: not enabled; 1: local read/write separation; 2: remote read/write separation.</p>
+        :type ReadWriteMode: int
+        :param _EnableScheduleRecoverGroup: <p>Whether there is an asynchronous task scheduling for placement groups</p>
+        :type EnableScheduleRecoverGroup: bool
+        :param _EnableScheduleOperationDuration: <p>The time when an asynchronous task is scheduled</p>
+        :type EnableScheduleOperationDuration: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
+        :param _EnableDestroyProtection: <p>Cluster protection: OPEN: enable, CLOSE: disable</p>
+        :type EnableDestroyProtection: str
+        :param _ShowKibanaIpPort: <p>kibana intranet access address</p>
+        :type ShowKibanaIpPort: str
+        :param _IsCdzLite: <p>Whether it is a CDZLite availability zone</p>
+        :type IsCdzLite: bool
+        :param _EsPrivateTcpUrl: <p>Cluster private network tcp address</p>
+        :type EsPrivateTcpUrl: str
+        :param _IsInRecycleBin: <p>Whether it is in the recycle bin</p><p>Default value: false</p>
+        :type IsInRecycleBin: bool
+        :param _RecycleLockEnabled: <p>Is locked in the recycle bin</p><p>Default value: false</p>
+        :type RecycleLockEnabled: bool
+        :param _MayDestroyPoint: <p>The time when termination is expected</p><p>Parameter format: YYYY-MM-DD hh:mm:ss</p>
+        :type MayDestroyPoint: str
+        :param _DelayDestroyInterval: <p>The time when termination is delayed</p><p>Unit: day</p>
+        :type DelayDestroyInterval: int
+        :param _EnableAutoReplace: <p>Enable automatic replacement of unhealthy nodes. 0: disable, 1: enable</p>
+        :type EnableAutoReplace: int
+        :param _OpenMTLS: <p>Enable mtls. 0: disable, 1: enable</p>
+        :type OpenMTLS: int
+        :param _ServerCertSource: <p>Certificate type</p>
+        :type ServerCertSource: str
+        :param _OldEsVip: <p>VIP pending migration for the cluster</p>
+        :type OldEsVip: str
+        :param _OldEsPrivateTcpUrl: <p>Cluster TCP address to be migrated</p>
+        :type OldEsPrivateTcpUrl: str
+        :param _NeedOfflineOldNodesNotify: <p>Whether to take old nodes offline from the VIP</p>
+        :type NeedOfflineOldNodesNotify: bool
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -4465,6 +5133,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._AllowCosBackup = None
         self._TagList = None
         self._LicenseType = None
+        self._RealLicenseType = None
         self._EnableHotWarmMode = None
         self._WarmNodeType = None
         self._WarmNodeNum = None
@@ -4511,10 +5180,36 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._EnableHybridStorage = None
         self._ProcessPercent = None
         self._KibanaAlteringPublicAccess = None
+        self._HasKernelUpgrade = None
+        self._CdcId = None
+        self._KibanaPrivateVip = None
+        self._CustomKibanaPrivateUrl = None
+        self._OutboundPublicAcls = None
+        self._NetConnectScheme = None
+        self._DisasterRecoverGroupAffinity = None
+        self._SubProductCode = None
+        self._CosBucketStorageSize = None
+        self._ReadWriteMode = None
+        self._EnableScheduleRecoverGroup = None
+        self._EnableScheduleOperationDuration = None
+        self._EnableDestroyProtection = None
+        self._ShowKibanaIpPort = None
+        self._IsCdzLite = None
+        self._EsPrivateTcpUrl = None
+        self._IsInRecycleBin = None
+        self._RecycleLockEnabled = None
+        self._MayDestroyPoint = None
+        self._DelayDestroyInterval = None
+        self._EnableAutoReplace = None
+        self._OpenMTLS = None
+        self._ServerCertSource = None
+        self._OldEsVip = None
+        self._OldEsPrivateTcpUrl = None
+        self._NeedOfflineOldNodesNotify = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""<p>Instance ID.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -4525,7 +5220,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
-        r"""Instance name
+        r"""<p>Instance name.</p>
         :rtype: str
         """
         return self._InstanceName
@@ -4536,7 +5231,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        r"""Region
+        r"""<p>Region.</p>
         :rtype: str
         """
         return self._Region
@@ -4547,7 +5242,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Zone(self):
-        r"""Availability Zone
+        r"""<p>AZ.</p>
         :rtype: str
         """
         return self._Zone
@@ -4558,7 +5253,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppId(self):
-        r"""User ID
+        r"""<p>uid</p>
         :rtype: int
         """
         return self._AppId
@@ -4569,7 +5264,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Uin(self):
-        r"""User UIN
+        r"""<p>User UIN.</p>
         :rtype: str
         """
         return self._Uin
@@ -4580,7 +5275,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcUid(self):
-        r"""UID of the VPC where the instance resides
+        r"""<p>UID of the VPC to which the instance belongs</p>
         :rtype: str
         """
         return self._VpcUid
@@ -4591,7 +5286,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetUid(self):
-        r"""UID of the subnet where the instance resides
+        r"""<p>UID of the subnet to which the instance belongs</p>
         :rtype: str
         """
         return self._SubnetUid
@@ -4602,7 +5297,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        r"""Instance status. `0`: Processing; `1`: Normal; `-1`: `Stopped`; `-2`: Being terminated; `-3`: Terminated; `2`: Initializing during the cluster creation.
+        r"""<p>Instance status. 0: processing, 1: normal, -1: stopped, -2: being destroyed, -3: terminated, -4: isolated, 2: initializing when creating a cluster</p>
         :rtype: int
         """
         return self._Status
@@ -4613,7 +5308,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RenewFlag(self):
-        r"""This parameter is not used on the global website
+        r"""<p>Auto-renewal flag. Value range: <br>RENEW_FLAG_AUTO: auto renewal<br>RENEW_FLAG_MANUAL: no auto-renewal<br>Default value: <br>RENEW_FLAG_DEFAULT: no auto-renewal<br>If this parameter is set to RENEW_FLAG_AUTO, the instance will automatically renew on a monthly basis after expiration if the account balance is sufficient.</p>
         :rtype: str
         """
         return self._RenewFlag
@@ -4624,7 +5319,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChargeType(self):
-        r"""Instance billing method. Valid values: POSTPAID_BY_HOUR (pay-as-you-go hourly); CDHPAID (billed based on CDH, i.e., only CDH is billed but not the instances on CDH)
+        r"""<p>Instance billing mode. Value ranges: PREPAID: prepaid mode, i.e., monthly subscription. POSTPAID_BY_HOUR: postpaid, i.e., pay-as-you-go. CDHPAID: CDH-paid mode, i.e., only charges for CDH, without charging for instances on CDH.</p>
         :rtype: str
         """
         return self._ChargeType
@@ -4635,7 +5330,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChargePeriod(self):
-        r"""This parameter is not used on the global website
+        r"""<p>Annual and monthly subscription duration, unit: month</p>
         :rtype: int
         """
         return self._ChargePeriod
@@ -4646,7 +5341,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NodeType(self):
-        r"""Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+        r"""<p>Node specification<li>ES.S1.SMALL2: 1-core 2G</li><li>ES.S1.MEDIUM4: 2-core 4G</li><li>ES.S1.MEDIUM8: 2-core 8G</li><li>ES.S1.LARGE16: 4-core 16G</li><li>ES.S1.2XLARGE32: 8-core 32G</li><li>ES.S1.4XLARGE32: 16-core 32G</li><li>ES.S1.4XLARGE64: 16-core 64G</li></p>
         :rtype: str
         """
         return self._NodeType
@@ -4657,7 +5352,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NodeNum(self):
-        r"""Number of nodes
+        r"""<p>Number of nodes</p>
         :rtype: int
         """
         return self._NodeNum
@@ -4668,7 +5363,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CpuNum(self):
-        r"""Number of CPU cores of the node
+        r"""<p>Number of node CPU cores.</p>
         :rtype: int
         """
         return self._CpuNum
@@ -4679,7 +5374,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MemSize(self):
-        r"""Node memory size in GB
+        r"""<p>Node memory size (GB).</p>
         :rtype: int
         """
         return self._MemSize
@@ -4690,7 +5385,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskType(self):
-        r"""Node disk type
+        r"""<p>Node disk type</p>
         :rtype: str
         """
         return self._DiskType
@@ -4701,7 +5396,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskSize(self):
-        r"""Node disk size in GB
+        r"""<p>Node disk size (GB).</p>
         :rtype: int
         """
         return self._DiskSize
@@ -4712,7 +5407,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EsDomain(self):
-        r"""ES domain name
+        r"""<p>ES domain name</p>
         :rtype: str
         """
         return self._EsDomain
@@ -4723,7 +5418,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EsVip(self):
-        r"""ES VIP
+        r"""<p>ES VIP</p>
         :rtype: str
         """
         return self._EsVip
@@ -4734,7 +5429,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EsPort(self):
-        r"""ES port
+        r"""<p>ES port</p>
         :rtype: int
         """
         return self._EsPort
@@ -4745,7 +5440,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KibanaUrl(self):
-        r"""Kibana access URL
+        r"""<p>Kibana access url</p>
         :rtype: str
         """
         return self._KibanaUrl
@@ -4756,7 +5451,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EsVersion(self):
-        r"""ES version number
+        r"""<p>ES version number</p>
         :rtype: str
         """
         return self._EsVersion
@@ -4767,7 +5462,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EsConfig(self):
-        r"""ES configuration item
+        r"""<p>ES configuration item</p>
         :rtype: str
         """
         return self._EsConfig
@@ -4778,7 +5473,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EsAcl(self):
-        r"""Kibana access control configuration
+        r"""<p>Kibana Access Control Configuration</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.EsAcl`
         """
         return self._EsAcl
@@ -4789,7 +5484,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        r"""Instance creation time
+        r"""<p>Instance creation time</p>
         :rtype: str
         """
         return self._CreateTime
@@ -4800,7 +5495,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        r"""Last modified time of the instance
+        r"""<p>Last modification time of the instance</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -4811,7 +5506,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Deadline(self):
-        r"""This parameter is not used on the global website
+        r"""<p>Instance expiration time</p>
         :rtype: str
         """
         return self._Deadline
@@ -4822,7 +5517,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceType(self):
-        r"""Instance type (instance type identifier, which can be only 1 or 2 currently)
+        r"""<p>Instance type (instance type flag, currently only 1 and 2)</p>
         :rtype: int
         """
         return self._InstanceType
@@ -4833,7 +5528,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IkConfig(self):
-        r"""IK analyzer configuration
+        r"""<p>Ik analyzer configuration</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.EsDictionaryInfo`
         """
         return self._IkConfig
@@ -4844,7 +5539,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MasterNodeInfo(self):
-        r"""Dedicated primary node configuration
+        r"""<p>Dedicated master node configuration</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.MasterNodeInfo`
         """
         return self._MasterNodeInfo
@@ -4855,7 +5550,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CosBackup(self):
-        r"""Auto-backup to COS configuration
+        r"""<p>cos automatic backup configuration</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.CosBackup`
         """
         return self._CosBackup
@@ -4866,7 +5561,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AllowCosBackup(self):
-        r"""Whether to allow auto-backup to COS
+        r"""<p>Whether cos automatic backup is allowed</p>
         :rtype: bool
         """
         return self._AllowCosBackup
@@ -4877,7 +5572,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagList(self):
-        r"""List of tags owned by the instance
+        r"""<p>Tag list of the instance</p>
         :rtype: list of TagInfo
         """
         return self._TagList
@@ -4888,7 +5583,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LicenseType(self):
-        r"""License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum
+        r"""<p>License type<li>oss: open source edition</li><li>basic: basic version</li><li>platinum: platinum version</li>Default value: platinum</p>
         :rtype: str
         """
         return self._LicenseType
@@ -4898,9 +5593,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._LicenseType = LicenseType
 
     @property
+    def RealLicenseType(self):
+        r"""<p>License type<li>oss: open source edition</li><li>basic: basic version</li><li>platinum: platinum version</li><li>enterprise: enterprise edition</li>Default value: platinum</p>
+        :rtype: str
+        """
+        return self._RealLicenseType
+
+    @RealLicenseType.setter
+    def RealLicenseType(self, RealLicenseType):
+        self._RealLicenseType = RealLicenseType
+
+    @property
     def EnableHotWarmMode(self):
-        r"""Whether it is a hot/warm cluster <li>true: yes </li><li>false: no</li>
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Whether it is a hot-cold cluster<li>true: Hot-cold cluster</li><li>false: Non-hot-cold cluster</li></p>
         :rtype: bool
         """
         return self._EnableHotWarmMode
@@ -4911,8 +5616,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def WarmNodeType(self):
-        r"""Warm node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Warm node specification<li>ES.S1.SMALL2: 1-core 2G</li><li>ES.S1.MEDIUM4: 2-core 4G</li><li>ES.S1.MEDIUM8: 2-core 8G</li><li>ES.S1.LARGE16: 4-core 16G</li><li>ES.S1.2XLARGE32: 8-core 32G</li><li>ES.S1.4XLARGE32: 16-core 32G</li><li>ES.S1.4XLARGE64: 16-core 64G</li></p>
         :rtype: str
         """
         return self._WarmNodeType
@@ -4923,8 +5627,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def WarmNodeNum(self):
-        r"""Number of warm nodes
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Number of warm nodes</p>
         :rtype: int
         """
         return self._WarmNodeNum
@@ -4935,8 +5638,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def WarmCpuNum(self):
-        r"""Number of warm node CPU cores
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Warm node CPU cores</p>
         :rtype: int
         """
         return self._WarmCpuNum
@@ -4947,8 +5649,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def WarmMemSize(self):
-        r"""Warm node memory size (in GB)
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Warm node memory size (GB).</p>
         :rtype: int
         """
         return self._WarmMemSize
@@ -4959,8 +5660,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def WarmDiskType(self):
-        r"""Warm node disk type
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Warm node disk type</p>
         :rtype: str
         """
         return self._WarmDiskType
@@ -4971,8 +5671,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def WarmDiskSize(self):
-        r"""Warm node disk size (in GB)
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Warm node disk size (GB).</p>
         :rtype: int
         """
         return self._WarmDiskSize
@@ -4983,8 +5682,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def NodeInfoList(self):
-        r"""Cluster node information list
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Cluster node information list</p>
         :rtype: list of NodeInfo
         """
         return self._NodeInfoList
@@ -4995,8 +5693,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EsPublicUrl(self):
-        r"""ES public IP address
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Es public network address</p>
         :rtype: str
         """
         return self._EsPublicUrl
@@ -5007,8 +5704,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MultiZoneInfo(self):
-        r"""Multi-AZ network information
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Multi-AZ network info</p>
         :rtype: list of ZoneDetail
         """
         return self._MultiZoneInfo
@@ -5019,8 +5715,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeployMode(self):
-        r"""Deployment mode <li>0: single-AZ </li><li>1: multi-AZ</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Deployment mode<li>0: single availability zone</li><li>1: multi-availability zone, Beijing, Shanghai, Shanghai Finance, Guangzhou, Nanjing, Hong Kong, Singapore, Frankfurt (allowlist control)</li></p>
         :rtype: int
         """
         return self._DeployMode
@@ -5031,8 +5726,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PublicAccess(self):
-        r"""ES public access status <li>OPEN: enabled </li><li>CLOSE: disabled
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>ES public access status<li>OPEN: enable</li><li>CLOSE: disable</li></p>
         :rtype: str
         """
         return self._PublicAccess
@@ -5043,7 +5737,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EsPublicAcl(self):
-        r"""ES public access control configuration
+        r"""<p>ES public network access control configuration</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.EsAcl`
         """
         return self._EsPublicAcl
@@ -5054,8 +5748,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KibanaPrivateUrl(self):
-        r"""Kibana private IP address
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Kibana private network address</p>
         :rtype: str
         """
         return self._KibanaPrivateUrl
@@ -5066,8 +5759,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KibanaPublicAccess(self):
-        r"""Kibana public access status <li>OPEN: enabled </li><li>CLOSE: disabled
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Kibana public access status<li>OPEN: enabled</li><li>CLOSE: disabled</li></p>
         :rtype: str
         """
         return self._KibanaPublicAccess
@@ -5078,8 +5770,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KibanaPrivateAccess(self):
-        r"""Kibana private access status <li>OPEN: enabled </li><li>CLOSE: disabled
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Kibana internal access status<li>OPEN: enable</li><li>CLOSE: disable</li></p>
         :rtype: str
         """
         return self._KibanaPrivateAccess
@@ -5090,8 +5781,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SecurityType(self):
-        r"""Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Whether xpack security authentication is enabled for basic version 6.8 (and above versions)<li>1: not enabled</li><li>2: enabled</li></p>
         :rtype: int
         """
         return self._SecurityType
@@ -5102,8 +5792,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SceneType(self):
-        r"""Scenario template type. 0: not enabled; 1: general scenario; 2: log scenario; 3: search scenario
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Scenario template type: 0, not enabled; 1, common scenarios; 2, log scenario; 3, search scenario</p>
         :rtype: int
         """
         return self._SceneType
@@ -5114,8 +5803,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KibanaConfig(self):
-        r"""Kibana configuration item.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""<p>Kibana configuration item</p>
         :rtype: str
         """
         return self._KibanaConfig
@@ -5126,8 +5814,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def KibanaNodeInfo(self):
-        r"""Kibana node information
-Note: this field may return `null`, indicating that no valid value can be obtained.
+        r"""<p>Kibana node information</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.KibanaNodeInfo`
         """
         return self._KibanaNodeInfo
@@ -5138,8 +5825,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def WebNodeTypeInfo(self):
-        r"""Visual node configuration
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""<p>Visualize node configuration</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
         """
         return self._WebNodeTypeInfo
@@ -5150,8 +5836,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Jdk(self):
-        r"""JDK type. Valid values: `oracle`, `kona`
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""<p>JDK type. Valid values: oracle, kona</p>
         :rtype: str
         """
         return self._Jdk
@@ -5162,8 +5847,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Protocol(self):
-        r"""Cluster network communication protocol
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""<p>Cluster network communication protocol</p>
         :rtype: str
         """
         return self._Protocol
@@ -5174,8 +5858,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SecurityGroups(self):
-        r"""Security group ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""<p>Security group id</p>
         :rtype: list of str
         """
         return self._SecurityGroups
@@ -5186,8 +5869,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ColdNodeType(self):
-        r"""Cold node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Cold node specification<li>ES.S1.SMALL2: 1-core 2G</li><li>ES.S1.MEDIUM4: 2-core 4G</li><li>ES.S1.MEDIUM8: 2-core 8G</li><li>ES.S1.LARGE16: 4-core 16G</li><li>ES.S1.2XLARGE32: 8-core 32G</li><li>ES.S1.4XLARGE32: 16-core 32G</li><li>ES.S1.4XLARGE64: 16-core 64G</li></p>
         :rtype: str
         """
         return self._ColdNodeType
@@ -5198,8 +5880,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ColdNodeNum(self):
-        r"""Number of cold nodes
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Number of cold nodes</p>
         :rtype: int
         """
         return self._ColdNodeNum
@@ -5210,8 +5891,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ColdCpuNum(self):
-        r"""Number of cold node CPU cores
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Cold node CPU cores</p>
         :rtype: int
         """
         return self._ColdCpuNum
@@ -5222,8 +5902,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ColdMemSize(self):
-        r"""Cold node memory size (in GB)
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Cold node memory size (GB).</p>
         :rtype: int
         """
         return self._ColdMemSize
@@ -5234,8 +5913,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ColdDiskType(self):
-        r"""Cold node disk type
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Cold node disk type</p>
         :rtype: str
         """
         return self._ColdDiskType
@@ -5246,8 +5924,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ColdDiskSize(self):
-        r"""Cold node disk size (in GB)
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Cold node disk size (GB).</p>
         :rtype: int
         """
         return self._ColdDiskSize
@@ -5258,8 +5935,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FrozenNodeType(self):
-        r"""Frozen node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Frozen node specification<li>ES.S1.SMALL2: 1-core 2GB</li><li>ES.S1.MEDIUM4: 2-core 4GB</li><li>ES.S1.MEDIUM8: 2-core 8GB</li><li>ES.S1.LARGE16: 4-core 16GB</li><li>ES.S1.2XLARGE32: 8-core 32GB</li><li>ES.S1.4XLARGE32: 16-core 32GB</li><li>ES.S1.4XLARGE64: 16-core 64GB</li></p>
         :rtype: str
         """
         return self._FrozenNodeType
@@ -5270,8 +5946,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FrozenNodeNum(self):
-        r"""Number of frozen nodes
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Number of frozen nodes</p>
         :rtype: int
         """
         return self._FrozenNodeNum
@@ -5282,8 +5957,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FrozenCpuNum(self):
-        r"""Number of frozen node CPU cores
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Frozen node CPU cores</p>
         :rtype: int
         """
         return self._FrozenCpuNum
@@ -5294,8 +5968,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FrozenMemSize(self):
-        r"""Frozen node memory size (GB)
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Frozen node memory size (GB).</p>
         :rtype: int
         """
         return self._FrozenMemSize
@@ -5306,8 +5979,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FrozenDiskType(self):
-        r"""Frozen node disk type
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Frozen node disk type</p>
         :rtype: str
         """
         return self._FrozenDiskType
@@ -5318,8 +5990,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FrozenDiskSize(self):
-        r"""Frozen node disk size (in GB)
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Frozen node disk size (GB).</p>
         :rtype: int
         """
         return self._FrozenDiskSize
@@ -5330,8 +6001,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def HealthStatus(self):
-        r"""Cluster health status. `-1`: Unknown; `0`: Green; `1`: Yellow; `2`: Red
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Cluster health status: -1 unknown; 0 Green; 1 Yellow; 2 Red</p>
         :rtype: int
         """
         return self._HealthStatus
@@ -5342,8 +6012,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EsPrivateUrl(self):
-        r"""Private URL of the HTTPS cluster
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>Intracluster network url for https.</p>
         :rtype: str
         """
         return self._EsPrivateUrl
@@ -5354,8 +6023,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EsPrivateDomain(self):
-        r"""Private domain of the HTTPS cluster
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""<p>https cluster private network domain name</p>
         :rtype: str
         """
         return self._EsPrivateDomain
@@ -5366,8 +6034,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EsConfigSets(self):
-        r"""Configuration set info of the cluster.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Cluster configuration group information.</p>
         :rtype: list of EsConfigSetInfo
         """
         return self._EsConfigSets
@@ -5378,8 +6045,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OperationDuration(self):
-        r"""The maintenance time slot of the cluster
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Cluster maintenance time slot</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.OperationDuration`
         """
         return self._OperationDuration
@@ -5390,8 +6056,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OptionalWebServiceInfos(self):
-        r"""Web node list
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>web node list</p>
         :rtype: list of OptionalWebServiceInfo
         """
         return self._OptionalWebServiceInfos
@@ -5402,8 +6067,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoIndexEnabled(self):
-        r"""Autonomous index option
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Autonomous index switch</p>
         :rtype: bool
         """
         return self._AutoIndexEnabled
@@ -5414,8 +6078,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableHybridStorage(self):
-        r"""Whether the storage-computing separation feature is enabled.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Whether storage and computation separation is supported.</p>
         :rtype: bool
         """
         return self._EnableHybridStorage
@@ -5426,8 +6089,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProcessPercent(self):
-        r"""The process progress
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Process progress.</p>
         :rtype: float
         """
         return self._ProcessPercent
@@ -5438,8 +6100,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KibanaAlteringPublicAccess(self):
-        r"""The alerting policy of Kibana over the public network. <li>`OPEN`: Enable the policy;</li><li>`CLOSE`: Disable the policy.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Kibana alerting public network alert policy<li>OPEN: enable</li><li>CLOSE: disable</li></p>
         :rtype: str
         """
         return self._KibanaAlteringPublicAccess
@@ -5447,6 +6108,292 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @KibanaAlteringPublicAccess.setter
     def KibanaAlteringPublicAccess(self, KibanaAlteringPublicAccess):
         self._KibanaAlteringPublicAccess = KibanaAlteringPublicAccess
+
+    @property
+    def HasKernelUpgrade(self):
+        r"""<p>Whether there is a kernel update this month: false (no) and true (yes).</p>
+        :rtype: bool
+        """
+        return self._HasKernelUpgrade
+
+    @HasKernelUpgrade.setter
+    def HasKernelUpgrade(self, HasKernelUpgrade):
+        self._HasKernelUpgrade = HasKernelUpgrade
+
+    @property
+    def CdcId(self):
+        r"""<p>cdcId, pass it when using a CDC subnet</p>
+        :rtype: str
+        """
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
+
+    @property
+    def KibanaPrivateVip(self):
+        r"""<p>kibana intranet vip</p>
+        :rtype: str
+        """
+        return self._KibanaPrivateVip
+
+    @KibanaPrivateVip.setter
+    def KibanaPrivateVip(self, KibanaPrivateVip):
+        self._KibanaPrivateVip = KibanaPrivateVip
+
+    @property
+    def CustomKibanaPrivateUrl(self):
+        r"""<p>Customize the private network url of kibana</p>
+        :rtype: str
+        """
+        return self._CustomKibanaPrivateUrl
+
+    @CustomKibanaPrivateUrl.setter
+    def CustomKibanaPrivateUrl(self, CustomKibanaPrivateUrl):
+        self._CustomKibanaPrivateUrl = CustomKibanaPrivateUrl
+
+    @property
+    def OutboundPublicAcls(self):
+        r"""<p>Node outbound access detailed information.</p>
+        :rtype: list of OutboundPublicAcl
+        """
+        return self._OutboundPublicAcls
+
+    @OutboundPublicAcls.setter
+    def OutboundPublicAcls(self, OutboundPublicAcls):
+        self._OutboundPublicAcls = OutboundPublicAcls
+
+    @property
+    def NetConnectScheme(self):
+        r"""<p>Network connection solution</p>
+        :rtype: str
+        """
+        return self._NetConnectScheme
+
+    @NetConnectScheme.setter
+    def NetConnectScheme(self, NetConnectScheme):
+        self._NetConnectScheme = NetConnectScheme
+
+    @property
+    def DisasterRecoverGroupAffinity(self):
+        r"""<p>Placement group related parameters</p>
+        :rtype: int
+        """
+        return self._DisasterRecoverGroupAffinity
+
+    @DisasterRecoverGroupAffinity.setter
+    def DisasterRecoverGroupAffinity(self, DisasterRecoverGroupAffinity):
+        self._DisasterRecoverGroupAffinity = DisasterRecoverGroupAffinity
+
+    @property
+    def SubProductCode(self):
+        r"""<p>Sub-product ID enumeration values: open source edition: "sp_es_io2", basic version: "sp_es_basic", platinum version: "sp_es_platinum", AI Search Enhancement Edition: "sp_es_aisearch", enterprise edition: "sp_es_enterprise", CDC platinum version: "sp_es_CDC_platinum", Log Enhancement Edition: "sp_es_enlogging", tsearch: "sp_tsearch_io2", logstash: "sp_es_logstash". It can be empty. When it is empty, the backend maps this field based on LicenseType.</p>
+        :rtype: str
+        """
+        return self._SubProductCode
+
+    @SubProductCode.setter
+    def SubProductCode(self, SubProductCode):
+        self._SubProductCode = SubProductCode
+
+    @property
+    def CosBucketStorageSize(self):
+        r"""<p>Storage-compute separation cos usage, Unit: M</p>
+        :rtype: int
+        """
+        return self._CosBucketStorageSize
+
+    @CosBucketStorageSize.setter
+    def CosBucketStorageSize(self, CosBucketStorageSize):
+        self._CosBucketStorageSize = CosBucketStorageSize
+
+    @property
+    def ReadWriteMode(self):
+        r"""<p>Read-write separation mode: 0: not enabled; 1: local read/write separation; 2: remote read/write separation.</p>
+        :rtype: int
+        """
+        return self._ReadWriteMode
+
+    @ReadWriteMode.setter
+    def ReadWriteMode(self, ReadWriteMode):
+        self._ReadWriteMode = ReadWriteMode
+
+    @property
+    def EnableScheduleRecoverGroup(self):
+        r"""<p>Whether there is an asynchronous task scheduling for placement groups</p>
+        :rtype: bool
+        """
+        return self._EnableScheduleRecoverGroup
+
+    @EnableScheduleRecoverGroup.setter
+    def EnableScheduleRecoverGroup(self, EnableScheduleRecoverGroup):
+        self._EnableScheduleRecoverGroup = EnableScheduleRecoverGroup
+
+    @property
+    def EnableScheduleOperationDuration(self):
+        r"""<p>The time when an asynchronous task is scheduled</p>
+        :rtype: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
+        """
+        return self._EnableScheduleOperationDuration
+
+    @EnableScheduleOperationDuration.setter
+    def EnableScheduleOperationDuration(self, EnableScheduleOperationDuration):
+        self._EnableScheduleOperationDuration = EnableScheduleOperationDuration
+
+    @property
+    def EnableDestroyProtection(self):
+        r"""<p>Cluster protection: OPEN: enable, CLOSE: disable</p>
+        :rtype: str
+        """
+        return self._EnableDestroyProtection
+
+    @EnableDestroyProtection.setter
+    def EnableDestroyProtection(self, EnableDestroyProtection):
+        self._EnableDestroyProtection = EnableDestroyProtection
+
+    @property
+    def ShowKibanaIpPort(self):
+        r"""<p>kibana intranet access address</p>
+        :rtype: str
+        """
+        return self._ShowKibanaIpPort
+
+    @ShowKibanaIpPort.setter
+    def ShowKibanaIpPort(self, ShowKibanaIpPort):
+        self._ShowKibanaIpPort = ShowKibanaIpPort
+
+    @property
+    def IsCdzLite(self):
+        r"""<p>Whether it is a CDZLite availability zone</p>
+        :rtype: bool
+        """
+        return self._IsCdzLite
+
+    @IsCdzLite.setter
+    def IsCdzLite(self, IsCdzLite):
+        self._IsCdzLite = IsCdzLite
+
+    @property
+    def EsPrivateTcpUrl(self):
+        r"""<p>Cluster private network tcp address</p>
+        :rtype: str
+        """
+        return self._EsPrivateTcpUrl
+
+    @EsPrivateTcpUrl.setter
+    def EsPrivateTcpUrl(self, EsPrivateTcpUrl):
+        self._EsPrivateTcpUrl = EsPrivateTcpUrl
+
+    @property
+    def IsInRecycleBin(self):
+        r"""<p>Whether it is in the recycle bin</p><p>Default value: false</p>
+        :rtype: bool
+        """
+        return self._IsInRecycleBin
+
+    @IsInRecycleBin.setter
+    def IsInRecycleBin(self, IsInRecycleBin):
+        self._IsInRecycleBin = IsInRecycleBin
+
+    @property
+    def RecycleLockEnabled(self):
+        r"""<p>Is locked in the recycle bin</p><p>Default value: false</p>
+        :rtype: bool
+        """
+        return self._RecycleLockEnabled
+
+    @RecycleLockEnabled.setter
+    def RecycleLockEnabled(self, RecycleLockEnabled):
+        self._RecycleLockEnabled = RecycleLockEnabled
+
+    @property
+    def MayDestroyPoint(self):
+        r"""<p>The time when termination is expected</p><p>Parameter format: YYYY-MM-DD hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._MayDestroyPoint
+
+    @MayDestroyPoint.setter
+    def MayDestroyPoint(self, MayDestroyPoint):
+        self._MayDestroyPoint = MayDestroyPoint
+
+    @property
+    def DelayDestroyInterval(self):
+        r"""<p>The time when termination is delayed</p><p>Unit: day</p>
+        :rtype: int
+        """
+        return self._DelayDestroyInterval
+
+    @DelayDestroyInterval.setter
+    def DelayDestroyInterval(self, DelayDestroyInterval):
+        self._DelayDestroyInterval = DelayDestroyInterval
+
+    @property
+    def EnableAutoReplace(self):
+        r"""<p>Enable automatic replacement of unhealthy nodes. 0: disable, 1: enable</p>
+        :rtype: int
+        """
+        return self._EnableAutoReplace
+
+    @EnableAutoReplace.setter
+    def EnableAutoReplace(self, EnableAutoReplace):
+        self._EnableAutoReplace = EnableAutoReplace
+
+    @property
+    def OpenMTLS(self):
+        r"""<p>Enable mtls. 0: disable, 1: enable</p>
+        :rtype: int
+        """
+        return self._OpenMTLS
+
+    @OpenMTLS.setter
+    def OpenMTLS(self, OpenMTLS):
+        self._OpenMTLS = OpenMTLS
+
+    @property
+    def ServerCertSource(self):
+        r"""<p>Certificate type</p>
+        :rtype: str
+        """
+        return self._ServerCertSource
+
+    @ServerCertSource.setter
+    def ServerCertSource(self, ServerCertSource):
+        self._ServerCertSource = ServerCertSource
+
+    @property
+    def OldEsVip(self):
+        r"""<p>VIP pending migration for the cluster</p>
+        :rtype: str
+        """
+        return self._OldEsVip
+
+    @OldEsVip.setter
+    def OldEsVip(self, OldEsVip):
+        self._OldEsVip = OldEsVip
+
+    @property
+    def OldEsPrivateTcpUrl(self):
+        r"""<p>Cluster TCP address to be migrated</p>
+        :rtype: str
+        """
+        return self._OldEsPrivateTcpUrl
+
+    @OldEsPrivateTcpUrl.setter
+    def OldEsPrivateTcpUrl(self, OldEsPrivateTcpUrl):
+        self._OldEsPrivateTcpUrl = OldEsPrivateTcpUrl
+
+    @property
+    def NeedOfflineOldNodesNotify(self):
+        r"""<p>Whether to take old nodes offline from the VIP</p>
+        :rtype: bool
+        """
+        return self._NeedOfflineOldNodesNotify
+
+    @NeedOfflineOldNodesNotify.setter
+    def NeedOfflineOldNodesNotify(self, NeedOfflineOldNodesNotify):
+        self._NeedOfflineOldNodesNotify = NeedOfflineOldNodesNotify
 
 
     def _deserialize(self, params):
@@ -5498,6 +6445,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._TagList.append(obj)
         self._LicenseType = params.get("LicenseType")
+        self._RealLicenseType = params.get("RealLicenseType")
         self._EnableHotWarmMode = params.get("EnableHotWarmMode")
         self._WarmNodeType = params.get("WarmNodeType")
         self._WarmNodeNum = params.get("WarmNodeNum")
@@ -5572,6 +6520,39 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._EnableHybridStorage = params.get("EnableHybridStorage")
         self._ProcessPercent = params.get("ProcessPercent")
         self._KibanaAlteringPublicAccess = params.get("KibanaAlteringPublicAccess")
+        self._HasKernelUpgrade = params.get("HasKernelUpgrade")
+        self._CdcId = params.get("CdcId")
+        self._KibanaPrivateVip = params.get("KibanaPrivateVip")
+        self._CustomKibanaPrivateUrl = params.get("CustomKibanaPrivateUrl")
+        if params.get("OutboundPublicAcls") is not None:
+            self._OutboundPublicAcls = []
+            for item in params.get("OutboundPublicAcls"):
+                obj = OutboundPublicAcl()
+                obj._deserialize(item)
+                self._OutboundPublicAcls.append(obj)
+        self._NetConnectScheme = params.get("NetConnectScheme")
+        self._DisasterRecoverGroupAffinity = params.get("DisasterRecoverGroupAffinity")
+        self._SubProductCode = params.get("SubProductCode")
+        self._CosBucketStorageSize = params.get("CosBucketStorageSize")
+        self._ReadWriteMode = params.get("ReadWriteMode")
+        self._EnableScheduleRecoverGroup = params.get("EnableScheduleRecoverGroup")
+        if params.get("EnableScheduleOperationDuration") is not None:
+            self._EnableScheduleOperationDuration = EnableScheduleOperationDuration()
+            self._EnableScheduleOperationDuration._deserialize(params.get("EnableScheduleOperationDuration"))
+        self._EnableDestroyProtection = params.get("EnableDestroyProtection")
+        self._ShowKibanaIpPort = params.get("ShowKibanaIpPort")
+        self._IsCdzLite = params.get("IsCdzLite")
+        self._EsPrivateTcpUrl = params.get("EsPrivateTcpUrl")
+        self._IsInRecycleBin = params.get("IsInRecycleBin")
+        self._RecycleLockEnabled = params.get("RecycleLockEnabled")
+        self._MayDestroyPoint = params.get("MayDestroyPoint")
+        self._DelayDestroyInterval = params.get("DelayDestroyInterval")
+        self._EnableAutoReplace = params.get("EnableAutoReplace")
+        self._OpenMTLS = params.get("OpenMTLS")
+        self._ServerCertSource = params.get("ServerCertSource")
+        self._OldEsVip = params.get("OldEsVip")
+        self._OldEsPrivateTcpUrl = params.get("OldEsPrivateTcpUrl")
+        self._NeedOfflineOldNodesNotify = params.get("NeedOfflineOldNodesNotify")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5593,15 +6574,27 @@ class InstanceLog(AbstractModel):
         :type Time: str
         :param _Level: Log level
         :type Level: str
-        :param _Ip: Cluster node IP
+        :param _Ip: Cluster node IP address.
         :type Ip: str
         :param _Message: Log content
         :type Message: str
+        :param _NodeID: Cluster node ID.
+        :type NodeID: str
+        :param _IndexName: Slow log index name
+        :type IndexName: str
+        :param _Shard: Slow log index shards
+        :type Shard: str
+        :param _QueryCost: Slow log index query time
+        :type QueryCost: str
         """
         self._Time = None
         self._Level = None
         self._Ip = None
         self._Message = None
+        self._NodeID = None
+        self._IndexName = None
+        self._Shard = None
+        self._QueryCost = None
 
     @property
     def Time(self):
@@ -5627,7 +6620,7 @@ class InstanceLog(AbstractModel):
 
     @property
     def Ip(self):
-        r"""Cluster node IP
+        r"""Cluster node IP address.
         :rtype: str
         """
         return self._Ip
@@ -5647,12 +6640,60 @@ class InstanceLog(AbstractModel):
     def Message(self, Message):
         self._Message = Message
 
+    @property
+    def NodeID(self):
+        r"""Cluster node ID.
+        :rtype: str
+        """
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
+    @property
+    def IndexName(self):
+        r"""Slow log index name
+        :rtype: str
+        """
+        return self._IndexName
+
+    @IndexName.setter
+    def IndexName(self, IndexName):
+        self._IndexName = IndexName
+
+    @property
+    def Shard(self):
+        r"""Slow log index shards
+        :rtype: str
+        """
+        return self._Shard
+
+    @Shard.setter
+    def Shard(self, Shard):
+        self._Shard = Shard
+
+    @property
+    def QueryCost(self):
+        r"""Slow log index query time
+        :rtype: str
+        """
+        return self._QueryCost
+
+    @QueryCost.setter
+    def QueryCost(self, QueryCost):
+        self._QueryCost = QueryCost
+
 
     def _deserialize(self, params):
         self._Time = params.get("Time")
         self._Level = params.get("Level")
         self._Ip = params.get("Ip")
         self._Message = params.get("Message")
+        self._NodeID = params.get("NodeID")
+        self._IndexName = params.get("IndexName")
+        self._Shard = params.get("Shard")
+        self._QueryCost = params.get("QueryCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5664,15 +6705,15 @@ class InstanceLog(AbstractModel):
 
 
 class KeyValue(AbstractModel):
-    r"""`OperationDetail` uses an array of this structure to describe the old and new configuration information
+    r"""OperationDetail uses an array of this structure to describe the old and new configuration
 
     """
 
     def __init__(self):
         r"""
-        :param _Key: Key
+        :param _Key: Key.
         :type Key: str
-        :param _Value: Value
+        :param _Value: Value.
         :type Value: str
         """
         self._Key = None
@@ -5680,7 +6721,7 @@ class KeyValue(AbstractModel):
 
     @property
     def Key(self):
-        r"""Key
+        r"""Key.
         :rtype: str
         """
         return self._Key
@@ -5691,7 +6732,7 @@ class KeyValue(AbstractModel):
 
     @property
     def Value(self):
-        r"""Value
+        r"""Value.
         :rtype: str
         """
         return self._Value
@@ -5715,7 +6756,7 @@ class KeyValue(AbstractModel):
 
 
 class KibanaNodeInfo(AbstractModel):
-    r"""Kibana node information
+    r"""Kibana node-related information of the instance
 
     """
 
@@ -5725,13 +6766,13 @@ class KibanaNodeInfo(AbstractModel):
         :type KibanaNodeType: str
         :param _KibanaNodeNum: Number of Kibana nodes
         :type KibanaNodeNum: int
-        :param _KibanaNodeCpuNum: Number of Kibana node's CPUs
+        :param _KibanaNodeCpuNum: Number of CPUs of the Kibana node
         :type KibanaNodeCpuNum: int
-        :param _KibanaNodeMemSize: Kibana node's memory in GB
+        :param _KibanaNodeMemSize: Kibana node memory in GB
         :type KibanaNodeMemSize: int
-        :param _KibanaNodeDiskType: Kibana node's disk type
+        :param _KibanaNodeDiskType: Kibana node disk type
         :type KibanaNodeDiskType: str
-        :param _KibanaNodeDiskSize: Kibana node's disk size
+        :param _KibanaNodeDiskSize: Kibana node disk size
         :type KibanaNodeDiskSize: int
         """
         self._KibanaNodeType = None
@@ -5765,7 +6806,7 @@ class KibanaNodeInfo(AbstractModel):
 
     @property
     def KibanaNodeCpuNum(self):
-        r"""Number of Kibana node's CPUs
+        r"""Number of CPUs of the Kibana node
         :rtype: int
         """
         return self._KibanaNodeCpuNum
@@ -5776,7 +6817,7 @@ class KibanaNodeInfo(AbstractModel):
 
     @property
     def KibanaNodeMemSize(self):
-        r"""Kibana node's memory in GB
+        r"""Kibana node memory in GB
         :rtype: int
         """
         return self._KibanaNodeMemSize
@@ -5787,7 +6828,7 @@ class KibanaNodeInfo(AbstractModel):
 
     @property
     def KibanaNodeDiskType(self):
-        r"""Kibana node's disk type
+        r"""Kibana node disk type
         :rtype: str
         """
         return self._KibanaNodeDiskType
@@ -5798,7 +6839,7 @@ class KibanaNodeInfo(AbstractModel):
 
     @property
     def KibanaNodeDiskSize(self):
-        r"""Kibana node's disk size
+        r"""Kibana node disk size
         :rtype: int
         """
         return self._KibanaNodeDiskSize
@@ -5832,22 +6873,26 @@ class KibanaView(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ip: Kibana node IP
+        :param _Ip: <p>Kibana node IP</p>
         :type Ip: str
-        :param _DiskSize: Node disk size
+        :param _DiskSize: <p>Total node disk size</p>
         :type DiskSize: int
-        :param _DiskUsage: Disk usage
+        :param _DiskUsage: <p>Disk utilization rate</p>
         :type DiskUsage: float
-        :param _MemSize: Node memory size
+        :param _MemSize: <p>Node memory size</p>
         :type MemSize: int
-        :param _MemUsage: Memory usage
+        :param _MemUsage: <p>Memory usage rate</p>
         :type MemUsage: float
-        :param _CpuNum: Number of node CPUs
+        :param _CpuNum: <p>Number of CPUs on the node</p>
         :type CpuNum: int
-        :param _CpuUsage: CPU usage
+        :param _CpuUsage: <p>cpu utilization</p>
         :type CpuUsage: float
-        :param _Zone: Availability zone
+        :param _Zone: <p>AZ.</p>
         :type Zone: str
+        :param _NodeId: <p>ts-0noqayxu-az6-hot-03222010-0</p>
+        :type NodeId: str
+        :param _UserIp: <p>Client-side Ip info</p>
+        :type UserIp: str
         """
         self._Ip = None
         self._DiskSize = None
@@ -5857,10 +6902,12 @@ class KibanaView(AbstractModel):
         self._CpuNum = None
         self._CpuUsage = None
         self._Zone = None
+        self._NodeId = None
+        self._UserIp = None
 
     @property
     def Ip(self):
-        r"""Kibana node IP
+        r"""<p>Kibana node IP</p>
         :rtype: str
         """
         return self._Ip
@@ -5871,7 +6918,7 @@ class KibanaView(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""Node disk size
+        r"""<p>Total node disk size</p>
         :rtype: int
         """
         return self._DiskSize
@@ -5882,7 +6929,7 @@ class KibanaView(AbstractModel):
 
     @property
     def DiskUsage(self):
-        r"""Disk usage
+        r"""<p>Disk utilization rate</p>
         :rtype: float
         """
         return self._DiskUsage
@@ -5893,7 +6940,7 @@ class KibanaView(AbstractModel):
 
     @property
     def MemSize(self):
-        r"""Node memory size
+        r"""<p>Node memory size</p>
         :rtype: int
         """
         return self._MemSize
@@ -5904,7 +6951,7 @@ class KibanaView(AbstractModel):
 
     @property
     def MemUsage(self):
-        r"""Memory usage
+        r"""<p>Memory usage rate</p>
         :rtype: float
         """
         return self._MemUsage
@@ -5915,7 +6962,7 @@ class KibanaView(AbstractModel):
 
     @property
     def CpuNum(self):
-        r"""Number of node CPUs
+        r"""<p>Number of CPUs on the node</p>
         :rtype: int
         """
         return self._CpuNum
@@ -5926,7 +6973,7 @@ class KibanaView(AbstractModel):
 
     @property
     def CpuUsage(self):
-        r"""CPU usage
+        r"""<p>cpu utilization</p>
         :rtype: float
         """
         return self._CpuUsage
@@ -5937,7 +6984,7 @@ class KibanaView(AbstractModel):
 
     @property
     def Zone(self):
-        r"""Availability zone
+        r"""<p>AZ.</p>
         :rtype: str
         """
         return self._Zone
@@ -5945,6 +6992,28 @@ class KibanaView(AbstractModel):
     @Zone.setter
     def Zone(self, Zone):
         self._Zone = Zone
+
+    @property
+    def NodeId(self):
+        r"""<p>ts-0noqayxu-az6-hot-03222010-0</p>
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def UserIp(self):
+        r"""<p>Client-side Ip info</p>
+        :rtype: str
+        """
+        return self._UserIp
+
+    @UserIp.setter
+    def UserIp(self, UserIp):
+        self._UserIp = UserIp
 
 
     def _deserialize(self, params):
@@ -5956,6 +7025,8 @@ class KibanaView(AbstractModel):
         self._CpuNum = params.get("CpuNum")
         self._CpuUsage = params.get("CpuUsage")
         self._Zone = params.get("Zone")
+        self._NodeId = params.get("NodeId")
+        self._UserIp = params.get("UserIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5967,17 +7038,17 @@ class KibanaView(AbstractModel):
 
 
 class LocalDiskInfo(AbstractModel):
-    r"""Local disk information of node
+    r"""Local disk information of the node
 
     """
 
     def __init__(self):
         r"""
-        :param _LocalDiskType: Local disk type <li>LOCAL_SATA: big data </li><li>NVME_SSD: high IO</li>
+        :param _LocalDiskType: Local disk type<li>LOCAL_SATA: big data type</li><li>NVME_SSD: high IO type</li>
         :type LocalDiskType: str
-        :param _LocalDiskSize: Size of a single local disk
+        :param _LocalDiskSize: Single local disk size
         :type LocalDiskSize: int
-        :param _LocalDiskCount: Number of local disks
+        :param _LocalDiskCount: Number of local disk blocks
         :type LocalDiskCount: int
         """
         self._LocalDiskType = None
@@ -5986,7 +7057,7 @@ class LocalDiskInfo(AbstractModel):
 
     @property
     def LocalDiskType(self):
-        r"""Local disk type <li>LOCAL_SATA: big data </li><li>NVME_SSD: high IO</li>
+        r"""Local disk type<li>LOCAL_SATA: big data type</li><li>NVME_SSD: high IO type</li>
         :rtype: str
         """
         return self._LocalDiskType
@@ -5997,7 +7068,7 @@ class LocalDiskInfo(AbstractModel):
 
     @property
     def LocalDiskSize(self):
-        r"""Size of a single local disk
+        r"""Single local disk size
         :rtype: int
         """
         return self._LocalDiskSize
@@ -6008,7 +7079,7 @@ class LocalDiskInfo(AbstractModel):
 
     @property
     def LocalDiskCount(self):
-        r"""Number of local disks
+        r"""Number of local disk blocks
         :rtype: int
         """
         return self._LocalDiskCount
@@ -6033,25 +7104,25 @@ class LocalDiskInfo(AbstractModel):
 
 
 class MasterNodeInfo(AbstractModel):
-    r"""Information of the dedicated primary node in an instance
+    r"""Instance-dedicated primary node-related information
 
     """
 
     def __init__(self):
         r"""
-        :param _EnableDedicatedMaster: Whether to enable the dedicated primary node
+        :param _EnableDedicatedMaster: Whether the dedicated master node is enabled or not
         :type EnableDedicatedMaster: bool
-        :param _MasterNodeType: Dedicated primary node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
+        :param _MasterNodeType: Dedicated primary node specification<li>ES.S1.SMALL2: 1-core 2G</li><li>ES.S1.MEDIUM4: 2-core 4G</li><li>ES.S1.MEDIUM8: 2-core 8G</li><li>ES.S1.LARGE16: 4-core 16G</li><li>ES.S1.2XLARGE32: 8-core 32G</li><li>ES.S1.4XLARGE32: 16-core 32G</li><li>ES.S1.4XLARGE64: 16-core 64G</li>
         :type MasterNodeType: str
         :param _MasterNodeNum: Number of dedicated primary nodes
         :type MasterNodeNum: int
-        :param _MasterNodeCpuNum: Number of CPU cores of the dedicated primary node
+        :param _MasterNodeCpuNum: Number of CPU cores of the dedicated master node
         :type MasterNodeCpuNum: int
-        :param _MasterNodeMemSize: Memory size of the dedicated primary node in GB
+        :param _MasterNodeMemSize: Dedicated primary node memory size, in GB.
         :type MasterNodeMemSize: int
-        :param _MasterNodeDiskSize: Disk size of the dedicated primary node in GB
+        :param _MasterNodeDiskSize: Dedicated primary node disk size in GB
         :type MasterNodeDiskSize: int
-        :param _MasterNodeDiskType: Disk type of the dedicated primary node
+        :param _MasterNodeDiskType: Dedicated primary node disk type
         :type MasterNodeDiskType: str
         """
         self._EnableDedicatedMaster = None
@@ -6064,7 +7135,7 @@ class MasterNodeInfo(AbstractModel):
 
     @property
     def EnableDedicatedMaster(self):
-        r"""Whether to enable the dedicated primary node
+        r"""Whether the dedicated master node is enabled or not
         :rtype: bool
         """
         return self._EnableDedicatedMaster
@@ -6075,7 +7146,7 @@ class MasterNodeInfo(AbstractModel):
 
     @property
     def MasterNodeType(self):
-        r"""Dedicated primary node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
+        r"""Dedicated primary node specification<li>ES.S1.SMALL2: 1-core 2G</li><li>ES.S1.MEDIUM4: 2-core 4G</li><li>ES.S1.MEDIUM8: 2-core 8G</li><li>ES.S1.LARGE16: 4-core 16G</li><li>ES.S1.2XLARGE32: 8-core 32G</li><li>ES.S1.4XLARGE32: 16-core 32G</li><li>ES.S1.4XLARGE64: 16-core 64G</li>
         :rtype: str
         """
         return self._MasterNodeType
@@ -6097,7 +7168,7 @@ class MasterNodeInfo(AbstractModel):
 
     @property
     def MasterNodeCpuNum(self):
-        r"""Number of CPU cores of the dedicated primary node
+        r"""Number of CPU cores of the dedicated master node
         :rtype: int
         """
         return self._MasterNodeCpuNum
@@ -6108,7 +7179,7 @@ class MasterNodeInfo(AbstractModel):
 
     @property
     def MasterNodeMemSize(self):
-        r"""Memory size of the dedicated primary node in GB
+        r"""Dedicated primary node memory size, in GB.
         :rtype: int
         """
         return self._MasterNodeMemSize
@@ -6119,7 +7190,7 @@ class MasterNodeInfo(AbstractModel):
 
     @property
     def MasterNodeDiskSize(self):
-        r"""Disk size of the dedicated primary node in GB
+        r"""Dedicated primary node disk size in GB
         :rtype: int
         """
         return self._MasterNodeDiskSize
@@ -6130,7 +7201,7 @@ class MasterNodeInfo(AbstractModel):
 
     @property
     def MasterNodeDiskType(self):
-        r"""Disk type of the dedicated primary node
+        r"""Dedicated primary node disk type
         :rtype: str
         """
         return self._MasterNodeDiskType
@@ -6304,41 +7375,40 @@ class ModifyAutoBackUpStrategyResponse(AbstractModel):
 
 
 class NodeInfo(AbstractModel):
-    r"""Specification information of a node type in the cluster (such as hot data node, warm data node, or dedicated primary node), including node type, number of nodes, node specification, disk type, and disk size. If `Type` is not specified, it will be a hot data node by default; if the node is a primary node, then the `DiskType` and `DiskSize` parameters will be ignored (as a primary node has no data disks)
+    r"""Specification description information of a node type in the cluster (such as hot data node, cold data node, dedicated master node), including node type, number of nodes, node specification, disk type, and disk size. If Type is not specified, it defaults to hot data node. If the node is a master node, the DiskType and DiskSize parameters will be ignored (the primary node has no data disk).
 
     """
 
     def __init__(self):
         r"""
-        :param _NodeNum: Number of nodes
+        :param _NodeNum: <p>Number of nodes.</p>
         :type NodeNum: int
-        :param _NodeType: Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+        :param _NodeType: <p>Node specification<li>ES.S1.SMALL2: 1-core 2G</li><li>ES.S1.MEDIUM4: 2-core 4G</li><li>ES.S1.MEDIUM8: 2-core 8G</li><li>ES.S1.LARGE16: 4-core 16G</li><li>ES.S1.2XLARGE32: 8-core 32G</li><li>ES.S1.4XLARGE32: 16-core 32G</li><li>ES.S1.4XLARGE64: 16-core 64G</li></p>
         :type NodeType: str
-        :param _Type: Node type<li>`hotData`: hot data node</li>
-<li>`warmData`: warm data node</li>
-<li>`dedicatedMaster`: dedicated master node</li>
-Default value: `hotData`
+        :param _Type: <p>Node type</p><p>Enumeration values:</p><ul><li>hotData: hot data node</li><li>warmData: cold data node</li><li>dedicatedMaster: dedicated master node</li><li>dedicatedCoordinating: dedicated coordinator node</li><li>dedicatedMl: dedicated Machine Learning node</li></ul>
         :type Type: str
-        :param _DiskType: Node disk type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: Premium cloud disk </li>Default value: CLOUD_SSD
+        :param _DiskType: <p>Node disk type<li>CLOUD_SSD: ssd cloud disk</li><li>CLOUD_PREMIUM: high-performance cloud disk</li>Default value: CLOUD_SSD</p>
         :type DiskType: str
-        :param _DiskSize: Node disk size in GB
+        :param _DiskSize: <p>Node disk capacity (GB)</p>
         :type DiskSize: int
-        :param _LocalDiskInfo: Local disk information
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _LocalDiskInfo: <p>Node local disk information.</p>
         :type LocalDiskInfo: :class:`tencentcloud.es.v20180416.models.LocalDiskInfo`
-        :param _DiskCount: Number of node disks
+        :param _DiskCount: <p>Number of node disk blocks</p>
         :type DiskCount: int
-        :param _DiskEncrypt: Whether to encrypt node disk. 0: no (default); 1: yes.
+        :param _DiskEncrypt: <p>Whether the node disk is encrypted. 0: no encryption; 1: encryption; not encrypted by default</p>
         :type DiskEncrypt: int
-        :param _CpuNum: CPU number
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _KmsKeyId: <p>Custom encryption key id</p>
+        :type KmsKeyId: str
+        :param _KmsKeyName: <p>Custom encryption key name</p>
+        :type KmsKeyName: str
+        :param _CpuNum: <p>Number of CPUs</p>
         :type CpuNum: int
-        :param _MemSize: Memory size in GB
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MemSize: <p>Memory size, in GB.</p>
         :type MemSize: int
-        :param _DiskEnhance: /
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DiskEnhance: <p>Additional hard disk performance</p>
         :type DiskEnhance: int
+        :param _GpuInfo: <p>Gpu information of the node</p>
+        :type GpuInfo: :class:`tencentcloud.es.v20180416.models.GpuInfo`
         """
         self._NodeNum = None
         self._NodeType = None
@@ -6348,13 +7418,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._LocalDiskInfo = None
         self._DiskCount = None
         self._DiskEncrypt = None
+        self._KmsKeyId = None
+        self._KmsKeyName = None
         self._CpuNum = None
         self._MemSize = None
         self._DiskEnhance = None
+        self._GpuInfo = None
 
     @property
     def NodeNum(self):
-        r"""Number of nodes
+        r"""<p>Number of nodes.</p>
         :rtype: int
         """
         return self._NodeNum
@@ -6365,7 +7438,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NodeType(self):
-        r"""Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+        r"""<p>Node specification<li>ES.S1.SMALL2: 1-core 2G</li><li>ES.S1.MEDIUM4: 2-core 4G</li><li>ES.S1.MEDIUM8: 2-core 8G</li><li>ES.S1.LARGE16: 4-core 16G</li><li>ES.S1.2XLARGE32: 8-core 32G</li><li>ES.S1.4XLARGE32: 16-core 32G</li><li>ES.S1.4XLARGE64: 16-core 64G</li></p>
         :rtype: str
         """
         return self._NodeType
@@ -6376,10 +7449,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        r"""Node type<li>`hotData`: hot data node</li>
-<li>`warmData`: warm data node</li>
-<li>`dedicatedMaster`: dedicated master node</li>
-Default value: `hotData`
+        r"""<p>Node type</p><p>Enumeration values:</p><ul><li>hotData: hot data node</li><li>warmData: cold data node</li><li>dedicatedMaster: dedicated master node</li><li>dedicatedCoordinating: dedicated coordinator node</li><li>dedicatedMl: dedicated Machine Learning node</li></ul>
         :rtype: str
         """
         return self._Type
@@ -6390,7 +7460,7 @@ Default value: `hotData`
 
     @property
     def DiskType(self):
-        r"""Node disk type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: Premium cloud disk </li>Default value: CLOUD_SSD
+        r"""<p>Node disk type<li>CLOUD_SSD: ssd cloud disk</li><li>CLOUD_PREMIUM: high-performance cloud disk</li>Default value: CLOUD_SSD</p>
         :rtype: str
         """
         return self._DiskType
@@ -6401,7 +7471,7 @@ Default value: `hotData`
 
     @property
     def DiskSize(self):
-        r"""Node disk size in GB
+        r"""<p>Node disk capacity (GB)</p>
         :rtype: int
         """
         return self._DiskSize
@@ -6412,8 +7482,7 @@ Default value: `hotData`
 
     @property
     def LocalDiskInfo(self):
-        r"""Local disk information
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Node local disk information.</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.LocalDiskInfo`
         """
         return self._LocalDiskInfo
@@ -6424,7 +7493,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskCount(self):
-        r"""Number of node disks
+        r"""<p>Number of node disk blocks</p>
         :rtype: int
         """
         return self._DiskCount
@@ -6435,7 +7504,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskEncrypt(self):
-        r"""Whether to encrypt node disk. 0: no (default); 1: yes.
+        r"""<p>Whether the node disk is encrypted. 0: no encryption; 1: encryption; not encrypted by default</p>
         :rtype: int
         """
         return self._DiskEncrypt
@@ -6445,9 +7514,30 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._DiskEncrypt = DiskEncrypt
 
     @property
+    def KmsKeyId(self):
+        r"""<p>Custom encryption key id</p>
+        :rtype: str
+        """
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
+    @property
+    def KmsKeyName(self):
+        r"""<p>Custom encryption key name</p>
+        :rtype: str
+        """
+        return self._KmsKeyName
+
+    @KmsKeyName.setter
+    def KmsKeyName(self, KmsKeyName):
+        self._KmsKeyName = KmsKeyName
+
+    @property
     def CpuNum(self):
-        r"""CPU number
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Number of CPUs</p>
         :rtype: int
         """
         return self._CpuNum
@@ -6458,8 +7548,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MemSize(self):
-        r"""Memory size in GB
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Memory size, in GB.</p>
         :rtype: int
         """
         return self._MemSize
@@ -6470,8 +7559,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskEnhance(self):
-        r"""/
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Additional hard disk performance</p>
         :rtype: int
         """
         return self._DiskEnhance
@@ -6479,6 +7567,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @DiskEnhance.setter
     def DiskEnhance(self, DiskEnhance):
         self._DiskEnhance = DiskEnhance
+
+    @property
+    def GpuInfo(self):
+        r"""<p>Gpu information of the node</p>
+        :rtype: :class:`tencentcloud.es.v20180416.models.GpuInfo`
+        """
+        return self._GpuInfo
+
+    @GpuInfo.setter
+    def GpuInfo(self, GpuInfo):
+        self._GpuInfo = GpuInfo
 
 
     def _deserialize(self, params):
@@ -6492,9 +7591,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._LocalDiskInfo._deserialize(params.get("LocalDiskInfo"))
         self._DiskCount = params.get("DiskCount")
         self._DiskEncrypt = params.get("DiskEncrypt")
+        self._KmsKeyId = params.get("KmsKeyId")
+        self._KmsKeyName = params.get("KmsKeyName")
         self._CpuNum = params.get("CpuNum")
         self._MemSize = params.get("MemSize")
         self._DiskEnhance = params.get("DiskEnhance")
+        if params.get("GpuInfo") is not None:
+            self._GpuInfo = GpuInfo()
+            self._GpuInfo._deserialize(params.get("GpuInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6506,46 +7610,54 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class NodeView(AbstractModel):
-    r"""Node view data
+    r"""Node dimension view data
 
     """
 
     def __init__(self):
         r"""
-        :param _NodeId: Node ID
+        :param _NodeId: Node ID.
         :type NodeId: str
         :param _NodeIp: Node IP
         :type NodeIp: str
         :param _Visible: Whether the node is visible
         :type Visible: float
-        :param _Break: Whether the node encounters circuit breaking
+        :param _Break: Whether to fuse
         :type Break: float
-        :param _DiskSize: Node disk size
+        :param _DiskSize: Total node disk size
         :type DiskSize: int
-        :param _DiskUsage: Disk usage
+        :param _DiskUsage: Disk utilization rate
         :type DiskUsage: float
-        :param _MemSize: Node memory size (in GB)
+        :param _MemSize: Node memory size (unit: GB)
         :type MemSize: int
-        :param _MemUsage: Memory usage
+        :param _MemUsage: Memory usage rate
         :type MemUsage: float
-        :param _CpuNum: Number of node CPUs
+        :param _CpuNum: Number of CPUs on the node
         :type CpuNum: int
-        :param _CpuUsage: CPU usage
+        :param _CpuUsage: CPU utilization
         :type CpuUsage: float
-        :param _Zone: Availability zone
+        :param _Zone: AZ.
         :type Zone: str
         :param _NodeRole: Node role
         :type NodeRole: str
         :param _NodeHttpIp: Node HTTP IP
         :type NodeHttpIp: str
-        :param _JvmMemUsage: JVM memory usage
+        :param _JvmMemUsage: JVM memory usage rate
         :type JvmMemUsage: float
-        :param _ShardNum: Number of node shards
+        :param _ShardNum: Number of shards per node
         :type ShardNum: int
-        :param _DiskIds: ID list of node disks
+        :param _DiskIds: Disk ID list on node
         :type DiskIds: list of str
-        :param _Hidden: Whether a hidden availability zone
+        :param _Hidden: Whether it is a hidden AZ
         :type Hidden: bool
+        :param _IsCoordinationNode: Whether to act as the coordination node role
+        :type IsCoordinationNode: bool
+        :param _CVMStatus: CVM running state
+        :type CVMStatus: str
+        :param _CVMDisasterRecoverGroupId: id of the placement group bound to the cvm
+        :type CVMDisasterRecoverGroupId: str
+        :param _CVMDisasterRecoverGroupStatus: Status of the placement group bound to the cvm. 2: Bound; 1: Binding; 0: Not enabled
+        :type CVMDisasterRecoverGroupStatus: int
         """
         self._NodeId = None
         self._NodeIp = None
@@ -6564,10 +7676,14 @@ class NodeView(AbstractModel):
         self._ShardNum = None
         self._DiskIds = None
         self._Hidden = None
+        self._IsCoordinationNode = None
+        self._CVMStatus = None
+        self._CVMDisasterRecoverGroupId = None
+        self._CVMDisasterRecoverGroupStatus = None
 
     @property
     def NodeId(self):
-        r"""Node ID
+        r"""Node ID.
         :rtype: str
         """
         return self._NodeId
@@ -6600,7 +7716,7 @@ class NodeView(AbstractModel):
 
     @property
     def Break(self):
-        r"""Whether the node encounters circuit breaking
+        r"""Whether to fuse
         :rtype: float
         """
         return self._Break
@@ -6611,7 +7727,7 @@ class NodeView(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""Node disk size
+        r"""Total node disk size
         :rtype: int
         """
         return self._DiskSize
@@ -6622,7 +7738,7 @@ class NodeView(AbstractModel):
 
     @property
     def DiskUsage(self):
-        r"""Disk usage
+        r"""Disk utilization rate
         :rtype: float
         """
         return self._DiskUsage
@@ -6633,7 +7749,7 @@ class NodeView(AbstractModel):
 
     @property
     def MemSize(self):
-        r"""Node memory size (in GB)
+        r"""Node memory size (unit: GB)
         :rtype: int
         """
         return self._MemSize
@@ -6644,7 +7760,7 @@ class NodeView(AbstractModel):
 
     @property
     def MemUsage(self):
-        r"""Memory usage
+        r"""Memory usage rate
         :rtype: float
         """
         return self._MemUsage
@@ -6655,7 +7771,7 @@ class NodeView(AbstractModel):
 
     @property
     def CpuNum(self):
-        r"""Number of node CPUs
+        r"""Number of CPUs on the node
         :rtype: int
         """
         return self._CpuNum
@@ -6666,7 +7782,7 @@ class NodeView(AbstractModel):
 
     @property
     def CpuUsage(self):
-        r"""CPU usage
+        r"""CPU utilization
         :rtype: float
         """
         return self._CpuUsage
@@ -6677,7 +7793,7 @@ class NodeView(AbstractModel):
 
     @property
     def Zone(self):
-        r"""Availability zone
+        r"""AZ.
         :rtype: str
         """
         return self._Zone
@@ -6710,7 +7826,7 @@ class NodeView(AbstractModel):
 
     @property
     def JvmMemUsage(self):
-        r"""JVM memory usage
+        r"""JVM memory usage rate
         :rtype: float
         """
         return self._JvmMemUsage
@@ -6721,7 +7837,7 @@ class NodeView(AbstractModel):
 
     @property
     def ShardNum(self):
-        r"""Number of node shards
+        r"""Number of shards per node
         :rtype: int
         """
         return self._ShardNum
@@ -6732,7 +7848,7 @@ class NodeView(AbstractModel):
 
     @property
     def DiskIds(self):
-        r"""ID list of node disks
+        r"""Disk ID list on node
         :rtype: list of str
         """
         return self._DiskIds
@@ -6743,7 +7859,7 @@ class NodeView(AbstractModel):
 
     @property
     def Hidden(self):
-        r"""Whether a hidden availability zone
+        r"""Whether it is a hidden AZ
         :rtype: bool
         """
         return self._Hidden
@@ -6751,6 +7867,50 @@ class NodeView(AbstractModel):
     @Hidden.setter
     def Hidden(self, Hidden):
         self._Hidden = Hidden
+
+    @property
+    def IsCoordinationNode(self):
+        r"""Whether to act as the coordination node role
+        :rtype: bool
+        """
+        return self._IsCoordinationNode
+
+    @IsCoordinationNode.setter
+    def IsCoordinationNode(self, IsCoordinationNode):
+        self._IsCoordinationNode = IsCoordinationNode
+
+    @property
+    def CVMStatus(self):
+        r"""CVM running state
+        :rtype: str
+        """
+        return self._CVMStatus
+
+    @CVMStatus.setter
+    def CVMStatus(self, CVMStatus):
+        self._CVMStatus = CVMStatus
+
+    @property
+    def CVMDisasterRecoverGroupId(self):
+        r"""id of the placement group bound to the cvm
+        :rtype: str
+        """
+        return self._CVMDisasterRecoverGroupId
+
+    @CVMDisasterRecoverGroupId.setter
+    def CVMDisasterRecoverGroupId(self, CVMDisasterRecoverGroupId):
+        self._CVMDisasterRecoverGroupId = CVMDisasterRecoverGroupId
+
+    @property
+    def CVMDisasterRecoverGroupStatus(self):
+        r"""Status of the placement group bound to the cvm. 2: Bound; 1: Binding; 0: Not enabled
+        :rtype: int
+        """
+        return self._CVMDisasterRecoverGroupStatus
+
+    @CVMDisasterRecoverGroupStatus.setter
+    def CVMDisasterRecoverGroupStatus(self, CVMDisasterRecoverGroupStatus):
+        self._CVMDisasterRecoverGroupStatus = CVMDisasterRecoverGroupStatus
 
 
     def _deserialize(self, params):
@@ -6771,6 +7931,10 @@ class NodeView(AbstractModel):
         self._ShardNum = params.get("ShardNum")
         self._DiskIds = params.get("DiskIds")
         self._Hidden = params.get("Hidden")
+        self._IsCoordinationNode = params.get("IsCoordinationNode")
+        self._CVMStatus = params.get("CVMStatus")
+        self._CVMDisasterRecoverGroupId = params.get("CVMDisasterRecoverGroupId")
+        self._CVMDisasterRecoverGroupStatus = params.get("CVMDisasterRecoverGroupStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6782,26 +7946,34 @@ class NodeView(AbstractModel):
 
 
 class Operation(AbstractModel):
-    r"""ES cluster operation details
+    r"""Detailed ES cluster operation information
 
     """
 
     def __init__(self):
         r"""
-        :param _Id: Unique operation ID
+        :param _Id: <p>Unique id of the operation</p>
         :type Id: int
-        :param _StartTime: Operation start time
+        :param _StartTime: <p>Operation start time.</p>
         :type StartTime: str
-        :param _Type: Operation type
+        :param _Type: <p>Operation type.</p>
         :type Type: str
-        :param _Detail: Operation details
+        :param _Detail: <p>Operation details.</p>
         :type Detail: :class:`tencentcloud.es.v20180416.models.OperationDetail`
-        :param _Result: Operation result
+        :param _Result: <p>Operation result.</p>
         :type Result: str
-        :param _Tasks: Workflow task information
+        :param _Tasks: <p>Process task info</p>
         :type Tasks: list of TaskDetail
-        :param _Progress: Operation progress
+        :param _Progress: <p>Operation progress.</p>
         :type Progress: float
+        :param _RollbackTag: <p>Rollback tag. 0: not rolled back, 1: rolling back, 2: rolled back</p>
+        :type RollbackTag: int
+        :param _SubAccountUin: <p>Operator Uin</p>
+        :type SubAccountUin: str
+        :param _AutoScaleTag: <p>Auto scaling flag. Valid values: 0 (non-auto) and 1 (auto).</p>
+        :type AutoScaleTag: int
+        :param _SuspendedReason: <p>Process exception cause</p>
+        :type SuspendedReason: str
         """
         self._Id = None
         self._StartTime = None
@@ -6810,10 +7982,14 @@ class Operation(AbstractModel):
         self._Result = None
         self._Tasks = None
         self._Progress = None
+        self._RollbackTag = None
+        self._SubAccountUin = None
+        self._AutoScaleTag = None
+        self._SuspendedReason = None
 
     @property
     def Id(self):
-        r"""Unique operation ID
+        r"""<p>Unique id of the operation</p>
         :rtype: int
         """
         return self._Id
@@ -6824,7 +8000,7 @@ class Operation(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Operation start time
+        r"""<p>Operation start time.</p>
         :rtype: str
         """
         return self._StartTime
@@ -6835,7 +8011,7 @@ class Operation(AbstractModel):
 
     @property
     def Type(self):
-        r"""Operation type
+        r"""<p>Operation type.</p>
         :rtype: str
         """
         return self._Type
@@ -6846,7 +8022,7 @@ class Operation(AbstractModel):
 
     @property
     def Detail(self):
-        r"""Operation details
+        r"""<p>Operation details.</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.OperationDetail`
         """
         return self._Detail
@@ -6857,7 +8033,7 @@ class Operation(AbstractModel):
 
     @property
     def Result(self):
-        r"""Operation result
+        r"""<p>Operation result.</p>
         :rtype: str
         """
         return self._Result
@@ -6868,7 +8044,7 @@ class Operation(AbstractModel):
 
     @property
     def Tasks(self):
-        r"""Workflow task information
+        r"""<p>Process task info</p>
         :rtype: list of TaskDetail
         """
         return self._Tasks
@@ -6879,7 +8055,7 @@ class Operation(AbstractModel):
 
     @property
     def Progress(self):
-        r"""Operation progress
+        r"""<p>Operation progress.</p>
         :rtype: float
         """
         return self._Progress
@@ -6887,6 +8063,50 @@ class Operation(AbstractModel):
     @Progress.setter
     def Progress(self, Progress):
         self._Progress = Progress
+
+    @property
+    def RollbackTag(self):
+        r"""<p>Rollback tag. 0: not rolled back, 1: rolling back, 2: rolled back</p>
+        :rtype: int
+        """
+        return self._RollbackTag
+
+    @RollbackTag.setter
+    def RollbackTag(self, RollbackTag):
+        self._RollbackTag = RollbackTag
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>Operator Uin</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def AutoScaleTag(self):
+        r"""<p>Auto scaling flag. Valid values: 0 (non-auto) and 1 (auto).</p>
+        :rtype: int
+        """
+        return self._AutoScaleTag
+
+    @AutoScaleTag.setter
+    def AutoScaleTag(self, AutoScaleTag):
+        self._AutoScaleTag = AutoScaleTag
+
+    @property
+    def SuspendedReason(self):
+        r"""<p>Process exception cause</p>
+        :rtype: str
+        """
+        return self._SuspendedReason
+
+    @SuspendedReason.setter
+    def SuspendedReason(self, SuspendedReason):
+        self._SuspendedReason = SuspendedReason
 
 
     def _deserialize(self, params):
@@ -6904,6 +8124,10 @@ class Operation(AbstractModel):
                 obj._deserialize(item)
                 self._Tasks.append(obj)
         self._Progress = params.get("Progress")
+        self._RollbackTag = params.get("RollbackTag")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._AutoScaleTag = params.get("AutoScaleTag")
+        self._SuspendedReason = params.get("SuspendedReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6915,15 +8139,15 @@ class Operation(AbstractModel):
 
 
 class OperationDetail(AbstractModel):
-    r"""Operation details
+    r"""Operation details.
 
     """
 
     def __init__(self):
         r"""
-        :param _OldInfo: Original instance configuration information
+        :param _OldInfo: Original configuration message of the instance
         :type OldInfo: list of KeyValue
-        :param _NewInfo: Updated instance configuration information
+        :param _NewInfo: Configuration message after the instance update
         :type NewInfo: list of KeyValue
         """
         self._OldInfo = None
@@ -6931,7 +8155,7 @@ class OperationDetail(AbstractModel):
 
     @property
     def OldInfo(self):
-        r"""Original instance configuration information
+        r"""Original configuration message of the instance
         :rtype: list of KeyValue
         """
         return self._OldInfo
@@ -6942,7 +8166,7 @@ class OperationDetail(AbstractModel):
 
     @property
     def NewInfo(self):
-        r"""Updated instance configuration information
+        r"""Configuration message after the instance update
         :rtype: list of KeyValue
         """
         return self._NewInfo
@@ -6976,20 +8200,19 @@ class OperationDetail(AbstractModel):
 
 
 class OperationDuration(AbstractModel):
-    r"""The maintenance time slot of the cluster
+    r"""Cluster maintainability time
 
     """
 
     def __init__(self):
         r"""
-        :param _Periods: Maintenance period, which can be one or more days from Monday to Sunday. Valid values: [0, 6].
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Periods: Maintenance period, which refers to Monday to Sunday. Valid values: [0, 6].
         :type Periods: list of int non-negative
-        :param _TimeStart: The maintenance start time
+        :param _TimeStart: Maintenance start time
         :type TimeStart: str
-        :param _TimeEnd: The maintenance end time
+        :param _TimeEnd: Maintenance end time.
         :type TimeEnd: str
-        :param _TimeZone: The time zone expressed in UTC.
+        :param _TimeZone: Time zone in UTC format
         :type TimeZone: str
         """
         self._Periods = None
@@ -6999,8 +8222,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Periods(self):
-        r"""Maintenance period, which can be one or more days from Monday to Sunday. Valid values: [0, 6].
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Maintenance period, which refers to Monday to Sunday. Valid values: [0, 6].
         :rtype: list of int non-negative
         """
         return self._Periods
@@ -7011,7 +8233,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeStart(self):
-        r"""The maintenance start time
+        r"""Maintenance start time
         :rtype: str
         """
         return self._TimeStart
@@ -7022,7 +8244,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeEnd(self):
-        r"""The maintenance end time
+        r"""Maintenance end time.
         :rtype: str
         """
         return self._TimeEnd
@@ -7033,7 +8255,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeZone(self):
-        r"""The time zone expressed in UTC.
+        r"""Time zone in UTC format
         :rtype: str
         """
         return self._TimeZone
@@ -7059,21 +8281,21 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class OperationDurationUpdated(AbstractModel):
-    r"""The maintenance time slot of the cluster
+    r"""Cluster maintainability time
 
     """
 
     def __init__(self):
         r"""
-        :param _Periods: Maintenance period, which can be one or more days from Monday to Sunday. Valid values: [0, 6].
+        :param _Periods: Maintenance period, which refers to Monday to Sunday. Valid values: [0, 6].
         :type Periods: list of int non-negative
-        :param _TimeStart: The maintenance start time
+        :param _TimeStart: Maintenance start time
         :type TimeStart: str
-        :param _TimeEnd: The maintenance end time
+        :param _TimeEnd: Maintenance end time.
         :type TimeEnd: str
-        :param _TimeZone: The time zone expressed in UTC.
+        :param _TimeZone: Time zone in UTC format
         :type TimeZone: str
-        :param _MoreInstances: The array of ES cluster IDs
+        :param _MoreInstances: ES cluster ID array
         :type MoreInstances: list of str
         """
         self._Periods = None
@@ -7084,7 +8306,7 @@ class OperationDurationUpdated(AbstractModel):
 
     @property
     def Periods(self):
-        r"""Maintenance period, which can be one or more days from Monday to Sunday. Valid values: [0, 6].
+        r"""Maintenance period, which refers to Monday to Sunday. Valid values: [0, 6].
         :rtype: list of int non-negative
         """
         return self._Periods
@@ -7095,7 +8317,7 @@ class OperationDurationUpdated(AbstractModel):
 
     @property
     def TimeStart(self):
-        r"""The maintenance start time
+        r"""Maintenance start time
         :rtype: str
         """
         return self._TimeStart
@@ -7106,7 +8328,7 @@ class OperationDurationUpdated(AbstractModel):
 
     @property
     def TimeEnd(self):
-        r"""The maintenance end time
+        r"""Maintenance end time.
         :rtype: str
         """
         return self._TimeEnd
@@ -7117,7 +8339,7 @@ class OperationDurationUpdated(AbstractModel):
 
     @property
     def TimeZone(self):
-        r"""The time zone expressed in UTC.
+        r"""Time zone in UTC format
         :rtype: str
         """
         return self._TimeZone
@@ -7128,7 +8350,7 @@ class OperationDurationUpdated(AbstractModel):
 
     @property
     def MoreInstances(self):
-        r"""The array of ES cluster IDs
+        r"""ES cluster ID array
         :rtype: list of str
         """
         return self._MoreInstances
@@ -7155,33 +8377,30 @@ class OperationDurationUpdated(AbstractModel):
 
 
 class OptionalWebServiceInfo(AbstractModel):
-    r"""The information of optional web components
+    r"""Optional web component information
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: Type
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Type: Type.
         :type Type: str
-        :param _Status: Status
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Status: Status.
         :type Status: int
-        :param _PublicUrl: Public URL
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PublicUrl: Public url
         :type PublicUrl: str
-        :param _PrivateUrl: Private URL
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PrivateUrl: Private network url
         :type PrivateUrl: str
-        :param _PublicAccess: Public network access
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PublicAccess: Public access permissions
         :type PublicAccess: str
-        :param _PrivateAccess: Private network access
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PrivateAccess: Private network access permission
         :type PrivateAccess: str
         :param _Version: Version
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Version: str
+        :param _PrivateVip: Intranet vip of the web service
+        :type PrivateVip: str
+        :param _CustomPrivateUrl: Custom url of cerebro on the private network
+        :type CustomPrivateUrl: str
         """
         self._Type = None
         self._Status = None
@@ -7190,11 +8409,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._PublicAccess = None
         self._PrivateAccess = None
         self._Version = None
+        self._PrivateVip = None
+        self._CustomPrivateUrl = None
 
     @property
     def Type(self):
-        r"""Type
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Type.
         :rtype: str
         """
         return self._Type
@@ -7205,8 +8425,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        r"""Status
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Status.
         :rtype: int
         """
         return self._Status
@@ -7217,8 +8436,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PublicUrl(self):
-        r"""Public URL
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Public url
         :rtype: str
         """
         return self._PublicUrl
@@ -7229,8 +8447,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PrivateUrl(self):
-        r"""Private URL
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Private network url
         :rtype: str
         """
         return self._PrivateUrl
@@ -7241,8 +8458,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PublicAccess(self):
-        r"""Public network access
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Public access permissions
         :rtype: str
         """
         return self._PublicAccess
@@ -7253,8 +8469,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PrivateAccess(self):
-        r"""Private network access
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Private network access permission
         :rtype: str
         """
         return self._PrivateAccess
@@ -7266,7 +8481,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Version(self):
         r"""Version
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Version
@@ -7274,6 +8488,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @Version.setter
     def Version(self, Version):
         self._Version = Version
+
+    @property
+    def PrivateVip(self):
+        r"""Intranet vip of the web service
+        :rtype: str
+        """
+        return self._PrivateVip
+
+    @PrivateVip.setter
+    def PrivateVip(self, PrivateVip):
+        self._PrivateVip = PrivateVip
+
+    @property
+    def CustomPrivateUrl(self):
+        r"""Custom url of cerebro on the private network
+        :rtype: str
+        """
+        return self._CustomPrivateUrl
+
+    @CustomPrivateUrl.setter
+    def CustomPrivateUrl(self, CustomPrivateUrl):
+        self._CustomPrivateUrl = CustomPrivateUrl
 
 
     def _deserialize(self, params):
@@ -7284,6 +8520,206 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._PublicAccess = params.get("PublicAccess")
         self._PrivateAccess = params.get("PrivateAccess")
         self._Version = params.get("Version")
+        self._PrivateVip = params.get("PrivateVip")
+        self._CustomPrivateUrl = params.get("CustomPrivateUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OtherConfig(AbstractModel):
+    r"""Additional EsConfig and JvmHeapConfig used by updateInstance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EsConfig: Additional yml configuration for es
+        :type EsConfig: str
+        :param _JvmHeapConfig: jvm heap configuration of es
+        :type JvmHeapConfig: str
+        """
+        self._EsConfig = None
+        self._JvmHeapConfig = None
+
+    @property
+    def EsConfig(self):
+        r"""Additional yml configuration for es
+        :rtype: str
+        """
+        return self._EsConfig
+
+    @EsConfig.setter
+    def EsConfig(self, EsConfig):
+        self._EsConfig = EsConfig
+
+    @property
+    def JvmHeapConfig(self):
+        r"""jvm heap configuration of es
+        :rtype: str
+        """
+        return self._JvmHeapConfig
+
+    @JvmHeapConfig.setter
+    def JvmHeapConfig(self, JvmHeapConfig):
+        self._JvmHeapConfig = JvmHeapConfig
+
+
+    def _deserialize(self, params):
+        self._EsConfig = params.get("EsConfig")
+        self._JvmHeapConfig = params.get("JvmHeapConfig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutboundPublicAcl(AbstractModel):
+    r"""Node outbound access information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeType: Node types with permission for node outbound access
+        :type NodeType: str
+        :param _WhiteHostList: Allowlist for outbound access from nodes
+        :type WhiteHostList: list of str
+        """
+        self._NodeType = None
+        self._WhiteHostList = None
+
+    @property
+    def NodeType(self):
+        r"""Node types with permission for node outbound access
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def WhiteHostList(self):
+        r"""Allowlist for outbound access from nodes
+        :rtype: list of str
+        """
+        return self._WhiteHostList
+
+    @WhiteHostList.setter
+    def WhiteHostList(self, WhiteHostList):
+        self._WhiteHostList = WhiteHostList
+
+
+    def _deserialize(self, params):
+        self._NodeType = params.get("NodeType")
+        self._WhiteHostList = params.get("WhiteHostList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcessDetail(AbstractModel):
+    r"""Task progress details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Completed: <p>Number of completed</p>
+        :type Completed: int
+        :param _Remain: <p>Remaining quantity</p>
+        :type Remain: int
+        :param _Total: <p>Total quantity.</p>
+        :type Total: int
+        :param _TaskType: <p>Task type:<br>60: Restart task<br>70: Shard migration task<br>80: Node configuration modification task</p>
+        :type TaskType: int
+        :param _EstimatedTimeRemaining: <p>Estimated remaining time</p><p>Unit: seconds</p>
+        :type EstimatedTimeRemaining: int
+        """
+        self._Completed = None
+        self._Remain = None
+        self._Total = None
+        self._TaskType = None
+        self._EstimatedTimeRemaining = None
+
+    @property
+    def Completed(self):
+        r"""<p>Number of completed</p>
+        :rtype: int
+        """
+        return self._Completed
+
+    @Completed.setter
+    def Completed(self, Completed):
+        self._Completed = Completed
+
+    @property
+    def Remain(self):
+        r"""<p>Remaining quantity</p>
+        :rtype: int
+        """
+        return self._Remain
+
+    @Remain.setter
+    def Remain(self, Remain):
+        self._Remain = Remain
+
+    @property
+    def Total(self):
+        r"""<p>Total quantity.</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def TaskType(self):
+        r"""<p>Task type:<br>60: Restart task<br>70: Shard migration task<br>80: Node configuration modification task</p>
+        :rtype: int
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def EstimatedTimeRemaining(self):
+        r"""<p>Estimated remaining time</p><p>Unit: seconds</p>
+        :rtype: int
+        """
+        return self._EstimatedTimeRemaining
+
+    @EstimatedTimeRemaining.setter
+    def EstimatedTimeRemaining(self, EstimatedTimeRemaining):
+        self._EstimatedTimeRemaining = EstimatedTimeRemaining
+
+
+    def _deserialize(self, params):
+        self._Completed = params.get("Completed")
+        self._Remain = params.get("Remain")
+        self._Total = params.get("Total")
+        self._TaskType = params.get("TaskType")
+        self._EstimatedTimeRemaining = params.get("EstimatedTimeRemaining")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7301,20 +8737,23 @@ class RestartInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: <p>Instance ID.</p>
         :type InstanceId: str
-        :param _ForceRestart: Whether to force restart <li>true: Yes </li><li>false: No </li>Default value: false
+        :param _ForceRestart: <p>Whether to force restart<li>true: force restart</li><li>false: do not force restart</li>Default value: false</p>
         :type ForceRestart: bool
-        :param _RestartMode: Restart mode. `0`: rolling restart; `1`: full restart
+        :param _RestartMode: <p>Restart mode: 0 rolling restart; 1 full restart</p>
         :type RestartMode: int
+        :param _UpgradeKernel: <p>Select whether to upgrade the kernel patch version upon restart</p>
+        :type UpgradeKernel: bool
         """
         self._InstanceId = None
         self._ForceRestart = None
         self._RestartMode = None
+        self._UpgradeKernel = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""<p>Instance ID.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -7325,7 +8764,7 @@ class RestartInstanceRequest(AbstractModel):
 
     @property
     def ForceRestart(self):
-        r"""Whether to force restart <li>true: Yes </li><li>false: No </li>Default value: false
+        r"""<p>Whether to force restart<li>true: force restart</li><li>false: do not force restart</li>Default value: false</p>
         :rtype: bool
         """
         return self._ForceRestart
@@ -7336,7 +8775,7 @@ class RestartInstanceRequest(AbstractModel):
 
     @property
     def RestartMode(self):
-        r"""Restart mode. `0`: rolling restart; `1`: full restart
+        r"""<p>Restart mode: 0 rolling restart; 1 full restart</p>
         :rtype: int
         """
         return self._RestartMode
@@ -7345,11 +8784,23 @@ class RestartInstanceRequest(AbstractModel):
     def RestartMode(self, RestartMode):
         self._RestartMode = RestartMode
 
+    @property
+    def UpgradeKernel(self):
+        r"""<p>Select whether to upgrade the kernel patch version upon restart</p>
+        :rtype: bool
+        """
+        return self._UpgradeKernel
+
+    @UpgradeKernel.setter
+    def UpgradeKernel(self, UpgradeKernel):
+        self._UpgradeKernel = UpgradeKernel
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._ForceRestart = params.get("ForceRestart")
         self._RestartMode = params.get("RestartMode")
+        self._UpgradeKernel = params.get("UpgradeKernel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7395,14 +8846,14 @@ class RestartKibanaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ES instance ID
+        :param _InstanceId: ES instance ID.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""ES instance ID
+        r"""ES instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -7459,26 +8910,44 @@ class RestartNodesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Cluster instance ID
+        :param _InstanceId: Cluster instance ID.
         :type InstanceId: str
         :param _NodeNames: Node name list
         :type NodeNames: list of str
-        :param _ForceRestart: Whether to force restart
+        :param _ForceRestart: Whether to perform forced reboot.
         :type ForceRestart: bool
-        :param _RestartMode: The restart mode. Valid values: `in-place` (default), `blue-green`.
+        :param _RestartMode: Optional restart mode. `in-place`: restart; `blue-green`: blue-green restart. Default value: `in-place`.
         :type RestartMode: str
-        :param _IsOffline: The node status, applicable in the blue/green mode. The blue/green restart is risky if the node is offline.
+        :param _IsOffline: Node status, for use in blue-green mode; offline node blue/green at risk
         :type IsOffline: bool
+        :param _CvmDelayOnlineTime: cvm delay listing time
+        :type CvmDelayOnlineTime: int
+        :param _ShardAllocationConcurrents: Number of concurrent shard migrations
+        :type ShardAllocationConcurrents: int
+        :param _ShardAllocationBytes: Shard migration concurrency speed
+        :type ShardAllocationBytes: int
+        :param _EnableScheduleRecoverGroup: Whether to enable the placement group asynchronous task
+        :type EnableScheduleRecoverGroup: bool
+        :param _EnableScheduleOperationDuration: Time period of the async task for the placement group
+        :type EnableScheduleOperationDuration: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
+        :param _EventTypeIds: Event ID list.
+        :type EventTypeIds: list of str
         """
         self._InstanceId = None
         self._NodeNames = None
         self._ForceRestart = None
         self._RestartMode = None
         self._IsOffline = None
+        self._CvmDelayOnlineTime = None
+        self._ShardAllocationConcurrents = None
+        self._ShardAllocationBytes = None
+        self._EnableScheduleRecoverGroup = None
+        self._EnableScheduleOperationDuration = None
+        self._EventTypeIds = None
 
     @property
     def InstanceId(self):
-        r"""Cluster instance ID
+        r"""Cluster instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -7500,7 +8969,7 @@ class RestartNodesRequest(AbstractModel):
 
     @property
     def ForceRestart(self):
-        r"""Whether to force restart
+        r"""Whether to perform forced reboot.
         :rtype: bool
         """
         return self._ForceRestart
@@ -7511,7 +8980,7 @@ class RestartNodesRequest(AbstractModel):
 
     @property
     def RestartMode(self):
-        r"""The restart mode. Valid values: `in-place` (default), `blue-green`.
+        r"""Optional restart mode. `in-place`: restart; `blue-green`: blue-green restart. Default value: `in-place`.
         :rtype: str
         """
         return self._RestartMode
@@ -7522,7 +8991,7 @@ class RestartNodesRequest(AbstractModel):
 
     @property
     def IsOffline(self):
-        r"""The node status, applicable in the blue/green mode. The blue/green restart is risky if the node is offline.
+        r"""Node status, for use in blue-green mode; offline node blue/green at risk
         :rtype: bool
         """
         return self._IsOffline
@@ -7531,6 +9000,72 @@ class RestartNodesRequest(AbstractModel):
     def IsOffline(self, IsOffline):
         self._IsOffline = IsOffline
 
+    @property
+    def CvmDelayOnlineTime(self):
+        r"""cvm delay listing time
+        :rtype: int
+        """
+        return self._CvmDelayOnlineTime
+
+    @CvmDelayOnlineTime.setter
+    def CvmDelayOnlineTime(self, CvmDelayOnlineTime):
+        self._CvmDelayOnlineTime = CvmDelayOnlineTime
+
+    @property
+    def ShardAllocationConcurrents(self):
+        r"""Number of concurrent shard migrations
+        :rtype: int
+        """
+        return self._ShardAllocationConcurrents
+
+    @ShardAllocationConcurrents.setter
+    def ShardAllocationConcurrents(self, ShardAllocationConcurrents):
+        self._ShardAllocationConcurrents = ShardAllocationConcurrents
+
+    @property
+    def ShardAllocationBytes(self):
+        r"""Shard migration concurrency speed
+        :rtype: int
+        """
+        return self._ShardAllocationBytes
+
+    @ShardAllocationBytes.setter
+    def ShardAllocationBytes(self, ShardAllocationBytes):
+        self._ShardAllocationBytes = ShardAllocationBytes
+
+    @property
+    def EnableScheduleRecoverGroup(self):
+        r"""Whether to enable the placement group asynchronous task
+        :rtype: bool
+        """
+        return self._EnableScheduleRecoverGroup
+
+    @EnableScheduleRecoverGroup.setter
+    def EnableScheduleRecoverGroup(self, EnableScheduleRecoverGroup):
+        self._EnableScheduleRecoverGroup = EnableScheduleRecoverGroup
+
+    @property
+    def EnableScheduleOperationDuration(self):
+        r"""Time period of the async task for the placement group
+        :rtype: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
+        """
+        return self._EnableScheduleOperationDuration
+
+    @EnableScheduleOperationDuration.setter
+    def EnableScheduleOperationDuration(self, EnableScheduleOperationDuration):
+        self._EnableScheduleOperationDuration = EnableScheduleOperationDuration
+
+    @property
+    def EventTypeIds(self):
+        r"""Event ID list.
+        :rtype: list of str
+        """
+        return self._EventTypeIds
+
+    @EventTypeIds.setter
+    def EventTypeIds(self, EventTypeIds):
+        self._EventTypeIds = EventTypeIds
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7538,6 +9073,14 @@ class RestartNodesRequest(AbstractModel):
         self._ForceRestart = params.get("ForceRestart")
         self._RestartMode = params.get("RestartMode")
         self._IsOffline = params.get("IsOffline")
+        self._CvmDelayOnlineTime = params.get("CvmDelayOnlineTime")
+        self._ShardAllocationConcurrents = params.get("ShardAllocationConcurrents")
+        self._ShardAllocationBytes = params.get("ShardAllocationBytes")
+        self._EnableScheduleRecoverGroup = params.get("EnableScheduleRecoverGroup")
+        if params.get("EnableScheduleOperationDuration") is not None:
+            self._EnableScheduleOperationDuration = EnableScheduleOperationDuration()
+            self._EnableScheduleOperationDuration._deserialize(params.get("EnableScheduleOperationDuration"))
+        self._EventTypeIds = params.get("EventTypeIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7577,7 +9120,7 @@ class RestartNodesResponse(AbstractModel):
 
 
 class SubTaskDetail(AbstractModel):
-    r"""Information of subtask in workflow task in the instance operation history (such as each check item in a upgrade check task)
+    r"""Subtask information in the process task of the instance operation record (for example, each check item in the upgrade check task)
 
     """
 
@@ -7591,13 +9134,13 @@ class SubTaskDetail(AbstractModel):
         :type ErrMsg: str
         :param _Type: Subtask type
         :type Type: str
-        :param _Status: Subtask status. 0: processing, 1: succeeded, -1: failed
+        :param _Status: Subtask status. 0: processing, 1: success, -1: failure
         :type Status: int
-        :param _FailedIndices: Name of the index for which the check for upgrade failed
+        :param _FailedIndices: Index name that failed the upgrade check
         :type FailedIndices: list of str
         :param _FinishTime: Subtask end time
         :type FinishTime: str
-        :param _Level: Subtask level. 1: warning, 2: failed
+        :param _Level: Subtask level. 1: warning; 2: failure
         :type Level: int
         """
         self._Name = None
@@ -7655,7 +9198,7 @@ class SubTaskDetail(AbstractModel):
 
     @property
     def Status(self):
-        r"""Subtask status. 0: processing, 1: succeeded, -1: failed
+        r"""Subtask status. 0: processing, 1: success, -1: failure
         :rtype: int
         """
         return self._Status
@@ -7666,7 +9209,7 @@ class SubTaskDetail(AbstractModel):
 
     @property
     def FailedIndices(self):
-        r"""Name of the index for which the check for upgrade failed
+        r"""Index name that failed the upgrade check
         :rtype: list of str
         """
         return self._FailedIndices
@@ -7688,7 +9231,7 @@ class SubTaskDetail(AbstractModel):
 
     @property
     def Level(self):
-        r"""Subtask level. 1: warning, 2: failed
+        r"""Subtask level. 1: warning; 2: failure
         :rtype: int
         """
         return self._Level
@@ -7718,15 +9261,15 @@ class SubTaskDetail(AbstractModel):
 
 
 class TagInfo(AbstractModel):
-    r"""Instance tag information
+    r"""Instance tag information.
 
     """
 
     def __init__(self):
         r"""
-        :param _TagKey: Tag key
+        :param _TagKey: Tag key.
         :type TagKey: str
-        :param _TagValue: Tag value
+        :param _TagValue: Tag value.
         :type TagValue: str
         """
         self._TagKey = None
@@ -7734,7 +9277,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagKey(self):
-        r"""Tag key
+        r"""Tag key.
         :rtype: str
         """
         return self._TagKey
@@ -7745,7 +9288,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagValue(self):
-        r"""Tag value
+        r"""Tag value.
         :rtype: str
         """
         return self._TagValue
@@ -7769,13 +9312,13 @@ class TagInfo(AbstractModel):
 
 
 class TaskDetail(AbstractModel):
-    r"""Information of workflow task in instance operation history
+    r"""Process task information in the instance operation record
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: Task name
+        :param _Name: Task Name
         :type Name: str
         :param _Progress: Task progress
         :type Progress: float
@@ -7783,19 +9326,21 @@ class TaskDetail(AbstractModel):
         :type FinishTime: str
         :param _SubTasks: Subtask
         :type SubTasks: list of SubTaskDetail
-        :param _ElapsedTime: The task time.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ElapsedTime: Time taken by the task
         :type ElapsedTime: int
+        :param _ProcessInfo: Task progress details
+        :type ProcessInfo: :class:`tencentcloud.es.v20180416.models.ProcessDetail`
         """
         self._Name = None
         self._Progress = None
         self._FinishTime = None
         self._SubTasks = None
         self._ElapsedTime = None
+        self._ProcessInfo = None
 
     @property
     def Name(self):
-        r"""Task name
+        r"""Task Name
         :rtype: str
         """
         return self._Name
@@ -7839,8 +9384,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ElapsedTime(self):
-        r"""The task time.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Time taken by the task
         :rtype: int
         """
         return self._ElapsedTime
@@ -7848,6 +9392,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @ElapsedTime.setter
     def ElapsedTime(self, ElapsedTime):
         self._ElapsedTime = ElapsedTime
+
+    @property
+    def ProcessInfo(self):
+        r"""Task progress details
+        :rtype: :class:`tencentcloud.es.v20180416.models.ProcessDetail`
+        """
+        return self._ProcessInfo
+
+    @ProcessInfo.setter
+    def ProcessInfo(self, ProcessInfo):
+        self._ProcessInfo = ProcessInfo
 
 
     def _deserialize(self, params):
@@ -7861,6 +9416,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._SubTasks.append(obj)
         self._ElapsedTime = params.get("ElapsedTime")
+        if params.get("ProcessInfo") is not None:
+            self._ProcessInfo = ProcessDetail()
+            self._ProcessInfo._deserialize(params.get("ProcessInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7878,19 +9436,19 @@ class UpdateDictionariesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ES instance ID
+        :param _InstanceId: ES instance ID.
         :type InstanceId: str
-        :param _IkMainDicts: COS address of the main dictionary for the IK analyzer
+        :param _IkMainDicts: Address of the COS main dictionary for IK word segmentation entered during installation, and the dictionary name such as test.dic entered during deletion.
         :type IkMainDicts: list of str
-        :param _IkStopwords: COS address of the stopword dictionary for the IK analyzer
+        :param _IkStopwords: Address of the COS stopword dictionary for IK word segmentation during installation. When deleting, enter the dictionary name, for example, test.dic.
         :type IkStopwords: list of str
-        :param _Synonym: COS address of the synonym dictionary
+        :param _Synonym: Address of the synonym dictionary COS during installation, and the dictionary name such as test.dic when deleting.
         :type Synonym: list of str
-        :param _QQDict: COS address of the QQ dictionary
+        :param _QQDict: Address of the COS QQ tokenizer dictionary during installation, and the dictionary name such as test.dic during deletion.
         :type QQDict: list of str
-        :param _UpdateType: `0` (default): Install, `1`: Delete
+        :param _UpdateType: 0: installation; 1: deletion. Default value: 0
         :type UpdateType: int
-        :param _ForceRestart: Whether to force restart the cluster. The default value is `false`.
+        :param _ForceRestart: Whether to force restart the cluster. Default value: false
         :type ForceRestart: bool
         """
         self._InstanceId = None
@@ -7903,7 +9461,7 @@ class UpdateDictionariesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""ES instance ID
+        r"""ES instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -7914,7 +9472,7 @@ class UpdateDictionariesRequest(AbstractModel):
 
     @property
     def IkMainDicts(self):
-        r"""COS address of the main dictionary for the IK analyzer
+        r"""Address of the COS main dictionary for IK word segmentation entered during installation, and the dictionary name such as test.dic entered during deletion.
         :rtype: list of str
         """
         return self._IkMainDicts
@@ -7925,7 +9483,7 @@ class UpdateDictionariesRequest(AbstractModel):
 
     @property
     def IkStopwords(self):
-        r"""COS address of the stopword dictionary for the IK analyzer
+        r"""Address of the COS stopword dictionary for IK word segmentation during installation. When deleting, enter the dictionary name, for example, test.dic.
         :rtype: list of str
         """
         return self._IkStopwords
@@ -7936,7 +9494,7 @@ class UpdateDictionariesRequest(AbstractModel):
 
     @property
     def Synonym(self):
-        r"""COS address of the synonym dictionary
+        r"""Address of the synonym dictionary COS during installation, and the dictionary name such as test.dic when deleting.
         :rtype: list of str
         """
         return self._Synonym
@@ -7947,7 +9505,7 @@ class UpdateDictionariesRequest(AbstractModel):
 
     @property
     def QQDict(self):
-        r"""COS address of the QQ dictionary
+        r"""Address of the COS QQ tokenizer dictionary during installation, and the dictionary name such as test.dic during deletion.
         :rtype: list of str
         """
         return self._QQDict
@@ -7958,7 +9516,7 @@ class UpdateDictionariesRequest(AbstractModel):
 
     @property
     def UpdateType(self):
-        r"""`0` (default): Install, `1`: Delete
+        r"""0: installation; 1: deletion. Default value: 0
         :rtype: int
         """
         return self._UpdateType
@@ -7969,7 +9527,7 @@ class UpdateDictionariesRequest(AbstractModel):
 
     @property
     def ForceRestart(self):
-        r"""Whether to force restart the cluster. The default value is `false`.
+        r"""Whether to force restart the cluster. Default value: false
         :rtype: bool
         """
         return self._ForceRestart
@@ -8032,25 +9590,25 @@ class UpdateIndexRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ES cluster ID
+        :param _InstanceId: <p>ES cluster ID</p>
         :type InstanceId: str
-        :param _IndexType: Type of the index to update. `auto`: Automated; `normal`: General.
+        :param _IndexType: <p>Updated index type. auto: autonomous index; normal: general index</p>
         :type IndexType: str
-        :param _IndexName: Name of the index to update
+        :param _IndexName: <p>Updated index name</p>
         :type IndexName: str
-        :param _UpdateMetaJson: JSON-formatted index metadata to update, such as `mappings` and `settings`.
+        :param _UpdateMetaJson: <p>Updated JSON-formatted index metadata, such as mappings and settings</p>
         :type UpdateMetaJson: str
-        :param _Username: Username for cluster access
+        :param _Username: <p>Cluster access username.</p>
         :type Username: str
-        :param _Password: Password for cluster access
+        :param _Password: <p>Cluster access password</p>
         :type Password: str
-        :param _RolloverBackingIndex: Whether to roll over the backup index
+        :param _RolloverBackingIndex: <p>Whether to scroll the backup index</p>
         :type RolloverBackingIndex: bool
-        :param _MountIndex: 
+        :param _MountIndex: <p>Whether to retrieve the full uninstall index</p>
         :type MountIndex: bool
-        :param _IndexUuid: 
+        :param _IndexUuid: <p>Index Uuid</p>
         :type IndexUuid: str
-        :param _BackingIndexName: 
+        :param _BackingIndexName: <p>Backing index name</p>
         :type BackingIndexName: str
         """
         self._InstanceId = None
@@ -8066,7 +9624,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""ES cluster ID
+        r"""<p>ES cluster ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -8077,7 +9635,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def IndexType(self):
-        r"""Type of the index to update. `auto`: Automated; `normal`: General.
+        r"""<p>Updated index type. auto: autonomous index; normal: general index</p>
         :rtype: str
         """
         return self._IndexType
@@ -8088,7 +9646,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def IndexName(self):
-        r"""Name of the index to update
+        r"""<p>Updated index name</p>
         :rtype: str
         """
         return self._IndexName
@@ -8099,7 +9657,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def UpdateMetaJson(self):
-        r"""JSON-formatted index metadata to update, such as `mappings` and `settings`.
+        r"""<p>Updated JSON-formatted index metadata, such as mappings and settings</p>
         :rtype: str
         """
         return self._UpdateMetaJson
@@ -8110,7 +9668,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def Username(self):
-        r"""Username for cluster access
+        r"""<p>Cluster access username.</p>
         :rtype: str
         """
         return self._Username
@@ -8121,7 +9679,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""Password for cluster access
+        r"""<p>Cluster access password</p>
         :rtype: str
         """
         return self._Password
@@ -8132,7 +9690,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def RolloverBackingIndex(self):
-        r"""Whether to roll over the backup index
+        r"""<p>Whether to scroll the backup index</p>
         :rtype: bool
         """
         return self._RolloverBackingIndex
@@ -8143,7 +9701,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def MountIndex(self):
-        r"""
+        r"""<p>Whether to retrieve the full uninstall index</p>
         :rtype: bool
         """
         return self._MountIndex
@@ -8154,7 +9712,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def IndexUuid(self):
-        r"""
+        r"""<p>Index Uuid</p>
         :rtype: str
         """
         return self._IndexUuid
@@ -8165,7 +9723,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def BackingIndexName(self):
-        r"""
+        r"""<p>Backing index name</p>
         :rtype: str
         """
         return self._BackingIndexName
@@ -8233,86 +9791,119 @@ class UpdateInstanceRequest(AbstractModel):
         r"""
         :param _InstanceId: Instance ID
         :type InstanceId: str
-        :param _InstanceName: Instance name, which can contain 1 to 50 English letters, Chinese characters, digits, dashes (-), or underscores (_)
+        :param _InstanceName: Instance name (1-50 English letters, Chinese characters, digits, hyphens -, or underscores _)
         :type InstanceName: str
-        :param _NodeNum: This parameter has been disused. Please use `NodeInfoList`
-Number of nodes (2-50)
+        :param _NodeNum: Abandoned. Please use NodeInfoList.
+Number of nodes (2-50).
         :type NodeNum: int
-        :param _EsConfig: ES configuration item (JSON string)
+        :param _EsConfig: ES configuration item (JSON format string)
         :type EsConfig: str
-        :param _Password: Password of the default user 'elastic', which must contain 8 to 16 characters, including at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]
+        :param _Password: Password of the default user elastic (8–16 characters, including at least two of the following: [a-z,A-Z], [0-9], and special characters [-!@#$%&^*+=_:;,.?])
         :type Password: str
-        :param _EsAcl: The policy for visual component (Kibana and Cerebro) access over public network.
+        :param _EsAcl: Public access policy for visualization components (Kibana and Cerebro)
         :type EsAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`
-        :param _DiskSize: This parameter has been disused. Please use `NodeInfoList`
+        :param _DiskSize: Abandoned. Please use NodeInfoList.
 Disk size in GB
         :type DiskSize: int
-        :param _NodeType: This parameter has been disused. Please use `NodeInfoList`
-Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+        :param _NodeType: Abandoned. Please use NodeInfoList.
+Node specification<li>ES.S1.SMALL2: 1-core 2G</li><li>ES.S1.MEDIUM4: 2-core 4G</li><li>ES.S1.MEDIUM8: 2-core 8G</li><li>ES.S1.LARGE16: 4-core 16G</li><li>ES.S1.2XLARGE32: 8-core 32G</li><li>ES.S1.4XLARGE32: 16-core 32G</li><li>ES.S1.4XLARGE64: 16-core 64G</li>
         :type NodeType: str
-        :param _MasterNodeNum: This parameter has been disused. Please use `NodeInfoList`
-Number of dedicated primary nodes (only 3 and 5 are supported)
+        :param _MasterNodeNum: Abandoned. Please use NodeInfoList.
+Number of dedicated primary nodes (supports only 3 or 5)
         :type MasterNodeNum: int
-        :param _MasterNodeType: This parameter has been disused. Please use `NodeInfoList`
-Dedicated primary node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
+        :param _MasterNodeType: Abandoned. Please use NodeInfoList.
+Dedicated primary node specification<li>ES.S1.SMALL2: 1-core 2GB</li><li>ES.S1.MEDIUM4: 2-core 4GB</li><li>ES.S1.MEDIUM8: 2-core 8GB</li><li>ES.S1.LARGE16: 4-core 16GB</li><li>ES.S1.2XLARGE32: 8-core 32GB</li><li>ES.S1.4XLARGE32: 16-core 32GB</li><li>ES.S1.4XLARGE64: 16-core 64GB</li>
         :type MasterNodeType: str
-        :param _MasterNodeDiskSize: This parameter has been disused. Please use `NodeInfoList`
-Dedicated primary node disk size in GB. This is 50 GB by default and currently cannot be customized
+        :param _MasterNodeDiskSize: Abandoned. Please use NodeInfoList.
+Dedicated primary node disk size (in GB. The system default configuration is 50 GB. Customization is temporarily not supported.)
         :type MasterNodeDiskSize: int
-        :param _ForceRestart: Whether to force restart during configuration update <li>true: Yes </li><li>false: No </li>This needs to be set only for EsConfig. Default value: false
+        :param _ForceRestart: Whether to force restart when updating the configuration <li>true: force restart</li><li>false: do not force restart</li>Currently, this needs to be set only when updating EsConfig. The default value is false.
         :type ForceRestart: bool
-        :param _CosBackup: Auto-backup to COS
+        :param _CosBackup: COS auto backup information
         :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`
-        :param _NodeInfoList: Node information list. You can pass in only the nodes to be updated and their corresponding specification information. Supported operations include: <li>modifying the number of nodes in the same type </li><li>modifying the specification and disk size of nodes in the same type </li><li>adding a node type (you must also specify the node type, quantity, specification, disk, etc.) </li>The above operations can only be performed one at a time, and the disk type cannot be modified
+        :param _NodeInfoList: Node information list. You can transmit only the node to be updated and its corresponding specification information. Supported operations include <li>modifying the count of a node type</li><li>modifying the node specification and disk size of a node type</li><li>adding a node type (you need to simultaneously specify the node type, count, specification, disk, and other information)</li>. You can perform only one of the above operations at a time, and the disk type cannot be modified.
         :type NodeInfoList: list of NodeInfo
-        :param _PublicAccess: The status of ES cluster access over public network.
-`OPEN`: Enabled.
-`CLOSE`: Disabled.
+        :param _PublicAccess: Public access status of the ES cluster
+OPEN: enabled.
+-CLOSE: disabled.
         :type PublicAccess: str
-        :param _EsPublicAcl: Public network ACL
+        :param _EsPublicAcl: Public network access control list
         :type EsPublicAcl: :class:`tencentcloud.es.v20180416.models.EsPublicAcl`
-        :param _KibanaPublicAccess: The status of Kibana access over public network.
-`OPEN`: Enabled.
-`CLOSE`: Disabled.
+        :param _KibanaPublicAccess: Kibana public access status
+OPEN: enabled.
+-CLOSE: disabled.
         :type KibanaPublicAccess: str
-        :param _KibanaPrivateAccess: The status of Kibana access over private network.
-`OPEN`: Enabled.
-`CLOSE`: Disabled.
+        :param _KibanaPrivateAccess: Kibana internal access status
+OPEN: enabled.
+-CLOSE: disabled.
         :type KibanaPrivateAccess: str
-        :param _BasicSecurityType: Enables or disables user authentication for ES Basic Edition v6.8 and above
+        :param _BasicSecurityType: Turn on or off user authentication for the basic version of ES 6.8 and above
         :type BasicSecurityType: int
-        :param _KibanaPrivatePort: Kibana private port
+        :param _KibanaPrivatePort: Kibana private network port
         :type KibanaPrivatePort: int
-        :param _ScaleType: 0: scaling in blue/green deployment mode without cluster restart (default); 1: scaling by unmounting disk with rolling cluster restart
+        :param _ScaleType: 0: Scale out via blue-green change without restarting the cluster (default) 1: Scale out by unmounting disks with a cluster rolling restart
         :type ScaleType: int
         :param _MultiZoneInfo: Multi-AZ deployment
         :type MultiZoneInfo: list of ZoneDetail
-        :param _SceneType: Scenario template type. -1: not enabled; 1: general; 2: log; 3: search
+        :param _SceneType: Scenario template type. -1: not enabled. 1: common. 2: log. 3: search
         :type SceneType: int
-        :param _KibanaConfig: Kibana configuration item (JSON string)
+        :param _KibanaConfig: Kibana configuration item (JSON format string)
         :type KibanaConfig: str
-        :param _WebNodeTypeInfo: Visual node configuration
+        :param _WebNodeTypeInfo: Visualize node configuration
         :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
-        :param _SwitchPrivateLink: Whether to switch to the new network architecture
+        :param _SwitchPrivateLink: Switch to the new network architecture
         :type SwitchPrivateLink: str
-        :param _EnableCerebro: Whether to enable Cerebro
+        :param _EnableCerebro: Enable Cerebro
         :type EnableCerebro: bool
-        :param _CerebroPublicAccess: The status of Cerebro access over public network.
-`OPEN`: Enabled.
-`CLOSE`: Disabled.
+        :param _CerebroPublicAccess: Cerebro public access status
+OPEN: enabled.
+-CLOSE: disabled.
         :type CerebroPublicAccess: str
-        :param _CerebroPrivateAccess: The status of Cerebro access over private network.
-`OPEN`: Enabled.
-`CLOSE`: Disabled.
+        :param _CerebroPrivateAccess: Cerebro private network access status
+OPEN: enabled.
+-CLOSE: disabled.
         :type CerebroPrivateAccess: str
-        :param _EsConfigSet: Added or modified configuration set information
+        :param _EsConfigSet: Newly-added or modified configuration group information
         :type EsConfigSet: :class:`tencentcloud.es.v20180416.models.EsConfigSetInfo`
-        :param _OperationDuration: The maintenance time slot
+        :param _OperationDuration: Maintenance time slot.
         :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDurationUpdated`
-        :param _KibanaAlteringPublicAccess: Whether to enable the option for sending alerting messages over the public network.
-`OPEN`: Enabled.
-`CLOSE`: Disabled.
+        :param _KibanaAlteringPublicAccess: Whether Alerting public network alert output is enabled:
+OPEN: enabled.
+-CLOSE: disabled.
         :type KibanaAlteringPublicAccess: str
+        :param _KibanaPrivateDomain: Custom domain name of kibana on the private network
+        :type KibanaPrivateDomain: str
+        :param _CerebroPrivateDomain: Custom domain name of cerebro on the private network
+        :type CerebroPrivateDomain: str
+        :param _Protocol: Change to an https cluster. http is selected by default.
+        :type Protocol: str
+        :param _OutboundPublicAcls: Outbound access details of the node
+
+        :type OutboundPublicAcls: list of OutboundPublicAcl
+        :param _OutboundPublicAccess: Outbound access operations of the node
+OPEN
+-CLOSE: disabled.
+        :type OutboundPublicAccess: str
+        :param _CvmDelayOnlineTime: Parameter for delayed cvm launch
+        :type CvmDelayOnlineTime: int
+        :param _ShardAllocationConcurrents: Number of concurrent shard migrations
+        :type ShardAllocationConcurrents: int
+        :param _ShardAllocationBytes: Shard migration concurrency speed
+        :type ShardAllocationBytes: int
+        :param _ReadWriteMode: Read-write separation mode: -1: not enabled; 1: local read/write separation; 2: remote read/write separation.
+        :type ReadWriteMode: int
+        :param _EnableScheduleRecoverGroup: Whether to enable the placement group async task
+        :type EnableScheduleRecoverGroup: bool
+        :param _EnableScheduleOperationDuration: Placement group async task maintenance time slot
+        :type EnableScheduleOperationDuration: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
+        :param _EnableDestroyProtection: Cluster protection: OPEN: enable, CLOSE: disable
+        :type EnableDestroyProtection: str
+        :param _AutoScaleDiskInfoList: Auto capacity expansion parameter
+        :type AutoScaleDiskInfoList: list of AutoScaleDiskInfo
+        :param _AutoScaleDiskDeleteNodeTypeList: Auto-expansion delete parameter
+        :type AutoScaleDiskDeleteNodeTypeList: list of str
+        :param _OtherConfig: Other additional configuration, jvm or yml.
+        :type OtherConfig: :class:`tencentcloud.es.v20180416.models.OtherConfig`
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -8346,6 +9937,21 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         self._EsConfigSet = None
         self._OperationDuration = None
         self._KibanaAlteringPublicAccess = None
+        self._KibanaPrivateDomain = None
+        self._CerebroPrivateDomain = None
+        self._Protocol = None
+        self._OutboundPublicAcls = None
+        self._OutboundPublicAccess = None
+        self._CvmDelayOnlineTime = None
+        self._ShardAllocationConcurrents = None
+        self._ShardAllocationBytes = None
+        self._ReadWriteMode = None
+        self._EnableScheduleRecoverGroup = None
+        self._EnableScheduleOperationDuration = None
+        self._EnableDestroyProtection = None
+        self._AutoScaleDiskInfoList = None
+        self._AutoScaleDiskDeleteNodeTypeList = None
+        self._OtherConfig = None
 
     @property
     def InstanceId(self):
@@ -8360,7 +9966,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def InstanceName(self):
-        r"""Instance name, which can contain 1 to 50 English letters, Chinese characters, digits, dashes (-), or underscores (_)
+        r"""Instance name (1-50 English letters, Chinese characters, digits, hyphens -, or underscores _)
         :rtype: str
         """
         return self._InstanceName
@@ -8371,8 +9977,8 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def NodeNum(self):
-        r"""This parameter has been disused. Please use `NodeInfoList`
-Number of nodes (2-50)
+        r"""Abandoned. Please use NodeInfoList.
+Number of nodes (2-50).
         :rtype: int
         """
         return self._NodeNum
@@ -8383,7 +9989,7 @@ Number of nodes (2-50)
 
     @property
     def EsConfig(self):
-        r"""ES configuration item (JSON string)
+        r"""ES configuration item (JSON format string)
         :rtype: str
         """
         return self._EsConfig
@@ -8394,7 +10000,7 @@ Number of nodes (2-50)
 
     @property
     def Password(self):
-        r"""Password of the default user 'elastic', which must contain 8 to 16 characters, including at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]
+        r"""Password of the default user elastic (8–16 characters, including at least two of the following: [a-z,A-Z], [0-9], and special characters [-!@#$%&^*+=_:;,.?])
         :rtype: str
         """
         return self._Password
@@ -8405,7 +10011,7 @@ Number of nodes (2-50)
 
     @property
     def EsAcl(self):
-        r"""The policy for visual component (Kibana and Cerebro) access over public network.
+        r"""Public access policy for visualization components (Kibana and Cerebro)
         :rtype: :class:`tencentcloud.es.v20180416.models.EsAcl`
         """
         return self._EsAcl
@@ -8416,7 +10022,7 @@ Number of nodes (2-50)
 
     @property
     def DiskSize(self):
-        r"""This parameter has been disused. Please use `NodeInfoList`
+        r"""Abandoned. Please use NodeInfoList.
 Disk size in GB
         :rtype: int
         """
@@ -8428,8 +10034,8 @@ Disk size in GB
 
     @property
     def NodeType(self):
-        r"""This parameter has been disused. Please use `NodeInfoList`
-Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+        r"""Abandoned. Please use NodeInfoList.
+Node specification<li>ES.S1.SMALL2: 1-core 2G</li><li>ES.S1.MEDIUM4: 2-core 4G</li><li>ES.S1.MEDIUM8: 2-core 8G</li><li>ES.S1.LARGE16: 4-core 16G</li><li>ES.S1.2XLARGE32: 8-core 32G</li><li>ES.S1.4XLARGE32: 16-core 32G</li><li>ES.S1.4XLARGE64: 16-core 64G</li>
         :rtype: str
         """
         return self._NodeType
@@ -8440,8 +10046,8 @@ Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 
 
     @property
     def MasterNodeNum(self):
-        r"""This parameter has been disused. Please use `NodeInfoList`
-Number of dedicated primary nodes (only 3 and 5 are supported)
+        r"""Abandoned. Please use NodeInfoList.
+Number of dedicated primary nodes (supports only 3 or 5)
         :rtype: int
         """
         return self._MasterNodeNum
@@ -8452,8 +10058,8 @@ Number of dedicated primary nodes (only 3 and 5 are supported)
 
     @property
     def MasterNodeType(self):
-        r"""This parameter has been disused. Please use `NodeInfoList`
-Dedicated primary node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
+        r"""Abandoned. Please use NodeInfoList.
+Dedicated primary node specification<li>ES.S1.SMALL2: 1-core 2GB</li><li>ES.S1.MEDIUM4: 2-core 4GB</li><li>ES.S1.MEDIUM8: 2-core 8GB</li><li>ES.S1.LARGE16: 4-core 16GB</li><li>ES.S1.2XLARGE32: 8-core 32GB</li><li>ES.S1.4XLARGE32: 16-core 32GB</li><li>ES.S1.4XLARGE64: 16-core 64GB</li>
         :rtype: str
         """
         return self._MasterNodeType
@@ -8464,8 +10070,8 @@ Dedicated primary node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1
 
     @property
     def MasterNodeDiskSize(self):
-        r"""This parameter has been disused. Please use `NodeInfoList`
-Dedicated primary node disk size in GB. This is 50 GB by default and currently cannot be customized
+        r"""Abandoned. Please use NodeInfoList.
+Dedicated primary node disk size (in GB. The system default configuration is 50 GB. Customization is temporarily not supported.)
         :rtype: int
         """
         return self._MasterNodeDiskSize
@@ -8476,7 +10082,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def ForceRestart(self):
-        r"""Whether to force restart during configuration update <li>true: Yes </li><li>false: No </li>This needs to be set only for EsConfig. Default value: false
+        r"""Whether to force restart when updating the configuration <li>true: force restart</li><li>false: do not force restart</li>Currently, this needs to be set only when updating EsConfig. The default value is false.
         :rtype: bool
         """
         return self._ForceRestart
@@ -8487,7 +10093,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def CosBackup(self):
-        r"""Auto-backup to COS
+        r"""COS auto backup information
         :rtype: :class:`tencentcloud.es.v20180416.models.CosBackup`
         """
         return self._CosBackup
@@ -8498,7 +10104,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def NodeInfoList(self):
-        r"""Node information list. You can pass in only the nodes to be updated and their corresponding specification information. Supported operations include: <li>modifying the number of nodes in the same type </li><li>modifying the specification and disk size of nodes in the same type </li><li>adding a node type (you must also specify the node type, quantity, specification, disk, etc.) </li>The above operations can only be performed one at a time, and the disk type cannot be modified
+        r"""Node information list. You can transmit only the node to be updated and its corresponding specification information. Supported operations include <li>modifying the count of a node type</li><li>modifying the node specification and disk size of a node type</li><li>adding a node type (you need to simultaneously specify the node type, count, specification, disk, and other information)</li>. You can perform only one of the above operations at a time, and the disk type cannot be modified.
         :rtype: list of NodeInfo
         """
         return self._NodeInfoList
@@ -8509,9 +10115,9 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def PublicAccess(self):
-        r"""The status of ES cluster access over public network.
-`OPEN`: Enabled.
-`CLOSE`: Disabled.
+        r"""Public access status of the ES cluster
+OPEN: enabled.
+-CLOSE: disabled.
         :rtype: str
         """
         return self._PublicAccess
@@ -8522,7 +10128,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def EsPublicAcl(self):
-        r"""Public network ACL
+        r"""Public network access control list
         :rtype: :class:`tencentcloud.es.v20180416.models.EsPublicAcl`
         """
         return self._EsPublicAcl
@@ -8533,9 +10139,9 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def KibanaPublicAccess(self):
-        r"""The status of Kibana access over public network.
-`OPEN`: Enabled.
-`CLOSE`: Disabled.
+        r"""Kibana public access status
+OPEN: enabled.
+-CLOSE: disabled.
         :rtype: str
         """
         return self._KibanaPublicAccess
@@ -8546,9 +10152,9 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def KibanaPrivateAccess(self):
-        r"""The status of Kibana access over private network.
-`OPEN`: Enabled.
-`CLOSE`: Disabled.
+        r"""Kibana internal access status
+OPEN: enabled.
+-CLOSE: disabled.
         :rtype: str
         """
         return self._KibanaPrivateAccess
@@ -8559,7 +10165,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def BasicSecurityType(self):
-        r"""Enables or disables user authentication for ES Basic Edition v6.8 and above
+        r"""Turn on or off user authentication for the basic version of ES 6.8 and above
         :rtype: int
         """
         return self._BasicSecurityType
@@ -8570,7 +10176,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def KibanaPrivatePort(self):
-        r"""Kibana private port
+        r"""Kibana private network port
         :rtype: int
         """
         return self._KibanaPrivatePort
@@ -8581,7 +10187,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def ScaleType(self):
-        r"""0: scaling in blue/green deployment mode without cluster restart (default); 1: scaling by unmounting disk with rolling cluster restart
+        r"""0: Scale out via blue-green change without restarting the cluster (default) 1: Scale out by unmounting disks with a cluster rolling restart
         :rtype: int
         """
         return self._ScaleType
@@ -8603,7 +10209,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def SceneType(self):
-        r"""Scenario template type. -1: not enabled; 1: general; 2: log; 3: search
+        r"""Scenario template type. -1: not enabled. 1: common. 2: log. 3: search
         :rtype: int
         """
         return self._SceneType
@@ -8614,7 +10220,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def KibanaConfig(self):
-        r"""Kibana configuration item (JSON string)
+        r"""Kibana configuration item (JSON format string)
         :rtype: str
         """
         return self._KibanaConfig
@@ -8625,7 +10231,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def WebNodeTypeInfo(self):
-        r"""Visual node configuration
+        r"""Visualize node configuration
         :rtype: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
         """
         return self._WebNodeTypeInfo
@@ -8636,7 +10242,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def SwitchPrivateLink(self):
-        r"""Whether to switch to the new network architecture
+        r"""Switch to the new network architecture
         :rtype: str
         """
         return self._SwitchPrivateLink
@@ -8647,7 +10253,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def EnableCerebro(self):
-        r"""Whether to enable Cerebro
+        r"""Enable Cerebro
         :rtype: bool
         """
         return self._EnableCerebro
@@ -8658,9 +10264,9 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def CerebroPublicAccess(self):
-        r"""The status of Cerebro access over public network.
-`OPEN`: Enabled.
-`CLOSE`: Disabled.
+        r"""Cerebro public access status
+OPEN: enabled.
+-CLOSE: disabled.
         :rtype: str
         """
         return self._CerebroPublicAccess
@@ -8671,9 +10277,9 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def CerebroPrivateAccess(self):
-        r"""The status of Cerebro access over private network.
-`OPEN`: Enabled.
-`CLOSE`: Disabled.
+        r"""Cerebro private network access status
+OPEN: enabled.
+-CLOSE: disabled.
         :rtype: str
         """
         return self._CerebroPrivateAccess
@@ -8684,7 +10290,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def EsConfigSet(self):
-        r"""Added or modified configuration set information
+        r"""Newly-added or modified configuration group information
         :rtype: :class:`tencentcloud.es.v20180416.models.EsConfigSetInfo`
         """
         return self._EsConfigSet
@@ -8695,7 +10301,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def OperationDuration(self):
-        r"""The maintenance time slot
+        r"""Maintenance time slot.
         :rtype: :class:`tencentcloud.es.v20180416.models.OperationDurationUpdated`
         """
         return self._OperationDuration
@@ -8706,9 +10312,9 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def KibanaAlteringPublicAccess(self):
-        r"""Whether to enable the option for sending alerting messages over the public network.
-`OPEN`: Enabled.
-`CLOSE`: Disabled.
+        r"""Whether Alerting public network alert output is enabled:
+OPEN: enabled.
+-CLOSE: disabled.
         :rtype: str
         """
         return self._KibanaAlteringPublicAccess
@@ -8716,6 +10322,174 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
     @KibanaAlteringPublicAccess.setter
     def KibanaAlteringPublicAccess(self, KibanaAlteringPublicAccess):
         self._KibanaAlteringPublicAccess = KibanaAlteringPublicAccess
+
+    @property
+    def KibanaPrivateDomain(self):
+        r"""Custom domain name of kibana on the private network
+        :rtype: str
+        """
+        return self._KibanaPrivateDomain
+
+    @KibanaPrivateDomain.setter
+    def KibanaPrivateDomain(self, KibanaPrivateDomain):
+        self._KibanaPrivateDomain = KibanaPrivateDomain
+
+    @property
+    def CerebroPrivateDomain(self):
+        r"""Custom domain name of cerebro on the private network
+        :rtype: str
+        """
+        return self._CerebroPrivateDomain
+
+    @CerebroPrivateDomain.setter
+    def CerebroPrivateDomain(self, CerebroPrivateDomain):
+        self._CerebroPrivateDomain = CerebroPrivateDomain
+
+    @property
+    def Protocol(self):
+        r"""Change to an https cluster. http is selected by default.
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def OutboundPublicAcls(self):
+        r"""Outbound access details of the node
+
+        :rtype: list of OutboundPublicAcl
+        """
+        return self._OutboundPublicAcls
+
+    @OutboundPublicAcls.setter
+    def OutboundPublicAcls(self, OutboundPublicAcls):
+        self._OutboundPublicAcls = OutboundPublicAcls
+
+    @property
+    def OutboundPublicAccess(self):
+        r"""Outbound access operations of the node
+OPEN
+-CLOSE: disabled.
+        :rtype: str
+        """
+        return self._OutboundPublicAccess
+
+    @OutboundPublicAccess.setter
+    def OutboundPublicAccess(self, OutboundPublicAccess):
+        self._OutboundPublicAccess = OutboundPublicAccess
+
+    @property
+    def CvmDelayOnlineTime(self):
+        r"""Parameter for delayed cvm launch
+        :rtype: int
+        """
+        return self._CvmDelayOnlineTime
+
+    @CvmDelayOnlineTime.setter
+    def CvmDelayOnlineTime(self, CvmDelayOnlineTime):
+        self._CvmDelayOnlineTime = CvmDelayOnlineTime
+
+    @property
+    def ShardAllocationConcurrents(self):
+        r"""Number of concurrent shard migrations
+        :rtype: int
+        """
+        return self._ShardAllocationConcurrents
+
+    @ShardAllocationConcurrents.setter
+    def ShardAllocationConcurrents(self, ShardAllocationConcurrents):
+        self._ShardAllocationConcurrents = ShardAllocationConcurrents
+
+    @property
+    def ShardAllocationBytes(self):
+        r"""Shard migration concurrency speed
+        :rtype: int
+        """
+        return self._ShardAllocationBytes
+
+    @ShardAllocationBytes.setter
+    def ShardAllocationBytes(self, ShardAllocationBytes):
+        self._ShardAllocationBytes = ShardAllocationBytes
+
+    @property
+    def ReadWriteMode(self):
+        r"""Read-write separation mode: -1: not enabled; 1: local read/write separation; 2: remote read/write separation.
+        :rtype: int
+        """
+        return self._ReadWriteMode
+
+    @ReadWriteMode.setter
+    def ReadWriteMode(self, ReadWriteMode):
+        self._ReadWriteMode = ReadWriteMode
+
+    @property
+    def EnableScheduleRecoverGroup(self):
+        r"""Whether to enable the placement group async task
+        :rtype: bool
+        """
+        return self._EnableScheduleRecoverGroup
+
+    @EnableScheduleRecoverGroup.setter
+    def EnableScheduleRecoverGroup(self, EnableScheduleRecoverGroup):
+        self._EnableScheduleRecoverGroup = EnableScheduleRecoverGroup
+
+    @property
+    def EnableScheduleOperationDuration(self):
+        r"""Placement group async task maintenance time slot
+        :rtype: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
+        """
+        return self._EnableScheduleOperationDuration
+
+    @EnableScheduleOperationDuration.setter
+    def EnableScheduleOperationDuration(self, EnableScheduleOperationDuration):
+        self._EnableScheduleOperationDuration = EnableScheduleOperationDuration
+
+    @property
+    def EnableDestroyProtection(self):
+        r"""Cluster protection: OPEN: enable, CLOSE: disable
+        :rtype: str
+        """
+        return self._EnableDestroyProtection
+
+    @EnableDestroyProtection.setter
+    def EnableDestroyProtection(self, EnableDestroyProtection):
+        self._EnableDestroyProtection = EnableDestroyProtection
+
+    @property
+    def AutoScaleDiskInfoList(self):
+        r"""Auto capacity expansion parameter
+        :rtype: list of AutoScaleDiskInfo
+        """
+        return self._AutoScaleDiskInfoList
+
+    @AutoScaleDiskInfoList.setter
+    def AutoScaleDiskInfoList(self, AutoScaleDiskInfoList):
+        self._AutoScaleDiskInfoList = AutoScaleDiskInfoList
+
+    @property
+    def AutoScaleDiskDeleteNodeTypeList(self):
+        r"""Auto-expansion delete parameter
+        :rtype: list of str
+        """
+        return self._AutoScaleDiskDeleteNodeTypeList
+
+    @AutoScaleDiskDeleteNodeTypeList.setter
+    def AutoScaleDiskDeleteNodeTypeList(self, AutoScaleDiskDeleteNodeTypeList):
+        self._AutoScaleDiskDeleteNodeTypeList = AutoScaleDiskDeleteNodeTypeList
+
+    @property
+    def OtherConfig(self):
+        r"""Other additional configuration, jvm or yml.
+        :rtype: :class:`tencentcloud.es.v20180416.models.OtherConfig`
+        """
+        return self._OtherConfig
+
+    @OtherConfig.setter
+    def OtherConfig(self, OtherConfig):
+        self._OtherConfig = OtherConfig
 
 
     def _deserialize(self, params):
@@ -8773,6 +10547,35 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
             self._OperationDuration = OperationDurationUpdated()
             self._OperationDuration._deserialize(params.get("OperationDuration"))
         self._KibanaAlteringPublicAccess = params.get("KibanaAlteringPublicAccess")
+        self._KibanaPrivateDomain = params.get("KibanaPrivateDomain")
+        self._CerebroPrivateDomain = params.get("CerebroPrivateDomain")
+        self._Protocol = params.get("Protocol")
+        if params.get("OutboundPublicAcls") is not None:
+            self._OutboundPublicAcls = []
+            for item in params.get("OutboundPublicAcls"):
+                obj = OutboundPublicAcl()
+                obj._deserialize(item)
+                self._OutboundPublicAcls.append(obj)
+        self._OutboundPublicAccess = params.get("OutboundPublicAccess")
+        self._CvmDelayOnlineTime = params.get("CvmDelayOnlineTime")
+        self._ShardAllocationConcurrents = params.get("ShardAllocationConcurrents")
+        self._ShardAllocationBytes = params.get("ShardAllocationBytes")
+        self._ReadWriteMode = params.get("ReadWriteMode")
+        self._EnableScheduleRecoverGroup = params.get("EnableScheduleRecoverGroup")
+        if params.get("EnableScheduleOperationDuration") is not None:
+            self._EnableScheduleOperationDuration = EnableScheduleOperationDuration()
+            self._EnableScheduleOperationDuration._deserialize(params.get("EnableScheduleOperationDuration"))
+        self._EnableDestroyProtection = params.get("EnableDestroyProtection")
+        if params.get("AutoScaleDiskInfoList") is not None:
+            self._AutoScaleDiskInfoList = []
+            for item in params.get("AutoScaleDiskInfoList"):
+                obj = AutoScaleDiskInfo()
+                obj._deserialize(item)
+                self._AutoScaleDiskInfoList.append(obj)
+        self._AutoScaleDiskDeleteNodeTypeList = params.get("AutoScaleDiskDeleteNodeTypeList")
+        if params.get("OtherConfig") is not None:
+            self._OtherConfig = OtherConfig()
+            self._OtherConfig._deserialize(params.get("OtherConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8791,7 +10594,6 @@ class UpdateInstanceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DealName: Order ID
-Note: This field may return `null`, indicating that no valid value was found.
         :type DealName: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -8802,7 +10604,6 @@ Note: This field may return `null`, indicating that no valid value was found.
     @property
     def DealName(self):
         r"""Order ID
-Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
         return self._DealName
@@ -8837,15 +10638,15 @@ class UpdatePluginsRequest(AbstractModel):
         r"""
         :param _InstanceId: Instance ID
         :type InstanceId: str
-        :param _InstallPluginList: List of names of the plugins to be installed
+        :param _InstallPluginList: Name list of plug-ins that needs to be installed
         :type InstallPluginList: list of str
-        :param _RemovePluginList: List of names of the plugins to be uninstalled
+        :param _RemovePluginList: List of plug-in names to uninstall
         :type RemovePluginList: list of str
-        :param _ForceRestart: Whether to force restart the cluster. The default value is `false`.
+        :param _ForceRestart: Whether to force restart. Default value: false
         :type ForceRestart: bool
-        :param _ForceUpdate: Whether to reinstall the cluster. The default value is `false`.
+        :param _ForceUpdate: Whether to reinstall. Default value: false
         :type ForceUpdate: bool
-        :param _PluginType: 0: system plugin
+        :param _PluginType: 0: System plugin
         :type PluginType: int
         """
         self._InstanceId = None
@@ -8868,7 +10669,7 @@ class UpdatePluginsRequest(AbstractModel):
 
     @property
     def InstallPluginList(self):
-        r"""List of names of the plugins to be installed
+        r"""Name list of plug-ins that needs to be installed
         :rtype: list of str
         """
         return self._InstallPluginList
@@ -8879,7 +10680,7 @@ class UpdatePluginsRequest(AbstractModel):
 
     @property
     def RemovePluginList(self):
-        r"""List of names of the plugins to be uninstalled
+        r"""List of plug-in names to uninstall
         :rtype: list of str
         """
         return self._RemovePluginList
@@ -8890,7 +10691,7 @@ class UpdatePluginsRequest(AbstractModel):
 
     @property
     def ForceRestart(self):
-        r"""Whether to force restart the cluster. The default value is `false`.
+        r"""Whether to force restart. Default value: false
         :rtype: bool
         """
         return self._ForceRestart
@@ -8901,7 +10702,7 @@ class UpdatePluginsRequest(AbstractModel):
 
     @property
     def ForceUpdate(self):
-        r"""Whether to reinstall the cluster. The default value is `false`.
+        r"""Whether to reinstall. Default value: false
         :rtype: bool
         """
         return self._ForceUpdate
@@ -8912,7 +10713,7 @@ class UpdatePluginsRequest(AbstractModel):
 
     @property
     def PluginType(self):
-        r"""0: system plugin
+        r"""0: System plugin
         :rtype: int
         """
         return self._PluginType
@@ -8974,9 +10775,9 @@ class UpdateRequestTargetNodeTypesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: Instance ID
         :type InstanceId: str
-        :param _TargetNodeTypes: A list of node types used to receive requests.
+        :param _TargetNodeTypes: List of target node types that receive requests
         :type TargetNodeTypes: list of str
         """
         self._InstanceId = None
@@ -8984,7 +10785,7 @@ class UpdateRequestTargetNodeTypesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -8995,7 +10796,7 @@ class UpdateRequestTargetNodeTypesRequest(AbstractModel):
 
     @property
     def TargetNodeTypes(self):
-        r"""A list of node types used to receive requests.
+        r"""List of target node types that receive requests
         :rtype: list of str
         """
         return self._TargetNodeTypes
@@ -9055,20 +10856,30 @@ class UpgradeInstanceRequest(AbstractModel):
         r"""
         :param _InstanceId: Instance ID
         :type InstanceId: str
-        :param _EsVersion: Target ES version. Valid values: 6.4.3, 6.8.2, 7.5.1
+        :param _EsVersion: Target ES version. Valid values: "6.4.3", "6.8.2", "7.5.1", "7.10.1", and "7.14.2".
         :type EsVersion: str
-        :param _CheckOnly: Whether to check for upgrade only. Default value: false
+        :param _CheckOnly: Whether to perform an upgrade check only. Default value: false.
         :type CheckOnly: bool
-        :param _LicenseType: Target X-Pack edition: <li>OSS: Open-source Edition </li><li>basic: Basic Edition </li>Currently only used for v5.6.4 to v6.x upgrade. Default value: basic
+        :param _LicenseType: Target business feature version: <li>oss open source edition</li><li>basic edition</li>Currently used only when upgrading from 5.6.4 to 6.x. Default value: basic
         :type LicenseType: str
-        :param _BasicSecurityType: Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
+        :param _BasicSecurityType: Whether xpack security authentication is enabled for basic version 6.8 (and above versions)<li>1: not enabled</li><li>2: enabled</li>
         :type BasicSecurityType: int
-        :param _UpgradeMode: Upgrade mode. <li>scale: blue/green deployment</li><li>restart: rolling restart</li>Default value: scale
+        :param _UpgradeMode: Upgrade method: <li>scale blue-green change</li><li>restart rolling restart</li>Default value: scale
         :type UpgradeMode: str
-        :param _CosBackup: Whether to back up the cluster before version upgrade (no backup by default)
+        :param _CosBackup: Whether to back up the cluster before upgrading the version. By default, no backup is performed.
         :type CosBackup: bool
-        :param _SkipCheckForceRestart: Whether to skip the check and perform a force restart in the rolling mode. Default value: `false`.
+        :param _SkipCheckForceRestart: In rolling mode, whether to skip the check and perform a forced reboot. Default value: false
         :type SkipCheckForceRestart: bool
+        :param _CvmDelayOnlineTime: Parameter for delayed cvm launch
+        :type CvmDelayOnlineTime: int
+        :param _ShardAllocationConcurrents: Number of concurrent shard migrations
+        :type ShardAllocationConcurrents: int
+        :param _ShardAllocationBytes: Shard migration concurrency speed
+        :type ShardAllocationBytes: int
+        :param _EnableScheduleRecoverGroup: Whether to enable the placement group asynchronous task
+        :type EnableScheduleRecoverGroup: bool
+        :param _EnableScheduleOperationDuration: Time period of the async task for the placement group
+        :type EnableScheduleOperationDuration: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
         """
         self._InstanceId = None
         self._EsVersion = None
@@ -9078,6 +10889,11 @@ class UpgradeInstanceRequest(AbstractModel):
         self._UpgradeMode = None
         self._CosBackup = None
         self._SkipCheckForceRestart = None
+        self._CvmDelayOnlineTime = None
+        self._ShardAllocationConcurrents = None
+        self._ShardAllocationBytes = None
+        self._EnableScheduleRecoverGroup = None
+        self._EnableScheduleOperationDuration = None
 
     @property
     def InstanceId(self):
@@ -9092,7 +10908,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     @property
     def EsVersion(self):
-        r"""Target ES version. Valid values: 6.4.3, 6.8.2, 7.5.1
+        r"""Target ES version. Valid values: "6.4.3", "6.8.2", "7.5.1", "7.10.1", and "7.14.2".
         :rtype: str
         """
         return self._EsVersion
@@ -9103,7 +10919,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     @property
     def CheckOnly(self):
-        r"""Whether to check for upgrade only. Default value: false
+        r"""Whether to perform an upgrade check only. Default value: false.
         :rtype: bool
         """
         return self._CheckOnly
@@ -9114,7 +10930,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     @property
     def LicenseType(self):
-        r"""Target X-Pack edition: <li>OSS: Open-source Edition </li><li>basic: Basic Edition </li>Currently only used for v5.6.4 to v6.x upgrade. Default value: basic
+        r"""Target business feature version: <li>oss open source edition</li><li>basic edition</li>Currently used only when upgrading from 5.6.4 to 6.x. Default value: basic
         :rtype: str
         """
         return self._LicenseType
@@ -9125,7 +10941,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     @property
     def BasicSecurityType(self):
-        r"""Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
+        r"""Whether xpack security authentication is enabled for basic version 6.8 (and above versions)<li>1: not enabled</li><li>2: enabled</li>
         :rtype: int
         """
         return self._BasicSecurityType
@@ -9136,7 +10952,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     @property
     def UpgradeMode(self):
-        r"""Upgrade mode. <li>scale: blue/green deployment</li><li>restart: rolling restart</li>Default value: scale
+        r"""Upgrade method: <li>scale blue-green change</li><li>restart rolling restart</li>Default value: scale
         :rtype: str
         """
         return self._UpgradeMode
@@ -9147,7 +10963,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     @property
     def CosBackup(self):
-        r"""Whether to back up the cluster before version upgrade (no backup by default)
+        r"""Whether to back up the cluster before upgrading the version. By default, no backup is performed.
         :rtype: bool
         """
         return self._CosBackup
@@ -9158,7 +10974,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     @property
     def SkipCheckForceRestart(self):
-        r"""Whether to skip the check and perform a force restart in the rolling mode. Default value: `false`.
+        r"""In rolling mode, whether to skip the check and perform a forced reboot. Default value: false
         :rtype: bool
         """
         return self._SkipCheckForceRestart
@@ -9166,6 +10982,61 @@ class UpgradeInstanceRequest(AbstractModel):
     @SkipCheckForceRestart.setter
     def SkipCheckForceRestart(self, SkipCheckForceRestart):
         self._SkipCheckForceRestart = SkipCheckForceRestart
+
+    @property
+    def CvmDelayOnlineTime(self):
+        r"""Parameter for delayed cvm launch
+        :rtype: int
+        """
+        return self._CvmDelayOnlineTime
+
+    @CvmDelayOnlineTime.setter
+    def CvmDelayOnlineTime(self, CvmDelayOnlineTime):
+        self._CvmDelayOnlineTime = CvmDelayOnlineTime
+
+    @property
+    def ShardAllocationConcurrents(self):
+        r"""Number of concurrent shard migrations
+        :rtype: int
+        """
+        return self._ShardAllocationConcurrents
+
+    @ShardAllocationConcurrents.setter
+    def ShardAllocationConcurrents(self, ShardAllocationConcurrents):
+        self._ShardAllocationConcurrents = ShardAllocationConcurrents
+
+    @property
+    def ShardAllocationBytes(self):
+        r"""Shard migration concurrency speed
+        :rtype: int
+        """
+        return self._ShardAllocationBytes
+
+    @ShardAllocationBytes.setter
+    def ShardAllocationBytes(self, ShardAllocationBytes):
+        self._ShardAllocationBytes = ShardAllocationBytes
+
+    @property
+    def EnableScheduleRecoverGroup(self):
+        r"""Whether to enable the placement group asynchronous task
+        :rtype: bool
+        """
+        return self._EnableScheduleRecoverGroup
+
+    @EnableScheduleRecoverGroup.setter
+    def EnableScheduleRecoverGroup(self, EnableScheduleRecoverGroup):
+        self._EnableScheduleRecoverGroup = EnableScheduleRecoverGroup
+
+    @property
+    def EnableScheduleOperationDuration(self):
+        r"""Time period of the async task for the placement group
+        :rtype: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
+        """
+        return self._EnableScheduleOperationDuration
+
+    @EnableScheduleOperationDuration.setter
+    def EnableScheduleOperationDuration(self, EnableScheduleOperationDuration):
+        self._EnableScheduleOperationDuration = EnableScheduleOperationDuration
 
 
     def _deserialize(self, params):
@@ -9177,6 +11048,13 @@ class UpgradeInstanceRequest(AbstractModel):
         self._UpgradeMode = params.get("UpgradeMode")
         self._CosBackup = params.get("CosBackup")
         self._SkipCheckForceRestart = params.get("SkipCheckForceRestart")
+        self._CvmDelayOnlineTime = params.get("CvmDelayOnlineTime")
+        self._ShardAllocationConcurrents = params.get("ShardAllocationConcurrents")
+        self._ShardAllocationBytes = params.get("ShardAllocationBytes")
+        self._EnableScheduleRecoverGroup = params.get("EnableScheduleRecoverGroup")
+        if params.get("EnableScheduleOperationDuration") is not None:
+            self._EnableScheduleOperationDuration = EnableScheduleOperationDuration()
+            self._EnableScheduleOperationDuration._deserialize(params.get("EnableScheduleOperationDuration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9224,15 +11102,15 @@ class UpgradeLicenseRequest(AbstractModel):
         r"""
         :param _InstanceId: Instance ID
         :type InstanceId: str
-        :param _LicenseType: License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum
+        :param _LicenseType: License type<li>oss: open source edition</li><li>basic: basic version</li><li>platinum: platinum version</li>Default value: platinum
         :type LicenseType: str
-        :param _AutoVoucher: Whether to automatically use vouchers <li>0: No </li><li>1: Yes </li>Default value: 0
+        :param _AutoVoucher: Indicates whether to use vouchers automatically<li>0: Do not use automatically.</li><li>1: Use automatically.</li>Default value: 0.
         :type AutoVoucher: int
-        :param _VoucherIds: List of voucher IDs (only one voucher can be specified at a time currently)
+        :param _VoucherIds: Voucher ID list. Only one voucher can be specified.
         :type VoucherIds: list of str
-        :param _BasicSecurityType: Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
+        :param _BasicSecurityType: Whether xpack security authentication is enabled for basic version 6.8 (and above versions)<li>1: not enabled</li><li>2: enabled</li><li>If no parameter is passed, the original status is maintained by default. When passing a parameter, note that it can only change from not enabled to enabled, and cannot change from enabled to not enabled</li>
         :type BasicSecurityType: int
-        :param _ForceRestart: Whether to force restart <li>true: yes </li><li>false: no </li>Default value: false
+        :param _ForceRestart: Whether to force restart <li>true: force restart</li><li>false: do not force restart</li> Default value: false
         :type ForceRestart: bool
         """
         self._InstanceId = None
@@ -9255,7 +11133,7 @@ class UpgradeLicenseRequest(AbstractModel):
 
     @property
     def LicenseType(self):
-        r"""License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum
+        r"""License type<li>oss: open source edition</li><li>basic: basic version</li><li>platinum: platinum version</li>Default value: platinum
         :rtype: str
         """
         return self._LicenseType
@@ -9266,7 +11144,7 @@ class UpgradeLicenseRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        r"""Whether to automatically use vouchers <li>0: No </li><li>1: Yes </li>Default value: 0
+        r"""Indicates whether to use vouchers automatically<li>0: Do not use automatically.</li><li>1: Use automatically.</li>Default value: 0.
         :rtype: int
         """
         return self._AutoVoucher
@@ -9277,7 +11155,7 @@ class UpgradeLicenseRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        r"""List of voucher IDs (only one voucher can be specified at a time currently)
+        r"""Voucher ID list. Only one voucher can be specified.
         :rtype: list of str
         """
         return self._VoucherIds
@@ -9288,7 +11166,7 @@ class UpgradeLicenseRequest(AbstractModel):
 
     @property
     def BasicSecurityType(self):
-        r"""Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
+        r"""Whether xpack security authentication is enabled for basic version 6.8 (and above versions)<li>1: not enabled</li><li>2: enabled</li><li>If no parameter is passed, the original status is maintained by default. When passing a parameter, note that it can only change from not enabled to enabled, and cannot change from enabled to not enabled</li>
         :rtype: int
         """
         return self._BasicSecurityType
@@ -9299,7 +11177,7 @@ class UpgradeLicenseRequest(AbstractModel):
 
     @property
     def ForceRestart(self):
-        r"""Whether to force restart <li>true: yes </li><li>false: no </li>Default value: false
+        r"""Whether to force restart <li>true: force restart</li><li>false: do not force restart</li> Default value: false
         :rtype: bool
         """
         return self._ForceRestart
@@ -9334,7 +11212,6 @@ class UpgradeLicenseResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DealName: Order ID
-Note: This field may return `null`, indicating that no valid value was found.
         :type DealName: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -9345,7 +11222,6 @@ Note: This field may return `null`, indicating that no valid value was found.
     @property
     def DealName(self):
         r"""Order ID
-Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
         return self._DealName
@@ -9372,15 +11248,15 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class WebNodeTypeInfo(AbstractModel):
-    r"""Visual node configuration
+    r"""Visualize node configuration
 
     """
 
     def __init__(self):
         r"""
-        :param _NodeNum: Number of visual nodes. The value is always `1`.
+        :param _NodeNum: Number of nodes to visualize, fixed as 1
         :type NodeNum: int
-        :param _NodeType: Visual node specification
+        :param _NodeType: Visualize node specifications
         :type NodeType: str
         """
         self._NodeNum = None
@@ -9388,7 +11264,7 @@ class WebNodeTypeInfo(AbstractModel):
 
     @property
     def NodeNum(self):
-        r"""Number of visual nodes. The value is always `1`.
+        r"""Number of nodes to visualize, fixed as 1
         :rtype: int
         """
         return self._NodeNum
@@ -9399,7 +11275,7 @@ class WebNodeTypeInfo(AbstractModel):
 
     @property
     def NodeType(self):
-        r"""Visual node specification
+        r"""Visualize node specifications
         :rtype: str
         """
         return self._NodeType
@@ -9423,23 +11299,26 @@ class WebNodeTypeInfo(AbstractModel):
 
 
 class ZoneDetail(AbstractModel):
-    r"""Details of AZs in multi-AZ deployment mode
+    r"""Detailed information of availability zones in multi-AZ deployment
 
     """
 
     def __init__(self):
         r"""
-        :param _Zone: AZ
+        :param _Zone: AZ.
         :type Zone: str
-        :param _SubnetId: Subnet ID
+        :param _SubnetId: Subnet ID.
         :type SubnetId: str
+        :param _Hidden: Whether it is a hidden AZ
+        :type Hidden: bool
         """
         self._Zone = None
         self._SubnetId = None
+        self._Hidden = None
 
     @property
     def Zone(self):
-        r"""AZ
+        r"""AZ.
         :rtype: str
         """
         return self._Zone
@@ -9450,7 +11329,7 @@ class ZoneDetail(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""Subnet ID
+        r"""Subnet ID.
         :rtype: str
         """
         return self._SubnetId
@@ -9459,10 +11338,22 @@ class ZoneDetail(AbstractModel):
     def SubnetId(self, SubnetId):
         self._SubnetId = SubnetId
 
+    @property
+    def Hidden(self):
+        r"""Whether it is a hidden AZ
+        :rtype: bool
+        """
+        return self._Hidden
+
+    @Hidden.setter
+    def Hidden(self, Hidden):
+        self._Hidden = Hidden
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
         self._SubnetId = params.get("SubnetId")
+        self._Hidden = params.get("Hidden")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1373,31 +1373,6 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeLiveForbidStreamList(self, request):
-        r"""This API is used to get the list of disabled streams.
-
-        Note: this API is used for query only and should not be relied too much upon in important business scenarios.
-
-        :param request: Request instance for DescribeLiveForbidStreamList.
-        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveForbidStreamListRequest`
-        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveForbidStreamListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeLiveForbidStreamList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeLiveForbidStreamListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeLivePlayAuthKey(self, request):
         r"""This API is used to query the playback authentication key.
 
@@ -1986,6 +1961,29 @@ class LiveClient(AbstractClient):
             body = self.call("DescribeLiveWatermarks", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLiveWatermarksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOriginWhiteIpList(self, request):
+        r"""This API is used to obtain the pull stream IP whitelist list of the origin server.
+
+        :param request: Request instance for DescribeOriginWhiteIpList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeOriginWhiteIpListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeOriginWhiteIpListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOriginWhiteIpList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOriginWhiteIpListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

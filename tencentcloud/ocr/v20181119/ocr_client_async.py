@@ -43,6 +43,24 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ApplyOcrToken(
+            self,
+            request: models.ApplyOcrTokenRequest,
+            opts: Dict = None,
+    ) -> models.ApplyOcrTokenResponse:
+        """
+        This API retrieves a token before each call to the OCR SDK verification service. Save the token to initiate the verification process and retrieve the verification result after the process completes.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ApplyOcrToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ApplyOcrTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ExtractDocMulti(
             self,
             request: models.ExtractDocMultiRequest,
@@ -125,6 +143,24 @@ class OcrClient(AbstractClient):
         kwargs["action"] = "GetCardVerificationExternalResult"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetCardVerificationExternalResultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetOcrVerificationResult(
+            self,
+            request: models.GetOcrVerificationResultRequest,
+            opts: Dict = None,
+    ) -> models.GetOcrVerificationResultResponse:
+        """
+        This API retrieves the SDK verification result.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetOcrVerificationResult"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetOcrVerificationResultResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -568,6 +604,8 @@ class OcrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RecognizeThaiIDCardOCRResponse:
         """
+        Domain name for API request: ocr.intl.tencentcloudapi.com.
+
         This API is used to recognize the fields on a Thai identity card, including name in Thai, name in English, address, date of birth, identification number, date of issue, and date of expiry.
 
         A maximum of 10 requests can be initiated per second for this API.

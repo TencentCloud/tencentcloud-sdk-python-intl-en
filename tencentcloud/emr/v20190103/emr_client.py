@@ -27,7 +27,7 @@ class EmrClient(AbstractClient):
 
 
     def AddMetricScaleStrategy(self, request):
-        r"""This API is used to add scaling rules by load and time.
+        r"""This API is used to add an automatic scaling rule by load and time.
 
         :param request: Request instance for AddMetricScaleStrategy.
         :type request: :class:`tencentcloud.emr.v20190103.models.AddMetricScaleStrategyRequest`
@@ -50,7 +50,7 @@ class EmrClient(AbstractClient):
 
 
     def AddNodeResourceConfig(self, request):
-        r"""This API is used to add node specifications of the current cluster.
+        r"""This API is used to add node specifications for the current cluster.
 
         :param request: Request instance for AddNodeResourceConfig.
         :type request: :class:`tencentcloud.emr.v20190103.models.AddNodeResourceConfigRequest`
@@ -73,8 +73,8 @@ class EmrClient(AbstractClient):
 
 
     def AddUsersForUserManager(self, request):
-        r"""This API is available for clusters with OpenLDAP components configured.
-        This API is used to add user lists (user management).
+        r"""This API is used for clusters with the OpenLDAP component installed.
+        This API is used to add a user list (user management).
 
         :param request: Request instance for AddUsersForUserManager.
         :type request: :class:`tencentcloud.emr.v20190103.models.AddUsersForUserManagerRequest`
@@ -97,7 +97,7 @@ class EmrClient(AbstractClient):
 
 
     def AttachDisks(self, request):
-        r"""This API is used to mount cloud disks.
+        r"""This API is used to mount a cloud disk.
 
         :param request: Request instance for AttachDisks.
         :type request: :class:`tencentcloud.emr.v20190103.models.AttachDisksRequest`
@@ -120,7 +120,7 @@ class EmrClient(AbstractClient):
 
 
     def ConvertPreToPostCluster(self, request):
-        r"""This API is used to convert a monthly subscription cluster to a pay-as-you-go cluster (excluding cdb).
+        r"""This API is used to convert a monthly subscription cluster to a pay-as-you-go cluster (excluding CDB).
 
         :param request: Request instance for ConvertPreToPostCluster.
         :type request: :class:`tencentcloud.emr.v20190103.models.ConvertPreToPostClusterRequest`
@@ -143,7 +143,7 @@ class EmrClient(AbstractClient):
 
 
     def CreateCluster(self, request):
-        r"""This API is used to create an EMR cluster instance.
+        r"""This API is used to create an EMR cluster.
 
         :param request: Request instance for CreateCluster.
         :type request: :class:`tencentcloud.emr.v20190103.models.CreateClusterRequest`
@@ -165,8 +165,31 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDynamicInstance(self, request):
+        r"""This API is used to create a DynamicInstance in a containerized EMR on TKE cluster.
+
+        :param request: Request instance for CreateDynamicInstance.
+        :type request: :class:`tencentcloud.emr.v20190103.models.CreateDynamicInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.CreateDynamicInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDynamicInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDynamicInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateGroupsSTD(self, request):
-        r"""This API is used to create user groups in batches under User Management.
+        r"""This API is used to create user groups in batches in user management.
 
         :param request: Request instance for CreateGroupsSTD.
         :type request: :class:`tencentcloud.emr.v20190103.models.CreateGroupsSTDRequest`
@@ -189,7 +212,7 @@ class EmrClient(AbstractClient):
 
 
     def CreateInstance(self, request):
-        r"""This API is used to create an EMR cluster instance.
+        r"""This API is used to create an EMR cluster.
 
         :param request: Request instance for CreateInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.CreateInstanceRequest`
@@ -212,7 +235,8 @@ class EmrClient(AbstractClient):
 
 
     def CreateSLInstance(self, request):
-        r"""This API is used to create a Serverless HBase instance.- If the API call is successful, a Serverless HBase instance will be created. If the instance creation request is successful, the InstanceId of the created instance and the RequestID of the request will be returned.- This is an asynchronous API. The operation is not completed immediately when the API call returns. The instance operation result can be viewed by calling DescribeInstancesList to view the StatusDesc status of the current instance.
+        r"""This API is used to create a Serverless instance, for example, HBase, StarRocks, and TCBase instances.- This API is successfully called, and a Serverless instance is created. If the instance creation request succeeds, InstanceId of the instance and RequestID of the request are returned.
+        - This is an asynchronous API. The operation is not completed immediately when the API call returns. The instance operation result can be viewed by calling the DescribeInstancesList API, and the StatusDesc field for the current instance can be returned.
 
         :param request: Request instance for CreateSLInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.CreateSLInstanceRequest`
@@ -235,7 +259,7 @@ class EmrClient(AbstractClient):
 
 
     def DeleteAutoScaleStrategy(self, request):
-        r"""This API is used to delete automatic scaling rules. Nodes scaled based on these rules are destroyed in the background.
+        r"""This API is used to delete an automatic scaling rule. Nodes scaled based on this rule are terminated in the backend.
 
         :param request: Request instance for DeleteAutoScaleStrategy.
         :type request: :class:`tencentcloud.emr.v20190103.models.DeleteAutoScaleStrategyRequest`
@@ -281,7 +305,7 @@ class EmrClient(AbstractClient):
 
 
     def DeleteNodeResourceConfig(self, request):
-        r"""This API is used to delete the node specifications of the current cluster.
+        r"""This API is used to delete node specifications of the current cluster.
 
         :param request: Request instance for DeleteNodeResourceConfig.
         :type request: :class:`tencentcloud.emr.v20190103.models.DeleteNodeResourceConfigRequest`
@@ -304,7 +328,7 @@ class EmrClient(AbstractClient):
 
 
     def DeployYarnConf(self, request):
-        r"""This API is used to bring the configuration into effect in YARN resource scheduling after deployment.
+        r"""This API is used to bring the deployment into effect in YARN resource scheduling.
 
         :param request: Request instance for DeployYarnConf.
         :type request: :class:`tencentcloud.emr.v20190103.models.DeployYarnConfRequest`
@@ -327,7 +351,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeAutoScaleGroupGlobalConf(self, request):
-        r"""This API is used to access the global configuration of automatic scaling.
+        r"""This API is used to obtain the global configuration of auto scaling.
 
         :param request: Request instance for DescribeAutoScaleGroupGlobalConf.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeAutoScaleGroupGlobalConfRequest`
@@ -350,7 +374,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeAutoScaleRecords(self, request):
-        r"""This API is used to inquiry detailed records of cluster autoscaling.
+        r"""This API is used to obtain the detailed automatic scaling records of a cluster.
 
         :param request: Request instance for DescribeAutoScaleRecords.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeAutoScaleRecordsRequest`
@@ -373,7 +397,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeAutoScaleStrategies(self, request):
-        r"""This API is used to access automatic scaling rules.
+        r"""This API is used to obtain an automatic scaling rule.
 
         :param request: Request instance for DescribeAutoScaleStrategies.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeAutoScaleStrategiesRequest`
@@ -395,8 +419,31 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBootScript(self, request):
+        r"""This API is used to obtain a bootstrap script.
+
+        :param request: Request instance for DescribeBootScript.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeBootScriptRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeBootScriptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBootScript", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBootScriptResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterFlowStatusDetail(self, request):
-        r"""This API is used to query the EMR task running details status.
+        r"""This API is used to query the running status details of an EMR cluster task.
 
         :param request: Request instance for DescribeClusterFlowStatusDetail.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeClusterFlowStatusDetailRequest`
@@ -419,7 +466,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeClusterNodes(self, request):
-        r"""This API is used to query the information of nodes in a cluster.
+        r"""This API is used to query information of a cluster node.
 
         :param request: Request instance for DescribeClusterNodes.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeClusterNodesRequest`
@@ -464,8 +511,77 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDynamicInstanceDetail(self, request):
+        r"""This API is used to describe the details of a DynamicInstance in an EMR on TKE cluster.
+
+        :param request: Request instance for DescribeDynamicInstanceDetail.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeDynamicInstanceDetailRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeDynamicInstanceDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDynamicInstanceDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDynamicInstanceDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDynamicInstanceList(self, request):
+        r"""This API is used to describe the DynamicInstance list of an EMR on TKE cluster.
+
+        :param request: Request instance for DescribeDynamicInstanceList.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeDynamicInstanceListRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeDynamicInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDynamicInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDynamicInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEMREventList(self, request):
+        r"""This API is used to query EMR event monitoring data.
+
+        :param request: Request instance for DescribeEMREventList.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeEMREventListRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeEMREventListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEMREventList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEMREventListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeEmrApplicationStatics(self, request):
-        r"""This API is used to query the YARN application statistics API.
+        r"""This API is used to query the YARN task statistics information.
 
         :param request: Request instance for DescribeEmrApplicationStatics.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeEmrApplicationStaticsRequest`
@@ -488,7 +604,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeEmrOverviewMetrics(self, request):
-        r"""This API is used to query the metric data on the monitoring overview page.
+        r"""This API is used to query metric data on the monitoring overview page.
 
         :param request: Request instance for DescribeEmrOverviewMetrics.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeEmrOverviewMetricsRequest`
@@ -510,8 +626,31 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeExportConfs(self, request):
+        r"""This API is used to query the export configuration.
+
+        :param request: Request instance for DescribeExportConfs.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeExportConfsRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeExportConfsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExportConfs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExportConfsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeGlobalConfig(self, request):
-        r"""This API is used to query the global configurations of YARN Resource Scheduling.
+        r"""This API is used to query the global configuration of YARN resource scheduling.
 
         :param request: Request instance for DescribeGlobalConfig.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeGlobalConfigRequest`
@@ -557,7 +696,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeHBaseTableOverview(self, request):
-        r"""This API is used to access the overview of HBase table-level monitoring data.
+        r"""This API is used to obtain an overview of HBase table-level monitoring data.
 
         :param request: Request instance for DescribeHBaseTableOverview.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeHBaseTableOverviewRequest`
@@ -579,8 +718,54 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeHBaseTableRequestMetric(self, request):
+        r"""This API is used to obtain the read/write rate at the HBase table level.
+
+        :param request: Request instance for DescribeHBaseTableRequestMetric.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeHBaseTableRequestMetricRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeHBaseTableRequestMetricResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHBaseTableRequestMetric", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHBaseTableRequestMetricResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeHBaseTableStoreSizeMetric(self, request):
+        r"""This API is used to query the StoreSize monitoring metric data at the HBase table level.
+
+        :param request: Request instance for DescribeHBaseTableStoreSizeMetric.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeHBaseTableStoreSizeMetricRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeHBaseTableStoreSizeMetricResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHBaseTableStoreSizeMetric", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHBaseTableStoreSizeMetricResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeHDFSStorageInfo(self, request):
-        r"""This API is used to query information of file(s) stored in HDFS.
+        r"""This API is used to query information of files stored in HDFS.
 
         :param request: Request instance for DescribeHDFSStorageInfo.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeHDFSStorageInfoRequest`
@@ -603,7 +788,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeHiveQueries(self, request):
-        r"""This API is used to inquiry Hive query data.
+        r"""This API is used to obtain Hive query information.
 
         :param request: Request instance for DescribeHiveQueries.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeHiveQueriesRequest`
@@ -671,8 +856,31 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstanceOplog(self, request):
+        r"""This API is used to obtain the instance operation logs.
+
+        :param request: Request instance for DescribeInstanceOplog.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstanceOplogRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeInstanceOplogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceOplog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceOplogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstances(self, request):
-        r"""This API is used to query the information of instances in a cluster.
+        r"""This API is used to query cluster information.
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesRequest`
@@ -718,7 +926,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeKyuubiQueryInfo(self, request):
-        r"""This API is used to query Kyuubi query information.
+        r"""This API is used to obtain Kyuubi query information.
 
         :param request: Request instance for DescribeKyuubiQueryInfo.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeKyuubiQueryInfoRequest`
@@ -740,8 +948,31 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMetaDBInfo(self, request):
+        r"""This API is used to obtain cluster MetaDB data.
+
+        :param request: Request instance for DescribeMetaDBInfo.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeMetaDBInfoRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeMetaDBInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMetaDBInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMetaDBInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeNodeDataDisks(self, request):
-        r"""This API is used to query data disk information of nodes.
+        r"""This API is used to query data disk information of a node.
 
         :param request: Request instance for DescribeNodeDataDisks.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeNodeDataDisksRequest`
@@ -810,7 +1041,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeResourceSchedule(self, request):
-        r"""This API is used to query YARN resource scheduling information. It has been deprecated. You can use the DescribeYarnQueue API to query queue information.
+        r"""This API is used to query YARN resource scheduling information. It has been deprecated. Please use `DescribeYarnQueue` to query queue information.
 
         :param request: Request instance for DescribeResourceSchedule.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeResourceScheduleRequest`
@@ -833,7 +1064,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeResourceScheduleDiffDetail(self, request):
-        r"""This API is used to query change details in YARN resource scheduling.
+        r"""This API is used to query the change details of YARN resource scheduling.
 
         :param request: Request instance for DescribeResourceScheduleDiffDetail.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeResourceScheduleDiffDetailRequest`
@@ -856,7 +1087,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeSLInstance(self, request):
-        r"""This API is used to query the basic information of Serverless HBase instances.
+        r"""This API is used to query basic information of a Serverless HBase instance.
 
         :param request: Request instance for DescribeSLInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeSLInstanceRequest`
@@ -879,7 +1110,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeSLInstanceList(self, request):
-        r"""This API is used to query the detailed information of the Serverless HBase instance list.
+        r"""This API is used to query detailed information of the Serverless HBase instance list.
 
         :param request: Request instance for DescribeSLInstanceList.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeSLInstanceListRequest`
@@ -948,7 +1179,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeSparkApplications(self, request):
-        r"""This API is used to obtain a Spark application list.
+        r"""This API is used to obtain the Spark application list.
 
         :param request: Request instance for DescribeSparkApplications.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeSparkApplicationsRequest`
@@ -971,7 +1202,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeSparkQueries(self, request):
-        r"""This API is used to query the Spark query information list.
+        r"""This API is used to obtain the Spark query information list.
 
         :param request: Request instance for DescribeSparkQueries.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeSparkQueriesRequest`
@@ -994,7 +1225,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeStarRocksQueryInfo(self, request):
-        r"""This API is used to query StarRocks information.
+        r"""This API is used to obtain StarRocks query information.
 
         :param request: Request instance for DescribeStarRocksQueryInfo.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeStarRocksQueryInfoRequest`
@@ -1017,7 +1248,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeTrinoQueryInfo(self, request):
-        r"""This API is used to query Trino(PrestoSQL) query information.
+        r"""This API is used to obtain Trino (PrestoSQL) query information.
 
         :param request: Request instance for DescribeTrinoQueryInfo.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeTrinoQueryInfoRequest`
@@ -1040,8 +1271,8 @@ class EmrClient(AbstractClient):
 
 
     def DescribeUsersForUserManager(self, request):
-        r"""This API is available for clusters with OpenLDAP components configured.
-        This API is used to export users in batches. For a Kerberos cluster, set `NeedKeytabInfo` to `true` to obtain the download link of the Keytab file. If `SupportDownLoadKeyTab` is `true`, but `DownLoadKeyTabUrl` is null, the Keytab file is not ready yet (being generated) in the backend.
+        r"""This API is used for clusters with the OpenLDAP component installed.
+        This API is used to export users in batches. For a Kerberos cluster, if the keytab file download link is required, set NeedKeytabInfo to true. Note: If SupportDownLoadKeyTab is set to true but DownLoadKeyTabUrl is an empty string, the keytab file is not ready (being generated).
 
         :param request: Request instance for DescribeUsersForUserManager.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeUsersForUserManagerRequest`
@@ -1087,7 +1318,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeYarnScheduleHistory(self, request):
-        r"""This API is used to view the YARN resource scheduling history. It has been deprecated. You can use the Process Center to view the history records.
+        r"""This API is used to view the YARN resource scheduling history. It has been deprecated. Please use Task Center to view the history records.
 
         :param request: Request instance for DescribeYarnScheduleHistory.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeYarnScheduleHistoryRequest`
@@ -1110,7 +1341,7 @@ class EmrClient(AbstractClient):
 
 
     def InquiryPriceCreateInstance(self, request):
-        r"""This API is used to query price of instance creation.
+        r"""This API is used to inquire the price for instance creation.
 
         :param request: Request instance for InquiryPriceCreateInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceCreateInstanceRequest`
@@ -1133,7 +1364,7 @@ class EmrClient(AbstractClient):
 
 
     def InquiryPriceRenewInstance(self, request):
-        r"""This API is used to query the price for renewal.
+        r"""This API is used to inquire the price for renewal.
 
         :param request: Request instance for InquiryPriceRenewInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceRenewInstanceRequest`
@@ -1156,7 +1387,7 @@ class EmrClient(AbstractClient):
 
 
     def InquiryPriceScaleOutInstance(self, request):
-        r"""This API is used to query price of scale-out.
+        r"""This API is used to inquire the price for a scale-out.
 
         :param request: Request instance for InquiryPriceScaleOutInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceScaleOutInstanceRequest`
@@ -1179,7 +1410,7 @@ class EmrClient(AbstractClient):
 
 
     def InquiryPriceUpdateInstance(self, request):
-        r"""This API is used to query price of scaling.
+        r"""This API is used to inquire the price for the configuration change.
 
         :param request: Request instance for InquiryPriceUpdateInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceUpdateInstanceRequest`
@@ -1201,9 +1432,32 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InstallSoftware(self, request):
+        r"""This API is used to install a component. For components dependent on the MetaDB, a CDB order may be required. The components that can be installed on the current cluster and the components that might require a CDB order can be viewed via InstallSoftWareInfo.
+
+        :param request: Request instance for InstallSoftware.
+        :type request: :class:`tencentcloud.emr.v20190103.models.InstallSoftwareRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.InstallSoftwareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InstallSoftware", params, headers=headers)
+            response = json.loads(body)
+            model = models.InstallSoftwareResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAutoRenewFlag(self, request):
-        r"""This API is used to introduce the prerequisite prepaid clusters.
-        This API is used to enable or disable automatic renewal at the resource level.
+        r"""This API is used to introduce the prerequisites for a prepaid cluster.
+        This API is used to enable or disable auto-renewal at the resource level.
 
         :param request: Request instance for ModifyAutoRenewFlag.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyAutoRenewFlagRequest`
@@ -1226,7 +1480,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyAutoScaleStrategy(self, request):
-        r"""This API is used to modify automatic scaling rules.
+        r"""This API is used to modify an automatic scaling rule.
 
         :param request: Request instance for ModifyAutoScaleStrategy.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyAutoScaleStrategyRequest`
@@ -1248,8 +1502,54 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyBootScript(self, request):
+        r"""This API is used to modify a bootstrap script.
+
+        :param request: Request instance for ModifyBootScript.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyBootScriptRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyBootScriptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBootScript", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBootScriptResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDynamicInstance(self, request):
+        r"""This API is used to update a DynamicInstance in a containerized EMR on TKE cluster.
+
+        :param request: Request instance for ModifyDynamicInstance.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyDynamicInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyDynamicInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDynamicInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDynamicInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyGlobalConfig(self, request):
-        r"""This API is used to modify the global configuration of YARN Resource Scheduling.
+        r"""This API is used to modify the global configuration of YARN resource scheduling.
 
         :param request: Request instance for ModifyGlobalConfig.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyGlobalConfigRequest`
@@ -1272,7 +1572,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyInspectionSettings(self, request):
-        r"""This API is used to set inspection task configurations.
+        r"""This API is used to set the inspection task configuration.
 
         :param request: Request instance for ModifyInspectionSettings.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyInspectionSettingsRequest`
@@ -1295,7 +1595,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyInstanceBasic(self, request):
-        r"""This API is used to modify a cluster name.
+        r"""This API is used to modify the cluster name.
 
         :param request: Request instance for ModifyInstanceBasic.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyInstanceBasicRequest`
@@ -1318,7 +1618,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyResource(self, request):
-        r"""This API is used to resize an instance.
+        r"""This API is used to change the instance configuration.
 
         :param request: Request instance for ModifyResource.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourceRequest`
@@ -1366,7 +1666,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyResourceScheduler(self, request):
-        r"""This API is used to modify a YARN resource scheduler. After the modification, you can click Deploy to bring it into effect.
+        r"""This API is used to modify a YARN resource scheduler. After the modification, click Deploy to make the modification take effect.
 
         :param request: Request instance for ModifyResourceScheduler.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourceSchedulerRequest`
@@ -1389,7 +1689,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyResourcesTags(self, request):
-        r"""This API is used to forcibly modify tags.
+        r"""This API is used to forcibly modify a tag.
 
         :param request: Request instance for ModifyResourcesTags.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourcesTagsRequest`
@@ -1412,7 +1712,9 @@ class EmrClient(AbstractClient):
 
 
     def ModifySLInstance(self, request):
-        r"""This API is used to resize a Serverless HBase instance.- If the API call is successful, a Serverless HBase instance will be created. If the instance creation request is successful, the RequestID of the request will be returned.- This is an asynchronous API. The operation is not completed immediately when the API call returns. The instance operation result can be viewed by calling DescribeInstancesList to view the StatusDesc status of the current instance.
+        r"""This API is used to change the configuration of a Serverless HBase instance.
+        - This API is successfully called, and a Serverless HBase instance is created. If the instance creation request succeeds, RequestID of the request is returned.
+        - This is an asynchronous API. The operation is not completed immediately when the API call returns. The instance operation result can be viewed by calling the DescribeInstancesList API, and the StatusDesc field for the current instance can be returned.
 
         :param request: Request instance for ModifySLInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifySLInstanceRequest`
@@ -1435,7 +1737,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifySLInstanceBasic(self, request):
-        r"""This API is used to modify the Serverless HBase instance name.
+        r"""This API is used to modify the Serverless HBase instance name.
 
         :param request: Request instance for ModifySLInstanceBasic.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifySLInstanceBasicRequest`
@@ -1457,8 +1759,31 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyServiceParamsByExportConfs(self, request):
+        r"""Configuration import and delivery
+
+        :param request: Request instance for ModifyServiceParamsByExportConfs.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyServiceParamsByExportConfsRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyServiceParamsByExportConfsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyServiceParamsByExportConfs", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyServiceParamsByExportConfsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyUserGroup(self, request):
-        r"""This API is used to modify user groups under User Management.
+        r"""This API is used to modify a user group in user management.
 
         :param request: Request instance for ModifyUserGroup.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyUserGroupRequest`
@@ -1481,7 +1806,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyUserManagerPwd(self, request):
-        r"""This API is used to change user password (user management).
+        r"""This API is used to modify a user password (user management).
 
         :param request: Request instance for ModifyUserManagerPwd.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyUserManagerPwdRequest`
@@ -1504,7 +1829,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyUsersOfGroupSTD(self, request):
-        r"""This API is used to change the user information of user groups.
+        r"""This API is used to change user information in a user group.
 
         :param request: Request instance for ModifyUsersOfGroupSTD.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyUsersOfGroupSTDRequest`
@@ -1598,7 +1923,7 @@ class EmrClient(AbstractClient):
 
 
     def ResizeDataDisks(self, request):
-        r"""This API is used to scale out the cloud data disk.
+        r"""This API is used to scale out cloud data disks.
 
         :param request: Request instance for ResizeDataDisks.
         :type request: :class:`tencentcloud.emr.v20190103.models.ResizeDataDisksRequest`
@@ -1621,7 +1946,7 @@ class EmrClient(AbstractClient):
 
 
     def ScaleOutCluster(self, request):
-        r"""This API is used to scale out a cluster.
+        r"""This API is used to scale out cluster nodes.
 
         :param request: Request instance for ScaleOutCluster.
         :type request: :class:`tencentcloud.emr.v20190103.models.ScaleOutClusterRequest`
@@ -1644,7 +1969,7 @@ class EmrClient(AbstractClient):
 
 
     def ScaleOutInstance(self, request):
-        r"""This API is used to scale out instances.
+        r"""This API is used to scale out nodes.
 
         :param request: Request instance for ScaleOutInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.ScaleOutInstanceRequest`
@@ -1667,7 +1992,7 @@ class EmrClient(AbstractClient):
 
 
     def SetNodeResourceConfigDefault(self, request):
-        r"""This API is used to set specifications for a node in the current cluster to default or not.
+        r"""This API is used to set specifications of a node in the current cluster as the default or cancel the default setting.
 
         :param request: Request instance for SetNodeResourceConfigDefault.
         :type request: :class:`tencentcloud.emr.v20190103.models.SetNodeResourceConfigDefaultRequest`
@@ -1690,7 +2015,7 @@ class EmrClient(AbstractClient):
 
 
     def StartStopServiceOrMonitor(self, request):
-        r"""This API is used to start, stop, or restart services.
+        r"""This API is used to execute operations such as starting, stopping, and restarting a service.
 
         :param request: Request instance for StartStopServiceOrMonitor.
         :type request: :class:`tencentcloud.emr.v20190103.models.StartStopServiceOrMonitorRequest`
@@ -1713,7 +2038,7 @@ class EmrClient(AbstractClient):
 
 
     def TerminateClusterNodes(self, request):
-        r"""This API is used to terminate cluster nodes.
+        r"""This API is used to terminate a cluster node.
 
         :param request: Request instance for TerminateClusterNodes.
         :type request: :class:`tencentcloud.emr.v20190103.models.TerminateClusterNodesRequest`
@@ -1735,8 +2060,31 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def TerminateDynamicInstances(self, request):
+        r"""This API is used to terminate a DynamicInstance in a containerized EMR on TKE cluster.
+
+        :param request: Request instance for TerminateDynamicInstances.
+        :type request: :class:`tencentcloud.emr.v20190103.models.TerminateDynamicInstancesRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.TerminateDynamicInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TerminateDynamicInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.TerminateDynamicInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def TerminateInstance(self, request):
-        r"""This API is used to terminate EMR instances. It is only supported in the official paid edition of EMR.
+        r"""This API is used to terminate an EMR instance. It is supported only for the officially billed version of EMR.
 
         :param request: Request instance for TerminateInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.TerminateInstanceRequest`
@@ -1759,7 +2107,7 @@ class EmrClient(AbstractClient):
 
 
     def TerminateSLInstance(self, request):
-        r"""This API is used to terminate a Serverless HBase instance.
+        r"""This API is used to terminate a Serverless HBase instance.
 
         :param request: Request instance for TerminateSLInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.TerminateSLInstanceRequest`
@@ -1782,7 +2130,7 @@ class EmrClient(AbstractClient):
 
 
     def TerminateTasks(self, request):
-        r"""This API is used to terminate a task node.
+        r"""This API is used to scale in Task nodes.
 
         :param request: Request instance for TerminateTasks.
         :type request: :class:`tencentcloud.emr.v20190103.models.TerminateTasksRequest`

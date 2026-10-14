@@ -41,7 +41,7 @@ FAILEDOPERATION_INVALIDUSER = 'FailedOperation.InvalidUser'
 # Operation failed due to a network error.
 FAILEDOPERATION_NETWORKERROR = 'FailedOperation.NetWorkError'
 
-# 
+# Error occurred while querying the task
 FAILEDOPERATION_QUERYAIGCTASKFAILED = 'FailedOperation.QueryAIGCTaskFailed'
 
 # Operation failure: error setting source notification.
@@ -254,7 +254,7 @@ INVALIDPARAMETERVALUE_IMAGETEMPLATE = 'InvalidParameterValue.ImageTemplate'
 # Incorrect input parameters.
 INVALIDPARAMETERVALUE_INPUTINFO = 'InvalidParameterValue.InputInfo'
 
-# The value of Content is invalid.
+# Invalid value of the parsed Content.
 INVALIDPARAMETERVALUE_INVALIDCONTENT = 'InvalidParameterValue.InvalidContent'
 
 # Invalid operation type.
@@ -335,13 +335,13 @@ INVALIDPARAMETERVALUE_SAMPLETYPE = 'InvalidParameterValue.SampleType'
 # A service parameter value error occurs.
 INVALIDPARAMETERVALUE_SERVICE = 'InvalidParameterValue.Service'
 
-# 
+# SessionContext is too long.
 INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = 'InvalidParameterValue.SessionContextTooLong'
 
-# 
+# Duplicate recognition code. Request deduplicated.
 INVALIDPARAMETERVALUE_SESSIONID = 'InvalidParameterValue.SessionId'
 
-# 
+# SessionId is too long.
 INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = 'InvalidParameterValue.SessionIdTooLong'
 
 # Parameter error: audio channel mode.
@@ -485,7 +485,7 @@ RESOURCENOTFOUND_DOWNLOADERROR = 'ResourceNotFound.DownloadError'
 # Resource not found: person.
 RESOURCENOTFOUND_PERSON = 'ResourceNotFound.Person'
 
-# 
+# The task does not exist
 RESOURCENOTFOUND_TASKNOTFOUND = 'ResourceNotFound.TaskNotFound'
 
 # The resource does not exist: the template does not exist.

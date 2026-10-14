@@ -43,6 +43,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AddVulIgnoreRule(
+            self,
+            request: models.AddVulIgnoreRuleRequest,
+            opts: Dict = None,
+    ) -> models.AddVulIgnoreRuleResponse:
+        """
+        This API is used to add vulnerability ignore rules.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddVulIgnoreRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddVulIgnoreRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ChangeRuleEventsIgnoreStatus(
             self,
             request: models.ChangeRuleEventsIgnoreStatusRequest,
@@ -370,6 +388,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateProtectServer(
+            self,
+            request: models.CreateProtectServerRequest,
+            opts: Dict = None,
+    ) -> models.CreateProtectServerResponse:
+        """
+        Adding a Website Protection Server
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateProtectServer"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateProtectServerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateRansomDefenseStrategy(
             self,
             request: models.CreateRansomDefenseStrategyRequest,
@@ -532,6 +568,42 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteBaselineRule(
+            self,
+            request: models.DeleteBaselineRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteBaselineRuleResponse:
+        """
+        Delete a baseline rule
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteBaselineRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteBaselineRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteBaselineRuleIgnore(
+            self,
+            request: models.DeleteBaselineRuleIgnoreRequest,
+            opts: Dict = None,
+    ) -> models.DeleteBaselineRuleIgnoreResponse:
+        """
+        Delete baseline ignore rule.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteBaselineRuleIgnore"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteBaselineRuleIgnoreResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteBaselineStrategy(
             self,
             request: models.DeleteBaselineStrategyRequest,
@@ -545,6 +617,24 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "DeleteBaselineStrategy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteBaselineStrategyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteBaselineWeakPassword(
+            self,
+            request: models.DeleteBaselineWeakPasswordRequest,
+            opts: Dict = None,
+    ) -> models.DeleteBaselineWeakPasswordResponse:
+        """
+        Delete baseline weak passwords
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteBaselineWeakPassword"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteBaselineWeakPasswordResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -910,6 +1000,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteProtectDir(
+            self,
+            request: models.DeleteProtectDirRequest,
+            opts: Dict = None,
+    ) -> models.DeleteProtectDirResponse:
+        """
+        Delete a website protection
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteProtectDir"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteProtectDirResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteRaspRules(
             self,
             request: models.DeleteRaspRulesRequest,
@@ -1103,6 +1211,24 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "DeleteWebHookRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteWebHookRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteWebPageEventLog(
+            self,
+            request: models.DeleteWebPageEventLogRequest,
+            opts: Dict = None,
+    ) -> models.DeleteWebPageEventLogResponse:
+        """
+        Delete website tamper-proof event records
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteWebPageEventLog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteWebPageEventLogResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2242,6 +2368,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBaselineAnalysisData(
+            self,
+            request: models.DescribeBaselineAnalysisDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselineAnalysisDataResponse:
+        """
+        This example shows you how to query the baseline policy overview statistics based on baseline policy IDs.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselineAnalysisData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselineAnalysisDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeBaselineBasicInfo(
             self,
             request: models.DescribeBaselineBasicInfoRequest,
@@ -2296,6 +2440,60 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBaselineDetectList(
+            self,
+            request: models.DescribeBaselineDetectListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselineDetectListResponse:
+        """
+        Retrieve baseline detection detail records
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselineDetectList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselineDetectListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBaselineDetectOverview(
+            self,
+            request: models.DescribeBaselineDetectOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselineDetectOverviewResponse:
+        """
+        Obtain baseline detection overview
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselineDetectOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselineDetectOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBaselineDownloadList(
+            self,
+            request: models.DescribeBaselineDownloadListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselineDownloadListResponse:
+        """
+        This API is used to obtain the baseline download list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselineDownloadList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselineDownloadListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeBaselineEffectHostList(
             self,
             request: models.DescribeBaselineEffectHostListRequest,
@@ -2314,6 +2512,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBaselineFixList(
+            self,
+            request: models.DescribeBaselineFixListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselineFixListResponse:
+        """
+        Query the baseline fix list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselineFixList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselineFixListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeBaselineHostDetectList(
             self,
             request: models.DescribeBaselineHostDetectListRequest,
@@ -2327,6 +2543,42 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "DescribeBaselineHostDetectList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeBaselineHostDetectListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBaselineHostIgnoreList(
+            self,
+            request: models.DescribeBaselineHostIgnoreListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselineHostIgnoreListResponse:
+        """
+        Retrieve the host list of ignore rules.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselineHostIgnoreList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselineHostIgnoreListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBaselineHostRiskTop(
+            self,
+            request: models.DescribeBaselineHostRiskTopRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselineHostRiskTopResponse:
+        """
+        This API is used to obtain the TOP 5 server risks in the baseline.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselineHostRiskTop"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselineHostRiskTopResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2368,6 +2620,42 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBaselineItemIgnoreList(
+            self,
+            request: models.DescribeBaselineItemIgnoreListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselineItemIgnoreListResponse:
+        """
+        This API is used to search the ignorable rule item list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselineItemIgnoreList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselineItemIgnoreListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBaselineItemInfo(
+            self,
+            request: models.DescribeBaselineItemInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselineItemInfoResponse:
+        """
+        Obtain Baseline Detection Item Information
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselineItemInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselineItemInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeBaselineItemList(
             self,
             request: models.DescribeBaselineItemListRequest,
@@ -2381,6 +2669,24 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "DescribeBaselineItemList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeBaselineItemListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBaselineItemRiskTop(
+            self,
+            request: models.DescribeBaselineItemRiskTopRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselineItemRiskTopResponse:
+        """
+        Query the TOP 5 baseline detection items.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselineItemRiskTop"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselineItemRiskTopResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2435,6 +2741,78 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "DescribeBaselineRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeBaselineRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBaselineRuleCategoryList(
+            self,
+            request: models.DescribeBaselineRuleCategoryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselineRuleCategoryListResponse:
+        """
+        Obtain Baseline Classification List
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselineRuleCategoryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselineRuleCategoryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBaselineRuleDetectList(
+            self,
+            request: models.DescribeBaselineRuleDetectListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselineRuleDetectListResponse:
+        """
+        This API is used to obtain the baseline rule detection list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselineRuleDetectList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselineRuleDetectListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBaselineRuleIgnoreList(
+            self,
+            request: models.DescribeBaselineRuleIgnoreListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselineRuleIgnoreListResponse:
+        """
+        Get the baseline ignore rule list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselineRuleIgnoreList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselineRuleIgnoreListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBaselineRuleList(
+            self,
+            request: models.DescribeBaselineRuleListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselineRuleListResponse:
+        """
+        Obtain Baseline Rule List
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselineRuleList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselineRuleListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3106,6 +3484,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeImportMachineInfo(
+            self,
+            request: models.DescribeImportMachineInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImportMachineInfoResponse:
+        """
+        Querying the Machine Information Imported in Batches
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImportMachineInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImportMachineInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeInjectRiskyServiceSwitch(
             self,
             request: models.DescribeInjectRiskyServiceSwitchRequest,
@@ -3664,6 +4060,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMachineList(
+            self,
+            request: models.DescribeMachineListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMachineListResponse:
+        """
+        This API is used to get the regional host list for web tamper protection.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMachineList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMachineListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeMachineOsList(
             self,
             request: models.DescribeMachineOsListRequest,
@@ -4096,6 +4510,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribePrivilegeEvents(
+            self,
+            request: models.DescribePrivilegeEventsRequest,
+            opts: Dict = None,
+    ) -> models.DescribePrivilegeEventsResponse:
+        """
+        This example shows you how to obtain the list of local privilege escalation events.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePrivilegeEvents"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePrivilegeEventsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribePrivilegeRules(
             self,
             request: models.DescribePrivilegeRulesRequest,
@@ -4181,6 +4613,42 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "DescribeProductStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeProductStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeProtectDirList(
+            self,
+            request: models.DescribeProtectDirListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeProtectDirListResponse:
+        """
+        Web tamper-proof protection directory listing
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeProtectDirList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeProtectDirListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeProtectDirRelatedServer(
+            self,
+            request: models.DescribeProtectDirRelatedServerRequest,
+            opts: Dict = None,
+    ) -> models.DescribeProtectDirRelatedServerResponse:
+        """
+        Query the server list information associated with the protection directory.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeProtectDirRelatedServer"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeProtectDirRelatedServerResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -5302,6 +5770,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeServerRelatedDirInfo(
+            self,
+            request: models.DescribeServerRelatedDirInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeServerRelatedDirInfoResponse:
+        """
+        Querying the Details of a Directory Associated with a Service Zone
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeServerRelatedDirInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeServerRelatedDirInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeServersAndRiskAndFirstInfo(
             self,
             request: models.DescribeServersAndRiskAndFirstInfoRequest,
@@ -6130,6 +6616,78 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeWebPageEventList(
+            self,
+            request: models.DescribeWebPageEventListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeWebPageEventListResponse:
+        """
+        Querying the List of Tampering Events
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeWebPageEventList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeWebPageEventListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeWebPageGeneralize(
+            self,
+            request: models.DescribeWebPageGeneralizeRequest,
+            opts: Dict = None,
+    ) -> models.DescribeWebPageGeneralizeResponse:
+        """
+        Query website tamper-proof overview information
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeWebPageGeneralize"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeWebPageGeneralizeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeWebPageProtectStat(
+            self,
+            request: models.DescribeWebPageProtectStatRequest,
+            opts: Dict = None,
+    ) -> models.DescribeWebPageProtectStatResponse:
+        """
+        Querying real-time protection information for website anti-tampering
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeWebPageProtectStat"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeWebPageProtectStatResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeWebPageServiceInfo(
+            self,
+            request: models.DescribeWebPageServiceInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeWebPageServiceInfoResponse:
+        """
+        Website Tamper Protection - Query webpage tamper protection server purchase information and server information
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeWebPageServiceInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeWebPageServiceInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeWindowsPatchList(
             self,
             request: models.DescribeWindowsPatchListRequest,
@@ -6670,6 +7228,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ExportBaselineItemList(
+            self,
+            request: models.ExportBaselineItemListRequest,
+            opts: Dict = None,
+    ) -> models.ExportBaselineItemListResponse:
+        """
+        Export Detection Item Result List
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExportBaselineItemList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExportBaselineItemListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ExportBaselineList(
             self,
             request: models.ExportBaselineListRequest,
@@ -6683,6 +7259,42 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "ExportBaselineList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ExportBaselineListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ExportBaselineRuleDetectList(
+            self,
+            request: models.ExportBaselineRuleDetectListRequest,
+            opts: Dict = None,
+    ) -> models.ExportBaselineRuleDetectListResponse:
+        """
+        This API is used to export baseline detection rules.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExportBaselineRuleDetectList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExportBaselineRuleDetectListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ExportBaselineWeakPasswordList(
+            self,
+            request: models.ExportBaselineWeakPasswordListRequest,
+            opts: Dict = None,
+    ) -> models.ExportBaselineWeakPasswordListResponse:
+        """
+        Export the list of weak password configurations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExportBaselineWeakPasswordList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExportBaselineWeakPasswordListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -6971,6 +7583,24 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "ExportPrivilegeEvents"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ExportPrivilegeEventsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ExportProtectDirList(
+            self,
+            request: models.ExportProtectDirListRequest,
+            opts: Dict = None,
+    ) -> models.ExportProtectDirListResponse:
+        """
+        Export the web tamper-proof protection directory list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExportProtectDirList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExportProtectDirListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -7336,6 +7966,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ExportWebPageEventList(
+            self,
+            request: models.ExportWebPageEventListRequest,
+            opts: Dict = None,
+    ) -> models.ExportWebPageEventListResponse:
+        """
+        This API is used to export the tamper event list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExportWebPageEventList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExportWebPageEventListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ExportWindowsPatchList(
             self,
             request: models.ExportWindowsPatchListRequest,
@@ -7349,6 +7997,24 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "ExportWindowsPatchList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ExportWindowsPatchListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def FixBaselineDetect(
+            self,
+            request: models.FixBaselineDetectRequest,
+            opts: Dict = None,
+    ) -> models.FixBaselineDetectResponse:
+        """
+        This API is used to fix baseline detection.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "FixBaselineDetect"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.FixBaselineDetectResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -7475,6 +8141,78 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "ModifyBaselinePolicy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyBaselinePolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyBaselinePolicyState(
+            self,
+            request: models.ModifyBaselinePolicyStateRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBaselinePolicyStateResponse:
+        """
+        This API is used to change the baseline policy status.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBaselinePolicyState"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBaselinePolicyStateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyBaselineRule(
+            self,
+            request: models.ModifyBaselineRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBaselineRuleResponse:
+        """
+        Make a change to a baseline detection rule
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBaselineRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBaselineRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyBaselineRuleIgnore(
+            self,
+            request: models.ModifyBaselineRuleIgnoreRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBaselineRuleIgnoreResponse:
+        """
+        Make a change to the baseline ignore rule.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBaselineRuleIgnore"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBaselineRuleIgnoreResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyBaselineWeakPassword(
+            self,
+            request: models.ModifyBaselineWeakPasswordRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBaselineWeakPasswordResponse:
+        """
+        Change or add a weak password
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBaselineWeakPassword"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBaselineWeakPasswordResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -7678,6 +8416,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyLicenseUnBinds(
+            self,
+            request: models.ModifyLicenseUnBindsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLicenseUnBindsResponse:
+        """
+        This API is used to unbind machines from an authorization in batches.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLicenseUnBinds"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLicenseUnBindsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyLogKafkaAccess(
             self,
             request: models.ModifyLogKafkaAccessRequest,
@@ -7804,6 +8560,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyMachineRemark(
+            self,
+            request: models.ModifyMachineRemarkRequest,
+            opts: Dict = None,
+    ) -> models.ModifyMachineRemarkResponse:
+        """
+        Modify Host Remark Information
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyMachineRemark"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyMachineRemarkResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyMaliciousRequestWhiteList(
             self,
             request: models.ModifyMaliciousRequestWhiteListRequest,
@@ -7889,6 +8663,24 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "ModifyNetAttackWhiteList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyNetAttackWhiteListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyOrderAttribute(
+            self,
+            request: models.ModifyOrderAttributeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyOrderAttributeResponse:
+        """
+        Edit order attributes
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyOrderAttribute"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyOrderAttributeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -8221,6 +9013,42 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyWebPageProtectDir(
+            self,
+            request: models.ModifyWebPageProtectDirRequest,
+            opts: Dict = None,
+    ) -> models.ModifyWebPageProtectDirResponse:
+        """
+        Creating or Modifying a Website Protection Directory
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyWebPageProtectDir"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyWebPageProtectDirResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyWebPageProtectSetting(
+            self,
+            request: models.ModifyWebPageProtectSettingRequest,
+            opts: Dict = None,
+    ) -> models.ModifyWebPageProtectSettingResponse:
+        """
+        Modifying Website Protection Settings
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyWebPageProtectSetting"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyWebPageProtectSettingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyWebPageProtectSwitch(
             self,
             request: models.ModifyWebPageProtectSwitchRequest,
@@ -8360,6 +9188,24 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "RetryVulFix"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RetryVulFixResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ScanAsset(
+            self,
+            request: models.ScanAssetRequest,
+            opts: Dict = None,
+    ) -> models.ScanAssetResponse:
+        """
+        Initiate asset fingerprinting scan
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ScanAsset"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ScanAssetResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

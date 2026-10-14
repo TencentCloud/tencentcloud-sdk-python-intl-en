@@ -50,7 +50,7 @@ class EsClient(AbstractClient):
 
 
     def CreateIndex(self, request):
-        r"""This API is used to create indices.
+        r"""Create an index
 
         :param request: Request instance for CreateIndex.
         :type request: :class:`tencentcloud.es.v20180416.models.CreateIndexRequest`
@@ -73,7 +73,7 @@ class EsClient(AbstractClient):
 
 
     def CreateInstance(self, request):
-        r"""This API is used to create an ES cluster instance with the specified specification.
+        r"""Create an ES cluster instance with the specified specification.
 
         :param request: Request instance for CreateInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.CreateInstanceRequest`
@@ -119,7 +119,7 @@ class EsClient(AbstractClient):
 
 
     def DeleteIndex(self, request):
-        r"""This API is used to delete indices.
+        r"""Delete an index
 
         :param request: Request instance for DeleteIndex.
         :type request: :class:`tencentcloud.es.v20180416.models.DeleteIndexRequest`
@@ -142,7 +142,7 @@ class EsClient(AbstractClient):
 
 
     def DeleteInstance(self, request):
-        r"""This API is used to terminate a cluster instance.
+        r"""Terminate cluster instances
 
         :param request: Request instance for DeleteInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.DeleteInstanceRequest`
@@ -211,7 +211,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeIndexMeta(self, request):
-        r"""This API is used to obtain index metadata.
+        r"""This API is used to retrieve index metadata.
 
         :param request: Request instance for DescribeIndexMeta.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeIndexMetaRequest`
@@ -234,7 +234,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeInstanceLogs(self, request):
-        r"""This API is used to query the eligible ES cluster logs in the current region.
+        r"""Query the logs of eligible ES clusters in that region for the user.
 
         :param request: Request instance for DescribeInstanceLogs.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeInstanceLogsRequest`
@@ -257,7 +257,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeInstanceOperations(self, request):
-        r"""This API is used to query the operation history of an instance by specified criteria.
+        r"""Query the operation records of an instance under specified conditions.
 
         :param request: Request instance for DescribeInstanceOperations.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeInstanceOperationsRequest`
@@ -280,7 +280,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        r"""This API is used to query all eligible instances in the current region under the current account.
+        r"""Query all instances meeting conditions for the user in that region
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeInstancesRequest`
@@ -303,7 +303,7 @@ class EsClient(AbstractClient):
 
 
     def DescribeViews(self, request):
-        r"""This API is used to query view data from three dimensions: cluster, node, and Kibana.
+        r"""Query view data of a cluster, including cluster-level, node, and Kibana dimensions.
 
         :param request: Request instance for DescribeViews.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeViewsRequest`
@@ -326,7 +326,7 @@ class EsClient(AbstractClient):
 
 
     def GetRequestTargetNodeTypes(self, request):
-        r"""This API is used to get the node types used to receive client requests.
+        r"""Get the node type that receives client requests.
 
         :param request: Request instance for GetRequestTargetNodeTypes.
         :type request: :class:`tencentcloud.es.v20180416.models.GetRequestTargetNodeTypesRequest`
@@ -395,7 +395,7 @@ class EsClient(AbstractClient):
 
 
     def RestartInstance(self, request):
-        r"""This API is used to restart an ES cluster instance (for operations such as system update).
+        r"""Restart ES cluster instances for system version update.
 
         :param request: Request instance for RestartInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.RestartInstanceRequest`
@@ -418,7 +418,7 @@ class EsClient(AbstractClient):
 
 
     def RestartKibana(self, request):
-        r"""This API is used to restart Kibana.
+        r"""Restart Kibana
 
         :param request: Request instance for RestartKibana.
         :type request: :class:`tencentcloud.es.v20180416.models.RestartKibanaRequest`
@@ -441,7 +441,7 @@ class EsClient(AbstractClient):
 
 
     def RestartNodes(self, request):
-        r"""This API is used to restart cluster nodes.
+        r"""Used to restart cluster nodes.
 
         :param request: Request instance for RestartNodes.
         :type request: :class:`tencentcloud.es.v20180416.models.RestartNodesRequest`
@@ -464,7 +464,7 @@ class EsClient(AbstractClient):
 
 
     def UpdateDictionaries(self, request):
-        r"""This API is used to update ES cluster dictionaries.
+        r"""Update the ES cluster dictionary
 
         :param request: Request instance for UpdateDictionaries.
         :type request: :class:`tencentcloud.es.v20180416.models.UpdateDictionariesRequest`
@@ -487,7 +487,7 @@ class EsClient(AbstractClient):
 
 
     def UpdateIndex(self, request):
-        r"""This API is used to update indices.
+        r"""Updates an index
 
         :param request: Request instance for UpdateIndex.
         :type request: :class:`tencentcloud.es.v20180416.models.UpdateIndexRequest`
@@ -510,14 +510,14 @@ class EsClient(AbstractClient):
 
 
     def UpdateInstance(self, request):
-        r"""This API is used for operations such as modifying node specification, renaming an instance, modifying configuration, resetting password, and setting Kibana blocklist/allowlist. `InstanceId` is required, while `ForceRestart` is optional. Other parameters or parameter combinations and their meanings are as follows:
-        - InstanceName: renames an instance (only for instance identification)
-        - NodeInfoList: modifies node configuration (horizontally scaling nodes, vertically scaling nodes, adding primary nodes, adding cold nodes, etc.)
-        - EsConfig: modifies cluster configuration
-        - Password: changes the password of the default user "elastic"
-        - EsAcl: modifies the ACL
-        - CosBackUp: sets auto-backup to COS for a cluster
-        Only one of the parameters or parameter combinations above can be passed in at a time, while passing fewer or more ones will cause the request to fail.
+        r"""Perform operations on the cluster, such as node specification change, instance name modification, configuration modification, password resetting, and Kibana blocklist/allowlist addition. InstanceId is a required parameter, while ForceRestart is optional. The remaining parameter combinations and their meanings are as follows:
+        - InstanceName: Modify the instance name (only used to identify the instance)
+        -NodeInfoList: Modify node configuration (horizontally scale nodes, vertically scale nodes, add primary nodes, add cold nodes, etc.)
+        -EsConfig: modify cluster configuration
+        -Password: Modify the password of the default user elastic
+        -EsAcl: Modify an ACL
+        -CosBackUp: Set cluster COS auto backup information
+        Only one of the above parameters can be passed. Passing more or fewer will cause request failure.
 
         :param request: Request instance for UpdateInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.UpdateInstanceRequest`
@@ -540,7 +540,7 @@ class EsClient(AbstractClient):
 
 
     def UpdatePlugins(self, request):
-        r"""This API is used to change the list of plugins.
+        r"""Update the plug-in list
 
         :param request: Request instance for UpdatePlugins.
         :type request: :class:`tencentcloud.es.v20180416.models.UpdatePluginsRequest`
@@ -563,7 +563,7 @@ class EsClient(AbstractClient):
 
 
     def UpdateRequestTargetNodeTypes(self, request):
-        r"""This API is used to update the node types used to receive client requests.
+        r"""This API is used to update the node type that receives client requests.
 
         :param request: Request instance for UpdateRequestTargetNodeTypes.
         :type request: :class:`tencentcloud.es.v20180416.models.UpdateRequestTargetNodeTypesRequest`
@@ -586,7 +586,7 @@ class EsClient(AbstractClient):
 
 
     def UpgradeInstance(self, request):
-        r"""This API is used to upgrade ES cluster version
+        r"""Upgrades the edition of an ES cluster
 
         :param request: Request instance for UpgradeInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.UpgradeInstanceRequest`
@@ -609,7 +609,7 @@ class EsClient(AbstractClient):
 
 
     def UpgradeLicense(self, request):
-        r"""This API is used to upgrade ES X-Pack.
+        r"""Upgrade ES commercial features
 
         :param request: Request instance for UpgradeLicense.
         :type request: :class:`tencentcloud.es.v20180416.models.UpgradeLicenseRequest`

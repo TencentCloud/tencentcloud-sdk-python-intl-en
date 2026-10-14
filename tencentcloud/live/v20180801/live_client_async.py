@@ -1092,26 +1092,6 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeLiveForbidStreamList(
-            self,
-            request: models.DescribeLiveForbidStreamListRequest,
-            opts: Dict = None,
-    ) -> models.DescribeLiveForbidStreamListResponse:
-        """
-        This API is used to get the list of disabled streams.
-
-        Note: this API is used for query only and should not be relied too much upon in important business scenarios.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeLiveForbidStreamList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeLiveForbidStreamListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeLivePlayAuthKey(
             self,
             request: models.DescribeLivePlayAuthKeyRequest,
@@ -1579,6 +1559,24 @@ class LiveClient(AbstractClient):
         kwargs["action"] = "DescribeLiveWatermarks"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeLiveWatermarksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeOriginWhiteIpList(
+            self,
+            request: models.DescribeOriginWhiteIpListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeOriginWhiteIpListResponse:
+        """
+        This API is used to obtain the pull stream IP whitelist list of the origin server.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeOriginWhiteIpList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeOriginWhiteIpListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

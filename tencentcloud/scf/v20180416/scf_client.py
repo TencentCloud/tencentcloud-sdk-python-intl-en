@@ -80,7 +80,7 @@ class ScfClient(AbstractClient):
 
 
     def CreateNamespace(self, request):
-        r"""This API is used to create a namespace based on the input parameters.
+        r"""This API is used to create a namespace based on the passed parameters.
 
         :param request: Request instance for CreateNamespace.
         :type request: :class:`tencentcloud.scf.v20180416.models.CreateNamespaceRequest`
@@ -103,7 +103,7 @@ class ScfClient(AbstractClient):
 
 
     def CreateTrigger(self, request):
-        r"""This API is used to create a trigger based on the input parameters.
+        r"""This API is used to set up alarms for the new trigger mode based on parameters.
 
         :param request: Request instance for CreateTrigger.
         :type request: :class:`tencentcloud.scf.v20180416.models.CreateTriggerRequest`
@@ -264,7 +264,7 @@ class ScfClient(AbstractClient):
 
 
     def DeleteTrigger(self, request):
-        r"""This API is used to delete an existing trigger based on the input parameters.
+        r"""This API is used to delete existing trigger modes based on parameters.
 
         :param request: Request instance for DeleteTrigger.
         :type request: :class:`tencentcloud.scf.v20180416.models.DeleteTriggerRequest`
@@ -402,7 +402,7 @@ class ScfClient(AbstractClient):
 
 
     def GetFunctionLogs(self, request):
-        r"""This API returns function running logs according to the specified conditions. Note that this API has been disused. You can use [GetRequestStatus](https://intl.cloud.tencent.com/document/product/583/65348?from_cn_redirect=1) instead. See also [Retrieving Logs](https://intl.cloud.tencent.com/document/product/583/52637?from_cn_redirect=1).
+        r"""This API returns function running logs based on the specified log query conditions. This API is offline. To query the returned information of function request running, please use [GetRequestStatus](https://www.tencentcloud.com/document/product/583/65348?from_cn_redirect=1). To query function running logs, see [Log Search Guide](https://www.tencentcloud.com/document/product/583/52637?from_cn_redirect=1).
 
         :param request: Request instance for GetFunctionLogs.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetFunctionLogsRequest`
@@ -931,7 +931,7 @@ class ScfClient(AbstractClient):
 
 
     def UpdateFunctionConfiguration(self, request):
-        r"""This API is used to update the function configuration based on the input parameters.
+        r"""This API is used to update function configurations based on input parameters.
 
         :param request: Request instance for UpdateFunctionConfiguration.
         :type request: :class:`tencentcloud.scf.v20180416.models.UpdateFunctionConfigurationRequest`

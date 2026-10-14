@@ -210,23 +210,23 @@ class AIDubbingTaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: <p>AI Dubbing template id.</p>
+        :param _Definition: <p>AI dubbing template id.</p>
         :type Definition: int
         :param _RawParameter: <p>Custom AI dubbing parameter. It takes effect when Definition is set to 0. This parameter is used in highly customized scenarios. We recommend that you use Definition to specify dubbing parameters.</p>
         :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawAIDubbingParameter`
-        :param _OverrideParameter: <p>AI Dubbing custom parameters. Valid when Definition is not filled with 0. When some dubbing parameters in this structure are filled in, the filled parameters will be used to override the parameters in the AI Dubbing template. This parameter is used for highly customized scenarios. We recommend you use only Definition to specify dubbing parameters.</p>
+        :param _OverrideParameter: <p>Custom parameters for AI dubbing. Valid when Definition is not 0. If you fill in some dubbing parameters in this structure, the filled parameters will be used to override the parameters in the AI dubbing template. This parameter is used for highly customized scenarios. We recommend you use only Definition to specify dubbing parameters.</p>
         :type OverrideParameter: :class:`tencentcloud.mps.v20190612.models.OverrideAIDubbingParameter`
-        :param _OutputStorage: <p>Target storage for the file. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
+        :param _OutputStorage: <p>Target storage for the file. If not specified, it inherits the upper-level OutputStorage value.</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _SrcSubtitleInfo: <p>External source subtitle file information.</p>
         :type SrcSubtitleInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
-        :param _DstSubtitleInfos: <p>External subtitle file information, translated subtitles.</p>
+        :param _DstSubtitleInfos: <p>External subtitle file info, translated subtitles.</p>
         :type DstSubtitleInfos: list of DstSubtitleInput
         :param _OutputObjectPath: <p>Output path of the file, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href="https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1">File Name Variable Description</a>.<br>Relative path example:</p><li>File name_{variable name}.{format}</li><li>File name.{format}</li>Absolute path example:<li>/custom path/file name_{variable name}.{format}</li><p><strong>Note</strong>: The <code>BatchProcessMedia</code> API is currently not supported.</p>
         :type OutputObjectPath: str
-        :param _ExtendedParameter: <p>Additional parameters for AI Dubbing, serialized json string.</p>
+        :param _ExtendedParameter: <p>AI dubbing extension parameter, serialized json string.</p>
         :type ExtendedParameter: str
-        :param _DramaId: <p>ID of the associated drama series.<br>Note: This value takes effect when dubbing mode is intelligent dubbing by role.</p>
+        :param _DramaId: <p>Associated drama series ID.<br>Note: This value takes effect when the dubbing mode is intelligent dubbing by role.</p>
         :type DramaId: str
         """
         self._Definition = None
@@ -241,7 +241,7 @@ class AIDubbingTaskInput(AbstractModel):
 
     @property
     def Definition(self):
-        r"""<p>AI Dubbing template id.</p>
+        r"""<p>AI dubbing template id.</p>
         :rtype: int
         """
         return self._Definition
@@ -263,7 +263,7 @@ class AIDubbingTaskInput(AbstractModel):
 
     @property
     def OverrideParameter(self):
-        r"""<p>AI Dubbing custom parameters. Valid when Definition is not filled with 0. When some dubbing parameters in this structure are filled in, the filled parameters will be used to override the parameters in the AI Dubbing template. This parameter is used for highly customized scenarios. We recommend you use only Definition to specify dubbing parameters.</p>
+        r"""<p>Custom parameters for AI dubbing. Valid when Definition is not 0. If you fill in some dubbing parameters in this structure, the filled parameters will be used to override the parameters in the AI dubbing template. This parameter is used for highly customized scenarios. We recommend you use only Definition to specify dubbing parameters.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.OverrideAIDubbingParameter`
         """
         return self._OverrideParameter
@@ -274,7 +274,7 @@ class AIDubbingTaskInput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""<p>Target storage for the file. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
+        r"""<p>Target storage for the file. If not specified, it inherits the upper-level OutputStorage value.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -296,7 +296,7 @@ class AIDubbingTaskInput(AbstractModel):
 
     @property
     def DstSubtitleInfos(self):
-        r"""<p>External subtitle file information, translated subtitles.</p>
+        r"""<p>External subtitle file info, translated subtitles.</p>
         :rtype: list of DstSubtitleInput
         """
         return self._DstSubtitleInfos
@@ -318,7 +318,7 @@ class AIDubbingTaskInput(AbstractModel):
 
     @property
     def ExtendedParameter(self):
-        r"""<p>Additional parameters for AI Dubbing, serialized json string.</p>
+        r"""<p>AI dubbing extension parameter, serialized json string.</p>
         :rtype: str
         """
         return self._ExtendedParameter
@@ -329,7 +329,7 @@ class AIDubbingTaskInput(AbstractModel):
 
     @property
     def DramaId(self):
-        r"""<p>ID of the associated drama series.<br>Note: This value takes effect when dubbing mode is intelligent dubbing by role.</p>
+        r"""<p>Associated drama series ID.<br>Note: This value takes effect when the dubbing mode is intelligent dubbing by role.</p>
         :rtype: str
         """
         return self._DramaId
@@ -362,6 +362,416 @@ class AIDubbingTaskInput(AbstractModel):
         self._OutputObjectPath = params.get("OutputObjectPath")
         self._ExtendedParameter = params.get("ExtendedParameter")
         self._DramaId = params.get("DramaId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIDubbingTaskOutput(AbstractModel):
+    r"""AI dubbing result information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OriginSubtitlePath: <p>Path of subtitle file extracted from video.</p>
+        :type OriginSubtitlePath: str
+        :param _TranslateSubtitlePath: <p>Path of a subtitle translation file extracted from a video.</p>
+        :type TranslateSubtitlePath: str
+        :param _VoiceClonedVideo: <p>File URL of the video after voice type cloning</p>
+        :type VoiceClonedVideo: str
+        :param _VoiceClonedMarkFile: <p>File address of the voice type clone annotation</p>
+        :type VoiceClonedMarkFile: str
+        :param _VideoPath: <p>Video output path.</p>
+        :type VideoPath: str
+        :param _OriginSubtitleFileId: <p>FileId of the subtitle file extracted from video.</p>
+        :type OriginSubtitleFileId: str
+        :param _TranslateSubtitleFileId: <p>FileId of a subtitle translation file extracted from a video.</p>
+        :type TranslateSubtitleFileId: str
+        :param _SpeakerPath: <p>Tag file path.</p>
+        :type SpeakerPath: str
+        :param _SpeakerFileId: <p>Fileid of the tag file.</p>
+        :type SpeakerFileId: str
+        :param _EraseVideoFileId: <p>FileId of the video output after removal.</p>
+        :type EraseVideoFileId: str
+        :param _EraseVideoPath: <p>Erase video output path.</p>
+        :type EraseVideoPath: str
+        :param _DstAudioPath: <p>Dubbed audio file path of the translation.</p>
+        :type DstAudioPath: str
+        :param _DstAudioFileId: <p>FileId of the audio file for the translated dubbing.</p>
+        :type DstAudioFileId: str
+        :param _DubbingEditInfoUrl: <p>Voice cloning editing information</p><p>Editing information for secondary modifications of voice cloning</p>
+        :type DubbingEditInfoUrl: str
+        :param _SubtitlePos: <p>Subtitle position after removal. <strong>Note</strong>: only applicable to subtitle extraction when return of subtitle position is enabled.</p>
+        :type SubtitlePos: :class:`tencentcloud.mps.v20190612.models.SubtitlePosition`
+        :param _OutputStorage: <p>Storage location of the output file of the AI dubbing task.</p>
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self._OriginSubtitlePath = None
+        self._TranslateSubtitlePath = None
+        self._VoiceClonedVideo = None
+        self._VoiceClonedMarkFile = None
+        self._VideoPath = None
+        self._OriginSubtitleFileId = None
+        self._TranslateSubtitleFileId = None
+        self._SpeakerPath = None
+        self._SpeakerFileId = None
+        self._EraseVideoFileId = None
+        self._EraseVideoPath = None
+        self._DstAudioPath = None
+        self._DstAudioFileId = None
+        self._DubbingEditInfoUrl = None
+        self._SubtitlePos = None
+        self._OutputStorage = None
+
+    @property
+    def OriginSubtitlePath(self):
+        r"""<p>Path of subtitle file extracted from video.</p>
+        :rtype: str
+        """
+        return self._OriginSubtitlePath
+
+    @OriginSubtitlePath.setter
+    def OriginSubtitlePath(self, OriginSubtitlePath):
+        self._OriginSubtitlePath = OriginSubtitlePath
+
+    @property
+    def TranslateSubtitlePath(self):
+        r"""<p>Path of a subtitle translation file extracted from a video.</p>
+        :rtype: str
+        """
+        return self._TranslateSubtitlePath
+
+    @TranslateSubtitlePath.setter
+    def TranslateSubtitlePath(self, TranslateSubtitlePath):
+        self._TranslateSubtitlePath = TranslateSubtitlePath
+
+    @property
+    def VoiceClonedVideo(self):
+        r"""<p>File URL of the video after voice type cloning</p>
+        :rtype: str
+        """
+        return self._VoiceClonedVideo
+
+    @VoiceClonedVideo.setter
+    def VoiceClonedVideo(self, VoiceClonedVideo):
+        self._VoiceClonedVideo = VoiceClonedVideo
+
+    @property
+    def VoiceClonedMarkFile(self):
+        r"""<p>File address of the voice type clone annotation</p>
+        :rtype: str
+        """
+        return self._VoiceClonedMarkFile
+
+    @VoiceClonedMarkFile.setter
+    def VoiceClonedMarkFile(self, VoiceClonedMarkFile):
+        self._VoiceClonedMarkFile = VoiceClonedMarkFile
+
+    @property
+    def VideoPath(self):
+        r"""<p>Video output path.</p>
+        :rtype: str
+        """
+        return self._VideoPath
+
+    @VideoPath.setter
+    def VideoPath(self, VideoPath):
+        self._VideoPath = VideoPath
+
+    @property
+    def OriginSubtitleFileId(self):
+        r"""<p>FileId of the subtitle file extracted from video.</p>
+        :rtype: str
+        """
+        return self._OriginSubtitleFileId
+
+    @OriginSubtitleFileId.setter
+    def OriginSubtitleFileId(self, OriginSubtitleFileId):
+        self._OriginSubtitleFileId = OriginSubtitleFileId
+
+    @property
+    def TranslateSubtitleFileId(self):
+        r"""<p>FileId of a subtitle translation file extracted from a video.</p>
+        :rtype: str
+        """
+        return self._TranslateSubtitleFileId
+
+    @TranslateSubtitleFileId.setter
+    def TranslateSubtitleFileId(self, TranslateSubtitleFileId):
+        self._TranslateSubtitleFileId = TranslateSubtitleFileId
+
+    @property
+    def SpeakerPath(self):
+        r"""<p>Tag file path.</p>
+        :rtype: str
+        """
+        return self._SpeakerPath
+
+    @SpeakerPath.setter
+    def SpeakerPath(self, SpeakerPath):
+        self._SpeakerPath = SpeakerPath
+
+    @property
+    def SpeakerFileId(self):
+        r"""<p>Fileid of the tag file.</p>
+        :rtype: str
+        """
+        return self._SpeakerFileId
+
+    @SpeakerFileId.setter
+    def SpeakerFileId(self, SpeakerFileId):
+        self._SpeakerFileId = SpeakerFileId
+
+    @property
+    def EraseVideoFileId(self):
+        r"""<p>FileId of the video output after removal.</p>
+        :rtype: str
+        """
+        return self._EraseVideoFileId
+
+    @EraseVideoFileId.setter
+    def EraseVideoFileId(self, EraseVideoFileId):
+        self._EraseVideoFileId = EraseVideoFileId
+
+    @property
+    def EraseVideoPath(self):
+        r"""<p>Erase video output path.</p>
+        :rtype: str
+        """
+        return self._EraseVideoPath
+
+    @EraseVideoPath.setter
+    def EraseVideoPath(self, EraseVideoPath):
+        self._EraseVideoPath = EraseVideoPath
+
+    @property
+    def DstAudioPath(self):
+        r"""<p>Dubbed audio file path of the translation.</p>
+        :rtype: str
+        """
+        return self._DstAudioPath
+
+    @DstAudioPath.setter
+    def DstAudioPath(self, DstAudioPath):
+        self._DstAudioPath = DstAudioPath
+
+    @property
+    def DstAudioFileId(self):
+        r"""<p>FileId of the audio file for the translated dubbing.</p>
+        :rtype: str
+        """
+        return self._DstAudioFileId
+
+    @DstAudioFileId.setter
+    def DstAudioFileId(self, DstAudioFileId):
+        self._DstAudioFileId = DstAudioFileId
+
+    @property
+    def DubbingEditInfoUrl(self):
+        r"""<p>Voice cloning editing information</p><p>Editing information for secondary modifications of voice cloning</p>
+        :rtype: str
+        """
+        return self._DubbingEditInfoUrl
+
+    @DubbingEditInfoUrl.setter
+    def DubbingEditInfoUrl(self, DubbingEditInfoUrl):
+        self._DubbingEditInfoUrl = DubbingEditInfoUrl
+
+    @property
+    def SubtitlePos(self):
+        r"""<p>Subtitle position after removal. <strong>Note</strong>: only applicable to subtitle extraction when return of subtitle position is enabled.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitlePosition`
+        """
+        return self._SubtitlePos
+
+    @SubtitlePos.setter
+    def SubtitlePos(self, SubtitlePos):
+        self._SubtitlePos = SubtitlePos
+
+    @property
+    def OutputStorage(self):
+        r"""<p>Storage location of the output file of the AI dubbing task.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+
+    def _deserialize(self, params):
+        self._OriginSubtitlePath = params.get("OriginSubtitlePath")
+        self._TranslateSubtitlePath = params.get("TranslateSubtitlePath")
+        self._VoiceClonedVideo = params.get("VoiceClonedVideo")
+        self._VoiceClonedMarkFile = params.get("VoiceClonedMarkFile")
+        self._VideoPath = params.get("VideoPath")
+        self._OriginSubtitleFileId = params.get("OriginSubtitleFileId")
+        self._TranslateSubtitleFileId = params.get("TranslateSubtitleFileId")
+        self._SpeakerPath = params.get("SpeakerPath")
+        self._SpeakerFileId = params.get("SpeakerFileId")
+        self._EraseVideoFileId = params.get("EraseVideoFileId")
+        self._EraseVideoPath = params.get("EraseVideoPath")
+        self._DstAudioPath = params.get("DstAudioPath")
+        self._DstAudioFileId = params.get("DstAudioFileId")
+        self._DubbingEditInfoUrl = params.get("DubbingEditInfoUrl")
+        if params.get("SubtitlePos") is not None:
+            self._SubtitlePos = SubtitlePosition()
+            self._SubtitlePos._deserialize(params.get("SubtitlePos"))
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIDubbingTaskResult(AbstractModel):
+    r"""AI dubbing task result
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>Task status. Valid values are PROCESSING, SUCCESS, and FAIL.</p>
+        :type Status: str
+        :param _ErrCodeExt: <p>Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of <a href="https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">MPS error codes</a>.</p>
+        :type ErrCodeExt: str
+        :param _Message: <p>Error message.</p>
+        :type Message: str
+        :param _Input: <p>AI dubbing task input.</p>
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AIDubbingTaskInput`
+        :param _Output: <p>AI dubbing task output.</p>
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AIDubbingTaskOutput`
+        :param _Progress: <p>Task progress.</p>
+        :type Progress: int
+        :param _BeginProcessTime: <p>Starting time of task execution, in ISO date and time format.</p>
+        :type BeginProcessTime: str
+        :param _FinishTime: <p>Completion time of task execution, in ISO date format.</p>
+        :type FinishTime: str
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._Progress = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
+
+    @property
+    def Status(self):
+        r"""<p>Task status. Valid values are PROCESSING, SUCCESS, and FAIL.</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        r"""<p>Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of <a href="https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">MPS error codes</a>.</p>
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Message(self):
+        r"""<p>Error message.</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        r"""<p>AI dubbing task input.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AIDubbingTaskInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""<p>AI dubbing task output.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AIDubbingTaskOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def Progress(self):
+        r"""<p>Task progress.</p>
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def BeginProcessTime(self):
+        r"""<p>Starting time of task execution, in ISO date and time format.</p>
+        :rtype: str
+        """
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        r"""<p>Completion time of task execution, in ISO date format.</p>
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AIDubbingTaskInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AIDubbingTaskOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -946,38 +1356,40 @@ class ActivityPara(AbstractModel):
 
 
 class ActivityResItem(AbstractModel):
-    r"""Orchestration subtask output
+    r"""Output of the orchestration subtask
 
     """
 
     def __init__(self):
         r"""
-        :param _TranscodeTask: 
+        :param _TranscodeTask: <p>Transcoding task output</p>
         :type TranscodeTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskTranscodeResult`
-        :param _AnimatedGraphicTask: 
+        :param _AnimatedGraphicTask: <p>Output of rotating image tasks</p>
         :type AnimatedGraphicTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAnimatedGraphicResult`
-        :param _SnapshotByTimeOffsetTask: 
+        :param _SnapshotByTimeOffsetTask: <p>Time point screenshot task output</p>
         :type SnapshotByTimeOffsetTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSnapshotByTimeOffsetResult`
-        :param _SampleSnapshotTask: 
+        :param _SampleSnapshotTask: <p>Output of sampling screenshot task</p>
         :type SampleSnapshotTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`
-        :param _ImageSpriteTask: 
+        :param _ImageSpriteTask: <p>Image sprite output</p>
         :type ImageSpriteTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskImageSpriteResult`
-        :param _AdaptiveDynamicStreamingTask: 
+        :param _AdaptiveDynamicStreamingTask: <p>Adaptive bitrate streaming task output</p>
         :type AdaptiveDynamicStreamingTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAdaptiveDynamicStreamingResult`
-        :param _RecognitionTask: 
+        :param _RecognitionTask: <p>Identification task output</p>
         :type RecognitionTask: :class:`tencentcloud.mps.v20190612.models.ScheduleRecognitionTaskResult`
-        :param _ReviewTask: 
+        :param _ReviewTask: <p>Review task output</p>
         :type ReviewTask: :class:`tencentcloud.mps.v20190612.models.ScheduleReviewTaskResult`
-        :param _AnalysisTask: 
+        :param _AnalysisTask: <p>Analysis task output</p>
         :type AnalysisTask: :class:`tencentcloud.mps.v20190612.models.ScheduleAnalysisTaskResult`
-        :param _QualityControlTask: 
+        :param _QualityControlTask: <p>Media quality inspection task output</p>
         :type QualityControlTask: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
-        :param _ExecRuleTask: 
+        :param _ExecRuleTask: <p>Conditional judgment task output</p>
         :type ExecRuleTask: :class:`tencentcloud.mps.v20190612.models.ScheduleExecRuleTaskResult`
-        :param _SmartSubtitlesTask: 
+        :param _SmartSubtitlesTask: <p>Smart subtitle task output</p>
         :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.ScheduleSmartSubtitleTaskResult`
-        :param _SmartEraseTask: 
+        :param _SmartEraseTask: <p>Output of the intelligent erasure task</p>
         :type SmartEraseTask: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskResult`
+        :param _AIDubbingTask: <p>AI dubbing task output.</p>
+        :type AIDubbingTask: :class:`tencentcloud.mps.v20190612.models.AIDubbingTaskResult`
         """
         self._TranscodeTask = None
         self._AnimatedGraphicTask = None
@@ -992,10 +1404,11 @@ class ActivityResItem(AbstractModel):
         self._ExecRuleTask = None
         self._SmartSubtitlesTask = None
         self._SmartEraseTask = None
+        self._AIDubbingTask = None
 
     @property
     def TranscodeTask(self):
-        r"""
+        r"""<p>Transcoding task output</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskTranscodeResult`
         """
         return self._TranscodeTask
@@ -1006,7 +1419,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def AnimatedGraphicTask(self):
-        r"""
+        r"""<p>Output of rotating image tasks</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAnimatedGraphicResult`
         """
         return self._AnimatedGraphicTask
@@ -1017,7 +1430,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def SnapshotByTimeOffsetTask(self):
-        r"""
+        r"""<p>Time point screenshot task output</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSnapshotByTimeOffsetResult`
         """
         return self._SnapshotByTimeOffsetTask
@@ -1028,7 +1441,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def SampleSnapshotTask(self):
-        r"""
+        r"""<p>Output of sampling screenshot task</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`
         """
         return self._SampleSnapshotTask
@@ -1039,7 +1452,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def ImageSpriteTask(self):
-        r"""
+        r"""<p>Image sprite output</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskImageSpriteResult`
         """
         return self._ImageSpriteTask
@@ -1050,7 +1463,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def AdaptiveDynamicStreamingTask(self):
-        r"""
+        r"""<p>Adaptive bitrate streaming task output</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAdaptiveDynamicStreamingResult`
         """
         return self._AdaptiveDynamicStreamingTask
@@ -1061,7 +1474,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def RecognitionTask(self):
-        r"""
+        r"""<p>Identification task output</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleRecognitionTaskResult`
         """
         return self._RecognitionTask
@@ -1072,7 +1485,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def ReviewTask(self):
-        r"""
+        r"""<p>Review task output</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleReviewTaskResult`
         """
         return self._ReviewTask
@@ -1083,7 +1496,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def AnalysisTask(self):
-        r"""
+        r"""<p>Analysis task output</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleAnalysisTaskResult`
         """
         return self._AnalysisTask
@@ -1094,7 +1507,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def QualityControlTask(self):
-        r"""
+        r"""<p>Media quality inspection task output</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
         """
         return self._QualityControlTask
@@ -1105,7 +1518,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def ExecRuleTask(self):
-        r"""
+        r"""<p>Conditional judgment task output</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleExecRuleTaskResult`
         """
         return self._ExecRuleTask
@@ -1116,7 +1529,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def SmartSubtitlesTask(self):
-        r"""
+        r"""<p>Smart subtitle task output</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleSmartSubtitleTaskResult`
         """
         return self._SmartSubtitlesTask
@@ -1127,7 +1540,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def SmartEraseTask(self):
-        r"""
+        r"""<p>Output of the intelligent erasure task</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskResult`
         """
         return self._SmartEraseTask
@@ -1135,6 +1548,17 @@ class ActivityResItem(AbstractModel):
     @SmartEraseTask.setter
     def SmartEraseTask(self, SmartEraseTask):
         self._SmartEraseTask = SmartEraseTask
+
+    @property
+    def AIDubbingTask(self):
+        r"""<p>AI dubbing task output.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AIDubbingTaskResult`
+        """
+        return self._AIDubbingTask
+
+    @AIDubbingTask.setter
+    def AIDubbingTask(self, AIDubbingTask):
+        self._AIDubbingTask = AIDubbingTask
 
 
     def _deserialize(self, params):
@@ -1177,6 +1601,9 @@ class ActivityResItem(AbstractModel):
         if params.get("SmartEraseTask") is not None:
             self._SmartEraseTask = SmartEraseTaskResult()
             self._SmartEraseTask._deserialize(params.get("SmartEraseTask"))
+        if params.get("AIDubbingTask") is not None:
+            self._AIDubbingTask = AIDubbingTaskResult()
+            self._AIDubbingTask._deserialize(params.get("AIDubbingTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1188,27 +1615,15 @@ class ActivityResItem(AbstractModel):
 
 
 class ActivityResult(AbstractModel):
-    r"""Orchestration task output
+    r"""Output of the orchestration task
 
     """
 
     def __init__(self):
         r"""
-        :param _ActivityType: Atomic task type.
-<li>Transcode: transcoding.</li>
-<li>SampleSnapshot: sampled screenshot taking.</li>
-<li>AnimatedGraphics: Animated image.</li>
-<li>SnapshotByTimeOffset: time point screenshot taking.</li>
-<li>ImageSprites: sprite sheet.</li>
-<li>AdaptiveDynamicStreaming: adaptive bitrate streaming.</li>
-<li>AiContentReview: content moderation.</li>
-<li>AIRecognition: intelligent recognition.</li>
-<li>AIAnalysis: AI analysis.</li>
-<li>AiQualityControl: media quality inspection</li>
-<Li>SmartSubtitles: smart subtitle</li>
-<li>SmartErase: intelligent removal.</li>
+        :param _ActivityType: <p>Atomic task type.</p><li>Transcode: Transcoding.</li><li>SampleSnapshot: Sampled screenshot.</li><li>AnimatedGraphics: Animated image.</li><li>SnapshotByTimeOffset: Time point screenshot.</li><li>ImageSprites: Sprite sheet.</li><li>AdaptiveDynamicStreaming: Adaptive bitrate stream.</li><li>AiContentReview: Content review.</li><li>AIRecognition: Intelligent recognition.</li><li>AIAnalysis: Intelligent analysis.</li><li>AiQualityControl: Media quality inspection.</li><li>SmartSubtitles: Smart subtitle.</li><li>SmartErase: Smart erasing.</li><li>Dubbing: AI dubbing.</li>
         :type ActivityType: str
-        :param _ActivityResItem: Atomic task output.
+        :param _ActivityResItem: <p>Output of the atomic task.</p>
         :type ActivityResItem: :class:`tencentcloud.mps.v20190612.models.ActivityResItem`
         """
         self._ActivityType = None
@@ -1216,19 +1631,7 @@ class ActivityResult(AbstractModel):
 
     @property
     def ActivityType(self):
-        r"""Atomic task type.
-<li>Transcode: transcoding.</li>
-<li>SampleSnapshot: sampled screenshot taking.</li>
-<li>AnimatedGraphics: Animated image.</li>
-<li>SnapshotByTimeOffset: time point screenshot taking.</li>
-<li>ImageSprites: sprite sheet.</li>
-<li>AdaptiveDynamicStreaming: adaptive bitrate streaming.</li>
-<li>AiContentReview: content moderation.</li>
-<li>AIRecognition: intelligent recognition.</li>
-<li>AIAnalysis: AI analysis.</li>
-<li>AiQualityControl: media quality inspection</li>
-<Li>SmartSubtitles: smart subtitle</li>
-<li>SmartErase: intelligent removal.</li>
+        r"""<p>Atomic task type.</p><li>Transcode: Transcoding.</li><li>SampleSnapshot: Sampled screenshot.</li><li>AnimatedGraphics: Animated image.</li><li>SnapshotByTimeOffset: Time point screenshot.</li><li>ImageSprites: Sprite sheet.</li><li>AdaptiveDynamicStreaming: Adaptive bitrate stream.</li><li>AiContentReview: Content review.</li><li>AIRecognition: Intelligent recognition.</li><li>AIAnalysis: Intelligent analysis.</li><li>AiQualityControl: Media quality inspection.</li><li>SmartSubtitles: Smart subtitle.</li><li>SmartErase: Smart erasing.</li><li>Dubbing: AI dubbing.</li>
         :rtype: str
         """
         return self._ActivityType
@@ -1239,7 +1642,7 @@ class ActivityResult(AbstractModel):
 
     @property
     def ActivityResItem(self):
-        r"""Atomic task output.
+        r"""<p>Output of the atomic task.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.ActivityResItem`
         """
         return self._ActivityResItem
@@ -1265,15 +1668,15 @@ class ActivityResult(AbstractModel):
 
 
 class AdaptiveDynamicStreamingInfoItem(AbstractModel):
-    r"""Adaptive Bitrate Streaming information
+    r"""Adaptive bitrate streaming information
 
     """
 
     def __init__(self):
         r"""
-        :param _Definition: Adaptive bitrate streaming specification.
+        :param _Definition: Adaptive bitstreaming specification.
         :type Definition: int
-        :param _Package: Packaging format, which may be two kinds: HLS and MPEG-DASH.
+        :param _Package: Packaging format. Possible values: HLS and MPEG-DASH.
         :type Package: str
         :param _Path: Playback path.
         :type Path: str
@@ -1287,7 +1690,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def Definition(self):
-        r"""Adaptive bitrate streaming specification.
+        r"""Adaptive bitstreaming specification.
         :rtype: int
         """
         return self._Definition
@@ -1298,7 +1701,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def Package(self):
-        r"""Packaging format, which may be two kinds: HLS and MPEG-DASH.
+        r"""Packaging format. Possible values: HLS and MPEG-DASH.
         :rtype: str
         """
         return self._Package
@@ -1358,9 +1761,9 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :type Definition: int
         :param _WatermarkSet: <p>Watermark list. Up to 10 image or text watermarks are supported.</p>
         :type WatermarkSet: list of WatermarkInput
-        :param _BlindWatermark: 
+        :param _BlindWatermark: <p>Digital watermark parameter.</p>
         :type BlindWatermark: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkInput`
-        :param _OutputStorage: 
+        :param _OutputStorage: <p>Target storage for files after adaptive bitrate streaming. If this is not specified, the upper-level OutputStorage value is used.</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputObjectPath: <p>Output path for the manifest file after adaptive bitrate streaming, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href="https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1">Filename Variables</a>.<br>Relative path example:</p><li>Filename_{variable name}.{format}</li><li>Filename.{format}</li>Absolute path example:<li>/custom path/Filename_{variable name}.{format}</li>If this is not specified, the default relative path is {inputName}_adaptiveDynamicStreaming_{definition}.{format}.
         :type OutputObjectPath: str
@@ -1368,17 +1771,17 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :type SubStreamObjectName: str
         :param _SegmentObjectName: <p>Output path for segment files after adaptive bitrate streaming (HLS only), which can only be a relative path. If this is not specified, the default relative path is <code>{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}</code>.</p>
         :type SegmentObjectName: str
-        :param _AddOnSubtitles: 
+        :param _AddOnSubtitles: <p>External subtitle feature. Specifies the subtitle file to be inserted.</p>
         :type AddOnSubtitles: list of AddOnSubtitle
-        :param _DrmInfo: 
+        :param _DrmInfo: <p>Drm information.</p>
         :type DrmInfo: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
         :param _DefinitionType: <p>Adaptive bitrate streaming template type. Valid values:<br>Common: audio and video.<br>PureAudio: audio only.</p>
         :type DefinitionType: str
-        :param _SubtitleTemplate: 
+        :param _SubtitleTemplate: <p>Hard subtitle (burned-in subtitle) feature. Specifies the subtitle source, font size, location, and other subtitle parameters.</p>
         :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         :param _StdExtInfo: <p>Extended transcoding parameter field.</p>
         :type StdExtInfo: str
-        :param _KeyPTSList: 
+        :param _KeyPTSList: <p>Set the frame at the specified pts time as a key frame and segment it. Unit: milliseconds (a relative deviation of &lt;=1ms is allowed). When gop and segment duration are specified simultaneously, they will work together. Note that RawPts needs to be enabled, keep the frame rate following the source, and ensure the passed-in pts time has a corresponding frame in the source.</p>
         :type KeyPTSList: list of int
         :param _AddOnAudios: <p>External audio feature. Specifies the audio files to be inserted.</p>
         :type AddOnAudios: list of AddOnAudio
@@ -1425,7 +1828,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 
     @property
     def BlindWatermark(self):
-        r"""
+        r"""<p>Digital watermark parameter.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkInput`
         """
         return self._BlindWatermark
@@ -1436,7 +1839,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""
+        r"""<p>Target storage for files after adaptive bitrate streaming. If this is not specified, the upper-level OutputStorage value is used.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -1480,7 +1883,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 
     @property
     def AddOnSubtitles(self):
-        r"""
+        r"""<p>External subtitle feature. Specifies the subtitle file to be inserted.</p>
         :rtype: list of AddOnSubtitle
         """
         return self._AddOnSubtitles
@@ -1491,7 +1894,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 
     @property
     def DrmInfo(self):
-        r"""
+        r"""<p>Drm information.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
         """
         return self._DrmInfo
@@ -1513,7 +1916,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 
     @property
     def SubtitleTemplate(self):
-        r"""
+        r"""<p>Hard subtitle (burned-in subtitle) feature. Specifies the subtitle source, font size, location, and other subtitle parameters.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         """
         return self._SubtitleTemplate
@@ -1535,7 +1938,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 
     @property
     def KeyPTSList(self):
-        r"""
+        r"""<p>Set the frame at the specified pts time as a key frame and segment it. Unit: milliseconds (a relative deviation of &lt;=1ms is allowed). When gop and segment duration are specified simultaneously, they will work together. Note that RawPts needs to be enabled, keep the frame rate following the source, and ensure the passed-in pts time has a corresponding frame in the source.</p>
         :rtype: list of int
         """
         return self._KeyPTSList
@@ -1874,13 +2277,14 @@ class AdaptiveStreamTemplate(AbstractModel):
         :type Video: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
         :param _RemoveAudio: Whether to remove the audio stream. Value range:
 <li>`0`: no,</li>
-<li>1: yes.</li>
+<li>1: Yes.</li>
         :type RemoveAudio: int
         :param _RemoveVideo: Whether to remove the video stream. Value range:
 <li>`0`: no,</li>
-<li>1: yes.</li>
+<li>1: Yes.</li>
         :type RemoveVideo: int
-        :param _AudioList: 
+        :param _AudioList: Audio parameter information list.
+Note: This parameter is used only when audio tracks are merged in self-adaptive transcoding. The maximum length of the parameter array is 64.
         :type AudioList: list of AudioTemplateInfo
         """
         self._Audio = None
@@ -1915,7 +2319,7 @@ class AdaptiveStreamTemplate(AbstractModel):
     def RemoveAudio(self):
         r"""Whether to remove the audio stream. Value range:
 <li>`0`: no,</li>
-<li>1: yes.</li>
+<li>1: Yes.</li>
         :rtype: int
         """
         return self._RemoveAudio
@@ -1928,7 +2332,7 @@ class AdaptiveStreamTemplate(AbstractModel):
     def RemoveVideo(self):
         r"""Whether to remove the video stream. Value range:
 <li>`0`: no,</li>
-<li>1: yes.</li>
+<li>1: Yes.</li>
         :rtype: int
         """
         return self._RemoveVideo
@@ -1939,7 +2343,8 @@ class AdaptiveStreamTemplate(AbstractModel):
 
     @property
     def AudioList(self):
-        r"""
+        r"""Audio parameter information list.
+Note: This parameter is used only when audio tracks are merged in self-adaptive transcoding. The maximum length of the parameter array is 64.
         :rtype: list of AudioTemplateInfo
         """
         return self._AudioList
@@ -2064,11 +2469,11 @@ class AddOnSubtitle(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 
+        :param _Type: <p>Insertion method. Valid values:</p><li>subtitle-stream: Inserts a subtitle track.</li><li>close-caption-708: Encodes CEA-708 subtitles into SEI frames.</li><li>close-caption-608: Encodes CEA-608 subtitles into SEI frames.</li>
         :type Type: str
-        :param _Subtitle: 
+        :param _Subtitle: <p>Subtitle file.</p>
         :type Subtitle: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
-        :param _SubtitleName: 
+        :param _SubtitleName: <p>Subtitle name.<br>Note: Only Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and brackets are supported. The length cannot exceed 64 characters.</p>
         :type SubtitleName: str
         :param _SubtitleLanguage: <p>Subtitle language, such as eng.</p>
         :type SubtitleLanguage: str
@@ -2086,7 +2491,7 @@ class AddOnSubtitle(AbstractModel):
 
     @property
     def Type(self):
-        r"""
+        r"""<p>Insertion method. Valid values:</p><li>subtitle-stream: Inserts a subtitle track.</li><li>close-caption-708: Encodes CEA-708 subtitles into SEI frames.</li><li>close-caption-608: Encodes CEA-608 subtitles into SEI frames.</li>
         :rtype: str
         """
         return self._Type
@@ -2097,7 +2502,7 @@ class AddOnSubtitle(AbstractModel):
 
     @property
     def Subtitle(self):
-        r"""
+        r"""<p>Subtitle file.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
         return self._Subtitle
@@ -2108,7 +2513,7 @@ class AddOnSubtitle(AbstractModel):
 
     @property
     def SubtitleName(self):
-        r"""
+        r"""<p>Subtitle name.<br>Note: Only Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and brackets are supported. The length cannot exceed 64 characters.</p>
         :rtype: str
         """
         return self._SubtitleName
@@ -2178,35 +2583,35 @@ class AdvancedSuperResolutionConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _Switch: Capability configuration switch. Valid values:
-<li>ON: enabled.</li>
-<li>OFF: disabled.</li>
+<li>ON: enabled;</li>
+<li>OFF: disabled</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: Type, available values:
-<li>standard: Common super-resolution</li>
-<li>super: Advanced super-resolution.
-<li>ultra: Advanced super-resolution ultra edition.</li>
+        :param _Type: Type. Valid values:
+<li>standard: common super resolution</li>
+<li>super: advanced super-resolution super version.</li>
+<li>ultra: Advanced super resolution ultra version.</li>
 Default value: standard.
         :type Type: str
         :param _Mode: Image output mode. The default value is percent.
-<li>aspect: Obtain a larger rectangle with specified width and height through super-resolution.</li>
+<li>aspect: obtain a larger rectangle with specified width and height through super-resolution.</li>
 <li>fixed: obtain images of fixed width and height through super-resolution, with forced scaling supported.</li>
-<li>percent: Super-resolution magnification factor, which can be a decimal.</li>
+<li>percent: magnification factor of super-resolution, which can be a decimal.</li>
         :type Mode: str
-        :param _Percent: Super-resolution multiplication rate, can be a decimal.
-Note: Used when Mode equals percent.
+        :param _Percent: Super resolution multiplication rate, which can be a decimal.
+Note: Used when Mode is equal to percent.
         :type Percent: float
-        :param _Width: Image width must not exceed 4096.
-Note: When Mode equals aspect or fixed, preferentially use this configuration.
+        :param _Width: Target image width. Cannot exceed 4096.
+Note: When Mode is equal to aspect or fixed, preferentially use this configuration.
         :type Width: int
-        :param _Height: Target image height must not exceed 4096.
-Note: When Mode equals aspect or fixed, preferentially use this configuration.
+        :param _Height: Target image height. Must not exceed 4096.
+Note: When Mode is equal to aspect or fixed, preferentially use this configuration.
         :type Height: int
-        :param _LongSide: The long side length of the target image must not exceed 4096.
-Note: This configuration is used when Mode equals aspect or fixed and the Width and Height fields are unconfigured.
+        :param _LongSide: Long side length of the target image. Must not exceed 4096.
+Note: This configuration is used when Mode is equal to aspect or fixed, and Width and Height fields are not configured.
         :type LongSide: int
-        :param _ShortSide: The short side length of the target image must not exceed 4096.
-Note: This configuration is used when Mode equals aspect or fixed and the Width and Height fields are unconfigured.
+        :param _ShortSide: Short side length of the target image. Must not exceed 4096.
+Note: This configuration is used when Mode is equal to aspect or fixed, and Width and Height fields are not configured.
         :type ShortSide: int
         """
         self._Switch = None
@@ -2221,8 +2626,8 @@ Note: This configuration is used when Mode equals aspect or fixed and the Width 
     @property
     def Switch(self):
         r"""Capability configuration switch. Valid values:
-<li>ON: enabled.</li>
-<li>OFF: disabled.</li>
+<li>ON: enabled;</li>
+<li>OFF: disabled</li>
 Default value: ON.
         :rtype: str
         """
@@ -2234,10 +2639,10 @@ Default value: ON.
 
     @property
     def Type(self):
-        r"""Type, available values:
-<li>standard: Common super-resolution</li>
-<li>super: Advanced super-resolution.
-<li>ultra: Advanced super-resolution ultra edition.</li>
+        r"""Type. Valid values:
+<li>standard: common super resolution</li>
+<li>super: advanced super-resolution super version.</li>
+<li>ultra: Advanced super resolution ultra version.</li>
 Default value: standard.
         :rtype: str
         """
@@ -2250,9 +2655,9 @@ Default value: standard.
     @property
     def Mode(self):
         r"""Image output mode. The default value is percent.
-<li>aspect: Obtain a larger rectangle with specified width and height through super-resolution.</li>
+<li>aspect: obtain a larger rectangle with specified width and height through super-resolution.</li>
 <li>fixed: obtain images of fixed width and height through super-resolution, with forced scaling supported.</li>
-<li>percent: Super-resolution magnification factor, which can be a decimal.</li>
+<li>percent: magnification factor of super-resolution, which can be a decimal.</li>
         :rtype: str
         """
         return self._Mode
@@ -2263,8 +2668,8 @@ Default value: standard.
 
     @property
     def Percent(self):
-        r"""Super-resolution multiplication rate, can be a decimal.
-Note: Used when Mode equals percent.
+        r"""Super resolution multiplication rate, which can be a decimal.
+Note: Used when Mode is equal to percent.
         :rtype: float
         """
         return self._Percent
@@ -2275,8 +2680,8 @@ Note: Used when Mode equals percent.
 
     @property
     def Width(self):
-        r"""Image width must not exceed 4096.
-Note: When Mode equals aspect or fixed, preferentially use this configuration.
+        r"""Target image width. Cannot exceed 4096.
+Note: When Mode is equal to aspect or fixed, preferentially use this configuration.
         :rtype: int
         """
         return self._Width
@@ -2287,8 +2692,8 @@ Note: When Mode equals aspect or fixed, preferentially use this configuration.
 
     @property
     def Height(self):
-        r"""Target image height must not exceed 4096.
-Note: When Mode equals aspect or fixed, preferentially use this configuration.
+        r"""Target image height. Must not exceed 4096.
+Note: When Mode is equal to aspect or fixed, preferentially use this configuration.
         :rtype: int
         """
         return self._Height
@@ -2299,8 +2704,8 @@ Note: When Mode equals aspect or fixed, preferentially use this configuration.
 
     @property
     def LongSide(self):
-        r"""The long side length of the target image must not exceed 4096.
-Note: This configuration is used when Mode equals aspect or fixed and the Width and Height fields are unconfigured.
+        r"""Long side length of the target image. Must not exceed 4096.
+Note: This configuration is used when Mode is equal to aspect or fixed, and Width and Height fields are not configured.
         :rtype: int
         """
         return self._LongSide
@@ -2311,8 +2716,8 @@ Note: This configuration is used when Mode equals aspect or fixed and the Width 
 
     @property
     def ShortSide(self):
-        r"""The short side length of the target image must not exceed 4096.
-Note: This configuration is used when Mode equals aspect or fixed and the Width and Height fields are unconfigured.
+        r"""Short side length of the target image. Must not exceed 4096.
+Note: This configuration is used when Mode is equal to aspect or fixed, and Width and Height fields are not configured.
         :rtype: int
         """
         return self._ShortSide
@@ -2348,50 +2753,40 @@ class AiAnalysisResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: Task type. Valid values:
-<li>Classification: intelligent classification.</li>
-<li>Cover: intelligent cover</li>
-<li>Tag: intelligent tagging.</li>
-<li>FrameTag: intelligent frame tagging.</li>
-<li>Highlight: Intelligent Highlights</li>
-<li>DeLogo: intelligent removal.</li>
-<li>Description: large model summarization.</li>
-<li>Dubbing: Intelligent Dubbing</li>
-<li>VideoRemake: Video deduplication</li>
-<li>VideoComprehension: video (audio) recognition.</li>
-<li>Cutout: Video matting</li>
-<li>Reel: intelligent video editing.</li>
+        :param _Type: <p>Task type. Valid values:</p><li>Classification: intelligent classification</li><li>Cover: intelligent cover</li><li>Tag: intelligent tag</li><li>FrameTag: intelligent frame tagging</li><li>Highlight: intelligent highlights</li><li>DeLogo: smart erasing</li><li>Description: LLM summarization</li><li>Dubbing: intelligent dubbing</li><li>VideoRemake: video deduplication</li><li>VideoComprehension: video (audio) understanding</li><li>Cutout: video matting</li><li>Reel: intelligent video creation</li>
         :type Type: str
-        :param _ClassificationTask: 
+        :param _ClassificationTask: <p>Query result of the video content analysis intelligent categorization task. Valid when the task type is Classification.</p>
         :type ClassificationTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationResult`
-        :param _CoverTask: 
+        :param _CoverTask: <p>Query result of the video content analysis Intelligent Cover Task. Valid when the task type is Cover.</p>
         :type CoverTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverResult`
-        :param _TagTask: 
+        :param _TagTask: <p>Query result of the video content analysis intelligent tag task. Valid when the task type is Tag.</p>
         :type TagTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagResult`
-        :param _FrameTagTask: 
+        :param _FrameTagTask: <p>Query result of the intelligent frame tagging task for video content analysis. Valid when the task type is FrameTag.</p>
         :type FrameTagTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagResult`
-        :param _HighlightTask: 
+        :param _HighlightTask: <p>Query result of the video content analysis highlight task. Valid when the task type is Highlight.</p>
         :type HighlightTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHighlightResult`
-        :param _DeLogoTask: 
+        :param _DeLogoTask: <p>Query result of the video content analysis smart erasing task. Valid when the task type is DeLogo.</p>
         :type DeLogoTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoResult`
-        :param _SegmentTask: 
+        :param _SegmentTask: <p>The query result of a splitting task for video analysis, which is valid when the task type is SegmentRecognition.</p>
         :type SegmentTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskSegmentResult`
-        :param _HeadTailTask: 
+        :param _HeadTailTask: <p>The query result of an opening and closing segments recognition task for video analysis, which is valid when the task type is HeadTailRecognition.</p>
         :type HeadTailTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHeadTailResult`
-        :param _DescriptionTask: 
+        :param _DescriptionTask: <p>The query result of a video content analysis summary task, valid when the task type is Description.</p>
         :type DescriptionTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDescriptionResult`
-        :param _HorizontalToVerticalTask: 
+        :param _HorizontalToVerticalTask: <p>The query result of a landscape-to-portrait task for video content analysis, which is valid when the task type is HorizontalToVertical.</p>
         :type HorizontalToVerticalTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalResult`
-        :param _DubbingTask: 
+        :param _DubbingTask: <p>Query result of the video content analysis dubbing task. Valid when the task type is Dubbing.</p>
         :type DubbingTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingResult`
-        :param _VideoRemakeTask: 
+        :param _VideoRemakeTask: <p>The query result of a deduplication task for video content analysis, which is valid when the task type is VideoRemake.</p>
         :type VideoRemakeTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoRemakeResult`
-        :param _VideoComprehensionTask: 
+        :param _VideoComprehensionTask: <p>Query result of the video (audio) understanding task. This parameter is valid when the task type is VideoComprehension.</p>
         :type VideoComprehensionTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoComprehensionResult`
-        :param _CutoutTask: 
+        :param _CutoutTask: <p>Query result of the video content analysis intelligent image masking task. Valid when the task type is Cutout.</p>
         :type CutoutTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCutoutResult`
-        :param _ReelTask: 
+        :param _ReelTask: <p>Query result of the video content analysis AI narration and video re-creation task. Valid when the task type is Reel.</p>
         :type ReelTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelResult`
+        :param _GenericTask: <p>Query result of the intelligent analysis common task. Valid when the task type is Generic.</p>
+        :type GenericTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskGenericResult`
         """
         self._Type = None
         self._ClassificationTask = None
@@ -2409,22 +2804,11 @@ class AiAnalysisResult(AbstractModel):
         self._VideoComprehensionTask = None
         self._CutoutTask = None
         self._ReelTask = None
+        self._GenericTask = None
 
     @property
     def Type(self):
-        r"""Task type. Valid values:
-<li>Classification: intelligent classification.</li>
-<li>Cover: intelligent cover</li>
-<li>Tag: intelligent tagging.</li>
-<li>FrameTag: intelligent frame tagging.</li>
-<li>Highlight: Intelligent Highlights</li>
-<li>DeLogo: intelligent removal.</li>
-<li>Description: large model summarization.</li>
-<li>Dubbing: Intelligent Dubbing</li>
-<li>VideoRemake: Video deduplication</li>
-<li>VideoComprehension: video (audio) recognition.</li>
-<li>Cutout: Video matting</li>
-<li>Reel: intelligent video editing.</li>
+        r"""<p>Task type. Valid values:</p><li>Classification: intelligent classification</li><li>Cover: intelligent cover</li><li>Tag: intelligent tag</li><li>FrameTag: intelligent frame tagging</li><li>Highlight: intelligent highlights</li><li>DeLogo: smart erasing</li><li>Description: LLM summarization</li><li>Dubbing: intelligent dubbing</li><li>VideoRemake: video deduplication</li><li>VideoComprehension: video (audio) understanding</li><li>Cutout: video matting</li><li>Reel: intelligent video creation</li>
         :rtype: str
         """
         return self._Type
@@ -2435,7 +2819,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def ClassificationTask(self):
-        r"""
+        r"""<p>Query result of the video content analysis intelligent categorization task. Valid when the task type is Classification.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationResult`
         """
         return self._ClassificationTask
@@ -2446,7 +2830,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def CoverTask(self):
-        r"""
+        r"""<p>Query result of the video content analysis Intelligent Cover Task. Valid when the task type is Cover.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverResult`
         """
         return self._CoverTask
@@ -2457,7 +2841,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def TagTask(self):
-        r"""
+        r"""<p>Query result of the video content analysis intelligent tag task. Valid when the task type is Tag.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagResult`
         """
         return self._TagTask
@@ -2468,7 +2852,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def FrameTagTask(self):
-        r"""
+        r"""<p>Query result of the intelligent frame tagging task for video content analysis. Valid when the task type is FrameTag.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagResult`
         """
         return self._FrameTagTask
@@ -2479,7 +2863,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def HighlightTask(self):
-        r"""
+        r"""<p>Query result of the video content analysis highlight task. Valid when the task type is Highlight.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHighlightResult`
         """
         return self._HighlightTask
@@ -2490,7 +2874,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def DeLogoTask(self):
-        r"""
+        r"""<p>Query result of the video content analysis smart erasing task. Valid when the task type is DeLogo.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoResult`
         """
         return self._DeLogoTask
@@ -2501,7 +2885,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def SegmentTask(self):
-        r"""
+        r"""<p>The query result of a splitting task for video analysis, which is valid when the task type is SegmentRecognition.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskSegmentResult`
         """
         return self._SegmentTask
@@ -2512,7 +2896,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def HeadTailTask(self):
-        r"""
+        r"""<p>The query result of an opening and closing segments recognition task for video analysis, which is valid when the task type is HeadTailRecognition.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHeadTailResult`
         """
         return self._HeadTailTask
@@ -2523,7 +2907,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def DescriptionTask(self):
-        r"""
+        r"""<p>The query result of a video content analysis summary task, valid when the task type is Description.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDescriptionResult`
         """
         return self._DescriptionTask
@@ -2534,7 +2918,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def HorizontalToVerticalTask(self):
-        r"""
+        r"""<p>The query result of a landscape-to-portrait task for video content analysis, which is valid when the task type is HorizontalToVertical.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalResult`
         """
         return self._HorizontalToVerticalTask
@@ -2545,7 +2929,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def DubbingTask(self):
-        r"""
+        r"""<p>Query result of the video content analysis dubbing task. Valid when the task type is Dubbing.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingResult`
         """
         return self._DubbingTask
@@ -2556,7 +2940,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def VideoRemakeTask(self):
-        r"""
+        r"""<p>The query result of a deduplication task for video content analysis, which is valid when the task type is VideoRemake.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoRemakeResult`
         """
         return self._VideoRemakeTask
@@ -2567,7 +2951,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def VideoComprehensionTask(self):
-        r"""
+        r"""<p>Query result of the video (audio) understanding task. This parameter is valid when the task type is VideoComprehension.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoComprehensionResult`
         """
         return self._VideoComprehensionTask
@@ -2578,7 +2962,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def CutoutTask(self):
-        r"""
+        r"""<p>Query result of the video content analysis intelligent image masking task. Valid when the task type is Cutout.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCutoutResult`
         """
         return self._CutoutTask
@@ -2589,7 +2973,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def ReelTask(self):
-        r"""
+        r"""<p>Query result of the video content analysis AI narration and video re-creation task. Valid when the task type is Reel.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelResult`
         """
         return self._ReelTask
@@ -2597,6 +2981,17 @@ class AiAnalysisResult(AbstractModel):
     @ReelTask.setter
     def ReelTask(self, ReelTask):
         self._ReelTask = ReelTask
+
+    @property
+    def GenericTask(self):
+        r"""<p>Query result of the intelligent analysis common task. Valid when the task type is Generic.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskGenericResult`
+        """
+        return self._GenericTask
+
+    @GenericTask.setter
+    def GenericTask(self, GenericTask):
+        self._GenericTask = GenericTask
 
 
     def _deserialize(self, params):
@@ -2646,6 +3041,9 @@ class AiAnalysisResult(AbstractModel):
         if params.get("ReelTask") is not None:
             self._ReelTask = AiAnalysisTaskReelResult()
             self._ReelTask._deserialize(params.get("ReelTask"))
+        if params.get("GenericTask") is not None:
+            self._GenericTask = AiAnalysisTaskGenericResult()
+            self._GenericTask._deserialize(params.get("GenericTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2708,7 +3106,7 @@ class AiAnalysisTaskClassificationInput(AbstractModel):
 
 
 class AiAnalysisTaskClassificationOutput(AbstractModel):
-    r"""Intelligent classification results info
+    r"""Intelligent classification result information.
 
     """
 
@@ -2749,23 +3147,23 @@ class AiAnalysisTaskClassificationOutput(AbstractModel):
 
 
 class AiAnalysisTaskClassificationResult(AbstractModel):
-    r"""Intelligent classification task result type
+    r"""Intelligent classification task result type.
 
     """
 
     def __init__(self):
         r"""
-        :param _Status: Task status. Valid values are PROCESSING, SUCCESS, and FAIL.
+        :param _Status: <p>Task status. Valid values are PROCESSING, SUCCESS, and FAIL.</p>
         :type Status: str
-        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrCodeExt: <p>Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of <a href="https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">MPS error codes</a>.</p>
         :type ErrCodeExt: str
-        :param _ErrCode: Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        :param _ErrCode: <p>Error code. 0 indicates success, and other values indicate failure. (This field is not recommended. Use the new error code field ErrCodeExt instead.)</p>
         :type ErrCode: int
-        :param _Message: Error message.
+        :param _Message: <p>Error message.</p>
         :type Message: str
-        :param _Input: Intelligent classification task input.
+        :param _Input: <p>Intelligent categorization task input.</p>
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationInput`
-        :param _Output: 
+        :param _Output: <p>Intelligent categorization task output.</p>
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationOutput`
         """
         self._Status = None
@@ -2777,7 +3175,7 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
 
     @property
     def Status(self):
-        r"""Task status. Valid values are PROCESSING, SUCCESS, and FAIL.
+        r"""<p>Task status. Valid values are PROCESSING, SUCCESS, and FAIL.</p>
         :rtype: str
         """
         return self._Status
@@ -2788,7 +3186,7 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""<p>Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of <a href="https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">MPS error codes</a>.</p>
         :rtype: str
         """
         return self._ErrCodeExt
@@ -2799,7 +3197,7 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
 
     @property
     def ErrCode(self):
-        r"""Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        r"""<p>Error code. 0 indicates success, and other values indicate failure. (This field is not recommended. Use the new error code field ErrCodeExt instead.)</p>
         :rtype: int
         """
         return self._ErrCode
@@ -2810,7 +3208,7 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
 
     @property
     def Message(self):
-        r"""Error message.
+        r"""<p>Error message.</p>
         :rtype: str
         """
         return self._Message
@@ -2821,7 +3219,7 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Intelligent classification task input.
+        r"""<p>Intelligent categorization task input.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationInput`
         """
         return self._Input
@@ -2832,7 +3230,7 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""<p>Intelligent categorization task output.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationOutput`
         """
         return self._Output
@@ -2915,15 +3313,15 @@ class AiAnalysisTaskCoverInput(AbstractModel):
 
 
 class AiAnalysisTaskCoverOutput(AbstractModel):
-    r"""Intelligent cover result information
+    r"""Intelligent cover result information.
 
     """
 
     def __init__(self):
         r"""
-        :param _CoverSet: Intelligent cover list.
+        :param _CoverSet: List of smart covers.
         :type CoverSet: list of MediaAiAnalysisCoverItem
-        :param _OutputStorage: Intelligent cover storage location.
+        :param _OutputStorage: Storage location of the intelligent cover.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._CoverSet = None
@@ -2931,7 +3329,7 @@ class AiAnalysisTaskCoverOutput(AbstractModel):
 
     @property
     def CoverSet(self):
-        r"""Intelligent cover list.
+        r"""List of smart covers.
         :rtype: list of MediaAiAnalysisCoverItem
         """
         return self._CoverSet
@@ -2942,7 +3340,7 @@ class AiAnalysisTaskCoverOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""Intelligent cover storage location.
+        r"""Storage location of the intelligent cover.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -2973,23 +3371,23 @@ class AiAnalysisTaskCoverOutput(AbstractModel):
 
 
 class AiAnalysisTaskCoverResult(AbstractModel):
-    r"""Intelligent cover result type
+    r"""Result type of intelligent cover
 
     """
 
     def __init__(self):
         r"""
-        :param _Status: Task status. Valid values are PROCESSING, SUCCESS, and FAIL.
+        :param _Status: <p>Task status. Valid values are PROCESSING, SUCCESS, and FAIL.</p>
         :type Status: str
-        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrCodeExt: <p>Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of <a href="https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">MPS error codes</a>.</p>
         :type ErrCodeExt: str
-        :param _ErrCode: Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        :param _ErrCode: <p>Error code. 0 indicates success, and other values indicate failure. (This field is not recommended. Use the new error code field ErrCodeExt instead.)</p>
         :type ErrCode: int
-        :param _Message: Error message.
+        :param _Message: <p>Error message.</p>
         :type Message: str
-        :param _Input: Input of the intelligent cover task.
+        :param _Input: <p>Intelligent Cover Task input.</p>
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverInput`
-        :param _Output: 
+        :param _Output: <p>Output of the intelligent cover task.</p>
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverOutput`
         """
         self._Status = None
@@ -3001,7 +3399,7 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
     @property
     def Status(self):
-        r"""Task status. Valid values are PROCESSING, SUCCESS, and FAIL.
+        r"""<p>Task status. Valid values are PROCESSING, SUCCESS, and FAIL.</p>
         :rtype: str
         """
         return self._Status
@@ -3012,7 +3410,7 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""<p>Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of <a href="https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">MPS error codes</a>.</p>
         :rtype: str
         """
         return self._ErrCodeExt
@@ -3023,7 +3421,7 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
     @property
     def ErrCode(self):
-        r"""Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        r"""<p>Error code. 0 indicates success, and other values indicate failure. (This field is not recommended. Use the new error code field ErrCodeExt instead.)</p>
         :rtype: int
         """
         return self._ErrCode
@@ -3034,7 +3432,7 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
     @property
     def Message(self):
-        r"""Error message.
+        r"""<p>Error message.</p>
         :rtype: str
         """
         return self._Message
@@ -3045,7 +3443,7 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Input of the intelligent cover task.
+        r"""<p>Intelligent Cover Task input.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverInput`
         """
         return self._Input
@@ -3056,7 +3454,7 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""<p>Output of the intelligent cover task.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverOutput`
         """
         return self._Output
@@ -3192,7 +3590,7 @@ class AiAnalysisTaskCutoutOutput(AbstractModel):
 
 
 class AiAnalysisTaskCutoutResult(AbstractModel):
-    r"""Data structure of the video intelligence matting result.
+    r"""Data structure of the intelligent video masking result.
 
     """
 
@@ -3206,7 +3604,7 @@ class AiAnalysisTaskCutoutResult(AbstractModel):
         :type Message: str
         :param _Input: Input of the video matting task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCutoutInput`
-        :param _Output: 
+        :param _Output: Output of the video matting task.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCutoutOutput`
         :param _Progress: Task progress
         :type Progress: int
@@ -3270,7 +3668,7 @@ class AiAnalysisTaskCutoutResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output of the video matting task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCutoutOutput`
         """
         return self._Output
@@ -3402,11 +3800,11 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
         :type OriginSubtitlePath: str
         :param _TranslateSubtitlePath: <p>Path of a subtitle translation file extracted from a video.</p>
         :type TranslateSubtitlePath: str
-        :param _SubtitlePos: 
+        :param _SubtitlePos: <p>Subtitle position after removal. <strong>Note</strong>: only applicable to subtitle extraction when return of subtitle position is enabled.</p>
         :type SubtitlePos: :class:`tencentcloud.mps.v20190612.models.SubtitlePosition`
-        :param _VoiceClonedVideo: 
+        :param _VoiceClonedVideo: <p>File URL of the video after voice type cloning</p>
         :type VoiceClonedVideo: str
-        :param _VoiceClonedMarkFile: 
+        :param _VoiceClonedMarkFile: <p>File address of the voice type clone annotation</p>
         :type VoiceClonedMarkFile: str
         :param _ErasedVideoPath: <p>Result path of a video for removal only</p>
         :type ErasedVideoPath: str
@@ -3478,7 +3876,7 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
 
     @property
     def SubtitlePos(self):
-        r"""
+        r"""<p>Subtitle position after removal. <strong>Note</strong>: only applicable to subtitle extraction when return of subtitle position is enabled.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitlePosition`
         """
         return self._SubtitlePos
@@ -3489,7 +3887,7 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
 
     @property
     def VoiceClonedVideo(self):
-        r"""
+        r"""<p>File URL of the video after voice type cloning</p>
         :rtype: str
         """
         return self._VoiceClonedVideo
@@ -3500,7 +3898,7 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
 
     @property
     def VoiceClonedMarkFile(self):
-        r"""
+        r"""<p>File address of the voice type clone annotation</p>
         :rtype: str
         """
         return self._VoiceClonedMarkFile
@@ -3607,7 +4005,7 @@ class AiAnalysisTaskDelLogoResult(AbstractModel):
         :type Message: str
         :param _Input: Intelligent removal task input.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoInput`
-        :param _Output: 
+        :param _Output: Output of intelligent erasure task.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoOutput`
         """
         self._Status = None
@@ -3662,7 +4060,7 @@ class AiAnalysisTaskDelLogoResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output of intelligent erasure task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoOutput`
         """
         return self._Output
@@ -3799,7 +4197,7 @@ class AiAnalysisTaskDescriptionResult(AbstractModel):
         :type Message: str
         :param _Input: Intelligent description task input.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDescriptionInput`
-        :param _Output: 
+        :param _Output: Intelligent description task output.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDescriptionOutput`
         """
         self._Status = None
@@ -3854,7 +4252,7 @@ class AiAnalysisTaskDescriptionResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Intelligent description task output.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDescriptionOutput`
         """
         return self._Output
@@ -3885,7 +4283,7 @@ class AiAnalysisTaskDescriptionResult(AbstractModel):
 
 
 class AiAnalysisTaskDubbingInput(AbstractModel):
-    r"""Input type of the intelligent dubbing task.
+    r"""Input type of the intelligent captioning task.
 
     """
 
@@ -3936,7 +4334,7 @@ class AiAnalysisTaskDubbingInput(AbstractModel):
 
 
 class AiAnalysisTaskDubbingOutput(AbstractModel):
-    r"""Intelligent translation result information
+    r"""Intelligent dubbing result information.
 
     """
 
@@ -4064,7 +4462,7 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
 
 
 class AiAnalysisTaskDubbingResult(AbstractModel):
-    r"""Intelligent translation result type
+    r"""Intelligent dubbing result type.
 
     """
 
@@ -4076,9 +4474,9 @@ class AiAnalysisTaskDubbingResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Intelligent dubbing task input.
+        :param _Input: Intelligent captioning task input.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingInput`
-        :param _Output: 
+        :param _Output: Intelligent captioning task output.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingOutput`
         """
         self._Status = None
@@ -4122,7 +4520,7 @@ class AiAnalysisTaskDubbingResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Intelligent dubbing task input.
+        r"""Intelligent captioning task input.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingInput`
         """
         return self._Input
@@ -4133,7 +4531,7 @@ class AiAnalysisTaskDubbingResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Intelligent captioning task output.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingOutput`
         """
         return self._Output
@@ -4164,7 +4562,7 @@ class AiAnalysisTaskDubbingResult(AbstractModel):
 
 
 class AiAnalysisTaskFrameTagInput(AbstractModel):
-    r"""Intelligent frame tagging task input type
+    r"""Intelligent frame-specific tagging task input type.
 
     """
 
@@ -4215,20 +4613,20 @@ class AiAnalysisTaskFrameTagInput(AbstractModel):
 
 
 class AiAnalysisTaskFrameTagOutput(AbstractModel):
-    r"""Intelligent frame tagging result information
+    r"""Intelligent frame tagging result information.
 
     """
 
     def __init__(self):
         r"""
-        :param _SegmentSet: Video frame tagging list.
+        :param _SegmentSet: Frame-specific tag list of the video.
         :type SegmentSet: list of MediaAiAnalysisFrameTagSegmentItem
         """
         self._SegmentSet = None
 
     @property
     def SegmentSet(self):
-        r"""Video frame tagging list.
+        r"""Frame-specific tag list of the video.
         :rtype: list of MediaAiAnalysisFrameTagSegmentItem
         """
         return self._SegmentSet
@@ -4256,23 +4654,23 @@ class AiAnalysisTaskFrameTagOutput(AbstractModel):
 
 
 class AiAnalysisTaskFrameTagResult(AbstractModel):
-    r"""Intelligent frame tagging result type
+    r"""Result type of intelligent frame tagging
 
     """
 
     def __init__(self):
         r"""
-        :param _Status: Task status. Valid values are PROCESSING, SUCCESS, and FAIL.
+        :param _Status: <p>Task status. Valid values are PROCESSING, SUCCESS, and FAIL.</p>
         :type Status: str
-        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrCodeExt: <p>Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of <a href="https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">MPS error codes</a>.</p>
         :type ErrCodeExt: str
-        :param _ErrCode: Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        :param _ErrCode: <p>Error code. 0 indicates success, and other values indicate failure. (This field is not recommended. Use the new error code field ErrCodeExt instead.)</p>
         :type ErrCode: int
-        :param _Message: Error message.
+        :param _Message: <p>Error message.</p>
         :type Message: str
-        :param _Input: Intelligent frame tagging task input.
+        :param _Input: <p>Intelligent frame-specific tagging task input.</p>
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagInput`
-        :param _Output: 
+        :param _Output: <p>Output of the intelligent frame-by-frame tagging task.</p>
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagOutput`
         """
         self._Status = None
@@ -4284,7 +4682,7 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
 
     @property
     def Status(self):
-        r"""Task status. Valid values are PROCESSING, SUCCESS, and FAIL.
+        r"""<p>Task status. Valid values are PROCESSING, SUCCESS, and FAIL.</p>
         :rtype: str
         """
         return self._Status
@@ -4295,7 +4693,7 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""<p>Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of <a href="https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">MPS error codes</a>.</p>
         :rtype: str
         """
         return self._ErrCodeExt
@@ -4306,7 +4704,7 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
 
     @property
     def ErrCode(self):
-        r"""Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        r"""<p>Error code. 0 indicates success, and other values indicate failure. (This field is not recommended. Use the new error code field ErrCodeExt instead.)</p>
         :rtype: int
         """
         return self._ErrCode
@@ -4317,7 +4715,7 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
 
     @property
     def Message(self):
-        r"""Error message.
+        r"""<p>Error message.</p>
         :rtype: str
         """
         return self._Message
@@ -4328,7 +4726,7 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Intelligent frame tagging task input.
+        r"""<p>Intelligent frame-specific tagging task input.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagInput`
         """
         return self._Input
@@ -4339,7 +4737,7 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""<p>Output of the intelligent frame-by-frame tagging task.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagOutput`
         """
         return self._Output
@@ -4359,6 +4757,210 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
             self._Input._deserialize(params.get("Input"))
         if params.get("Output") is not None:
             self._Output = AiAnalysisTaskFrameTagOutput()
+            self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskGenericInput(AbstractModel):
+    r"""Intelligent analysis common task input type.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: <p>ID of the intelligent analysis template.</p>
+        :type Definition: int
+        :param _ExtendedParameter: <p>Extended parameter.</p>
+        :type ExtendedParameter: str
+        """
+        self._Definition = None
+        self._ExtendedParameter = None
+
+    @property
+    def Definition(self):
+        r"""<p>ID of the intelligent analysis template.</p>
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def ExtendedParameter(self):
+        r"""<p>Extended parameter.</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskGenericOutput(AbstractModel):
+    r"""Intelligent analysis common result information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OutputStorage: <p>Storage location.</p>
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _Result: <p>Task result.</p>
+        :type Result: str
+        """
+        self._OutputStorage = None
+        self._Result = None
+
+    @property
+    def OutputStorage(self):
+        r"""<p>Storage location.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def Result(self):
+        r"""<p>Task result.</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+
+    def _deserialize(self, params):
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._Result = params.get("Result")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskGenericResult(AbstractModel):
+    r"""Intelligent Analysis common result type.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>Task status. Valid values are PROCESSING, SUCCESS, and FAIL.</p><p>Enumeration values: </p><ul><li>PROCESSING: Processing</li><li>SUCCESS: Success</li><li>FAIL: Failure</li></ul>
+        :type Status: str
+        :param _ErrCode: <p>Error code. 0: Successful. Other values: Failed.</p>
+        :type ErrCode: int
+        :param _Message: <p>Error message.</p>
+        :type Message: str
+        :param _Input: <p>Intelligent analysis task input.</p>
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskGenericInput`
+        :param _Output: <p>Intelligent analysis task output.</p>
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskGenericOutput`
+        """
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        r"""<p>Task status. Valid values are PROCESSING, SUCCESS, and FAIL.</p><p>Enumeration values: </p><ul><li>PROCESSING: Processing</li><li>SUCCESS: Success</li><li>FAIL: Failure</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""<p>Error code. 0: Successful. Other values: Failed.</p>
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        r"""<p>Error message.</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        r"""<p>Intelligent analysis task input.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskGenericInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""<p>Intelligent analysis task output.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskGenericOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiAnalysisTaskGenericInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskGenericOutput()
             self._Output._deserialize(params.get("Output"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -4428,9 +5030,9 @@ class AiAnalysisTaskHeadTailOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HeadTimeOffset: 
+        :param _HeadTimeOffset: Opening pts.
         :type HeadTimeOffset: float
-        :param _TailTimeOffset: 
+        :param _TailTimeOffset: Outro pts.
         :type TailTimeOffset: float
         """
         self._HeadTimeOffset = None
@@ -4438,7 +5040,7 @@ class AiAnalysisTaskHeadTailOutput(AbstractModel):
 
     @property
     def HeadTimeOffset(self):
-        r"""
+        r"""Opening pts.
         :rtype: float
         """
         return self._HeadTimeOffset
@@ -4449,7 +5051,7 @@ class AiAnalysisTaskHeadTailOutput(AbstractModel):
 
     @property
     def TailTimeOffset(self):
-        r"""
+        r"""Outro pts.
         :rtype: float
         """
         return self._TailTimeOffset
@@ -4487,7 +5089,7 @@ class AiAnalysisTaskHeadTailResult(AbstractModel):
         :type Message: str
         :param _Input: Opening and closing segments recognition task input.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHeadTailInput`
-        :param _Output: 
+        :param _Output: Output of the opening and closing credits task.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHeadTailOutput`
         """
         self._Status = None
@@ -4542,7 +5144,7 @@ class AiAnalysisTaskHeadTailResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output of the opening and closing credits task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHeadTailOutput`
         """
         return self._Output
@@ -4573,7 +5175,7 @@ class AiAnalysisTaskHeadTailResult(AbstractModel):
 
 
 class AiAnalysisTaskHighlightInput(AbstractModel):
-    r"""Intelligent highlight task input type
+    r"""Input type of the intelligent highlight task.
 
     """
 
@@ -4632,7 +5234,7 @@ class AiAnalysisTaskHighlightOutput(AbstractModel):
         r"""
         :param _HighlightSet: Intelligent video highlight list.
         :type HighlightSet: list of MediaAiAnalysisHighlightItem
-        :param _OutputStorage: 
+        :param _OutputStorage: Storage location of highlights.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._HighlightSet = None
@@ -4651,7 +5253,7 @@ class AiAnalysisTaskHighlightOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""
+        r"""Storage location of highlights.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -4682,7 +5284,7 @@ class AiAnalysisTaskHighlightOutput(AbstractModel):
 
 
 class AiAnalysisTaskHighlightResult(AbstractModel):
-    r"""Result type of the intelligent highlight
+    r"""Type of the intelligent highlight result.
 
     """
 
@@ -4696,7 +5298,7 @@ class AiAnalysisTaskHighlightResult(AbstractModel):
         :type Message: str
         :param _Input: Input of the intelligent highlight task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHighlightInput`
-        :param _Output: 
+        :param _Output: Output of the intelligent highlight task.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHighlightOutput`
         """
         self._Status = None
@@ -4751,7 +5353,7 @@ class AiAnalysisTaskHighlightResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output of the intelligent highlight task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHighlightOutput`
         """
         return self._Output
@@ -4788,7 +5390,7 @@ class AiAnalysisTaskHorizontalToVerticalInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 
+        :param _Definition: <p>ID of the horizontal-to-vertical video transformation template.</p>
         :type Definition: int
         :param _ExtendedParameter: <p>Extended parameter.</p>
         :type ExtendedParameter: str
@@ -4798,7 +5400,7 @@ class AiAnalysisTaskHorizontalToVerticalInput(AbstractModel):
 
     @property
     def Definition(self):
-        r"""
+        r"""<p>ID of the horizontal-to-vertical video transformation template.</p>
         :rtype: int
         """
         return self._Definition
@@ -4839,11 +5441,11 @@ class AiAnalysisTaskHorizontalToVerticalOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Path: 
+        :param _Path: Intelligent landscape-to-portrait video list.
         :type Path: str
-        :param _OutputStorage: 
+        :param _OutputStorage: Storage location of intelligent landscape-to-portrait videos.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _Confidence: 
+        :param _Confidence: Confidence degree.	
         :type Confidence: float
         """
         self._Path = None
@@ -4852,7 +5454,7 @@ class AiAnalysisTaskHorizontalToVerticalOutput(AbstractModel):
 
     @property
     def Path(self):
-        r"""
+        r"""Intelligent landscape-to-portrait video list.
         :rtype: str
         """
         return self._Path
@@ -4863,7 +5465,7 @@ class AiAnalysisTaskHorizontalToVerticalOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""
+        r"""Storage location of intelligent landscape-to-portrait videos.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -4874,7 +5476,7 @@ class AiAnalysisTaskHorizontalToVerticalOutput(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""
+        r"""Confidence degree.	
         :rtype: float
         """
         return self._Confidence
@@ -4907,15 +5509,15 @@ class AiAnalysisTaskHorizontalToVerticalResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 
+        :param _Status: Task status. Valid values are `PROCESSING`, `SUCCESS`, and `FAIL`.
         :type Status: str
-        :param _ErrCode: 
+        :param _ErrCode: Error code. 0: successful; other values: failed.
         :type ErrCode: int
-        :param _Message: 
+        :param _Message: Error message
         :type Message: str
-        :param _Input: 
+        :param _Input: Intelligent horizontal-to-vertical task input.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalInput`
-        :param _Output: 
+        :param _Output: Intelligent horizontal-to-vertical task output.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalOutput`
         """
         self._Status = None
@@ -4926,7 +5528,7 @@ class AiAnalysisTaskHorizontalToVerticalResult(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""Task status. Valid values are `PROCESSING`, `SUCCESS`, and `FAIL`.
         :rtype: str
         """
         return self._Status
@@ -4937,7 +5539,7 @@ class AiAnalysisTaskHorizontalToVerticalResult(AbstractModel):
 
     @property
     def ErrCode(self):
-        r"""
+        r"""Error code. 0: successful; other values: failed.
         :rtype: int
         """
         return self._ErrCode
@@ -4948,7 +5550,7 @@ class AiAnalysisTaskHorizontalToVerticalResult(AbstractModel):
 
     @property
     def Message(self):
-        r"""
+        r"""Error message
         :rtype: str
         """
         return self._Message
@@ -4959,7 +5561,7 @@ class AiAnalysisTaskHorizontalToVerticalResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""
+        r"""Intelligent horizontal-to-vertical task input.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalInput`
         """
         return self._Input
@@ -4970,7 +5572,7 @@ class AiAnalysisTaskHorizontalToVerticalResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Intelligent horizontal-to-vertical task output.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalOutput`
         """
         return self._Output
@@ -5009,7 +5611,12 @@ class AiAnalysisTaskInput(AbstractModel):
         r"""
         :param _Definition: Video content analysis template ID.
         :type Definition: int
-        :param _ExtendedParameter: 
+        :param _ExtendedParameter: Extended parameter, whose value is a serialized json string.
+Note: This parameter is used to meet customization requirements. References:
+[Smart Erase Tutorial]: https://www.tencentcloud.com/document/product/862/101530?from_cn_redirect=1
+[Video Splitting (Long Videos to Short Videos) Tutorial](https://www.tencentcloud.com/document/product/862/112098?from_cn_redirect=1)
+[Intelligent Highlights Tutorial](https://www.tencentcloud.com/document/product/862/107280?from_cn_redirect=1)
+[Horizontal-to-Vertical Video Transformation](https://www.tencentcloud.com/document/product/862/112112?from_cn_redirect=1)
         :type ExtendedParameter: str
         """
         self._Definition = None
@@ -5028,7 +5635,12 @@ class AiAnalysisTaskInput(AbstractModel):
 
     @property
     def ExtendedParameter(self):
-        r"""
+        r"""Extended parameter, whose value is a serialized json string.
+Note: This parameter is used to meet customization requirements. References:
+[Smart Erase Tutorial]: https://www.tencentcloud.com/document/product/862/101530?from_cn_redirect=1
+[Video Splitting (Long Videos to Short Videos) Tutorial](https://www.tencentcloud.com/document/product/862/112098?from_cn_redirect=1)
+[Intelligent Highlights Tutorial](https://www.tencentcloud.com/document/product/862/107280?from_cn_redirect=1)
+[Horizontal-to-Vertical Video Transformation](https://www.tencentcloud.com/document/product/862/112112?from_cn_redirect=1)
         :rtype: str
         """
         return self._ExtendedParameter
@@ -5109,18 +5721,18 @@ class AiAnalysisTaskReelOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VideoPath: Path of the commentated video.
+        :param _VideoPath: Path of the commentary video.
         :type VideoPath: str
-        :param _VideoPaths: Path list of the commentated video.
+        :param _VideoPaths: List of commentated video paths.
 
 **Note**:
-1. When returning a file, `VideoPath` returns a file path, and `VideoPaths` is likewise populated with an element of the same path.
-2. When multiple files are returned, `VideoPath` returns an empty string, and `VideoPaths` returns a file path list.
+1. When a file is returned, `VideoPath` returns a file path, and `VideoPaths` also fills an element with the same path.
+2. When multiple files are returned, `VideoPath` returns an empty string, and `VideoPaths` returns the file path list.
         :type VideoPaths: list of str
-        :param _ScriptPath: Script file path
+        :param _ScriptPath: Script file path.
 
         :type ScriptPath: str
-        :param _OutputStorage: Storage location of the commentated video.
+        :param _OutputStorage: Storage location of the commentary video.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._VideoPath = None
@@ -5130,7 +5742,7 @@ class AiAnalysisTaskReelOutput(AbstractModel):
 
     @property
     def VideoPath(self):
-        r"""Path of the commentated video.
+        r"""Path of the commentary video.
         :rtype: str
         """
         return self._VideoPath
@@ -5141,11 +5753,11 @@ class AiAnalysisTaskReelOutput(AbstractModel):
 
     @property
     def VideoPaths(self):
-        r"""Path list of the commentated video.
+        r"""List of commentated video paths.
 
 **Note**:
-1. When returning a file, `VideoPath` returns a file path, and `VideoPaths` is likewise populated with an element of the same path.
-2. When multiple files are returned, `VideoPath` returns an empty string, and `VideoPaths` returns a file path list.
+1. When a file is returned, `VideoPath` returns a file path, and `VideoPaths` also fills an element with the same path.
+2. When multiple files are returned, `VideoPath` returns an empty string, and `VideoPaths` returns the file path list.
         :rtype: list of str
         """
         return self._VideoPaths
@@ -5156,7 +5768,7 @@ class AiAnalysisTaskReelOutput(AbstractModel):
 
     @property
     def ScriptPath(self):
-        r"""Script file path
+        r"""Script file path.
 
         :rtype: str
         """
@@ -5168,7 +5780,7 @@ class AiAnalysisTaskReelOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""Storage location of the commentated video.
+        r"""Storage location of the commentary video.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -5196,7 +5808,7 @@ class AiAnalysisTaskReelOutput(AbstractModel):
 
 
 class AiAnalysisTaskReelResult(AbstractModel):
-    r"""AI narration and video re-creation result type
+    r"""Result type for AI narration and video re-creation
 
     """
 
@@ -5208,17 +5820,17 @@ class AiAnalysisTaskReelResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: AI narration and video re-creation task input.
+        :param _Input: Task input for AI narration and video re-creation.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelInput`
-        :param _Output: 
+        :param _Output: Task output for AI narration and video re-creation.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelOutput`
-        :param _ErrCodeExt: 
+        :param _ErrCodeExt: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of Media Processing Service (MPS) error codes.
         :type ErrCodeExt: str
-        :param _Progress: 
+        :param _Progress: Task progress.
         :type Progress: int
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: Starting time of task execution, in ISO date and time format.
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: Task completion time, in ISO date and time format.
         :type FinishTime: str
         """
         self._Status = None
@@ -5266,7 +5878,7 @@ class AiAnalysisTaskReelResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""AI narration and video re-creation task input.
+        r"""Task input for AI narration and video re-creation.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelInput`
         """
         return self._Input
@@ -5277,7 +5889,7 @@ class AiAnalysisTaskReelResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Task output for AI narration and video re-creation.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelOutput`
         """
         return self._Output
@@ -5288,7 +5900,7 @@ class AiAnalysisTaskReelResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
-        r"""
+        r"""Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of Media Processing Service (MPS) error codes.
         :rtype: str
         """
         return self._ErrCodeExt
@@ -5299,7 +5911,7 @@ class AiAnalysisTaskReelResult(AbstractModel):
 
     @property
     def Progress(self):
-        r"""
+        r"""Task progress.
         :rtype: int
         """
         return self._Progress
@@ -5310,7 +5922,7 @@ class AiAnalysisTaskReelResult(AbstractModel):
 
     @property
     def BeginProcessTime(self):
-        r"""
+        r"""Starting time of task execution, in ISO date and time format.
         :rtype: str
         """
         return self._BeginProcessTime
@@ -5321,7 +5933,7 @@ class AiAnalysisTaskReelResult(AbstractModel):
 
     @property
     def FinishTime(self):
-        r"""
+        r"""Task completion time, in ISO date and time format.
         :rtype: str
         """
         return self._FinishTime
@@ -5415,7 +6027,7 @@ class AiAnalysisTaskSegmentOutput(AbstractModel):
         r"""
         :param _SegmentSet: Intelligent splitting sub-segment list.
         :type SegmentSet: list of SegmentRecognitionItem
-        :param _Abstract: 
+        :param _Abstract: Video summary, used for offline scenarios.
         :type Abstract: str
         """
         self._SegmentSet = None
@@ -5434,7 +6046,7 @@ class AiAnalysisTaskSegmentOutput(AbstractModel):
 
     @property
     def Abstract(self):
-        r"""
+        r"""Video summary, used for offline scenarios.
         :rtype: str
         """
         return self._Abstract
@@ -5477,7 +6089,7 @@ class AiAnalysisTaskSegmentResult(AbstractModel):
         :type Message: str
         :param _Input: Splitting task input.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskSegmentInput`
-        :param _Output: 
+        :param _Output: Splitting task output.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskSegmentOutput`
         """
         self._Status = None
@@ -5532,7 +6144,7 @@ class AiAnalysisTaskSegmentResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Splitting task output.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskSegmentOutput`
         """
         return self._Output
@@ -5563,7 +6175,7 @@ class AiAnalysisTaskSegmentResult(AbstractModel):
 
 
 class AiAnalysisTaskTagInput(AbstractModel):
-    r"""Intelligent tag task input type
+    r"""Intelligent tag task input type.
 
     """
 
@@ -5614,20 +6226,20 @@ class AiAnalysisTaskTagInput(AbstractModel):
 
 
 class AiAnalysisTaskTagOutput(AbstractModel):
-    r"""Intelligent tag result information
+    r"""Intelligent tag result information.
 
     """
 
     def __init__(self):
         r"""
-        :param _TagSet: Video intelligent tag list.
+        :param _TagSet: Intelligent video tag list.
         :type TagSet: list of MediaAiAnalysisTagItem
         """
         self._TagSet = None
 
     @property
     def TagSet(self):
-        r"""Video intelligent tag list.
+        r"""Intelligent video tag list.
         :rtype: list of MediaAiAnalysisTagItem
         """
         return self._TagSet
@@ -5655,7 +6267,7 @@ class AiAnalysisTaskTagOutput(AbstractModel):
 
 
 class AiAnalysisTaskTagResult(AbstractModel):
-    r"""Intelligent tag result type
+    r"""Intelligent tag result type.
 
     """
 
@@ -5671,7 +6283,7 @@ class AiAnalysisTaskTagResult(AbstractModel):
         :type Message: str
         :param _Input: Intelligent tag task input.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagInput`
-        :param _Output: 
+        :param _Output: Intelligent tag task output.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagOutput`
         """
         self._Status = None
@@ -5738,7 +6350,7 @@ class AiAnalysisTaskTagResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Intelligent tag task output.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagOutput`
         """
         return self._Output
@@ -5829,9 +6441,9 @@ class AiAnalysisTaskVideoComprehensionOutput(AbstractModel):
         r"""
         :param _VideoComprehensionAnalysisResult: Details of the video (audio) recognition output content.
         :type VideoComprehensionAnalysisResult: str
-        :param _VideoComprehensionExtInfo: Video (Audio) understanding extended information
+        :param _VideoComprehensionExtInfo: Extended information for video (audio) understanding.
         :type VideoComprehensionExtInfo: str
-        :param _VideoComprehensionResultList: Video shot understanding result
+        :param _VideoComprehensionResultList: Video storyboard understanding result
         :type VideoComprehensionResultList: list of VideoComprehensionResultItem
         """
         self._VideoComprehensionAnalysisResult = None
@@ -5851,7 +6463,7 @@ class AiAnalysisTaskVideoComprehensionOutput(AbstractModel):
 
     @property
     def VideoComprehensionExtInfo(self):
-        r"""Video (Audio) understanding extended information
+        r"""Extended information for video (audio) understanding.
         :rtype: str
         """
         return self._VideoComprehensionExtInfo
@@ -5862,7 +6474,7 @@ class AiAnalysisTaskVideoComprehensionOutput(AbstractModel):
 
     @property
     def VideoComprehensionResultList(self):
-        r"""Video shot understanding result
+        r"""Video storyboard understanding result
         :rtype: list of VideoComprehensionResultItem
         """
         return self._VideoComprehensionResultList
@@ -5906,7 +6518,7 @@ class AiAnalysisTaskVideoComprehensionResult(AbstractModel):
         :type Message: str
         :param _Input: Input file for video (audio) recognition.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoComprehensionInput`
-        :param _Output: 
+        :param _Output: Output file for video (audio) recognition.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoComprehensionOutput`
         :param _ErrCodeExt: Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of MPS error codes.
         :type ErrCodeExt: str
@@ -5973,7 +6585,7 @@ class AiAnalysisTaskVideoComprehensionResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output file for video (audio) recognition.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoComprehensionOutput`
         """
         return self._Output
@@ -6103,15 +6715,15 @@ class AiAnalysisTaskVideoRemakeInput(AbstractModel):
 
 
 class AiAnalysisTaskVideoRemakeOutput(AbstractModel):
-    r"""Video deduplication result info
+    r"""Video deduplication result info.
 
     """
 
     def __init__(self):
         r"""
-        :param _Path: File path for intelligent video deduplication
+        :param _Path: File path for intelligent video deduplication.
         :type Path: str
-        :param _OutputStorage: Storage location of intelligent video deduplication
+        :param _OutputStorage: Storage location of intelligent video deduplication.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._Path = None
@@ -6119,7 +6731,7 @@ class AiAnalysisTaskVideoRemakeOutput(AbstractModel):
 
     @property
     def Path(self):
-        r"""File path for intelligent video deduplication
+        r"""File path for intelligent video deduplication.
         :rtype: str
         """
         return self._Path
@@ -6130,7 +6742,7 @@ class AiAnalysisTaskVideoRemakeOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""Storage location of intelligent video deduplication
+        r"""Storage location of intelligent video deduplication.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -6168,9 +6780,9 @@ class AiAnalysisTaskVideoRemakeResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message
         :type Message: str
-        :param _Input: Task input for deduplication
+        :param _Input: Input of the deduplication task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoRemakeInput`
-        :param _Output: 
+        :param _Output: Output of the deduplication task.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoRemakeOutput`
         """
         self._Status = None
@@ -6214,7 +6826,7 @@ class AiAnalysisTaskVideoRemakeResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Task input for deduplication
+        r"""Input of the deduplication task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoRemakeInput`
         """
         return self._Input
@@ -6225,7 +6837,7 @@ class AiAnalysisTaskVideoRemakeResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output of the deduplication task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoRemakeOutput`
         """
         return self._Output
@@ -6255,6 +6867,94 @@ class AiAnalysisTaskVideoRemakeResult(AbstractModel):
         
 
 
+class AiComposeConfig(AbstractModel):
+    r"""Layer fusion configuration for image processing
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>Capability configuration switch.</p><li>ON: Enable (default value);</li><li>OFF: Disable.</li>
+        :type Switch: str
+        :param _Model: <p>Compose model. Available values: compose-1.0-lite (default value, can be omitted).</p>
+        :type Model: str
+        :param _Canvas: <p>Canvas definition. Can be omitted: if omitted, the natural size of the layer with the minimum ZIndex (bottom layer) is used.</p>
+        :type Canvas: :class:`tencentcloud.mps.v20190612.models.ImageComposeCanvas`
+        :param _Layers: <p>Layer list, the unique source of layers. At least 1 layer and up to 20 layers.</p>
+        :type Layers: list of ImageComposeLayer
+        """
+        self._Switch = None
+        self._Model = None
+        self._Canvas = None
+        self._Layers = None
+
+    @property
+    def Switch(self):
+        r"""<p>Capability configuration switch.</p><li>ON: Enable (default value);</li><li>OFF: Disable.</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Model(self):
+        r"""<p>Compose model. Available values: compose-1.0-lite (default value, can be omitted).</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Canvas(self):
+        r"""<p>Canvas definition. Can be omitted: if omitted, the natural size of the layer with the minimum ZIndex (bottom layer) is used.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageComposeCanvas`
+        """
+        return self._Canvas
+
+    @Canvas.setter
+    def Canvas(self, Canvas):
+        self._Canvas = Canvas
+
+    @property
+    def Layers(self):
+        r"""<p>Layer list, the unique source of layers. At least 1 layer and up to 20 layers.</p>
+        :rtype: list of ImageComposeLayer
+        """
+        return self._Layers
+
+    @Layers.setter
+    def Layers(self, Layers):
+        self._Layers = Layers
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Model = params.get("Model")
+        if params.get("Canvas") is not None:
+            self._Canvas = ImageComposeCanvas()
+            self._Canvas._deserialize(params.get("Canvas"))
+        if params.get("Layers") is not None:
+            self._Layers = []
+            for item in params.get("Layers"):
+                obj = ImageComposeLayer()
+                obj._deserialize(item)
+                self._Layers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AiContentReviewResult(AbstractModel):
     r"""Content moderation result
 
@@ -6263,40 +6963,40 @@ class AiContentReviewResult(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: Task type. Valid values:
-<li>Porn: porn detection.</li>
-<li>Terrorism: sensitive image.</li>
-<li>Political: sensitive image.</li>
-<li>Porn.Asr: Pornography detection in ASR text</li>
-<li>Porn.Ocr: Pornography detection in OCR text</li>
-<li>Political.Asr: ASR text sensitivity</li>
+<li>Porn: image porn detection.</li>
+<li>Terrorism: sensitive image</li>
+<li>Political: sensitive image</li>
+<li>Porn.Asr: ASR text-based porn detection</li>
+<li>Porn.Ocr: OCR text-based porn detection</li>
+<li>Political.Asr: ASR text sensitive</li>
 <li>Political.Ocr: OCR text sensitivity</li>
 <li>Terrorism.Ocr: OCR text sensitivity</li>
 <li>Prohibited.Asr: ASR text prohibited information recognition</li>
 <li>Prohibited.Ocr: OCR text prohibited information recognition</li>
         :type Type: str
-        :param _SampleRate: Sampling frequency, i.e., the number of frames captured per second for video review.
+        :param _SampleRate: Sampling frequency, i.e., the number of frames captured per second from the video for review.
         :type SampleRate: float
-        :param _Duration: Video duration for review, in seconds.
+        :param _Duration: Video duration reviewed, in seconds.
         :type Duration: float
-        :param _PornTask: 
+        :param _PornTask: Query result of the intelligent porn detection in image task for video content review. Valid when the task type is Porn.
         :type PornTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornResult`
-        :param _TerrorismTask: 
+        :param _TerrorismTask: Query result of sensitive tasks for intelligent screen in video content review. Valid when the task type is `Terrorism`.
         :type TerrorismTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskTerrorismResult`
-        :param _PoliticalTask: 
+        :param _PoliticalTask: Query result of sensitive tasks for intelligent screen in video content review. Valid when the task type is Political.
         :type PoliticalTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalResult`
-        :param _PornAsrTask: 
+        :param _PornAsrTask: Query result of the ASR text pornography detection task for video content review. Valid when TaskType is Porn.Asr.
         :type PornAsrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornAsrResult`
-        :param _PornOcrTask: 
+        :param _PornOcrTask: Query result of the OCR text pornography detection task for video content review. Valid when the task type is Porn.Ocr.
         :type PornOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornOcrResult`
-        :param _PoliticalAsrTask: 
+        :param _PoliticalAsrTask: Query result of the sensitive task for ASR text in video content review. Valid when the task type is Political.Asr.
         :type PoliticalAsrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalAsrResult`
-        :param _PoliticalOcrTask: 
+        :param _PoliticalOcrTask: Query result of sensitive tasks for OCR text in video content review. Valid when the task type is Political.Ocr.
         :type PoliticalOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalOcrResult`
-        :param _TerrorismOcrTask: 
+        :param _TerrorismOcrTask: Query result of the OCR text sensitive task for video content review. Valid when the task type is Terrorism.Ocr.
         :type TerrorismOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskTerrorismOcrResult`
-        :param _ProhibitedAsrTask: 
+        :param _ProhibitedAsrTask: Query result of the ASR text prohibited content detection task for video content review. Valid when TaskType is Prohibited.Asr.
         :type ProhibitedAsrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskProhibitedAsrResult`
-        :param _ProhibitedOcrTask: 
+        :param _ProhibitedOcrTask: Query result of the OCR text prohibited content detection task for video content review. Valid when the task type is Prohibited.Ocr.
         :type ProhibitedOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskProhibitedOcrResult`
         """
         self._Type = None
@@ -6316,12 +7016,12 @@ class AiContentReviewResult(AbstractModel):
     @property
     def Type(self):
         r"""Task type. Valid values:
-<li>Porn: porn detection.</li>
-<li>Terrorism: sensitive image.</li>
-<li>Political: sensitive image.</li>
-<li>Porn.Asr: Pornography detection in ASR text</li>
-<li>Porn.Ocr: Pornography detection in OCR text</li>
-<li>Political.Asr: ASR text sensitivity</li>
+<li>Porn: image porn detection.</li>
+<li>Terrorism: sensitive image</li>
+<li>Political: sensitive image</li>
+<li>Porn.Asr: ASR text-based porn detection</li>
+<li>Porn.Ocr: OCR text-based porn detection</li>
+<li>Political.Asr: ASR text sensitive</li>
 <li>Political.Ocr: OCR text sensitivity</li>
 <li>Terrorism.Ocr: OCR text sensitivity</li>
 <li>Prohibited.Asr: ASR text prohibited information recognition</li>
@@ -6336,7 +7036,7 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def SampleRate(self):
-        r"""Sampling frequency, i.e., the number of frames captured per second for video review.
+        r"""Sampling frequency, i.e., the number of frames captured per second from the video for review.
         :rtype: float
         """
         return self._SampleRate
@@ -6347,7 +7047,7 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def Duration(self):
-        r"""Video duration for review, in seconds.
+        r"""Video duration reviewed, in seconds.
         :rtype: float
         """
         return self._Duration
@@ -6358,7 +7058,7 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def PornTask(self):
-        r"""
+        r"""Query result of the intelligent porn detection in image task for video content review. Valid when the task type is Porn.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornResult`
         """
         return self._PornTask
@@ -6369,7 +7069,7 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def TerrorismTask(self):
-        r"""
+        r"""Query result of sensitive tasks for intelligent screen in video content review. Valid when the task type is `Terrorism`.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskTerrorismResult`
         """
         return self._TerrorismTask
@@ -6380,7 +7080,7 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def PoliticalTask(self):
-        r"""
+        r"""Query result of sensitive tasks for intelligent screen in video content review. Valid when the task type is Political.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalResult`
         """
         return self._PoliticalTask
@@ -6391,7 +7091,7 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def PornAsrTask(self):
-        r"""
+        r"""Query result of the ASR text pornography detection task for video content review. Valid when TaskType is Porn.Asr.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornAsrResult`
         """
         return self._PornAsrTask
@@ -6402,7 +7102,7 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def PornOcrTask(self):
-        r"""
+        r"""Query result of the OCR text pornography detection task for video content review. Valid when the task type is Porn.Ocr.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornOcrResult`
         """
         return self._PornOcrTask
@@ -6413,7 +7113,7 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def PoliticalAsrTask(self):
-        r"""
+        r"""Query result of the sensitive task for ASR text in video content review. Valid when the task type is Political.Asr.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalAsrResult`
         """
         return self._PoliticalAsrTask
@@ -6424,7 +7124,7 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def PoliticalOcrTask(self):
-        r"""
+        r"""Query result of sensitive tasks for OCR text in video content review. Valid when the task type is Political.Ocr.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalOcrResult`
         """
         return self._PoliticalOcrTask
@@ -6435,7 +7135,7 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def TerrorismOcrTask(self):
-        r"""
+        r"""Query result of the OCR text sensitive task for video content review. Valid when the task type is Terrorism.Ocr.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskTerrorismOcrResult`
         """
         return self._TerrorismOcrTask
@@ -6446,7 +7146,7 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def ProhibitedAsrTask(self):
-        r"""
+        r"""Query result of the ASR text prohibited content detection task for video content review. Valid when TaskType is Prohibited.Asr.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskProhibitedAsrResult`
         """
         return self._ProhibitedAsrTask
@@ -6457,7 +7157,7 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def ProhibitedOcrTask(self):
-        r"""
+        r"""Query result of the OCR text prohibited content detection task for video content review. Valid when the task type is Prohibited.Ocr.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskProhibitedOcrResult`
         """
         return self._ProhibitedOcrTask
@@ -6512,7 +7212,7 @@ class AiContentReviewResult(AbstractModel):
 
 
 class AiContentReviewTaskInput(AbstractModel):
-    r"""Task type for intelligent content moderation
+    r"""Intelligent content review task type
 
     """
 
@@ -6554,13 +7254,13 @@ class AiCutoutConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: <p>Capability configuration switch, available values: ON: Enable; OFF: Disable. Default value: ON.</p>
+        :param _Switch: <p>Capability configuration switch. Available values: ON: Enable; OFF: Disable. Default value: ON.</p>
         :type Switch: str
-        :param _Type: <p>Target type: "foreground" (default) / "pattern"</p>
+        :param _Type: <p>Matting target type: "foreground" (default) / "pattern"</p>
         :type Type: str
-        :param _PatternConfig: <p>Pattern matting configuration. This parameter is valid only when Type is pattern.</p>
+        :param _PatternConfig: <p>Pattern cutout configuration. This parameter is valid only when Type is pattern.</p>
         :type PatternConfig: :class:`tencentcloud.mps.v20190612.models.PatternConfig`
-        :param _Model: <p>Cutout model selection, optional.</p><p>Enumeration value:</p><ul><li>auto: Automatically choose appropriate model</li><li>WAND-cutout-1.0-lite: Standard version, fastest speed</li><li>WAND-cutout-2.0-lite: Enhanced, fastest speed</li><li>WAND-cutout-2.0-flash: Enhanced, quality-speed balance</li></ul>
+        :param _Model: <p>Matting model selection.</p><p>Enumeration values:</p><ul><li>cutout-1.0-lite: basic version, fastest speed</li><li>cutout-1.0-flash: standard version, quality-speed balance</li></ul>
         :type Model: str
         """
         self._Switch = None
@@ -6570,7 +7270,7 @@ class AiCutoutConfig(AbstractModel):
 
     @property
     def Switch(self):
-        r"""<p>Capability configuration switch, available values: ON: Enable; OFF: Disable. Default value: ON.</p>
+        r"""<p>Capability configuration switch. Available values: ON: Enable; OFF: Disable. Default value: ON.</p>
         :rtype: str
         """
         return self._Switch
@@ -6581,7 +7281,7 @@ class AiCutoutConfig(AbstractModel):
 
     @property
     def Type(self):
-        r"""<p>Target type: "foreground" (default) / "pattern"</p>
+        r"""<p>Matting target type: "foreground" (default) / "pattern"</p>
         :rtype: str
         """
         return self._Type
@@ -6592,7 +7292,7 @@ class AiCutoutConfig(AbstractModel):
 
     @property
     def PatternConfig(self):
-        r"""<p>Pattern matting configuration. This parameter is valid only when Type is pattern.</p>
+        r"""<p>Pattern cutout configuration. This parameter is valid only when Type is pattern.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.PatternConfig`
         """
         return self._PatternConfig
@@ -6603,7 +7303,7 @@ class AiCutoutConfig(AbstractModel):
 
     @property
     def Model(self):
-        r"""<p>Cutout model selection, optional.</p><p>Enumeration value:</p><ul><li>auto: Automatically choose appropriate model</li><li>WAND-cutout-1.0-lite: Standard version, fastest speed</li><li>WAND-cutout-2.0-lite: Enhanced, fastest speed</li><li>WAND-cutout-2.0-flash: Enhanced, quality-speed balance</li></ul>
+        r"""<p>Matting model selection.</p><p>Enumeration values:</p><ul><li>cutout-1.0-lite: basic version, fastest speed</li><li>cutout-1.0-flash: standard version, quality-speed balance</li></ul>
         :rtype: str
         """
         return self._Model
@@ -6619,6 +7319,87 @@ class AiCutoutConfig(AbstractModel):
         if params.get("PatternConfig") is not None:
             self._PatternConfig = PatternConfig()
             self._PatternConfig._deserialize(params.get("PatternConfig"))
+        self._Model = params.get("Model")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiDecomposeConfig(AbstractModel):
+    r"""Intelligent layer split configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>Capability configuration switch.</p><p>Enumeration values: </p><ul><li>ON: Enable the layer separation feature.</li><li>OFF: Disable the layer separation feature.</li></ul><p>Default value: ON</p>
+        :type Switch: str
+        :param _Layers: <p>Expected number of layers.</p><p>Value range: [2, 17]</p>
+        :type Layers: int
+        :param _Prompt: <p>Prompt content.</p>
+        :type Prompt: str
+        :param _Model: <p>Model name.</p><p>Enumeration value:</p><ul><li>decompose-1.0-flash: 1.0 version flash model.</li></ul>
+        :type Model: str
+        """
+        self._Switch = None
+        self._Layers = None
+        self._Prompt = None
+        self._Model = None
+
+    @property
+    def Switch(self):
+        r"""<p>Capability configuration switch.</p><p>Enumeration values: </p><ul><li>ON: Enable the layer separation feature.</li><li>OFF: Disable the layer separation feature.</li></ul><p>Default value: ON</p>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Layers(self):
+        r"""<p>Expected number of layers.</p><p>Value range: [2, 17]</p>
+        :rtype: int
+        """
+        return self._Layers
+
+    @Layers.setter
+    def Layers(self, Layers):
+        self._Layers = Layers
+
+    @property
+    def Prompt(self):
+        r"""<p>Prompt content.</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def Model(self):
+        r"""<p>Model name.</p><p>Enumeration value:</p><ul><li>decompose-1.0-flash: 1.0 version flash model.</li></ul>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Layers = params.get("Layers")
+        self._Prompt = params.get("Prompt")
         self._Model = params.get("Model")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -6718,13 +7499,13 @@ class AiExpansionConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: <p>Capability configuration switch, available values: ON: Enable; OFF: Disable. Default value: ON.</p>
+        :param _Switch: <p>Capability configuration switch. Available values: ON: Enable; OFF: Disable. Default value: ON.</p>
         :type Switch: str
-        :param _AspectRatio: <p>Target ratio, for example "16:9"</p>
+        :param _AspectRatio: <p>Target ratio, for example, "16:9"</p>
         :type AspectRatio: str
-        :param _Width: <p>Target width (pixel)</p><p>Value ranges from 0 to 2048.</p>
+        :param _Width: <p>Target width (pixel)</p><p>Value range: [0, 2048]</p>
         :type Width: int
-        :param _Height: <p>Target height (pixel)</p><p>Value ranges from 0 to 2048.</p>
+        :param _Height: <p>Target height (pixel)</p><p>Value range: [0, 2048]</p>
         :type Height: int
         """
         self._Switch = None
@@ -6734,7 +7515,7 @@ class AiExpansionConfig(AbstractModel):
 
     @property
     def Switch(self):
-        r"""<p>Capability configuration switch, available values: ON: Enable; OFF: Disable. Default value: ON.</p>
+        r"""<p>Capability configuration switch. Available values: ON: Enable; OFF: Disable. Default value: ON.</p>
         :rtype: str
         """
         return self._Switch
@@ -6745,7 +7526,7 @@ class AiExpansionConfig(AbstractModel):
 
     @property
     def AspectRatio(self):
-        r"""<p>Target ratio, for example "16:9"</p>
+        r"""<p>Target ratio, for example, "16:9"</p>
         :rtype: str
         """
         return self._AspectRatio
@@ -6756,7 +7537,7 @@ class AiExpansionConfig(AbstractModel):
 
     @property
     def Width(self):
-        r"""<p>Target width (pixel)</p><p>Value ranges from 0 to 2048.</p>
+        r"""<p>Target width (pixel)</p><p>Value range: [0, 2048]</p>
         :rtype: int
         """
         return self._Width
@@ -6767,7 +7548,7 @@ class AiExpansionConfig(AbstractModel):
 
     @property
     def Height(self):
-        r"""<p>Target height (pixel)</p><p>Value ranges from 0 to 2048.</p>
+        r"""<p>Target height (pixel)</p><p>Value range: [0, 2048]</p>
         :rtype: int
         """
         return self._Height
@@ -6850,15 +7631,15 @@ class AiParagraphInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Summary: 
+        :param _Summary: Segment summary.
         :type Summary: str
         :param _Title: Segment title.
         :type Title: str
         :param _Keywords: Segment keyword.
         :type Keywords: list of str
-        :param _StartTimeOffset: 
+        :param _StartTimeOffset: Starting time point of the segment, in seconds.
         :type StartTimeOffset: float
-        :param _EndTimeOffset: 
+        :param _EndTimeOffset: End time point of the segment, in seconds.
         :type EndTimeOffset: float
         """
         self._Summary = None
@@ -6869,7 +7650,7 @@ class AiParagraphInfo(AbstractModel):
 
     @property
     def Summary(self):
-        r"""
+        r"""Segment summary.
         :rtype: str
         """
         return self._Summary
@@ -6902,7 +7683,7 @@ class AiParagraphInfo(AbstractModel):
 
     @property
     def StartTimeOffset(self):
-        r"""
+        r"""Starting time point of the segment, in seconds.
         :rtype: float
         """
         return self._StartTimeOffset
@@ -6913,7 +7694,7 @@ class AiParagraphInfo(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        r"""
+        r"""End time point of the segment, in seconds.
         :rtype: float
         """
         return self._EndTimeOffset
@@ -6960,7 +7741,7 @@ class AiPosterSuiteConfig(AbstractModel):
         :type PanelResolution: str
         :param _CustomVariables: <p>User-defined variable.</p>
         :type CustomVariables: list of CustomVariable
-        :param _Model: <p>Model name.</p><p>Enumeration value:</p><ul><li>WAND-suite-1.0-flash: WAND-suite-1.0-flash.</li></ul>
+        :param _Model: <p>Model name.</p><p>Enumeration value:</p><ul><li>suite-1.0-flash: suite-1.0-flash.</li></ul>
         :type Model: str
         """
         self._Mode = None
@@ -7051,7 +7832,7 @@ class AiPosterSuiteConfig(AbstractModel):
 
     @property
     def Model(self):
-        r"""<p>Model name.</p><p>Enumeration value:</p><ul><li>WAND-suite-1.0-flash: WAND-suite-1.0-flash.</li></ul>
+        r"""<p>Model name.</p><p>Enumeration value:</p><ul><li>suite-1.0-flash: suite-1.0-flash.</li></ul>
         :rtype: str
         """
         return self._Model
@@ -7091,15 +7872,20 @@ class AiPosterSuiteConfig(AbstractModel):
 
 
 class AiQualityControlTaskInput(AbstractModel):
-    r"""
+    r"""Input parameter type for media quality inspection.
 
     """
 
     def __init__(self):
         r"""
-        :param _Definition: 
+        :param _Definition: Media quality inspection template ID.
+You can directly use a preset template or customize a template in the console. The preset templates are as follows:
+- 10: Enable all quality inspection items.
+- 20: Only enable quality inspection items corresponding to format diagnosis.
+- 30: Only enable quality inspection items corresponding to no-reference scoring.
+- 40: Only enable quality inspection items corresponding to screen quality.
         :type Definition: int
-        :param _ChannelExtPara: 
+        :param _ChannelExtPara: Channel expansion parameter, json serialized string.
         :type ChannelExtPara: str
         """
         self._Definition = None
@@ -7107,7 +7893,12 @@ class AiQualityControlTaskInput(AbstractModel):
 
     @property
     def Definition(self):
-        r"""
+        r"""Media quality inspection template ID.
+You can directly use a preset template or customize a template in the console. The preset templates are as follows:
+- 10: Enable all quality inspection items.
+- 20: Only enable quality inspection items corresponding to format diagnosis.
+- 30: Only enable quality inspection items corresponding to no-reference scoring.
+- 40: Only enable quality inspection items corresponding to screen quality.
         :rtype: int
         """
         return self._Definition
@@ -7118,7 +7909,7 @@ class AiQualityControlTaskInput(AbstractModel):
 
     @property
     def ChannelExtPara(self):
-        r"""
+        r"""Channel expansion parameter, json serialized string.
         :rtype: str
         """
         return self._ChannelExtPara
@@ -7156,19 +7947,28 @@ class AiRecognitionResult(AbstractModel):
 <li>OcrFullTextRecognition: full text recognition.</li>
 <li>TransTextRecognition: speech translation</li>
         :type Type: str
-        :param _FaceTask: 
+        :param _FaceTask: Face recognition result, which is valid when Type is 
+Valid for FaceRecognition.
         :type FaceTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResult`
-        :param _AsrWordsTask: 
+        :param _AsrWordsTask: Speech keyword recognition result, which is valid when Type is
+Valid when set to AsrWordsRecognition.
         :type AsrWordsTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResult`
-        :param _AsrFullTextTask: 
+        :param _AsrFullTextTask: Full speech recognition result. When Type is
+Valid when AsrFullTextRecognition is used.
         :type AsrFullTextTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResult`
-        :param _OcrWordsTask: 
+        :param _OcrWordsTask: Text keyword recognition result. When Type is
+Valid when set to OcrWordsRecognition.
         :type OcrWordsTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResult`
-        :param _OcrFullTextTask: 
+        :param _OcrFullTextTask: Full text recognition result. When Type is
+Valid when OcrFullTextRecognition is used.
         :type OcrFullTextTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResult`
-        :param _TransTextTask: 
+        :param _TransTextTask: Translation result. When Type is
+
+Valid when set to TransTextRecognition.
         :type TransTextTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskTransTextResult`
-        :param _ObjectTask: 
+        :param _ObjectTask: Object recognition result, which is valid when Type is
+
+Valid for ObjectRecognition.
         :type ObjectTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskObjectResult`
         """
         self._Type = None
@@ -7199,7 +7999,8 @@ class AiRecognitionResult(AbstractModel):
 
     @property
     def FaceTask(self):
-        r"""
+        r"""Face recognition result, which is valid when Type is 
+Valid for FaceRecognition.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResult`
         """
         return self._FaceTask
@@ -7210,7 +8011,8 @@ class AiRecognitionResult(AbstractModel):
 
     @property
     def AsrWordsTask(self):
-        r"""
+        r"""Speech keyword recognition result, which is valid when Type is
+Valid when set to AsrWordsRecognition.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResult`
         """
         return self._AsrWordsTask
@@ -7221,7 +8023,8 @@ class AiRecognitionResult(AbstractModel):
 
     @property
     def AsrFullTextTask(self):
-        r"""
+        r"""Full speech recognition result. When Type is
+Valid when AsrFullTextRecognition is used.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResult`
         """
         return self._AsrFullTextTask
@@ -7232,7 +8035,8 @@ class AiRecognitionResult(AbstractModel):
 
     @property
     def OcrWordsTask(self):
-        r"""
+        r"""Text keyword recognition result. When Type is
+Valid when set to OcrWordsRecognition.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResult`
         """
         return self._OcrWordsTask
@@ -7243,7 +8047,8 @@ class AiRecognitionResult(AbstractModel):
 
     @property
     def OcrFullTextTask(self):
-        r"""
+        r"""Full text recognition result. When Type is
+Valid when OcrFullTextRecognition is used.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResult`
         """
         return self._OcrFullTextTask
@@ -7254,7 +8059,9 @@ class AiRecognitionResult(AbstractModel):
 
     @property
     def TransTextTask(self):
-        r"""
+        r"""Translation result. When Type is
+
+Valid when set to TransTextRecognition.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskTransTextResult`
         """
         return self._TransTextTask
@@ -7265,7 +8072,9 @@ class AiRecognitionResult(AbstractModel):
 
     @property
     def ObjectTask(self):
-        r"""
+        r"""Object recognition result, which is valid when Type is
+
+Valid for ObjectRecognition.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskObjectResult`
         """
         return self._ObjectTask
@@ -7325,9 +8134,9 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
         :type Message: str
         :param _Input: Input information on the full speech recognition task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResultInput`
-        :param _Output: 
+        :param _Output: Output information on the full speech recognition task.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResultOutput`
-        :param _Progress: 
+        :param _Progress: Task progress.
         :type Progress: int
         """
         self._Status = None
@@ -7395,7 +8204,7 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output information on the full speech recognition task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResultOutput`
         """
         return self._Output
@@ -7406,7 +8215,7 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
 
     @property
     def Progress(self):
-        r"""
+        r"""Task progress.
         :rtype: int
         """
         return self._Progress
@@ -7445,14 +8254,14 @@ class AiRecognitionTaskAsrFullTextResultInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Full speech identification template ID.
+        :param _Definition: Full speech recognition template ID.
         :type Definition: int
         """
         self._Definition = None
 
     @property
     def Definition(self):
-        r"""Full speech identification template ID.
+        r"""Full speech recognition template ID.
         :rtype: int
         """
         return self._Definition
@@ -7481,7 +8290,7 @@ class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SegmentSet: Full speech recognition segment list.
+        :param _SegmentSet: List of segments for full speech recognition.
         :type SegmentSet: list of AiRecognitionTaskAsrFullTextSegmentItem
         :param _SubtitlePath: Subtitle file path.
         :type SubtitlePath: str
@@ -7494,7 +8303,7 @@ class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
-        r"""Full speech recognition segment list.
+        r"""List of segments for full speech recognition.
         :rtype: list of AiRecognitionTaskAsrFullTextSegmentItem
         """
         return self._SegmentSet
@@ -7667,9 +8476,9 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Input for the speech keyword recognition task.
+        :param _Input: Input information on the speech keyword recognition task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResultInput`
-        :param _Output: 
+        :param _Output: Output information on the speech keyword recognition task.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResultOutput`
         """
         self._Status = None
@@ -7725,7 +8534,7 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Input for the speech keyword recognition task.
+        r"""Input information on the speech keyword recognition task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResultInput`
         """
         return self._Input
@@ -7736,7 +8545,7 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output information on the speech keyword recognition task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResultOutput`
         """
         return self._Output
@@ -7812,7 +8621,7 @@ class AiRecognitionTaskAsrWordsResultItem(AbstractModel):
         r"""
         :param _Word: Speech keyword.
         :type Word: str
-        :param _SegmentSet: List of segments for the time when speech keywords occur.
+        :param _SegmentSet: List of time segments where the speech keyword appears.
         :type SegmentSet: list of AiRecognitionTaskAsrWordsSegmentItem
         """
         self._Word = None
@@ -7831,7 +8640,7 @@ class AiRecognitionTaskAsrWordsResultItem(AbstractModel):
 
     @property
     def SegmentSet(self):
-        r"""List of segments for the time when speech keywords occur.
+        r"""List of time segments where the speech keyword appears.
         :rtype: list of AiRecognitionTaskAsrWordsSegmentItem
         """
         return self._SegmentSet
@@ -7866,14 +8675,14 @@ class AiRecognitionTaskAsrWordsResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResultSet: Speech keyword recognition result set.
+        :param _ResultSet: Result set of speech keyword recognition.
         :type ResultSet: list of AiRecognitionTaskAsrWordsResultItem
         """
         self._ResultSet = None
 
     @property
     def ResultSet(self):
-        r"""Speech keyword recognition result set.
+        r"""Result set of speech keyword recognition.
         :rtype: list of AiRecognitionTaskAsrWordsResultItem
         """
         return self._ResultSet
@@ -7967,7 +8776,7 @@ class AiRecognitionTaskAsrWordsSegmentItem(AbstractModel):
 
 
 class AiRecognitionTaskFaceResult(AbstractModel):
-    r"""Face Recognition result.
+    r"""Face recognition result.
 
     """
 
@@ -7981,9 +8790,9 @@ class AiRecognitionTaskFaceResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Face Recognition task input.
+        :param _Input: Face recognition task input information.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResultInput`
-        :param _Output: 
+        :param _Output: Output information of the face recognition task.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResultOutput`
         """
         self._Status = None
@@ -8039,7 +8848,7 @@ class AiRecognitionTaskFaceResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Face Recognition task input.
+        r"""Face recognition task input information.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResultInput`
         """
         return self._Input
@@ -8050,7 +8859,7 @@ class AiRecognitionTaskFaceResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output information of the face recognition task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResultOutput`
         """
         return self._Output
@@ -8088,14 +8897,14 @@ class AiRecognitionTaskFaceResultInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Face Recognition template ID.
+        :param _Definition: Face recognition template ID.
         :type Definition: int
         """
         self._Definition = None
 
     @property
     def Definition(self):
-        r"""Face Recognition template ID.
+        r"""Face recognition template ID.
         :rtype: int
         """
         return self._Definition
@@ -8118,45 +8927,45 @@ class AiRecognitionTaskFaceResultInput(AbstractModel):
 
 
 class AiRecognitionTaskFaceResultItem(AbstractModel):
-    r"""Face Recognition result
+    r"""Face recognition result
 
     """
 
     def __init__(self):
         r"""
-        :param _Id: Unique identification ID of the figure.
+        :param _Id: Unique identification ID of the person.
         :type Id: str
-        :param _Type: Figure library type, indicates which figure library the recognized figure comes from.
+        :param _Type: Person library type. It indicates the person library that a recognized figure comes from.
 <li>Default: default figure library;</li>
 <li>UserDefine: user-defined character library.</li>
         :type Type: str
         :param _Name: Figure name.
         :type Name: str
-        :param _SegmentSet: Result set of segments that contain people.
+        :param _SegmentSet: Result set of segments where the person appears.
         :type SegmentSet: list of AiRecognitionTaskFaceSegmentItem
-        :param _Gender: Gender
-<li>Male: man</li>
+        :param _Gender: Person gender:
+<li>Male: man;</li>
 <li>Female: woman.</li>
         :type Gender: str
-        :param _Birthday: Date of birth of a person.
+        :param _Birthday: Date of birth of the person.
         :type Birthday: str
-        :param _Profession: Occupation or position.
+        :param _Profession: Person's occupation or position.
         :type Profession: str
-        :param _SchoolOfGraduation: Graduation institution of the person.
+        :param _SchoolOfGraduation: University of the person
         :type SchoolOfGraduation: str
-        :param _Abstract: Figure description.
+        :param _Abstract: Figure introduction.
         :type Abstract: str
-        :param _PlaceOfBirth: Birthplace or place of origin of a person.
+        :param _PlaceOfBirth: Birthplace or place of origin of the person.
         :type PlaceOfBirth: str
         :param _PersonType: Person type:
 <li>Politician: official.</li>
 <li>Artist: artist.</li>
         :type PersonType: str
         :param _Remark: Sensitivity labeling:
-<li>NORMAL: Normal;</li>
+<li>Normal: The status is normal;</li>
 <li>Sensitive: sensitive.</li>
         :type Remark: str
-        :param _Url: Screenshot link
+        :param _Url: Screenshot link.
         :type Url: str
         """
         self._Id = None
@@ -8175,7 +8984,7 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def Id(self):
-        r"""Unique identification ID of the figure.
+        r"""Unique identification ID of the person.
         :rtype: str
         """
         return self._Id
@@ -8186,7 +8995,7 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def Type(self):
-        r"""Figure library type, indicates which figure library the recognized figure comes from.
+        r"""Person library type. It indicates the person library that a recognized figure comes from.
 <li>Default: default figure library;</li>
 <li>UserDefine: user-defined character library.</li>
         :rtype: str
@@ -8210,7 +9019,7 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def SegmentSet(self):
-        r"""Result set of segments that contain people.
+        r"""Result set of segments where the person appears.
         :rtype: list of AiRecognitionTaskFaceSegmentItem
         """
         return self._SegmentSet
@@ -8221,8 +9030,8 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def Gender(self):
-        r"""Gender
-<li>Male: man</li>
+        r"""Person gender:
+<li>Male: man;</li>
 <li>Female: woman.</li>
         :rtype: str
         """
@@ -8234,7 +9043,7 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def Birthday(self):
-        r"""Date of birth of a person.
+        r"""Date of birth of the person.
         :rtype: str
         """
         return self._Birthday
@@ -8245,7 +9054,7 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def Profession(self):
-        r"""Occupation or position.
+        r"""Person's occupation or position.
         :rtype: str
         """
         return self._Profession
@@ -8256,7 +9065,7 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def SchoolOfGraduation(self):
-        r"""Graduation institution of the person.
+        r"""University of the person
         :rtype: str
         """
         return self._SchoolOfGraduation
@@ -8267,7 +9076,7 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def Abstract(self):
-        r"""Figure description.
+        r"""Figure introduction.
         :rtype: str
         """
         return self._Abstract
@@ -8278,7 +9087,7 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def PlaceOfBirth(self):
-        r"""Birthplace or place of origin of a person.
+        r"""Birthplace or place of origin of the person.
         :rtype: str
         """
         return self._PlaceOfBirth
@@ -8303,7 +9112,7 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
     @property
     def Remark(self):
         r"""Sensitivity labeling:
-<li>NORMAL: Normal;</li>
+<li>Normal: The status is normal;</li>
 <li>Sensitive: sensitive.</li>
         :rtype: str
         """
@@ -8315,7 +9124,7 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def Url(self):
-        r"""Screenshot link
+        r"""Screenshot link.
         :rtype: str
         """
         return self._Url
@@ -8355,7 +9164,7 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
 
 class AiRecognitionTaskFaceResultOutput(AbstractModel):
-    r"""Intelligent Face Recognition output.
+    r"""Intelligent face recognition output.
 
     """
 
@@ -8396,7 +9205,7 @@ class AiRecognitionTaskFaceResultOutput(AbstractModel):
 
 
 class AiRecognitionTaskFaceSegmentItem(AbstractModel):
-    r"""Face Recognition result fragment
+    r"""Face recognition result fragment
 
     """
 
@@ -8542,7 +9351,7 @@ class AiRecognitionTaskObjectResult(AbstractModel):
         :type Message: str
         :param _Input: Object recognition task input.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskObjectResultInput`
-        :param _Output: 
+        :param _Output: Object recognition task output information.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskObjectResultOutput`
         """
         self._Status = None
@@ -8597,7 +9406,7 @@ class AiRecognitionTaskObjectResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Object recognition task output information.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskObjectResultOutput`
         """
         return self._Output
@@ -8858,7 +9667,7 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
         :type Message: str
         :param _Input: Input information on the full text recognition task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResultInput`
-        :param _Output: 
+        :param _Output: Output information on the full text recognition task.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResultOutput`
         """
         self._Status = None
@@ -8925,7 +9734,7 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output information on the full text recognition task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResultOutput`
         """
         return self._Output
@@ -8957,7 +9766,7 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
 
 
 class AiRecognitionTaskOcrFullTextResultInput(AbstractModel):
-    r"""Full text recognition user-submitted input.
+    r"""Input for full text recognition.
 
     """
 
@@ -9034,7 +9843,7 @@ class AiRecognitionTaskOcrFullTextResultOutput(AbstractModel):
 
 
 class AiRecognitionTaskOcrFullTextSegmentItem(AbstractModel):
-    r"""Full text recognition recording clip.
+    r"""Segment undergone full text recognition.
 
     """
 
@@ -9105,7 +9914,7 @@ class AiRecognitionTaskOcrFullTextSegmentItem(AbstractModel):
 
 
 class AiRecognitionTaskOcrFullTextSegmentTextItem(AbstractModel):
-    r"""Full text recognition fragment.
+    r"""Segment undergone full text recognition.
 
     """
 
@@ -9171,7 +9980,7 @@ class AiRecognitionTaskOcrFullTextSegmentTextItem(AbstractModel):
 
 
 class AiRecognitionTaskOcrWordsResult(AbstractModel):
-    r"""Text keyword recognition result.
+    r"""Keyword recognition result of the text.
 
     """
 
@@ -9185,9 +9994,9 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Text keyword recognition task input.
+        :param _Input: Input information for the text keyword recognition task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResultInput`
-        :param _Output: 
+        :param _Output: Output message of the text keyword recognition task.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResultOutput`
         """
         self._Status = None
@@ -9243,7 +10052,7 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Text keyword recognition task input.
+        r"""Input information for the text keyword recognition task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResultInput`
         """
         return self._Input
@@ -9254,7 +10063,7 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output message of the text keyword recognition task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResultOutput`
         """
         return self._Output
@@ -9419,7 +10228,7 @@ class AiRecognitionTaskOcrWordsResultOutput(AbstractModel):
 
 
 class AiRecognitionTaskOcrWordsSegmentItem(AbstractModel):
-    r"""Text recognition segment.
+    r"""OCR text recognition clip.
 
     """
 
@@ -9516,9 +10325,9 @@ class AiRecognitionTaskTransTextResult(AbstractModel):
         :type Message: str
         :param _Input: Translation task input information.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskTransTextResultInput`
-        :param _Output: 
+        :param _Output: Translation task output information.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskTransTextResultOutput`
-        :param _Progress: 
+        :param _Progress: Task progress.
         :type Progress: int
         """
         self._Status = None
@@ -9586,7 +10395,7 @@ class AiRecognitionTaskTransTextResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Translation task output information.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskTransTextResultOutput`
         """
         return self._Output
@@ -9597,7 +10406,7 @@ class AiRecognitionTaskTransTextResult(AbstractModel):
 
     @property
     def Progress(self):
-        r"""
+        r"""Task progress.
         :rtype: int
         """
         return self._Progress
@@ -9630,7 +10439,7 @@ class AiRecognitionTaskTransTextResult(AbstractModel):
 
 
 class AiRecognitionTaskTransTextResultInput(AbstractModel):
-    r"""Translate the input.
+    r"""Input for translation.
 
     """
 
@@ -9672,9 +10481,9 @@ class AiRecognitionTaskTransTextResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SegmentSet: Translate segments.
+        :param _SegmentSet: <p>List of segments for translation.</p>
         :type SegmentSet: list of AiRecognitionTaskTransTextSegmentItem
-        :param _SubtitlePath: Subtitle file path.
+        :param _SubtitlePath: <p>Subtitle file URL.</p>
         :type SubtitlePath: str
         """
         self._SegmentSet = None
@@ -9682,7 +10491,7 @@ class AiRecognitionTaskTransTextResultOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
-        r"""Translate segments.
+        r"""<p>List of segments for translation.</p>
         :rtype: list of AiRecognitionTaskTransTextSegmentItem
         """
         return self._SegmentSet
@@ -9693,7 +10502,7 @@ class AiRecognitionTaskTransTextResultOutput(AbstractModel):
 
     @property
     def SubtitlePath(self):
-        r"""Subtitle file path.
+        r"""<p>Subtitle file URL.</p>
         :rtype: str
         """
         return self._SubtitlePath
@@ -9838,7 +10647,7 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
 
 
 class AiRestorationConfig(AbstractModel):
-    r"""
+    r"""LLM repair
 
     """
 
@@ -9846,7 +10655,7 @@ class AiRestorationConfig(AbstractModel):
         r"""
         :param _Switch: <p>Capability configuration switch</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p>
         :type Switch: str
-        :param _Type: 
+        :param _Type: <p>Strength type</p><p>Enumeration values: </p><ul><li>weak: Weak</li><li>normal: Medium</li><li>strong: Strong</li></ul><p>Default value: normal</p>
         :type Type: str
         """
         self._Switch = None
@@ -9865,7 +10674,7 @@ class AiRestorationConfig(AbstractModel):
 
     @property
     def Type(self):
-        r"""
+        r"""<p>Strength type</p><p>Enumeration values: </p><ul><li>weak: Weak</li><li>normal: Medium</li><li>strong: Strong</li></ul><p>Default value: normal</p>
         :rtype: str
         """
         return self._Type
@@ -9889,7 +10698,7 @@ class AiRestorationConfig(AbstractModel):
 
 
 class AiReviewPoliticalAsrTaskInput(AbstractModel):
-    r"""Content review Asr text sensitivity task input parameter type
+    r"""Input parameter type of the sensitive Asr text task in content review
 
     """
 
@@ -9925,20 +10734,20 @@ class AiReviewPoliticalAsrTaskInput(AbstractModel):
 
 
 class AiReviewPoliticalAsrTaskOutput(AbstractModel):
-    r"""Asr text contains sensitive information
+    r"""Sensitive information in Asr text
 
     """
 
     def __init__(self):
         r"""
-        :param _Confidence: Asr text sensitivity scoring, with a score ranging from 0 to -100.
+        :param _Confidence: Sensitive score of the Asr text. Value range: 0–100.
         :type Confidence: float
-        :param _Suggestion: Asr text sensitive result recommendation, value ranges from...to...
+        :param _Suggestion: Sensitive result suggestions for Asr text. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param _SegmentSet: Video segment list with Asr text suspected of sensitivity.
+        :param _SegmentSet: List of video segments with sensitive Asr text.
         :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
         """
         self._Confidence = None
@@ -9947,7 +10756,7 @@ class AiReviewPoliticalAsrTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""Asr text sensitivity scoring, with a score ranging from 0 to -100.
+        r"""Sensitive score of the Asr text. Value range: 0–100.
         :rtype: float
         """
         return self._Confidence
@@ -9958,7 +10767,7 @@ class AiReviewPoliticalAsrTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""Asr text sensitive result recommendation, value ranges from...to...
+        r"""Sensitive result suggestions for Asr text. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
@@ -9972,7 +10781,7 @@ class AiReviewPoliticalAsrTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
-        r"""Video segment list with Asr text suspected of sensitivity.
+        r"""List of video segments with sensitive Asr text.
         :rtype: list of MediaContentReviewAsrTextSegmentItem
         """
         return self._SegmentSet
@@ -10038,20 +10847,20 @@ class AiReviewPoliticalOcrTaskInput(AbstractModel):
 
 
 class AiReviewPoliticalOcrTaskOutput(AbstractModel):
-    r"""Ocr text sensitive information
+    r"""Sensitive information in Ocr text
 
     """
 
     def __init__(self):
         r"""
-        :param _Confidence: Ocr text sensitivity score, ranging from 0 to 100.
+        :param _Confidence: Sensitive score of the Ocr text. Value range: 0–100.
         :type Confidence: float
-        :param _Suggestion: Ocr text sensitive result recommendation, value ranges from...to...
+        :param _Suggestion: Sensitive result suggestions for Ocr text. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param _SegmentSet: Video segment list with suspect Ocr text sensitivity.
+        :param _SegmentSet: List of video segments with sensitive Ocr text.
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
         """
         self._Confidence = None
@@ -10060,7 +10869,7 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""Ocr text sensitivity score, ranging from 0 to 100.
+        r"""Sensitive score of the Ocr text. Value range: 0–100.
         :rtype: float
         """
         return self._Confidence
@@ -10071,7 +10880,7 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""Ocr text sensitive result recommendation, value ranges from...to...
+        r"""Sensitive result suggestions for Ocr text. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
@@ -10085,7 +10894,7 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
-        r"""Video segment list with suspect Ocr text sensitivity.
+        r"""List of video segments with sensitive Ocr text.
         :rtype: list of MediaContentReviewOcrTextSegmentItem
         """
         return self._SegmentSet
@@ -10115,7 +10924,7 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
 
 
 class AiReviewPoliticalTaskInput(AbstractModel):
-    r"""Content review sensitive task input parameter type
+    r"""Content review sensitivity task input parameter type
 
     """
 
@@ -10157,17 +10966,17 @@ class AiReviewPoliticalTaskOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Confidence: Video sensitive content score, ranging from 0 to 100.
+        :param _Confidence: Sensitive score of the video. The score ranges from 0 to 100.
         :type Confidence: float
-        :param _Suggestion: Result Suggestions for sensitive content, value ranges from...to...
+        :param _Suggestion: Sensitive result suggestion. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param _Label: Video sensitive content result tag. The mapping between the LabelSet parameter in the content moderation template's visual sensitive content task control parameter (https://www.tencentcloud.com/document/api/862/37615?from_cn_redirect=1#AiReviewPoliticalTaskOutput) and the parameter value range of this parameter:
+        :param _Label: Video sensitive information tag. Mapping between the LabelSet parameter in the frame sensitive information task control parameter (https://www.tencentcloud.com/document/api/862/37615?from_cn_redirect=1#AiReviewPoliticalTaskOutput) of the content review template and the value range of this parameter:
 violation_photo:
 <li>violation_photo: violation icon.</li>
-Other (i.e., politician/entertainment/sport/entrepreneur/scholar/celebrity/military):
+Other (politician/entertainment/sport/entrepreneur/scholar/celebrity/military):
 <li>politician: sensitive person.</li>
         :type Label: str
         :param _SegmentSet: List of video segments suspected of containing sensitive content.
@@ -10180,7 +10989,7 @@ Other (i.e., politician/entertainment/sport/entrepreneur/scholar/celebrity/milit
 
     @property
     def Confidence(self):
-        r"""Video sensitive content score, ranging from 0 to 100.
+        r"""Sensitive score of the video. The score ranges from 0 to 100.
         :rtype: float
         """
         return self._Confidence
@@ -10191,7 +11000,7 @@ Other (i.e., politician/entertainment/sport/entrepreneur/scholar/celebrity/milit
 
     @property
     def Suggestion(self):
-        r"""Result Suggestions for sensitive content, value ranges from...to...
+        r"""Sensitive result suggestion. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
@@ -10205,10 +11014,10 @@ Other (i.e., politician/entertainment/sport/entrepreneur/scholar/celebrity/milit
 
     @property
     def Label(self):
-        r"""Video sensitive content result tag. The mapping between the LabelSet parameter in the content moderation template's visual sensitive content task control parameter (https://www.tencentcloud.com/document/api/862/37615?from_cn_redirect=1#AiReviewPoliticalTaskOutput) and the parameter value range of this parameter:
+        r"""Video sensitive information tag. Mapping between the LabelSet parameter in the frame sensitive information task control parameter (https://www.tencentcloud.com/document/api/862/37615?from_cn_redirect=1#AiReviewPoliticalTaskOutput) of the content review template and the value range of this parameter:
 violation_photo:
 <li>violation_photo: violation icon.</li>
-Other (i.e., politician/entertainment/sport/entrepreneur/scholar/celebrity/military):
+Other (politician/entertainment/sport/entrepreneur/scholar/celebrity/military):
 <li>politician: sensitive person.</li>
         :rtype: str
         """
@@ -10251,20 +11060,20 @@ Other (i.e., politician/entertainment/sport/entrepreneur/scholar/celebrity/milit
 
 
 class AiReviewPornAsrTaskInput(AbstractModel):
-    r"""Content review Asr text porn detection task input parameter type
+    r"""Task input parameter type for porn detection in Asr text during content review.
 
     """
 
     def __init__(self):
         r"""
-        :param _Definition: Pornography detection template ID.
+        :param _Definition: Porn detection template ID.
         :type Definition: int
         """
         self._Definition = None
 
     @property
     def Definition(self):
-        r"""Pornography detection template ID.
+        r"""Porn detection template ID.
         :rtype: int
         """
         return self._Definition
@@ -10287,20 +11096,20 @@ class AiReviewPornAsrTaskInput(AbstractModel):
 
 
 class AiReviewPornAsrTaskOutput(AbstractModel):
-    r"""Asr text pornographic information
+    r"""Pornographic information in Asr text
 
     """
 
     def __init__(self):
         r"""
-        :param _Confidence: Asr text porn score, ranging from 0 to 100.
+        :param _Confidence: Porn score of the Asr text. The score ranges from 0 to 100.
         :type Confidence: float
-        :param _Suggestion: Asr text pornographic result suggestion, value ranges from...to...
+        :param _Suggestion: Asr text porn detection result suggestion. Value ranges from pass to review to block.
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param _SegmentSet: Video segment list with suspect Asr text pornographic information.
+        :param _SegmentSet: List of video segments whose Asr text is suspected of involving pornography.
         :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
         """
         self._Confidence = None
@@ -10309,7 +11118,7 @@ class AiReviewPornAsrTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""Asr text porn score, ranging from 0 to 100.
+        r"""Porn score of the Asr text. The score ranges from 0 to 100.
         :rtype: float
         """
         return self._Confidence
@@ -10320,7 +11129,7 @@ class AiReviewPornAsrTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""Asr text pornographic result suggestion, value ranges from...to...
+        r"""Asr text porn detection result suggestion. Value ranges from pass to review to block.
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
@@ -10334,7 +11143,7 @@ class AiReviewPornAsrTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
-        r"""Video segment list with suspect Asr text pornographic information.
+        r"""List of video segments whose Asr text is suspected of involving pornography.
         :rtype: list of MediaContentReviewAsrTextSegmentItem
         """
         return self._SegmentSet
@@ -10364,20 +11173,20 @@ class AiReviewPornAsrTaskOutput(AbstractModel):
 
 
 class AiReviewPornOcrTaskInput(AbstractModel):
-    r"""Content review Ocr text porn detection task input parameter type
+    r"""Task input parameter type for porn detection in Ocr text during content review.
 
     """
 
     def __init__(self):
         r"""
-        :param _Definition: Template ID for porn detection.
+        :param _Definition: Porn detection template ID.
         :type Definition: int
         """
         self._Definition = None
 
     @property
     def Definition(self):
-        r"""Template ID for porn detection.
+        r"""Porn detection template ID.
         :rtype: int
         """
         return self._Definition
@@ -10400,20 +11209,20 @@ class AiReviewPornOcrTaskInput(AbstractModel):
 
 
 class AiReviewPornOcrTaskOutput(AbstractModel):
-    r"""Ocr text pornographic information
+    r"""Pornographic information in Ocr text.
 
     """
 
     def __init__(self):
         r"""
-        :param _Confidence: Ocr text involves pornographic content scoring, with a score ranging from 0 to 100.
+        :param _Confidence: Ocr text porn score. Value range: 0-100.
         :type Confidence: float
-        :param _Suggestion: Result Suggestions for Ocr text pornographic content, value ranges from...to...
+        :param _Suggestion: Suggestion for the porn detection result of Ocr text. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param _SegmentSet: Video segment list with suspect Ocr text pornographic information.
+        :param _SegmentSet: List of video segments where the Ocr text is suspected of containing pornographic content.
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
         """
         self._Confidence = None
@@ -10422,7 +11231,7 @@ class AiReviewPornOcrTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""Ocr text involves pornographic content scoring, with a score ranging from 0 to 100.
+        r"""Ocr text porn score. Value range: 0-100.
         :rtype: float
         """
         return self._Confidence
@@ -10433,7 +11242,7 @@ class AiReviewPornOcrTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""Result Suggestions for Ocr text pornographic content, value ranges from...to...
+        r"""Suggestion for the porn detection result of Ocr text. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
@@ -10447,7 +11256,7 @@ class AiReviewPornOcrTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
-        r"""Video segment list with suspect Ocr text pornographic information.
+        r"""List of video segments where the Ocr text is suspected of containing pornographic content.
         :rtype: list of MediaContentReviewOcrTextSegmentItem
         """
         return self._SegmentSet
@@ -10477,20 +11286,20 @@ class AiReviewPornOcrTaskOutput(AbstractModel):
 
 
 class AiReviewPornTaskInput(AbstractModel):
-    r"""Content review porn detection task input parameter type
+    r"""Task input parameter type for porn detection during content review.
 
     """
 
     def __init__(self):
         r"""
-        :param _Definition: 
+        :param _Definition: Porn detection template ID.
         :type Definition: int
         """
         self._Definition = None
 
     @property
     def Definition(self):
-        r"""
+        r"""Porn detection template ID.
         :rtype: int
         """
         return self._Definition
@@ -10513,26 +11322,26 @@ class AiReviewPornTaskInput(AbstractModel):
 
 
 class AiReviewPornTaskOutput(AbstractModel):
-    r"""Pornographic result info
+    r"""Pornographic result information
 
     """
 
     def __init__(self):
         r"""
-        :param _Confidence: Video porn detection score, ranging from 0 to 100.
+        :param _Confidence: Porn information detection score in a video. The score ranges from 0 to 100.
         :type Confidence: float
-        :param _Suggestion: Pornographic result recommendation, value ranges from...to...
+        :param _Suggestion: Pornographic result suggestion. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param _Label: Video pornographic result tag, value ranges from...to...
+        :param _Label: Porn information detection result tag. Value range:
 <li>porn: pornography.</li>
 <li>sexy: sexy.</li>
-<li>vulgar: vulgarity.</li>
+<li>vulgar: vulgar.</li>
 <li>intimacy: intimate behavior.</li>
         :type Label: str
-        :param _SegmentSet: List of video segments suspected of containing pornographic content.
+        :param _SegmentSet: List of video segments suspected of pornography.
         :type SegmentSet: list of MediaContentReviewSegmentItem
         """
         self._Confidence = None
@@ -10542,7 +11351,7 @@ class AiReviewPornTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""Video porn detection score, ranging from 0 to 100.
+        r"""Porn information detection score in a video. The score ranges from 0 to 100.
         :rtype: float
         """
         return self._Confidence
@@ -10553,7 +11362,7 @@ class AiReviewPornTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""Pornographic result recommendation, value ranges from...to...
+        r"""Pornographic result suggestion. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
@@ -10567,10 +11376,10 @@ class AiReviewPornTaskOutput(AbstractModel):
 
     @property
     def Label(self):
-        r"""Video pornographic result tag, value ranges from...to...
+        r"""Porn information detection result tag. Value range:
 <li>porn: pornography.</li>
 <li>sexy: sexy.</li>
-<li>vulgar: vulgarity.</li>
+<li>vulgar: vulgar.</li>
 <li>intimacy: intimate behavior.</li>
         :rtype: str
         """
@@ -10582,7 +11391,7 @@ class AiReviewPornTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
-        r"""List of video segments suspected of containing pornographic content.
+        r"""List of video segments suspected of pornography.
         :rtype: list of MediaContentReviewSegmentItem
         """
         return self._SegmentSet
@@ -10613,7 +11422,7 @@ class AiReviewPornTaskOutput(AbstractModel):
 
 
 class AiReviewProhibitedAsrTaskInput(AbstractModel):
-    r"""Content review Asr text prohibited information recognition task input parameter type
+    r"""Input parameter type for the Asr text prohibited information recognition task of content review
 
     """
 
@@ -10655,14 +11464,14 @@ class AiReviewProhibitedAsrTaskOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Confidence: Asr text involves prohibited content scoring, with a score ranging from 0 to 100.
+        :param _Confidence: Asr text violation score. Value range: 0-100.
         :type Confidence: float
-        :param _Suggestion: Asr text prohibited result suggestion, value ranges from...to...
+        :param _Suggestion: Asr text violation result suggestion. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param _SegmentSet: Video segment list with Asr text suspected of prohibition violations.
+        :param _SegmentSet: List of video segments where the Asr text is suspected of prohibition violations.
         :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
         """
         self._Confidence = None
@@ -10671,7 +11480,7 @@ class AiReviewProhibitedAsrTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""Asr text involves prohibited content scoring, with a score ranging from 0 to 100.
+        r"""Asr text violation score. Value range: 0-100.
         :rtype: float
         """
         return self._Confidence
@@ -10682,7 +11491,7 @@ class AiReviewProhibitedAsrTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""Asr text prohibited result suggestion, value ranges from...to...
+        r"""Asr text violation result suggestion. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
@@ -10696,7 +11505,7 @@ class AiReviewProhibitedAsrTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
-        r"""Video segment list with Asr text suspected of prohibition violations.
+        r"""List of video segments where the Asr text is suspected of prohibition violations.
         :rtype: list of MediaContentReviewAsrTextSegmentItem
         """
         return self._SegmentSet
@@ -10762,20 +11571,20 @@ class AiReviewProhibitedOcrTaskInput(AbstractModel):
 
 
 class AiReviewProhibitedOcrTaskOutput(AbstractModel):
-    r"""Ocr (Optical Character Recognition) text contains prohibited information
+    r"""Prohibited information in Ocr text
 
     """
 
     def __init__(self):
         r"""
-        :param _Confidence: Ocr text involves prohibited content scoring, with a score ranging from 0 to 100.
+        :param _Confidence: Prohibited content score of the Ocr text. Value range: 0–100.
         :type Confidence: float
-        :param _Suggestion: Ocr text prohibited content result suggestion, value ranges from...to...
+        :param _Suggestion: Ocr text violation result suggestion. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param _SegmentSet: Video segment list with Ocr text suspected of prohibition violations.
+        :param _SegmentSet: List of video segments with Ocr text suspected of prohibition violations.
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
         """
         self._Confidence = None
@@ -10784,7 +11593,7 @@ class AiReviewProhibitedOcrTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""Ocr text involves prohibited content scoring, with a score ranging from 0 to 100.
+        r"""Prohibited content score of the Ocr text. Value range: 0–100.
         :rtype: float
         """
         return self._Confidence
@@ -10795,7 +11604,7 @@ class AiReviewProhibitedOcrTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""Ocr text prohibited content result suggestion, value ranges from...to...
+        r"""Ocr text violation result suggestion. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
@@ -10809,7 +11618,7 @@ class AiReviewProhibitedOcrTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
-        r"""Video segment list with Ocr text suspected of prohibition violations.
+        r"""List of video segments with Ocr text suspected of prohibition violations.
         :rtype: list of MediaContentReviewOcrTextSegmentItem
         """
         return self._SegmentSet
@@ -10839,7 +11648,7 @@ class AiReviewProhibitedOcrTaskOutput(AbstractModel):
 
 
 class AiReviewTaskPoliticalAsrResult(AbstractModel):
-    r"""Content review Asr text sensitivity task result type
+    r"""Result type of the sensitive Asr text task in content review
 
     """
 
@@ -10853,9 +11662,9 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Content review Asr text sensitivity task input.
+        :param _Input: Input of the sensitive Asr text task in content review.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalAsrTaskInput`
-        :param _Output: 
+        :param _Output: Output of the Asr text sensitive task in content review.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalAsrTaskOutput`
         """
         self._Status = None
@@ -10911,7 +11720,7 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Content review Asr text sensitivity task input.
+        r"""Input of the sensitive Asr text task in content review.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalAsrTaskInput`
         """
         return self._Input
@@ -10922,7 +11731,7 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output of the Asr text sensitive task in content review.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalAsrTaskOutput`
         """
         return self._Output
@@ -10954,7 +11763,7 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
 
 
 class AiReviewTaskPoliticalOcrResult(AbstractModel):
-    r"""Content review Ocr text sensitive task result type
+    r"""Result type of the sensitive Ocr text task in content review
 
     """
 
@@ -10968,9 +11777,9 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Content review Ocr text sensitivity task input.
+        :param _Input: Input of the sensitive Ocr text task in content review.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalOcrTaskInput`
-        :param _Output: 
+        :param _Output: Content review Ocr text sensitivity task output.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalOcrTaskOutput`
         """
         self._Status = None
@@ -11026,7 +11835,7 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Content review Ocr text sensitivity task input.
+        r"""Input of the sensitive Ocr text task in content review.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalOcrTaskInput`
         """
         return self._Input
@@ -11037,7 +11846,7 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Content review Ocr text sensitivity task output.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalOcrTaskOutput`
         """
         return self._Output
@@ -11083,9 +11892,9 @@ class AiReviewTaskPoliticalResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Content review sensitive task input.
+        :param _Input: Sensitive task input for content review.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalTaskInput`
-        :param _Output: 
+        :param _Output: Output of sensitive tasks in content review.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalTaskOutput`
         """
         self._Status = None
@@ -11141,7 +11950,7 @@ class AiReviewTaskPoliticalResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Content review sensitive task input.
+        r"""Sensitive task input for content review.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalTaskInput`
         """
         return self._Input
@@ -11152,7 +11961,7 @@ class AiReviewTaskPoliticalResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output of sensitive tasks in content review.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalTaskOutput`
         """
         return self._Output
@@ -11184,7 +11993,7 @@ class AiReviewTaskPoliticalResult(AbstractModel):
 
 
 class AiReviewTaskPornAsrResult(AbstractModel):
-    r"""Content review Asr text porn detection task result kind
+    r"""Result type of the Asr text pornography detection task in content review
 
     """
 
@@ -11198,9 +12007,9 @@ class AiReviewTaskPornAsrResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Content review Asr text pornography detection task input.
+        :param _Input: Input for the Asr text pornography detection task in content review.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPornAsrTaskInput`
-        :param _Output: 
+        :param _Output: Content review Asr text porn detection task output.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPornAsrTaskOutput`
         """
         self._Status = None
@@ -11256,7 +12065,7 @@ class AiReviewTaskPornAsrResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Content review Asr text pornography detection task input.
+        r"""Input for the Asr text pornography detection task in content review.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPornAsrTaskInput`
         """
         return self._Input
@@ -11267,7 +12076,7 @@ class AiReviewTaskPornAsrResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Content review Asr text porn detection task output.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPornAsrTaskOutput`
         """
         return self._Output
@@ -11299,7 +12108,7 @@ class AiReviewTaskPornAsrResult(AbstractModel):
 
 
 class AiReviewTaskPornOcrResult(AbstractModel):
-    r"""Content review Ocr text pornography detection task result type
+    r"""Result type of the Ocr text pornography detection task for content review
 
     """
 
@@ -11313,9 +12122,9 @@ class AiReviewTaskPornOcrResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Content review Ocr text pornography detection task input.
+        :param _Input: Task input for porn detection in Ocr text during content review.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPornOcrTaskInput`
-        :param _Output: 
+        :param _Output: Output of the Ocr text pornography detection task for content review.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPornOcrTaskOutput`
         """
         self._Status = None
@@ -11371,7 +12180,7 @@ class AiReviewTaskPornOcrResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Content review Ocr text pornography detection task input.
+        r"""Task input for porn detection in Ocr text during content review.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPornOcrTaskInput`
         """
         return self._Input
@@ -11382,7 +12191,7 @@ class AiReviewTaskPornOcrResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output of the Ocr text pornography detection task for content review.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPornOcrTaskOutput`
         """
         return self._Output
@@ -11414,7 +12223,7 @@ class AiReviewTaskPornOcrResult(AbstractModel):
 
 
 class AiReviewTaskPornResult(AbstractModel):
-    r"""Content review porn detection task result type
+    r"""Result type of the porn detection task during content review.
 
     """
 
@@ -11428,9 +12237,9 @@ class AiReviewTaskPornResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Content review porn task input.
+        :param _Input: Input for the content review pornography detection task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPornTaskInput`
-        :param _Output: 
+        :param _Output: Pornography detection task output of content review.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPornTaskOutput`
         """
         self._Status = None
@@ -11486,7 +12295,7 @@ class AiReviewTaskPornResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Content review porn task input.
+        r"""Input for the content review pornography detection task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPornTaskInput`
         """
         return self._Input
@@ -11497,7 +12306,7 @@ class AiReviewTaskPornResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Pornography detection task output of content review.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPornTaskOutput`
         """
         return self._Output
@@ -11529,7 +12338,7 @@ class AiReviewTaskPornResult(AbstractModel):
 
 
 class AiReviewTaskProhibitedAsrResult(AbstractModel):
-    r"""Content review Asr text prohibited content detection task result type
+    r"""Content review Asr text prohibited information recognition task result type
 
     """
 
@@ -11543,9 +12352,9 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Content review Asr text prohibited task input.
+        :param _Input: Input of the prohibited task for content review of Asr text.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedAsrTaskInput`
-        :param _Output: 
+        :param _Output: Output of the prohibited task for content review of Asr text.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedAsrTaskOutput`
         """
         self._Status = None
@@ -11601,7 +12410,7 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Content review Asr text prohibited task input.
+        r"""Input of the prohibited task for content review of Asr text.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedAsrTaskInput`
         """
         return self._Input
@@ -11612,7 +12421,7 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output of the prohibited task for content review of Asr text.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedAsrTaskOutput`
         """
         return self._Output
@@ -11644,7 +12453,7 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
 
 
 class AiReviewTaskProhibitedOcrResult(AbstractModel):
-    r"""Content review Ocr text prohibited content detection task result type
+    r"""Result type of the prohibited Ocr text task in content review
 
     """
 
@@ -11658,9 +12467,9 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Content review Ocr text prohibited task input.
+        :param _Input: Input of the prohibited Ocr text task in content review.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedOcrTaskInput`
-        :param _Output: 
+        :param _Output: Content review Ocr text prohibited information recognition task output.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedOcrTaskOutput`
         """
         self._Status = None
@@ -11716,7 +12525,7 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Content review Ocr text prohibited task input.
+        r"""Input of the prohibited Ocr text task in content review.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedOcrTaskInput`
         """
         return self._Input
@@ -11727,7 +12536,7 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Content review Ocr text prohibited information recognition task output.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedOcrTaskOutput`
         """
         return self._Output
@@ -11759,7 +12568,7 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
 
 
 class AiReviewTaskTerrorismOcrResult(AbstractModel):
-    r"""Content review Ocr text sensitive task result type
+    r"""Content review Ocr text sensitivity task result type
 
     """
 
@@ -11773,9 +12582,9 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Content review Ocr text sensitivity task input.
+        :param _Input: Content review Ocr text sensitive task input.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskInput`
-        :param _Output: 
+        :param _Output: Content review Ocr text sensitive task output.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskOutput`
         """
         self._Status = None
@@ -11831,7 +12640,7 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Content review Ocr text sensitivity task input.
+        r"""Content review Ocr text sensitive task input.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskInput`
         """
         return self._Input
@@ -11842,7 +12651,7 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Content review Ocr text sensitive task output.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskOutput`
         """
         return self._Output
@@ -11888,9 +12697,9 @@ class AiReviewTaskTerrorismResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Content review sensitive task input.
+        :param _Input: Sensitive task input for content review.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismTaskInput`
-        :param _Output: 
+        :param _Output: Output of sensitive tasks in content review.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismTaskOutput`
         """
         self._Status = None
@@ -11946,7 +12755,7 @@ class AiReviewTaskTerrorismResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Content review sensitive task input.
+        r"""Sensitive task input for content review.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismTaskInput`
         """
         return self._Input
@@ -11957,7 +12766,7 @@ class AiReviewTaskTerrorismResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output of sensitive tasks in content review.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismTaskOutput`
         """
         return self._Output
@@ -12031,14 +12840,14 @@ class AiReviewTerrorismOcrTaskOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Confidence: Ocr text sensitive content score, ranging from 0 to III.
+        :param _Confidence: Sensitive score of the Ocr text. The score ranges from 0 to 100.
         :type Confidence: float
-        :param _Suggestion: Ocr text sensitive result suggestion, value ranges from...to...
+        :param _Suggestion: Sensitive data detection result suggestion for Ocr text. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param _SegmentSet: List of video segments suspected of containing sensitive content in Ocr text.
+        :param _SegmentSet: List of video segments whose Ocr text is suspected of containing sensitive content.
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
         """
         self._Confidence = None
@@ -12047,7 +12856,7 @@ class AiReviewTerrorismOcrTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""Ocr text sensitive content score, ranging from 0 to III.
+        r"""Sensitive score of the Ocr text. The score ranges from 0 to 100.
         :rtype: float
         """
         return self._Confidence
@@ -12058,7 +12867,7 @@ class AiReviewTerrorismOcrTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""Ocr text sensitive result suggestion, value ranges from...to...
+        r"""Sensitive data detection result suggestion for Ocr text. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
@@ -12072,7 +12881,7 @@ class AiReviewTerrorismOcrTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
-        r"""List of video segments suspected of containing sensitive content in Ocr text.
+        r"""List of video segments whose Ocr text is suspected of containing sensitive content.
         :rtype: list of MediaContentReviewOcrTextSegmentItem
         """
         return self._SegmentSet
@@ -12144,23 +12953,23 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Confidence: Video sensitive content score, ranging from 0 to 100.
+        :param _Confidence: Sensitive score of the video. The score ranges from 0 to 100.
         :type Confidence: float
-        :param _Suggestion: Result Suggestions for sensitive content, value ranges from...to...
+        :param _Suggestion: Sensitive result suggestion. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param _Label: Video sensitive content detection result tag, permissible range:
+        :param _Label: Video moderation result tag. Value range:
 <li>guns: weapons and firearms.</li>
 <li>crowd: crowd gathering.</li>
 <li>police: police force.</li>
 <li>bloody: graphic violence.</li>
 <li>banners: sensitive flags.</li>
-<li>militant: militant.</li>
+<li>militant: militants.</li>
 <li>explosion: explosions and fires.</li>
 <li>terrorists: sensitive persons.</li>
-<li>scenario: Sensitive content.</li>
+<li>scenario: sensitive content.</li>
         :type Label: str
         :param _SegmentSet: List of video segments suspected of containing sensitive content.
         :type SegmentSet: list of MediaContentReviewSegmentItem
@@ -12172,7 +12981,7 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""Video sensitive content score, ranging from 0 to 100.
+        r"""Sensitive score of the video. The score ranges from 0 to 100.
         :rtype: float
         """
         return self._Confidence
@@ -12183,7 +12992,7 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""Result Suggestions for sensitive content, value ranges from...to...
+        r"""Sensitive result suggestion. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
@@ -12197,16 +13006,16 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
 
     @property
     def Label(self):
-        r"""Video sensitive content detection result tag, permissible range:
+        r"""Video moderation result tag. Value range:
 <li>guns: weapons and firearms.</li>
 <li>crowd: crowd gathering.</li>
 <li>police: police force.</li>
 <li>bloody: graphic violence.</li>
 <li>banners: sensitive flags.</li>
-<li>militant: militant.</li>
+<li>militant: militants.</li>
 <li>explosion: explosions and fires.</li>
 <li>terrorists: sensitive persons.</li>
-<li>scenario: Sensitive content.</li>
+<li>scenario: sensitive content.</li>
         :rtype: str
         """
         return self._Label
@@ -12789,15 +13598,15 @@ class AiSampleWordInfo(AbstractModel):
 
 
 class AiStoryboardConfig(AbstractModel):
-    r"""Intelligent shot deconstruction configuration.
+    r"""Intelligent storyboard deconstruct configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _Switch: <p>Capability configuration switch, available values: ON: Enable; OFF: Disable. Default value: ON.</p>
+        :param _Switch: <p>Capability configuration switch. Available values: ON: Enable; OFF: Disable. Default value: ON.</p>
         :type Switch: str
-        :param _ProcessIndex: <p>Specify the serial number of the storyboard to extract. Counting begins from 0. If not specified, return all storyboards.</p>
+        :param _ProcessIndex: <p>Specify the serial number of the storyboard image to extract. Counting begins from 0. If not specified, return all storyboard images.</p>
         :type ProcessIndex: int
         """
         self._Switch = None
@@ -12805,7 +13614,7 @@ class AiStoryboardConfig(AbstractModel):
 
     @property
     def Switch(self):
-        r"""<p>Capability configuration switch, available values: ON: Enable; OFF: Disable. Default value: ON.</p>
+        r"""<p>Capability configuration switch. Available values: ON: Enable; OFF: Disable. Default value: ON.</p>
         :rtype: str
         """
         return self._Switch
@@ -12816,7 +13625,7 @@ class AiStoryboardConfig(AbstractModel):
 
     @property
     def ProcessIndex(self):
-        r"""<p>Specify the serial number of the storyboard to extract. Counting begins from 0. If not specified, return all storyboards.</p>
+        r"""<p>Specify the serial number of the storyboard image to extract. Counting begins from 0. If not specified, return all storyboard images.</p>
         :rtype: int
         """
         return self._ProcessIndex
@@ -13266,9 +14075,9 @@ class AigcTaskListItem(AbstractModel):
         r"""
         :param _TaskId: <p>Task ID.</p>
         :type TaskId: str
-        :param _TaskType: <p>Task type</p><p>Enumeration value:</p><ul><li>VideoRedraw: Video redraw task</li><li>AIDrama: AI drama task</li></ul>
+        :param _TaskType: <p>Task type</p><p>Enumeration values:</p><ul><li>VideoRedraw: Video redraw task</li><li>AIDrama: AI drama task</li></ul>
         :type TaskType: str
-        :param _TaskStatus: <p>Task status</p><p>Enumeration values:</p><ul><li>PENDING: Task waiting for scheduling</li><li>RUNNING: Task running</li><li>FINISHED: Task executed successfully</li><li>STOP: Task termination</li><li>FAILED: Task failure</li><li>TIMEOUT: Task timeout</li></ul>
+        :param _TaskStatus: <p>Task status</p><p>Enumeration values: </p><ul><li>PENDING: Task waiting for scheduling</li><li>RUNNING: Task running</li><li>FINISHED: Task executed successfully</li><li>STOP: Task termination</li><li>FAILED: Task failure</li><li>TIMEOUT: Task timeout</li></ul>
         :type TaskStatus: str
         :param _CreateTime: <p>Task creation time</p>
         :type CreateTime: str
@@ -13282,12 +14091,16 @@ class AigcTaskListItem(AbstractModel):
         :type TaskResultCode: int
         :param _TaskResultMsg: <p>Task execution error message</p>
         :type TaskResultMsg: str
-        :param _Resolution: <p>Output video resolution</p>
+        :param _Resolution: <p>Resolution of the output video</p>
         :type Resolution: str
         :param _Ratio: <p>Aspect ratio of the output video</p>
         :type Ratio: str
-        :param _RequestBody: <p>Task request package</p>
+        :param _RequestBody: <p>Task request packet</p>
         :type RequestBody: str
+        :param _TaskInfo: <p>Other task information.</p>
+        :type TaskInfo: str
+        :param _Stage: <p>Task sub-status.</p>
+        :type Stage: str
         """
         self._TaskId = None
         self._TaskType = None
@@ -13301,6 +14114,8 @@ class AigcTaskListItem(AbstractModel):
         self._Resolution = None
         self._Ratio = None
         self._RequestBody = None
+        self._TaskInfo = None
+        self._Stage = None
 
     @property
     def TaskId(self):
@@ -13315,7 +14130,7 @@ class AigcTaskListItem(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""<p>Task type</p><p>Enumeration value:</p><ul><li>VideoRedraw: Video redraw task</li><li>AIDrama: AI drama task</li></ul>
+        r"""<p>Task type</p><p>Enumeration values:</p><ul><li>VideoRedraw: Video redraw task</li><li>AIDrama: AI drama task</li></ul>
         :rtype: str
         """
         return self._TaskType
@@ -13326,7 +14141,7 @@ class AigcTaskListItem(AbstractModel):
 
     @property
     def TaskStatus(self):
-        r"""<p>Task status</p><p>Enumeration values:</p><ul><li>PENDING: Task waiting for scheduling</li><li>RUNNING: Task running</li><li>FINISHED: Task executed successfully</li><li>STOP: Task termination</li><li>FAILED: Task failure</li><li>TIMEOUT: Task timeout</li></ul>
+        r"""<p>Task status</p><p>Enumeration values: </p><ul><li>PENDING: Task waiting for scheduling</li><li>RUNNING: Task running</li><li>FINISHED: Task executed successfully</li><li>STOP: Task termination</li><li>FAILED: Task failure</li><li>TIMEOUT: Task timeout</li></ul>
         :rtype: str
         """
         return self._TaskStatus
@@ -13403,7 +14218,7 @@ class AigcTaskListItem(AbstractModel):
 
     @property
     def Resolution(self):
-        r"""<p>Output video resolution</p>
+        r"""<p>Resolution of the output video</p>
         :rtype: str
         """
         return self._Resolution
@@ -13425,7 +14240,7 @@ class AigcTaskListItem(AbstractModel):
 
     @property
     def RequestBody(self):
-        r"""<p>Task request package</p>
+        r"""<p>Task request packet</p>
         :rtype: str
         """
         return self._RequestBody
@@ -13433,6 +14248,28 @@ class AigcTaskListItem(AbstractModel):
     @RequestBody.setter
     def RequestBody(self, RequestBody):
         self._RequestBody = RequestBody
+
+    @property
+    def TaskInfo(self):
+        r"""<p>Other task information.</p>
+        :rtype: str
+        """
+        return self._TaskInfo
+
+    @TaskInfo.setter
+    def TaskInfo(self, TaskInfo):
+        self._TaskInfo = TaskInfo
+
+    @property
+    def Stage(self):
+        r"""<p>Task sub-status.</p>
+        :rtype: str
+        """
+        return self._Stage
+
+    @Stage.setter
+    def Stage(self, Stage):
+        self._Stage = Stage
 
 
     def _deserialize(self, params):
@@ -13448,6 +14285,8 @@ class AigcTaskListItem(AbstractModel):
         self._Resolution = params.get("Resolution")
         self._Ratio = params.get("Ratio")
         self._RequestBody = params.get("RequestBody")
+        self._TaskInfo = params.get("TaskInfo")
+        self._Stage = params.get("Stage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13829,7 +14668,7 @@ class AigcVideoReferenceVideoInfo(AbstractModel):
 
 
 class AnimatedGraphicTaskInput(AbstractModel):
-    r"""Type of rotating image tasks.
+    r"""Rotating image task type.
 
     """
 
@@ -13841,7 +14680,7 @@ class AnimatedGraphicTaskInput(AbstractModel):
         :type StartTimeOffset: float
         :param _EndTimeOffset: <p>End time of the GIF in the video, in seconds.</p>
         :type EndTimeOffset: float
-        :param _OutputStorage: 
+        :param _OutputStorage: <p>Target storage for the file after animated image conversion. If not specified, it inherits the upper-level OutputStorage value.</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputObjectPath: <p>Output path of the file after GIF conversion, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href="https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1">File Name Variable Description</a>.<br>Relative path example:</p><li>File name_{variable name}.{format}</li><li>File name.{format}</li>Absolute path example:<li>/custom path/file name_{variable name}.{format}</li>If this is not specified, the default relative path is <code>{inputName}_animatedGraphic_{definition}.{format}</code>.
         :type OutputObjectPath: str
@@ -13890,7 +14729,7 @@ class AnimatedGraphicTaskInput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""
+        r"""<p>Target storage for the file after animated image conversion. If not specified, it inherits the upper-level OutputStorage value.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -14173,7 +15012,7 @@ Default value: open.
 
 
 class ArtifactRepairConfig(AbstractModel):
-    r"""Artifact (burr) removal configuration
+    r"""Artifacts removal (burr) configuration
 
     """
 
@@ -14181,10 +15020,13 @@ class ArtifactRepairConfig(AbstractModel):
         r"""
         :param _Switch: Capability configuration switch. Valid values:
 <li>ON: enabled;</li>
-<li>OFF: disabled.</li>
+<li>OFF: disabled</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: 
+        :param _Type: Type. Valid values:
+<li>weak</li>
+<li>strong</li>
+Default value: weak.
         :type Type: str
         """
         self._Switch = None
@@ -14194,7 +15036,7 @@ Default value: ON.
     def Switch(self):
         r"""Capability configuration switch. Valid values:
 <li>ON: enabled;</li>
-<li>OFF: disabled.</li>
+<li>OFF: disabled</li>
 Default value: ON.
         :rtype: str
         """
@@ -14206,7 +15048,10 @@ Default value: ON.
 
     @property
     def Type(self):
-        r"""
+        r"""Type. Valid values:
+<li>weak</li>
+<li>strong</li>
+Default value: weak.
         :rtype: str
         """
         return self._Type
@@ -14374,15 +15219,15 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
 
 
 class AsrHotWordsConfigure(AbstractModel):
-    r"""
+    r"""Smart subtitle hotword parameter.
 
     """
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: Hotword switch.
         :type Switch: str
-        :param _LibraryId: 
+        :param _LibraryId: Hotword lexicon ID
         :type LibraryId: str
         """
         self._Switch = None
@@ -14390,7 +15235,7 @@ class AsrHotWordsConfigure(AbstractModel):
 
     @property
     def Switch(self):
-        r"""
+        r"""Hotword switch.
         :rtype: str
         """
         return self._Switch
@@ -14401,7 +15246,7 @@ class AsrHotWordsConfigure(AbstractModel):
 
     @property
     def LibraryId(self):
-        r"""
+        r"""Hotword lexicon ID
         :rtype: str
         """
         return self._LibraryId
@@ -14754,7 +15599,7 @@ class AudioBeautifyConfig(AbstractModel):
         r"""
         :param _Switch: <p>Capability configuration switch. Available values: </p><li>ON: Enable;</li><li>OFF: Disable.</li>Default value: ON.
         :type Switch: str
-        :param _Types: <p>Type. Multiple selections allowed. Available values:</p><li>declick: noise removal</li><li>deesser: de-ess</li>Default value: declick.
+        :param _Types: <p>Type, multiple selections allowed. Available values:</p><li>declick: noise removal</li><li>deesser: de-ess</li>Default value: declick.
         :type Types: list of str
         """
         self._Switch = None
@@ -14773,7 +15618,7 @@ class AudioBeautifyConfig(AbstractModel):
 
     @property
     def Types(self):
-        r"""<p>Type. Multiple selections allowed. Available values:</p><li>declick: noise removal</li><li>deesser: de-ess</li>Default value: declick.
+        r"""<p>Type, multiple selections allowed. Available values:</p><li>declick: noise removal</li><li>deesser: de-ess</li>Default value: declick.
         :rtype: list of str
         """
         return self._Types
@@ -14805,7 +15650,7 @@ class AudioDenoiseConfig(AbstractModel):
         r"""
         :param _Switch: Capability configuration switch. Valid values:
 <li>ON: enabled;</li>
-<li>OFF: disabled.</li>
+<li>OFF: disabled</li>
 Default value: ON.
         :type Switch: str
         """
@@ -14815,7 +15660,7 @@ Default value: ON.
     def Switch(self):
         r"""Capability configuration switch. Valid values:
 <li>ON: enabled;</li>
-<li>OFF: disabled.</li>
+<li>OFF: disabled</li>
 Default value: ON.
         :rtype: str
         """
@@ -14845,23 +15690,26 @@ class AudioEnhanceConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Denoise: 
+        :param _Denoise: <p>Audio noise reduction configuration.</p>
         :type Denoise: :class:`tencentcloud.mps.v20190612.models.AudioDenoiseConfig`
-        :param _Separate: 
+        :param _Separate: <p>Audio separation configuration.</p>
         :type Separate: :class:`tencentcloud.mps.v20190612.models.AudioSeparateConfig`
-        :param _VolumeBalance: 
+        :param _VolumeBalance: <p>Volume equalization configuration.</p>
         :type VolumeBalance: :class:`tencentcloud.mps.v20190612.models.VolumeBalanceConfig`
-        :param _Beautify: 
+        :param _Beautify: <p>Audio beautification configurations.</p>
         :type Beautify: :class:`tencentcloud.mps.v20190612.models.AudioBeautifyConfig`
+        :param _AudioEnhanceEdit: <p>Audio enhancement edit.</p>
+        :type AudioEnhanceEdit: :class:`tencentcloud.mps.v20190612.models.AudioEnhanceEditConfig`
         """
         self._Denoise = None
         self._Separate = None
         self._VolumeBalance = None
         self._Beautify = None
+        self._AudioEnhanceEdit = None
 
     @property
     def Denoise(self):
-        r"""
+        r"""<p>Audio noise reduction configuration.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioDenoiseConfig`
         """
         return self._Denoise
@@ -14872,7 +15720,7 @@ class AudioEnhanceConfig(AbstractModel):
 
     @property
     def Separate(self):
-        r"""
+        r"""<p>Audio separation configuration.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioSeparateConfig`
         """
         return self._Separate
@@ -14883,7 +15731,7 @@ class AudioEnhanceConfig(AbstractModel):
 
     @property
     def VolumeBalance(self):
-        r"""
+        r"""<p>Volume equalization configuration.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.VolumeBalanceConfig`
         """
         return self._VolumeBalance
@@ -14894,7 +15742,7 @@ class AudioEnhanceConfig(AbstractModel):
 
     @property
     def Beautify(self):
-        r"""
+        r"""<p>Audio beautification configurations.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioBeautifyConfig`
         """
         return self._Beautify
@@ -14902,6 +15750,17 @@ class AudioEnhanceConfig(AbstractModel):
     @Beautify.setter
     def Beautify(self, Beautify):
         self._Beautify = Beautify
+
+    @property
+    def AudioEnhanceEdit(self):
+        r"""<p>Audio enhancement edit.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioEnhanceEditConfig`
+        """
+        return self._AudioEnhanceEdit
+
+    @AudioEnhanceEdit.setter
+    def AudioEnhanceEdit(self, AudioEnhanceEdit):
+        self._AudioEnhanceEdit = AudioEnhanceEdit
 
 
     def _deserialize(self, params):
@@ -14917,6 +15776,60 @@ class AudioEnhanceConfig(AbstractModel):
         if params.get("Beautify") is not None:
             self._Beautify = AudioBeautifyConfig()
             self._Beautify._deserialize(params.get("Beautify"))
+        if params.get("AudioEnhanceEdit") is not None:
+            self._AudioEnhanceEdit = AudioEnhanceEditConfig()
+            self._AudioEnhanceEdit._deserialize(params.get("AudioEnhanceEdit"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioEnhanceEditConfig(AbstractModel):
+    r"""Audio enhancement edit
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>Capability configuration switch</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p>
+        :type Switch: str
+        :param _Type: <p>Audio editing type</p><p>Enumeration values:</p><ul><li>restore: Repair</li></ul><p>When enabled, you must explicitly specify the enumeration value</p>
+        :type Type: str
+        """
+        self._Switch = None
+        self._Type = None
+
+    @property
+    def Switch(self):
+        r"""<p>Capability configuration switch</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""<p>Audio editing type</p><p>Enumeration values:</p><ul><li>restore: Repair</li></ul><p>When enabled, you must explicitly specify the enumeration value</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14934,14 +15847,20 @@ class AudioSeparateConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Capability configuration switch. Available values:
+        :param _Switch: Capability configuration switch. Valid values:
 <li>ON: enabled;</li>
 <li>OFF: disabled</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: 
+        :param _Type: Scenario type. Valid values:
+<li>normal: voice and background audio scenario</li>
+<li>music: singing accompaniment scenario</li>
+Default value: normal.
         :type Type: str
-        :param _Track: 
+        :param _Track: Output audio track. Available values:
+<li>vocal: output voice.</li>
+<li>background: output background sound when the scenario is normal, and output accompaniment when the scenario is music</li>
+Default value: vocal.
         :type Track: str
         """
         self._Switch = None
@@ -14950,7 +15869,7 @@ Default value: ON.
 
     @property
     def Switch(self):
-        r"""Capability configuration switch. Available values:
+        r"""Capability configuration switch. Valid values:
 <li>ON: enabled;</li>
 <li>OFF: disabled</li>
 Default value: ON.
@@ -14964,7 +15883,10 @@ Default value: ON.
 
     @property
     def Type(self):
-        r"""
+        r"""Scenario type. Valid values:
+<li>normal: voice and background audio scenario</li>
+<li>music: singing accompaniment scenario</li>
+Default value: normal.
         :rtype: str
         """
         return self._Type
@@ -14975,7 +15897,10 @@ Default value: ON.
 
     @property
     def Track(self):
-        r"""
+        r"""Output audio track. Available values:
+<li>vocal: output voice.</li>
+<li>background: output background sound when the scenario is normal, and output accompaniment when the scenario is music</li>
+Default value: vocal.
         :rtype: str
         """
         return self._Track
@@ -15000,7 +15925,7 @@ Default value: ON.
 
 
 class AudioTemplateInfo(AbstractModel):
-    r"""Audio stream configuration parameters.
+    r"""Audio stream configuration parameters
 
     """
 
@@ -15014,7 +15939,7 @@ class AudioTemplateInfo(AbstractModel):
         :type SampleRate: int
         :param _AudioChannel: <p>Audio channel mode. Valid values:</p><li>0: The number of audio channels follows that of the source.</li><li>1: Single channel.</li><li>2: Two channels.</li><li>6: 5.1 channels.</li>When the media container format is an audio format (mp3), the number of audio channels cannot be set to 5.1.<p>Default value: 2.<br>Note: If you set the audio channel to follow that of the source and the audio encoding format does not support the current audio channel, the transcoding task may fail.</p>
         :type AudioChannel: int
-        :param _TrackChannelInfo: 
+        :param _TrackChannelInfo: <p>Audio track merging information.<br>Note: This field only takes effect for adaptive transcoding.</p>
         :type TrackChannelInfo: :class:`tencentcloud.mps.v20190612.models.AudioTrackChannelInfo`
         :param _AudioLanguage: <p>Audio track language, such as chi or eng. Note: (1) This follows the ISO 639-2 standard. (2) This applies only to adaptive bitrate streaming templates. (3) The value "source" means that the source language is used.</p>
         :type AudioLanguage: str
@@ -15078,7 +16003,7 @@ class AudioTemplateInfo(AbstractModel):
 
     @property
     def TrackChannelInfo(self):
-        r"""
+        r"""<p>Audio track merging information.<br>Note: This field only takes effect for adaptive transcoding.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTrackChannelInfo`
         """
         return self._TrackChannelInfo
@@ -15149,15 +16074,15 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Codec: 
+        :param _Codec: <p>Audio stream encoding format.<br>When audio transcoding is not needed, the valid value is:</p><li>copy.</li>When the outer parameter Container is mp3, the valid value is:<li>mp3.</li>When the outer parameter Container is ogg or flac, the valid value is:<li>flac.</li>When the outer parameter Container is m4a, the valid values are:<li>aac;</li><li>ac3.</li>When the outer parameter Container is mp4 or flv, the valid values are:<li>aac: suitable for mp4.</li><li>mp3: suitable for flv.</li><li>mp2.</li>When the outer parameter Container is hls, the valid values are:<li>aac.</li><li>mp3.</li>When the outer parameter Container is wav, the valid values are:<li>pcm16 and pcm24.</li>
         :type Codec: str
-        :param _Bitrate: 
+        :param _Bitrate: <p>Audio stream bitrate, in kbps. Value range: 0 and [26, 256]. When the value is 0, it means the audio bitrate remains consistent with that of the original audio.</p>
         :type Bitrate: int
-        :param _SampleRate: 
+        :param _SampleRate: <p>Audio stream sampling rate. Different sampling rate options are provided for different encoding standards. Enter 0 to use the source audio sampling rate.<br>For details, see <a href="https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53">Audio Sampling Rate Range</a>.<br>Unit: Hz.<br>Note: Ensure the source audio stream sampling rate is within the supported range. Otherwise, transcoding may fail.</p>
         :type SampleRate: int
-        :param _AudioChannel: 
+        :param _AudioChannel: <p>Audio channel mode. Valid values:</p><li>0: The number of audio channels follows that of the source.</li><li>1: Single channel.</li><li>2: Two channels.</li><li>6: 5.1 channels.</li>When the media container format is an audio format (mp3), the number of audio channels cannot be set to 5.1.<p>Default value: 2.<br>Note: If you set the audio channel to follow that of the source and the audio encoding format does not support the current audio channel, the transcoding task may fail.</p>
         :type AudioChannel: int
-        :param _StreamSelects: 
+        :param _StreamSelects: <p>Specifies the retained audio tracks for output. All source tracks are retained by default.</p>
         :type StreamSelects: list of int
         """
         self._Codec = None
@@ -15168,7 +16093,7 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Codec(self):
-        r"""
+        r"""<p>Audio stream encoding format.<br>When audio transcoding is not needed, the valid value is:</p><li>copy.</li>When the outer parameter Container is mp3, the valid value is:<li>mp3.</li>When the outer parameter Container is ogg or flac, the valid value is:<li>flac.</li>When the outer parameter Container is m4a, the valid values are:<li>aac;</li><li>ac3.</li>When the outer parameter Container is mp4 or flv, the valid values are:<li>aac: suitable for mp4.</li><li>mp3: suitable for flv.</li><li>mp2.</li>When the outer parameter Container is hls, the valid values are:<li>aac.</li><li>mp3.</li>When the outer parameter Container is wav, the valid values are:<li>pcm16 and pcm24.</li>
         :rtype: str
         """
         return self._Codec
@@ -15179,7 +16104,7 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Bitrate(self):
-        r"""
+        r"""<p>Audio stream bitrate, in kbps. Value range: 0 and [26, 256]. When the value is 0, it means the audio bitrate remains consistent with that of the original audio.</p>
         :rtype: int
         """
         return self._Bitrate
@@ -15190,7 +16115,7 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 
     @property
     def SampleRate(self):
-        r"""
+        r"""<p>Audio stream sampling rate. Different sampling rate options are provided for different encoding standards. Enter 0 to use the source audio sampling rate.<br>For details, see <a href="https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53">Audio Sampling Rate Range</a>.<br>Unit: Hz.<br>Note: Ensure the source audio stream sampling rate is within the supported range. Otherwise, transcoding may fail.</p>
         :rtype: int
         """
         return self._SampleRate
@@ -15201,7 +16126,7 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 
     @property
     def AudioChannel(self):
-        r"""
+        r"""<p>Audio channel mode. Valid values:</p><li>0: The number of audio channels follows that of the source.</li><li>1: Single channel.</li><li>2: Two channels.</li><li>6: 5.1 channels.</li>When the media container format is an audio format (mp3), the number of audio channels cannot be set to 5.1.<p>Default value: 2.<br>Note: If you set the audio channel to follow that of the source and the audio encoding format does not support the current audio channel, the transcoding task may fail.</p>
         :rtype: int
         """
         return self._AudioChannel
@@ -15212,7 +16137,7 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 
     @property
     def StreamSelects(self):
-        r"""
+        r"""<p>Specifies the retained audio tracks for output. All source tracks are retained by default.</p>
         :rtype: list of int
         """
         return self._StreamSelects
@@ -15245,11 +16170,18 @@ class AudioTrackChannelInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChannelsRemix: 
+        :param _ChannelsRemix: Whether to enable audio mixing. Available values:
+0: audio mixing disabled
+1: Whether to enable audio mixing
+Default value: 0
         :type ChannelsRemix: int
-        :param _SelectType: 
+        :param _SelectType: Merge audio track input type. Available values:
+track: indicates usage of the audio track id.
+track_channel: indicates usage of the audio track id and sound channel id.
+Default value: track.
+Note: If the original video is multichannel, recommend using track_channel.
         :type SelectType: str
-        :param _InputTrackInfo: 
+        :param _InputTrackInfo: Audio track information.
         :type InputTrackInfo: list of TrackInfo
         """
         self._ChannelsRemix = None
@@ -15258,7 +16190,10 @@ class AudioTrackChannelInfo(AbstractModel):
 
     @property
     def ChannelsRemix(self):
-        r"""
+        r"""Whether to enable audio mixing. Available values:
+0: audio mixing disabled
+1: Whether to enable audio mixing
+Default value: 0
         :rtype: int
         """
         return self._ChannelsRemix
@@ -15269,7 +16204,11 @@ class AudioTrackChannelInfo(AbstractModel):
 
     @property
     def SelectType(self):
-        r"""
+        r"""Merge audio track input type. Available values:
+track: indicates usage of the audio track id.
+track_channel: indicates usage of the audio track id and sound channel id.
+Default value: track.
+Note: If the original video is multichannel, recommend using track_channel.
         :rtype: str
         """
         return self._SelectType
@@ -15280,7 +16219,7 @@ class AudioTrackChannelInfo(AbstractModel):
 
     @property
     def InputTrackInfo(self):
-        r"""
+        r"""Audio track information.
         :rtype: list of TrackInfo
         """
         return self._InputTrackInfo
@@ -15446,13 +16385,13 @@ class AwsSQS(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SQSRegion: 
+        :param _SQSRegion: SQS queue area.
         :type SQSRegion: str
-        :param _SQSQueueName: 
+        :param _SQSQueueName: SQS queue name.
         :type SQSQueueName: str
-        :param _S3SecretId: 
+        :param _S3SecretId: id for read-write access to SQS.
         :type S3SecretId: str
-        :param _S3SecretKey: 
+        :param _S3SecretKey: key for read-write access to SQS.
         :type S3SecretKey: str
         """
         self._SQSRegion = None
@@ -15462,7 +16401,7 @@ class AwsSQS(AbstractModel):
 
     @property
     def SQSRegion(self):
-        r"""
+        r"""SQS queue area.
         :rtype: str
         """
         return self._SQSRegion
@@ -15473,7 +16412,7 @@ class AwsSQS(AbstractModel):
 
     @property
     def SQSQueueName(self):
-        r"""
+        r"""SQS queue name.
         :rtype: str
         """
         return self._SQSQueueName
@@ -15484,7 +16423,7 @@ class AwsSQS(AbstractModel):
 
     @property
     def S3SecretId(self):
-        r"""
+        r"""id for read-write access to SQS.
         :rtype: str
         """
         return self._S3SecretId
@@ -15495,7 +16434,7 @@ class AwsSQS(AbstractModel):
 
     @property
     def S3SecretKey(self):
-        r"""
+        r"""key for read-write access to SQS.
         :rtype: str
         """
         return self._S3SecretKey
@@ -15752,9 +16691,9 @@ class BatchSmartSubtitlesResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Input: 
+        :param _Input: Input information for smart subtitle tasks.
         :type Input: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
-        :param _Outputs: 
+        :param _Outputs: Output information for smart subtitle tasks.
         :type Outputs: list of SmartSubtitleTaskBatchOutput
         """
         self._Input = None
@@ -15762,7 +16701,7 @@ class BatchSmartSubtitlesResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""
+        r"""Input information for smart subtitle tasks.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
         """
         return self._Input
@@ -15773,7 +16712,7 @@ class BatchSmartSubtitlesResult(AbstractModel):
 
     @property
     def Outputs(self):
-        r"""
+        r"""Output information for smart subtitle tasks.
         :rtype: list of SmartSubtitleTaskBatchOutput
         """
         return self._Outputs
@@ -15810,11 +16749,11 @@ class BatchSubTaskResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InputInfos: 
+        :param _InputInfos: Input information for a batch task.
         :type InputInfos: list of MediaInputInfo
-        :param _Metadatas: 
+        :param _Metadatas: Metadata of the original video.
         :type Metadatas: list of MediaMetaData
-        :param _SmartSubtitlesTaskResult: 
+        :param _SmartSubtitlesTaskResult: Execution result of the smart subtitle task.
         :type SmartSubtitlesTaskResult: :class:`tencentcloud.mps.v20190612.models.BatchSmartSubtitlesResult`
         """
         self._InputInfos = None
@@ -15823,7 +16762,7 @@ class BatchSubTaskResult(AbstractModel):
 
     @property
     def InputInfos(self):
-        r"""
+        r"""Input information for a batch task.
         :rtype: list of MediaInputInfo
         """
         return self._InputInfos
@@ -15834,7 +16773,7 @@ class BatchSubTaskResult(AbstractModel):
 
     @property
     def Metadatas(self):
-        r"""
+        r"""Metadata of the original video.
         :rtype: list of MediaMetaData
         """
         return self._Metadatas
@@ -15845,7 +16784,7 @@ class BatchSubTaskResult(AbstractModel):
 
     @property
     def SmartSubtitlesTaskResult(self):
-        r"""
+        r"""Execution result of the smart subtitle task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.BatchSmartSubtitlesResult`
         """
         return self._SmartSubtitlesTaskResult
@@ -16823,21 +17762,21 @@ class CloneVoiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AudioData: 
+        :param _AudioData: <p>Clone audio base64 code</p>
         :type AudioData: str
-        :param _AudioUrl: 
+        :param _AudioUrl: <p>Cloning audio URL. Valid when AudioData is empty.</p>
         :type AudioUrl: str
-        :param _AudioLang: 
+        :param _AudioLang: <p>Cloning audio language. The default language is Chinese. Supported languages are the same as those for TextLang in text to speech.</p>
         :type AudioLang: str
-        :param _VoiceProfile: 
+        :param _VoiceProfile: <p>Voice attribute. Use timbre for querying and matching.</p>
         :type VoiceProfile: :class:`tencentcloud.mps.v20190612.models.VoiceProfile`
-        :param _Text: 
+        :param _Text: <p>Trial text</p>
         :type Text: str
-        :param _TextLang: 
+        :param _TextLang: <p>Language of the trial text. By default, it is automatically detected if left blank. The currently supported languages are the same as those for TTS.</p>
         :type TextLang: str
-        :param _Output: 
+        :param _Output: <p>Output parameters. You can specify the output audio format, etc. The default output audio format is base64.</p>
         :type Output: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
-        :param _ExtParam: 
+        :param _ExtParam: <p>Extended parameters in the format of a JSON string.</p>
         :type ExtParam: str
         """
         self._AudioData = None
@@ -16851,7 +17790,7 @@ class CloneVoiceRequest(AbstractModel):
 
     @property
     def AudioData(self):
-        r"""
+        r"""<p>Clone audio base64 code</p>
         :rtype: str
         """
         return self._AudioData
@@ -16862,7 +17801,7 @@ class CloneVoiceRequest(AbstractModel):
 
     @property
     def AudioUrl(self):
-        r"""
+        r"""<p>Cloning audio URL. Valid when AudioData is empty.</p>
         :rtype: str
         """
         return self._AudioUrl
@@ -16873,7 +17812,7 @@ class CloneVoiceRequest(AbstractModel):
 
     @property
     def AudioLang(self):
-        r"""
+        r"""<p>Cloning audio language. The default language is Chinese. Supported languages are the same as those for TextLang in text to speech.</p>
         :rtype: str
         """
         return self._AudioLang
@@ -16884,7 +17823,7 @@ class CloneVoiceRequest(AbstractModel):
 
     @property
     def VoiceProfile(self):
-        r"""
+        r"""<p>Voice attribute. Use timbre for querying and matching.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.VoiceProfile`
         """
         return self._VoiceProfile
@@ -16895,7 +17834,7 @@ class CloneVoiceRequest(AbstractModel):
 
     @property
     def Text(self):
-        r"""
+        r"""<p>Trial text</p>
         :rtype: str
         """
         return self._Text
@@ -16906,7 +17845,7 @@ class CloneVoiceRequest(AbstractModel):
 
     @property
     def TextLang(self):
-        r"""
+        r"""<p>Language of the trial text. By default, it is automatically detected if left blank. The currently supported languages are the same as those for TTS.</p>
         :rtype: str
         """
         return self._TextLang
@@ -16917,7 +17856,7 @@ class CloneVoiceRequest(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""<p>Output parameters. You can specify the output audio format, etc. The default output audio format is base64.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
         """
         return self._Output
@@ -16928,7 +17867,7 @@ class CloneVoiceRequest(AbstractModel):
 
     @property
     def ExtParam(self):
-        r"""
+        r"""<p>Extended parameters in the format of a JSON string.</p>
         :rtype: str
         """
         return self._ExtParam
@@ -16968,15 +17907,15 @@ class CloneVoiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ErrorCode: 
+        :param _ErrorCode: <p>Error code. 0 is returned if the request is successful.</p>
         :type ErrorCode: int
-        :param _Msg: 
+        :param _Msg: <p>Error message. success is returned if the request is successful.</p>
         :type Msg: str
-        :param _VoiceId: 
+        :param _VoiceId: <p>ID of the cloned generated voice type</p>
         :type VoiceId: str
-        :param _AudioData: 
+        :param _AudioData: <p>base64-encoded synthetic audio</p>
         :type AudioData: str
-        :param _AudioUrl: 
+        :param _AudioUrl: <p>Synthetic audio Url, valid for 24 hours</p>
         :type AudioUrl: str
         :param _ExtInfo: <p>Extended information, json string</p>
         :type ExtInfo: str
@@ -16993,7 +17932,7 @@ class CloneVoiceResponse(AbstractModel):
 
     @property
     def ErrorCode(self):
-        r"""
+        r"""<p>Error code. 0 is returned if the request is successful.</p>
         :rtype: int
         """
         return self._ErrorCode
@@ -17004,7 +17943,7 @@ class CloneVoiceResponse(AbstractModel):
 
     @property
     def Msg(self):
-        r"""
+        r"""<p>Error message. success is returned if the request is successful.</p>
         :rtype: str
         """
         return self._Msg
@@ -17015,7 +17954,7 @@ class CloneVoiceResponse(AbstractModel):
 
     @property
     def VoiceId(self):
-        r"""
+        r"""<p>ID of the cloned generated voice type</p>
         :rtype: str
         """
         return self._VoiceId
@@ -17026,7 +17965,7 @@ class CloneVoiceResponse(AbstractModel):
 
     @property
     def AudioData(self):
-        r"""
+        r"""<p>base64-encoded synthetic audio</p>
         :rtype: str
         """
         return self._AudioData
@@ -17037,7 +17976,7 @@ class CloneVoiceResponse(AbstractModel):
 
     @property
     def AudioUrl(self):
-        r"""
+        r"""<p>Synthetic audio Url, valid for 24 hours</p>
         :rtype: str
         """
         return self._AudioUrl
@@ -17086,12 +18025,16 @@ class ColorEnhanceConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Capability configuration switch. Available values:
+        :param _Switch: Capability configuration switch. Valid values:
 <li>ON: enabled;</li>
 <li>OFF: disabled</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: 
+        :param _Type: Type. Valid values:
+<li>weak</li>
+<li>normal</li>
+<li>strong</li>
+Default value: weak.
         :type Type: str
         """
         self._Switch = None
@@ -17099,7 +18042,7 @@ Default value: ON.
 
     @property
     def Switch(self):
-        r"""Capability configuration switch. Available values:
+        r"""Capability configuration switch. Valid values:
 <li>ON: enabled;</li>
 <li>OFF: disabled</li>
 Default value: ON.
@@ -17113,7 +18056,11 @@ Default value: ON.
 
     @property
     def Type(self):
-        r"""
+        r"""Type. Valid values:
+<li>weak</li>
+<li>normal</li>
+<li>strong</li>
+Default value: weak.
         :rtype: str
         """
         return self._Type
@@ -19147,15 +20094,75 @@ class ContainerDiagnoseResultItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Category: 
+        :param _Category: Diagnosed exception category. Valid values:
+DecodeParamException: decoding parameter exception
+TimeStampException: timestamp exception.
+FrameException: frame rate exception.
+StreamStatusException: stream status exception.
+StreamInfo: stream information exception.
+StreamAbnormalCharacteristics: stream characteristics exception.
+DecodeException: decoding exception.
+HLSRequirements: HLS format exception
         :type Category: str
-        :param _Type: 
+        :param _Type: Diagnosed specific exception type. Valid values:
+
+VideoResolutionChanged: video resolution change.
+AudioSampleRateChanged: audio sample rate change.
+AudioChannelsChanged: audio channels changed
+ParameterSetsChanged: stream parameter set information change.
+DarOrSarInvalid: video aspect ratio exception.
+TimestampFallback: DTS timestamp fallback
+DtsJitter: DTS jitter too high.
+PtsJitter: PTS jitter too high.
+AACDurationDeviation: improper AAC frame timestamp interval.
+AudioDroppingFrames: Audio frame dropping
+VideoDroppingFrames: video frame dropping.
+AVTimestampInterleave: improper audio-video interleaving.
+PtsLessThanDts: The pts of the media stream is less than dts.
+ReceiveFpsJitter: excessive network received frame rate jitter
+ReceiveFpsTooSmall: network received video frame rate too small.
+FpsJitter: Excessive stream frame rate jitter calculated by PTS.
+StreamOpenFailed: stream open failure.
+StreamEnd: stream end.
+StreamParseFailed: stream parsing failure.
+VideoFirstFrameNotIdr: first frame not an IDR frame.
+StreamNALUError: NALU Start Code Error
+TsStreamNoAud: The H26x stream of MPEG-TS misses AUD NALU.
+AudioStreamLack: no audio stream.
+VideoStreamLack: no video stream.
+LackAudioRecover: missing audio stream recovery.
+LackVideoRecover: missing video stream recovery.
+VideoBitrateOutofRange: video stream bitrate (kbps) out of range.
+AudioBitrateOutofRange: audio stream bitrate (kbps) out of range.
+VideoDecodeFailed: video decoding error.
+AudioDecodeFailed: audio decoding error.
+AudioOutOfPhase: opposite phase in dual-channel audio.
+VideoDuplicatedFrame: duplicate frames in video streams.
+AudioDuplicatedFrame: duplicate frames in audio streams.
+VideoRotation: video rotation.
+TsMultiPrograms: MPEG2-TS stream has multiple programs
+Mp4InvalidCodecFourcc: The codec fourcc in MP4 does not meet Apple HLS requirements.
+HLSBadM3u8Format: invalid M3U8 file.
+HLSInvalidMasterM3u8: invalid main M3U8 file.
+HLSInvalidMediaM3u8: invalid media M3U8 file.
+HLSMasterM3u8Recommended: parameters recommended by standards missing in main M3U8.
+HLSMediaM3u8Recommended: parameters recommended by standards missing in media M3U8.
+HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY in media M3U8.
+HLSMediaSegmentsStreamNumChange: changed number of streams in segments.
+HLSMediaSegmentsPTSJitterDeviation: PTS jumps between slices without EXT-X-DISCONTINUITY.
+HLSMediaSegmentsDTSJitterDeviation: DTS jumps between segments with no EXT-X-DISCONTINUITY
+TimecodeTrackExist: MP4 has a tmcd track
         :type Type: str
-        :param _SeverityLevel: 
+        :param _SeverityLevel: Diagnosed exception level. Valid values:
+Fatal: affecting subsequent playback and parsing.
+Error: may affect playback.
+Warning: potential risk, which may not necessarily affect playback.
+Notice: Important stream information
+Info: general stream information.
         :type SeverityLevel: str
-        :param _DateTimeSet: 
+        :param _DateTimeSet: Timestamp of warning, format such as "2022-12-25T13:14:16Z"
         :type DateTimeSet: list of str
-        :param _TimestampSet: 
+        :param _TimestampSet: Timestamp.
         :type TimestampSet: list of float
         """
         self._Category = None
@@ -19166,7 +20173,15 @@ class ContainerDiagnoseResultItem(AbstractModel):
 
     @property
     def Category(self):
-        r"""
+        r"""Diagnosed exception category. Valid values:
+DecodeParamException: decoding parameter exception
+TimeStampException: timestamp exception.
+FrameException: frame rate exception.
+StreamStatusException: stream status exception.
+StreamInfo: stream information exception.
+StreamAbnormalCharacteristics: stream characteristics exception.
+DecodeException: decoding exception.
+HLSRequirements: HLS format exception
         :rtype: str
         """
         return self._Category
@@ -19177,7 +20192,54 @@ class ContainerDiagnoseResultItem(AbstractModel):
 
     @property
     def Type(self):
-        r"""
+        r"""Diagnosed specific exception type. Valid values:
+
+VideoResolutionChanged: video resolution change.
+AudioSampleRateChanged: audio sample rate change.
+AudioChannelsChanged: audio channels changed
+ParameterSetsChanged: stream parameter set information change.
+DarOrSarInvalid: video aspect ratio exception.
+TimestampFallback: DTS timestamp fallback
+DtsJitter: DTS jitter too high.
+PtsJitter: PTS jitter too high.
+AACDurationDeviation: improper AAC frame timestamp interval.
+AudioDroppingFrames: Audio frame dropping
+VideoDroppingFrames: video frame dropping.
+AVTimestampInterleave: improper audio-video interleaving.
+PtsLessThanDts: The pts of the media stream is less than dts.
+ReceiveFpsJitter: excessive network received frame rate jitter
+ReceiveFpsTooSmall: network received video frame rate too small.
+FpsJitter: Excessive stream frame rate jitter calculated by PTS.
+StreamOpenFailed: stream open failure.
+StreamEnd: stream end.
+StreamParseFailed: stream parsing failure.
+VideoFirstFrameNotIdr: first frame not an IDR frame.
+StreamNALUError: NALU Start Code Error
+TsStreamNoAud: The H26x stream of MPEG-TS misses AUD NALU.
+AudioStreamLack: no audio stream.
+VideoStreamLack: no video stream.
+LackAudioRecover: missing audio stream recovery.
+LackVideoRecover: missing video stream recovery.
+VideoBitrateOutofRange: video stream bitrate (kbps) out of range.
+AudioBitrateOutofRange: audio stream bitrate (kbps) out of range.
+VideoDecodeFailed: video decoding error.
+AudioDecodeFailed: audio decoding error.
+AudioOutOfPhase: opposite phase in dual-channel audio.
+VideoDuplicatedFrame: duplicate frames in video streams.
+AudioDuplicatedFrame: duplicate frames in audio streams.
+VideoRotation: video rotation.
+TsMultiPrograms: MPEG2-TS stream has multiple programs
+Mp4InvalidCodecFourcc: The codec fourcc in MP4 does not meet Apple HLS requirements.
+HLSBadM3u8Format: invalid M3U8 file.
+HLSInvalidMasterM3u8: invalid main M3U8 file.
+HLSInvalidMediaM3u8: invalid media M3U8 file.
+HLSMasterM3u8Recommended: parameters recommended by standards missing in main M3U8.
+HLSMediaM3u8Recommended: parameters recommended by standards missing in media M3U8.
+HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY in media M3U8.
+HLSMediaSegmentsStreamNumChange: changed number of streams in segments.
+HLSMediaSegmentsPTSJitterDeviation: PTS jumps between slices without EXT-X-DISCONTINUITY.
+HLSMediaSegmentsDTSJitterDeviation: DTS jumps between segments with no EXT-X-DISCONTINUITY
+TimecodeTrackExist: MP4 has a tmcd track
         :rtype: str
         """
         return self._Type
@@ -19188,7 +20250,12 @@ class ContainerDiagnoseResultItem(AbstractModel):
 
     @property
     def SeverityLevel(self):
-        r"""
+        r"""Diagnosed exception level. Valid values:
+Fatal: affecting subsequent playback and parsing.
+Error: may affect playback.
+Warning: potential risk, which may not necessarily affect playback.
+Notice: Important stream information
+Info: general stream information.
         :rtype: str
         """
         return self._SeverityLevel
@@ -19199,7 +20266,7 @@ class ContainerDiagnoseResultItem(AbstractModel):
 
     @property
     def DateTimeSet(self):
-        r"""
+        r"""Timestamp of warning, format such as "2022-12-25T13:14:16Z"
         :rtype: list of str
         """
         return self._DateTimeSet
@@ -19210,7 +20277,7 @@ class ContainerDiagnoseResultItem(AbstractModel):
 
     @property
     def TimestampSet(self):
-        r"""
+        r"""Timestamp.
         :rtype: list of float
         """
         return self._TimestampSet
@@ -19564,11 +20631,11 @@ class CosInputInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Bucket: Name of the COS Bucket where the media processing object file resides, for example, TopRankVideo-125xxx88.
+        :param _Bucket: Name of the COS Bucket where the media processing object file is located, for example, TopRankVideo-125xxx88.
         :type Bucket: str
-        :param _Region: Region of the COS Bucket where the media processing object file resides, for example, ap-chongqing.
+        :param _Region: Park where the COS Bucket of the media processing object file is located, for example, ap-chongqing.
         :type Region: str
-        :param _Object: Input path of the media processing object file, for example `/movie/201907/WildAnimal.mov`.
+        :param _Object: Input path of the MPS object file, for example `/movie/201907/WildAnimal.mov`.
         :type Object: str
         """
         self._Bucket = None
@@ -19577,7 +20644,7 @@ class CosInputInfo(AbstractModel):
 
     @property
     def Bucket(self):
-        r"""Name of the COS Bucket where the media processing object file resides, for example, TopRankVideo-125xxx88.
+        r"""Name of the COS Bucket where the media processing object file is located, for example, TopRankVideo-125xxx88.
         :rtype: str
         """
         return self._Bucket
@@ -19588,7 +20655,7 @@ class CosInputInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""Region of the COS Bucket where the media processing object file resides, for example, ap-chongqing.
+        r"""Park where the COS Bucket of the media processing object file is located, for example, ap-chongqing.
         :rtype: str
         """
         return self._Region
@@ -19599,7 +20666,7 @@ class CosInputInfo(AbstractModel):
 
     @property
     def Object(self):
-        r"""Input path of the media processing object file, for example `/movie/201907/WildAnimal.mov`.
+        r"""Input path of the MPS object file, for example `/movie/201907/WildAnimal.mov`.
         :rtype: str
         """
         return self._Object
@@ -19630,9 +20697,9 @@ class CosOutputStorage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Bucket: Target Bucket name for the output files generated by media processing, for example, TopRankVideo-125xxx88. If left empty, the upper-level Bucket is inherited.
+        :param _Bucket: Target Bucket name for output files generated by media processing, for example, TopRankVideo-125xxx88. If left empty, it is inheritable from the upper layer.
         :type Bucket: str
-        :param _Region: Park of the target Bucket for outputting media processing generated files, for example, ap-chongqing. If left empty, it is inheritable from the upper layer.
+        :param _Region: Park of the target Bucket for output files generated by MPS, for example, ap-chongqing. If left empty, it inherits the upper layer.
         :type Region: str
         """
         self._Bucket = None
@@ -19640,7 +20707,7 @@ class CosOutputStorage(AbstractModel):
 
     @property
     def Bucket(self):
-        r"""Target Bucket name for the output files generated by media processing, for example, TopRankVideo-125xxx88. If left empty, the upper-level Bucket is inherited.
+        r"""Target Bucket name for output files generated by media processing, for example, TopRankVideo-125xxx88. If left empty, it is inheritable from the upper layer.
         :rtype: str
         """
         return self._Bucket
@@ -19651,7 +20718,7 @@ class CosOutputStorage(AbstractModel):
 
     @property
     def Region(self):
-        r"""Park of the target Bucket for outputting media processing generated files, for example, ap-chongqing. If left empty, it is inheritable from the upper layer.
+        r"""Park of the target Bucket for output files generated by MPS, for example, ap-chongqing. If left empty, it inherits the upper layer.
         :rtype: str
         """
         return self._Region
@@ -27657,11 +28724,11 @@ class DescribeAigcTaskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PageNum: <p>Query page started</p>
+        :param _PageNum: <p>Start query page</p>
         :type PageNum: int
-        :param _PageSize: <p>How many data to get on the current page</p>
+        :param _PageSize: <p>How many data entries to retrieve on the current page</p>
         :type PageSize: int
-        :param _QueryTaskFilter: <p>Query filter criteria</p>
+        :param _QueryTaskFilter: <p>Query filter conditions.</p>
         :type QueryTaskFilter: :class:`tencentcloud.mps.v20190612.models.QueryTaskFilter`
         """
         self._PageNum = None
@@ -27670,7 +28737,7 @@ class DescribeAigcTaskListRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        r"""<p>Query page started</p>
+        r"""<p>Start query page</p>
         :rtype: int
         """
         return self._PageNum
@@ -27681,7 +28748,7 @@ class DescribeAigcTaskListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""<p>How many data to get on the current page</p>
+        r"""<p>How many data entries to retrieve on the current page</p>
         :rtype: int
         """
         return self._PageSize
@@ -27692,7 +28759,7 @@ class DescribeAigcTaskListRequest(AbstractModel):
 
     @property
     def QueryTaskFilter(self):
-        r"""<p>Query filter criteria</p>
+        r"""<p>Query filter conditions.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.QueryTaskFilter`
         """
         return self._QueryTaskFilter
@@ -27727,11 +28794,11 @@ class DescribeAigcTaskListResponse(AbstractModel):
         r"""
         :param _Total: <p>Total return count of the current task</p>
         :type Total: int
-        :param _PageNum: <p>Query page started</p>
+        :param _PageNum: <p>Start query page</p>
         :type PageNum: int
         :param _PageSize: <p>Number of data entries to retrieve on the current page</p>
         :type PageSize: int
-        :param _Tasks: <p>Task detail data</p>
+        :param _Tasks: <p>Task detail data.</p>
         :type Tasks: list of AigcTaskListItem
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -27755,7 +28822,7 @@ class DescribeAigcTaskListResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        r"""<p>Query page started</p>
+        r"""<p>Start query page</p>
         :rtype: int
         """
         return self._PageNum
@@ -27777,7 +28844,7 @@ class DescribeAigcTaskListResponse(AbstractModel):
 
     @property
     def Tasks(self):
-        r"""<p>Task detail data</p>
+        r"""<p>Task detail data.</p>
         :rtype: list of AigcTaskListItem
         """
         return self._Tasks
@@ -27818,14 +28885,14 @@ class DescribeAigcTaskStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 
+        :param _TaskId: <p>Task ID.</p>
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        r"""
+        r"""<p>Task ID.</p>
         :rtype: str
         """
         return self._TaskId
@@ -27854,27 +28921,27 @@ class DescribeAigcTaskStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 
+        :param _TaskId: <p>Task ID.</p>
         :type TaskId: str
-        :param _TaskStatus: 
+        :param _TaskStatus: <p>Task status description</p><p>Enumeration values: </p><ul><li>PENDING: Task waiting for scheduling</li><li>RUNNING: Task running</li><li>FINISHED: Task executed successfully</li><li>STOP: Task termination</li><li>FAILED: Task failure</li><li>TIMEOUT: Task timeout</li></ul>
         :type TaskStatus: str
-        :param _OutputUrl: 
+        :param _OutputUrl: <p>Output url</p>
         :type OutputUrl: str
-        :param _CreateTime: 
+        :param _CreateTime: <p>Task creation time</p>
         :type CreateTime: str
-        :param _ScheduledTime: 
+        :param _ScheduledTime: <p>Task scheduling time</p>
         :type ScheduledTime: str
-        :param _FinishedTime: 
+        :param _FinishedTime: <p>Task completion time</p>
         :type FinishedTime: str
-        :param _TaskResultCode: 
+        :param _TaskResultCode: <p>Task error code</p>
         :type TaskResultCode: int
-        :param _TaskResultMsg: 
+        :param _TaskResultMsg: <p>Task returned error message</p>
         :type TaskResultMsg: str
-        :param _RequestBody: 
+        :param _RequestBody: <p>Request structure</p>
         :type RequestBody: str
-        :param _TaskType: 
+        :param _TaskType: <p>Task type</p>
         :type TaskType: str
-        :param _TaskInfo: <p>Other job information</p>
+        :param _TaskInfo: <p>Other task information</p>
         :type TaskInfo: str
         :param _Stage: <p>Task sub-status</p>
         :type Stage: str
@@ -27897,7 +28964,7 @@ class DescribeAigcTaskStatusResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""
+        r"""<p>Task ID.</p>
         :rtype: str
         """
         return self._TaskId
@@ -27908,7 +28975,7 @@ class DescribeAigcTaskStatusResponse(AbstractModel):
 
     @property
     def TaskStatus(self):
-        r"""
+        r"""<p>Task status description</p><p>Enumeration values: </p><ul><li>PENDING: Task waiting for scheduling</li><li>RUNNING: Task running</li><li>FINISHED: Task executed successfully</li><li>STOP: Task termination</li><li>FAILED: Task failure</li><li>TIMEOUT: Task timeout</li></ul>
         :rtype: str
         """
         return self._TaskStatus
@@ -27919,7 +28986,7 @@ class DescribeAigcTaskStatusResponse(AbstractModel):
 
     @property
     def OutputUrl(self):
-        r"""
+        r"""<p>Output url</p>
         :rtype: str
         """
         return self._OutputUrl
@@ -27930,7 +28997,7 @@ class DescribeAigcTaskStatusResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""
+        r"""<p>Task creation time</p>
         :rtype: str
         """
         return self._CreateTime
@@ -27941,7 +29008,7 @@ class DescribeAigcTaskStatusResponse(AbstractModel):
 
     @property
     def ScheduledTime(self):
-        r"""
+        r"""<p>Task scheduling time</p>
         :rtype: str
         """
         return self._ScheduledTime
@@ -27952,7 +29019,7 @@ class DescribeAigcTaskStatusResponse(AbstractModel):
 
     @property
     def FinishedTime(self):
-        r"""
+        r"""<p>Task completion time</p>
         :rtype: str
         """
         return self._FinishedTime
@@ -27963,7 +29030,7 @@ class DescribeAigcTaskStatusResponse(AbstractModel):
 
     @property
     def TaskResultCode(self):
-        r"""
+        r"""<p>Task error code</p>
         :rtype: int
         """
         return self._TaskResultCode
@@ -27974,7 +29041,7 @@ class DescribeAigcTaskStatusResponse(AbstractModel):
 
     @property
     def TaskResultMsg(self):
-        r"""
+        r"""<p>Task returned error message</p>
         :rtype: str
         """
         return self._TaskResultMsg
@@ -27985,7 +29052,7 @@ class DescribeAigcTaskStatusResponse(AbstractModel):
 
     @property
     def RequestBody(self):
-        r"""
+        r"""<p>Request structure</p>
         :rtype: str
         """
         return self._RequestBody
@@ -27996,7 +29063,7 @@ class DescribeAigcTaskStatusResponse(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""
+        r"""<p>Task type</p>
         :rtype: str
         """
         return self._TaskType
@@ -28007,7 +29074,7 @@ class DescribeAigcTaskStatusResponse(AbstractModel):
 
     @property
     def TaskInfo(self):
-        r"""<p>Other job information</p>
+        r"""<p>Other task information</p>
         :rtype: str
         """
         return self._TaskInfo
@@ -29627,14 +30694,14 @@ class DescribeDesignTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 
+        :param _TaskId: <p>Task ID.</p>
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        r"""
+        r"""<p>Task ID.</p>
         :rtype: str
         """
         return self._TaskId
@@ -29665,15 +30732,15 @@ class DescribeDesignTaskResponse(AbstractModel):
         r"""
         :param _ErrorCode: <p>Error code. 0 is returned if the request is successful, and 100 is returned if it is being processed.</p>
         :type ErrorCode: int
-        :param _Msg: 
+        :param _Msg: <p>Error message. success is returned if the request is successful.</p>
         :type Msg: str
-        :param _Status: 
+        :param _Status: <p>Task status.</p><p>Enumeration values: </p><ul><li>success: Success, </li><li>fail: Failure, </li><li>processing: Processing.</li></ul>
         :type Status: str
-        :param _VoiceId: 
+        :param _VoiceId: <p>Voice type id</p>
         :type VoiceId: str
-        :param _AudioUrl: 
+        :param _AudioUrl: <p>Audition audio URL.</p>
         :type AudioUrl: str
-        :param _ExtInfo: 
+        :param _ExtInfo: <p>Extended information.</p>
         :type ExtInfo: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -29699,7 +30766,7 @@ class DescribeDesignTaskResponse(AbstractModel):
 
     @property
     def Msg(self):
-        r"""
+        r"""<p>Error message. success is returned if the request is successful.</p>
         :rtype: str
         """
         return self._Msg
@@ -29710,7 +30777,7 @@ class DescribeDesignTaskResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""<p>Task status.</p><p>Enumeration values: </p><ul><li>success: Success, </li><li>fail: Failure, </li><li>processing: Processing.</li></ul>
         :rtype: str
         """
         return self._Status
@@ -29721,7 +30788,7 @@ class DescribeDesignTaskResponse(AbstractModel):
 
     @property
     def VoiceId(self):
-        r"""
+        r"""<p>Voice type id</p>
         :rtype: str
         """
         return self._VoiceId
@@ -29732,7 +30799,7 @@ class DescribeDesignTaskResponse(AbstractModel):
 
     @property
     def AudioUrl(self):
-        r"""
+        r"""<p>Audition audio URL.</p>
         :rtype: str
         """
         return self._AudioUrl
@@ -29743,7 +30810,7 @@ class DescribeDesignTaskResponse(AbstractModel):
 
     @property
     def ExtInfo(self):
-        r"""
+        r"""<p>Extended information.</p>
         :rtype: str
         """
         return self._ExtInfo
@@ -29980,9 +31047,9 @@ class DescribeImageTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskType: 
+        :param _TaskType: <p>Task type. Valid value: </p><li>WorkflowTask: Workflow processing task.</li>
         :type TaskType: str
-        :param _Status: 
+        :param _Status: <p>Task status. Valid values: </p><li>WAITING: Waiting; </li><li>PROCESSING: Processing; </li><li>FINISH: Completed.</li>
         :type Status: str
         :param _ErrCode: <p>Error code for task failures.</p>
         :type ErrCode: int
@@ -29990,11 +31057,11 @@ class DescribeImageTaskDetailResponse(AbstractModel):
         :type ErrMsg: str
         :param _Message: <p>Task exception message.</p>
         :type Message: str
-        :param _ImageProcessTaskResultSet: 
+        :param _ImageProcessTaskResultSet: <p>Execution status and result of the image processing task.</p>
         :type ImageProcessTaskResultSet: list of ImageProcessTaskResult
-        :param _CreateTime: 
+        :param _CreateTime: <p>Task creation time, in <a href="https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52">ISO date and time format</a>.</p>
         :type CreateTime: str
-        :param _FinishTime: 
+        :param _FinishTime: <p>Task completion time, in <a href="https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52">ISO date and time format</a>.</p>
         :type FinishTime: str
         :param _Definition: <p>Unique template identifier.</p>
         :type Definition: int
@@ -30020,7 +31087,7 @@ class DescribeImageTaskDetailResponse(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""
+        r"""<p>Task type. Valid value: </p><li>WorkflowTask: Workflow processing task.</li>
         :rtype: str
         """
         return self._TaskType
@@ -30031,7 +31098,7 @@ class DescribeImageTaskDetailResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""<p>Task status. Valid values: </p><li>WAITING: Waiting; </li><li>PROCESSING: Processing; </li><li>FINISH: Completed.</li>
         :rtype: str
         """
         return self._Status
@@ -30075,7 +31142,7 @@ class DescribeImageTaskDetailResponse(AbstractModel):
 
     @property
     def ImageProcessTaskResultSet(self):
-        r"""
+        r"""<p>Execution status and result of the image processing task.</p>
         :rtype: list of ImageProcessTaskResult
         """
         return self._ImageProcessTaskResultSet
@@ -30086,7 +31153,7 @@ class DescribeImageTaskDetailResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""
+        r"""<p>Task creation time, in <a href="https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52">ISO date and time format</a>.</p>
         :rtype: str
         """
         return self._CreateTime
@@ -30097,7 +31164,7 @@ class DescribeImageTaskDetailResponse(AbstractModel):
 
     @property
     def FinishTime(self):
-        r"""
+        r"""<p>Task completion time, in <a href="https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52">ISO date and time format</a>.</p>
         :rtype: str
         """
         return self._FinishTime
@@ -30182,17 +31249,17 @@ class DescribeImageTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 
+        :param _Status: <p>Task status filter condition.</p>
         :type Status: str
-        :param _Limit: 
+        :param _Limit: <p>Number of returned records.</p>
         :type Limit: int
-        :param _ScrollToken: 
+        :param _ScrollToken: <p>Scrolling identifier which is used for pulling in batches. If a single request cannot pull all the data entries, the API will return `ScrollToken`, and if the next request carries it, the next pull will start from the next entry.</p>
         :type ScrollToken: str
-        :param _StartTime: 
+        :param _StartTime: <p>Task start time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>
         :type StartTime: str
-        :param _EndTime: 
+        :param _EndTime: <p>Task end time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>
         :type EndTime: str
-        :param _SubTaskHasFailed: 
+        :param _SubTaskHasFailed: <p>Filter subtask status.</p>
         :type SubTaskHasFailed: bool
         """
         self._Status = None
@@ -30204,7 +31271,7 @@ class DescribeImageTasksRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""<p>Task status filter condition.</p>
         :rtype: str
         """
         return self._Status
@@ -30215,7 +31282,7 @@ class DescribeImageTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""
+        r"""<p>Number of returned records.</p>
         :rtype: int
         """
         return self._Limit
@@ -30226,7 +31293,7 @@ class DescribeImageTasksRequest(AbstractModel):
 
     @property
     def ScrollToken(self):
-        r"""
+        r"""<p>Scrolling identifier which is used for pulling in batches. If a single request cannot pull all the data entries, the API will return `ScrollToken`, and if the next request carries it, the next pull will start from the next entry.</p>
         :rtype: str
         """
         return self._ScrollToken
@@ -30237,7 +31304,7 @@ class DescribeImageTasksRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""
+        r"""<p>Task start time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>
         :rtype: str
         """
         return self._StartTime
@@ -30248,7 +31315,7 @@ class DescribeImageTasksRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""
+        r"""<p>Task end time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>
         :rtype: str
         """
         return self._EndTime
@@ -30259,7 +31326,7 @@ class DescribeImageTasksRequest(AbstractModel):
 
     @property
     def SubTaskHasFailed(self):
-        r"""
+        r"""<p>Filter subtask status.</p>
         :rtype: bool
         """
         return self._SubTaskHasFailed
@@ -30293,11 +31360,11 @@ class DescribeImageTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 
+        :param _TotalCount: <p>Total number of records that meet filter conditions.</p><p>Unit: entries</p>
         :type TotalCount: int
-        :param _ScrollToken: 
+        :param _ScrollToken: <p>Scrolling identifier. If a request does not return all the data entries, this field indicates the ID of the next entry. If this field is an empty string, there is no more data.</p>
         :type ScrollToken: str
-        :param _TaskSet: 
+        :param _TaskSet: <p>Image task summary list.</p>
         :type TaskSet: list of ImageTaskInfo
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -30309,7 +31376,7 @@ class DescribeImageTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""
+        r"""<p>Total number of records that meet filter conditions.</p><p>Unit: entries</p>
         :rtype: int
         """
         return self._TotalCount
@@ -30320,7 +31387,7 @@ class DescribeImageTasksResponse(AbstractModel):
 
     @property
     def ScrollToken(self):
-        r"""
+        r"""<p>Scrolling identifier. If a request does not return all the data entries, this field indicates the ID of the next entry. If this field is an empty string, there is no more data.</p>
         :rtype: str
         """
         return self._ScrollToken
@@ -30331,7 +31398,7 @@ class DescribeImageTasksResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        r"""
+        r"""<p>Image task summary list.</p>
         :rtype: list of ImageTaskInfo
         """
         return self._TaskSet
@@ -34626,23 +35693,83 @@ class DetectVideoWatermarkResponse(AbstractModel):
 
 
 class DiagnoseResult(AbstractModel):
-    r"""Diagnosis result item.
+    r"""Diagnostic result item.
 
     """
 
     def __init__(self):
         r"""
-        :param _Category: 
+        :param _Category: Diagnosed exception category. Valid values:
+DecodeParamException: decoding parameter exception.
+TimeStampException: timestamp exception.
+FrameException: frame rate exception.
+StreamStatusException: stream status exception.
+StreamInfo: Stream information exception
+StreamAbnormalCharacteristics: stream characteristic exception.
+DecodeException: decoding exception.
+HLSRequirements: HLS format exception.
         :type Category: str
-        :param _Type: 
+        :param _Type: Diagnosed specific exception type. Valid values:
+
+VideoResolutionChanged: video resolution change.
+AudioSampleRateChanged: audio sample rate change.
+AudioChannelsChanged: audio channels changed
+ParameterSetsChanged: stream parameter set information change.
+DarOrSarInvalid: video aspect ratio exception.
+TimestampFallback: DTS timestamp fallback
+DtsJitter: DTS jitter too high.
+PtsJitter: PTS jitter too high.
+AACDurationDeviation: improper AAC frame timestamp interval.
+AudioDroppingFrames: audio frame dropping.
+VideoDroppingFrames: video frame dropping.
+AVTimestampInterleave: improper audio-video interleaving.
+PtsLessThanDts: The pts of the media stream is less than dts.
+ReceiveFpsJitter: excessive network received frame rate jitter.
+ReceiveFpsTooSmall: network received video frame rate too small.
+FpsJitter: Excessive stream frame rate jitter calculated by PTS.
+StreamOpenFailed: stream open failure.
+StreamEnd: stream end.
+StreamParseFailed: stream parsing failure.
+VideoFirstFrameNotIdr: first frame not an IDR frame.
+StreamNALUError: NALU start code error.
+TsStreamNoAud: The H26x stream of MPEG-TS misses AUD NALU
+AudioStreamLack: no audio stream.
+VideoStreamLack: no video stream.
+LackAudioRecover: missing audio stream recovery.
+LackVideoRecover: missing video stream recovery.
+VideoBitrateOutofRange: video stream bitrate (kbps) out of range.
+AudioBitrateOutofRange: audio stream bitrate (kbps) out of range.
+VideoDecodeFailed: video decoding error.
+AudioDecodeFailed: audio decoding error.
+AudioOutOfPhase: opposite phase in dual-channel audio.
+VideoDuplicatedFrame: duplicate frames in video streams.
+AudioDuplicatedFrame: duplicate frames in audio streams.
+VideoRotation: video rotation.
+TsMultiPrograms: MPEG2-TS stream has multiple programs
+Mp4InvalidCodecFourcc: The codec fourcc in MP4 does not meet Apple HLS requirements
+HLSBadM3u8Format: invalid M3U8 file.
+HLSInvalidMasterM3u8: invalid main M3U8 file.
+HLSInvalidMediaM3u8: invalid media M3U8 file.
+HLSMasterM3u8Recommended: parameters recommended by standards missing in main M3U8.
+HLSMediaM3u8Recommended: parameters recommended by standards missing in media M3U8.
+HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY in media M3U8.
+HLSMediaSegmentsStreamNumChange: changed number of streams in segments.
+HLSMediaSegmentsPTSJitterDeviation: PTS jumps between slices without EXT-X-DISCONTINUITY.
+HLSMediaSegmentsDTSJitterDeviation: DTS jumps between segments without EXT-X-DISCONTINUITY.
+TimecodeTrackExist: MP4 has a tmcd track
         :type Type: str
-        :param _Timestamp: 
+        :param _Timestamp: PTS timestamp when the anomaly is diagnosed.
         :type Timestamp: float
-        :param _Description: 
+        :param _Description: Exception description from diagnosis.
         :type Description: str
-        :param _DateTime: 
+        :param _DateTime: Diagnose the abnormal UTC+8 time in ISO date format.
         :type DateTime: str
-        :param _SeverityLevel: 
+        :param _SeverityLevel: Diagnosed exception level. Valid values:
+Fatal: affecting subsequent playback and parsing.
+Error: may affect playback.
+Warning: potential risk, which may not necessarily affect playback.
+Notice: Important stream information
+Info: general stream information.
         :type SeverityLevel: str
         """
         self._Category = None
@@ -34654,7 +35781,15 @@ class DiagnoseResult(AbstractModel):
 
     @property
     def Category(self):
-        r"""
+        r"""Diagnosed exception category. Valid values:
+DecodeParamException: decoding parameter exception.
+TimeStampException: timestamp exception.
+FrameException: frame rate exception.
+StreamStatusException: stream status exception.
+StreamInfo: Stream information exception
+StreamAbnormalCharacteristics: stream characteristic exception.
+DecodeException: decoding exception.
+HLSRequirements: HLS format exception.
         :rtype: str
         """
         return self._Category
@@ -34665,7 +35800,54 @@ class DiagnoseResult(AbstractModel):
 
     @property
     def Type(self):
-        r"""
+        r"""Diagnosed specific exception type. Valid values:
+
+VideoResolutionChanged: video resolution change.
+AudioSampleRateChanged: audio sample rate change.
+AudioChannelsChanged: audio channels changed
+ParameterSetsChanged: stream parameter set information change.
+DarOrSarInvalid: video aspect ratio exception.
+TimestampFallback: DTS timestamp fallback
+DtsJitter: DTS jitter too high.
+PtsJitter: PTS jitter too high.
+AACDurationDeviation: improper AAC frame timestamp interval.
+AudioDroppingFrames: audio frame dropping.
+VideoDroppingFrames: video frame dropping.
+AVTimestampInterleave: improper audio-video interleaving.
+PtsLessThanDts: The pts of the media stream is less than dts.
+ReceiveFpsJitter: excessive network received frame rate jitter.
+ReceiveFpsTooSmall: network received video frame rate too small.
+FpsJitter: Excessive stream frame rate jitter calculated by PTS.
+StreamOpenFailed: stream open failure.
+StreamEnd: stream end.
+StreamParseFailed: stream parsing failure.
+VideoFirstFrameNotIdr: first frame not an IDR frame.
+StreamNALUError: NALU start code error.
+TsStreamNoAud: The H26x stream of MPEG-TS misses AUD NALU
+AudioStreamLack: no audio stream.
+VideoStreamLack: no video stream.
+LackAudioRecover: missing audio stream recovery.
+LackVideoRecover: missing video stream recovery.
+VideoBitrateOutofRange: video stream bitrate (kbps) out of range.
+AudioBitrateOutofRange: audio stream bitrate (kbps) out of range.
+VideoDecodeFailed: video decoding error.
+AudioDecodeFailed: audio decoding error.
+AudioOutOfPhase: opposite phase in dual-channel audio.
+VideoDuplicatedFrame: duplicate frames in video streams.
+AudioDuplicatedFrame: duplicate frames in audio streams.
+VideoRotation: video rotation.
+TsMultiPrograms: MPEG2-TS stream has multiple programs
+Mp4InvalidCodecFourcc: The codec fourcc in MP4 does not meet Apple HLS requirements
+HLSBadM3u8Format: invalid M3U8 file.
+HLSInvalidMasterM3u8: invalid main M3U8 file.
+HLSInvalidMediaM3u8: invalid media M3U8 file.
+HLSMasterM3u8Recommended: parameters recommended by standards missing in main M3U8.
+HLSMediaM3u8Recommended: parameters recommended by standards missing in media M3U8.
+HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY in media M3U8.
+HLSMediaSegmentsStreamNumChange: changed number of streams in segments.
+HLSMediaSegmentsPTSJitterDeviation: PTS jumps between slices without EXT-X-DISCONTINUITY.
+HLSMediaSegmentsDTSJitterDeviation: DTS jumps between segments without EXT-X-DISCONTINUITY.
+TimecodeTrackExist: MP4 has a tmcd track
         :rtype: str
         """
         return self._Type
@@ -34676,7 +35858,7 @@ class DiagnoseResult(AbstractModel):
 
     @property
     def Timestamp(self):
-        r"""
+        r"""PTS timestamp when the anomaly is diagnosed.
         :rtype: float
         """
         return self._Timestamp
@@ -34687,7 +35869,7 @@ class DiagnoseResult(AbstractModel):
 
     @property
     def Description(self):
-        r"""
+        r"""Exception description from diagnosis.
         :rtype: str
         """
         return self._Description
@@ -34698,7 +35880,7 @@ class DiagnoseResult(AbstractModel):
 
     @property
     def DateTime(self):
-        r"""
+        r"""Diagnose the abnormal UTC+8 time in ISO date format.
         :rtype: str
         """
         return self._DateTime
@@ -34709,7 +35891,12 @@ class DiagnoseResult(AbstractModel):
 
     @property
     def SeverityLevel(self):
-        r"""
+        r"""Diagnosed exception level. Valid values:
+Fatal: affecting subsequent playback and parsing.
+Error: may affect playback.
+Warning: potential risk, which may not necessarily affect playback.
+Notice: Important stream information
+Info: general stream information.
         :rtype: str
         """
         return self._SeverityLevel
@@ -34745,11 +35932,16 @@ class DiffusionEnhanceConfig(AbstractModel):
         r"""
         :param _Switch: Capability configuration switch. Valid values:
 
-ON: enabled.
+ON: enabled
 OFF: disabled.
 Default value: OFF.
         :type Switch: str
-        :param _Type: 
+        :param _Type: Strength type. Available values:
+
+weak
+normal
+strong
+Default value: normal.
         :type Type: str
         """
         self._Switch = None
@@ -34759,7 +35951,7 @@ Default value: OFF.
     def Switch(self):
         r"""Capability configuration switch. Valid values:
 
-ON: enabled.
+ON: enabled
 OFF: disabled.
 Default value: OFF.
         :rtype: str
@@ -34772,7 +35964,63 @@ Default value: OFF.
 
     @property
     def Type(self):
+        r"""Strength type. Available values:
+
+weak
+normal
+strong
+Default value: normal.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiffusionEnhanceV2Config(AbstractModel):
+    r"""LLM enhancement - Professional Edition
+
+    """
+
+    def __init__(self):
         r"""
+        :param _Switch: <p>Capability configuration switch</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p>
+        :type Switch: str
+        :param _Type: <p>Strength type</p><p>Enumeration values: </p><ul><li>weak: Weak</li><li>normal: Medium</li><li>strong: Strong</li></ul>
+        :type Type: str
+        """
+        self._Switch = None
+        self._Type = None
+
+    @property
+    def Switch(self):
+        r"""<p>Capability configuration switch</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""<p>Strength type</p><p>Enumeration values: </p><ul><li>weak: Weak</li><li>normal: Medium</li><li>strong: Strong</li></ul>
         :rtype: str
         """
         return self._Type
@@ -35387,7 +36635,7 @@ class DrmInfo(AbstractModel):
         :param _Type: Encryption type.
 
 - simpleaes
-Can only be used for HLS. Format support: ts and mp4.
+Can only be used for HLS. Format support: ts and mp4
 Only slice mode can be used. singlefile mode cannot be used.
 
 - fairplay:
@@ -35406,14 +36654,14 @@ Output DASH: can only be in singlefile mode
 
 - widevine+fairplay,playready+fairplay,widevine+playready+fairplay:
 Can only be used for HLS. The segment format can only be mp4.
-Slice mode or singlefile mode can be used.
+Slice mode or single-file mode can be used.
 
 - widevine+playready:
 Applicable to HLS and MPEG-DASH. The segment format can only be mp4.
 For HLS format, you can use the slicing mode or singlefile mode.
-For MPEG-DASH, only singlefile mode can be used.
+For MPEG-DASH, only can be used in singlefile mode.
         :type Type: str
-        :param _SimpleAesDrm: 
+        :param _SimpleAesDrm: SimpleAes encryption information.
         :type SimpleAesDrm: :class:`tencentcloud.mps.v20190612.models.SimpleAesDrm`
         :param _SpekeDrm: Information about FairPlay, WideVine, and PlayReady encryption.
         :type SpekeDrm: :class:`tencentcloud.mps.v20190612.models.SpekeDrm`
@@ -35427,7 +36675,7 @@ For MPEG-DASH, only singlefile mode can be used.
         r"""Encryption type.
 
 - simpleaes
-Can only be used for HLS. Format support: ts and mp4.
+Can only be used for HLS. Format support: ts and mp4
 Only slice mode can be used. singlefile mode cannot be used.
 
 - fairplay:
@@ -35446,12 +36694,12 @@ Output DASH: can only be in singlefile mode
 
 - widevine+fairplay,playready+fairplay,widevine+playready+fairplay:
 Can only be used for HLS. The segment format can only be mp4.
-Slice mode or singlefile mode can be used.
+Slice mode or single-file mode can be used.
 
 - widevine+playready:
 Applicable to HLS and MPEG-DASH. The segment format can only be mp4.
 For HLS format, you can use the slicing mode or singlefile mode.
-For MPEG-DASH, only singlefile mode can be used.
+For MPEG-DASH, only can be used in singlefile mode.
         :rtype: str
         """
         return self._Type
@@ -35462,7 +36710,7 @@ For MPEG-DASH, only singlefile mode can be used.
 
     @property
     def SimpleAesDrm(self):
-        r"""
+        r"""SimpleAes encryption information.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SimpleAesDrm`
         """
         return self._SimpleAesDrm
@@ -35502,20 +36750,20 @@ For MPEG-DASH, only singlefile mode can be used.
 
 
 class DstSubtitleInput(AbstractModel):
-    r"""AI Dubbing external translation subtitle information
+    r"""External translation subtitle information for AI dubbing
 
     """
 
     def __init__(self):
         r"""
-        :param _DstSubtitleInfo: <p>External translation subtitle information.</p>
+        :param _DstSubtitleInfo: <p>External translated subtitle info.</p>
         :type DstSubtitleInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
         self._DstSubtitleInfo = None
 
     @property
     def DstSubtitleInfo(self):
-        r"""<p>External translation subtitle information.</p>
+        r"""<p>External translated subtitle info.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
         return self._DstSubtitleInfo
@@ -35550,7 +36798,7 @@ class DubbingConfig(AbstractModel):
         :type DubbingMode: str
         :param _BackgroundVolume: <p>Background sound volume, range: 0-100</p><p>Default value: 80</p>
         :type BackgroundVolume: int
-        :param _SecondaryTuning: <p>Secondary fine-tuning switch. Available values: <br>ON: enable secondary fine-tuning; <br>OFF: disable secondary fine-tuning;</p><p>Default value: OFF</p><p>It can be set to ON only for RoleBasedSmartDubbing.</p>
+        :param _SecondaryTuning: <p>Secondary fine-tuning switch. Available values: <br>ON: Enable secondary fine-tuning; <br>OFF: Disable secondary fine-tuning;</p><p>Default value: OFF</p><p>It can be set to ON only for RoleBasedSmartDubbing.</p>
         :type SecondaryTuning: str
         :param _VoiceId: <p>Specify voice tone</p><p>Valid only for SingleVoice and required for Create</p>
         :type VoiceId: str
@@ -35587,7 +36835,7 @@ class DubbingConfig(AbstractModel):
 
     @property
     def SecondaryTuning(self):
-        r"""<p>Secondary fine-tuning switch. Available values: <br>ON: enable secondary fine-tuning; <br>OFF: disable secondary fine-tuning;</p><p>Default value: OFF</p><p>It can be set to ON only for RoleBasedSmartDubbing.</p>
+        r"""<p>Secondary fine-tuning switch. Available values: <br>ON: Enable secondary fine-tuning; <br>OFF: Disable secondary fine-tuning;</p><p>Default value: OFF</p><p>It can be set to ON only for RoleBasedSmartDubbing.</p>
         :rtype: str
         """
         return self._SecondaryTuning
@@ -35636,13 +36884,13 @@ class DubbingConfig(AbstractModel):
 
 
 class DubbingEmbedSubtitleConfig(AbstractModel):
-    r"""Subtitle suppression configuration for a dubbing task
+    r"""Subtitle configuration for dubbing task suppression
 
     """
 
     def __init__(self):
         r"""
-        :param _SubtitleEmbedId: <p>id of the suppressed subtitles.</p>
+        :param _SubtitleEmbedId: <p>Subtitle suppression id.</p>
         :type SubtitleEmbedId: int
         :param _UseOriginalPos: <p>Continue to use the original subtitle position.</p><p>Default value: 1</p>
         :type UseOriginalPos: int
@@ -35655,7 +36903,7 @@ class DubbingEmbedSubtitleConfig(AbstractModel):
 
     @property
     def SubtitleEmbedId(self):
-        r"""<p>id of the suppressed subtitles.</p>
+        r"""<p>Subtitle suppression id.</p>
         :rtype: int
         """
         return self._SubtitleEmbedId
@@ -35702,21 +36950,21 @@ class DubbingEmbedSubtitleConfig(AbstractModel):
 
 
 class DubbingOutputConfig(AbstractModel):
-    r"""dubbing task output configuration
+    r"""Output configuration of a dubbing task
 
     """
 
     def __init__(self):
         r"""
-        :param _OutputMode: <p>Output method</p><p>Enumeration values:</p><ul><li>FinalVideoOnly: default, final video only</li><li>AudioAndSubtitle: translation audio + translation subtitle</li><li>Custom: customization</li></ul><p>Default value: FinalVideoOnly</p><p>No translation audio and subtitle are returned when using external subtitles</p>
+        :param _OutputMode: <p>Output method</p><p>Enumeration values:</p><ul><li>FinalVideoOnly: default, final video only</li><li>AudioAndSubtitle: translated audio + translated subtitles</li><li>Custom: custom</li></ul><p>Default value: FinalVideoOnly</p><p>No translated audio + subtitles are returned when external subtitles are used</p>
         :type OutputMode: str
         :param _OutputFinalVideo: <p>Output video switch</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: ON</p><p>Only takes effect in Custom mode</p>
         :type OutputFinalVideo: str
-        :param _OutputSubtitle: <p>Switch to output subtitle files (contains both original voice subtitles and target language subtitles)</p><p>Enumeration values:</p><ul><li>ON: enable</li><li>OFF: disable</li></ul><p>Default value: OFF</p>
+        :param _OutputSubtitle: <p>Switch for output subtitle files (contains both original voice subtitles and target language subtitles)</p><p>Enumeration values:</p><ul><li>ON: turn on</li><li>OFF: turn off</li></ul><p>Default value: OFF</p>
         :type OutputSubtitle: str
-        :param _OutputDstAudio: <p>Audio switch for output translation dubbing</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p><p>Only takes effect in Custom mode</p>
+        :param _OutputDstAudio: <p>Output translation dubbing audio switch</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p><p>Only takes effect in Custom mode</p>
         :type OutputDstAudio: str
-        :param _EmbedSubtitleConfig: <p>Subtitle suppression configuration message.</p>
+        :param _EmbedSubtitleConfig: <p>Suppression subtitle configuration message.</p>
         :type EmbedSubtitleConfig: :class:`tencentcloud.mps.v20190612.models.DubbingEmbedSubtitleConfig`
         """
         self._OutputMode = None
@@ -35727,7 +36975,7 @@ class DubbingOutputConfig(AbstractModel):
 
     @property
     def OutputMode(self):
-        r"""<p>Output method</p><p>Enumeration values:</p><ul><li>FinalVideoOnly: default, final video only</li><li>AudioAndSubtitle: translation audio + translation subtitle</li><li>Custom: customization</li></ul><p>Default value: FinalVideoOnly</p><p>No translation audio and subtitle are returned when using external subtitles</p>
+        r"""<p>Output method</p><p>Enumeration values:</p><ul><li>FinalVideoOnly: default, final video only</li><li>AudioAndSubtitle: translated audio + translated subtitles</li><li>Custom: custom</li></ul><p>Default value: FinalVideoOnly</p><p>No translated audio + subtitles are returned when external subtitles are used</p>
         :rtype: str
         """
         return self._OutputMode
@@ -35749,7 +36997,7 @@ class DubbingOutputConfig(AbstractModel):
 
     @property
     def OutputSubtitle(self):
-        r"""<p>Switch to output subtitle files (contains both original voice subtitles and target language subtitles)</p><p>Enumeration values:</p><ul><li>ON: enable</li><li>OFF: disable</li></ul><p>Default value: OFF</p>
+        r"""<p>Switch for output subtitle files (contains both original voice subtitles and target language subtitles)</p><p>Enumeration values:</p><ul><li>ON: turn on</li><li>OFF: turn off</li></ul><p>Default value: OFF</p>
         :rtype: str
         """
         return self._OutputSubtitle
@@ -35760,7 +37008,7 @@ class DubbingOutputConfig(AbstractModel):
 
     @property
     def OutputDstAudio(self):
-        r"""<p>Audio switch for output translation dubbing</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p><p>Only takes effect in Custom mode</p>
+        r"""<p>Output translation dubbing audio switch</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p><p>Only takes effect in Custom mode</p>
         :rtype: str
         """
         return self._OutputDstAudio
@@ -35771,7 +37019,7 @@ class DubbingOutputConfig(AbstractModel):
 
     @property
     def EmbedSubtitleConfig(self):
-        r"""<p>Subtitle suppression configuration message.</p>
+        r"""<p>Suppression subtitle configuration message.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.DubbingEmbedSubtitleConfig`
         """
         return self._EmbedSubtitleConfig
@@ -35800,19 +37048,19 @@ class DubbingOutputConfig(AbstractModel):
 
 
 class DubbingSubtitleConfig(AbstractModel):
-    r"""dubbing task translation configuration
+    r"""Translation configuration for a dubbing task
 
     """
 
     def __init__(self):
         r"""
-        :param _SubtitleSource: <p>Subtitle source.</p><p>Enumeration values:</p><ul><li>OCR: OCR text recognition, recognizes text in video frames.</li><li>ASR: ASR speech recognition, recognizes voice dialogue in videos.</li><li>External: External subtitle file, provide the URL of the original/translated subtitles.</li></ul>
+        :param _SubtitleSource: <p>Subtitle source.</p><p>Enumeration values:</p><ul><li>OCR: OCR text recognition, recognizes text in video footage.</li><li>ASR: ASR speech recognition, recognizes voice dialogue in videos.</li><li>External: External subtitle file, provided by original/translated subtitle URL.</li></ul>
         :type SubtitleSource: str
-        :param _AsrAssistOcr: <p>Use ASR to assist OCR.</p><p>Enumeration values:</p><ul><li>ON: Enable the use of ASR to assist OCR.</li><li>OFF: Disable the use of ASR to assist OCR.</li></ul><p>Default value: OFF</p><p>Can be set to ON only when SubtitleSource=OCR</p>
+        :param _AsrAssistOcr: <p>Use ASR to assist OCR.</p><p>Enumeration values:</p><ul><li>ON: Enable ASR to assist OCR.</li><li>OFF: Disable ASR to assist OCR.</li></ul><p>Default value: OFF</p><p>Can be set to ON only when SubtitleSource is OCR</p>
         :type AsrAssistOcr: str
-        :param _EraseOriginalSubtitle: <p>Erase the original subtitle.</p><p>Enumeration values:</p><ul><li>ON: Erase the original subtitle.</li><li>OFF: Retain the original subtitle.</li></ul><p>Default value: OFF</p><p>Cannot be set to ON when SubtitleSource=External</p>
+        :param _EraseOriginalSubtitle: <p>Erase the original subtitle.</p><p>Enumeration values:</p><ul><li>ON: Erase the original subtitle.</li><li>OFF: Keep the original subtitle.</li></ul><p>Default value: OFF</p><p>Cannot be set to ON when SubtitleSource=External</p>
         :type EraseOriginalSubtitle: str
-        :param _SelectingSubtitleAreasConfig: <p>Subtitle location information.</p>
+        :param _SelectingSubtitleAreasConfig: <p>Subtitle position information.</p>
         :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         """
         self._SubtitleSource = None
@@ -35822,7 +37070,7 @@ class DubbingSubtitleConfig(AbstractModel):
 
     @property
     def SubtitleSource(self):
-        r"""<p>Subtitle source.</p><p>Enumeration values:</p><ul><li>OCR: OCR text recognition, recognizes text in video frames.</li><li>ASR: ASR speech recognition, recognizes voice dialogue in videos.</li><li>External: External subtitle file, provide the URL of the original/translated subtitles.</li></ul>
+        r"""<p>Subtitle source.</p><p>Enumeration values:</p><ul><li>OCR: OCR text recognition, recognizes text in video footage.</li><li>ASR: ASR speech recognition, recognizes voice dialogue in videos.</li><li>External: External subtitle file, provided by original/translated subtitle URL.</li></ul>
         :rtype: str
         """
         return self._SubtitleSource
@@ -35833,7 +37081,7 @@ class DubbingSubtitleConfig(AbstractModel):
 
     @property
     def AsrAssistOcr(self):
-        r"""<p>Use ASR to assist OCR.</p><p>Enumeration values:</p><ul><li>ON: Enable the use of ASR to assist OCR.</li><li>OFF: Disable the use of ASR to assist OCR.</li></ul><p>Default value: OFF</p><p>Can be set to ON only when SubtitleSource=OCR</p>
+        r"""<p>Use ASR to assist OCR.</p><p>Enumeration values:</p><ul><li>ON: Enable ASR to assist OCR.</li><li>OFF: Disable ASR to assist OCR.</li></ul><p>Default value: OFF</p><p>Can be set to ON only when SubtitleSource is OCR</p>
         :rtype: str
         """
         return self._AsrAssistOcr
@@ -35844,7 +37092,7 @@ class DubbingSubtitleConfig(AbstractModel):
 
     @property
     def EraseOriginalSubtitle(self):
-        r"""<p>Erase the original subtitle.</p><p>Enumeration values:</p><ul><li>ON: Erase the original subtitle.</li><li>OFF: Retain the original subtitle.</li></ul><p>Default value: OFF</p><p>Cannot be set to ON when SubtitleSource=External</p>
+        r"""<p>Erase the original subtitle.</p><p>Enumeration values:</p><ul><li>ON: Erase the original subtitle.</li><li>OFF: Keep the original subtitle.</li></ul><p>Default value: OFF</p><p>Cannot be set to ON when SubtitleSource=External</p>
         :rtype: str
         """
         return self._EraseOriginalSubtitle
@@ -35855,7 +37103,7 @@ class DubbingSubtitleConfig(AbstractModel):
 
     @property
     def SelectingSubtitleAreasConfig(self):
-        r"""<p>Subtitle location information.</p>
+        r"""<p>Subtitle position information.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         """
         return self._SelectingSubtitleAreasConfig
@@ -35893,7 +37141,7 @@ class DubbingTranslateConfig(AbstractModel):
         :type VideoSrcLanguage: str
         :param _TranslateDstLanguage: <p>Target language of the translation.</p>
         :type TranslateDstLanguage: str
-        :param _SimplifyTranslation: <p>Intelligent translation simplification.</p><p>Enumeration values: </p><ul><li>ON: Turn on intelligent translation simplification.</li><li>OFF: Turn off intelligent translation simplification.</li></ul><p>Default value: OFF</p>
+        :param _SimplifyTranslation: <p>Intelligent translation simplification.</p><p>Enumeration values: </p><ul><li>ON: Enable intelligent translation simplification.</li><li>OFF: Disable intelligent translation simplification.</li></ul><p>Default value: OFF</p>
         :type SimplifyTranslation: str
         """
         self._VideoSrcLanguage = None
@@ -35924,7 +37172,7 @@ class DubbingTranslateConfig(AbstractModel):
 
     @property
     def SimplifyTranslation(self):
-        r"""<p>Intelligent translation simplification.</p><p>Enumeration values: </p><ul><li>ON: Turn on intelligent translation simplification.</li><li>OFF: Turn off intelligent translation simplification.</li></ul><p>Default value: OFF</p>
+        r"""<p>Intelligent translation simplification.</p><p>Enumeration values: </p><ul><li>ON: Enable intelligent translation simplification.</li><li>OFF: Disable intelligent translation simplification.</li></ul><p>Default value: OFF</p>
         :rtype: str
         """
         return self._SimplifyTranslation
@@ -35949,19 +37197,21 @@ class DubbingTranslateConfig(AbstractModel):
 
 
 class EditMediaFileInfo(AbstractModel):
-    r"""Edit on-demand video file information
+    r"""Edit video-on-demand file information.
 
     """
 
     def __init__(self):
         r"""
-        :param _InputInfo: Input video information.
+        :param _InputInfo: Video input information.
         :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
-        :param _StartTimeOffset: [Edit] task takes effect, video editing start time offset, measurement unit: second.
+        :param _StartTimeOffset: [Edit] task takes effect. Start time offset for video editing, in seconds.
         :type StartTimeOffset: float
-        :param _EndTimeOffset: [Edit] task takes effect, video editing end time offset, measurement unit: second.
+        :param _EndTimeOffset: [Edit] task takes effect. End time offset of video editing. Measurement unit: second.
         :type EndTimeOffset: float
-        :param _Id: 
+        :param _Id: [Compose] task required, used for media in track elements to associate source material ID.
+
+Note: It can include letters (case insensitive), digits, -, and _, up to 32 characters.
         :type Id: str
         """
         self._InputInfo = None
@@ -35971,7 +37221,7 @@ class EditMediaFileInfo(AbstractModel):
 
     @property
     def InputInfo(self):
-        r"""Input video information.
+        r"""Video input information.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
         return self._InputInfo
@@ -35982,7 +37232,7 @@ class EditMediaFileInfo(AbstractModel):
 
     @property
     def StartTimeOffset(self):
-        r"""[Edit] task takes effect, video editing start time offset, measurement unit: second.
+        r"""[Edit] task takes effect. Start time offset for video editing, in seconds.
         :rtype: float
         """
         return self._StartTimeOffset
@@ -35993,7 +37243,7 @@ class EditMediaFileInfo(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        r"""[Edit] task takes effect, video editing end time offset, measurement unit: second.
+        r"""[Edit] task takes effect. End time offset of video editing. Measurement unit: second.
         :rtype: float
         """
         return self._EndTimeOffset
@@ -36004,7 +37254,9 @@ class EditMediaFileInfo(AbstractModel):
 
     @property
     def Id(self):
-        r"""
+        r"""[Compose] task required, used for media in track elements to associate source material ID.
+
+Note: It can include letters (case insensitive), digits, -, and _, up to 32 characters.
         :rtype: str
         """
         return self._Id
@@ -36320,7 +37572,7 @@ class EditMediaResponse(AbstractModel):
 
 
 class EditMediaTask(AbstractModel):
-    r"""Edit video task info
+    r"""Video editing task information
 
     """
 
@@ -36333,14 +37585,14 @@ class EditMediaTask(AbstractModel):
 <li>FINISH: completed</li>
         :type Status: str
         :param _ErrCode: Error code.
-<li>0: Success;</li>
-<li>Additional values: fail.</li>
+<li>0: success;</li>
+<li>Other values: Failed.</li>
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Input for video editing tasks.
+        :param _Input: Input for a video editing task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.EditMediaTaskInput`
-        :param _Output: 
+        :param _Output: Output of the video editing task.
         :type Output: :class:`tencentcloud.mps.v20190612.models.EditMediaTaskOutput`
         """
         self._TaskId = None
@@ -36377,8 +37629,8 @@ class EditMediaTask(AbstractModel):
     @property
     def ErrCode(self):
         r"""Error code.
-<li>0: Success;</li>
-<li>Additional values: fail.</li>
+<li>0: success;</li>
+<li>Other values: Failed.</li>
         :rtype: int
         """
         return self._ErrCode
@@ -36400,7 +37652,7 @@ class EditMediaTask(AbstractModel):
 
     @property
     def Input(self):
-        r"""Input for video editing tasks.
+        r"""Input for a video editing task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.EditMediaTaskInput`
         """
         return self._Input
@@ -36411,7 +37663,7 @@ class EditMediaTask(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output of the video editing task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.EditMediaTaskOutput`
         """
         return self._Output
@@ -36443,7 +37695,7 @@ class EditMediaTask(AbstractModel):
 
 
 class EditMediaTaskInput(AbstractModel):
-    r"""Input for the video editing task.
+    r"""Input of the video editing task.
 
     """
 
@@ -36484,7 +37736,7 @@ class EditMediaTaskInput(AbstractModel):
 
 
 class EditMediaTaskOutput(AbstractModel):
-    r"""Output of the video editing task
+    r"""Output of the video editing task.
 
     """
 
@@ -36494,7 +37746,7 @@ class EditMediaTaskOutput(AbstractModel):
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _Path: Path of the edited video file.
         :type Path: str
-        :param _MetaData: 
+        :param _MetaData: Metadata of the edited video file.
         :type MetaData: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
         """
         self._OutputStorage = None
@@ -36525,7 +37777,7 @@ class EditMediaTaskOutput(AbstractModel):
 
     @property
     def MetaData(self):
-        r"""
+        r"""Metadata of the edited video file.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
         """
         return self._MetaData
@@ -36912,9 +38164,9 @@ class EnhanceConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VideoEnhance: 
+        :param _VideoEnhance: Video enhancement configuration.
         :type VideoEnhance: :class:`tencentcloud.mps.v20190612.models.VideoEnhanceConfig`
-        :param _AudioEnhance: 
+        :param _AudioEnhance: Audio enhancement configuration.
         :type AudioEnhance: :class:`tencentcloud.mps.v20190612.models.AudioEnhanceConfig`
         """
         self._VideoEnhance = None
@@ -36922,7 +38174,7 @@ class EnhanceConfig(AbstractModel):
 
     @property
     def VideoEnhance(self):
-        r"""
+        r"""Video enhancement configuration.
         :rtype: :class:`tencentcloud.mps.v20190612.models.VideoEnhanceConfig`
         """
         return self._VideoEnhance
@@ -36933,7 +38185,7 @@ class EnhanceConfig(AbstractModel):
 
     @property
     def AudioEnhance(self):
-        r"""
+        r"""Audio enhancement configuration.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioEnhanceConfig`
         """
         return self._AudioEnhance
@@ -36961,19 +38213,27 @@ class EnhanceConfig(AbstractModel):
 
 
 class EraseArea(AbstractModel):
-    r"""
+    r"""Smart erasing, coordinate configuration of the removal area.
+    The region is determined by the coordinates of the top-left and bottom-right corners.
+    The coordinate origin is the top-left corner of the frame. Coordinate points can be specified in pixel values or percentage units.
+    For the auto erase area:
+    When the unit is %, the coordinate range is [0,1];
+    When the unit is px, the X value ranges from 0 to the video image width, and the Y value ranges from 0 to the video image height.
+    For the specified removal area:
+    When the unit is %, the coordinate range is [0,1);
+    When the unit is px, the X value range is [0, video image width], and the Y value range is [0, video image height].
 
     """
 
     def __init__(self):
         r"""
-        :param _LeftTopX: <p>Top-left X-axis coordinate of the area.<br>For example, when Unit is 1, meaning percentage is used, 0.05 indicates the horizontal distance from the top-left corner of the area to the top-left corner of the entire frame is 5% of the frame width.</p>
+        :param _LeftTopX: <p>Top-left X-axis coordinate of the region.<br>For example, when Unit is 1, meaning usage percentage, 0.05 indicates the horizontal distance from the top-left corner of the region to the top-left corner of the entire frame is 5% of the frame width.</p>
         :type LeftTopX: float
-        :param _LeftTopY: <p>Y-coordinate of the upper left corner of the region.<br>For example, when Unit is 1, meaning usage percentage, 0.1 indicates the vertical distance from the upper left corner of the region to the upper left corner of the entire frame is 10% of the screen height.</p>
+        :param _LeftTopY: <p>Y-coordinate of the upper left corner of the region.<br>For example, when Unit is 1, i.e., using percentage as the measurement unit, 0.1 means the vertical distance from the upper left corner of the region to the upper left corner of the entire frame is 10% of the screen height.</p>
         :type LeftTopY: float
-        :param _RightBottomX: <p>X-coordinate of the bottom-right corner of the region.<br>For example, when Unit is 1, meaning percentage is used, 0.75 indicates the horizontal distance from the bottom-right corner of the region to the top-left corner of the entire frame is 75% of the frame width.</p>
+        :param _RightBottomX: <p>X-coordinate of the region's bottom-right corner.<br>For example, when Unit is 1 (percentage), 0.75 means the horizontal distance from the bottom-right corner of the region to the upper left corner of the entire frame is 75% of the frame width.</p>
         :type RightBottomX: float
-        :param _RightBottomY: <p>Y-coordinate of the region's bottom-right corner.<br>For example, when Unit is 1 (percentage), 0.9 means the vertical distance from the bottom-right corner of the region to the top-left corner of the entire frame is 90% of the screen height.</p>
+        :param _RightBottomY: <p>Y-axis coordinate of the bottom-right corner of the region.<br>For example, when Unit is 1 (usage percentage), 0.9 means the vertical distance from the bottom-right corner of the region to the top-left corner of the entire frame is 90% of the screen height.</p>
         :type RightBottomY: float
         :param _Unit: <p>Coordinate unit</p><ul><li>1 Percentage</li><li>2 Pixel value</li></ul>
         :type Unit: int
@@ -36986,7 +38246,7 @@ class EraseArea(AbstractModel):
 
     @property
     def LeftTopX(self):
-        r"""<p>Top-left X-axis coordinate of the area.<br>For example, when Unit is 1, meaning percentage is used, 0.05 indicates the horizontal distance from the top-left corner of the area to the top-left corner of the entire frame is 5% of the frame width.</p>
+        r"""<p>Top-left X-axis coordinate of the region.<br>For example, when Unit is 1, meaning usage percentage, 0.05 indicates the horizontal distance from the top-left corner of the region to the top-left corner of the entire frame is 5% of the frame width.</p>
         :rtype: float
         """
         return self._LeftTopX
@@ -36997,7 +38257,7 @@ class EraseArea(AbstractModel):
 
     @property
     def LeftTopY(self):
-        r"""<p>Y-coordinate of the upper left corner of the region.<br>For example, when Unit is 1, meaning usage percentage, 0.1 indicates the vertical distance from the upper left corner of the region to the upper left corner of the entire frame is 10% of the screen height.</p>
+        r"""<p>Y-coordinate of the upper left corner of the region.<br>For example, when Unit is 1, i.e., using percentage as the measurement unit, 0.1 means the vertical distance from the upper left corner of the region to the upper left corner of the entire frame is 10% of the screen height.</p>
         :rtype: float
         """
         return self._LeftTopY
@@ -37008,7 +38268,7 @@ class EraseArea(AbstractModel):
 
     @property
     def RightBottomX(self):
-        r"""<p>X-coordinate of the bottom-right corner of the region.<br>For example, when Unit is 1, meaning percentage is used, 0.75 indicates the horizontal distance from the bottom-right corner of the region to the top-left corner of the entire frame is 75% of the frame width.</p>
+        r"""<p>X-coordinate of the region's bottom-right corner.<br>For example, when Unit is 1 (percentage), 0.75 means the horizontal distance from the bottom-right corner of the region to the upper left corner of the entire frame is 75% of the frame width.</p>
         :rtype: float
         """
         return self._RightBottomX
@@ -37019,7 +38279,7 @@ class EraseArea(AbstractModel):
 
     @property
     def RightBottomY(self):
-        r"""<p>Y-coordinate of the region's bottom-right corner.<br>For example, when Unit is 1 (percentage), 0.9 means the vertical distance from the bottom-right corner of the region to the top-left corner of the entire frame is 90% of the screen height.</p>
+        r"""<p>Y-axis coordinate of the bottom-right corner of the region.<br>For example, when Unit is 1 (usage percentage), 0.9 means the vertical distance from the bottom-right corner of the region to the top-left corner of the entire frame is 90% of the screen height.</p>
         :rtype: float
         """
         return self._RightBottomY
@@ -37057,17 +38317,19 @@ class EraseArea(AbstractModel):
 
 
 class EraseTimeArea(AbstractModel):
-    r"""
+    r"""Smart erasing: specify the region configuration for removal.
+    Directly erase the specified region within a specified period.
+    When both BeginMs and EndMs are 0, directly erase the specified region in the entire video.
 
     """
 
     def __init__(self):
         r"""
-        :param _BeginMs: 
+        :param _BeginMs: Start time in milliseconds.
         :type BeginMs: int
-        :param _EndMs: 
+        :param _EndMs: End time in ms.
         :type EndMs: int
-        :param _Areas: 
+        :param _Areas: List of regions removed within the period
         :type Areas: list of EraseArea
         """
         self._BeginMs = None
@@ -37076,7 +38338,7 @@ class EraseTimeArea(AbstractModel):
 
     @property
     def BeginMs(self):
-        r"""
+        r"""Start time in milliseconds.
         :rtype: int
         """
         return self._BeginMs
@@ -37087,7 +38349,7 @@ class EraseTimeArea(AbstractModel):
 
     @property
     def EndMs(self):
-        r"""
+        r"""End time in ms.
         :rtype: int
         """
         return self._EndMs
@@ -37098,7 +38360,7 @@ class EraseTimeArea(AbstractModel):
 
     @property
     def Areas(self):
-        r"""
+        r"""List of regions removed within the period
         :rtype: list of EraseArea
         """
         return self._Areas
@@ -37164,20 +38426,20 @@ class ExecRuleTaskData(AbstractModel):
 
 
 class ExecRulesTask(AbstractModel):
-    r"""
+    r"""Task judgment conditions.
 
     """
 
     def __init__(self):
         r"""
-        :param _Rules: 
+        :param _Rules: Conditional judgment information.
         :type Rules: list of Rules
         """
         self._Rules = None
 
     @property
     def Rules(self):
-        r"""
+        r"""Conditional judgment information.
         :rtype: list of Rules
         """
         return self._Rules
@@ -37444,7 +38706,7 @@ class ExtractBlindWatermarkResponse(AbstractModel):
 
 
 class ExtractBlindWatermarkTask(AbstractModel):
-    r"""Extract video digital watermark task information
+    r"""Task information for extracting video digital watermark
 
     """
 
@@ -37452,7 +38714,7 @@ class ExtractBlindWatermarkTask(AbstractModel):
         r"""
         :param _TaskId: Media processing task ID.
         :type TaskId: str
-        :param _Status: Task flow status. Valid values:
+        :param _Status: Task stream status. Valid values:
 <li>WAITING: waiting.</li>
 <li>PROCESSING: Processing;</li>
 <li>FINISH: completed</li>
@@ -37461,15 +38723,15 @@ class ExtractBlindWatermarkTask(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _InputInfo: Target file info of Media Processing Service.
+        :param _InputInfo: Information of the media processing target file.
         :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         :param _Type: Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-ab: ab copyright digital watermark.</li>
         :type Type: str
-        :param _IsDetected: Tag whether a watermark is detected. If this parameter is true, the Result field will return the watermark extraction Result. If this parameter is false, the Result field will not return it.
+        :param _IsDetected: Whether a watermark is detected. If this parameter is true, the Result field will return the watermark extraction Result. If this parameter is false, the Result field will not return.
         :type IsDetected: bool
-        :param _Result: Watermark content fetched. Field will not be returned if no digital watermark is detected.
+        :param _Result: Fetched digital watermark content. This field will not be returned if no watermark is detected.
         :type Result: str
-        :param _ExtractBlindWatermarkConfig: Extract digital watermark configuration.
+        :param _ExtractBlindWatermarkConfig: Configuration of digital watermark extraction.
         :type ExtractBlindWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTaskConfig`
         """
         self._TaskId = None
@@ -37495,7 +38757,7 @@ class ExtractBlindWatermarkTask(AbstractModel):
 
     @property
     def Status(self):
-        r"""Task flow status. Valid values:
+        r"""Task stream status. Valid values:
 <li>WAITING: waiting.</li>
 <li>PROCESSING: Processing;</li>
 <li>FINISH: completed</li>
@@ -37531,7 +38793,7 @@ class ExtractBlindWatermarkTask(AbstractModel):
 
     @property
     def InputInfo(self):
-        r"""Target file info of Media Processing Service.
+        r"""Information of the media processing target file.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
         return self._InputInfo
@@ -37553,7 +38815,7 @@ class ExtractBlindWatermarkTask(AbstractModel):
 
     @property
     def IsDetected(self):
-        r"""Tag whether a watermark is detected. If this parameter is true, the Result field will return the watermark extraction Result. If this parameter is false, the Result field will not return it.
+        r"""Whether a watermark is detected. If this parameter is true, the Result field will return the watermark extraction Result. If this parameter is false, the Result field will not return.
         :rtype: bool
         """
         return self._IsDetected
@@ -37564,7 +38826,7 @@ class ExtractBlindWatermarkTask(AbstractModel):
 
     @property
     def Result(self):
-        r"""Watermark content fetched. Field will not be returned if no digital watermark is detected.
+        r"""Fetched digital watermark content. This field will not be returned if no watermark is detected.
         :rtype: str
         """
         return self._Result
@@ -37575,7 +38837,7 @@ class ExtractBlindWatermarkTask(AbstractModel):
 
     @property
     def ExtractBlindWatermarkConfig(self):
-        r"""Extract digital watermark configuration.
+        r"""Configuration of digital watermark extraction.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTaskConfig`
         """
         return self._ExtractBlindWatermarkConfig
@@ -37610,13 +38872,13 @@ class ExtractBlindWatermarkTask(AbstractModel):
 
 
 class ExtractBlindWatermarkTaskConfig(AbstractModel):
-    r"""Extracts the digital watermark task configuration for video transcoding.
+    r"""Extraction task configuration of video transcoding digital watermark
 
     """
 
     def __init__(self):
         r"""
-        :param _SegmentDuration: Valid when the digital watermark type is blind-abseq, used to specify the segment duration of the input video. Unit: ms.
+        :param _SegmentDuration: Valid when the digital watermark extraction type is blind-abseq. Used to specify the segment duration of the input video. Unit: ms.
 If left empty, the default segment duration is 5 seconds.
         :type SegmentDuration: int
         """
@@ -37624,7 +38886,7 @@ If left empty, the default segment duration is 5 seconds.
 
     @property
     def SegmentDuration(self):
-        r"""Valid when the digital watermark type is blind-abseq, used to specify the segment duration of the input video. Unit: ms.
+        r"""Valid when the digital watermark extraction type is blind-abseq. Used to specify the segment duration of the input video. Unit: ms.
 If left empty, the default segment duration is 5 seconds.
         :rtype: int
         """
@@ -37884,12 +39146,12 @@ class FaceEnhanceConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable the feature. Valid values:
-<li>ON</li>
-<li>OFF</li>
+        :param _Switch: Capability configuration switch. Valid values:
+<li>ON: enabled;</li>
+<li>OFF: disabled.</li>
 Default value: ON.
         :type Switch: str
-        :param _Intensity: Intensity, value ranges from 0.0 to 1.0.
+        :param _Intensity: Strength. Value range: 0.0 to 1.0.
 Default: 0.0.
         :type Intensity: float
         """
@@ -37898,9 +39160,9 @@ Default: 0.0.
 
     @property
     def Switch(self):
-        r"""Whether to enable the feature. Valid values:
-<li>ON</li>
-<li>OFF</li>
+        r"""Capability configuration switch. Valid values:
+<li>ON: enabled;</li>
+<li>OFF: disabled.</li>
 Default value: ON.
         :rtype: str
         """
@@ -37912,7 +39174,7 @@ Default value: ON.
 
     @property
     def Intensity(self):
-        r"""Intensity, value ranges from 0.0 to 1.0.
+        r"""Strength. Value range: 0.0 to 1.0.
 Default: 0.0.
         :rtype: float
         """
@@ -38168,11 +39430,13 @@ class FrameRateConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _Switch: Capability configuration switch. Valid values:
-<li>ON: enabled</li>
-<li>OFF: disabled.</li>
+<li>ON: enabled;</li>
+<li>OFF: disabled</li>
 Default value: ON.
         :type Switch: str
-        :param _Fps: 
+        :param _Fps: Frame rate. Value ranges from 0 to 100. Measurement unit: Hz.
+Default value: 0.
+Note: For transcoding, this parameter overrides the internal Fps in VideoTemplate.
         :type Fps: int
         """
         self._Switch = None
@@ -38181,8 +39445,8 @@ Default value: ON.
     @property
     def Switch(self):
         r"""Capability configuration switch. Valid values:
-<li>ON: enabled</li>
-<li>OFF: disabled.</li>
+<li>ON: enabled;</li>
+<li>OFF: disabled</li>
 Default value: ON.
         :rtype: str
         """
@@ -38194,7 +39458,9 @@ Default value: ON.
 
     @property
     def Fps(self):
-        r"""
+        r"""Frame rate. Value ranges from 0 to 100. Measurement unit: Hz.
+Default value: 0.
+Note: For transcoding, this parameter overrides the internal Fps in VideoTemplate.
         :rtype: int
         """
         return self._Fps
@@ -38225,13 +39491,13 @@ class FrameRateWithDenConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _Switch: Capability configuration switch. Valid values:
-<li>ON: enabled</li>
-<li>OFF: disabled</li>
+<li>ON: enabled;</li>
+<li>OFF: disabled.</li>
 Default value: ON.
         :type Switch: str
-        :param _FpsNum: 
+        :param _FpsNum: Frame rate numerator. Value range: non-negative number, which should be less than 120 when divided by the denominator, and in the unit of Hz. The default value is 0. Note: For transcoding, this parameter will overwrite the Fps in the VideoTemplate.
         :type FpsNum: int
-        :param _FpsDen: 
+        :param _FpsDen: Frame rate denominator. Value range: numbers equal to or greater than 1. The default value is 1. Note: For transcoding, this parameter will override the FpsDenominator in the VideoTemplate.
         :type FpsDen: int
         """
         self._Switch = None
@@ -38241,8 +39507,8 @@ Default value: ON.
     @property
     def Switch(self):
         r"""Capability configuration switch. Valid values:
-<li>ON: enabled</li>
-<li>OFF: disabled</li>
+<li>ON: enabled;</li>
+<li>OFF: disabled.</li>
 Default value: ON.
         :rtype: str
         """
@@ -38254,7 +39520,7 @@ Default value: ON.
 
     @property
     def FpsNum(self):
-        r"""
+        r"""Frame rate numerator. Value range: non-negative number, which should be less than 120 when divided by the denominator, and in the unit of Hz. The default value is 0. Note: For transcoding, this parameter will overwrite the Fps in the VideoTemplate.
         :rtype: int
         """
         return self._FpsNum
@@ -38265,7 +39531,7 @@ Default value: ON.
 
     @property
     def FpsDen(self):
-        r"""
+        r"""Frame rate denominator. Value range: numbers equal to or greater than 1. The default value is 1. Note: For transcoding, this parameter will override the FpsDenominator in the VideoTemplate.
         :rtype: int
         """
         return self._FpsDen
@@ -38453,11 +39719,16 @@ class HdrConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _Switch: Capability configuration switch. Valid values:
-<li>ON: enabled;</li>
-<li>OFF: disabled</li>
+<li>ON: enabled</li>
+<li>OFF: disabled.</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: 
+        :param _Type: Type. Valid values:
+<li>HDR10</li>
+<li>HLG</li>
+Default Value: HDR10.
+Note: The video encoding method should be h264 or h265.
+Note: The video encoding bit depth is 10.
         :type Type: str
         """
         self._Switch = None
@@ -38466,8 +39737,8 @@ Default value: ON.
     @property
     def Switch(self):
         r"""Capability configuration switch. Valid values:
-<li>ON: enabled;</li>
-<li>OFF: disabled</li>
+<li>ON: enabled</li>
+<li>OFF: disabled.</li>
 Default value: ON.
         :rtype: str
         """
@@ -38479,7 +39750,12 @@ Default value: ON.
 
     @property
     def Type(self):
-        r"""
+        r"""Type. Valid values:
+<li>HDR10</li>
+<li>HLG</li>
+Default Value: HDR10.
+Note: The video encoding method should be h264 or h265.
+Note: The video encoding bit depth is 10.
         :rtype: str
         """
         return self._Type
@@ -38503,15 +39779,15 @@ Default value: ON.
 
 
 class HeadTailParameter(AbstractModel):
-    r"""Opening and ending segments parameter.
+    r"""Opening and ending content parameters
 
     """
 
     def __init__(self):
         r"""
-        :param _HeadSet: 
+        :param _HeadSet: List of opening scenes.
         :type HeadSet: list of MediaInputInfo
-        :param _TailSet: 
+        :param _TailSet: Ending list.
         :type TailSet: list of MediaInputInfo
         """
         self._HeadSet = None
@@ -38519,7 +39795,7 @@ class HeadTailParameter(AbstractModel):
 
     @property
     def HeadSet(self):
-        r"""
+        r"""List of opening scenes.
         :rtype: list of MediaInputInfo
         """
         return self._HeadSet
@@ -38530,7 +39806,7 @@ class HeadTailParameter(AbstractModel):
 
     @property
     def TailSet(self):
-        r"""
+        r"""Ending list.
         :rtype: list of MediaInputInfo
         """
         return self._TailSet
@@ -38564,7 +39840,7 @@ class HeadTailParameter(AbstractModel):
 
 
 class HighlightSegmentItem(AbstractModel):
-    r"""Intelligent highlight collection segments.
+    r"""List of intelligent highlight segments.
 
     """
 
@@ -38574,9 +39850,9 @@ class HighlightSegmentItem(AbstractModel):
         :type Confidence: float
         :param _StartTimeOffset: Segment start time offset.
         :type StartTimeOffset: float
-        :param _EndTimeOffset: End time offset of the recording clip.
+        :param _EndTimeOffset: End time offset of a recording clip.
         :type EndTimeOffset: float
-        :param _SegmentTags: 
+        :param _SegmentTags: Segment tag.
         :type SegmentTags: list of str
         :param _BeginTime: The start time of a live streaming segment, in the ISO date format.	
         :type BeginTime: str
@@ -38620,7 +39896,7 @@ class HighlightSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        r"""End time offset of the recording clip.
+        r"""End time offset of a recording clip.
         :rtype: float
         """
         return self._EndTimeOffset
@@ -38631,7 +39907,7 @@ class HighlightSegmentItem(AbstractModel):
 
     @property
     def SegmentTags(self):
-        r"""
+        r"""Segment tag.
         :rtype: list of str
         """
         return self._SegmentTags
@@ -38711,15 +39987,15 @@ class ImageAreaBoxInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: Type of the box selection area in the image. Valid values:
+        :param _Type: Type of the box selection area in the image. Available values:
 <li>logo: icon.</li>
 <li>Text: text.</li>
 Default value: logo.
         :type Type: str
         :param _AreaCoordSet: Coordinates (pixel-level) of the box selection area in the image, in the format of [x1, y1, x2, y2]. It indicates the coordinates of the top left corner and the bottom right corner. Note: The maximum value of this field is 4096.
-For example, [101, 85, 111, —].
+For example, [101, 85, 111, 95].
         :type AreaCoordSet: list of int
-        :param _BoundingBox: Coordinates of the box selection area in the image, in the format of [x1, y1, x2, y2]. It indicates the coordinates of the top left corner and the bottom right corner. This parameter is valid only when AreaCoordSet is not specified. When it indicates the pixel, the maximum value of this field is 4096.
+        :param _BoundingBox: Coordinates of the box selection area in the image, in the format of [x1, y1, x2, y2]. It indicates the coordinates of the top-left corner and the bottom-right corner. This field is valid only when AreaCoordSet is not specified. When it represents pixels, the maximum value of this field is 4096.
 - [0.1, 0.1, 0.3, 0.3]: indicates the ratio (values are less than 1).
 - [50, 50, 350, 280]: indicates the pixel (values are greater than or equal to 1).
         :type BoundingBox: list of float
@@ -38733,7 +40009,7 @@ For example, [101, 85, 111, —].
 
     @property
     def Type(self):
-        r"""Type of the box selection area in the image. Valid values:
+        r"""Type of the box selection area in the image. Available values:
 <li>logo: icon.</li>
 <li>Text: text.</li>
 Default value: logo.
@@ -38748,7 +40024,7 @@ Default value: logo.
     @property
     def AreaCoordSet(self):
         r"""Coordinates (pixel-level) of the box selection area in the image, in the format of [x1, y1, x2, y2]. It indicates the coordinates of the top left corner and the bottom right corner. Note: The maximum value of this field is 4096.
-For example, [101, 85, 111, —].
+For example, [101, 85, 111, 95].
         :rtype: list of int
         """
         return self._AreaCoordSet
@@ -38759,7 +40035,7 @@ For example, [101, 85, 111, —].
 
     @property
     def BoundingBox(self):
-        r"""Coordinates of the box selection area in the image, in the format of [x1, y1, x2, y2]. It indicates the coordinates of the top left corner and the bottom right corner. This parameter is valid only when AreaCoordSet is not specified. When it indicates the pixel, the maximum value of this field is 4096.
+        r"""Coordinates of the box selection area in the image, in the format of [x1, y1, x2, y2]. It indicates the coordinates of the top-left corner and the bottom-right corner. This field is valid only when AreaCoordSet is not specified. When it represents pixels, the maximum value of this field is 4096.
 - [0.1, 0.1, 0.3, 0.3]: indicates the ratio (values are less than 1).
 - [50, 50, 350, 280]: indicates the pixel (values are greater than or equal to 1).
         :rtype: list of float
@@ -38797,6 +40073,155 @@ For example, [101, 85, 111, —].
         
 
 
+class ImageComposeCanvas(AbstractModel):
+    r"""Canvas parameter of the layer fusion feature for image processing
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Width: <p>Canvas width, value ranges from 1 to 10240. Set both this and Height at the same time.</p>
+        :type Width: int
+        :param _Height: <p>Canvas height, in the range of [1, 10240]. Set it simultaneously with Width.</p>
+        :type Height: int
+        :param _Background: <p>Canvas background color, unified as an 8-digit hexadecimal #RRGGBBAA (including alpha), used as the canvas background color. Default #00000000 (fully transparent). Example: #FFFFFFFF opaque white, #FFFFFF80 semi-transparent white.</p><p>When the output format does not support transparent channel (such as JPEG), transparent areas are collapsed according to the RGB of this background color. The default value will get a black background. If a white background is required, explicitly pass #FFFFFFFF.</p>
+        :type Background: str
+        """
+        self._Width = None
+        self._Height = None
+        self._Background = None
+
+    @property
+    def Width(self):
+        r"""<p>Canvas width, value ranges from 1 to 10240. Set both this and Height at the same time.</p>
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        r"""<p>Canvas height, in the range of [1, 10240]. Set it simultaneously with Width.</p>
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Background(self):
+        r"""<p>Canvas background color, unified as an 8-digit hexadecimal #RRGGBBAA (including alpha), used as the canvas background color. Default #00000000 (fully transparent). Example: #FFFFFFFF opaque white, #FFFFFF80 semi-transparent white.</p><p>When the output format does not support transparent channel (such as JPEG), transparent areas are collapsed according to the RGB of this background color. The default value will get a black background. If a white background is required, explicitly pass #FFFFFFFF.</p>
+        :rtype: str
+        """
+        return self._Background
+
+    @Background.setter
+    def Background(self, Background):
+        self._Background = Background
+
+
+    def _deserialize(self, params):
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._Background = params.get("Background")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageComposeLayer(AbstractModel):
+    r"""Layer fusion functionality of image processing layer data structure
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZIndex: <p>Layer stacking sequence, required. It cannot be repeated in the same request. The larger the value, the higher the layer (it is recommended to start consecutive numbering from 0).</p>
+        :type ZIndex: int
+        :param _InputInfo: <p>Layer source, required. Supports URL / COS / AWS-S3 / VOD.</p>
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param _BoundingBox: <p>The position and size of the layer in the canvas. Required. An array of length 4 [X1, Y1, X2, Y2]: coordinates of the top-left and bottom-right corners. X2 > X1 and Y2 > Y1 are required.</p><p>Two semantics (aligned with the BoundingBox of the image removal capability):</p><ul><li>Pixel: coordinate values in the range of [-10240, 10240]. Negative values or values beyond the canvas are allowed (the excess part is cropped).</li><li>Ratio: each value ∈ [-1, 1], converted based on the canvas width and height (x multiplied by canvas width, y multiplied by canvas height).</li></ul><p>The layer is scaled to fill this rectangle. Any part beyond the canvas is cropped, and the output size is always equal to the canvas size.</p>
+        :type BoundingBox: list of float
+        :param _BoundingBoxUnitType: <p>Coordinate unit, aligned with the image removal capacity. Values:</p><ul><li>0: automatic judgment (default value if not passed);</li><li>1: ratio;</li><li>2: pixel.</li></ul><p>Automatic judgment rules: if all four values are greater than 1, they are interpreted as pixels; if all are not greater than 1, they are interpreted as ratios. Mixed values will return InvalidParameter. It is recommended to always explicitly specify.</p>
+        :type BoundingBoxUnitType: int
+        """
+        self._ZIndex = None
+        self._InputInfo = None
+        self._BoundingBox = None
+        self._BoundingBoxUnitType = None
+
+    @property
+    def ZIndex(self):
+        r"""<p>Layer stacking sequence, required. It cannot be repeated in the same request. The larger the value, the higher the layer (it is recommended to start consecutive numbering from 0).</p>
+        :rtype: int
+        """
+        return self._ZIndex
+
+    @ZIndex.setter
+    def ZIndex(self, ZIndex):
+        self._ZIndex = ZIndex
+
+    @property
+    def InputInfo(self):
+        r"""<p>Layer source, required. Supports URL / COS / AWS-S3 / VOD.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def BoundingBox(self):
+        r"""<p>The position and size of the layer in the canvas. Required. An array of length 4 [X1, Y1, X2, Y2]: coordinates of the top-left and bottom-right corners. X2 > X1 and Y2 > Y1 are required.</p><p>Two semantics (aligned with the BoundingBox of the image removal capability):</p><ul><li>Pixel: coordinate values in the range of [-10240, 10240]. Negative values or values beyond the canvas are allowed (the excess part is cropped).</li><li>Ratio: each value ∈ [-1, 1], converted based on the canvas width and height (x multiplied by canvas width, y multiplied by canvas height).</li></ul><p>The layer is scaled to fill this rectangle. Any part beyond the canvas is cropped, and the output size is always equal to the canvas size.</p>
+        :rtype: list of float
+        """
+        return self._BoundingBox
+
+    @BoundingBox.setter
+    def BoundingBox(self, BoundingBox):
+        self._BoundingBox = BoundingBox
+
+    @property
+    def BoundingBoxUnitType(self):
+        r"""<p>Coordinate unit, aligned with the image removal capacity. Values:</p><ul><li>0: automatic judgment (default value if not passed);</li><li>1: ratio;</li><li>2: pixel.</li></ul><p>Automatic judgment rules: if all four values are greater than 1, they are interpreted as pixels; if all are not greater than 1, they are interpreted as ratios. Mixed values will return InvalidParameter. It is recommended to always explicitly specify.</p>
+        :rtype: int
+        """
+        return self._BoundingBoxUnitType
+
+    @BoundingBoxUnitType.setter
+    def BoundingBoxUnitType(self, BoundingBoxUnitType):
+        self._BoundingBoxUnitType = BoundingBoxUnitType
+
+
+    def _deserialize(self, params):
+        self._ZIndex = params.get("ZIndex")
+        if params.get("InputInfo") is not None:
+            self._InputInfo = MediaInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        self._BoundingBox = params.get("BoundingBox")
+        self._BoundingBoxUnitType = params.get("BoundingBoxUnitType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageDenoiseConfig(AbstractModel):
     r"""Image denoising configuration.
 
@@ -38804,12 +40229,12 @@ class ImageDenoiseConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Capability configuration enabling status. Valid values:
-<li>ON: enabled.</li>
-<li>OFF: disabled.</li>
+        :param _Switch: Capability configuration switch. Available values:
+<li>ON: enabled</li>
+<li>OFF: disabled</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: Type, available values:
+        :param _Type: Type. Valid values:
 <li>weak</li>
 <li>strong</li>
 Default value: weak.
@@ -38820,9 +40245,9 @@ Default value: weak.
 
     @property
     def Switch(self):
-        r"""Capability configuration enabling status. Valid values:
-<li>ON: enabled.</li>
-<li>OFF: disabled.</li>
+        r"""Capability configuration switch. Available values:
+<li>ON: enabled</li>
+<li>OFF: disabled</li>
 Default value: ON.
         :rtype: str
         """
@@ -38834,7 +40259,7 @@ Default value: ON.
 
     @property
     def Type(self):
-        r"""Type, available values:
+        r"""Type. Valid values:
 <li>weak</li>
 <li>strong</li>
 Default value: weak.
@@ -39113,24 +40538,23 @@ class ImageEraseLogoConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Capability configuration switch. Valid values:
-<li>ON: enabled;</li>
-<li>OFF: disabled.</li>
-Default value: ON.
+        :param _Switch: <p>Capability configuration switch. Available values: </p><li>ON: Enable;</li><li>OFF: Disable.</li>Default value: ON.
         :type Switch: str
-        :param _ImageAreaBoxes: Multiple box selection areas that need to be erased, with a maximum of 16 areas available.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ImageAreaBoxes: <p>Multiple box selection regions to erase, with up to 16 regions enabled.<br>Note: This field may return null, indicating that no valid value can be obtained.</p>
         :type ImageAreaBoxes: list of ImageAreaBoxInfo
+        :param _EraseStrength: <p>Watermark removal capacity gear selection. Available values:</p><p>Enumeration values:</p><ul><li>low: quick removal gear</li><li>mid: balanced removal effect and speed gear</li><li>high: advanced removal effect gear</li></ul><p>Note: Select the corresponding removal gear based on the complexity of the removal scenario.</p>
+        :type EraseStrength: str
+        :param _WatermarkType: <p>When erasing image watermarks, select a specific watermark type. Available values:</p><p>Enumeration values:</p><ul><li>corner_watermark: Erase a normal fixed-location watermark</li><li>tiled_watermark: Erase a tile watermark across the entire image</li><li>auto_detect_type: Automatically identify the watermark type and erase it</li><li>selected_watermark: Skip automatic removal and perform watermark removal at a specified position</li></ul>
+        :type WatermarkType: str
         """
         self._Switch = None
         self._ImageAreaBoxes = None
+        self._EraseStrength = None
+        self._WatermarkType = None
 
     @property
     def Switch(self):
-        r"""Capability configuration switch. Valid values:
-<li>ON: enabled;</li>
-<li>OFF: disabled.</li>
-Default value: ON.
+        r"""<p>Capability configuration switch. Available values: </p><li>ON: Enable;</li><li>OFF: Disable.</li>Default value: ON.
         :rtype: str
         """
         return self._Switch
@@ -39141,8 +40565,7 @@ Default value: ON.
 
     @property
     def ImageAreaBoxes(self):
-        r"""Multiple box selection areas that need to be erased, with a maximum of 16 areas available.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Multiple box selection regions to erase, with up to 16 regions enabled.<br>Note: This field may return null, indicating that no valid value can be obtained.</p>
         :rtype: list of ImageAreaBoxInfo
         """
         return self._ImageAreaBoxes
@@ -39150,6 +40573,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @ImageAreaBoxes.setter
     def ImageAreaBoxes(self, ImageAreaBoxes):
         self._ImageAreaBoxes = ImageAreaBoxes
+
+    @property
+    def EraseStrength(self):
+        r"""<p>Watermark removal capacity gear selection. Available values:</p><p>Enumeration values:</p><ul><li>low: quick removal gear</li><li>mid: balanced removal effect and speed gear</li><li>high: advanced removal effect gear</li></ul><p>Note: Select the corresponding removal gear based on the complexity of the removal scenario.</p>
+        :rtype: str
+        """
+        return self._EraseStrength
+
+    @EraseStrength.setter
+    def EraseStrength(self, EraseStrength):
+        self._EraseStrength = EraseStrength
+
+    @property
+    def WatermarkType(self):
+        r"""<p>When erasing image watermarks, select a specific watermark type. Available values:</p><p>Enumeration values:</p><ul><li>corner_watermark: Erase a normal fixed-location watermark</li><li>tiled_watermark: Erase a tile watermark across the entire image</li><li>auto_detect_type: Automatically identify the watermark type and erase it</li><li>selected_watermark: Skip automatic removal and perform watermark removal at a specified position</li></ul>
+        :rtype: str
+        """
+        return self._WatermarkType
+
+    @WatermarkType.setter
+    def WatermarkType(self, WatermarkType):
+        self._WatermarkType = WatermarkType
 
 
     def _deserialize(self, params):
@@ -39160,6 +40605,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = ImageAreaBoxInfo()
                 obj._deserialize(item)
                 self._ImageAreaBoxes.append(obj)
+        self._EraseStrength = params.get("EraseStrength")
+        self._WatermarkType = params.get("WatermarkType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39177,9 +40624,9 @@ class ImageProcessTaskOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Path: 
+        :param _Path: <p>Path of the output file.</p>
         :type Path: str
-        :param _OutputStorage: 
+        :param _OutputStorage: <p>Storage location of the output file.</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _Content: <p>Processing result of the image-to-text task.</p>
         :type Content: str
@@ -39193,7 +40640,7 @@ class ImageProcessTaskOutput(AbstractModel):
 
     @property
     def Path(self):
-        r"""
+        r"""<p>Path of the output file.</p>
         :rtype: str
         """
         return self._Path
@@ -39204,7 +40651,7 @@ class ImageProcessTaskOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""
+        r"""<p>Storage location of the output file.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -39260,15 +40707,15 @@ class ImageProcessTaskResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 
+        :param _Status: Task status. Valid values are PROCESSING, SUCCESS, and FAIL.
         :type Status: str
         :param _ErrMsg: Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrMsg: str
-        :param _Message: 
+        :param _Message: Error message.
         :type Message: str
-        :param _Output: 
+        :param _Output: Transcoding task output.
         :type Output: :class:`tencentcloud.mps.v20190612.models.ImageProcessTaskOutput`
-        :param _Progress: 
+        :param _Progress: Transcoding progress, with a value range of [0-100].
         :type Progress: int
         """
         self._Status = None
@@ -39279,7 +40726,7 @@ class ImageProcessTaskResult(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""Task status. Valid values are PROCESSING, SUCCESS, and FAIL.
         :rtype: str
         """
         return self._Status
@@ -39301,7 +40748,7 @@ class ImageProcessTaskResult(AbstractModel):
 
     @property
     def Message(self):
-        r"""
+        r"""Error message.
         :rtype: str
         """
         return self._Message
@@ -39312,7 +40759,7 @@ class ImageProcessTaskResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Transcoding task output.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageProcessTaskOutput`
         """
         return self._Output
@@ -39323,7 +40770,7 @@ class ImageProcessTaskResult(AbstractModel):
 
     @property
     def Progress(self):
-        r"""
+        r"""Transcoding progress, with a value range of [0-100].
         :rtype: int
         """
         return self._Progress
@@ -39351,6 +40798,42 @@ class ImageProcessTaskResult(AbstractModel):
         
 
 
+class ImageQualityConfig(AbstractModel):
+    r"""Image quality assessment task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Attributes: <p>Image quality assessment dimensions</p><p>Enumeration values:</p><ul><li>Brightness: Brightness assessment</li><li>Contrast: Contrast assessment</li><li>Sharpness: Clarity assessment</li><li>IQA: Comprehensive quality assessment</li></ul>
+        :type Attributes: list of str
+        """
+        self._Attributes = None
+
+    @property
+    def Attributes(self):
+        r"""<p>Image quality assessment dimensions</p><p>Enumeration values:</p><ul><li>Brightness: Brightness assessment</li><li>Contrast: Contrast assessment</li><li>Sharpness: Clarity assessment</li><li>IQA: Comprehensive quality assessment</li></ul>
+        :rtype: list of str
+        """
+        return self._Attributes
+
+    @Attributes.setter
+    def Attributes(self, Attributes):
+        self._Attributes = Attributes
+
+
+    def _deserialize(self, params):
+        self._Attributes = params.get("Attributes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageQualityEnhanceConfig(AbstractModel):
     r"""Comprehensive enhancement configuration
 
@@ -39358,12 +40841,16 @@ class ImageQualityEnhanceConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Capability configuration switch. Available values:
-<li>ON: enabled;</li>
+        :param _Switch: Capability configuration switch. Valid values:
+<li>ON: enabled</li>
 <li>OFF: disabled</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: 
+        :param _Type: Type. Valid values:
+<li>weak</li>
+<li>normal</li>
+<li>strong</li>
+Default value: weak.
         :type Type: str
         """
         self._Switch = None
@@ -39371,8 +40858,8 @@ Default value: ON.
 
     @property
     def Switch(self):
-        r"""Capability configuration switch. Available values:
-<li>ON: enabled;</li>
+        r"""Capability configuration switch. Valid values:
+<li>ON: enabled</li>
 <li>OFF: disabled</li>
 Default value: ON.
         :rtype: str
@@ -39385,7 +40872,11 @@ Default value: ON.
 
     @property
     def Type(self):
-        r"""
+        r"""Type. Valid values:
+<li>weak</li>
+<li>normal</li>
+<li>strong</li>
+Default value: weak.
         :rtype: str
         """
         return self._Type
@@ -39409,7 +40900,7 @@ Default value: ON.
 
 
 class ImageSpriteTaskInput(AbstractModel):
-    r"""Sprite sheet capturing task input parameter type
+    r"""Task input parameter type for sprite screenshot taking of a video.
 
     """
 
@@ -39417,13 +40908,13 @@ class ImageSpriteTaskInput(AbstractModel):
         r"""
         :param _Definition: <p>Sprite screenshot template ID.</p>
         :type Definition: int
-        :param _OutputStorage: 
+        :param _OutputStorage: <p>Target storage for the file after the sprite screenshot is taken. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputObjectPath: <p>Output path of the sprite screenshot image file after the sprite screenshot is taken, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href="https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1">File Name Variable Description</a>.<br>Relative path example:</p><li>File name_{variable name}.{format}</li><li>File name.{format}</li>Absolute path example:<li>/custom path/file name_{variable name}.{format}</li>If this is not specified, the default relative path is <code>{inputName}_imageSprite_{definition}_{number}.{format}</code>.
         :type OutputObjectPath: str
         :param _WebVttObjectName: <p>Output path of the Web VTT file after the sprite screenshot is taken, which can only be a relative path. If this is not specified, the default relative path is <code>{inputName}_imageSprite_{definition}.{format}</code>.</p>
         :type WebVttObjectName: str
-        :param _ObjectNumberFormat: 
+        :param _ObjectNumberFormat: <p>Rule of the <code>{number}</code> variable in the output path after the sprite screenshot is taken.</p>
         :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
         :param _ExtInfo: <p>Extended parameter.</p>
         :type ExtInfo: str
@@ -39448,7 +40939,7 @@ class ImageSpriteTaskInput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""
+        r"""<p>Target storage for the file after the sprite screenshot is taken. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -39481,7 +40972,7 @@ class ImageSpriteTaskInput(AbstractModel):
 
     @property
     def ObjectNumberFormat(self):
-        r"""
+        r"""<p>Rule of the <code>{number}</code> variable in the output path after the sprite screenshot is taken.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
         """
         return self._ObjectNumberFormat
@@ -39786,25 +41277,25 @@ Default value: black.
 
 
 class ImageTaskInfo(AbstractModel):
-    r"""
+    r"""Task overview for image processing.
 
     """
 
     def __init__(self):
         r"""
-        :param _TaskId: 
+        :param _TaskId: <p>TaskId of the image processing task.</p>
         :type TaskId: str
-        :param _Status: 
+        :param _Status: <p>Task status.</p><p>Enumeration values: </p><ul><li>FINISH: Task completion</li><li>PROCESSING: Task processing</li></ul>
         :type Status: str
-        :param _Input: 
+        :param _Input: <p>Input file.</p>
         :type Input: str
-        :param _CreateTime: 
+        :param _CreateTime: <p>Creation time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>
         :type CreateTime: str
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: <p>Processing start time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: <p>End time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>
         :type FinishTime: str
-        :param _SubTaskHasFailed: 
+        :param _SubTaskHasFailed: <p>Subtask failure identifier.</p>
         :type SubTaskHasFailed: bool
         """
         self._TaskId = None
@@ -39817,7 +41308,7 @@ class ImageTaskInfo(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""
+        r"""<p>TaskId of the image processing task.</p>
         :rtype: str
         """
         return self._TaskId
@@ -39828,7 +41319,7 @@ class ImageTaskInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""<p>Task status.</p><p>Enumeration values: </p><ul><li>FINISH: Task completion</li><li>PROCESSING: Task processing</li></ul>
         :rtype: str
         """
         return self._Status
@@ -39839,7 +41330,7 @@ class ImageTaskInfo(AbstractModel):
 
     @property
     def Input(self):
-        r"""
+        r"""<p>Input file.</p>
         :rtype: str
         """
         return self._Input
@@ -39850,7 +41341,7 @@ class ImageTaskInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""
+        r"""<p>Creation time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>
         :rtype: str
         """
         return self._CreateTime
@@ -39861,7 +41352,7 @@ class ImageTaskInfo(AbstractModel):
 
     @property
     def BeginProcessTime(self):
-        r"""
+        r"""<p>Processing start time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>
         :rtype: str
         """
         return self._BeginProcessTime
@@ -39872,7 +41363,7 @@ class ImageTaskInfo(AbstractModel):
 
     @property
     def FinishTime(self):
-        r"""
+        r"""<p>End time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>
         :rtype: str
         """
         return self._FinishTime
@@ -39883,7 +41374,7 @@ class ImageTaskInfo(AbstractModel):
 
     @property
     def SubTaskHasFailed(self):
-        r"""
+        r"""<p>Subtask failure identifier.</p>
         :rtype: bool
         """
         return self._SubTaskHasFailed
@@ -39926,14 +41417,20 @@ class ImageTaskInput(AbstractModel):
         :type EraseConfig: :class:`tencentcloud.mps.v20190612.models.ImageEraseConfig`
         :param _AiPosterSuiteConfig: <p>AI image set configuration.</p>
         :type AiPosterSuiteConfig: :class:`tencentcloud.mps.v20190612.models.AiPosterSuiteConfig`
-        :param _AiCutoutConfig: <p>Ai image cutout configuration</p>
+        :param _AiCutoutConfig: <p>Ai cutout configuration</p>
         :type AiCutoutConfig: :class:`tencentcloud.mps.v20190612.models.AiCutoutConfig`
-        :param _AiExpansionConfig: <p>Ai Image Expansion Configuration</p>
+        :param _AiExpansionConfig: <p>Ai outpainting configuration</p>
         :type AiExpansionConfig: :class:`tencentcloud.mps.v20190612.models.AiExpansionConfig`
         :param _AiStoryboardConfig: <p>Ai storyboard deconstruction configuration</p>
         :type AiStoryboardConfig: :class:`tencentcloud.mps.v20190612.models.AiStoryboardConfig`
-        :param _UnderstandImageConfig: <p>Image understanding configuration.</p>
+        :param _UnderstandImageConfig: <p>Image understanding configuration</p>
         :type UnderstandImageConfig: :class:`tencentcloud.mps.v20190612.models.UnderstandImageConfig`
+        :param _ImageQualityConfig: <p>Image quality assessment configuration</p>
+        :type ImageQualityConfig: :class:`tencentcloud.mps.v20190612.models.ImageQualityConfig`
+        :param _AiComposeConfig: <p>Layer fusion configuration.</p>
+        :type AiComposeConfig: :class:`tencentcloud.mps.v20190612.models.AiComposeConfig`
+        :param _AiDecomposeConfig: <p>Layer separation configuration.</p>
+        :type AiDecomposeConfig: :class:`tencentcloud.mps.v20190612.models.AiDecomposeConfig`
         """
         self._EncodeConfig = None
         self._EnhanceConfig = None
@@ -39943,6 +41440,9 @@ class ImageTaskInput(AbstractModel):
         self._AiExpansionConfig = None
         self._AiStoryboardConfig = None
         self._UnderstandImageConfig = None
+        self._ImageQualityConfig = None
+        self._AiComposeConfig = None
+        self._AiDecomposeConfig = None
 
     @property
     def EncodeConfig(self):
@@ -39990,7 +41490,7 @@ class ImageTaskInput(AbstractModel):
 
     @property
     def AiCutoutConfig(self):
-        r"""<p>Ai image cutout configuration</p>
+        r"""<p>Ai cutout configuration</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiCutoutConfig`
         """
         return self._AiCutoutConfig
@@ -40001,7 +41501,7 @@ class ImageTaskInput(AbstractModel):
 
     @property
     def AiExpansionConfig(self):
-        r"""<p>Ai Image Expansion Configuration</p>
+        r"""<p>Ai outpainting configuration</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiExpansionConfig`
         """
         return self._AiExpansionConfig
@@ -40023,7 +41523,7 @@ class ImageTaskInput(AbstractModel):
 
     @property
     def UnderstandImageConfig(self):
-        r"""<p>Image understanding configuration.</p>
+        r"""<p>Image understanding configuration</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.UnderstandImageConfig`
         """
         return self._UnderstandImageConfig
@@ -40031,6 +41531,39 @@ class ImageTaskInput(AbstractModel):
     @UnderstandImageConfig.setter
     def UnderstandImageConfig(self, UnderstandImageConfig):
         self._UnderstandImageConfig = UnderstandImageConfig
+
+    @property
+    def ImageQualityConfig(self):
+        r"""<p>Image quality assessment configuration</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageQualityConfig`
+        """
+        return self._ImageQualityConfig
+
+    @ImageQualityConfig.setter
+    def ImageQualityConfig(self, ImageQualityConfig):
+        self._ImageQualityConfig = ImageQualityConfig
+
+    @property
+    def AiComposeConfig(self):
+        r"""<p>Layer fusion configuration.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiComposeConfig`
+        """
+        return self._AiComposeConfig
+
+    @AiComposeConfig.setter
+    def AiComposeConfig(self, AiComposeConfig):
+        self._AiComposeConfig = AiComposeConfig
+
+    @property
+    def AiDecomposeConfig(self):
+        r"""<p>Layer separation configuration.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiDecomposeConfig`
+        """
+        return self._AiDecomposeConfig
+
+    @AiDecomposeConfig.setter
+    def AiDecomposeConfig(self, AiDecomposeConfig):
+        self._AiDecomposeConfig = AiDecomposeConfig
 
 
     def _deserialize(self, params):
@@ -40058,6 +41591,15 @@ class ImageTaskInput(AbstractModel):
         if params.get("UnderstandImageConfig") is not None:
             self._UnderstandImageConfig = UnderstandImageConfig()
             self._UnderstandImageConfig._deserialize(params.get("UnderstandImageConfig"))
+        if params.get("ImageQualityConfig") is not None:
+            self._ImageQualityConfig = ImageQualityConfig()
+            self._ImageQualityConfig._deserialize(params.get("ImageQualityConfig"))
+        if params.get("AiComposeConfig") is not None:
+            self._AiComposeConfig = AiComposeConfig()
+            self._AiComposeConfig._deserialize(params.get("AiComposeConfig"))
+        if params.get("AiDecomposeConfig") is not None:
+            self._AiDecomposeConfig = AiDecomposeConfig()
+            self._AiDecomposeConfig._deserialize(params.get("AiDecomposeConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40788,14 +42330,14 @@ class LiveAiAnalysisDescriptionItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Paragraphs: 
+        :param _Paragraphs: Segmentation result.
         :type Paragraphs: list of LiveAiParagraphInfo
         """
         self._Paragraphs = None
 
     @property
     def Paragraphs(self):
-        r"""
+        r"""Segmentation result.
         :rtype: list of LiveAiParagraphInfo
         """
         return self._Paragraphs
@@ -40949,21 +42491,21 @@ class LiveAiParagraphInfo(AbstractModel):
 
 
 class LiveRecordFile(AbstractModel):
-    r"""Live streaming Recording output file information
+    r"""Live recording output file information
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: 
+        :param _Url: Live recording file URL
         :type Url: str
-        :param _Size: 
+        :param _Size: Live recording file size
         :type Size: int
-        :param _Duration: 
+        :param _Duration: Recording file duration of live stream
         :type Duration: int
-        :param _StartTime: 
+        :param _StartTime: Start time of the live streaming recording file in [ISO date format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type StartTime: str
-        :param _EndTime: 
+        :param _EndTime: End time of the live streaming recording file in [ISO date format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type EndTime: str
         """
         self._Url = None
@@ -40974,7 +42516,7 @@ class LiveRecordFile(AbstractModel):
 
     @property
     def Url(self):
-        r"""
+        r"""Live recording file URL
         :rtype: str
         """
         return self._Url
@@ -40985,7 +42527,7 @@ class LiveRecordFile(AbstractModel):
 
     @property
     def Size(self):
-        r"""
+        r"""Live recording file size
         :rtype: int
         """
         return self._Size
@@ -40996,7 +42538,7 @@ class LiveRecordFile(AbstractModel):
 
     @property
     def Duration(self):
-        r"""
+        r"""Recording file duration of live stream
         :rtype: int
         """
         return self._Duration
@@ -41007,7 +42549,7 @@ class LiveRecordFile(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""
+        r"""Start time of the live streaming recording file in [ISO date format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._StartTime
@@ -41018,7 +42560,7 @@ class LiveRecordFile(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""
+        r"""End time of the live streaming recording file in [ISO date format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._EndTime
@@ -41624,7 +43166,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class LiveSmartSubtitleResult(AbstractModel):
-    r"""Live stream smart subtitle result
+    r"""Smart subtitle result of the live stream.
 
     """
 
@@ -41632,19 +43174,19 @@ class LiveSmartSubtitleResult(AbstractModel):
         r"""
         :param _Text: Recognized text.
         :type Text: str
-        :param _StartPTSTime: Start PTS time of a translated recording clip, in seconds.
+        :param _StartPTSTime: Start PTS time of a translated segment, in seconds.
         :type StartPTSTime: float
-        :param _EndPTSTime: End PTS time of a translated recording clip, in seconds.
+        :param _EndPTSTime: End PTS time of a translated segment, in seconds.
         :type EndPTSTime: float
         :param _Trans: Translated text.
         :type Trans: str
-        :param _StartTime: 
+        :param _StartTime: Translation start UTC time.
         :type StartTime: str
-        :param _EndTime: 
+        :param _EndTime: UTC time when translation is completed.
         :type EndTime: str
-        :param _SteadyState: 
+        :param _SteadyState: Steady-state tag.
         :type SteadyState: bool
-        :param _UserId: 
+        :param _UserId: UserId for real-time translation over websocket and trtc
         :type UserId: str
         """
         self._Text = None
@@ -41669,7 +43211,7 @@ class LiveSmartSubtitleResult(AbstractModel):
 
     @property
     def StartPTSTime(self):
-        r"""Start PTS time of a translated recording clip, in seconds.
+        r"""Start PTS time of a translated segment, in seconds.
         :rtype: float
         """
         return self._StartPTSTime
@@ -41680,7 +43222,7 @@ class LiveSmartSubtitleResult(AbstractModel):
 
     @property
     def EndPTSTime(self):
-        r"""End PTS time of a translated recording clip, in seconds.
+        r"""End PTS time of a translated segment, in seconds.
         :rtype: float
         """
         return self._EndPTSTime
@@ -41702,7 +43244,7 @@ class LiveSmartSubtitleResult(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""
+        r"""Translation start UTC time.
         :rtype: str
         """
         return self._StartTime
@@ -41713,7 +43255,7 @@ class LiveSmartSubtitleResult(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""
+        r"""UTC time when translation is completed.
         :rtype: str
         """
         return self._EndTime
@@ -41724,7 +43266,7 @@ class LiveSmartSubtitleResult(AbstractModel):
 
     @property
     def SteadyState(self):
-        r"""
+        r"""Steady-state tag.
         :rtype: bool
         """
         return self._SteadyState
@@ -41735,7 +43277,7 @@ class LiveSmartSubtitleResult(AbstractModel):
 
     @property
     def UserId(self):
-        r"""
+        r"""UserId for real-time translation over websocket and trtc
         :rtype: str
         """
         return self._UserId
@@ -41765,15 +43307,15 @@ class LiveSmartSubtitleResult(AbstractModel):
 
 
 class LiveSmartSubtitlesTaskInput(AbstractModel):
-    r"""
+    r"""Live stream smart subtitle input struct.
 
     """
 
     def __init__(self):
         r"""
-        :param _Definition: 
+        :param _Definition: Smart subtitle template ID.	
         :type Definition: int
-        :param _UserExtPara: 
+        :param _UserExtPara: User extension field, which does not need to be filled in for general scenarios.
         :type UserExtPara: str
         """
         self._Definition = None
@@ -41781,7 +43323,7 @@ class LiveSmartSubtitlesTaskInput(AbstractModel):
 
     @property
     def Definition(self):
-        r"""
+        r"""Smart subtitle template ID.	
         :rtype: int
         """
         return self._Definition
@@ -41792,7 +43334,7 @@ class LiveSmartSubtitlesTaskInput(AbstractModel):
 
     @property
     def UserExtPara(self):
-        r"""
+        r"""User extension field, which does not need to be filled in for general scenarios.
         :rtype: str
         """
         return self._UserExtPara
@@ -41816,20 +43358,26 @@ class LiveSmartSubtitlesTaskInput(AbstractModel):
 
 
 class LiveStreamAiAnalysisResultInfo(AbstractModel):
-    r"""Live stream analysis result
+    r"""Live stream analysis result.
 
     """
 
     def __init__(self):
         r"""
-        :param _ResultSet: 
+        :param _ResultSet: Live stream analysis subtask result. Supports:
+<li>Live streaming video splitting.</li>
+<li>Live streaming highlight.</li>
+<li>Live streaming summary.</li>
         :type ResultSet: list of LiveStreamAiAnalysisResultItem
         """
         self._ResultSet = None
 
     @property
     def ResultSet(self):
-        r"""
+        r"""Live stream analysis subtask result. Supports:
+<li>Live streaming video splitting.</li>
+<li>Live streaming highlight.</li>
+<li>Live streaming summary.</li>
         :rtype: list of LiveStreamAiAnalysisResultItem
         """
         return self._ResultSet
@@ -41857,7 +43405,7 @@ class LiveStreamAiAnalysisResultInfo(AbstractModel):
 
 
 class LiveStreamAiAnalysisResultItem(AbstractModel):
-    r"""Live streaming AI analysis result
+    r"""Live stream AI analysis result.
 
     """
 
@@ -41868,9 +43416,10 @@ class LiveStreamAiAnalysisResultItem(AbstractModel):
 <li>Highlight: highlight.</li>
 <li>Description: summary.</li>
         :type Type: str
-        :param _SegmentResultSet: 
+        :param _SegmentResultSet: Split result. When `Type` is
+Valid for SegmentRecognition.
         :type SegmentResultSet: list of SegmentRecognitionItem
-        :param _HighlightResultSet: 
+        :param _HighlightResultSet: Highlight result. This field is valid when Type is set to Highlight.
         :type HighlightResultSet: list of MediaAiAnalysisHighlightItem
         :param _DescriptionResult: Summary result. It is valid when Type is Description.
         :type DescriptionResult: :class:`tencentcloud.mps.v20190612.models.LiveAiAnalysisDescriptionItem`
@@ -41896,7 +43445,8 @@ class LiveStreamAiAnalysisResultItem(AbstractModel):
 
     @property
     def SegmentResultSet(self):
-        r"""
+        r"""Split result. When `Type` is
+Valid for SegmentRecognition.
         :rtype: list of SegmentRecognitionItem
         """
         return self._SegmentResultSet
@@ -41907,7 +43457,7 @@ class LiveStreamAiAnalysisResultItem(AbstractModel):
 
     @property
     def HighlightResultSet(self):
-        r"""
+        r"""Highlight result. This field is valid when Type is set to Highlight.
         :rtype: list of MediaAiAnalysisHighlightItem
         """
         return self._HighlightResultSet
@@ -41962,13 +43512,13 @@ class LiveStreamAiQualityControlResultInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _QualityControlResults: 
+        :param _QualityControlResults: Content quality inspection result list.
         :type QualityControlResults: list of QualityControlResult
-        :param _DiagnoseResults: 
+        :param _DiagnoseResults: Format diagnostic result list.
         :type DiagnoseResults: list of DiagnoseResult
-        :param _QualityControlResultSet: 
+        :param _QualityControlResultSet: Content quality inspection result list.
         :type QualityControlResultSet: list of QualityControlResult
-        :param _DiagnoseResultSet: 
+        :param _DiagnoseResultSet: Format diagnostic result list.
         :type DiagnoseResultSet: list of DiagnoseResult
         """
         self._QualityControlResults = None
@@ -41980,7 +43530,7 @@ class LiveStreamAiQualityControlResultInfo(AbstractModel):
     def QualityControlResults(self):
         warnings.warn("parameter `QualityControlResults` is deprecated", DeprecationWarning) 
 
-        r"""
+        r"""Content quality inspection result list.
         :rtype: list of QualityControlResult
         """
         return self._QualityControlResults
@@ -41995,7 +43545,7 @@ class LiveStreamAiQualityControlResultInfo(AbstractModel):
     def DiagnoseResults(self):
         warnings.warn("parameter `DiagnoseResults` is deprecated", DeprecationWarning) 
 
-        r"""
+        r"""Format diagnostic result list.
         :rtype: list of DiagnoseResult
         """
         return self._DiagnoseResults
@@ -42008,7 +43558,7 @@ class LiveStreamAiQualityControlResultInfo(AbstractModel):
 
     @property
     def QualityControlResultSet(self):
-        r"""
+        r"""Content quality inspection result list.
         :rtype: list of QualityControlResult
         """
         return self._QualityControlResultSet
@@ -42019,7 +43569,7 @@ class LiveStreamAiQualityControlResultInfo(AbstractModel):
 
     @property
     def DiagnoseResultSet(self):
-        r"""
+        r"""Format diagnostic result list.
         :rtype: list of DiagnoseResult
         """
         return self._DiagnoseResultSet
@@ -42065,7 +43615,7 @@ class LiveStreamAiQualityControlResultInfo(AbstractModel):
 
 
 class LiveStreamAiRecognitionResultInfo(AbstractModel):
-    r"""Live streaming AI recognition result
+    r"""AI recognition result of the live stream
 
     """
 
@@ -42106,7 +43656,7 @@ class LiveStreamAiRecognitionResultInfo(AbstractModel):
 
 
 class LiveStreamAiRecognitionResultItem(AbstractModel):
-    r"""Live stream AI recognition result
+    r"""AI recognition result of the live stream
 
     """
 
@@ -42123,25 +43673,25 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
 <li>TagRecognition: highlights marking.</li>
         :type Type: str
         :param _FaceRecognitionResultSet: Face recognition result, which is valid when Type is
-FaceRecognition is valid at that time.
+Valid for FaceRecognition.
         :type FaceRecognitionResultSet: list of LiveStreamFaceRecognitionResult
         :param _AsrWordsRecognitionResultSet: Speech keyword recognition result. When Type is
-AsrWordsRecognition.
+Valid when AsrWordsRecognition is used.
         :type AsrWordsRecognitionResultSet: list of LiveStreamAsrWordsRecognitionResult
         :param _OcrWordsRecognitionResultSet: Text keyword recognition result. When Type is
-OcrWordsRecognition.
+Valid for OcrWordsRecognition.
         :type OcrWordsRecognitionResultSet: list of LiveStreamOcrWordsRecognitionResult
         :param _AsrFullTextRecognitionResultSet: Full speech recognition result. When Type is
-AsrFullTextRecognition.
+Valid when AsrFullTextRecognition is used.
         :type AsrFullTextRecognitionResultSet: list of LiveStreamAsrFullTextRecognitionResult
-        :param _OcrFullTextRecognitionResultSet: Full text recognition result, when Type is
-OcrFullTextRecognition.
+        :param _OcrFullTextRecognitionResultSet: Full text recognition result. This parameter is returned only when `Type` is set to
+Valid for OcrFullTextRecognition.
         :type OcrFullTextRecognitionResultSet: list of LiveStreamOcrFullTextRecognitionResult
         :param _TransTextRecognitionResultSet: Translation result. Valid when Type is TransTextRecognition.
         :type TransTextRecognitionResultSet: list of LiveStreamTransTextRecognitionResult
         :param _ObjectRecognitionResultSet: Object recognition result, which is valid when Type is ObjectRecognition.
         :type ObjectRecognitionResultSet: list of LiveStreamObjectRecognitionResult
-        :param _TagRecognitionResultSet: 
+        :param _TagRecognitionResultSet: Marking point result. Valid when Type is TagRecognition.
         :type TagRecognitionResultSet: list of LiveStreamTagRecognitionResult
         """
         self._Type = None
@@ -42176,7 +43726,7 @@ OcrFullTextRecognition.
     @property
     def FaceRecognitionResultSet(self):
         r"""Face recognition result, which is valid when Type is
-FaceRecognition is valid at that time.
+Valid for FaceRecognition.
         :rtype: list of LiveStreamFaceRecognitionResult
         """
         return self._FaceRecognitionResultSet
@@ -42188,7 +43738,7 @@ FaceRecognition is valid at that time.
     @property
     def AsrWordsRecognitionResultSet(self):
         r"""Speech keyword recognition result. When Type is
-AsrWordsRecognition.
+Valid when AsrWordsRecognition is used.
         :rtype: list of LiveStreamAsrWordsRecognitionResult
         """
         return self._AsrWordsRecognitionResultSet
@@ -42200,7 +43750,7 @@ AsrWordsRecognition.
     @property
     def OcrWordsRecognitionResultSet(self):
         r"""Text keyword recognition result. When Type is
-OcrWordsRecognition.
+Valid for OcrWordsRecognition.
         :rtype: list of LiveStreamOcrWordsRecognitionResult
         """
         return self._OcrWordsRecognitionResultSet
@@ -42212,7 +43762,7 @@ OcrWordsRecognition.
     @property
     def AsrFullTextRecognitionResultSet(self):
         r"""Full speech recognition result. When Type is
-AsrFullTextRecognition.
+Valid when AsrFullTextRecognition is used.
         :rtype: list of LiveStreamAsrFullTextRecognitionResult
         """
         return self._AsrFullTextRecognitionResultSet
@@ -42223,8 +43773,8 @@ AsrFullTextRecognition.
 
     @property
     def OcrFullTextRecognitionResultSet(self):
-        r"""Full text recognition result, when Type is
-OcrFullTextRecognition.
+        r"""Full text recognition result. This parameter is returned only when `Type` is set to
+Valid for OcrFullTextRecognition.
         :rtype: list of LiveStreamOcrFullTextRecognitionResult
         """
         return self._OcrFullTextRecognitionResultSet
@@ -42257,7 +43807,7 @@ OcrFullTextRecognition.
 
     @property
     def TagRecognitionResultSet(self):
-        r"""
+        r"""Marking point result. Valid when Type is TagRecognition.
         :rtype: list of LiveStreamTagRecognitionResult
         """
         return self._TagRecognitionResultSet
@@ -42328,35 +43878,35 @@ OcrFullTextRecognition.
 
 
 class LiveStreamAiReviewImagePoliticalResult(AbstractModel):
-    r"""Live stream AI content review image sensitive result
+    r"""Live stream AI content moderation result of images involving sensitive content
 
     """
 
     def __init__(self):
         r"""
-        :param _StartPtsTime: Start PTS time of a suspected segment, in seconds.
+        :param _StartPtsTime: Starting PTS time of a suspected segment, in seconds.
         :type StartPtsTime: float
         :param _EndPtsTime: End PTS time of a suspected segment, in seconds.
         :type EndPtsTime: float
         :param _Confidence: Sensitive score of the suspected segment.
         :type Confidence: float
-        :param _Suggestion: Result suggestion for suspected segment porn detection, permissible range:
+        :param _Suggestion: Pornographic result advice for the suspected segment. Value range:
 <li>pass</li>
 <li>review</li>
 <li>block</li>
         :type Suggestion: str
-        :param _Label: Video sensitive result tag, value ranges from...to...
+        :param _Label: Video sensitive result tag. Value range:
 <li>politician: sensitive person.</li>
 <li>violation_photo: violation icon.</li>
         :type Label: str
-        :param _Name: Sensitive person, violative icon name.
+        :param _Name: Sensitive person and violative icon name.
         :type Name: str
-        :param _AreaCoordSet: Area coordinates (pixel-level) where sensitive persons or violation icons appear. Format: [x1, y1, x2, y2], which indicates the coordinates of the top-left corner and the bottom-right corner.
+        :param _AreaCoordSet: Zone coordinates (pixel-level) where sensitive persons or violation icons appear. Format: [x1, y1, x2, y2], which indicates the coordinates of the top-left corner and the bottom-right corner.
         :type AreaCoordSet: list of int
-        :param _Url: Suspected image URL (Images are not retained permanently upon arrival)
-The image will be deleted after the PicUrlExpireTime time point.
+        :param _Url: Suspected image URL (images are not retained permanently and will reach
+Images will be deleted after the PicUrlExpireTime time point).
         :type Url: str
-        :param _PicUrlExpireTime: Expiration time of the suspected image URL, using the ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :param _PicUrlExpireTime: Expiration time of the suspected image URL in ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type PicUrlExpireTime: str
         """
         self._StartPtsTime = None
@@ -42371,7 +43921,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def StartPtsTime(self):
-        r"""Start PTS time of a suspected segment, in seconds.
+        r"""Starting PTS time of a suspected segment, in seconds.
         :rtype: float
         """
         return self._StartPtsTime
@@ -42404,7 +43954,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def Suggestion(self):
-        r"""Result suggestion for suspected segment porn detection, permissible range:
+        r"""Pornographic result advice for the suspected segment. Value range:
 <li>pass</li>
 <li>review</li>
 <li>block</li>
@@ -42418,7 +43968,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def Label(self):
-        r"""Video sensitive result tag, value ranges from...to...
+        r"""Video sensitive result tag. Value range:
 <li>politician: sensitive person.</li>
 <li>violation_photo: violation icon.</li>
         :rtype: str
@@ -42431,7 +43981,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def Name(self):
-        r"""Sensitive person, violative icon name.
+        r"""Sensitive person and violative icon name.
         :rtype: str
         """
         return self._Name
@@ -42442,7 +43992,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def AreaCoordSet(self):
-        r"""Area coordinates (pixel-level) where sensitive persons or violation icons appear. Format: [x1, y1, x2, y2], which indicates the coordinates of the top-left corner and the bottom-right corner.
+        r"""Zone coordinates (pixel-level) where sensitive persons or violation icons appear. Format: [x1, y1, x2, y2], which indicates the coordinates of the top-left corner and the bottom-right corner.
         :rtype: list of int
         """
         return self._AreaCoordSet
@@ -42453,8 +44003,8 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def Url(self):
-        r"""Suspected image URL (Images are not retained permanently upon arrival)
-The image will be deleted after the PicUrlExpireTime time point.
+        r"""Suspected image URL (images are not retained permanently and will reach
+Images will be deleted after the PicUrlExpireTime time point).
         :rtype: str
         """
         return self._Url
@@ -42465,7 +44015,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def PicUrlExpireTime(self):
-        r"""Expiration time of the suspected image URL, using the ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Expiration time of the suspected image URL in ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._PicUrlExpireTime
@@ -42496,7 +44046,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
 
 class LiveStreamAiReviewImagePornResult(AbstractModel):
-    r"""Live stream AI content review image pornographic result
+    r"""Live stream AI content moderation pornographic result of images
 
     """
 
@@ -42506,23 +44056,23 @@ class LiveStreamAiReviewImagePornResult(AbstractModel):
         :type StartPtsTime: float
         :param _EndPtsTime: End PTS time of a suspected segment, in seconds.
         :type EndPtsTime: float
-        :param _Confidence: Suspected segment porn score.
+        :param _Confidence: Pornography score of the suspected segment.
         :type Confidence: float
-        :param _Suggestion: Pornographic result suggestion for suspected segment, value ranges from...to...
+        :param _Suggestion: Porn detection result suggestion for the suspected segment. Pass in the range of [min,max].
 <li>pass</li>
 <li>review</li>
 <li>block</li>
         :type Suggestion: str
-        :param _Label: Pornographic result tag for video, value ranges from...to...
+        :param _Label: Pornographic result tag of the video. Value range:
 <li>porn: pornography.</li>
 <li>sexy: sexy.</li>
-<li>vulgar: vulgarity.</li>
+<li>vulgar: vulgar.</li>
 <li>intimacy: intimate behavior.</li>
         :type Label: str
-        :param _Url: Suspected image URL (Images are not retained permanently upon arrival)
-The image will be deleted after the PicUrlExpireTime time point.
+        :param _Url: Suspected image URL (images are not retained permanently and will be deleted upon reaching
+Images will be deleted after the PicUrlExpireTime time point).
         :type Url: str
-        :param _PicUrlExpireTime: Expiration time of the suspected image URL, using the ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :param _PicUrlExpireTime: Expiration time of the suspected image URL, using the [ISO date format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type PicUrlExpireTime: str
         """
         self._StartPtsTime = None
@@ -42557,7 +44107,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def Confidence(self):
-        r"""Suspected segment porn score.
+        r"""Pornography score of the suspected segment.
         :rtype: float
         """
         return self._Confidence
@@ -42568,7 +44118,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def Suggestion(self):
-        r"""Pornographic result suggestion for suspected segment, value ranges from...to...
+        r"""Porn detection result suggestion for the suspected segment. Pass in the range of [min,max].
 <li>pass</li>
 <li>review</li>
 <li>block</li>
@@ -42582,10 +44132,10 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def Label(self):
-        r"""Pornographic result tag for video, value ranges from...to...
+        r"""Pornographic result tag of the video. Value range:
 <li>porn: pornography.</li>
 <li>sexy: sexy.</li>
-<li>vulgar: vulgarity.</li>
+<li>vulgar: vulgar.</li>
 <li>intimacy: intimate behavior.</li>
         :rtype: str
         """
@@ -42597,8 +44147,8 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def Url(self):
-        r"""Suspected image URL (Images are not retained permanently upon arrival)
-The image will be deleted after the PicUrlExpireTime time point.
+        r"""Suspected image URL (images are not retained permanently and will be deleted upon reaching
+Images will be deleted after the PicUrlExpireTime time point).
         :rtype: str
         """
         return self._Url
@@ -42609,7 +44159,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def PicUrlExpireTime(self):
-        r"""Expiration time of the suspected image URL, using the ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Expiration time of the suspected image URL, using the [ISO date format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._PicUrlExpireTime
@@ -42638,37 +44188,37 @@ The image will be deleted after the PicUrlExpireTime time point.
 
 
 class LiveStreamAiReviewImageTerrorismResult(AbstractModel):
-    r"""Live stream AI content review image sensitive result
+    r"""Live stream AI content moderation result of images involving sensitive content
 
     """
 
     def __init__(self):
         r"""
-        :param _StartPtsTime: Start PTS time of a suspected segment, in seconds.
+        :param _StartPtsTime: Starting PTS time of a suspected segment, in seconds.
         :type StartPtsTime: float
         :param _EndPtsTime: End PTS time of a suspected segment, in seconds.
         :type EndPtsTime: float
-        :param _Confidence: Suspected segment sensitivity score.
+        :param _Confidence: Sensitivity score of the suspected segment.
         :type Confidence: float
-        :param _Suggestion: Suspected segment sensitive result suggestion, permissible range:
+        :param _Suggestion: Suspected segment sensitive result suggestion. Value range:
 <li>pass</li>
 <li>review</li>
 <li>block</li>
         :type Suggestion: str
-        :param _Label: Video sensitive content result tag, value ranges from...to...
+        :param _Label: Sensitive result tag of the video. Value range:
 <li>guns: weapons and firearms.</li>
 <li>crowd: crowd gathering.</li>
 <li>police: police force.</li>
 <li>bloody: graphic violence.</li>
 <li>banners: sensitive flags.</li>
-<li>militant: militant.</li>
+<li>militant: militants.</li>
 <li>explosion: explosions and fires.</li>
 <li>terrorists: sensitive persons.</li>
         :type Label: str
-        :param _Url: Suspected image URL (Images are not retained permanently upon arrival)
-The image will be deleted after the PicUrlExpireTime time point.
+        :param _Url: Suspected image URL (images are not retained permanently and will be deleted upon reaching
+Images will be deleted after the PicUrlExpireTime time point).
         :type Url: str
-        :param _PicUrlExpireTime: Expiration time of the suspected image URL, using the ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :param _PicUrlExpireTime: Expiration time of the suspected image URL, using the [ISO date format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type PicUrlExpireTime: str
         """
         self._StartPtsTime = None
@@ -42681,7 +44231,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def StartPtsTime(self):
-        r"""Start PTS time of a suspected segment, in seconds.
+        r"""Starting PTS time of a suspected segment, in seconds.
         :rtype: float
         """
         return self._StartPtsTime
@@ -42703,7 +44253,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def Confidence(self):
-        r"""Suspected segment sensitivity score.
+        r"""Sensitivity score of the suspected segment.
         :rtype: float
         """
         return self._Confidence
@@ -42714,7 +44264,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def Suggestion(self):
-        r"""Suspected segment sensitive result suggestion, permissible range:
+        r"""Suspected segment sensitive result suggestion. Value range:
 <li>pass</li>
 <li>review</li>
 <li>block</li>
@@ -42728,13 +44278,13 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def Label(self):
-        r"""Video sensitive content result tag, value ranges from...to...
+        r"""Sensitive result tag of the video. Value range:
 <li>guns: weapons and firearms.</li>
 <li>crowd: crowd gathering.</li>
 <li>police: police force.</li>
 <li>bloody: graphic violence.</li>
 <li>banners: sensitive flags.</li>
-<li>militant: militant.</li>
+<li>militant: militants.</li>
 <li>explosion: explosions and fires.</li>
 <li>terrorists: sensitive persons.</li>
         :rtype: str
@@ -42747,8 +44297,8 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def Url(self):
-        r"""Suspected image URL (Images are not retained permanently upon arrival)
-The image will be deleted after the PicUrlExpireTime time point.
+        r"""Suspected image URL (images are not retained permanently and will be deleted upon reaching
+Images will be deleted after the PicUrlExpireTime time point).
         :rtype: str
         """
         return self._Url
@@ -42759,7 +44309,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def PicUrlExpireTime(self):
-        r"""Expiration time of the suspected image URL, using the ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Expiration time of the suspected image URL, using the [ISO date format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._PicUrlExpireTime
@@ -42788,7 +44338,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
 
 class LiveStreamAiReviewResultInfo(AbstractModel):
-    r"""Live stream AI review result
+    r"""AI review result of the live stream
 
     """
 
@@ -42829,25 +44379,25 @@ class LiveStreamAiReviewResultInfo(AbstractModel):
 
 
 class LiveStreamAiReviewResultItem(AbstractModel):
-    r"""Live stream AI review result
+    r"""AI review result of the live stream
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: Review result type. Valid values:
-<li>ImagePorn: image porn detection.</li>
-<li>ImageTerrorism: image terrorism.</li>
-<li>ImagePolitical: image political sensitivity.</li>
-<li>VoicePorn: sound rule violation.</li>
+        :param _Type: Type of the review result. Valid values:
+<li>ImagePorn: image moderation.</li>
+<li>ImageTerrorism: image involving sensitive content.</li>
+<li>ImagePolitical: politically sensitive image.</li>
+<li>VoicePorn: sound violation.</li>
         :type Type: str
-        :param _ImagePornResultSet: Image porn detection result, valid when Type is ImagePorn.
+        :param _ImagePornResultSet: Result of porn detection on the image. Valid when Type is ImagePorn.
         :type ImagePornResultSet: list of LiveStreamAiReviewImagePornResult
-        :param _ImageTerrorismResultSet: Result of image terrorism detection, valid when Type is ImageTerrorism.
+        :param _ImageTerrorismResultSet: Image moderation result. Valid when Type is ImageTerrorism.
         :type ImageTerrorismResultSet: list of LiveStreamAiReviewImageTerrorismResult
-        :param _ImagePoliticalResultSet: The result of image sensitivity, valid when Type is ImagePolitical.
+        :param _ImagePoliticalResultSet: Image moderation result. Valid when Type is ImagePolitical.
         :type ImagePoliticalResultSet: list of LiveStreamAiReviewImagePoliticalResult
-        :param _VoicePornResultSet: Result of sound rule violation, valid when Type is VoicePorn.
+        :param _VoicePornResultSet: Result of sound rule violation. Valid when `Type` is `VoicePorn`.
         :type VoicePornResultSet: list of LiveStreamAiReviewVoicePornResult
         """
         self._Type = None
@@ -42858,11 +44408,11 @@ class LiveStreamAiReviewResultItem(AbstractModel):
 
     @property
     def Type(self):
-        r"""Review result type. Valid values:
-<li>ImagePorn: image porn detection.</li>
-<li>ImageTerrorism: image terrorism.</li>
-<li>ImagePolitical: image political sensitivity.</li>
-<li>VoicePorn: sound rule violation.</li>
+        r"""Type of the review result. Valid values:
+<li>ImagePorn: image moderation.</li>
+<li>ImageTerrorism: image involving sensitive content.</li>
+<li>ImagePolitical: politically sensitive image.</li>
+<li>VoicePorn: sound violation.</li>
         :rtype: str
         """
         return self._Type
@@ -42873,7 +44423,7 @@ class LiveStreamAiReviewResultItem(AbstractModel):
 
     @property
     def ImagePornResultSet(self):
-        r"""Image porn detection result, valid when Type is ImagePorn.
+        r"""Result of porn detection on the image. Valid when Type is ImagePorn.
         :rtype: list of LiveStreamAiReviewImagePornResult
         """
         return self._ImagePornResultSet
@@ -42884,7 +44434,7 @@ class LiveStreamAiReviewResultItem(AbstractModel):
 
     @property
     def ImageTerrorismResultSet(self):
-        r"""Result of image terrorism detection, valid when Type is ImageTerrorism.
+        r"""Image moderation result. Valid when Type is ImageTerrorism.
         :rtype: list of LiveStreamAiReviewImageTerrorismResult
         """
         return self._ImageTerrorismResultSet
@@ -42895,7 +44445,7 @@ class LiveStreamAiReviewResultItem(AbstractModel):
 
     @property
     def ImagePoliticalResultSet(self):
-        r"""The result of image sensitivity, valid when Type is ImagePolitical.
+        r"""Image moderation result. Valid when Type is ImagePolitical.
         :rtype: list of LiveStreamAiReviewImagePoliticalResult
         """
         return self._ImagePoliticalResultSet
@@ -42906,7 +44456,7 @@ class LiveStreamAiReviewResultItem(AbstractModel):
 
     @property
     def VoicePornResultSet(self):
-        r"""Result of sound rule violation, valid when Type is VoicePorn.
+        r"""Result of sound rule violation. Valid when `Type` is `VoicePorn`.
         :rtype: list of LiveStreamAiReviewVoicePornResult
         """
         return self._VoicePornResultSet
@@ -42953,7 +44503,7 @@ class LiveStreamAiReviewResultItem(AbstractModel):
 
 
 class LiveStreamAiReviewVoicePornResult(AbstractModel):
-    r"""Live stream AI content review sound pornographic result
+    r"""Live stream AI content moderation pornographic result of sound
 
     """
 
@@ -42963,15 +44513,15 @@ class LiveStreamAiReviewVoicePornResult(AbstractModel):
         :type StartPtsTime: float
         :param _EndPtsTime: End PTS time of a suspected segment, in seconds.
         :type EndPtsTime: float
-        :param _Confidence: Suspected segment porn score.
+        :param _Confidence: Porn score of the suspected segment.
         :type Confidence: float
-        :param _Suggestion: Pornographic result suggestion for suspected segment, value ranges from...to...
+        :param _Suggestion: Porn detection result suggestion for the suspected segment. Value range:
 <li>pass</li>
 <li>review</li>
 <li>block</li>
         :type Suggestion: str
-        :param _Label: Video porn detection result tag, value ranges from...to...
-<li>sexual_moan: Moan.</li>
+        :param _Label: Porn information detection result tag. Value range:
+<li>sexual_moan: moan.</li>
         :type Label: str
         """
         self._StartPtsTime = None
@@ -43004,7 +44554,7 @@ class LiveStreamAiReviewVoicePornResult(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""Suspected segment porn score.
+        r"""Porn score of the suspected segment.
         :rtype: float
         """
         return self._Confidence
@@ -43015,7 +44565,7 @@ class LiveStreamAiReviewVoicePornResult(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""Pornographic result suggestion for suspected segment, value ranges from...to...
+        r"""Porn detection result suggestion for the suspected segment. Value range:
 <li>pass</li>
 <li>review</li>
 <li>block</li>
@@ -43029,8 +44579,8 @@ class LiveStreamAiReviewVoicePornResult(AbstractModel):
 
     @property
     def Label(self):
-        r"""Video porn detection result tag, value ranges from...to...
-<li>sexual_moan: Moan.</li>
+        r"""Porn information detection result tag. Value range:
+<li>sexual_moan: moan.</li>
         :rtype: str
         """
         return self._Label
@@ -43057,20 +44607,20 @@ class LiveStreamAiReviewVoicePornResult(AbstractModel):
 
 
 class LiveStreamAiSmartSubtitleResultInfo(AbstractModel):
-    r"""Live stream smart subtitle result
+    r"""Smart subtitle result of the live stream.
 
     """
 
     def __init__(self):
         r"""
-        :param _SmartSubtitleResult: Live stream smart subtitle task result list.
+        :param _SmartSubtitleResult: List of live stream smart subtitle task results.
         :type SmartSubtitleResult: list of LiveSmartSubtitleResult
         """
         self._SmartSubtitleResult = None
 
     @property
     def SmartSubtitleResult(self):
-        r"""Live stream smart subtitle task result list.
+        r"""List of live stream smart subtitle task results.
         :rtype: list of LiveSmartSubtitleResult
         """
         return self._SmartSubtitleResult
@@ -43112,13 +44662,13 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
         :type EndPtsTime: float
         :param _Confidence: Confidence of a recognized segment. Value range: 0-100.
         :type Confidence: float
-        :param _StartTime: 
+        :param _StartTime: Recognition start UTC time.
         :type StartTime: str
-        :param _EndTime: 
+        :param _EndTime: UTC time when recognition is completed.
         :type EndTime: str
-        :param _SteadyState: 
+        :param _SteadyState: Steady-state tag.
         :type SteadyState: bool
-        :param _UserId: 
+        :param _UserId: UserId of the websocket and trtc recognition result
         :type UserId: str
         """
         self._Text = None
@@ -43176,7 +44726,7 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""
+        r"""Recognition start UTC time.
         :rtype: str
         """
         return self._StartTime
@@ -43187,7 +44737,7 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""
+        r"""UTC time when recognition is completed.
         :rtype: str
         """
         return self._EndTime
@@ -43198,7 +44748,7 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
     @property
     def SteadyState(self):
-        r"""
+        r"""Steady-state tag.
         :rtype: bool
         """
         return self._SteadyState
@@ -43209,7 +44759,7 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
     @property
     def UserId(self):
-        r"""
+        r"""UserId of the websocket and trtc recognition result
         :rtype: str
         """
         return self._UserId
@@ -43239,7 +44789,7 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
 
 class LiveStreamAsrWordsRecognitionResult(AbstractModel):
-    r"""Live streaming AI Asr word recognition result
+    r"""Live streaming AI Asr word recognition result.
 
     """
 
@@ -43326,12 +44876,12 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: Unique identification ID of a figure.
+        :param _Id: Unique identification ID of a person.
         :type Id: str
-        :param _Name: Figure name.
+        :param _Name: Character name.
         :type Name: str
-        :param _Type: Figure library type, which indicates which figure library the recognized figure comes from.
-<li>Default: Default figure library;</li><li>UserDefine: User-defined character library.</li>
+        :param _Type: Library type of the figure, indicating which figure library the recognized figure comes from:
+<li>Default: default figure library;</li><li>UserDefine: user-defined character library.</li>
         :type Type: str
         :param _StartPtsTime: Start PTS time of a recognized segment, in seconds.
         :type StartPtsTime: float
@@ -43352,7 +44902,7 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
 
     @property
     def Id(self):
-        r"""Unique identification ID of a figure.
+        r"""Unique identification ID of a person.
         :rtype: str
         """
         return self._Id
@@ -43363,7 +44913,7 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
 
     @property
     def Name(self):
-        r"""Figure name.
+        r"""Character name.
         :rtype: str
         """
         return self._Name
@@ -43374,8 +44924,8 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
 
     @property
     def Type(self):
-        r"""Figure library type, which indicates which figure library the recognized figure comes from.
-<li>Default: Default figure library;</li><li>UserDefine: User-defined character library.</li>
+        r"""Library type of the figure, indicating which figure library the recognized figure comes from:
+<li>Default: default figure library;</li><li>UserDefine: user-defined character library.</li>
         :rtype: str
         """
         return self._Type
@@ -43464,7 +45014,7 @@ class LiveStreamObjectRecognitionResult(AbstractModel):
         :type Confidence: float
         :param _AreaCoordSet: Zone coordinates of the recognition result. An array contains four elements: [x1, y1, x2, y2], representing the horizontal and vertical coordinates of the top-left and bottom-right corners, respectively.
         :type AreaCoordSet: list of int
-        :param _Url: 
+        :param _Url: Screenshot link.
         :type Url: str
         """
         self._Name = None
@@ -43531,7 +45081,7 @@ class LiveStreamObjectRecognitionResult(AbstractModel):
 
     @property
     def Url(self):
-        r"""
+        r"""Screenshot link.
         :rtype: str
         """
         return self._Url
@@ -43655,7 +45205,7 @@ class LiveStreamOcrFullTextRecognitionResult(AbstractModel):
 
 
 class LiveStreamOcrWordsRecognitionResult(AbstractModel):
-    r"""Live streaming AI Ocr word recognition result
+    r"""Live streaming AI Ocr word recognition result.
 
     """
 
@@ -43751,15 +45301,15 @@ class LiveStreamOcrWordsRecognitionResult(AbstractModel):
 
 
 class LiveStreamProcessErrorInfo(AbstractModel):
-    r"""Live stream processing error information
+    r"""Error information of live stream processing
 
     """
 
     def __init__(self):
         r"""
         :param _ErrCode: Error code.
-<li>0 means no error.</li>
-<li>Non-zero means error. Refer to the error information in Message.</li>
+<li>0: no error;</li>
+<li>Non-zero indicates an error. Refer to Message for error information.</li>
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
@@ -43770,8 +45320,8 @@ class LiveStreamProcessErrorInfo(AbstractModel):
     @property
     def ErrCode(self):
         r"""Error code.
-<li>0 means no error.</li>
-<li>Non-zero means error. Refer to the error information in Message.</li>
+<li>0: no error;</li>
+<li>Non-zero indicates an error. Refer to Message for error information.</li>
         :rtype: int
         """
         return self._ErrCode
@@ -43912,9 +45462,11 @@ class LiveStreamRecordResultInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecordOver: 
+        :param _RecordOver: Whether recording ends.
+0: Recording does not end, returning a single file.
+1: Recording ends, returning all recording files.
         :type RecordOver: int
-        :param _FileResults: 
+        :param _FileResults: File list.
         :type FileResults: list of LiveRecordFile
         """
         self._RecordOver = None
@@ -43922,7 +45474,9 @@ class LiveStreamRecordResultInfo(AbstractModel):
 
     @property
     def RecordOver(self):
-        r"""
+        r"""Whether recording ends.
+0: Recording does not end, returning a single file.
+1: Recording ends, returning all recording files.
         :rtype: int
         """
         return self._RecordOver
@@ -43933,7 +45487,7 @@ class LiveStreamRecordResultInfo(AbstractModel):
 
     @property
     def FileResults(self):
-        r"""
+        r"""File list.
         :rtype: list of LiveRecordFile
         """
         return self._FileResults
@@ -43962,13 +45516,13 @@ class LiveStreamRecordResultInfo(AbstractModel):
 
 
 class LiveStreamTagRecognitionResult(AbstractModel):
-    r"""Live streaming AI timestamp recognition result
+    r"""Live streaming AI timestamp recognition result.
 
     """
 
     def __init__(self):
         r"""
-        :param _Id: Timestamp events.
+        :param _Id: Timestamp event.
         :type Id: str
         :param _StartPtsTime: Start PTS time of a recognized segment, in seconds.
         :type StartPtsTime: float
@@ -43984,7 +45538,7 @@ class LiveStreamTagRecognitionResult(AbstractModel):
 
     @property
     def Id(self):
-        r"""Timestamp events.
+        r"""Timestamp event.
         :rtype: str
         """
         return self._Id
@@ -44043,25 +45597,29 @@ class LiveStreamTagRecognitionResult(AbstractModel):
 
 
 class LiveStreamTaskNotifyConfig(AbstractModel):
-    r"""
+    r"""Event notification configuration for task processing.
 
     """
 
     def __init__(self):
         r"""
-        :param _NotifyType: 
+        :param _NotifyType: Notification type:
+TDMQ-CMQ: message queue.
+"URL": When a URL is specified, the HTTP callback is pushed to the address specified by NotifyUrl. The callback protocol is http+json. The content of the packet body is the same as the output parameters of the [ParseLiveStreamProcessNotification API](https://www.tencentcloud.com/document/product/862/39229?from_cn_redirect=1).
+
+<Font color="red"> Note: if it is unspecified or left blank, no callback will be sent. To send a callback, fill in the corresponding type value. </font>
         :type NotifyType: str
-        :param _NotifyUrl: 
+        :param _NotifyUrl: HTTP callback URL. This is required if NotifyType is URL.
         :type NotifyUrl: str
-        :param _CmqModel: 
+        :param _CmqModel: Queue and Topic models are provided.
         :type CmqModel: str
-        :param _CmqRegion: 
+        :param _CmqRegion: Region when NotifyType is set to TDMQ-CMQ. For example, sh or bj.
         :type CmqRegion: str
-        :param _QueueName: 
+        :param _QueueName: This field is valid when the model is Queue. It indicates the name of the TDMQ for CMQ queue for receiving event notifications.
         :type QueueName: str
-        :param _TopicName: 
+        :param _TopicName: This field is valid when the model is Topic. It indicates the name of the TDMQ for CMQ topic for receiving event notifications.
         :type TopicName: str
-        :param _NotifyKey: 
+        :param _NotifyKey: Key used to generate a callback signature.
         :type NotifyKey: str
         """
         self._NotifyType = None
@@ -44074,7 +45632,11 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     @property
     def NotifyType(self):
-        r"""
+        r"""Notification type:
+TDMQ-CMQ: message queue.
+"URL": When a URL is specified, the HTTP callback is pushed to the address specified by NotifyUrl. The callback protocol is http+json. The content of the packet body is the same as the output parameters of the [ParseLiveStreamProcessNotification API](https://www.tencentcloud.com/document/product/862/39229?from_cn_redirect=1).
+
+<Font color="red"> Note: if it is unspecified or left blank, no callback will be sent. To send a callback, fill in the corresponding type value. </font>
         :rtype: str
         """
         return self._NotifyType
@@ -44085,7 +45647,7 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     @property
     def NotifyUrl(self):
-        r"""
+        r"""HTTP callback URL. This is required if NotifyType is URL.
         :rtype: str
         """
         return self._NotifyUrl
@@ -44096,7 +45658,7 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     @property
     def CmqModel(self):
-        r"""
+        r"""Queue and Topic models are provided.
         :rtype: str
         """
         return self._CmqModel
@@ -44107,7 +45669,7 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     @property
     def CmqRegion(self):
-        r"""
+        r"""Region when NotifyType is set to TDMQ-CMQ. For example, sh or bj.
         :rtype: str
         """
         return self._CmqRegion
@@ -44118,7 +45680,7 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     @property
     def QueueName(self):
-        r"""
+        r"""This field is valid when the model is Queue. It indicates the name of the TDMQ for CMQ queue for receiving event notifications.
         :rtype: str
         """
         return self._QueueName
@@ -44129,7 +45691,7 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""
+        r"""This field is valid when the model is Topic. It indicates the name of the TDMQ for CMQ topic for receiving event notifications.
         :rtype: str
         """
         return self._TopicName
@@ -44140,7 +45702,7 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     @property
     def NotifyKey(self):
-        r"""
+        r"""Key used to generate a callback signature.
         :rtype: str
         """
         return self._NotifyKey
@@ -44169,7 +45731,7 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
 
 class LiveStreamTransTextRecognitionResult(AbstractModel):
-    r"""Live stream real-time translation result
+    r"""Real-time translation result of the live stream
 
     """
 
@@ -44177,7 +45739,7 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
         r"""
         :param _Text: Recognized text.
         :type Text: str
-        :param _StartPtsTime: Start PTS time of a translated fragment, in seconds.
+        :param _StartPtsTime: Start PTS time of a translated segment, in seconds.
         :type StartPtsTime: float
         :param _EndPtsTime: End PTS time of a translated segment, in seconds.
         :type EndPtsTime: float
@@ -44185,13 +45747,13 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
         :type Confidence: float
         :param _Trans: Translated text.
         :type Trans: str
-        :param _StartTime: 
+        :param _StartTime: Translation start UTC time.
         :type StartTime: str
-        :param _EndTime: 
+        :param _EndTime: UTC time when translation is completed.
         :type EndTime: str
-        :param _SteadyState: 
+        :param _SteadyState: Steady-state tag.
         :type SteadyState: bool
-        :param _UserId: 
+        :param _UserId: UserId for real-time translation over websocket and trtc
         :type UserId: str
         """
         self._Text = None
@@ -44217,7 +45779,7 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
 
     @property
     def StartPtsTime(self):
-        r"""Start PTS time of a translated fragment, in seconds.
+        r"""Start PTS time of a translated segment, in seconds.
         :rtype: float
         """
         return self._StartPtsTime
@@ -44261,7 +45823,7 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""
+        r"""Translation start UTC time.
         :rtype: str
         """
         return self._StartTime
@@ -44272,7 +45834,7 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""
+        r"""UTC time when translation is completed.
         :rtype: str
         """
         return self._EndTime
@@ -44283,7 +45845,7 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
 
     @property
     def SteadyState(self):
-        r"""
+        r"""Steady-state tag.
         :rtype: bool
         """
         return self._SteadyState
@@ -44294,7 +45856,7 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
 
     @property
     def UserId(self):
-        r"""
+        r"""UserId for real-time translation over websocket and trtc
         :rtype: str
         """
         return self._UserId
@@ -44332,11 +45894,13 @@ class LowLightEnhanceConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _Switch: Capability configuration switch. Valid values:
-<li>ON: enabled</li>
+<li>ON: enabled;</li>
 <li>OFF: disabled</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: 
+        :param _Type: Type. Valid values:
+<li>normal</li>
+Default value: normal.
         :type Type: str
         """
         self._Switch = None
@@ -44345,7 +45909,7 @@ Default value: ON.
     @property
     def Switch(self):
         r"""Capability configuration switch. Valid values:
-<li>ON: enabled</li>
+<li>ON: enabled;</li>
 <li>OFF: disabled</li>
 Default value: ON.
         :rtype: str
@@ -44358,7 +45922,9 @@ Default value: ON.
 
     @property
     def Type(self):
-        r"""
+        r"""Type. Valid values:
+<li>normal</li>
+Default value: normal.
         :rtype: str
         """
         return self._Type
@@ -44507,7 +46073,7 @@ class ManageTaskResponse(AbstractModel):
 
 
 class MediaAiAnalysisClassificationItem(AbstractModel):
-    r"""Intelligent classification result
+    r"""Intelligent classification result.
 
     """
 
@@ -44515,7 +46081,7 @@ class MediaAiAnalysisClassificationItem(AbstractModel):
         r"""
         :param _Classification: Category name for intelligent classification.
         :type Classification: str
-        :param _Confidence: Reliability of intelligent classification, with a value range from 0 to 100.
+        :param _Confidence: Confidence of the intelligent categorization, with a value range from 0 to 100.
         :type Confidence: float
         """
         self._Classification = None
@@ -44534,7 +46100,7 @@ class MediaAiAnalysisClassificationItem(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""Reliability of intelligent classification, with a value range from 0 to 100.
+        r"""Confidence of the intelligent categorization, with a value range from 0 to 100.
         :rtype: float
         """
         return self._Confidence
@@ -44558,7 +46124,7 @@ class MediaAiAnalysisClassificationItem(AbstractModel):
 
 
 class MediaAiAnalysisCoverItem(AbstractModel):
-    r"""Intelligent cover information
+    r"""Intelligent cover information.
 
     """
 
@@ -44566,7 +46132,7 @@ class MediaAiAnalysisCoverItem(AbstractModel):
         r"""
         :param _CoverPath: Intelligent cover storage path.
         :type CoverPath: str
-        :param _Confidence: Reliability of the intelligent cover, with a value range from 0 to -100.
+        :param _Confidence: Confidence of the intelligent cover, with a value range from 0 to 100.
         :type Confidence: float
         """
         self._CoverPath = None
@@ -44585,7 +46151,7 @@ class MediaAiAnalysisCoverItem(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""Reliability of the intelligent cover, with a value range from 0 to -100.
+        r"""Confidence of the intelligent cover, with a value range from 0 to 100.
         :rtype: float
         """
         return self._Confidence
@@ -44623,9 +46189,9 @@ class MediaAiAnalysisDescriptionItem(AbstractModel):
         :type Title: str
         :param _Keywords: Intelligent description keywords.
         :type Keywords: list of str
-        :param _Paragraphs: 
+        :param _Paragraphs: Segmentation result.
         :type Paragraphs: list of AiParagraphInfo
-        :param _MindMapUrl: 
+        :param _MindMapUrl: Address of the mind map of a summary task.
         :type MindMapUrl: str
         :param _MindMapPath: Path of the mind map of a summary task.
         :type MindMapPath: str
@@ -44690,7 +46256,7 @@ class MediaAiAnalysisDescriptionItem(AbstractModel):
 
     @property
     def Paragraphs(self):
-        r"""
+        r"""Segmentation result.
         :rtype: list of AiParagraphInfo
         """
         return self._Paragraphs
@@ -44701,7 +46267,7 @@ class MediaAiAnalysisDescriptionItem(AbstractModel):
 
     @property
     def MindMapUrl(self):
-        r"""
+        r"""Address of the mind map of a summary task.
         :rtype: str
         """
         return self._MindMapUrl
@@ -44772,18 +46338,18 @@ class MediaAiAnalysisDescriptionItem(AbstractModel):
 
 
 class MediaAiAnalysisFrameTagItem(AbstractModel):
-    r"""Intelligent frame tagging result information
+    r"""Intelligent frame tagging result information.
 
     """
 
     def __init__(self):
         r"""
-        :param _Tag: Tag name by frame.
+        :param _Tag: Frame-specific tag name.
         :type Tag: str
-        :param _CategorySet: Classification list by frame tag name. CategorySet.N indicates the (N+1)th level classification.
-For example, when the Tag is "tower", CategorySet contains two elements: CategorySet.0 is "scenario" and CategorySet.1 is "building", which means the frame Tag is "tower", the first-level category is "scenario", and the second-level category is "building".
+        :param _CategorySet: Classification list by frame tag name. CategorySet.N refers to the (N+1)-level category.
+For example, when Tag is "tower", CategorySet contains two elements: CategorySet.0 is "scenario" and CategorySet.1 is "building", which means the frame tag is "tower", the level-1 category is "scenario", and the level-2 category is "building".
         :type CategorySet: list of str
-        :param _Confidence: Reliability of frame tagging, with a value range from 0 to -100.
+        :param _Confidence: Confidence of frame tagging, with a value range from 0 to 100.
         :type Confidence: float
         """
         self._Tag = None
@@ -44792,7 +46358,7 @@ For example, when the Tag is "tower", CategorySet contains two elements: Categor
 
     @property
     def Tag(self):
-        r"""Tag name by frame.
+        r"""Frame-specific tag name.
         :rtype: str
         """
         return self._Tag
@@ -44803,8 +46369,8 @@ For example, when the Tag is "tower", CategorySet contains two elements: Categor
 
     @property
     def CategorySet(self):
-        r"""Classification list by frame tag name. CategorySet.N indicates the (N+1)th level classification.
-For example, when the Tag is "tower", CategorySet contains two elements: CategorySet.0 is "scenario" and CategorySet.1 is "building", which means the frame Tag is "tower", the first-level category is "scenario", and the second-level category is "building".
+        r"""Classification list by frame tag name. CategorySet.N refers to the (N+1)-level category.
+For example, when Tag is "tower", CategorySet contains two elements: CategorySet.0 is "scenario" and CategorySet.1 is "building", which means the frame tag is "tower", the level-1 category is "scenario", and the level-2 category is "building".
         :rtype: list of str
         """
         return self._CategorySet
@@ -44815,7 +46381,7 @@ For example, when the Tag is "tower", CategorySet contains two elements: Categor
 
     @property
     def Confidence(self):
-        r"""Reliability of frame tagging, with a value range from 0 to -100.
+        r"""Confidence of frame tagging, with a value range from 0 to 100.
         :rtype: float
         """
         return self._Confidence
@@ -44840,17 +46406,17 @@ For example, when the Tag is "tower", CategorySet contains two elements: Categor
 
 
 class MediaAiAnalysisFrameTagSegmentItem(AbstractModel):
-    r"""Frame tagging segments
+    r"""Segments for frame tagging
 
     """
 
     def __init__(self):
         r"""
-        :param _StartTimeOffset: Offset time starting from frame tagging.
+        :param _StartTimeOffset: Time offset starting from the frame tag.
         :type StartTimeOffset: float
-        :param _EndTimeOffset: Offset time for frame tagging completion.
+        :param _EndTimeOffset: Offset time for frame tagging to end.
         :type EndTimeOffset: float
-        :param _TagSet: Tag list within the time segment.
+        :param _TagSet: Tag list in the time segment.
         :type TagSet: list of MediaAiAnalysisFrameTagItem
         """
         self._StartTimeOffset = None
@@ -44859,7 +46425,7 @@ class MediaAiAnalysisFrameTagSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
-        r"""Offset time starting from frame tagging.
+        r"""Time offset starting from the frame tag.
         :rtype: float
         """
         return self._StartTimeOffset
@@ -44870,7 +46436,7 @@ class MediaAiAnalysisFrameTagSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        r"""Offset time for frame tagging completion.
+        r"""Offset time for frame tagging to end.
         :rtype: float
         """
         return self._EndTimeOffset
@@ -44881,7 +46447,7 @@ class MediaAiAnalysisFrameTagSegmentItem(AbstractModel):
 
     @property
     def TagSet(self):
-        r"""Tag list within the time segment.
+        r"""Tag list in the time segment.
         :rtype: list of MediaAiAnalysisFrameTagItem
         """
         return self._TagSet
@@ -44921,15 +46487,15 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
         :type HighlightPath: str
         :param _CovImgPath: Intelligent highlight cover address.
         :type CovImgPath: str
-        :param _Confidence: Reliability of the intelligent highlights, with a value range from 0 to 100.
+        :param _Confidence: Confidence of the intelligent highlights, with a value range from 0 to 100.
         :type Confidence: float
         :param _Duration: Intelligent highlight duration.
         :type Duration: float
         :param _SegmentSet: Intelligent highlight sub-clip list.
         :type SegmentSet: list of HighlightSegmentItem
-        :param _HighlightUrl: 
+        :param _HighlightUrl: Intelligent highlight address.
         :type HighlightUrl: str
-        :param _CovImgUrl: 
+        :param _CovImgUrl: Intelligent highlight cover address.
         :type CovImgUrl: str
         """
         self._HighlightPath = None
@@ -44964,7 +46530,7 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""Reliability of the intelligent highlights, with a value range from 0 to 100.
+        r"""Confidence of the intelligent highlights, with a value range from 0 to 100.
         :rtype: float
         """
         return self._Confidence
@@ -44997,7 +46563,7 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
 
     @property
     def HighlightUrl(self):
-        r"""
+        r"""Intelligent highlight address.
         :rtype: str
         """
         return self._HighlightUrl
@@ -45008,7 +46574,7 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
 
     @property
     def CovImgUrl(self):
-        r"""
+        r"""Intelligent highlight cover address.
         :rtype: str
         """
         return self._CovImgUrl
@@ -45042,7 +46608,7 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
 
 
 class MediaAiAnalysisTagItem(AbstractModel):
-    r"""Intelligent tag result information
+    r"""Intelligent tag result information.
 
     """
 
@@ -45050,7 +46616,7 @@ class MediaAiAnalysisTagItem(AbstractModel):
         r"""
         :param _Tag: Tag name.
         :type Tag: str
-        :param _Confidence: Reliability of the tag, with a value range from 0 to -100.
+        :param _Confidence: Confidence of the tag, with a value range from 0 to 100.
         :type Confidence: float
         :param _SpecialInfo: Varies based on different types.
         :type SpecialInfo: str
@@ -45072,7 +46638,7 @@ class MediaAiAnalysisTagItem(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""Reliability of the tag, with a value range from 0 to -100.
+        r"""Confidence of the tag, with a value range from 0 to 100.
         :rtype: float
         """
         return self._Confidence
@@ -45118,17 +46684,17 @@ class MediaAnimatedGraphicsItem(AbstractModel):
         :type Storage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _Path: File path of the animated image.
         :type Path: str
-        :param _Definition: Rotating image template ID. Please refer to the [Rotating Image Template](https://www.tencentcloud.com/document/product/862/77168?from_cn_redirect=1#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF.5B.5D(id.3Amove)).
+        :param _Definition: ID of the rotating image template. See [video-to-animated image conversion parameter template](https://www.tencentcloud.com/document/product/862/77168?from_cn_redirect=1#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF.5B.5D(id.3Amove)).
         :type Definition: int
-        :param _Container: Animated image file format, for example gif.
+        :param _Container: Animated image file format, for example, gif.
         :type Container: str
-        :param _Height: Height of the animated image, measurement unit: px.
+        :param _Height: Height of the animated image. Measurement unit: px.
         :type Height: int
-        :param _Width: Width of the animated image, measurement unit: px.
+        :param _Width: Width of the animated image in px.
         :type Width: int
-        :param _Bitrate: Animated image bitrate. Measurement unit: bps.
+        :param _Bitrate: Animated image bitrate. Unit: bps.
         :type Bitrate: int
-        :param _Size: Animated image size, unit: byte.
+        :param _Size: Animation size. Unit: byte.
         :type Size: int
         :param _Md5: md5 value of the animated image.
         :type Md5: str
@@ -45173,7 +46739,7 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Definition(self):
-        r"""Rotating image template ID. Please refer to the [Rotating Image Template](https://www.tencentcloud.com/document/product/862/77168?from_cn_redirect=1#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF.5B.5D(id.3Amove)).
+        r"""ID of the rotating image template. See [video-to-animated image conversion parameter template](https://www.tencentcloud.com/document/product/862/77168?from_cn_redirect=1#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF.5B.5D(id.3Amove)).
         :rtype: int
         """
         return self._Definition
@@ -45184,7 +46750,7 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Container(self):
-        r"""Animated image file format, for example gif.
+        r"""Animated image file format, for example, gif.
         :rtype: str
         """
         return self._Container
@@ -45195,7 +46761,7 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Height(self):
-        r"""Height of the animated image, measurement unit: px.
+        r"""Height of the animated image. Measurement unit: px.
         :rtype: int
         """
         return self._Height
@@ -45206,7 +46772,7 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Width(self):
-        r"""Width of the animated image, measurement unit: px.
+        r"""Width of the animated image in px.
         :rtype: int
         """
         return self._Width
@@ -45217,7 +46783,7 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Bitrate(self):
-        r"""Animated image bitrate. Measurement unit: bps.
+        r"""Animated image bitrate. Unit: bps.
         :rtype: int
         """
         return self._Bitrate
@@ -45228,7 +46794,7 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Size(self):
-        r"""Animated image size, unit: byte.
+        r"""Animation size. Unit: byte.
         :rtype: int
         """
         return self._Size
@@ -45308,11 +46874,11 @@ class MediaAudioStreamItem(AbstractModel):
         :type SamplingRate: int
         :param _Codec: Audio stream encoding format, for example, aac.
         :type Codec: str
-        :param _Channel: 
+        :param _Channel: Number of audio channels, for example, 2.
         :type Channel: int
-        :param _Codecs: 
+        :param _Codecs: Audio Codecs.
         :type Codecs: str
-        :param _Loudness: 
+        :param _Loudness: Audio loudness.
         :type Loudness: float
         """
         self._Bitrate = None
@@ -45357,7 +46923,7 @@ class MediaAudioStreamItem(AbstractModel):
 
     @property
     def Channel(self):
-        r"""
+        r"""Number of audio channels, for example, 2.
         :rtype: int
         """
         return self._Channel
@@ -45368,7 +46934,7 @@ class MediaAudioStreamItem(AbstractModel):
 
     @property
     def Codecs(self):
-        r"""
+        r"""Audio Codecs.
         :rtype: str
         """
         return self._Codecs
@@ -45379,7 +46945,7 @@ class MediaAudioStreamItem(AbstractModel):
 
     @property
     def Loudness(self):
-        r"""
+        r"""Audio loudness.
         :rtype: float
         """
         return self._Loudness
@@ -45407,7 +46973,7 @@ class MediaAudioStreamItem(AbstractModel):
 
 
 class MediaContentReviewAsrTextSegmentItem(AbstractModel):
-    r"""Content review Asr text audit suspected segment
+    r"""Suspected segment of Asr text audit in content review
 
     """
 
@@ -45419,12 +46985,12 @@ class MediaContentReviewAsrTextSegmentItem(AbstractModel):
         :type EndTimeOffset: float
         :param _Confidence: Confidence degree of the suspected segment.
         :type Confidence: float
-        :param _Suggestion: Review result suggestion for suspected segment, value ranges from...to...
+        :param _Suggestion: Suggested review result for the suspected segment. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param _KeywordSet: Suspicious keyword list.
+        :param _KeywordSet: List of suspicious keywords.
         :type KeywordSet: list of str
         """
         self._StartTimeOffset = None
@@ -45468,7 +47034,7 @@ class MediaContentReviewAsrTextSegmentItem(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""Review result suggestion for suspected segment, value ranges from...to...
+        r"""Suggested review result for the suspected segment. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
@@ -45482,7 +47048,7 @@ class MediaContentReviewAsrTextSegmentItem(AbstractModel):
 
     @property
     def KeywordSet(self):
-        r"""Suspicious keyword list.
+        r"""List of suspicious keywords.
         :rtype: list of str
         """
         return self._KeywordSet
@@ -45509,7 +47075,7 @@ class MediaContentReviewAsrTextSegmentItem(AbstractModel):
 
 
 class MediaContentReviewOcrTextSegmentItem(AbstractModel):
-    r"""Content review Ocr text audit suspected segment
+    r"""Suspected segment of Ocr text audit in content review
 
     """
 
@@ -45521,19 +47087,19 @@ class MediaContentReviewOcrTextSegmentItem(AbstractModel):
         :type EndTimeOffset: float
         :param _Confidence: Confidence degree of the suspected segment.
         :type Confidence: float
-        :param _Suggestion: Result Suggestions for suspected segment review, value ranges from...to...
+        :param _Suggestion: Suggested review result for the suspected segment. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param _KeywordSet: Suspicious keyword list.
+        :param _KeywordSet: List of suspicious keywords.
         :type KeywordSet: list of str
-        :param _AreaCoordSet: Area coordinates of suspected text occurrence (pixel-level), [x1, y1, x2, y2], i.e., coordinates of the top-left corner and bottom-right corner.
+        :param _AreaCoordSet: Coordinates of the area where suspected text appears (pixel-level), [x1, y1, x2, y2], i.e. coordinates of the top-left corner and bottom-right corner.
         :type AreaCoordSet: list of int
-        :param _Url: Suspected image URL (Images are not retained permanently, reaching
-The image will be deleted after the PicUrlExpireTime time point.
+        :param _Url: Suspected image URL (images are not retained permanently and will reach
+Images will be deleted after the PicUrlExpireTime time point).
         :type Url: str
-        :param _PicUrlExpireTime: Expiration time of the suspected image URL, using the ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :param _PicUrlExpireTime: Expiration time of the suspected image URL in ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type PicUrlExpireTime: str
         """
         self._StartTimeOffset = None
@@ -45580,7 +47146,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def Suggestion(self):
-        r"""Result Suggestions for suspected segment review, value ranges from...to...
+        r"""Suggested review result for the suspected segment. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
@@ -45594,7 +47160,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def KeywordSet(self):
-        r"""Suspicious keyword list.
+        r"""List of suspicious keywords.
         :rtype: list of str
         """
         return self._KeywordSet
@@ -45605,7 +47171,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def AreaCoordSet(self):
-        r"""Area coordinates of suspected text occurrence (pixel-level), [x1, y1, x2, y2], i.e., coordinates of the top-left corner and bottom-right corner.
+        r"""Coordinates of the area where suspected text appears (pixel-level), [x1, y1, x2, y2], i.e. coordinates of the top-left corner and bottom-right corner.
         :rtype: list of int
         """
         return self._AreaCoordSet
@@ -45616,8 +47182,8 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def Url(self):
-        r"""Suspected image URL (Images are not retained permanently, reaching
-The image will be deleted after the PicUrlExpireTime time point.
+        r"""Suspected image URL (images are not retained permanently and will reach
+Images will be deleted after the PicUrlExpireTime time point).
         :rtype: str
         """
         return self._Url
@@ -45628,7 +47194,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def PicUrlExpireTime(self):
-        r"""Expiration time of the suspected image URL, using the ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Expiration time of the suspected image URL in ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._PicUrlExpireTime
@@ -45658,7 +47224,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
 
 class MediaContentReviewPoliticalSegmentItem(AbstractModel):
-    r"""Content review suspected segment
+    r"""Suspected sensitive segment in content review
 
     """
 
@@ -45668,26 +47234,26 @@ class MediaContentReviewPoliticalSegmentItem(AbstractModel):
         :type StartTimeOffset: float
         :param _EndTimeOffset: End time offset of a suspected segment, in seconds.
         :type EndTimeOffset: float
-        :param _Confidence: Suspected segment sensitivity score.
+        :param _Confidence: Sensitivity score of the suspected segment.
         :type Confidence: float
-        :param _Suggestion: Suspected segment sensitive result suggestion, value ranges from...to...
+        :param _Suggestion: Sensitivity result suggestion for the suspected segment. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param _Name: Sensitive person, violative icon name.
+        :param _Name: Sensitive person and violative icon name.
         :type Name: str
-        :param _Label: Suspected segment sensitive result Tag. The mapping between the LabelSet parameter in the content moderation template [visual sensitive task control parameter](https://www.tencentcloud.com/document/api/862/37615?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) and the parameter value range of this parameter:
+        :param _Label: Suspected segment moderation result tag. Mapping between the LabelSet parameter in the moderation template frame moderation task control parameter (https://www.tencentcloud.com/document/api/862/37615?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) and the value range of this parameter:
 violation_photo:
 <li>violation_photo: violation icon.</li>
 politician:
-<li>nation_politician: State leaders;</li>
+<li>nation_politician: State leaders.</li>
 <li>province_politician: provincial and ministerial leaders;</li>
 <li>bureau_politician: bureau-level official;</li>
 <li>county_politician: county-level official;</li>
 <li>rural_politician: township-level official;</li>
 <li>sensitive_politician: sensitive person.</li>
-<li>foreign_politician: state leaders of other countries.</li>
+<li>foreign_politician: State leaders of other countries.</li>
 entertainment:
 <li>sensitive_entertainment: sensitive entertainment figure.</li>
 sport:
@@ -45695,19 +47261,19 @@ sport:
 entrepreneur:
 <li>sensitive_entrepreneur: sensitive entrepreneur.</li>
 scholar:
-<li>sensitive_scholar: Sensitive educational scholars.</li>
+<li>sensitive_scholar: Sensitive educational scholar.</li>
 celebrity:
 <li>sensitive_celebrity: sensitive celebrity.</li>
 <li>historical_celebrity: historical celebrity.</li>
 military:
 <li>sensitive_military: sensitive military figure.</li>
         :type Label: str
-        :param _Url: Suspected image URL (Images are not retained permanently upon arrival)
-The image will be deleted after the PicUrlExpireTime time point.
+        :param _Url: Suspected image URL (images are not retained permanently and will be deleted upon reaching
+Images will be deleted after the PicUrlExpireTime time point).
         :type Url: str
-        :param _AreaCoordSet: Area coordinates of sensitive person and violation icon occurrence (pixel-level), [x1, y1, x2, y2], i.e., coordinates of the top-left corner and coordinate of the bottom-right corner.
+        :param _AreaCoordSet: Zone coordinates where sensitive persons and violation icons appear (pixel-level), [x1, y1, x2, y2], i.e. coordinates of the top-left corner and bottom-right corner.
         :type AreaCoordSet: list of int
-        :param _PicUrlExpireTime: Expiration time of the suspected image URL, using the ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :param _PicUrlExpireTime: Expiration time of the suspected image URL in ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type PicUrlExpireTime: str
         """
         self._StartTimeOffset = None
@@ -45744,7 +47310,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def Confidence(self):
-        r"""Suspected segment sensitivity score.
+        r"""Sensitivity score of the suspected segment.
         :rtype: float
         """
         return self._Confidence
@@ -45755,7 +47321,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def Suggestion(self):
-        r"""Suspected segment sensitive result suggestion, value ranges from...to...
+        r"""Sensitivity result suggestion for the suspected segment. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
@@ -45769,7 +47335,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def Name(self):
-        r"""Sensitive person, violative icon name.
+        r"""Sensitive person and violative icon name.
         :rtype: str
         """
         return self._Name
@@ -45780,17 +47346,17 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def Label(self):
-        r"""Suspected segment sensitive result Tag. The mapping between the LabelSet parameter in the content moderation template [visual sensitive task control parameter](https://www.tencentcloud.com/document/api/862/37615?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) and the parameter value range of this parameter:
+        r"""Suspected segment moderation result tag. Mapping between the LabelSet parameter in the moderation template frame moderation task control parameter (https://www.tencentcloud.com/document/api/862/37615?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) and the value range of this parameter:
 violation_photo:
 <li>violation_photo: violation icon.</li>
 politician:
-<li>nation_politician: State leaders;</li>
+<li>nation_politician: State leaders.</li>
 <li>province_politician: provincial and ministerial leaders;</li>
 <li>bureau_politician: bureau-level official;</li>
 <li>county_politician: county-level official;</li>
 <li>rural_politician: township-level official;</li>
 <li>sensitive_politician: sensitive person.</li>
-<li>foreign_politician: state leaders of other countries.</li>
+<li>foreign_politician: State leaders of other countries.</li>
 entertainment:
 <li>sensitive_entertainment: sensitive entertainment figure.</li>
 sport:
@@ -45798,7 +47364,7 @@ sport:
 entrepreneur:
 <li>sensitive_entrepreneur: sensitive entrepreneur.</li>
 scholar:
-<li>sensitive_scholar: Sensitive educational scholars.</li>
+<li>sensitive_scholar: Sensitive educational scholar.</li>
 celebrity:
 <li>sensitive_celebrity: sensitive celebrity.</li>
 <li>historical_celebrity: historical celebrity.</li>
@@ -45814,8 +47380,8 @@ military:
 
     @property
     def Url(self):
-        r"""Suspected image URL (Images are not retained permanently upon arrival)
-The image will be deleted after the PicUrlExpireTime time point.
+        r"""Suspected image URL (images are not retained permanently and will be deleted upon reaching
+Images will be deleted after the PicUrlExpireTime time point).
         :rtype: str
         """
         return self._Url
@@ -45826,7 +47392,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def AreaCoordSet(self):
-        r"""Area coordinates of sensitive person and violation icon occurrence (pixel-level), [x1, y1, x2, y2], i.e., coordinates of the top-left corner and coordinate of the bottom-right corner.
+        r"""Zone coordinates where sensitive persons and violation icons appear (pixel-level), [x1, y1, x2, y2], i.e. coordinates of the top-left corner and bottom-right corner.
         :rtype: list of int
         """
         return self._AreaCoordSet
@@ -45837,7 +47403,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def PicUrlExpireTime(self):
-        r"""Expiration time of the suspected image URL, using the ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Expiration time of the suspected image URL in ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._PicUrlExpireTime
@@ -45868,7 +47434,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
 
 class MediaContentReviewSegmentItem(AbstractModel):
-    r"""Content review suspected pornographic/sensitive segment
+    r"""Suspected pornographic/sensitive segment in content review
 
     """
 
@@ -45878,19 +47444,19 @@ class MediaContentReviewSegmentItem(AbstractModel):
         :type StartTimeOffset: float
         :param _EndTimeOffset: End time offset of a suspected segment, in seconds.
         :type EndTimeOffset: float
-        :param _Confidence: Suspected segment porn score.
+        :param _Confidence: Porn score of the suspected segment.
         :type Confidence: float
         :param _Label: Tag of the pornographic result for the suspected segment.
         :type Label: str
-        :param _Suggestion: Pornographic result suggestion for suspected segment, value ranges from...to...
+        :param _Suggestion: Porn detection result suggestion for the suspected segment. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param _Url: Suspected image URL (Images are not retained permanently upon arrival)
-The image will be deleted after the PicUrlExpireTime time point.
+        :param _Url: Suspected image URL (images are not retained permanently and will reach
+Images will be deleted after the PicUrlExpireTime time point).
         :type Url: str
-        :param _PicUrlExpireTime: Expiration time of the suspected image URL, using the ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :param _PicUrlExpireTime: Expiration time of the suspected image URL, in [ISO date format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type PicUrlExpireTime: str
         """
         self._StartTimeOffset = None
@@ -45925,7 +47491,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def Confidence(self):
-        r"""Suspected segment porn score.
+        r"""Porn score of the suspected segment.
         :rtype: float
         """
         return self._Confidence
@@ -45947,7 +47513,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def Suggestion(self):
-        r"""Pornographic result suggestion for suspected segment, value ranges from...to...
+        r"""Porn detection result suggestion for the suspected segment. Value range:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
@@ -45961,8 +47527,8 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def Url(self):
-        r"""Suspected image URL (Images are not retained permanently upon arrival)
-The image will be deleted after the PicUrlExpireTime time point.
+        r"""Suspected image URL (images are not retained permanently and will reach
+Images will be deleted after the PicUrlExpireTime time point).
         :rtype: str
         """
         return self._Url
@@ -45973,7 +47539,7 @@ The image will be deleted after the PicUrlExpireTime time point.
 
     @property
     def PicUrlExpireTime(self):
-        r"""Expiration time of the suspected image URL, using the ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        r"""Expiration time of the suspected image URL, in [ISO date format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._PicUrlExpireTime
@@ -46008,17 +47574,17 @@ class MediaImageSpriteItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Sprite sheet specification, please refer to the [Sprite Sheet Parameter Template](https://www.tencentcloud.com/document/product/266/33480?from_cn_redirect=1#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :param _Definition: Sprite screenshot specification. See [sprite sheet parameter template](https://www.tencentcloud.com/document/product/266/33480?from_cn_redirect=1#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF).
         :type Definition: int
-        :param _Height: Height of small images in sprite sheet.
+        :param _Height: Height of small images in sprite image.
         :type Height: int
-        :param _Width: Width of small images in sprite sheet.
+        :param _Width: Width of a small image in the sprite sheet.
         :type Width: int
-        :param _TotalCount: Number of small images in each sprite sheet.
+        :param _TotalCount: Number of small images in each sprite image.
         :type TotalCount: int
         :param _ImagePathSet: Path of each sprite sheet.
         :type ImagePathSet: list of str
-        :param _WebVttPath: 
+        :param _WebVttPath: Path of the WebVtt file that describes the temporal relationship between sprite sub-images and their positions. The WebVtt file indicates the time point corresponding to each sprite sub-image and its coordinate position in the sprite sheet. It is generally used by the player to implement preview.
         :type WebVttPath: str
         :param _Storage: Storage location of the sprite sheet file.
         :type Storage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
@@ -46033,7 +47599,7 @@ class MediaImageSpriteItem(AbstractModel):
 
     @property
     def Definition(self):
-        r"""Sprite sheet specification, please refer to the [Sprite Sheet Parameter Template](https://www.tencentcloud.com/document/product/266/33480?from_cn_redirect=1#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        r"""Sprite screenshot specification. See [sprite sheet parameter template](https://www.tencentcloud.com/document/product/266/33480?from_cn_redirect=1#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF).
         :rtype: int
         """
         return self._Definition
@@ -46044,7 +47610,7 @@ class MediaImageSpriteItem(AbstractModel):
 
     @property
     def Height(self):
-        r"""Height of small images in sprite sheet.
+        r"""Height of small images in sprite image.
         :rtype: int
         """
         return self._Height
@@ -46055,7 +47621,7 @@ class MediaImageSpriteItem(AbstractModel):
 
     @property
     def Width(self):
-        r"""Width of small images in sprite sheet.
+        r"""Width of a small image in the sprite sheet.
         :rtype: int
         """
         return self._Width
@@ -46066,7 +47632,7 @@ class MediaImageSpriteItem(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Number of small images in each sprite sheet.
+        r"""Number of small images in each sprite image.
         :rtype: int
         """
         return self._TotalCount
@@ -46088,7 +47654,7 @@ class MediaImageSpriteItem(AbstractModel):
 
     @property
     def WebVttPath(self):
-        r"""
+        r"""Path of the WebVtt file that describes the temporal relationship between sprite sub-images and their positions. The WebVtt file indicates the time point corresponding to each sprite sub-image and its coordinate position in the sprite sheet. It is generally used by the player to implement preview.
         :rtype: str
         """
         return self._WebVttPath
@@ -46130,25 +47696,25 @@ class MediaImageSpriteItem(AbstractModel):
 
 
 class MediaInputInfo(AbstractModel):
-    r"""Input object information for media processing.
+    r"""Information of the media processing input object.
 
     """
 
     def __init__(self):
         r"""
         :param _Type: Type of the input source object. Supported values:
-<li>COS: COS origin</li>
+<li> COS: COS origin</li>
 <li> URL: URL source</li>
 <li> AWS-S3: AWS source, currently only support transcoding task </li>
 <li> VOD: VOD Pro Edition </li>
         :type Type: str
-        :param _CosInputInfo: Required when `Type` is `COS`. It represents the COS object information for media processing.
+        :param _CosInputInfo: Required when Type is COS. It refers to the COS object information for media processing.
         :type CosInputInfo: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`
-        :param _UrlInputInfo: 
+        :param _UrlInputInfo: Valid when Type is URL. This item is required and refers to media processing URL object information.
         :type UrlInputInfo: :class:`tencentcloud.mps.v20190612.models.UrlInputInfo`
-        :param _S3InputInfo: 
+        :param _S3InputInfo: Valid when Type is AWS-S3. This item is required and refers to the AWS S3 object information for media processing.
         :type S3InputInfo: :class:`tencentcloud.mps.v20190612.models.S3InputInfo`
-        :param _VODInputInfo: 
+        :param _VODInputInfo: Required when `Type` is `VOD`. It represents the object information of MPS on-demand pro edition.
         :type VODInputInfo: :class:`tencentcloud.mps.v20190612.models.VODInputInfo`
         """
         self._Type = None
@@ -46160,7 +47726,7 @@ class MediaInputInfo(AbstractModel):
     @property
     def Type(self):
         r"""Type of the input source object. Supported values:
-<li>COS: COS origin</li>
+<li> COS: COS origin</li>
 <li> URL: URL source</li>
 <li> AWS-S3: AWS source, currently only support transcoding task </li>
 <li> VOD: VOD Pro Edition </li>
@@ -46174,7 +47740,7 @@ class MediaInputInfo(AbstractModel):
 
     @property
     def CosInputInfo(self):
-        r"""Required when `Type` is `COS`. It represents the COS object information for media processing.
+        r"""Required when Type is COS. It refers to the COS object information for media processing.
         :rtype: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`
         """
         return self._CosInputInfo
@@ -46185,7 +47751,7 @@ class MediaInputInfo(AbstractModel):
 
     @property
     def UrlInputInfo(self):
-        r"""
+        r"""Valid when Type is URL. This item is required and refers to media processing URL object information.
         :rtype: :class:`tencentcloud.mps.v20190612.models.UrlInputInfo`
         """
         return self._UrlInputInfo
@@ -46196,7 +47762,7 @@ class MediaInputInfo(AbstractModel):
 
     @property
     def S3InputInfo(self):
-        r"""
+        r"""Valid when Type is AWS-S3. This item is required and refers to the AWS S3 object information for media processing.
         :rtype: :class:`tencentcloud.mps.v20190612.models.S3InputInfo`
         """
         return self._S3InputInfo
@@ -46207,7 +47773,7 @@ class MediaInputInfo(AbstractModel):
 
     @property
     def VODInputInfo(self):
-        r"""
+        r"""Required when `Type` is `VOD`. It represents the object information of MPS on-demand pro edition.
         :rtype: :class:`tencentcloud.mps.v20190612.models.VODInputInfo`
         """
         return self._VODInputInfo
@@ -46248,19 +47814,19 @@ class MediaMetaData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Size: Size of the uploaded media file (for HLS videos, the size is the total of the m3u8 and ts file sizes), unit: byte.
+        :param _Size: Size of the uploaded media file (for HLS videos, the size is the sum of the m3u8 and ts file sizes), unit: byte.
         :type Size: int
         :param _Container: Container type, for example, m4a and mp4.
         :type Container: str
         :param _Bitrate: Sum of the average video stream bitrate and average audio stream bitrate. Unit: bps.
         :type Bitrate: int
-        :param _Height: Maximum height of a video stream. Unit: px.
+        :param _Height: Maximum height of the video stream. Measurement unit: px.
         :type Height: int
         :param _Width: Maximum video stream width in px.
         :type Width: int
         :param _Duration: Video duration, unit: seconds.
         :type Duration: float
-        :param _Rotate: Selection angle during video shooting. Unit: degree.
+        :param _Rotate: Selection angle during video shooting. Measurement unit: degree.
         :type Rotate: int
         :param _VideoStreamSet: Video stream information.
         :type VideoStreamSet: list of MediaVideoStreamItem
@@ -46285,7 +47851,7 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Size(self):
-        r"""Size of the uploaded media file (for HLS videos, the size is the total of the m3u8 and ts file sizes), unit: byte.
+        r"""Size of the uploaded media file (for HLS videos, the size is the sum of the m3u8 and ts file sizes), unit: byte.
         :rtype: int
         """
         return self._Size
@@ -46318,7 +47884,7 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Height(self):
-        r"""Maximum height of a video stream. Unit: px.
+        r"""Maximum height of the video stream. Measurement unit: px.
         :rtype: int
         """
         return self._Height
@@ -46351,7 +47917,7 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Rotate(self):
-        r"""Selection angle during video shooting. Unit: degree.
+        r"""Selection angle during video shooting. Measurement unit: degree.
         :rtype: int
         """
         return self._Rotate
@@ -46438,27 +48004,27 @@ class MediaMetaData(AbstractModel):
 
 
 class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
-    r"""Result type for the video to adaptive streaming task
+    r"""Result type of the video to adaptive streaming task
 
     """
 
     def __init__(self):
         r"""
-        :param _Status: Task status. Valid values are PROCESSING, SUCCESS, and FAIL.
+        :param _Status: <p>Task status. Valid values are PROCESSING, SUCCESS, and FAIL.</p>
         :type Status: str
-        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrCodeExt: <p>Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of <a href="https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">MPS error codes</a>.</p>
         :type ErrCodeExt: str
-        :param _ErrCode: Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        :param _ErrCode: <p>Error code. 0 indicates success, and other values indicate failure. (This field is not recommended. Use the new error code field ErrCodeExt instead.)</p>
         :type ErrCode: int
-        :param _Message: Error message.
+        :param _Message: <p>Error message.</p>
         :type Message: str
-        :param _Input: Input for the video to adaptive streaming task.
+        :param _Input: <p>Input for a video to adaptive streaming task.</p>
         :type Input: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingTaskInput`
-        :param _Output: 
+        :param _Output: <p>Output of a video to adaptive streaming task.</p>
         :type Output: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingInfoItem`
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: <p>Starting time of task execution, in <a href="https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52">ISO date and time format</a>.</p>
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: <p>Task completion time, in <a href="https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52">ISO date and time format</a>.</p>
         :type FinishTime: str
         """
         self._Status = None
@@ -46472,7 +48038,7 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
 
     @property
     def Status(self):
-        r"""Task status. Valid values are PROCESSING, SUCCESS, and FAIL.
+        r"""<p>Task status. Valid values are PROCESSING, SUCCESS, and FAIL.</p>
         :rtype: str
         """
         return self._Status
@@ -46483,7 +48049,7 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""<p>Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of <a href="https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">MPS error codes</a>.</p>
         :rtype: str
         """
         return self._ErrCodeExt
@@ -46494,7 +48060,7 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
 
     @property
     def ErrCode(self):
-        r"""Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        r"""<p>Error code. 0 indicates success, and other values indicate failure. (This field is not recommended. Use the new error code field ErrCodeExt instead.)</p>
         :rtype: int
         """
         return self._ErrCode
@@ -46505,7 +48071,7 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
 
     @property
     def Message(self):
-        r"""Error message.
+        r"""<p>Error message.</p>
         :rtype: str
         """
         return self._Message
@@ -46516,7 +48082,7 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Input for the video to adaptive streaming task.
+        r"""<p>Input for a video to adaptive streaming task.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingTaskInput`
         """
         return self._Input
@@ -46527,7 +48093,7 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""<p>Output of a video to adaptive streaming task.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingInfoItem`
         """
         return self._Output
@@ -46538,7 +48104,7 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
 
     @property
     def BeginProcessTime(self):
-        r"""
+        r"""<p>Starting time of task execution, in <a href="https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52">ISO date and time format</a>.</p>
         :rtype: str
         """
         return self._BeginProcessTime
@@ -46549,7 +48115,7 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
 
     @property
     def FinishTime(self):
-        r"""
+        r"""<p>Task completion time, in <a href="https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52">ISO date and time format</a>.</p>
         :rtype: str
         """
         return self._FinishTime
@@ -46583,27 +48149,27 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
 
 
 class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
-    r"""Result type of the rotating image task
+    r"""Result type of the rotating image task.
 
     """
 
     def __init__(self):
         r"""
-        :param _Status: Task status. Valid values are PROCESSING, SUCCESS, and FAIL.
+        :param _Status: <p>Task status. Valid values are PROCESSING, SUCCESS, and FAIL.</p>
         :type Status: str
-        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrCodeExt: <p>Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of <a href="https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">MPS error codes</a>.</p>
         :type ErrCodeExt: str
-        :param _ErrCode: Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        :param _ErrCode: <p>Error code. 0 indicates success, and other values indicate failure. (This field is not recommended. Use the new error code field ErrCodeExt instead.)</p>
         :type ErrCode: int
-        :param _Message: Error message.
+        :param _Message: <p>Error message.</p>
         :type Message: str
-        :param _Input: Input of the animated image task.
+        :param _Input: <p>Input of the animated image task.</p>
         :type Input: :class:`tencentcloud.mps.v20190612.models.AnimatedGraphicTaskInput`
-        :param _Output: 
+        :param _Output: <p>Rotating image task output.</p>
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaAnimatedGraphicsItem`
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: <p>Starting time of task execution, in <a href="https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52">ISO date and time format</a>.</p>
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: <p>Task completion time, in <a href="https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52">ISO date and time format</a>.</p>
         :type FinishTime: str
         """
         self._Status = None
@@ -46617,7 +48183,7 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
 
     @property
     def Status(self):
-        r"""Task status. Valid values are PROCESSING, SUCCESS, and FAIL.
+        r"""<p>Task status. Valid values are PROCESSING, SUCCESS, and FAIL.</p>
         :rtype: str
         """
         return self._Status
@@ -46628,7 +48194,7 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""<p>Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of <a href="https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">MPS error codes</a>.</p>
         :rtype: str
         """
         return self._ErrCodeExt
@@ -46639,7 +48205,7 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
 
     @property
     def ErrCode(self):
-        r"""Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        r"""<p>Error code. 0 indicates success, and other values indicate failure. (This field is not recommended. Use the new error code field ErrCodeExt instead.)</p>
         :rtype: int
         """
         return self._ErrCode
@@ -46650,7 +48216,7 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
 
     @property
     def Message(self):
-        r"""Error message.
+        r"""<p>Error message.</p>
         :rtype: str
         """
         return self._Message
@@ -46661,7 +48227,7 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Input of the animated image task.
+        r"""<p>Input of the animated image task.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AnimatedGraphicTaskInput`
         """
         return self._Input
@@ -46672,7 +48238,7 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""<p>Rotating image task output.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaAnimatedGraphicsItem`
         """
         return self._Output
@@ -46683,7 +48249,7 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
 
     @property
     def BeginProcessTime(self):
-        r"""
+        r"""<p>Starting time of task execution, in <a href="https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52">ISO date and time format</a>.</p>
         :rtype: str
         """
         return self._BeginProcessTime
@@ -46694,7 +48260,7 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
 
     @property
     def FinishTime(self):
-        r"""
+        r"""<p>Task completion time, in <a href="https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52">ISO date and time format</a>.</p>
         :rtype: str
         """
         return self._FinishTime
@@ -46728,7 +48294,7 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
 
 
 class MediaProcessTaskImageSpriteResult(AbstractModel):
-    r"""Result type of image sprite
+    r"""Result type of an image sprite task for a video
 
     """
 
@@ -46744,7 +48310,7 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
         :type Message: str
         :param _Input: Input of the image sprite task for videos.
         :type Input: :class:`tencentcloud.mps.v20190612.models.ImageSpriteTaskInput`
-        :param _Output: 
+        :param _Output: Output of the image sprite task for videos.
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaImageSpriteItem`
         :param _BeginProcessTime: Task execution start time in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type BeginProcessTime: str
@@ -46817,7 +48383,7 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output of the image sprite task for videos.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaImageSpriteItem`
         """
         return self._Output
@@ -47021,25 +48587,25 @@ class MediaProcessTaskResult(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: Task type. Valid values:
-<li>Transcode: Transcode</li>
-<li>AnimatedGraphics: Animated image</li>
+<li>Transcode: transcode</li>
+<li>AnimatedGraphics: animated image</li>
 <li>SnapshotByTimeOffset: time point screenshot.</li>
 <li>SampleSnapshot: sampled screenshot.</li>
-<li>ImageSprites: sprite sheet</li>
-<li>CoverBySnapshot: screencapturing for cover image.</li>
-<li>AdaptiveDynamicStreaming: adaptive bitrate streaming.</li>
+<li>ImageSprites: sprite sheets.</li>
+<li>CoverBySnapshot: screencapturing for cover image</li>
+<li>AdaptiveDynamicStreaming: adaptive bitrate streaming</li>
         :type Type: str
-        :param _TranscodeTask: 
+        :param _TranscodeTask: Query result of video transcoding tasks. Valid when the task type is `Transcode`.
         :type TranscodeTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskTranscodeResult`
-        :param _AnimatedGraphicTask: 
+        :param _AnimatedGraphicTask: Query result of a video-to-GIF task. Valid when the task type is AnimatedGraphics.
         :type AnimatedGraphicTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAnimatedGraphicResult`
-        :param _SnapshotByTimeOffsetTask: 
+        :param _SnapshotByTimeOffsetTask: Query result of a time point screencapturing task for a video. Valid when the task type is `SnapshotByTimeOffset`.
         :type SnapshotByTimeOffsetTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSnapshotByTimeOffsetResult`
-        :param _SampleSnapshotTask: 
+        :param _SampleSnapshotTask: Query result of the video sampling screenshot task. Valid when the task type is `SampleSnapshot`.
         :type SampleSnapshotTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`
-        :param _ImageSpriteTask: 
+        :param _ImageSpriteTask: Query result of the image sprite task for video. Valid when the task type is ImageSprite.
         :type ImageSpriteTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskImageSpriteResult`
-        :param _AdaptiveDynamicStreamingTask: 
+        :param _AdaptiveDynamicStreamingTask: Query result of adaptive bitrate streaming tasks. Valid when the task type is AdaptiveDynamicStreaming.
         :type AdaptiveDynamicStreamingTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAdaptiveDynamicStreamingResult`
         """
         self._Type = None
@@ -47053,13 +48619,13 @@ class MediaProcessTaskResult(AbstractModel):
     @property
     def Type(self):
         r"""Task type. Valid values:
-<li>Transcode: Transcode</li>
-<li>AnimatedGraphics: Animated image</li>
+<li>Transcode: transcode</li>
+<li>AnimatedGraphics: animated image</li>
 <li>SnapshotByTimeOffset: time point screenshot.</li>
 <li>SampleSnapshot: sampled screenshot.</li>
-<li>ImageSprites: sprite sheet</li>
-<li>CoverBySnapshot: screencapturing for cover image.</li>
-<li>AdaptiveDynamicStreaming: adaptive bitrate streaming.</li>
+<li>ImageSprites: sprite sheets.</li>
+<li>CoverBySnapshot: screencapturing for cover image</li>
+<li>AdaptiveDynamicStreaming: adaptive bitrate streaming</li>
         :rtype: str
         """
         return self._Type
@@ -47070,7 +48636,7 @@ class MediaProcessTaskResult(AbstractModel):
 
     @property
     def TranscodeTask(self):
-        r"""
+        r"""Query result of video transcoding tasks. Valid when the task type is `Transcode`.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskTranscodeResult`
         """
         return self._TranscodeTask
@@ -47081,7 +48647,7 @@ class MediaProcessTaskResult(AbstractModel):
 
     @property
     def AnimatedGraphicTask(self):
-        r"""
+        r"""Query result of a video-to-GIF task. Valid when the task type is AnimatedGraphics.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAnimatedGraphicResult`
         """
         return self._AnimatedGraphicTask
@@ -47092,7 +48658,7 @@ class MediaProcessTaskResult(AbstractModel):
 
     @property
     def SnapshotByTimeOffsetTask(self):
-        r"""
+        r"""Query result of a time point screencapturing task for a video. Valid when the task type is `SnapshotByTimeOffset`.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSnapshotByTimeOffsetResult`
         """
         return self._SnapshotByTimeOffsetTask
@@ -47103,7 +48669,7 @@ class MediaProcessTaskResult(AbstractModel):
 
     @property
     def SampleSnapshotTask(self):
-        r"""
+        r"""Query result of the video sampling screenshot task. Valid when the task type is `SampleSnapshot`.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`
         """
         return self._SampleSnapshotTask
@@ -47114,7 +48680,7 @@ class MediaProcessTaskResult(AbstractModel):
 
     @property
     def ImageSpriteTask(self):
-        r"""
+        r"""Query result of the image sprite task for video. Valid when the task type is ImageSprite.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskImageSpriteResult`
         """
         return self._ImageSpriteTask
@@ -47125,7 +48691,7 @@ class MediaProcessTaskResult(AbstractModel):
 
     @property
     def AdaptiveDynamicStreamingTask(self):
-        r"""
+        r"""Query result of adaptive bitrate streaming tasks. Valid when the task type is AdaptiveDynamicStreaming.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAdaptiveDynamicStreamingResult`
         """
         return self._AdaptiveDynamicStreamingTask
@@ -47180,9 +48746,9 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Input for the sampling screenshot task on a video.
+        :param _Input: Input of the sampling screenshot task for videos.
         :type Input: :class:`tencentcloud.mps.v20190612.models.SampleSnapshotTaskInput`
-        :param _Output: 
+        :param _Output: Output of the sampling screenshot task for videos.
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaSampleSnapshotItem`
         :param _BeginProcessTime: Task execution start time in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type BeginProcessTime: str
@@ -47244,7 +48810,7 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Input for the sampling screenshot task on a video.
+        r"""Input of the sampling screenshot task for videos.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SampleSnapshotTaskInput`
         """
         return self._Input
@@ -47255,7 +48821,7 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output of the sampling screenshot task for videos.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaSampleSnapshotItem`
         """
         return self._Output
@@ -47311,7 +48877,7 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
 
 
 class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
-    r"""Task result type for screenshot taking at specified time points
+    r"""Type of the video time point screenshot job result
 
     """
 
@@ -47325,9 +48891,9 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Task input for screenshot taking at specified time points.
+        :param _Input: Input of the time point screenshot task for videos.
         :type Input: :class:`tencentcloud.mps.v20190612.models.SnapshotByTimeOffsetTaskInput`
-        :param _Output: 
+        :param _Output: Output of the time point screenshot task for videos.
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaSnapshotByTimeOffsetItem`
         :param _BeginProcessTime: Task execution start time in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type BeginProcessTime: str
@@ -47389,7 +48955,7 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Task input for screenshot taking at specified time points.
+        r"""Input of the time point screenshot task for videos.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SnapshotByTimeOffsetTaskInput`
         """
         return self._Input
@@ -47400,7 +48966,7 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output of the time point screenshot task for videos.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaSnapshotByTimeOffsetItem`
         """
         return self._Output
@@ -47456,7 +49022,7 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
 
 
 class MediaProcessTaskTranscodeResult(AbstractModel):
-    r"""Transcoding task result type
+    r"""Result type of the transcoding task
 
     """
 
@@ -47472,7 +49038,7 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
         :type Message: str
         :param _Input: Input of the transcoding task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.TranscodeTaskInput`
-        :param _Output: 
+        :param _Output: Transcoding task output.
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaTranscodeItem`
         :param _Progress: Transcoding progress, with a value range of [0-100].
         :type Progress: int
@@ -47542,7 +49108,7 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Transcoding task output.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaTranscodeItem`
         """
         return self._Output
@@ -47592,21 +49158,17 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Sampled screenshot specification ID. Please refer to the sampling screenshot parameter template (https://www.tencentcloud.com/document/product/266/33480?from_cn_redirect=1#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :param _Definition: <p>Sampled screenshot specification ID. Please refer to <a href="https://www.tencentcloud.com/document/product/266/33480?from_cn_redirect=1#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF">sampling screenshot parameter template</a>.</p>
         :type Definition: int
-        :param _SampleType: Sampling method, Valid value:
-<li>Percent: interval sampling based on percentage.</li>
-<li>Time: sampling based on time interval.</li>
+        :param _SampleType: <p>Sampling method, valid value:</p><li>Percent: Sampling based on percentage interval.</li><li>Time: Sampling based on time interval.</li>
         :type SampleType: str
-        :param _Interval: Sampling interval
-<li>When SampleType is Percent, this value indicates how many percentage points per image.</li>
-<li>When SampleType is Time, this value indicates how many time intervals per image, in seconds. The first image is the first video frame.</li>
+        :param _Interval: <p>Sampling interval</p><li>When SampleType is Percent, this value indicates the percentage of images.</li><li>When SampleType is Time, this value indicates the time interval for each image, in seconds. The first image is always the first video frame.</li>
         :type Interval: int
-        :param _Storage: Storage location of a file after screenshot.
+        :param _Storage: <p>Storage location of a file after screenshot.</p>
         :type Storage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _ImagePathSet: List of generated screenshot paths.
+        :param _ImagePathSet: <p>List of generated screenshot paths.</p>
         :type ImagePathSet: list of str
-        :param _WaterMarkDefinition: If a screenshot is watermarked, the watermark template ID list.
+        :param _WaterMarkDefinition: <p>List of template IDs of watermarked screenshots.</p>
         :type WaterMarkDefinition: list of int
         """
         self._Definition = None
@@ -47618,7 +49180,7 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     @property
     def Definition(self):
-        r"""Sampled screenshot specification ID. Please refer to the sampling screenshot parameter template (https://www.tencentcloud.com/document/product/266/33480?from_cn_redirect=1#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        r"""<p>Sampled screenshot specification ID. Please refer to <a href="https://www.tencentcloud.com/document/product/266/33480?from_cn_redirect=1#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF">sampling screenshot parameter template</a>.</p>
         :rtype: int
         """
         return self._Definition
@@ -47629,9 +49191,7 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     @property
     def SampleType(self):
-        r"""Sampling method, Valid value:
-<li>Percent: interval sampling based on percentage.</li>
-<li>Time: sampling based on time interval.</li>
+        r"""<p>Sampling method, valid value:</p><li>Percent: Sampling based on percentage interval.</li><li>Time: Sampling based on time interval.</li>
         :rtype: str
         """
         return self._SampleType
@@ -47642,9 +49202,7 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     @property
     def Interval(self):
-        r"""Sampling interval
-<li>When SampleType is Percent, this value indicates how many percentage points per image.</li>
-<li>When SampleType is Time, this value indicates how many time intervals per image, in seconds. The first image is the first video frame.</li>
+        r"""<p>Sampling interval</p><li>When SampleType is Percent, this value indicates the percentage of images.</li><li>When SampleType is Time, this value indicates the time interval for each image, in seconds. The first image is always the first video frame.</li>
         :rtype: int
         """
         return self._Interval
@@ -47655,7 +49213,7 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     @property
     def Storage(self):
-        r"""Storage location of a file after screenshot.
+        r"""<p>Storage location of a file after screenshot.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._Storage
@@ -47666,7 +49224,7 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     @property
     def ImagePathSet(self):
-        r"""List of generated screenshot paths.
+        r"""<p>List of generated screenshot paths.</p>
         :rtype: list of str
         """
         return self._ImagePathSet
@@ -47677,7 +49235,7 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     @property
     def WaterMarkDefinition(self):
-        r"""If a screenshot is watermarked, the watermark template ID list.
+        r"""<p>List of template IDs of watermarked screenshots.</p>
         :rtype: list of int
         """
         return self._WaterMarkDefinition
@@ -47707,17 +49265,17 @@ class MediaSampleSnapshotItem(AbstractModel):
 
 
 class MediaSnapshotByTimeOffsetItem(AbstractModel):
-    r"""Screenshot information at the specified time point for on-demand files
+    r"""Screenshot information of a VOD file at the specified time point
 
     """
 
     def __init__(self):
         r"""
-        :param _Definition: Specification for SnapshotByTimeOffset, please refer to the [SnapshotByTimeOffset parameter template](https://www.tencentcloud.com/document/product/266/33480?from_cn_redirect=1#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :param _Definition: SnapshotByTimeOffset specification. See SnapshotByTimeOffset parameter template.
         :type Definition: int
-        :param _PicInfoSet: A screenshot information set of the same specification, each element represents a screenshot.
+        :param _PicInfoSet: Screenshot information set of the same specification, where each element represents a screenshot.
         :type PicInfoSet: list of MediaSnapshotByTimePicInfoItem
-        :param _Storage: Storage location of the SnapshotByTimeOffset file.
+        :param _Storage: Storage location of the time point screenshot file.
         :type Storage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._Definition = None
@@ -47726,7 +49284,7 @@ class MediaSnapshotByTimeOffsetItem(AbstractModel):
 
     @property
     def Definition(self):
-        r"""Specification for SnapshotByTimeOffset, please refer to the [SnapshotByTimeOffset parameter template](https://www.tencentcloud.com/document/product/266/33480?from_cn_redirect=1#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        r"""SnapshotByTimeOffset specification. See SnapshotByTimeOffset parameter template.
         :rtype: int
         """
         return self._Definition
@@ -47737,7 +49295,7 @@ class MediaSnapshotByTimeOffsetItem(AbstractModel):
 
     @property
     def PicInfoSet(self):
-        r"""A screenshot information set of the same specification, each element represents a screenshot.
+        r"""Screenshot information set of the same specification, where each element represents a screenshot.
         :rtype: list of MediaSnapshotByTimePicInfoItem
         """
         return self._PicInfoSet
@@ -47748,7 +49306,7 @@ class MediaSnapshotByTimeOffsetItem(AbstractModel):
 
     @property
     def Storage(self):
-        r"""Storage location of the SnapshotByTimeOffset file.
+        r"""Storage location of the time point screenshot file.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._Storage
@@ -47780,17 +49338,17 @@ class MediaSnapshotByTimeOffsetItem(AbstractModel):
 
 
 class MediaSnapshotByTimePicInfoItem(AbstractModel):
-    r"""Screenshot information at the specified time point
+    r"""Specified time point screenshot information
 
     """
 
     def __init__(self):
         r"""
-        :param _TimeOffset: The screenshot corresponds to the time offset in the video file, expressed in seconds.
+        :param _TimeOffset: Time offset of this screenshot in the video file, in seconds.
         :type TimeOffset: float
         :param _Path: Path of the screenshot.
         :type Path: str
-        :param _WaterMarkDefinition: If a screenshot is watermarked, list of template IDs used for watermarking.
+        :param _WaterMarkDefinition: List of template IDs for watermarking if the screenshot is watermarked.
         :type WaterMarkDefinition: list of int
         """
         self._TimeOffset = None
@@ -47799,7 +49357,7 @@ class MediaSnapshotByTimePicInfoItem(AbstractModel):
 
     @property
     def TimeOffset(self):
-        r"""The screenshot corresponds to the time offset in the video file, expressed in seconds.
+        r"""Time offset of this screenshot in the video file, in seconds.
         :rtype: float
         """
         return self._TimeOffset
@@ -47821,7 +49379,7 @@ class MediaSnapshotByTimePicInfoItem(AbstractModel):
 
     @property
     def WaterMarkDefinition(self):
-        r"""If a screenshot is watermarked, list of template IDs used for watermarking.
+        r"""List of template IDs for watermarking if the screenshot is watermarked.
         :rtype: list of int
         """
         return self._WaterMarkDefinition
@@ -47846,38 +49404,40 @@ class MediaSnapshotByTimePicInfoItem(AbstractModel):
 
 
 class MediaTranscodeItem(AbstractModel):
-    r"""Transcoding info
+    r"""Transcoding information
 
     """
 
     def __init__(self):
         r"""
-        :param _OutputStorage: Target storage of the transcoded file.
+        :param _OutputStorage: <p>Target storage for the transcoded file.</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _Path: Video file path after transcoding.
+        :param _Path: <p>Transcoded video file path.</p>
         :type Path: str
-        :param _Definition: Transcoding specification ID. Please refer to the transcoding parameter template (https://www.tencentcloud.com/document/product/862/37042?from_cn_redirect=1).
+        :param _Definition: <p>Transcoding specification ID. Please refer to <a href="https://www.tencentcloud.com/document/product/862/37042?from_cn_redirect=1">transcoding parameter template</a>.</p>
         :type Definition: int
-        :param _Bitrate: Sum of the average video stream bitrate and the average audio stream bit rate. Measurement unit: bps.
+        :param _Bitrate: <p>Sum of the mean video stream bitrate and the mean audio stream bitrate. Unit: bps.</p>
         :type Bitrate: int
-        :param _Height: Maximum value of video stream height, measurement unit: px.
+        :param _Height: <p>Maximum height of the video stream. Unit: px.</p>
         :type Height: int
-        :param _Width: Maximum value of the video stream width in px.
+        :param _Width: <p>Maximum video stream width. Unit: px.</p>
         :type Width: int
-        :param _Size: Total size of media files (when the video is HLS, the size is the sum of m3u8 and ts file sizes), measurement unit: byte.
+        :param _Size: <p>Total size of media files (for HLS videos, the size is the sum of m3u8 and ts file sizes), unit: byte.</p>
         :type Size: int
-        :param _Duration: Video duration, in seconds.
+        :param _Duration: <p>Video duration, in seconds.</p>
         :type Duration: float
-        :param _Container: Container type, such as m4a and mp4.
+        :param _Container: <p>Container type, for example, m4a, mp4.</p>
         :type Container: str
-        :param _Md5: md5 value of the video.
+        :param _Md5: <p>md5 value of the video.</p>
         :type Md5: str
-        :param _AudioStreamSet: Audio stream information.
+        :param _AudioStreamSet: <p>Audio stream information.</p>
         :type AudioStreamSet: list of MediaAudioStreamItem
-        :param _VideoStreamSet: Video stream information.
+        :param _VideoStreamSet: <p>Video stream information.</p>
         :type VideoStreamSet: list of MediaVideoStreamItem
-        :param _CallBackExtInfo: 
+        :param _CallBackExtInfo: <p>Video transcoding enhancement item descriptions and explanations</p><li>hdr: HDR configuration</li><li>wd_fps: Frame interpolation frame rate configuration</li><li>video_super_resolution: Super-resolution configuration</li><li>repair: Comprehensive enhancement configuration</li><li>denoise: Video noise reduction configuration</li><li>color_enhance: Color enhancement configuration</li><li>scratch: Scratches removal configuration</li><li>artifact: Artifacts removal (burrs) configuration</li><li>sharp: Detail enhancement configuration</li><li>low_light: Low-light enhancement configuration</li><li>face_enhance: Face enhancement configuration</li>
         :type CallBackExtInfo: str
+        :param _Usage: <p>MediaTranscodeItem</p>
+        :type Usage: :class:`tencentcloud.mps.v20190612.models.MediaUsageItem`
         """
         self._OutputStorage = None
         self._Path = None
@@ -47892,10 +49452,11 @@ class MediaTranscodeItem(AbstractModel):
         self._AudioStreamSet = None
         self._VideoStreamSet = None
         self._CallBackExtInfo = None
+        self._Usage = None
 
     @property
     def OutputStorage(self):
-        r"""Target storage of the transcoded file.
+        r"""<p>Target storage for the transcoded file.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -47906,7 +49467,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Path(self):
-        r"""Video file path after transcoding.
+        r"""<p>Transcoded video file path.</p>
         :rtype: str
         """
         return self._Path
@@ -47917,7 +49478,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Definition(self):
-        r"""Transcoding specification ID. Please refer to the transcoding parameter template (https://www.tencentcloud.com/document/product/862/37042?from_cn_redirect=1).
+        r"""<p>Transcoding specification ID. Please refer to <a href="https://www.tencentcloud.com/document/product/862/37042?from_cn_redirect=1">transcoding parameter template</a>.</p>
         :rtype: int
         """
         return self._Definition
@@ -47928,7 +49489,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Bitrate(self):
-        r"""Sum of the average video stream bitrate and the average audio stream bit rate. Measurement unit: bps.
+        r"""<p>Sum of the mean video stream bitrate and the mean audio stream bitrate. Unit: bps.</p>
         :rtype: int
         """
         return self._Bitrate
@@ -47939,7 +49500,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Height(self):
-        r"""Maximum value of video stream height, measurement unit: px.
+        r"""<p>Maximum height of the video stream. Unit: px.</p>
         :rtype: int
         """
         return self._Height
@@ -47950,7 +49511,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Width(self):
-        r"""Maximum value of the video stream width in px.
+        r"""<p>Maximum video stream width. Unit: px.</p>
         :rtype: int
         """
         return self._Width
@@ -47961,7 +49522,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Size(self):
-        r"""Total size of media files (when the video is HLS, the size is the sum of m3u8 and ts file sizes), measurement unit: byte.
+        r"""<p>Total size of media files (for HLS videos, the size is the sum of m3u8 and ts file sizes), unit: byte.</p>
         :rtype: int
         """
         return self._Size
@@ -47972,7 +49533,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Duration(self):
-        r"""Video duration, in seconds.
+        r"""<p>Video duration, in seconds.</p>
         :rtype: float
         """
         return self._Duration
@@ -47983,7 +49544,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Container(self):
-        r"""Container type, such as m4a and mp4.
+        r"""<p>Container type, for example, m4a, mp4.</p>
         :rtype: str
         """
         return self._Container
@@ -47994,7 +49555,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Md5(self):
-        r"""md5 value of the video.
+        r"""<p>md5 value of the video.</p>
         :rtype: str
         """
         return self._Md5
@@ -48005,7 +49566,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def AudioStreamSet(self):
-        r"""Audio stream information.
+        r"""<p>Audio stream information.</p>
         :rtype: list of MediaAudioStreamItem
         """
         return self._AudioStreamSet
@@ -48016,7 +49577,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def VideoStreamSet(self):
-        r"""Video stream information.
+        r"""<p>Video stream information.</p>
         :rtype: list of MediaVideoStreamItem
         """
         return self._VideoStreamSet
@@ -48027,7 +49588,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def CallBackExtInfo(self):
-        r"""
+        r"""<p>Video transcoding enhancement item descriptions and explanations</p><li>hdr: HDR configuration</li><li>wd_fps: Frame interpolation frame rate configuration</li><li>video_super_resolution: Super-resolution configuration</li><li>repair: Comprehensive enhancement configuration</li><li>denoise: Video noise reduction configuration</li><li>color_enhance: Color enhancement configuration</li><li>scratch: Scratches removal configuration</li><li>artifact: Artifacts removal (burrs) configuration</li><li>sharp: Detail enhancement configuration</li><li>low_light: Low-light enhancement configuration</li><li>face_enhance: Face enhancement configuration</li>
         :rtype: str
         """
         return self._CallBackExtInfo
@@ -48035,6 +49596,17 @@ class MediaTranscodeItem(AbstractModel):
     @CallBackExtInfo.setter
     def CallBackExtInfo(self, CallBackExtInfo):
         self._CallBackExtInfo = CallBackExtInfo
+
+    @property
+    def Usage(self):
+        r"""<p>MediaTranscodeItem</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaUsageItem`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
 
 
     def _deserialize(self, params):
@@ -48063,6 +49635,90 @@ class MediaTranscodeItem(AbstractModel):
                 obj._deserialize(item)
                 self._VideoStreamSet.append(obj)
         self._CallBackExtInfo = params.get("CallBackExtInfo")
+        if params.get("Usage") is not None:
+            self._Usage = MediaUsageItem()
+            self._Usage._deserialize(params.get("Usage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MediaUsageItem(AbstractModel):
+    r"""AIGC usage data display
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputImageCount: <p>Number of input images</p><p>Unit: count</p>
+        :type InputImageCount: int
+        :param _InputSeconds: <p>Input seconds</p><p>Unit: seconds</p>
+        :type InputSeconds: int
+        :param _OutputSeconds: <p>Output seconds</p><p>Measurement unit: seconds</p>
+        :type OutputSeconds: int
+        :param _TotalSeconds: <p>Total number of seconds</p><p>Unit: seconds</p>
+        :type TotalSeconds: int
+        """
+        self._InputImageCount = None
+        self._InputSeconds = None
+        self._OutputSeconds = None
+        self._TotalSeconds = None
+
+    @property
+    def InputImageCount(self):
+        r"""<p>Number of input images</p><p>Unit: count</p>
+        :rtype: int
+        """
+        return self._InputImageCount
+
+    @InputImageCount.setter
+    def InputImageCount(self, InputImageCount):
+        self._InputImageCount = InputImageCount
+
+    @property
+    def InputSeconds(self):
+        r"""<p>Input seconds</p><p>Unit: seconds</p>
+        :rtype: int
+        """
+        return self._InputSeconds
+
+    @InputSeconds.setter
+    def InputSeconds(self, InputSeconds):
+        self._InputSeconds = InputSeconds
+
+    @property
+    def OutputSeconds(self):
+        r"""<p>Output seconds</p><p>Measurement unit: seconds</p>
+        :rtype: int
+        """
+        return self._OutputSeconds
+
+    @OutputSeconds.setter
+    def OutputSeconds(self, OutputSeconds):
+        self._OutputSeconds = OutputSeconds
+
+    @property
+    def TotalSeconds(self):
+        r"""<p>Total number of seconds</p><p>Unit: seconds</p>
+        :rtype: int
+        """
+        return self._TotalSeconds
+
+    @TotalSeconds.setter
+    def TotalSeconds(self, TotalSeconds):
+        self._TotalSeconds = TotalSeconds
+
+
+    def _deserialize(self, params):
+        self._InputImageCount = params.get("InputImageCount")
+        self._InputSeconds = params.get("InputSeconds")
+        self._OutputSeconds = params.get("OutputSeconds")
+        self._TotalSeconds = params.get("TotalSeconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48082,27 +49738,27 @@ class MediaVideoStreamItem(AbstractModel):
         r"""
         :param _Bitrate: Bitrate of the video stream. Unit: bps.
         :type Bitrate: int
-        :param _Height: Height of a video stream. Unit: px.
+        :param _Height: Height of the video stream. Unit: px.
         :type Height: int
-        :param _Width: Video stream width in px.
+        :param _Width: Video stream width. Unit: px.
         :type Width: int
         :param _Codec: Video stream encoding format, for example, h264.
         :type Codec: str
         :param _Fps: Frame rate. Measurement unit: hz.
         :type Fps: int
-        :param _ColorPrimaries: 
+        :param _ColorPrimaries: Colorspace.
         :type ColorPrimaries: str
-        :param _ColorSpace: 
+        :param _ColorSpace: Colorspace.
         :type ColorSpace: str
-        :param _ColorTransfer: 
+        :param _ColorTransfer: Colorspace.
         :type ColorTransfer: str
-        :param _HdrType: 
+        :param _HdrType: HDR type.
         :type HdrType: str
-        :param _Codecs: 
+        :param _Codecs: Video Codecs.
         :type Codecs: str
-        :param _FpsNumerator: 
+        :param _FpsNumerator: Numerator of the frame rate.
         :type FpsNumerator: int
-        :param _FpsDenominator: 
+        :param _FpsDenominator: Denominator of the frame rate.
         :type FpsDenominator: int
         """
         self._Bitrate = None
@@ -48131,7 +49787,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def Height(self):
-        r"""Height of a video stream. Unit: px.
+        r"""Height of the video stream. Unit: px.
         :rtype: int
         """
         return self._Height
@@ -48142,7 +49798,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def Width(self):
-        r"""Video stream width in px.
+        r"""Video stream width. Unit: px.
         :rtype: int
         """
         return self._Width
@@ -48175,7 +49831,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def ColorPrimaries(self):
-        r"""
+        r"""Colorspace.
         :rtype: str
         """
         return self._ColorPrimaries
@@ -48186,7 +49842,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def ColorSpace(self):
-        r"""
+        r"""Colorspace.
         :rtype: str
         """
         return self._ColorSpace
@@ -48197,7 +49853,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def ColorTransfer(self):
-        r"""
+        r"""Colorspace.
         :rtype: str
         """
         return self._ColorTransfer
@@ -48208,7 +49864,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def HdrType(self):
-        r"""
+        r"""HDR type.
         :rtype: str
         """
         return self._HdrType
@@ -48219,7 +49875,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def Codecs(self):
-        r"""
+        r"""Video Codecs.
         :rtype: str
         """
         return self._Codecs
@@ -48230,7 +49886,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def FpsNumerator(self):
-        r"""
+        r"""Numerator of the frame rate.
         :rtype: int
         """
         return self._FpsNumerator
@@ -48241,7 +49897,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def FpsDenominator(self):
-        r"""
+        r"""Denominator of the frame rate.
         :rtype: int
         """
         return self._FpsDenominator
@@ -52200,19 +53856,19 @@ class MosaicInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CoordinateOrigin: <p>Origin position. Currently, only the following is supported:</p><li>TopLeft: indicates that the coordinate origin is at the top left corner of the video image and the mosaic origin is at the top left corner of the image or text.</li>Default value: TopLeft.
+        :param _CoordinateOrigin: <p>Origin position. Currently, only the following is supported:</p><li>TopLeft: indicates that the coordinate origin is at the top-left corner of the video image and the mosaic origin is at the top-left corner of the image or text.</li>Default value: TopLeft.
         :type CoordinateOrigin: str
-        :param _XPos: <p>Horizontal position of the mosaic origin relative to the origin of coordinates of the video image. Supports two formats: % and px:</p><li>If a string ends with %, the mosaic XPos is a specified percentage of the video width. For example, 10% means XPos is 10% of the video width;</li><li>If a string ends with px, the mosaic XPos is a specified pixel. For example, 100px means XPos is 100 pixels.</li>Default value: 0px.
+        :param _XPos: <p>Horizontal position of the mosaic origin relative to the origin of coordinates of the video image. Supports two formats: % and px:</p><li>If a string ends with %, the mosaic XPos is a specified percentage of the video width. For example, 10% means the XPos is 10% of the video width.</li><li>If a string ends with px, the mosaic XPos is a specified pixel. For example, 100px means the XPos is 100 pixels.</li>Default value: 0px.
         :type XPos: str
         :param _YPos: <p>Vertical position of the mosaic origin relative to the origin of coordinates of the video image. Supports two formats: % and px:</p><li>If a string ends with %, the mosaic YPos is the specified percentage of the video height. For example, 10% means YPos is 10% of the video height.</li><li>If a string ends with px, the mosaic YPos is the specified pixel. For example, 100px means YPos is 100 pixels.</li>Default value: 0px.
         :type YPos: str
-        :param _Width: <p>Mosaic width. Supports two formats: % and px:</p><li>If a string ends with %, it indicates that the mosaic `Width` is a percentage of a video's width. For example, `10%` means that `Width` is 10% of a video's width.</li><li>If a string ends with px, it indicates that the mosaic `Width` is in pixels. For example, `100px` means that `Width` is 100 pixels.</li>Default value: 10%.
+        :param _Width: <p>Width of the mosaic. Supports two formats: % and px:</p><li>If a string ends with %, it indicates that the mosaic `Width` is a percentage of a video's width. For example, `10%` means that `Width` is 10% of a video's width.</li><li>If a string ends with px, it indicates that the unit of the mosaic `Width` is pixel. For example, `100px` means that `Width` is 100 pixels.</li>Default value: 10%.
         :type Width: str
-        :param _Height: <p>Height of a mosaic. Two formats are supported: % and px.</p><li>If a string ends with %, it indicates that the `Height` of a mosaic is a percentage of a video's height. For example, `10%` means that `Height` is 10% of a video's height.</li><li>If a string ends with px, it indicates that the `Height` of a mosaic is in pixels. For example, `100px` means that `Height` is 100 pixels.</li>Default value: 10%.
+        :param _Height: <p>Mosaic height. Supports two formats: % and px:</p><li>If a string ends with %, it indicates that the `Height` of a mosaic is a percentage of a video's height. For example, `10%` means that `Height` is 10% of a video's height.</li><li>If a string ends with px, it indicates that the `Height` unit of a mosaic is pixel. For example, `100px` means that `Height` is 100 pixels.</li>Default value: 10%.
         :type Height: str
-        :param _StartTimeOffset: <p>Start time offset of mosaic, in seconds. If not specified or set to 0, the mosaic appears when the frame appears.</p><li>If not specified or set to 0, the mosaic appears from the start of the frame;</li><li>If the value is greater than 0 (assuming n), the mosaic appears at the nth second from the start of the frame;</li><li>If the value is less than 0 (assuming -n), the mosaic appears n seconds before the end of the frame.</li>
+        :param _StartTimeOffset: <p>Start time offset of mosaic, in seconds. Leave empty or enter 0 to make the mosaic appear when the frame appears.</p><li>Leave empty or enter 0 to make the mosaic appear at the start of the frame;</li><li>If the value is greater than 0 (assuming n), the mosaic appears at the nth second after the frame starts;</li><li>If the value is less than 0 (assuming -n), the mosaic appears n seconds before the end of the frame.</li>
         :type StartTimeOffset: float
-        :param _EndTimeOffset: <p>End time offset of mosaic, in seconds.</p><li>If not specified or set to 0, the mosaic lasts until the end of a video;</li><li>If the value is greater than 0 (assuming n), the mosaic disappears at second n;</li><li>If the value is less than 0 (assuming -n), the mosaic disappears n seconds before the end of a video.</li>
+        :param _EndTimeOffset: <p>End time offset of the mosaic, in seconds.</p><li>If not specified or set to 0, the mosaic lasts until the end of a video;</li><li>If the value is greater than 0 (assuming n), the mosaic disappears at second n;</li><li>If the value is less than 0 (assuming -n), the mosaic disappears n seconds before the end of a video.</li>
         :type EndTimeOffset: float
         """
         self._CoordinateOrigin = None
@@ -52225,7 +53881,7 @@ class MosaicInput(AbstractModel):
 
     @property
     def CoordinateOrigin(self):
-        r"""<p>Origin position. Currently, only the following is supported:</p><li>TopLeft: indicates that the coordinate origin is at the top left corner of the video image and the mosaic origin is at the top left corner of the image or text.</li>Default value: TopLeft.
+        r"""<p>Origin position. Currently, only the following is supported:</p><li>TopLeft: indicates that the coordinate origin is at the top-left corner of the video image and the mosaic origin is at the top-left corner of the image or text.</li>Default value: TopLeft.
         :rtype: str
         """
         return self._CoordinateOrigin
@@ -52236,7 +53892,7 @@ class MosaicInput(AbstractModel):
 
     @property
     def XPos(self):
-        r"""<p>Horizontal position of the mosaic origin relative to the origin of coordinates of the video image. Supports two formats: % and px:</p><li>If a string ends with %, the mosaic XPos is a specified percentage of the video width. For example, 10% means XPos is 10% of the video width;</li><li>If a string ends with px, the mosaic XPos is a specified pixel. For example, 100px means XPos is 100 pixels.</li>Default value: 0px.
+        r"""<p>Horizontal position of the mosaic origin relative to the origin of coordinates of the video image. Supports two formats: % and px:</p><li>If a string ends with %, the mosaic XPos is a specified percentage of the video width. For example, 10% means the XPos is 10% of the video width.</li><li>If a string ends with px, the mosaic XPos is a specified pixel. For example, 100px means the XPos is 100 pixels.</li>Default value: 0px.
         :rtype: str
         """
         return self._XPos
@@ -52258,7 +53914,7 @@ class MosaicInput(AbstractModel):
 
     @property
     def Width(self):
-        r"""<p>Mosaic width. Supports two formats: % and px:</p><li>If a string ends with %, it indicates that the mosaic `Width` is a percentage of a video's width. For example, `10%` means that `Width` is 10% of a video's width.</li><li>If a string ends with px, it indicates that the mosaic `Width` is in pixels. For example, `100px` means that `Width` is 100 pixels.</li>Default value: 10%.
+        r"""<p>Width of the mosaic. Supports two formats: % and px:</p><li>If a string ends with %, it indicates that the mosaic `Width` is a percentage of a video's width. For example, `10%` means that `Width` is 10% of a video's width.</li><li>If a string ends with px, it indicates that the unit of the mosaic `Width` is pixel. For example, `100px` means that `Width` is 100 pixels.</li>Default value: 10%.
         :rtype: str
         """
         return self._Width
@@ -52269,7 +53925,7 @@ class MosaicInput(AbstractModel):
 
     @property
     def Height(self):
-        r"""<p>Height of a mosaic. Two formats are supported: % and px.</p><li>If a string ends with %, it indicates that the `Height` of a mosaic is a percentage of a video's height. For example, `10%` means that `Height` is 10% of a video's height.</li><li>If a string ends with px, it indicates that the `Height` of a mosaic is in pixels. For example, `100px` means that `Height` is 100 pixels.</li>Default value: 10%.
+        r"""<p>Mosaic height. Supports two formats: % and px:</p><li>If a string ends with %, it indicates that the `Height` of a mosaic is a percentage of a video's height. For example, `10%` means that `Height` is 10% of a video's height.</li><li>If a string ends with px, it indicates that the `Height` unit of a mosaic is pixel. For example, `100px` means that `Height` is 100 pixels.</li>Default value: 10%.
         :rtype: str
         """
         return self._Height
@@ -52280,7 +53936,7 @@ class MosaicInput(AbstractModel):
 
     @property
     def StartTimeOffset(self):
-        r"""<p>Start time offset of mosaic, in seconds. If not specified or set to 0, the mosaic appears when the frame appears.</p><li>If not specified or set to 0, the mosaic appears from the start of the frame;</li><li>If the value is greater than 0 (assuming n), the mosaic appears at the nth second from the start of the frame;</li><li>If the value is less than 0 (assuming -n), the mosaic appears n seconds before the end of the frame.</li>
+        r"""<p>Start time offset of mosaic, in seconds. Leave empty or enter 0 to make the mosaic appear when the frame appears.</p><li>Leave empty or enter 0 to make the mosaic appear at the start of the frame;</li><li>If the value is greater than 0 (assuming n), the mosaic appears at the nth second after the frame starts;</li><li>If the value is less than 0 (assuming -n), the mosaic appears n seconds before the end of the frame.</li>
         :rtype: float
         """
         return self._StartTimeOffset
@@ -52291,7 +53947,7 @@ class MosaicInput(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        r"""<p>End time offset of mosaic, in seconds.</p><li>If not specified or set to 0, the mosaic lasts until the end of a video;</li><li>If the value is greater than 0 (assuming n), the mosaic disappears at second n;</li><li>If the value is less than 0 (assuming -n), the mosaic disappears n seconds before the end of a video.</li>
+        r"""<p>End time offset of the mosaic, in seconds.</p><li>If not specified or set to 0, the mosaic lasts until the end of a video;</li><li>If the value is greater than 0 (assuming n), the mosaic disappears at second n;</li><li>If the value is less than 0 (assuming -n), the mosaic disappears n seconds before the end of a video.</li>
         :rtype: float
         """
         return self._EndTimeOffset
@@ -52328,7 +53984,7 @@ class NumberFormat(AbstractModel):
         r"""
         :param _InitialValue: The starting value of the `{number}` variable. Default value: 0.
         :type InitialValue: int
-        :param _Increment: The growth step length of the `{number}` variable, with a default value of 1.
+        :param _Increment: The increase step length of the `{number}` variable. Default value: 1.
         :type Increment: int
         :param _MinLength: Minimum length of the `{number}` variable. Placeholder is used if the length is not sufficient. Default value: 1.
         :type MinLength: int
@@ -52353,7 +54009,7 @@ class NumberFormat(AbstractModel):
 
     @property
     def Increment(self):
-        r"""The growth step length of the `{number}` variable, with a default value of 1.
+        r"""The increase step length of the `{number}` variable. Default value: 1.
         :rtype: int
         """
         return self._Increment
@@ -52595,7 +54251,7 @@ The number of tags is up to 10, and each tag can have up to 16 characters.
 
 
 class OverrideAIDubbingParameter(AbstractModel):
-    r"""Custom parameters for AI Dubbing
+    r"""Custom parameter for AI dubbing
 
     """
 
@@ -52607,7 +54263,7 @@ class OverrideAIDubbingParameter(AbstractModel):
         :type SubtitleConfig: :class:`tencentcloud.mps.v20190612.models.DubbingSubtitleConfig`
         :param _DubbingConfig: <p>Dubbing configuration message.</p>
         :type DubbingConfig: :class:`tencentcloud.mps.v20190612.models.DubbingConfig`
-        :param _OutputConfig: <p>Output configuration information.</p>
+        :param _OutputConfig: <p>Outputs configuration message.</p>
         :type OutputConfig: :class:`tencentcloud.mps.v20190612.models.DubbingOutputConfig`
         """
         self._TranslateConfig = None
@@ -52650,7 +54306,7 @@ class OverrideAIDubbingParameter(AbstractModel):
 
     @property
     def OutputConfig(self):
-        r"""<p>Output configuration information.</p>
+        r"""<p>Outputs configuration message.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.DubbingOutputConfig`
         """
         return self._OutputConfig
@@ -52684,21 +54340,21 @@ class OverrideAIDubbingParameter(AbstractModel):
 
 
 class OverrideEraseParameter(AbstractModel):
-    r"""
+    r"""Custom parameters for smart erasing.
 
     """
 
     def __init__(self):
         r"""
-        :param _EraseType: 
+        :param _EraseType: <p>Removal Type</p><ul><li>subtitle removal</li><li>watermark removal</li><li>privacy protection</li></ul>
         :type EraseType: str
-        :param _EraseSubtitleConfig: 
+        :param _EraseSubtitleConfig: <p>Subtitle erasing configuration;<br>This field is required when the value of EraseType is set to subtitle.</p>
         :type EraseSubtitleConfig: :class:`tencentcloud.mps.v20190612.models.UpdateSmartEraseSubtitleConfig`
-        :param _EraseWatermarkConfig: 
+        :param _EraseWatermarkConfig: <p>Watermark erasing configuration.<br>This field is required when the value of EraseType is set to watermark.</p>
         :type EraseWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.UpdateSmartEraseWatermarkConfig`
-        :param _ErasePrivacyConfig: 
+        :param _ErasePrivacyConfig: <p>Privacy protection configuration.<br>This field is required when the value of EraseType is privacy.</p>
         :type ErasePrivacyConfig: :class:`tencentcloud.mps.v20190612.models.UpdateSmartErasePrivacyConfig`
-        :param _SubtitleEmbedId: 
+        :param _SubtitleEmbedId: <p>id of the subtitle removal suppression template.</p>
         :type SubtitleEmbedId: int
         """
         self._EraseType = None
@@ -52709,7 +54365,7 @@ class OverrideEraseParameter(AbstractModel):
 
     @property
     def EraseType(self):
-        r"""
+        r"""<p>Removal Type</p><ul><li>subtitle removal</li><li>watermark removal</li><li>privacy protection</li></ul>
         :rtype: str
         """
         return self._EraseType
@@ -52720,7 +54376,7 @@ class OverrideEraseParameter(AbstractModel):
 
     @property
     def EraseSubtitleConfig(self):
-        r"""
+        r"""<p>Subtitle erasing configuration;<br>This field is required when the value of EraseType is set to subtitle.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.UpdateSmartEraseSubtitleConfig`
         """
         return self._EraseSubtitleConfig
@@ -52731,7 +54387,7 @@ class OverrideEraseParameter(AbstractModel):
 
     @property
     def EraseWatermarkConfig(self):
-        r"""
+        r"""<p>Watermark erasing configuration.<br>This field is required when the value of EraseType is set to watermark.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.UpdateSmartEraseWatermarkConfig`
         """
         return self._EraseWatermarkConfig
@@ -52742,7 +54398,7 @@ class OverrideEraseParameter(AbstractModel):
 
     @property
     def ErasePrivacyConfig(self):
-        r"""
+        r"""<p>Privacy protection configuration.<br>This field is required when the value of EraseType is privacy.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.UpdateSmartErasePrivacyConfig`
         """
         return self._ErasePrivacyConfig
@@ -52753,7 +54409,7 @@ class OverrideEraseParameter(AbstractModel):
 
     @property
     def SubtitleEmbedId(self):
-        r"""
+        r"""<p>id of the subtitle removal suppression template.</p>
         :rtype: int
         """
         return self._SubtitleEmbedId
@@ -52786,7 +54442,7 @@ class OverrideEraseParameter(AbstractModel):
 
 
 class OverrideTranscodeParameter(AbstractModel):
-    r"""Specification parameters for custom transcoding. Used to overwrite the corresponding parameter values in the template.
+    r"""Specification parameters for custom transcoding. Used to override the corresponding parameter values in the template.
 
     """
 
@@ -52795,18 +54451,18 @@ class OverrideTranscodeParameter(AbstractModel):
         :param _Container: Muxing format. Available values: mp4, flv, hls, mp3, flac, ogg, and m4a. Among them, mp3, flac, ogg, and m4a are for audio-only files.
         :type Container: str
         :param _RemoveVideo: Indicates whether to remove video data. Parameter value:
-<li>`0`: retention;</li>
+<li>0: retention</li>
 <li>1: Remove.</li>
         :type RemoveVideo: int
         :param _RemoveAudio: Indicates whether to remove audio data. Parameter value:
-<li>`0`: retention;</li>
+<li>0: retention</li>
 <li>1: Remove.</li>
         :type RemoveAudio: int
         :param _VideoTemplate: Video stream configuration parameters.
         :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfoForUpdate`
         :param _AudioTemplate: Audio stream configuration parameters.
         :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`
-        :param _TEHDConfig: 
+        :param _TEHDConfig: Top Speed Codec transcoding parameters.
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
         :param _SubtitleTemplate: Subtitle stream configuration parameters.
         :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
@@ -52842,7 +54498,7 @@ class OverrideTranscodeParameter(AbstractModel):
     @property
     def RemoveVideo(self):
         r"""Indicates whether to remove video data. Parameter value:
-<li>`0`: retention;</li>
+<li>0: retention</li>
 <li>1: Remove.</li>
         :rtype: int
         """
@@ -52855,7 +54511,7 @@ class OverrideTranscodeParameter(AbstractModel):
     @property
     def RemoveAudio(self):
         r"""Indicates whether to remove audio data. Parameter value:
-<li>`0`: retention;</li>
+<li>0: retention</li>
 <li>1: Remove.</li>
         :rtype: int
         """
@@ -52889,7 +54545,7 @@ class OverrideTranscodeParameter(AbstractModel):
 
     @property
     def TEHDConfig(self):
-        r"""
+        r"""Top Speed Codec transcoding parameters.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
         """
         return self._TEHDConfig
@@ -52989,14 +54645,14 @@ class ParseLiveStreamProcessNotificationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Content: Event notification content for live streams obtained from CMQ.
+        :param _Content: Content of the live stream event notification obtained from CMQ.
         :type Content: str
         """
         self._Content = None
 
     @property
     def Content(self):
-        r"""Event notification content for live streams obtained from CMQ.
+        r"""Content of the live stream event notification obtained from CMQ.
         :rtype: str
         """
         return self._Content
@@ -53034,27 +54690,27 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 <li>AiSmartSubtitleResult: smart subtitle result;</li>
 <li>ProcessEof: end of live stream processing.</li>
         :type NotificationType: str
-        :param _TaskId: Task ID for video processing.
+        :param _TaskId: Video processing task ID.
         :type TaskId: str
-        :param _ProcessEofInfo: 
+        :param _ProcessEofInfo: Error information of live stream processing. Valid when NotificationType is ProcessEof.
         :type ProcessEofInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamProcessErrorInfo`
-        :param _AiReviewResultInfo: 
+        :param _AiReviewResultInfo: Content moderation result. Valid when NotificationType is AiReviewResult.
         :type AiReviewResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiReviewResultInfo`
-        :param _AiRecognitionResultInfo: 
+        :param _AiRecognitionResultInfo: Content recognition result. Valid when NotificationType is AiRecognitionResult.
         :type AiRecognitionResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiRecognitionResultInfo`
-        :param _AiAnalysisResultInfo: 
+        :param _AiAnalysisResultInfo: Content analysis result. Valid when NotificationType is AiAnalysisResult.
         :type AiAnalysisResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiAnalysisResultInfo`
-        :param _AiQualityControlResultInfo: 
+        :param _AiQualityControlResultInfo: Media quality inspection result. Valid when NotificationType is AiQualityControlResult.
         :type AiQualityControlResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiQualityControlResultInfo`
-        :param _LiveRecordResultInfo: 
+        :param _LiveRecordResultInfo: Live streaming result is valid when NotificationType is LiveRecordResult.
         :type LiveRecordResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamRecordResultInfo`
-        :param _AiSmartSubtitleResultInfo: Smart subtitle result, valid when NotificationType is AiSmartSubtitleResult.
+        :param _AiSmartSubtitleResultInfo: Smart subtitle result. Valid when NotificationType is AiSmartSubtitleResult.
         :type AiSmartSubtitleResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiSmartSubtitleResultInfo`
         :param _SessionId: An identifier for deduplication. If there has been a request with the same identifier within the past seven days, an error will be returned for the current request. The maximum length is 50 characters. Leaving it blank or using a null string indicates no deduplication is required.
         :type SessionId: str
         :param _SessionContext: Source context, which is used to pass through user request information. The callback for task flow status changes will return the value of this field. The maximum length is 1,000 characters.
         :type SessionContext: str
-        :param _Timestamp: -Expiration time, the UNIX timestamp for event notification signature expiration. Notifications from Media Processing Service (MPS) have a default expiration time of 10 minutes. If the time specified by the Timestamp value in a notification has expired, the notification can be deemed invalid, which helps prevent network replay attacks. The Timestamp format is a decimal UNIX timestamp, representing the seconds elapsed since midnight on January 1, 1970 (UTC/GMT).
+        :param _Timestamp: - Expiration time: the UNIX Timestamp when the event notification signature expires. - Message notifications from media processing expire after 10 minutes by default. If the time specified by the Timestamp value in a message notification has expired, the notification is deemed invalid, which prevents network replay attacks. - Timestamp is in decimal UNIX Timestamp format, which is the seconds elapsed since January 1, 1970 (UTC/GMT midnight).
         :type Timestamp: int
         :param _Sign: Event notification security signature. Sign = MD5 (Timestamp + NotifyKey). Note: Media Processing Service concatenates Timestamp and NotifyKey from TaskNotifyConfig as a string and calculates the Sign value through MD5. This value is included in the notification message. Your backend server can verify whether the Sign is correct using the same algorithm, to confirm whether the message is indeed from the Media Processing Service backend.
         :type Sign: str
@@ -53096,7 +54752,7 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""Task ID for video processing.
+        r"""Video processing task ID.
         :rtype: str
         """
         return self._TaskId
@@ -53107,7 +54763,7 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     @property
     def ProcessEofInfo(self):
-        r"""
+        r"""Error information of live stream processing. Valid when NotificationType is ProcessEof.
         :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamProcessErrorInfo`
         """
         return self._ProcessEofInfo
@@ -53118,7 +54774,7 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     @property
     def AiReviewResultInfo(self):
-        r"""
+        r"""Content moderation result. Valid when NotificationType is AiReviewResult.
         :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiReviewResultInfo`
         """
         return self._AiReviewResultInfo
@@ -53129,7 +54785,7 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     @property
     def AiRecognitionResultInfo(self):
-        r"""
+        r"""Content recognition result. Valid when NotificationType is AiRecognitionResult.
         :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiRecognitionResultInfo`
         """
         return self._AiRecognitionResultInfo
@@ -53140,7 +54796,7 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     @property
     def AiAnalysisResultInfo(self):
-        r"""
+        r"""Content analysis result. Valid when NotificationType is AiAnalysisResult.
         :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiAnalysisResultInfo`
         """
         return self._AiAnalysisResultInfo
@@ -53151,7 +54807,7 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     @property
     def AiQualityControlResultInfo(self):
-        r"""
+        r"""Media quality inspection result. Valid when NotificationType is AiQualityControlResult.
         :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiQualityControlResultInfo`
         """
         return self._AiQualityControlResultInfo
@@ -53162,7 +54818,7 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     @property
     def LiveRecordResultInfo(self):
-        r"""
+        r"""Live streaming result is valid when NotificationType is LiveRecordResult.
         :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamRecordResultInfo`
         """
         return self._LiveRecordResultInfo
@@ -53173,7 +54829,7 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     @property
     def AiSmartSubtitleResultInfo(self):
-        r"""Smart subtitle result, valid when NotificationType is AiSmartSubtitleResult.
+        r"""Smart subtitle result. Valid when NotificationType is AiSmartSubtitleResult.
         :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiSmartSubtitleResultInfo`
         """
         return self._AiSmartSubtitleResultInfo
@@ -53206,7 +54862,7 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     @property
     def Timestamp(self):
-        r"""-Expiration time, the UNIX timestamp for event notification signature expiration. Notifications from Media Processing Service (MPS) have a default expiration time of 10 minutes. If the time specified by the Timestamp value in a notification has expired, the notification can be deemed invalid, which helps prevent network replay attacks. The Timestamp format is a decimal UNIX timestamp, representing the seconds elapsed since midnight on January 1, 1970 (UTC/GMT).
+        r"""- Expiration time: the UNIX Timestamp when the event notification signature expires. - Message notifications from media processing expire after 10 minutes by default. If the time specified by the Timestamp value in a message notification has expired, the notification is deemed invalid, which prevents network replay attacks. - Timestamp is in decimal UNIX Timestamp format, which is the seconds elapsed since January 1, 1970 (UTC/GMT midnight).
         :rtype: int
         """
         return self._Timestamp
@@ -53315,28 +54971,28 @@ class ParseNotificationResponse(AbstractModel):
         :param _EventType: Supported event types. Currently, the valid values include:
 <li>WorkflowTask: video workflow processing task.</li>
 <li>EditMediaTask: video editing task.</li>
-<li>ScheduleTask: Orchestration task.</li>
+<li>ScheduleTask: orchestration task.</li>
         :type EventType: str
-        :param _WorkflowTaskEvent: 
+        :param _WorkflowTaskEvent: Video processing task information. This field has a value only when EventType is WorkflowTask.
         :type WorkflowTaskEvent: :class:`tencentcloud.mps.v20190612.models.WorkflowTask`
-        :param _EditMediaTaskEvent: 
+        :param _EditMediaTaskEvent: Video editing task information. This field has a value only when EventType is EditMediaTask.
         :type EditMediaTaskEvent: :class:`tencentcloud.mps.v20190612.models.EditMediaTask`
         :param _SessionId: An identifier for deduplication. If there has been a request with the same identifier within the past seven days, an error will be returned for the current request. The maximum length is 50 characters. Leaving it blank or using a null string indicates no deduplication is required.
         :type SessionId: str
         :param _SessionContext: Source context, which is used to pass through user request information. The callback for task flow status changes will return the value of this field. The maximum length is 1,000 characters.
         :type SessionContext: str
-        :param _ScheduleTaskEvent: 
+        :param _ScheduleTaskEvent: Orchestration task information. This field has a value only when EventType is ScheduleTask.
         :type ScheduleTaskEvent: :class:`tencentcloud.mps.v20190612.models.ScheduleTask`
-        :param _Timestamp: -Expiration time, event notification signature expiration UNIX timestamp.
--The default expiration time for notifications from Media Processing Service (MPS) is 10 minutes. If the time specified by the Timestamp value in a message notification has expired, the notification can be deemed invalid, which helps prevent network replay attacks.
--Timestamp is in decimal UNIX Timestamp format, which is the seconds elapsed since midnight (UTC/GMT) on January 1, 1970.
+        :param _Timestamp: -Expiration time. The event notification signature expires at this UNIX timestamp.
+-The default expiration time for notifications from Media Processing Service (MPS) is 10 minutes. If the time specified by the Timestamp value in a notification has expired, the notification can be deemed invalid, which can prevent network replay attacks.
+-Timestamp is in decimal UNIX timestamp format, i.e., the seconds elapsed since January 1, 1970 (UTC/GMT midnight).
 
         :type Timestamp: int
         :param _Sign: Event notification security signature. Sign = MD5 (Timestamp + NotifyKey). Note: Media Processing Service concatenates Timestamp and NotifyKey from TaskNotifyConfig as a string and calculates the Sign value through MD5. This value is included in the notification message. Your backend server can verify whether the Sign is correct using the same algorithm, to confirm whether the message is indeed from the Media Processing Service backend.
         :type Sign: str
-        :param _BatchTaskEvent: 
+        :param _BatchTaskEvent: Batch operation information. This field has a value only when EventType is BatchTask.
         :type BatchTaskEvent: :class:`tencentcloud.mps.v20190612.models.BatchSubTaskResult`
-        :param _ExtractBlindWatermarkTask: 
+        :param _ExtractBlindWatermarkTask: Information about the digital watermark extraction task. This field has a value only when EventType is ExtractBlindWatermark.
         :type ExtractBlindWatermarkTask: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTask`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -53358,7 +55014,7 @@ class ParseNotificationResponse(AbstractModel):
         r"""Supported event types. Currently, the valid values include:
 <li>WorkflowTask: video workflow processing task.</li>
 <li>EditMediaTask: video editing task.</li>
-<li>ScheduleTask: Orchestration task.</li>
+<li>ScheduleTask: orchestration task.</li>
         :rtype: str
         """
         return self._EventType
@@ -53369,7 +55025,7 @@ class ParseNotificationResponse(AbstractModel):
 
     @property
     def WorkflowTaskEvent(self):
-        r"""
+        r"""Video processing task information. This field has a value only when EventType is WorkflowTask.
         :rtype: :class:`tencentcloud.mps.v20190612.models.WorkflowTask`
         """
         return self._WorkflowTaskEvent
@@ -53380,7 +55036,7 @@ class ParseNotificationResponse(AbstractModel):
 
     @property
     def EditMediaTaskEvent(self):
-        r"""
+        r"""Video editing task information. This field has a value only when EventType is EditMediaTask.
         :rtype: :class:`tencentcloud.mps.v20190612.models.EditMediaTask`
         """
         return self._EditMediaTaskEvent
@@ -53413,7 +55069,7 @@ class ParseNotificationResponse(AbstractModel):
 
     @property
     def ScheduleTaskEvent(self):
-        r"""
+        r"""Orchestration task information. This field has a value only when EventType is ScheduleTask.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleTask`
         """
         return self._ScheduleTaskEvent
@@ -53424,9 +55080,9 @@ class ParseNotificationResponse(AbstractModel):
 
     @property
     def Timestamp(self):
-        r"""-Expiration time, event notification signature expiration UNIX timestamp.
--The default expiration time for notifications from Media Processing Service (MPS) is 10 minutes. If the time specified by the Timestamp value in a message notification has expired, the notification can be deemed invalid, which helps prevent network replay attacks.
--Timestamp is in decimal UNIX Timestamp format, which is the seconds elapsed since midnight (UTC/GMT) on January 1, 1970.
+        r"""-Expiration time. The event notification signature expires at this UNIX timestamp.
+-The default expiration time for notifications from Media Processing Service (MPS) is 10 minutes. If the time specified by the Timestamp value in a notification has expired, the notification can be deemed invalid, which can prevent network replay attacks.
+-Timestamp is in decimal UNIX timestamp format, i.e., the seconds elapsed since January 1, 1970 (UTC/GMT midnight).
 
         :rtype: int
         """
@@ -53449,7 +55105,7 @@ class ParseNotificationResponse(AbstractModel):
 
     @property
     def BatchTaskEvent(self):
-        r"""
+        r"""Batch operation information. This field has a value only when EventType is BatchTask.
         :rtype: :class:`tencentcloud.mps.v20190612.models.BatchSubTaskResult`
         """
         return self._BatchTaskEvent
@@ -53460,7 +55116,7 @@ class ParseNotificationResponse(AbstractModel):
 
     @property
     def ExtractBlindWatermarkTask(self):
-        r"""
+        r"""Information about the digital watermark extraction task. This field has a value only when EventType is ExtractBlindWatermark.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTask`
         """
         return self._ExtractBlindWatermarkTask
@@ -53512,15 +55168,15 @@ class PatternConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TransparencyThreshold: <p>Transparency threshold</p><p>Value ranges from 0 to 255.</p><p>Default value: 30</p>
+        :param _TransparencyThreshold: <p>Transparency threshold</p><p>Value range: [0, 255]</p><p>Default value: 30</p>
         :type TransparencyThreshold: int
-        :param _OpaqueThreshold: <p>Opaque threshold must be greater than TransparencyThreshold.</p><p>Value ranges from 0 to 255.</p><p>Default value: 127.</p>
+        :param _OpaqueThreshold: <p>Opaque threshold, must be greater than TransparencyThreshold</p><p>Value range: [0, 255]</p><p>Default value: 127</p>
         :type OpaqueThreshold: int
-        :param _EdgeSamplingStep: <p>Edge sampling steps, default 5.</p><p>Value ranges from 1 to 10.</p>
+        :param _EdgeSamplingStep: <p>Edge sampling steps. Default value: 5</p><p>Value range: [1, 10]</p>
         :type EdgeSamplingStep: int
-        :param _EdgeExpansionStep: <p>Edge expansion steps. Default: 5</p>
+        :param _EdgeExpansionStep: <p>Edge expansion steps. Default value: 5</p>
         :type EdgeExpansionStep: int
-        :param _EdgeBlendingIntensity: <p>Edge fusion strength, default 0.5</p><p>Value ranges from 0 to 1.0</p>
+        :param _EdgeBlendingIntensity: <p>Edge fusion strength, default 0.5</p><p>Value range: [0, 1.0]</p>
         :type EdgeBlendingIntensity: float
         """
         self._TransparencyThreshold = None
@@ -53531,7 +55187,7 @@ class PatternConfig(AbstractModel):
 
     @property
     def TransparencyThreshold(self):
-        r"""<p>Transparency threshold</p><p>Value ranges from 0 to 255.</p><p>Default value: 30</p>
+        r"""<p>Transparency threshold</p><p>Value range: [0, 255]</p><p>Default value: 30</p>
         :rtype: int
         """
         return self._TransparencyThreshold
@@ -53542,7 +55198,7 @@ class PatternConfig(AbstractModel):
 
     @property
     def OpaqueThreshold(self):
-        r"""<p>Opaque threshold must be greater than TransparencyThreshold.</p><p>Value ranges from 0 to 255.</p><p>Default value: 127.</p>
+        r"""<p>Opaque threshold, must be greater than TransparencyThreshold</p><p>Value range: [0, 255]</p><p>Default value: 127</p>
         :rtype: int
         """
         return self._OpaqueThreshold
@@ -53553,7 +55209,7 @@ class PatternConfig(AbstractModel):
 
     @property
     def EdgeSamplingStep(self):
-        r"""<p>Edge sampling steps, default 5.</p><p>Value ranges from 1 to 10.</p>
+        r"""<p>Edge sampling steps. Default value: 5</p><p>Value range: [1, 10]</p>
         :rtype: int
         """
         return self._EdgeSamplingStep
@@ -53564,7 +55220,7 @@ class PatternConfig(AbstractModel):
 
     @property
     def EdgeExpansionStep(self):
-        r"""<p>Edge expansion steps. Default: 5</p>
+        r"""<p>Edge expansion steps. Default value: 5</p>
         :rtype: int
         """
         return self._EdgeExpansionStep
@@ -53575,7 +55231,7 @@ class PatternConfig(AbstractModel):
 
     @property
     def EdgeBlendingIntensity(self):
-        r"""<p>Edge fusion strength, default 0.5</p><p>Value ranges from 0 to 1.0</p>
+        r"""<p>Edge fusion strength, default 0.5</p><p>Value range: [0, 1.0]</p>
         :rtype: float
         """
         return self._EdgeBlendingIntensity
@@ -54857,13 +56513,13 @@ class ProcessImageRequest(AbstractModel):
         :param _OutputDir: Output file path for image processing. If left blank, it is the directory of the file in InputInfo. If it is a directory, such as `/image/201907/`, it means inheriting the original filename and outputting to this directory.
         :type OutputDir: str
         :param _OutputPath: Output path, which can be a relative or absolute path.
-To define the output path, the path must end with `.{format}`. For variable names, please refer to the Filename Variable Explanation (https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1).
+To define the output path, it must end with `.{format}`. For variable names, please refer to [Filename Variable Explanation](https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1).
 Relative path example:
-<li>Filename_{Variable name}.{format}</li>
-<li>Filename.{format}</li>
+<li>Filename_{Variable name}.{format}.</li>
+<li>Filename.{format}.</li>
 Absolute path example:
 <li>/Custom path/Filename_{Variable name}.{format}</li>
-If not filled in, default relative path: {inputName}.{format}.
+If not filled in, the default relative path is: {inputName}.{format}.
         :type OutputPath: str
         :param _Definition: Unique identifier of the image processing template.
 The image template feature is in beta testing. If you want to use it, submit a ticket for application.
@@ -54920,13 +56576,13 @@ The image template feature is in beta testing. If you want to use it, submit a t
     @property
     def OutputPath(self):
         r"""Output path, which can be a relative or absolute path.
-To define the output path, the path must end with `.{format}`. For variable names, please refer to the Filename Variable Explanation (https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1).
+To define the output path, it must end with `.{format}`. For variable names, please refer to [Filename Variable Explanation](https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1).
 Relative path example:
-<li>Filename_{Variable name}.{format}</li>
-<li>Filename.{format}</li>
+<li>Filename_{Variable name}.{format}.</li>
+<li>Filename.{format}.</li>
 Absolute path example:
 <li>/Custom path/Filename_{Variable name}.{format}</li>
-If not filled in, default relative path: {inputName}.{format}.
+If not filled in, the default relative path is: {inputName}.{format}.
         :rtype: str
         """
         return self._OutputPath
@@ -55184,31 +56840,31 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: <p>Live stream URL (must be a live streaming address, supporting rtmp, hls, flv, trtc, webrtc, srt, etc.).<br>The trtc address is as follows:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the TRTC room number ID<br><code>&lt;sdkappid&gt;</code> is the TRTC SDK app ID<br><code>&lt;userid&gt;</code> is the user ID for the service to enter the room, which can distinguish who is the robot<br><code>&lt;usersig&gt;</code> is the TRTC user signature</p><p>webrtc supports LEB live streams. For address retrieval, please <a href="https://www.tencentcloud.com/document/product/267/32720?from_cn_redirect=1">refer</a></p><p>For srt supported addresses, please <a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">refer</a></p>
+        :param _Url: <p>Live streaming URL (must be a live streaming address, supporting rtmp, hls, flv, trtc, webrtc, srt, etc.).<br>The trtc address is as follows:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the room number ID of trtc<br><code>&lt;sdkappid&gt;</code> is the SDK app ID of trtc<br><code>&lt;userid&gt;</code> is the user ID for the service to enter a room, which can be used to identify the robot<br><code>&lt;usersig&gt;</code> is the signature of the trtc user</p><p>webrtc supports LEB live streams. For address retrieval, please <a href="https://www.tencentcloud.com/document/product/267/32720?from_cn_redirect=1">refer</a></p><p>For supported srt addresses, please <a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">refer</a></p>
         :type Url: str
-        :param _TaskNotifyConfig: 
+        :param _TaskNotifyConfig: <p>Event notification information of the task. This is used to specify the live stream processing result.</p>
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.LiveStreamTaskNotifyConfig`
-        :param _OutputStorage: 
+        :param _OutputStorage: <p>Target storage for the output file of the live stream processing task. This parameter is required if the processing task has an output file.</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OutputDir: 
+        :param _OutputDir: <p>Target output directory for the file generated by the live stream processing task, such as <code>/movie/201909/</code>. If this is not specified, the default directory is <code>/</code>.</p>
         :type OutputDir: str
-        :param _AiContentReviewTask: 
+        :param _AiContentReviewTask: <p>Parameters for the video content review task.</p>
         :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
-        :param _AiRecognitionTask: 
+        :param _AiRecognitionTask: <p>Parameters for the video content recognition task.</p>
         :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
-        :param _AiAnalysisTask: 
+        :param _AiAnalysisTask: <p>Parameters for the video content analysis task.</p>
         :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
-        :param _AiQualityControlTask: 
+        :param _AiQualityControlTask: <p>Parameters for the media quality inspection task.</p>
         :type AiQualityControlTask: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
-        :param _SmartSubtitlesTask: 
+        :param _SmartSubtitlesTask: <p>Parameters for the smart subtitle task.</p>
         :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.LiveSmartSubtitlesTaskInput`
-        :param _SessionId: 
+        :param _SessionId: <p>Identifier for deduplication. If a request with the same identifier has been sent within the past seven days, an error is returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, deduplication is not performed.</p>
         :type SessionId: str
-        :param _SessionContext: 
+        :param _SessionContext: <p>Source context. This is used to pass user request information. The task status change callback returns the value of this field. The maximum length is 1000 characters.</p>
         :type SessionContext: str
-        :param _ScheduleId: 
+        :param _ScheduleId: <p>Live streaming orchestration ID.<br>Note 1: For the OutputStorage and OutputDir parameters:</p><li>If OutputStorage and OutputDir are configured in the subtask node of service orchestration, the output configured in the subtask node serves as the subtask output.</li><li>If OutputStorage and OutputDir are not configured in the subtask node of service orchestration and ProcessLiveStream has output, the default output of the original orchestration is overridden.</li>Note 2: For the TaskNotifyConfig parameter, if it has been configured in the task creation API (ProcessLiveStream), the default callback of the original orchestration is overridden.
         :type ScheduleId: int
-        :param _ResourceId: 
+        :param _ResourceId: <p>Resource ID. The resource needs to be enabled. The default value is the account's primary resource ID.</p>
         :type ResourceId: str
         """
         self._Url = None
@@ -55227,7 +56883,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def Url(self):
-        r"""<p>Live stream URL (must be a live streaming address, supporting rtmp, hls, flv, trtc, webrtc, srt, etc.).<br>The trtc address is as follows:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the TRTC room number ID<br><code>&lt;sdkappid&gt;</code> is the TRTC SDK app ID<br><code>&lt;userid&gt;</code> is the user ID for the service to enter the room, which can distinguish who is the robot<br><code>&lt;usersig&gt;</code> is the TRTC user signature</p><p>webrtc supports LEB live streams. For address retrieval, please <a href="https://www.tencentcloud.com/document/product/267/32720?from_cn_redirect=1">refer</a></p><p>For srt supported addresses, please <a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">refer</a></p>
+        r"""<p>Live streaming URL (must be a live streaming address, supporting rtmp, hls, flv, trtc, webrtc, srt, etc.).<br>The trtc address is as follows:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the room number ID of trtc<br><code>&lt;sdkappid&gt;</code> is the SDK app ID of trtc<br><code>&lt;userid&gt;</code> is the user ID for the service to enter a room, which can be used to identify the robot<br><code>&lt;usersig&gt;</code> is the signature of the trtc user</p><p>webrtc supports LEB live streams. For address retrieval, please <a href="https://www.tencentcloud.com/document/product/267/32720?from_cn_redirect=1">refer</a></p><p>For supported srt addresses, please <a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">refer</a></p>
         :rtype: str
         """
         return self._Url
@@ -55238,7 +56894,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def TaskNotifyConfig(self):
-        r"""
+        r"""<p>Event notification information of the task. This is used to specify the live stream processing result.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamTaskNotifyConfig`
         """
         return self._TaskNotifyConfig
@@ -55249,7 +56905,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""
+        r"""<p>Target storage for the output file of the live stream processing task. This parameter is required if the processing task has an output file.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -55260,7 +56916,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def OutputDir(self):
-        r"""
+        r"""<p>Target output directory for the file generated by the live stream processing task, such as <code>/movie/201909/</code>. If this is not specified, the default directory is <code>/</code>.</p>
         :rtype: str
         """
         return self._OutputDir
@@ -55271,7 +56927,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def AiContentReviewTask(self):
-        r"""
+        r"""<p>Parameters for the video content review task.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
         """
         return self._AiContentReviewTask
@@ -55282,7 +56938,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def AiRecognitionTask(self):
-        r"""
+        r"""<p>Parameters for the video content recognition task.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
         """
         return self._AiRecognitionTask
@@ -55293,7 +56949,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def AiAnalysisTask(self):
-        r"""
+        r"""<p>Parameters for the video content analysis task.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
         """
         return self._AiAnalysisTask
@@ -55304,7 +56960,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def AiQualityControlTask(self):
-        r"""
+        r"""<p>Parameters for the media quality inspection task.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
         """
         return self._AiQualityControlTask
@@ -55315,7 +56971,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def SmartSubtitlesTask(self):
-        r"""
+        r"""<p>Parameters for the smart subtitle task.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.LiveSmartSubtitlesTaskInput`
         """
         return self._SmartSubtitlesTask
@@ -55326,7 +56982,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""
+        r"""<p>Identifier for deduplication. If a request with the same identifier has been sent within the past seven days, an error is returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, deduplication is not performed.</p>
         :rtype: str
         """
         return self._SessionId
@@ -55337,7 +56993,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def SessionContext(self):
-        r"""
+        r"""<p>Source context. This is used to pass user request information. The task status change callback returns the value of this field. The maximum length is 1000 characters.</p>
         :rtype: str
         """
         return self._SessionContext
@@ -55348,7 +57004,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def ScheduleId(self):
-        r"""
+        r"""<p>Live streaming orchestration ID.<br>Note 1: For the OutputStorage and OutputDir parameters:</p><li>If OutputStorage and OutputDir are configured in the subtask node of service orchestration, the output configured in the subtask node serves as the subtask output.</li><li>If OutputStorage and OutputDir are not configured in the subtask node of service orchestration and ProcessLiveStream has output, the default output of the original orchestration is overridden.</li>Note 2: For the TaskNotifyConfig parameter, if it has been configured in the task creation API (ProcessLiveStream), the default callback of the original orchestration is overridden.
         :rtype: int
         """
         return self._ScheduleId
@@ -55359,7 +57015,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""
+        r"""<p>Resource ID. The resource needs to be enabled. The default value is the account's primary resource ID.</p>
         :rtype: str
         """
         return self._ResourceId
@@ -55414,7 +57070,7 @@ class ProcessLiveStreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 
+        :param _TaskId: <p>Task ID.</p>
         :type TaskId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -55424,7 +57080,7 @@ class ProcessLiveStreamResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""
+        r"""<p>Task ID.</p>
         :rtype: str
         """
         return self._TaskId
@@ -56387,7 +58043,7 @@ class PureSubtitleTransResult(AbstractModel):
         :type Message: str
         :param _Input: Translation task input information.
         :type Input: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
-        :param _Output: 
+        :param _Output: Translation output result of pure subtitle files.
         :type Output: :class:`tencentcloud.mps.v20190612.models.PureSubtitleTransResultOutput`
         :param _Progress: Task progress.
         :type Progress: int
@@ -56460,7 +58116,7 @@ class PureSubtitleTransResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Translation output result of pure subtitle files.
         :rtype: :class:`tencentcloud.mps.v20190612.models.PureSubtitleTransResultOutput`
         """
         return self._Output
@@ -56510,7 +58166,7 @@ class PureSubtitleTransResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OutputStorage: 
+        :param _OutputStorage: Storage location of the subtitle file.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _SubtitleResults: Result set of multilingual translation.
         :type SubtitleResults: list of SubtitleTransResultItem
@@ -56520,7 +58176,7 @@ class PureSubtitleTransResultOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""
+        r"""Storage location of the subtitle file.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -56721,13 +58377,13 @@ class QualityControlItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Confidence: 
+        :param _Confidence: Confidence, with a value range from 0 to 100.
         :type Confidence: int
-        :param _StartTimeOffset: Start time of occurrence, in seconds.
+        :param _StartTimeOffset: Start timestamp of the occurrence, in seconds.
         :type StartTimeOffset: float
         :param _EndTimeOffset: End timestamp of the occurrence, in seconds.
         :type EndTimeOffset: float
-        :param _AreaCoordSet: 
+        :param _AreaCoordSet: Area coordinates (px), i.e. coordinates of the top-left corner and coordinate of the bottom-right corner.
         :type AreaCoordSet: list of int
         """
         self._Confidence = None
@@ -56737,7 +58393,7 @@ class QualityControlItem(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""
+        r"""Confidence, with a value range from 0 to 100.
         :rtype: int
         """
         return self._Confidence
@@ -56748,7 +58404,7 @@ class QualityControlItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
-        r"""Start time of occurrence, in seconds.
+        r"""Start timestamp of the occurrence, in seconds.
         :rtype: float
         """
         return self._StartTimeOffset
@@ -56770,7 +58426,7 @@ class QualityControlItem(AbstractModel):
 
     @property
     def AreaCoordSet(self):
-        r"""
+        r"""Area coordinates (px), i.e. coordinates of the top-left corner and coordinate of the bottom-right corner.
         :rtype: list of int
         """
         return self._AreaCoordSet
@@ -57047,18 +58703,18 @@ Blur: blurry.
 LowLighting: low light.
 HighLighting: overexposure.
 CrashScreen: screen glitch.
-BlackWhiteEdge: Black and white edges
+BlackWhiteEdge: black and white edge
 SolidColorScreen: solid color screen.
 Noise: noise.
-Mosaic: Mosaic
+Mosaic: mosaic.
 QRCode: QR code.
-AppletCode: Mini program code.
+AppletCode: mini program code
 BarCode: barcode.
 LowVoice: bass.
-HighVoice: high voice detection.
+HighVoice: high voice.
 NoVoice: mute.
-LowEvaluation: The video no-reference score (MOS) is below the threshold.
-AudioEvaluation: The audio no-reference scoring (MOS) is below the threshold.
+LowEvaluation: The no-reference score (MOS) of the video is below the threshold.
+AudioEvaluation: Audio no-reference scoring (MOS) is below the threshold.
 AudioNoise: Audio noise.
         :type Type: str
         :param _QualityControlItems: Quality inspection result item.
@@ -57075,18 +58731,18 @@ Blur: blurry.
 LowLighting: low light.
 HighLighting: overexposure.
 CrashScreen: screen glitch.
-BlackWhiteEdge: Black and white edges
+BlackWhiteEdge: black and white edge
 SolidColorScreen: solid color screen.
 Noise: noise.
-Mosaic: Mosaic
+Mosaic: mosaic.
 QRCode: QR code.
-AppletCode: Mini program code.
+AppletCode: mini program code
 BarCode: barcode.
 LowVoice: bass.
-HighVoice: high voice detection.
+HighVoice: high voice.
 NoVoice: mute.
-LowEvaluation: The video no-reference score (MOS) is below the threshold.
-AudioEvaluation: The audio no-reference scoring (MOS) is below the threshold.
+LowEvaluation: The no-reference score (MOS) of the video is below the threshold.
+AudioEvaluation: Audio no-reference scoring (MOS) is below the threshold.
 AudioNoise: Audio noise.
         :rtype: str
         """
@@ -57644,7 +59300,7 @@ class QueryProjectResponse(AbstractModel):
 
 
 class QueryTaskFilter(AbstractModel):
-    r"""Query the list filter criteria for AIGC tasks
+    r"""List filter criteria for querying AIGC tasks
 
     """
 
@@ -57652,7 +59308,7 @@ class QueryTaskFilter(AbstractModel):
         r"""
         :param _TaskId: <p>Task ID.</p>
         :type TaskId: str
-        :param _TaskType: <p>Task type</p>
+        :param _TaskType: <p>Task type</p><p>Enumeration values:</p><ul><li>RedrawVideo: Video redraw</li><li>AIDrama: AI drama</li><li>DocGenVideo: Document to video</li><li>FissionVideo: Video fission</li></ul>
         :type TaskType: str
         :param _TaskStatus: <p>Task status.</p>
         :type TaskStatus: str
@@ -57660,12 +59316,21 @@ class QueryTaskFilter(AbstractModel):
         :type Resolution: str
         :param _Ratio: <p>Aspect ratio.</p>
         :type Ratio: str
+        :param _ExecuteMode: <p>Task execution mode</p><p>Enumeration values:</p><ul><li>auto: Direct generation</li><li>phased: Generate after confirmation</li></ul>
+        :type ExecuteMode: str
+        :param _VideoType: <p>Fission task video type filter: ugc, talk, display, unboxing, reaction</p><p>Enumeration values:</p><ul><li>ugc: UGC recommendation</li><li>talk: Product talk-over</li><li>display: Product display</li><li>unboxing: Unboxing sharing</li><li>reaction: Reaction display</li></ul>
+        :type VideoType: str
+        :param _ModelTier: <p>Model type</p><p>Enumeration values:</p><ul><li>standard: standard version</li><li>flagship: advanced edition</li></ul>
+        :type ModelTier: str
         """
         self._TaskId = None
         self._TaskType = None
         self._TaskStatus = None
         self._Resolution = None
         self._Ratio = None
+        self._ExecuteMode = None
+        self._VideoType = None
+        self._ModelTier = None
 
     @property
     def TaskId(self):
@@ -57680,7 +59345,7 @@ class QueryTaskFilter(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""<p>Task type</p>
+        r"""<p>Task type</p><p>Enumeration values:</p><ul><li>RedrawVideo: Video redraw</li><li>AIDrama: AI drama</li><li>DocGenVideo: Document to video</li><li>FissionVideo: Video fission</li></ul>
         :rtype: str
         """
         return self._TaskType
@@ -57722,6 +59387,39 @@ class QueryTaskFilter(AbstractModel):
     def Ratio(self, Ratio):
         self._Ratio = Ratio
 
+    @property
+    def ExecuteMode(self):
+        r"""<p>Task execution mode</p><p>Enumeration values:</p><ul><li>auto: Direct generation</li><li>phased: Generate after confirmation</li></ul>
+        :rtype: str
+        """
+        return self._ExecuteMode
+
+    @ExecuteMode.setter
+    def ExecuteMode(self, ExecuteMode):
+        self._ExecuteMode = ExecuteMode
+
+    @property
+    def VideoType(self):
+        r"""<p>Fission task video type filter: ugc, talk, display, unboxing, reaction</p><p>Enumeration values:</p><ul><li>ugc: UGC recommendation</li><li>talk: Product talk-over</li><li>display: Product display</li><li>unboxing: Unboxing sharing</li><li>reaction: Reaction display</li></ul>
+        :rtype: str
+        """
+        return self._VideoType
+
+    @VideoType.setter
+    def VideoType(self, VideoType):
+        self._VideoType = VideoType
+
+    @property
+    def ModelTier(self):
+        r"""<p>Model type</p><p>Enumeration values:</p><ul><li>standard: standard version</li><li>flagship: advanced edition</li></ul>
+        :rtype: str
+        """
+        return self._ModelTier
+
+    @ModelTier.setter
+    def ModelTier(self, ModelTier):
+        self._ModelTier = ModelTier
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -57729,6 +59427,9 @@ class QueryTaskFilter(AbstractModel):
         self._TaskStatus = params.get("TaskStatus")
         self._Resolution = params.get("Resolution")
         self._Ratio = params.get("Ratio")
+        self._ExecuteMode = params.get("ExecuteMode")
+        self._VideoType = params.get("VideoType")
+        self._ModelTier = params.get("ModelTier")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57740,7 +59441,7 @@ class QueryTaskFilter(AbstractModel):
 
 
 class RawAIDubbingParameter(AbstractModel):
-    r"""Custom parameters for AI Dubbing
+    r"""Custom parameter for AI dubbing
 
     """
 
@@ -57748,11 +59449,11 @@ class RawAIDubbingParameter(AbstractModel):
         r"""
         :param _TranslateConfig: <p>Translation configuration message.</p>
         :type TranslateConfig: :class:`tencentcloud.mps.v20190612.models.DubbingTranslateConfig`
-        :param _SubtitleConfig: <p>Subtitle configuration information.</p>
+        :param _SubtitleConfig: <p>Subtitle configuration message.</p>
         :type SubtitleConfig: :class:`tencentcloud.mps.v20190612.models.DubbingSubtitleConfig`
         :param _DubbingConfig: <p>Dubbing configuration message.</p>
         :type DubbingConfig: :class:`tencentcloud.mps.v20190612.models.DubbingConfig`
-        :param _OutputConfig: <p>Output configuration message.</p>
+        :param _OutputConfig: <p>Outputs configuration message.</p>
         :type OutputConfig: :class:`tencentcloud.mps.v20190612.models.DubbingOutputConfig`
         """
         self._TranslateConfig = None
@@ -57773,7 +59474,7 @@ class RawAIDubbingParameter(AbstractModel):
 
     @property
     def SubtitleConfig(self):
-        r"""<p>Subtitle configuration information.</p>
+        r"""<p>Subtitle configuration message.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.DubbingSubtitleConfig`
         """
         return self._SubtitleConfig
@@ -57795,7 +59496,7 @@ class RawAIDubbingParameter(AbstractModel):
 
     @property
     def OutputConfig(self):
-        r"""<p>Output configuration message.</p>
+        r"""<p>Outputs configuration message.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.DubbingOutputConfig`
         """
         return self._OutputConfig
@@ -57829,28 +59530,28 @@ class RawAIDubbingParameter(AbstractModel):
 
 
 class RawImageWatermarkInput(AbstractModel):
-    r"""Image watermark template input parameters.
+    r"""Input parameter of an image watermark template
 
     """
 
     def __init__(self):
         r"""
-        :param _ImageContent: Input content of the watermark image. jpeg and png image formats are supported.
+        :param _ImageContent: Input content of the watermark image. Supports jpeg and png image formats.
         :type ImageContent: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         :param _Width: Width of a watermark, supporting two formats: % and px.
 <li>If a string ends with %, it indicates that the `Width` of a watermark is a percentage of a video's width. For example, `10%` means that `Width` is 10% of a video's width.</li>
-<li>If a string ends with px, it means the watermark Width is in pixels. For example, 100px means the Width is 100 pixels.</li>
+<li>If a string ends with px, Width is in pixels. For example, 100px means Width is 100 pixels.</li>
 Default value: 10%.
         :type Width: str
-        :param _Height: Height of a watermark. Supports two formats: % and px.
+        :param _Height: Height of a watermark, supporting two formats: % and px.
 <li>If a string ends with %, it indicates that the `Height` of a watermark is a percentage of a video's height. For example, `10%` means that `Height` is 10% of a video's height.</li>
 <li>If a string ends with px, it means the watermark Height is in pixels. For example, 100px means the Height is 100 pixels.</li>
 Default value: 0px, which means Height is scaled according to the aspect ratio of the raw watermark image.
         :type Height: str
-        :param _RepeatType: Watermark repeat type. Usage scenario: the watermark is a dynamic image. Value range:
-<li>once: The dynamic watermark will no longer appear after it has finished playing;</li>
-<li>repeat_last_frame: Stay on the last frame after the watermark finished playing;</li>
-<li>repeat: Watermark loops until the video ends (default value).</li>
+        :param _RepeatType: Watermark repeat type. Usage scenario: The watermark is a dynamic image. Value range:
+<li>once: The dynamic watermark no longer appears after it is finished playing;</li>
+<li>repeat_last_frame: after the watermark finishes playing, stay on the last frame;</li>
+<li>repeat: watermark loops until the video ends (default value).</li>
         :type RepeatType: str
         """
         self._ImageContent = None
@@ -57860,7 +59561,7 @@ Default value: 0px, which means Height is scaled according to the aspect ratio o
 
     @property
     def ImageContent(self):
-        r"""Input content of the watermark image. jpeg and png image formats are supported.
+        r"""Input content of the watermark image. Supports jpeg and png image formats.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
         return self._ImageContent
@@ -57873,7 +59574,7 @@ Default value: 0px, which means Height is scaled according to the aspect ratio o
     def Width(self):
         r"""Width of a watermark, supporting two formats: % and px.
 <li>If a string ends with %, it indicates that the `Width` of a watermark is a percentage of a video's width. For example, `10%` means that `Width` is 10% of a video's width.</li>
-<li>If a string ends with px, it means the watermark Width is in pixels. For example, 100px means the Width is 100 pixels.</li>
+<li>If a string ends with px, Width is in pixels. For example, 100px means Width is 100 pixels.</li>
 Default value: 10%.
         :rtype: str
         """
@@ -57885,7 +59586,7 @@ Default value: 10%.
 
     @property
     def Height(self):
-        r"""Height of a watermark. Supports two formats: % and px.
+        r"""Height of a watermark, supporting two formats: % and px.
 <li>If a string ends with %, it indicates that the `Height` of a watermark is a percentage of a video's height. For example, `10%` means that `Height` is 10% of a video's height.</li>
 <li>If a string ends with px, it means the watermark Height is in pixels. For example, 100px means the Height is 100 pixels.</li>
 Default value: 0px, which means Height is scaled according to the aspect ratio of the raw watermark image.
@@ -57899,10 +59600,10 @@ Default value: 0px, which means Height is scaled according to the aspect ratio o
 
     @property
     def RepeatType(self):
-        r"""Watermark repeat type. Usage scenario: the watermark is a dynamic image. Value range:
-<li>once: The dynamic watermark will no longer appear after it has finished playing;</li>
-<li>repeat_last_frame: Stay on the last frame after the watermark finished playing;</li>
-<li>repeat: Watermark loops until the video ends (default value).</li>
+        r"""Watermark repeat type. Usage scenario: The watermark is a dynamic image. Value range:
+<li>once: The dynamic watermark no longer appears after it is finished playing;</li>
+<li>repeat_last_frame: after the watermark finishes playing, stay on the last frame;</li>
+<li>repeat: watermark loops until the video ends (default value).</li>
         :rtype: str
         """
         return self._RepeatType
@@ -57930,25 +59631,25 @@ Default value: 0px, which means Height is scaled according to the aspect ratio o
 
 
 class RawSmartEraseParameter(AbstractModel):
-    r"""
+    r"""Custom parameters for smart erasing.
 
     """
 
     def __init__(self):
         r"""
-        :param _EraseType: 
+        :param _EraseType: <p>Removal Type</p><ul><li>subtitle removal</li><li>watermark removal</li><li>privacy protection</li></ul>
         :type EraseType: str
-        :param _EraseSubtitleConfig: 
+        :param _EraseSubtitleConfig: <p>Subtitle erasing configuration;<br>This field is required when the value of EraseType is set to subtitle.</p>
         :type EraseSubtitleConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
-        :param _EraseWatermarkConfig: 
+        :param _EraseWatermarkConfig: <p>Watermark erasing configuration.<br>This field is required when the value of EraseType is set to watermark.</p>
         :type EraseWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
-        :param _ErasePrivacyConfig: 
+        :param _ErasePrivacyConfig: <p>Privacy protection configuration.<br>This field is required when the value of EraseType is privacy.</p>
         :type ErasePrivacyConfig: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
-        :param _SubtitleEmbedId: 
+        :param _SubtitleEmbedId: <p>id of the subtitle removal suppression template.</p>
         :type SubtitleEmbedId: int
-        :param _UseOriginalPos: 
+        :param _UseOriginalPos: <p>Suppression configuration, enabled by default, moves subtitles back to the original subtitle position.</p>
         :type UseOriginalPos: int
-        :param _UseOriginalSize: 
+        :param _UseOriginalSize: <p>Suppression configuration, enabled by default. When enabled, use the original subtitle font size.</p>
         :type UseOriginalSize: int
         """
         self._EraseType = None
@@ -57961,7 +59662,7 @@ class RawSmartEraseParameter(AbstractModel):
 
     @property
     def EraseType(self):
-        r"""
+        r"""<p>Removal Type</p><ul><li>subtitle removal</li><li>watermark removal</li><li>privacy protection</li></ul>
         :rtype: str
         """
         return self._EraseType
@@ -57972,7 +59673,7 @@ class RawSmartEraseParameter(AbstractModel):
 
     @property
     def EraseSubtitleConfig(self):
-        r"""
+        r"""<p>Subtitle erasing configuration;<br>This field is required when the value of EraseType is set to subtitle.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
         """
         return self._EraseSubtitleConfig
@@ -57983,7 +59684,7 @@ class RawSmartEraseParameter(AbstractModel):
 
     @property
     def EraseWatermarkConfig(self):
-        r"""
+        r"""<p>Watermark erasing configuration.<br>This field is required when the value of EraseType is set to watermark.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
         """
         return self._EraseWatermarkConfig
@@ -57994,7 +59695,7 @@ class RawSmartEraseParameter(AbstractModel):
 
     @property
     def ErasePrivacyConfig(self):
-        r"""
+        r"""<p>Privacy protection configuration.<br>This field is required when the value of EraseType is privacy.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
         """
         return self._ErasePrivacyConfig
@@ -58005,7 +59706,7 @@ class RawSmartEraseParameter(AbstractModel):
 
     @property
     def SubtitleEmbedId(self):
-        r"""
+        r"""<p>id of the subtitle removal suppression template.</p>
         :rtype: int
         """
         return self._SubtitleEmbedId
@@ -58016,7 +59717,7 @@ class RawSmartEraseParameter(AbstractModel):
 
     @property
     def UseOriginalPos(self):
-        r"""
+        r"""<p>Suppression configuration, enabled by default, moves subtitles back to the original subtitle position.</p>
         :rtype: int
         """
         return self._UseOriginalPos
@@ -58027,7 +59728,7 @@ class RawSmartEraseParameter(AbstractModel):
 
     @property
     def UseOriginalSize(self):
-        r"""
+        r"""<p>Suppression configuration, enabled by default. When enabled, use the original subtitle font size.</p>
         :rtype: int
         """
         return self._UseOriginalSize
@@ -58062,35 +59763,35 @@ class RawSmartEraseParameter(AbstractModel):
 
 
 class RawSmartSubtitleParameter(AbstractModel):
-    r"""
+    r"""Custom smart subtitle parameter.
 
     """
 
     def __init__(self):
         r"""
-        :param _SubtitleType: 
+        :param _SubtitleType: <p>Smart subtitle language type.<br>0: source language.<br>1: target language.<br>2: source language and target language.<br>Only 0 is supported when TranslateSwitch is OFF.<br>Only 1 or 2 is supported when TranslateSwitch is ON.</p>
         :type SubtitleType: int
-        :param _VideoSrcLanguage: 
+        :param _VideoSrcLanguage: <p>Smart subtitling video source language<br>OCR recognition supports the following languages:<br><code>zh_en</code>: Chinese-English<br><code>multi</code>: Other<br>ASR recognition and pure caption translation currently support the following languages:<br><code>auto</code>: Auto-identification<br><code>zh</code>: Simplified Chinese<br><code>en</code>: English<br><code>ja</code>: Japanese<br><code>ko</code>: Korean<br><code>zh-PY</code>: Chinese-English-Cantonese<br><code>zh_medical</code>: Chinese health care<br><code>vi</code>: Vietnamese<br><code>ms</code>: Malay<br><code>id</code>: Indonesian<br><code>fil</code>: Filipino<br><code>th</code>: Thai<br><code>pt</code>: Portuguese<br><code>tr</code>: Turkish<br><code>ar</code>: Arabic<br><code>es</code>: Spanish<br><code>hi</code>: Hindi<br><code>fr</code>: French<br><code>de</code>: German<br><code>it</code>: Italian<br><code>zh_dialect</code>: Chinese dialect<br><code>zh_en</code>: Chinese-English<br><code>yue</code>: Cantonese<br><code>ru</code>: Russian<br><code>prime_zh</code>: Chinese-English dialect<br><code>af-ZA</code>: Afrikaans (South Africa)<br><code>sq-AL</code>: Albanian (Albania)<br><code>am-ET</code>: Amharic (Ethiopia)<br><code>ar-DZ</code>: Arabic (Algeria)<br><code>ar-BH</code>: Arabic (Bahrain)<br><code>ar-EG</code>: Arabic (Egypt)<br><code>ar-IQ</code>: Arabic (Iraq)<br><code>ar-IL</code>: Arabic (Israel)<br><code>ar-JO</code>: Arabic (Jordan)<br><code>ar-KW</code>: Arabic (Kuwait)<br><code>ar-LB</code>: Arabic (Lebanon)<br><code>ar-MR</code>: Arabic (Mauritania)<br><code>ar-MA</code>: Arabic (Morocco)<br><code>ar-OM</code>: Arabic (Oman)<br><code>ar-QA</code>: Arabic (Qatar)<br><code>ar-SA</code>: Arabic (Saudi Arabia)<br><code>ar-PS</code>: Arabic (State of Palestine)<br><code>ar-SY</code>: Arabic (Syria)<br><code>ar-TN</code>: Arabic (Tunisia)<br><code>ar-AE</code>: Arabic (United Arab Emirates)<br><code>ar-YE</code>: Arabic (Yemen)<br><code>hy-AM</code>: Armenian (Armenia)<br><code>az-AZ</code>: Azerbaijani (Azerbaijan)<br><code>eu-ES</code>: Basque (Spain)<br><code>bn-BD</code>: Bengali (Bangladesh)<br><code>bn-IN</code>: Bengali (India)<br><code>bs-BA</code>: Bosnian (Bosnia and Herzegovina)<br><code>bg-BG</code>: Bulgarian (Bulgaria)<br><code>my-MM</code>: Burmese (Myanmar)<br><code>ca-ES</code>: Catalan (Spain)<br><code>hr-HR</code>: Croatian (Croatia)<br><code>cs-CZ</code>: Czech (Czech Republic)<br><code>da-DK</code>: Danish (Denmark)<br><code>nl-BE</code>: Dutch (Belgium)<br><code>nl-NL</code>: Dutch (Netherlands)<br><code>en-AU</code>: English (Australia)<br><code>en-CA</code>: English (Canada)<br><code>en-GH</code>: English (Ghana)<br><code>en-HK</code>: English (Hong Kong (China))<br><code>en-IN</code>: English (India)<br><code>en-IE</code>: English (Ireland)<br><code>en-KE</code>: English (Kenya)<br><code>en-NZ</code>: English (New Zealand)<br><code>en-NG</code>: English (Nigeria)<br><code>en-PK</code>: English (Pakistan)<br><code>en-PH</code>: English (Philippines)<br><code>en-SG</code>: English (Singapore)<br><code>en-ZA</code>: English (South Africa)<br><code>en-TZ</code>: English (Tanzania)<br><code>en-GB</code>: English (UK)<br><code>en-US</code>: English (United States)<br><code>et-EE</code>: Estonian (Estonia)<br><code>fil-PH</code>: Filipino (Philippines)<br><code>fi-FI</code>: Finnish (Finland)<br><code>fr-BE</code>: French (Belgium)<br><code>fr-CA</code>: French (Canada)<br><code>fr-FR</code>: French (France)<br><code>fr-CH</code>: French (Switzerland)<br><code>gl-ES</code>: Galician (Spain)<br><code>ka-GE</code>: Georgian (Georgia)<br><code>el-GR</code>: Greek (Greece)<br><code>gu-IN</code>: Gujarati (India)<br><code>iw-IL</code>: Hebrew (Israel)<br><code>hi-IN</code>: Hindi (India)<br><code>hu-HU</code>: Hungarian (Hungary)<br><code>is-IS</code>: Icelandic (Iceland)<br><code>id-ID</code>: Indonesian (Indonesia)<br><code>it-IT</code>: Italian (Italy)<br><code>it-CH</code>: Italian (Switzerland)<br><code>ja-JP</code>: Japanese (Japan)<br><code>jv-ID</code>: Javanese (Indonesia)<br><code>kn-IN</code>: Kannada (India)<br><code>kk-KZ</code>: Kazakh (Kazakhstan)<br><code>km-KH</code>: Khmer (Cambodia)<br><code>rw-RW</code>: Kinyarwanda (Rwanda)<br><code>ko-KR</code>: Korean (South Korea)<br><code>lo-LA</code>: Lao (Laos)<br><code>lv-LV</code>: Latvian (Latvia)<br><code>lt-LT</code>: Lithuanian (Lithuania)<br><code>mk-MK</code>: Macedonian (North Macedonia)<br><code>ms-MY</code>: Malay (Malaysia)<br><code>ml-IN</code>: Malayalam (India)<br><code>mr-IN</code>: Marathi (India)<br><code>mn-MN</code>: Mongolian (Mongolia)<br><code>ne-NP</code>: Nepali (Nepal)<br><code>no-NO</code>: Norwegian Bokmål (Norway)<br><code>fa-IR</code>: Persian (Iran)<br><code>pl-PL</code>: Polish (Poland)<br><code>pt-BR</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>ro-RO</code>: Romanian (Romania)<br><code>ru-RU</code>: Russian (Russia)<br><code>sr-RS</code>: Serbian (Serbia)<br><code>si-LK</code>: Sinhalese (Sri Lanka)<br><code>sk-SK</code>: Slovak (Slovakia)<br><code>sl-SI</code>: Slovenian (Slovenia)<br><code>st-ZA</code>: Southern Sotho (South Africa)<br><code>es-AR</code>: Spanish (Argentina)<br><code>es-BO</code>: Spanish (Bolivia)<br><code>es-CL</code>: Spanish (Chile)<br><code>es-CO</code>: Spanish (Colombia)<br><code>es-CR</code>: Spanish (Costa Rica)<br><code>es-DO</code>: Spanish (Dominican Republic)<br><code>es-EC</code>: Spanish (Ecuador)<br><code>es-SV</code>: Spanish (El Salvador)<br><code>es-GT</code>: Spanish (Guatemala)<br><code>es-HN</code>: Spanish (Honduras)<br><code>es-MX</code>: Spanish (Mexico)<br><code>es-NI</code>: Spanish (Nicaragua)<br><code>es-PA</code>: Spanish (Panama)<br><code>es-PY</code>: Spanish (Paraguay)<br><code>es-PE</code>: Spanish (Peru)<br><code>es-PR</code>: Spanish (Puerto Rico)<br><code>es-ES</code>: Spanish (Spain)<br><code>es-US</code>: Spanish (United States)<br><code>es-UY</code>: Spanish (Uruguay)<br><code>es-VE</code>: Spanish (Venezuela)<br><code>su-ID</code>: Sundanese (Indonesia)<br><code>sw-KE</code>: Swahili (Kenya)<br><code>sw-TZ</code>: Swahili (Tanzania)<br><code>sv-SE</code>: Swedish (Sweden)<br><code>ta-IN</code>: Tamil (India)<br><code>ta-MY</code>: Tamil (Malaysia)<br><code>ta-SG</code>: Tamil (Singapore)<br><code>ta-LK</code>: Tamil (Sri Lanka)<br><code>te-IN</code>: Telugu (India)<br><code>th-TH</code>: Thai (Thailand)<br><code>ts-ZA</code>: Tsonga (South Africa)<br><code>tr-TR</code>: Turkish (Türkiye)<br><code>uk-UA</code>: Ukrainian (Ukraine)<br><code>ur-IN</code>: Urdu (India)<br><code>ur-PK</code>: Urdu (Pakistan)<br><code>uz-UZ</code>: Uzbek (Uzbekistan)<br><code>ve-ZA</code>: Venda (South Africa)<code>vi-VN</code>: Vietnamese (Vietnam)<br><code>xh-ZA</code>: Xhosa (South Africa)<br><code>zu-ZA</code>: Zulu (South Africa)</p>
         :type VideoSrcLanguage: str
-        :param _SubtitleFormat: 
+        :param _SubtitleFormat: <p>Smart subtitle file format:</p><ul><li>For ASR recognition translation processing type:<ul><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li><li>Blank or fill in the blank: no subtitle file generated</li></ul></li><li>For pure caption translation processing type:<ul><li>original: consistent with the source file</li><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li></ul></li><li>For OCR recognition translation processing type:<ul><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li></ul></li></ul><p><strong>Note</strong>:</p><ul><li>For ASR recognition method, passing blank or unspecified is not allowed when translating at least 2 languages.</li><li>For pure caption translation and OCR recognition translation methods, passing blank or unspecified is not allowed.</li><li>For OCR type tasks, passing blank or unspecified is allowed when suppression is enabled.</li></ul>
         :type SubtitleFormat: str
-        :param _TranslateSwitch: 
+        :param _TranslateSwitch: <p>Subtitle translation switch<br><code>ON</code>: Enable translation<br><code>OFF</code>: Disable translation</p><p><strong>Note</strong>: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to <code>OFF</code>.</p>
         :type TranslateSwitch: str
-        :param _TranslateDstLanguage: 
+        :param _TranslateDstLanguage: <p>Subtitle target language<br>Take effect when TranslateSwitch is ON. Translation language list:<br><code>ab</code>: Abkhaz<br><code>ace</code>: Acehnese<br><code>ach</code>: Acholi<br><code>af</code>: Afrikaans<br><code>ak</code>: Akan<br><code>am</code>: Amharic<br><code>ar</code>: Arabic<br><code>as</code>: Assamese<br><code>ay</code>: Aymara<br><code>az</code>: Azerbaijani<br><code>ba</code>: Bashkir<br><code>ban</code>: Balinese<br><code>bbc</code>: Batak Toba<br><code>bem</code>: Bemba<br><code>bew</code>: Betawi<br><code>bg</code>: Bulgarian<br><code>bho</code>: Bhojpuri<br><code>bik</code>: Bikol<br><code>bm</code>: Bambara<br><code>bn</code>: Bengali<br><code>br</code>: Breton<br><code>bs</code>: Bosnian<br><code>btx</code>: Batak Karo<br><code>bts</code>: Batak Simalungun<br><code>bua</code>: Buryat<br><code>ca</code>: Catalan<br><code>ceb</code>: Cebuano<br><code>cgg</code>: Kiga<br><code>chm</code>: Meadow Mari<br><code>ckb</code>: Kurdish (Sorani)<br><code>cnh</code>: Hakha Chin<br><code>co</code>: Corsican<br><code>crh</code>: Crimean Tatar<br><code>crs</code>: Seychellois Creole<br><code>cs</code>: Czech<br><code>cv</code>: Chuvash<br><code>cy</code>: Welsh<br><code>da</code>: Danish<br><code>de</code>: German<br><code>din</code>: Dinka<br><code>doi</code>: Dogri<br><code>dov</code>: Dombe<br><code>dv</code>: Dhivehi<br><code>dz</code>: Dzongkha<br><code>ee</code>: Ewe<br><code>el</code>: Greek<br><code>en</code>: English<br><code>eo</code>: Esperanto<br><code>es</code>: Spanish<br><code>et</code>: Estonian<br><code>eu</code>: Basque<br><code>fa</code>: Persian<br><code>ff</code>: Fula<br><code>fi</code>: Finnish<br><code>fil</code>: Filipino (Tagalog)<br><code>fj</code>: Fijian<br><code>fr</code>: French<br><code>fr-CA</code>: French (Canada)<br><code>fr-FR</code>: French (France)<br><code>fy</code>: Frisian<br><code>ga</code>: Irish<br><code>gaa</code>: Ga Language<br><code>gd</code>: Scottish Gaelic<br><code>gl</code>: Galician<br><code>gn</code>: Guarani<br><code>gom</code>: Konkani<br><code>gu</code>: Gujarati<br><code>gv</code>: Manx<br><code>ha</code>: Hausa<br><code>haw</code>: Hawaiian<br><code>he</code>: Hebrew<br><code>hi</code>: Hindi<br><code>hil</code>: Hiligaynon<br><code>hmn</code>: Hmong<br><code>hr</code>: Croatian<br><code>hrx</code>: Hunsrik<br><code>ht</code>: Haitian Creole<br><code>hu</code>: Hungarian<br><code>hy</code>: Armenian<br><code>id</code>: Indonesian<br><code>ig</code>: Igbo<br><code>ilo</code>: Ilocano<br><code>is</code>: Icelandic<br><code>it</code>: Italian<br><code>iw</code>: Hebrew<br><code>ja</code>: Japanese<br><code>jv</code>: Javanese<br><code>ka</code>: Georgian<br><code>kk</code>: Kazakh<br><code>km</code>: Khmer<br><code>kn</code>: Kannada<br><code>ko</code>: Korean<br><code>kri</code>: Krio<br><code>ku</code>: Kurdish (Kurmanji)<br><code>ktu</code>: Kituba<br><code>ky</code>: Kyrgyz<br><code>la</code>: Latin<br><code>lb</code>: Luxembourgish<br><code>lg</code>: Ganda (Luganda)<br><code>li</code>: Limburgish<br><code>lij</code>: Ligurian<br><code>lmo</code>: Lombard<br><code>ln</code>: Lingala<br><code>lo</code>: Lao<br><code>lt</code>: Lithuanian<br><code>ltg</code>: Latgalian<br><code>luo</code>: Luo<br><code>lus</code>: Mizo<br><code>lv</code>: Latvian<br><code>mai</code>: Maithili<br><code>mak</code>: Makassar<br><code>mg</code>: Malagasy<br><code>mi</code>: Maori<br><code>min</code>: Minangkabau<br><code>mk</code>: Macedonian<br><code>ml</code>: Malayalam<br><code>mn</code>: Mongolian<br><code>mr</code>: Marathi<br><code>ms</code>: Malay<br><code>mt</code>: Maltese<br><code>my</code>: Burmese<br><code>ne</code>: Nepali<br><code>new</code>: Newari<br><code>nl</code>: Dutch<br><code>no</code>: Norwegian<br><code>nr</code>: Southern Ndebele<br><code>nso</code>: Northern Sotho (Sepedi)<br><code>nus</code>: Nuer<br><code>ny</code>: Chichewa (Nyanja)<br><code>oc</code>: Occitan<br><code>om</code>: Oromo<br><code>or</code>: Odia<br><code>pa</code>: Punjabi<br><code>pag</code>: Pangasinan<br><code>pam</code>: Kapampangan<br><code>pap</code>: Papiamento<br><code>pl</code>: Polish<br><code>ps</code>: Pashto<br><code>pt</code>: Portuguese<br><code>pt-BR</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>qu</code>: Quechua<br><code>ro</code>: Romanian<br><code>rom</code>: Romani<br><code>rn</code>: Rundi<br><code>ru</code>: Russian<br><code>rw</code>: Kinyarwanda<br><code>sa</code>: Sanskrit<br><code>scn</code>: Sicilian<br><code>sd</code>: Sindhi<br><code>sg</code>: Sango<br><code>shn</code>: Shan<br><code>si</code>: Sinhalese<br><code>sk</code>: Slovak<br><code>sl</code>: Slovenian<br><code>sm</code>: Samoan<br><code>sn</code>: Shona<br><code>so</code>: Somali<br><code>sq</code>: Albanian<br><code>sr</code>: Serbian<br><code>ss</code>: Swati<br><code>st</code>: Sesotho<br><code>su</code>: Sundanese<br><code>sv</code>: Swedish<br><code>sw</code>: Swahili<br><code>szl</code>: Silesian<br><code>ta</code>: Tamil<br><code>te</code>: Telugu<br><code>tet</code>: Tetum<br><code>tg</code>: Tajik<br><code>th</code>: Thai<br><code>ti</code>: Tigrinya<br><code>tk</code>: Turkmen<br><code>tn</code>: Tswana<br><code>tr</code>: Turkish<br><code>ts</code>: Tsonga<br><code>tt</code>: Tatar<br><code>ug</code>: Uyghur<br><code>uk</code>: Ukrainian<br><code>ur</code>: Urdu<br><code>uz</code>: Uzbek<br><code>vi</code>: Vietnamese<br><code>xh</code>: Xhosa<br><code>yi</code>: Yiddish<br><code>yo</code>: Yoruba<br><code>yua</code>: Yucatec Maya<br><code>yue</code>: Cantonese<br><code>zh</code>: Simplified Chinese<br><code>zh-TW</code>: Traditional Chinese<br><code>zu</code>: Zulu</p><p><strong>Note</strong>: Use the multilingual method. <code>/</code> to separate, such as <code>en/ja</code>, which indicates English and Japanese.</p>
         :type TranslateDstLanguage: str
-        :param _AsrHotWordsConfigure: 
+        :param _AsrHotWordsConfigure: <p>ASR hot word lexicon parameter</p>
         :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
-        :param _ExtInfo: 
+        :param _ExtInfo: <p>Custom parameter</p>
         :type ExtInfo: str
-        :param _ProcessType: 
+        :param _ProcessType: <p>Subtitle processing type:</p><ul><li>0: ASR recognition subtitle</li><li>1: Pure caption translation</li><li>2: OCR recognition subtitle</li></ul><p><strong>Note</strong>: The default type is ASR recognition subtitle if the field is unspecified.</p>
         :type ProcessType: int
-        :param _SelectingSubtitleAreasConfig: 
+        :param _SelectingSubtitleAreasConfig: <p>Area configurations for the subtitle OCR extraction box</p>
         :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
-        :param _SubtitleEmbedId: 
+        :param _SubtitleEmbedId: <p>Suppression Template id. Only allowed to fill in when ProcessType is 0 or 2 (task type is ASR or OCR).</p>
         :type SubtitleEmbedId: int
-        :param _SpeakerMode: 
+        :param _SpeakerMode: <p>Speaker identification mode. Valid values:<br>0: Speaker identification is disabled.<br>1: Speaker identification is enabled.<br>Default value: 0.</p>
         :type SpeakerMode: int
-        :param _SpeakerLabel: 
+        :param _SpeakerLabel: <p>Indicates whether to output the identified speaker to the subtitle file. Valid values:<br>0: The speaker is not output to the subtitle file.<br>1: The speaker is output to the VTT subtitle file.<br>Note: To use this parameter, the value of SpeakerMode cannot be 0.<br>Default value: 0.</p>
         :type SpeakerLabel: int
         """
         self._SubtitleType = None
@@ -58108,7 +59809,7 @@ class RawSmartSubtitleParameter(AbstractModel):
 
     @property
     def SubtitleType(self):
-        r"""
+        r"""<p>Smart subtitle language type.<br>0: source language.<br>1: target language.<br>2: source language and target language.<br>Only 0 is supported when TranslateSwitch is OFF.<br>Only 1 or 2 is supported when TranslateSwitch is ON.</p>
         :rtype: int
         """
         return self._SubtitleType
@@ -58119,7 +59820,7 @@ class RawSmartSubtitleParameter(AbstractModel):
 
     @property
     def VideoSrcLanguage(self):
-        r"""
+        r"""<p>Smart subtitling video source language<br>OCR recognition supports the following languages:<br><code>zh_en</code>: Chinese-English<br><code>multi</code>: Other<br>ASR recognition and pure caption translation currently support the following languages:<br><code>auto</code>: Auto-identification<br><code>zh</code>: Simplified Chinese<br><code>en</code>: English<br><code>ja</code>: Japanese<br><code>ko</code>: Korean<br><code>zh-PY</code>: Chinese-English-Cantonese<br><code>zh_medical</code>: Chinese health care<br><code>vi</code>: Vietnamese<br><code>ms</code>: Malay<br><code>id</code>: Indonesian<br><code>fil</code>: Filipino<br><code>th</code>: Thai<br><code>pt</code>: Portuguese<br><code>tr</code>: Turkish<br><code>ar</code>: Arabic<br><code>es</code>: Spanish<br><code>hi</code>: Hindi<br><code>fr</code>: French<br><code>de</code>: German<br><code>it</code>: Italian<br><code>zh_dialect</code>: Chinese dialect<br><code>zh_en</code>: Chinese-English<br><code>yue</code>: Cantonese<br><code>ru</code>: Russian<br><code>prime_zh</code>: Chinese-English dialect<br><code>af-ZA</code>: Afrikaans (South Africa)<br><code>sq-AL</code>: Albanian (Albania)<br><code>am-ET</code>: Amharic (Ethiopia)<br><code>ar-DZ</code>: Arabic (Algeria)<br><code>ar-BH</code>: Arabic (Bahrain)<br><code>ar-EG</code>: Arabic (Egypt)<br><code>ar-IQ</code>: Arabic (Iraq)<br><code>ar-IL</code>: Arabic (Israel)<br><code>ar-JO</code>: Arabic (Jordan)<br><code>ar-KW</code>: Arabic (Kuwait)<br><code>ar-LB</code>: Arabic (Lebanon)<br><code>ar-MR</code>: Arabic (Mauritania)<br><code>ar-MA</code>: Arabic (Morocco)<br><code>ar-OM</code>: Arabic (Oman)<br><code>ar-QA</code>: Arabic (Qatar)<br><code>ar-SA</code>: Arabic (Saudi Arabia)<br><code>ar-PS</code>: Arabic (State of Palestine)<br><code>ar-SY</code>: Arabic (Syria)<br><code>ar-TN</code>: Arabic (Tunisia)<br><code>ar-AE</code>: Arabic (United Arab Emirates)<br><code>ar-YE</code>: Arabic (Yemen)<br><code>hy-AM</code>: Armenian (Armenia)<br><code>az-AZ</code>: Azerbaijani (Azerbaijan)<br><code>eu-ES</code>: Basque (Spain)<br><code>bn-BD</code>: Bengali (Bangladesh)<br><code>bn-IN</code>: Bengali (India)<br><code>bs-BA</code>: Bosnian (Bosnia and Herzegovina)<br><code>bg-BG</code>: Bulgarian (Bulgaria)<br><code>my-MM</code>: Burmese (Myanmar)<br><code>ca-ES</code>: Catalan (Spain)<br><code>hr-HR</code>: Croatian (Croatia)<br><code>cs-CZ</code>: Czech (Czech Republic)<br><code>da-DK</code>: Danish (Denmark)<br><code>nl-BE</code>: Dutch (Belgium)<br><code>nl-NL</code>: Dutch (Netherlands)<br><code>en-AU</code>: English (Australia)<br><code>en-CA</code>: English (Canada)<br><code>en-GH</code>: English (Ghana)<br><code>en-HK</code>: English (Hong Kong (China))<br><code>en-IN</code>: English (India)<br><code>en-IE</code>: English (Ireland)<br><code>en-KE</code>: English (Kenya)<br><code>en-NZ</code>: English (New Zealand)<br><code>en-NG</code>: English (Nigeria)<br><code>en-PK</code>: English (Pakistan)<br><code>en-PH</code>: English (Philippines)<br><code>en-SG</code>: English (Singapore)<br><code>en-ZA</code>: English (South Africa)<br><code>en-TZ</code>: English (Tanzania)<br><code>en-GB</code>: English (UK)<br><code>en-US</code>: English (United States)<br><code>et-EE</code>: Estonian (Estonia)<br><code>fil-PH</code>: Filipino (Philippines)<br><code>fi-FI</code>: Finnish (Finland)<br><code>fr-BE</code>: French (Belgium)<br><code>fr-CA</code>: French (Canada)<br><code>fr-FR</code>: French (France)<br><code>fr-CH</code>: French (Switzerland)<br><code>gl-ES</code>: Galician (Spain)<br><code>ka-GE</code>: Georgian (Georgia)<br><code>el-GR</code>: Greek (Greece)<br><code>gu-IN</code>: Gujarati (India)<br><code>iw-IL</code>: Hebrew (Israel)<br><code>hi-IN</code>: Hindi (India)<br><code>hu-HU</code>: Hungarian (Hungary)<br><code>is-IS</code>: Icelandic (Iceland)<br><code>id-ID</code>: Indonesian (Indonesia)<br><code>it-IT</code>: Italian (Italy)<br><code>it-CH</code>: Italian (Switzerland)<br><code>ja-JP</code>: Japanese (Japan)<br><code>jv-ID</code>: Javanese (Indonesia)<br><code>kn-IN</code>: Kannada (India)<br><code>kk-KZ</code>: Kazakh (Kazakhstan)<br><code>km-KH</code>: Khmer (Cambodia)<br><code>rw-RW</code>: Kinyarwanda (Rwanda)<br><code>ko-KR</code>: Korean (South Korea)<br><code>lo-LA</code>: Lao (Laos)<br><code>lv-LV</code>: Latvian (Latvia)<br><code>lt-LT</code>: Lithuanian (Lithuania)<br><code>mk-MK</code>: Macedonian (North Macedonia)<br><code>ms-MY</code>: Malay (Malaysia)<br><code>ml-IN</code>: Malayalam (India)<br><code>mr-IN</code>: Marathi (India)<br><code>mn-MN</code>: Mongolian (Mongolia)<br><code>ne-NP</code>: Nepali (Nepal)<br><code>no-NO</code>: Norwegian Bokmål (Norway)<br><code>fa-IR</code>: Persian (Iran)<br><code>pl-PL</code>: Polish (Poland)<br><code>pt-BR</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>ro-RO</code>: Romanian (Romania)<br><code>ru-RU</code>: Russian (Russia)<br><code>sr-RS</code>: Serbian (Serbia)<br><code>si-LK</code>: Sinhalese (Sri Lanka)<br><code>sk-SK</code>: Slovak (Slovakia)<br><code>sl-SI</code>: Slovenian (Slovenia)<br><code>st-ZA</code>: Southern Sotho (South Africa)<br><code>es-AR</code>: Spanish (Argentina)<br><code>es-BO</code>: Spanish (Bolivia)<br><code>es-CL</code>: Spanish (Chile)<br><code>es-CO</code>: Spanish (Colombia)<br><code>es-CR</code>: Spanish (Costa Rica)<br><code>es-DO</code>: Spanish (Dominican Republic)<br><code>es-EC</code>: Spanish (Ecuador)<br><code>es-SV</code>: Spanish (El Salvador)<br><code>es-GT</code>: Spanish (Guatemala)<br><code>es-HN</code>: Spanish (Honduras)<br><code>es-MX</code>: Spanish (Mexico)<br><code>es-NI</code>: Spanish (Nicaragua)<br><code>es-PA</code>: Spanish (Panama)<br><code>es-PY</code>: Spanish (Paraguay)<br><code>es-PE</code>: Spanish (Peru)<br><code>es-PR</code>: Spanish (Puerto Rico)<br><code>es-ES</code>: Spanish (Spain)<br><code>es-US</code>: Spanish (United States)<br><code>es-UY</code>: Spanish (Uruguay)<br><code>es-VE</code>: Spanish (Venezuela)<br><code>su-ID</code>: Sundanese (Indonesia)<br><code>sw-KE</code>: Swahili (Kenya)<br><code>sw-TZ</code>: Swahili (Tanzania)<br><code>sv-SE</code>: Swedish (Sweden)<br><code>ta-IN</code>: Tamil (India)<br><code>ta-MY</code>: Tamil (Malaysia)<br><code>ta-SG</code>: Tamil (Singapore)<br><code>ta-LK</code>: Tamil (Sri Lanka)<br><code>te-IN</code>: Telugu (India)<br><code>th-TH</code>: Thai (Thailand)<br><code>ts-ZA</code>: Tsonga (South Africa)<br><code>tr-TR</code>: Turkish (Türkiye)<br><code>uk-UA</code>: Ukrainian (Ukraine)<br><code>ur-IN</code>: Urdu (India)<br><code>ur-PK</code>: Urdu (Pakistan)<br><code>uz-UZ</code>: Uzbek (Uzbekistan)<br><code>ve-ZA</code>: Venda (South Africa)<code>vi-VN</code>: Vietnamese (Vietnam)<br><code>xh-ZA</code>: Xhosa (South Africa)<br><code>zu-ZA</code>: Zulu (South Africa)</p>
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -58130,7 +59831,7 @@ class RawSmartSubtitleParameter(AbstractModel):
 
     @property
     def SubtitleFormat(self):
-        r"""
+        r"""<p>Smart subtitle file format:</p><ul><li>For ASR recognition translation processing type:<ul><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li><li>Blank or fill in the blank: no subtitle file generated</li></ul></li><li>For pure caption translation processing type:<ul><li>original: consistent with the source file</li><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li></ul></li><li>For OCR recognition translation processing type:<ul><li>vtt: WebVTT format subtitle</li><li>srt: SRT format subtitle</li></ul></li></ul><p><strong>Note</strong>:</p><ul><li>For ASR recognition method, passing blank or unspecified is not allowed when translating at least 2 languages.</li><li>For pure caption translation and OCR recognition translation methods, passing blank or unspecified is not allowed.</li><li>For OCR type tasks, passing blank or unspecified is allowed when suppression is enabled.</li></ul>
         :rtype: str
         """
         return self._SubtitleFormat
@@ -58141,7 +59842,7 @@ class RawSmartSubtitleParameter(AbstractModel):
 
     @property
     def TranslateSwitch(self):
-        r"""
+        r"""<p>Subtitle translation switch<br><code>ON</code>: Enable translation<br><code>OFF</code>: Disable translation</p><p><strong>Note</strong>: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to <code>OFF</code>.</p>
         :rtype: str
         """
         return self._TranslateSwitch
@@ -58152,7 +59853,7 @@ class RawSmartSubtitleParameter(AbstractModel):
 
     @property
     def TranslateDstLanguage(self):
-        r"""
+        r"""<p>Subtitle target language<br>Take effect when TranslateSwitch is ON. Translation language list:<br><code>ab</code>: Abkhaz<br><code>ace</code>: Acehnese<br><code>ach</code>: Acholi<br><code>af</code>: Afrikaans<br><code>ak</code>: Akan<br><code>am</code>: Amharic<br><code>ar</code>: Arabic<br><code>as</code>: Assamese<br><code>ay</code>: Aymara<br><code>az</code>: Azerbaijani<br><code>ba</code>: Bashkir<br><code>ban</code>: Balinese<br><code>bbc</code>: Batak Toba<br><code>bem</code>: Bemba<br><code>bew</code>: Betawi<br><code>bg</code>: Bulgarian<br><code>bho</code>: Bhojpuri<br><code>bik</code>: Bikol<br><code>bm</code>: Bambara<br><code>bn</code>: Bengali<br><code>br</code>: Breton<br><code>bs</code>: Bosnian<br><code>btx</code>: Batak Karo<br><code>bts</code>: Batak Simalungun<br><code>bua</code>: Buryat<br><code>ca</code>: Catalan<br><code>ceb</code>: Cebuano<br><code>cgg</code>: Kiga<br><code>chm</code>: Meadow Mari<br><code>ckb</code>: Kurdish (Sorani)<br><code>cnh</code>: Hakha Chin<br><code>co</code>: Corsican<br><code>crh</code>: Crimean Tatar<br><code>crs</code>: Seychellois Creole<br><code>cs</code>: Czech<br><code>cv</code>: Chuvash<br><code>cy</code>: Welsh<br><code>da</code>: Danish<br><code>de</code>: German<br><code>din</code>: Dinka<br><code>doi</code>: Dogri<br><code>dov</code>: Dombe<br><code>dv</code>: Dhivehi<br><code>dz</code>: Dzongkha<br><code>ee</code>: Ewe<br><code>el</code>: Greek<br><code>en</code>: English<br><code>eo</code>: Esperanto<br><code>es</code>: Spanish<br><code>et</code>: Estonian<br><code>eu</code>: Basque<br><code>fa</code>: Persian<br><code>ff</code>: Fula<br><code>fi</code>: Finnish<br><code>fil</code>: Filipino (Tagalog)<br><code>fj</code>: Fijian<br><code>fr</code>: French<br><code>fr-CA</code>: French (Canada)<br><code>fr-FR</code>: French (France)<br><code>fy</code>: Frisian<br><code>ga</code>: Irish<br><code>gaa</code>: Ga Language<br><code>gd</code>: Scottish Gaelic<br><code>gl</code>: Galician<br><code>gn</code>: Guarani<br><code>gom</code>: Konkani<br><code>gu</code>: Gujarati<br><code>gv</code>: Manx<br><code>ha</code>: Hausa<br><code>haw</code>: Hawaiian<br><code>he</code>: Hebrew<br><code>hi</code>: Hindi<br><code>hil</code>: Hiligaynon<br><code>hmn</code>: Hmong<br><code>hr</code>: Croatian<br><code>hrx</code>: Hunsrik<br><code>ht</code>: Haitian Creole<br><code>hu</code>: Hungarian<br><code>hy</code>: Armenian<br><code>id</code>: Indonesian<br><code>ig</code>: Igbo<br><code>ilo</code>: Ilocano<br><code>is</code>: Icelandic<br><code>it</code>: Italian<br><code>iw</code>: Hebrew<br><code>ja</code>: Japanese<br><code>jv</code>: Javanese<br><code>ka</code>: Georgian<br><code>kk</code>: Kazakh<br><code>km</code>: Khmer<br><code>kn</code>: Kannada<br><code>ko</code>: Korean<br><code>kri</code>: Krio<br><code>ku</code>: Kurdish (Kurmanji)<br><code>ktu</code>: Kituba<br><code>ky</code>: Kyrgyz<br><code>la</code>: Latin<br><code>lb</code>: Luxembourgish<br><code>lg</code>: Ganda (Luganda)<br><code>li</code>: Limburgish<br><code>lij</code>: Ligurian<br><code>lmo</code>: Lombard<br><code>ln</code>: Lingala<br><code>lo</code>: Lao<br><code>lt</code>: Lithuanian<br><code>ltg</code>: Latgalian<br><code>luo</code>: Luo<br><code>lus</code>: Mizo<br><code>lv</code>: Latvian<br><code>mai</code>: Maithili<br><code>mak</code>: Makassar<br><code>mg</code>: Malagasy<br><code>mi</code>: Maori<br><code>min</code>: Minangkabau<br><code>mk</code>: Macedonian<br><code>ml</code>: Malayalam<br><code>mn</code>: Mongolian<br><code>mr</code>: Marathi<br><code>ms</code>: Malay<br><code>mt</code>: Maltese<br><code>my</code>: Burmese<br><code>ne</code>: Nepali<br><code>new</code>: Newari<br><code>nl</code>: Dutch<br><code>no</code>: Norwegian<br><code>nr</code>: Southern Ndebele<br><code>nso</code>: Northern Sotho (Sepedi)<br><code>nus</code>: Nuer<br><code>ny</code>: Chichewa (Nyanja)<br><code>oc</code>: Occitan<br><code>om</code>: Oromo<br><code>or</code>: Odia<br><code>pa</code>: Punjabi<br><code>pag</code>: Pangasinan<br><code>pam</code>: Kapampangan<br><code>pap</code>: Papiamento<br><code>pl</code>: Polish<br><code>ps</code>: Pashto<br><code>pt</code>: Portuguese<br><code>pt-BR</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>qu</code>: Quechua<br><code>ro</code>: Romanian<br><code>rom</code>: Romani<br><code>rn</code>: Rundi<br><code>ru</code>: Russian<br><code>rw</code>: Kinyarwanda<br><code>sa</code>: Sanskrit<br><code>scn</code>: Sicilian<br><code>sd</code>: Sindhi<br><code>sg</code>: Sango<br><code>shn</code>: Shan<br><code>si</code>: Sinhalese<br><code>sk</code>: Slovak<br><code>sl</code>: Slovenian<br><code>sm</code>: Samoan<br><code>sn</code>: Shona<br><code>so</code>: Somali<br><code>sq</code>: Albanian<br><code>sr</code>: Serbian<br><code>ss</code>: Swati<br><code>st</code>: Sesotho<br><code>su</code>: Sundanese<br><code>sv</code>: Swedish<br><code>sw</code>: Swahili<br><code>szl</code>: Silesian<br><code>ta</code>: Tamil<br><code>te</code>: Telugu<br><code>tet</code>: Tetum<br><code>tg</code>: Tajik<br><code>th</code>: Thai<br><code>ti</code>: Tigrinya<br><code>tk</code>: Turkmen<br><code>tn</code>: Tswana<br><code>tr</code>: Turkish<br><code>ts</code>: Tsonga<br><code>tt</code>: Tatar<br><code>ug</code>: Uyghur<br><code>uk</code>: Ukrainian<br><code>ur</code>: Urdu<br><code>uz</code>: Uzbek<br><code>vi</code>: Vietnamese<br><code>xh</code>: Xhosa<br><code>yi</code>: Yiddish<br><code>yo</code>: Yoruba<br><code>yua</code>: Yucatec Maya<br><code>yue</code>: Cantonese<br><code>zh</code>: Simplified Chinese<br><code>zh-TW</code>: Traditional Chinese<br><code>zu</code>: Zulu</p><p><strong>Note</strong>: Use the multilingual method. <code>/</code> to separate, such as <code>en/ja</code>, which indicates English and Japanese.</p>
         :rtype: str
         """
         return self._TranslateDstLanguage
@@ -58163,7 +59864,7 @@ class RawSmartSubtitleParameter(AbstractModel):
 
     @property
     def AsrHotWordsConfigure(self):
-        r"""
+        r"""<p>ASR hot word lexicon parameter</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
         """
         return self._AsrHotWordsConfigure
@@ -58174,7 +59875,7 @@ class RawSmartSubtitleParameter(AbstractModel):
 
     @property
     def ExtInfo(self):
-        r"""
+        r"""<p>Custom parameter</p>
         :rtype: str
         """
         return self._ExtInfo
@@ -58185,7 +59886,7 @@ class RawSmartSubtitleParameter(AbstractModel):
 
     @property
     def ProcessType(self):
-        r"""
+        r"""<p>Subtitle processing type:</p><ul><li>0: ASR recognition subtitle</li><li>1: Pure caption translation</li><li>2: OCR recognition subtitle</li></ul><p><strong>Note</strong>: The default type is ASR recognition subtitle if the field is unspecified.</p>
         :rtype: int
         """
         return self._ProcessType
@@ -58196,7 +59897,7 @@ class RawSmartSubtitleParameter(AbstractModel):
 
     @property
     def SelectingSubtitleAreasConfig(self):
-        r"""
+        r"""<p>Area configurations for the subtitle OCR extraction box</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         """
         return self._SelectingSubtitleAreasConfig
@@ -58207,7 +59908,7 @@ class RawSmartSubtitleParameter(AbstractModel):
 
     @property
     def SubtitleEmbedId(self):
-        r"""
+        r"""<p>Suppression Template id. Only allowed to fill in when ProcessType is 0 or 2 (task type is ASR or OCR).</p>
         :rtype: int
         """
         return self._SubtitleEmbedId
@@ -58218,7 +59919,7 @@ class RawSmartSubtitleParameter(AbstractModel):
 
     @property
     def SpeakerMode(self):
-        r"""
+        r"""<p>Speaker identification mode. Valid values:<br>0: Speaker identification is disabled.<br>1: Speaker identification is enabled.<br>Default value: 0.</p>
         :rtype: int
         """
         return self._SpeakerMode
@@ -58229,7 +59930,7 @@ class RawSmartSubtitleParameter(AbstractModel):
 
     @property
     def SpeakerLabel(self):
-        r"""
+        r"""<p>Indicates whether to output the identified speaker to the subtitle file. Valid values:<br>0: The speaker is not output to the subtitle file.<br>1: The speaker is output to the VTT subtitle file.<br>Note: To use this parameter, the value of SpeakerMode cannot be 0.<br>Default value: 0.</p>
         :rtype: int
         """
         return self._SpeakerLabel
@@ -58267,7 +59968,7 @@ class RawSmartSubtitleParameter(AbstractModel):
 
 
 class RawTranscodeParameter(AbstractModel):
-    r"""Specification parameters of custom transcoding.
+    r"""Specification parameters for custom transcoding.
 
     """
 
@@ -58276,12 +59977,12 @@ class RawTranscodeParameter(AbstractModel):
         :param _Container: Muxing format. Available values: mp4, flv, hls, mp3, flac, ogg, and m4a. Among them, mp3, flac, ogg, and m4a are for audio-only files.
         :type Container: str
         :param _RemoveVideo: Indicates whether to remove video data. Parameter value:
-<li>`0`: retention;</li>
+<li>0: retention</li>
 <li>1: Remove.</li>
 Default value: 0.
         :type RemoveVideo: int
-        :param _RemoveAudio: Whether to remove audio data. Parameter Value:
-<li>`0`: retention;</li>
+        :param _RemoveAudio: Whether to remove audio data. Parameter value:
+<li>0: retention</li>
 <li>1: Remove.</li>
 Default value: 0.
         :type RemoveAudio: int
@@ -58289,13 +59990,13 @@ Default value: 0.
         :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
         :param _AudioTemplate: Audio stream configuration parameters. This field is required when RemoveAudio is 0.
         :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
-        :param _TEHDConfig: TSC transcoding parameters.
+        :param _TEHDConfig: Top Speed Codec transcoding parameters.
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
         :param _StdExtInfo: Additional parameter, which is a serialized JSON string.
         :type StdExtInfo: str
-        :param _EnhanceConfig: 
+        :param _EnhanceConfig: Audio/Video enhancement configuration.
         :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
-        :param _SubtitleTemplate: 
+        :param _SubtitleTemplate: Subtitle parameters.
         :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         """
         self._Container = None
@@ -58322,7 +60023,7 @@ Default value: 0.
     @property
     def RemoveVideo(self):
         r"""Indicates whether to remove video data. Parameter value:
-<li>`0`: retention;</li>
+<li>0: retention</li>
 <li>1: Remove.</li>
 Default value: 0.
         :rtype: int
@@ -58335,8 +60036,8 @@ Default value: 0.
 
     @property
     def RemoveAudio(self):
-        r"""Whether to remove audio data. Parameter Value:
-<li>`0`: retention;</li>
+        r"""Whether to remove audio data. Parameter value:
+<li>0: retention</li>
 <li>1: Remove.</li>
 Default value: 0.
         :rtype: int
@@ -58371,7 +60072,7 @@ Default value: 0.
 
     @property
     def TEHDConfig(self):
-        r"""TSC transcoding parameters.
+        r"""Top Speed Codec transcoding parameters.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
         """
         return self._TEHDConfig
@@ -58393,7 +60094,7 @@ Default value: 0.
 
     @property
     def EnhanceConfig(self):
-        r"""
+        r"""Audio/Video enhancement configuration.
         :rtype: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
         """
         return self._EnhanceConfig
@@ -58404,7 +60105,7 @@ Default value: 0.
 
     @property
     def SubtitleTemplate(self):
-        r"""
+        r"""Subtitle parameters.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         """
         return self._SubtitleTemplate
@@ -58457,11 +60158,11 @@ class RawWatermarkParameter(AbstractModel):
         :param _CoordinateOrigin: Origin position. Valid values:
 <li>TopLeft: indicates that the coordinate origin is at the top left corner of the video image and the watermark origin is at the top left corner of the image or text.</li>
 <li>TopRight: indicates that the coordinate origin is at the top right corner of the video image and the watermark origin is at the top right corner of the image or text.</li>
-<li>BottomLeft: indicates that the coordinate origin is at the bottom-left corner of the video image and the watermark origin is at the bottom-left corner of the image or text.</li>
+<li>BottomLeft: indicates that the coordinate origin is at the bottom left corner of the video image and the watermark origin is at the bottom left corner of the image or text.</li>
 <li>BottomRight: indicates that the coordinate origin is at the bottom right corner of the video image and the watermark origin is at the bottom right corner of the image or text.</li>
 Default value: TopLeft.
         :type CoordinateOrigin: str
-        :param _XPos: Horizontal position of the watermark origin from the origin of coordinates of the video image. Supports % and px formats.
+        :param _XPos: Horizontal position of the watermark origin relative to the origin of coordinates of the video image. Supports two formats: % and px.
 <li>If a string ends with %, it indicates that the `XPos` of a watermark is a specified percentage of a video's width. For example, `10%` means that `XPos` is 10% of a video's width.</li>
 <li>If a string ends with px, it means the watermark XPos is specified in pixels. For example, 100px means XPos is 100 pixels.</li>
 Default value: 0px.
@@ -58471,7 +60172,7 @@ Default value: 0px.
 <li>If a string ends with px, it means the watermark YPos is specified in pixels. For example, 100px means YPos is 100 pixels.</li>
 Default value: 0px.
         :type YPos: str
-        :param _ImageTemplate: Image watermark template. This field is required when Type is image, and invalid when Type is text.
+        :param _ImageTemplate: Image watermark template. This field is required when Type is image. This field is invalid when Type is text.
         :type ImageTemplate: :class:`tencentcloud.mps.v20190612.models.RawImageWatermarkInput`
         """
         self._Type = None
@@ -58497,7 +60198,7 @@ Default value: 0px.
         r"""Origin position. Valid values:
 <li>TopLeft: indicates that the coordinate origin is at the top left corner of the video image and the watermark origin is at the top left corner of the image or text.</li>
 <li>TopRight: indicates that the coordinate origin is at the top right corner of the video image and the watermark origin is at the top right corner of the image or text.</li>
-<li>BottomLeft: indicates that the coordinate origin is at the bottom-left corner of the video image and the watermark origin is at the bottom-left corner of the image or text.</li>
+<li>BottomLeft: indicates that the coordinate origin is at the bottom left corner of the video image and the watermark origin is at the bottom left corner of the image or text.</li>
 <li>BottomRight: indicates that the coordinate origin is at the bottom right corner of the video image and the watermark origin is at the bottom right corner of the image or text.</li>
 Default value: TopLeft.
         :rtype: str
@@ -58510,7 +60211,7 @@ Default value: TopLeft.
 
     @property
     def XPos(self):
-        r"""Horizontal position of the watermark origin from the origin of coordinates of the video image. Supports % and px formats.
+        r"""Horizontal position of the watermark origin relative to the origin of coordinates of the video image. Supports two formats: % and px.
 <li>If a string ends with %, it indicates that the `XPos` of a watermark is a specified percentage of a video's width. For example, `10%` means that `XPos` is 10% of a video's width.</li>
 <li>If a string ends with px, it means the watermark XPos is specified in pixels. For example, 100px means XPos is 100 pixels.</li>
 Default value: 0px.
@@ -58538,7 +60239,7 @@ Default value: 0px.
 
     @property
     def ImageTemplate(self):
-        r"""Image watermark template. This field is required when Type is image, and invalid when Type is text.
+        r"""Image watermark template. This field is required when Type is image. This field is invalid when Type is text.
         :rtype: :class:`tencentcloud.mps.v20190612.models.RawImageWatermarkInput`
         """
         return self._ImageTemplate
@@ -59288,15 +60989,15 @@ class ResetWorkflowResponse(AbstractModel):
 
 
 class RuleConditionItem(AbstractModel):
-    r"""
+    r"""Rule condition configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _Key: 
+        :param _Key: Key of the quality inspection item condition.
         :type Key: str
-        :param _Value: 
+        :param _Value: Value corresponding to the condition.
         :type Value: str
         """
         self._Key = None
@@ -59304,7 +61005,7 @@ class RuleConditionItem(AbstractModel):
 
     @property
     def Key(self):
-        r"""
+        r"""Key of the quality inspection item condition.
         :rtype: str
         """
         return self._Key
@@ -59315,7 +61016,7 @@ class RuleConditionItem(AbstractModel):
 
     @property
     def Value(self):
-        r"""
+        r"""Value corresponding to the condition.
         :rtype: str
         """
         return self._Value
@@ -59339,19 +61040,22 @@ class RuleConditionItem(AbstractModel):
 
 
 class Rules(AbstractModel):
-    r"""
+    r"""Task judgment conditions.
 
     """
 
     def __init__(self):
         r"""
-        :param _Id: 
+        :param _Id: Judgment condition id
         :type Id: str
-        :param _Conditions: 
+        :param _Conditions: Judgment condition configuration
         :type Conditions: list of RuleConditionItem
-        :param _Linker: 
+        :param _Linker: Logical operator for the list of conditions. Valid values:
+
+- &&: logical AND
+- ||: logical OR
         :type Linker: str
-        :param _RearDriveIndexs: 
+        :param _RearDriveIndexs: Indexes of the nodes to execute if the judgment conditions are met.
         :type RearDriveIndexs: list of int
         """
         self._Id = None
@@ -59361,7 +61065,7 @@ class Rules(AbstractModel):
 
     @property
     def Id(self):
-        r"""
+        r"""Judgment condition id
         :rtype: str
         """
         return self._Id
@@ -59372,7 +61076,7 @@ class Rules(AbstractModel):
 
     @property
     def Conditions(self):
-        r"""
+        r"""Judgment condition configuration
         :rtype: list of RuleConditionItem
         """
         return self._Conditions
@@ -59383,7 +61087,10 @@ class Rules(AbstractModel):
 
     @property
     def Linker(self):
-        r"""
+        r"""Logical operator for the list of conditions. Valid values:
+
+- &&: logical AND
+- ||: logical OR
         :rtype: str
         """
         return self._Linker
@@ -59394,7 +61101,7 @@ class Rules(AbstractModel):
 
     @property
     def RearDriveIndexs(self):
-        r"""
+        r"""Indexes of the nodes to execute if the judgment conditions are met.
         :rtype: list of int
         """
         return self._RearDriveIndexs
@@ -59431,15 +61138,18 @@ class S3InputInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _S3Bucket: S3 bucket。
+        :param _S3Bucket: S3 bucket.
         :type S3Bucket: str
-        :param _S3Region: 
+        :param _S3Region: Region of the S3 bucket. Currently supports:  
+us-east-1  
+eu-west-3
+
         :type S3Region: str
-        :param _S3Object: 
+        :param _S3Object: Media resource path in the S3 bucket.
         :type S3Object: str
-        :param _S3SecretId: 
+        :param _S3SecretId: AWS private network access key id for media content.
         :type S3SecretId: str
-        :param _S3SecretKey: 
+        :param _S3SecretKey: key for accessing media content over the AWS private network.
         :type S3SecretKey: str
         """
         self._S3Bucket = None
@@ -59450,7 +61160,7 @@ class S3InputInfo(AbstractModel):
 
     @property
     def S3Bucket(self):
-        r"""S3 bucket。
+        r"""S3 bucket.
         :rtype: str
         """
         return self._S3Bucket
@@ -59461,7 +61171,10 @@ class S3InputInfo(AbstractModel):
 
     @property
     def S3Region(self):
-        r"""
+        r"""Region of the S3 bucket. Currently supports:  
+us-east-1  
+eu-west-3
+
         :rtype: str
         """
         return self._S3Region
@@ -59472,7 +61185,7 @@ class S3InputInfo(AbstractModel):
 
     @property
     def S3Object(self):
-        r"""
+        r"""Media resource path in the S3 bucket.
         :rtype: str
         """
         return self._S3Object
@@ -59483,7 +61196,7 @@ class S3InputInfo(AbstractModel):
 
     @property
     def S3SecretId(self):
-        r"""
+        r"""AWS private network access key id for media content.
         :rtype: str
         """
         return self._S3SecretId
@@ -59494,7 +61207,7 @@ class S3InputInfo(AbstractModel):
 
     @property
     def S3SecretKey(self):
-        r"""
+        r"""key for accessing media content over the AWS private network.
         :rtype: str
         """
         return self._S3SecretKey
@@ -59527,13 +61240,13 @@ class S3OutputStorage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _S3Bucket: S3 bucket。
+        :param _S3Bucket: S3 bucket.
         :type S3Bucket: str
-        :param _S3Region: 
+        :param _S3Region: Region of the S3 bucket.
         :type S3Region: str
-        :param _S3SecretId: 
+        :param _S3SecretId: AWS private network upload key id for media content.
         :type S3SecretId: str
-        :param _S3SecretKey: 
+        :param _S3SecretKey: key for uploading media content over the AWS private network.
         :type S3SecretKey: str
         """
         self._S3Bucket = None
@@ -59543,7 +61256,7 @@ class S3OutputStorage(AbstractModel):
 
     @property
     def S3Bucket(self):
-        r"""S3 bucket。
+        r"""S3 bucket.
         :rtype: str
         """
         return self._S3Bucket
@@ -59554,7 +61267,7 @@ class S3OutputStorage(AbstractModel):
 
     @property
     def S3Region(self):
-        r"""
+        r"""Region of the S3 bucket.
         :rtype: str
         """
         return self._S3Region
@@ -59565,7 +61278,7 @@ class S3OutputStorage(AbstractModel):
 
     @property
     def S3SecretId(self):
-        r"""
+        r"""AWS private network upload key id for media content.
         :rtype: str
         """
         return self._S3SecretId
@@ -59576,7 +61289,7 @@ class S3OutputStorage(AbstractModel):
 
     @property
     def S3SecretKey(self):
-        r"""
+        r"""key for uploading media content over the AWS private network.
         :rtype: str
         """
         return self._S3SecretKey
@@ -59602,7 +61315,7 @@ class S3OutputStorage(AbstractModel):
 
 
 class SampleSnapshotTaskInput(AbstractModel):
-    r"""Sampled screenshot taking task input parameter type.
+    r"""Task input parameter type for sampling screenshot taking of a video.
 
     """
 
@@ -59612,11 +61325,11 @@ class SampleSnapshotTaskInput(AbstractModel):
         :type Definition: int
         :param _WatermarkSet: <p>Watermark list. Up to 10 image or text watermarks are supported.</p>
         :type WatermarkSet: list of WatermarkInput
-        :param _OutputStorage: 
+        :param _OutputStorage: <p>Target storage for the file after the sampled screenshot is taken. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputObjectPath: <p>Output path of the image file after the sampled screenshot is taken, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href="https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1">File Name Variable Description</a>.<br>Relative path example:</p><li>File name_{variable name}.{format}</li><li>File name.{format}</li>Absolute path example:<li>/custom path/file name_{variable name}.{format}</li>If this is not specified, the default relative path is <code>{inputName}_sampleSnapshot_{definition}_{number}.{format}</code>.
         :type OutputObjectPath: str
-        :param _ObjectNumberFormat: 
+        :param _ObjectNumberFormat: <p>Rule of the <code>{number}</code> variable in the output path after the sampled screenshot is taken.</p>
         :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
         :param _ExtInfo: <p>Extended parameter.</p>
         :type ExtInfo: str
@@ -59652,7 +61365,7 @@ class SampleSnapshotTaskInput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""
+        r"""<p>Target storage for the file after the sampled screenshot is taken. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -59674,7 +61387,7 @@ class SampleSnapshotTaskInput(AbstractModel):
 
     @property
     def ObjectNumberFormat(self):
-        r"""
+        r"""<p>Rule of the <code>{number}</code> variable in the output path after the sampled screenshot is taken.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
         """
         return self._ObjectNumberFormat
@@ -59978,7 +61691,7 @@ Default value: black.
 
 
 class ScheduleAnalysisTaskResult(AbstractModel):
-    r"""Orchestrate the task result type of video analysis
+    r"""Result type of the orchestration video analysis task
 
     """
 
@@ -59992,7 +61705,7 @@ class ScheduleAnalysisTaskResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Analyze the input of the task.
+        :param _Input: Input of the analysis task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
         :param _Output: Analysis task output.
         :type Output: list of AiAnalysisResult
@@ -60056,7 +61769,7 @@ class ScheduleAnalysisTaskResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Analyze the input of the task.
+        r"""Input of the analysis task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
         """
         return self._Input
@@ -60140,7 +61853,7 @@ class ScheduleExecRuleTaskResult(AbstractModel):
         :type Message: str
         :param _Input: Input of the conditional judgment task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.ExecRulesTask`
-        :param _Output: 
+        :param _Output: Output of the conditional judgment task.
         :type Output: :class:`tencentcloud.mps.v20190612.models.ExecRuleTaskData`
         """
         self._Status = None
@@ -60195,7 +61908,7 @@ class ScheduleExecRuleTaskResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output of the conditional judgment task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ExecRuleTaskData`
         """
         return self._Output
@@ -60242,7 +61955,7 @@ class ScheduleQualityControlTaskResult(AbstractModel):
         :type Message: str
         :param _Input: Media quality inspection task input.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
-        :param _Output: 
+        :param _Output: Output of a media quality inspection task.
         :type Output: :class:`tencentcloud.mps.v20190612.models.QualityControlData`
         :param _Progress: Task execution progress.
         :type Progress: int
@@ -60312,7 +62025,7 @@ class ScheduleQualityControlTaskResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output of a media quality inspection task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.QualityControlData`
         """
         return self._Output
@@ -60356,7 +62069,7 @@ class ScheduleQualityControlTaskResult(AbstractModel):
 
 
 class ScheduleRecognitionTaskResult(AbstractModel):
-    r"""Orchestrate the result type of a video recognition task
+    r"""Result type of the orchestration video recognition task
 
     """
 
@@ -60370,9 +62083,9 @@ class ScheduleRecognitionTaskResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Recognition task input.
+        :param _Input: Input of the recognition task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
-        :param _Output: Recognition task output.
+        :param _Output: Output of the identification task.
         :type Output: list of AiRecognitionResult
         :param _BeginProcessTime: Task execution start time in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type BeginProcessTime: str
@@ -60434,7 +62147,7 @@ class ScheduleRecognitionTaskResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Recognition task input.
+        r"""Input of the recognition task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
         """
         return self._Input
@@ -60445,7 +62158,7 @@ class ScheduleRecognitionTaskResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""Recognition task output.
+        r"""Output of the identification task.
         :rtype: list of AiRecognitionResult
         """
         return self._Output
@@ -60504,27 +62217,27 @@ class ScheduleRecognitionTaskResult(AbstractModel):
 
 
 class ScheduleReviewTaskResult(AbstractModel):
-    r"""Orchestrate the moderation job result type
+    r"""Type of the orchestration video moderation job result
 
     """
 
     def __init__(self):
         r"""
-        :param _Status: Task status. Valid values are PROCESSING, SUCCESS, and FAIL.
+        :param _Status: <p>Task status. Valid values are PROCESSING, SUCCESS, and FAIL.</p>
         :type Status: str
-        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param _ErrCodeExt: <p>Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of <a href="https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">MPS error codes</a>.</p>
         :type ErrCodeExt: str
-        :param _ErrCode: Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        :param _ErrCode: <p>Error code. 0 indicates success, and other values indicate failure. (This field is not recommended. Use the new error code field ErrCodeExt instead.)</p>
         :type ErrCode: int
-        :param _Message: Error message.
+        :param _Message: <p>Error message.</p>
         :type Message: str
-        :param _Input: Review task input.
+        :param _Input: <p>Input of the review task.</p>
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
-        :param _Output: 
+        :param _Output: <p>Output of the moderation task.</p>
         :type Output: list of AiContentReviewResult
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: <p>Starting time of task execution, in <a href="https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52">ISO date and time format</a>.</p>
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: <p>Task completion time, in <a href="https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52">ISO date and time format</a>.</p>
         :type FinishTime: str
         """
         self._Status = None
@@ -60538,7 +62251,7 @@ class ScheduleReviewTaskResult(AbstractModel):
 
     @property
     def Status(self):
-        r"""Task status. Valid values are PROCESSING, SUCCESS, and FAIL.
+        r"""<p>Task status. Valid values are PROCESSING, SUCCESS, and FAIL.</p>
         :rtype: str
         """
         return self._Status
@@ -60549,7 +62262,7 @@ class ScheduleReviewTaskResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
-        r"""Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        r"""<p>Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of <a href="https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">MPS error codes</a>.</p>
         :rtype: str
         """
         return self._ErrCodeExt
@@ -60560,7 +62273,7 @@ class ScheduleReviewTaskResult(AbstractModel):
 
     @property
     def ErrCode(self):
-        r"""Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        r"""<p>Error code. 0 indicates success, and other values indicate failure. (This field is not recommended. Use the new error code field ErrCodeExt instead.)</p>
         :rtype: int
         """
         return self._ErrCode
@@ -60571,7 +62284,7 @@ class ScheduleReviewTaskResult(AbstractModel):
 
     @property
     def Message(self):
-        r"""Error message.
+        r"""<p>Error message.</p>
         :rtype: str
         """
         return self._Message
@@ -60582,7 +62295,7 @@ class ScheduleReviewTaskResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Review task input.
+        r"""<p>Input of the review task.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
         """
         return self._Input
@@ -60593,7 +62306,7 @@ class ScheduleReviewTaskResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""<p>Output of the moderation task.</p>
         :rtype: list of AiContentReviewResult
         """
         return self._Output
@@ -60604,7 +62317,7 @@ class ScheduleReviewTaskResult(AbstractModel):
 
     @property
     def BeginProcessTime(self):
-        r"""
+        r"""<p>Starting time of task execution, in <a href="https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52">ISO date and time format</a>.</p>
         :rtype: str
         """
         return self._BeginProcessTime
@@ -60615,7 +62328,7 @@ class ScheduleReviewTaskResult(AbstractModel):
 
     @property
     def FinishTime(self):
-        r"""
+        r"""<p>Task completion time, in <a href="https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52">ISO date and time format</a>.</p>
         :rtype: str
         """
         return self._FinishTime
@@ -60666,9 +62379,9 @@ class ScheduleSmartSubtitleTaskResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Recognition task input.
+        :param _Input: Input of the recognition task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
-        :param _Output: Recognition task output.
+        :param _Output: Output of the identification task.
         :type Output: list of SmartSubtitlesResult
         :param _BeginProcessTime: Task execution start time in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type BeginProcessTime: str
@@ -60730,7 +62443,7 @@ class ScheduleSmartSubtitleTaskResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""Recognition task input.
+        r"""Input of the recognition task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
         """
         return self._Input
@@ -60741,7 +62454,7 @@ class ScheduleSmartSubtitleTaskResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""Recognition task output.
+        r"""Output of the identification task.
         :rtype: list of SmartSubtitlesResult
         """
         return self._Output
@@ -60800,7 +62513,7 @@ class ScheduleSmartSubtitleTaskResult(AbstractModel):
 
 
 class ScheduleTask(AbstractModel):
-    r"""Orchestration task info
+    r"""Orchestration task information
 
     """
 
@@ -60808,7 +62521,7 @@ class ScheduleTask(AbstractModel):
         r"""
         :param _TaskId: Orchestration task ID.
         :type TaskId: str
-        :param _Status: Task flow status. Valid values:
+        :param _Status: Task stream status. Valid values:
 <li>PROCESSING: Processing;</li>
 <li>FINISH: completed</li>
         :type Status: str
@@ -60816,11 +62529,11 @@ class ScheduleTask(AbstractModel):
         :type ErrCode: int
         :param _Message: The corresponding exception message is returned in case of a source exception. If no source exception occurs, use the message of each specific task.
         :type Message: str
-        :param _InputInfo: 
+        :param _InputInfo: Information about the target file for media processing.
         :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
-        :param _MetaData: 
+        :param _MetaData: Metadata of the original video.
         :type MetaData: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
-        :param _ActivityResultSet: 
+        :param _ActivityResultSet: Output of the orchestration task.
         :type ActivityResultSet: list of ActivityResult
         """
         self._TaskId = None
@@ -60844,7 +62557,7 @@ class ScheduleTask(AbstractModel):
 
     @property
     def Status(self):
-        r"""Task flow status. Valid values:
+        r"""Task stream status. Valid values:
 <li>PROCESSING: Processing;</li>
 <li>FINISH: completed</li>
         :rtype: str
@@ -60879,7 +62592,7 @@ class ScheduleTask(AbstractModel):
 
     @property
     def InputInfo(self):
-        r"""
+        r"""Information about the target file for media processing.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
         return self._InputInfo
@@ -60890,7 +62603,7 @@ class ScheduleTask(AbstractModel):
 
     @property
     def MetaData(self):
-        r"""
+        r"""Metadata of the original video.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
         """
         return self._MetaData
@@ -60901,7 +62614,7 @@ class ScheduleTask(AbstractModel):
 
     @property
     def ActivityResultSet(self):
-        r"""
+        r"""Output of the orchestration task.
         :rtype: list of ActivityResult
         """
         return self._ActivityResultSet
@@ -61181,18 +62894,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ScratchRepairConfig(AbstractModel):
-    r"""Remove scratch configuration
+    r"""Scratch removal configuration
 
     """
 
     def __init__(self):
         r"""
-        :param _Switch: Capability configuration switch. Valid values:
+        :param _Switch: Capability configuration switch. Available values:
 <li>ON: enabled</li>
-<li>OFF: disabled</li>
+<li>OFF: disabled.</li>
 Default value: ON.
         :type Switch: str
-        :param _Intensity: 
+        :param _Intensity: Strength. Value range: 0.0 to 1.0.
+Default: 0.0.
         :type Intensity: float
         """
         self._Switch = None
@@ -61200,9 +62914,9 @@ Default value: ON.
 
     @property
     def Switch(self):
-        r"""Capability configuration switch. Valid values:
+        r"""Capability configuration switch. Available values:
 <li>ON: enabled</li>
-<li>OFF: disabled</li>
+<li>OFF: disabled.</li>
 Default value: ON.
         :rtype: str
         """
@@ -61214,7 +62928,8 @@ Default value: ON.
 
     @property
     def Intensity(self):
-        r"""
+        r"""Strength. Value range: 0.0 to 1.0.
+Default: 0.0.
         :rtype: float
         """
         return self._Intensity
@@ -61353,7 +63068,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
 
 class SegmentRecognitionItem(AbstractModel):
-    r"""Intelligent video splitting recording clip.
+    r"""Intelligent splitting video clip.
 
     """
 
@@ -61361,13 +63076,13 @@ class SegmentRecognitionItem(AbstractModel):
         r"""
         :param _Confidence: Confidence degree.
         :type Confidence: float
-        :param _StartTimeOffset: Start time offset of a recording clip.
+        :param _StartTimeOffset: Start time offset of the segment.
         :type StartTimeOffset: float
-        :param _EndTimeOffset: End time offset of the recording clip.
+        :param _EndTimeOffset: Segment end time offset.
         :type EndTimeOffset: float
-        :param _SegmentUrl: Split segment URL.
+        :param _SegmentUrl: Segment URL.
         :type SegmentUrl: str
-        :param _CovImgUrl: Segment cover.
+        :param _CovImgUrl: Split clip cover.
         :type CovImgUrl: str
         :param _Title: Segment title.
         :type Title: str
@@ -61379,7 +63094,7 @@ class SegmentRecognitionItem(AbstractModel):
         :type BeginTime: str
         :param _EndTime: The end time of a live streaming segment, in the ISO date format.
         :type EndTime: str
-        :param _PersonId: Specify the figure ID.
+        :param _PersonId: Specify the person ID.
         :type PersonId: str
         """
         self._Confidence = None
@@ -61407,7 +63122,7 @@ class SegmentRecognitionItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
-        r"""Start time offset of a recording clip.
+        r"""Start time offset of the segment.
         :rtype: float
         """
         return self._StartTimeOffset
@@ -61418,7 +63133,7 @@ class SegmentRecognitionItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        r"""End time offset of the recording clip.
+        r"""Segment end time offset.
         :rtype: float
         """
         return self._EndTimeOffset
@@ -61429,7 +63144,7 @@ class SegmentRecognitionItem(AbstractModel):
 
     @property
     def SegmentUrl(self):
-        r"""Split segment URL.
+        r"""Segment URL.
         :rtype: str
         """
         return self._SegmentUrl
@@ -61440,7 +63155,7 @@ class SegmentRecognitionItem(AbstractModel):
 
     @property
     def CovImgUrl(self):
-        r"""Segment cover.
+        r"""Split clip cover.
         :rtype: str
         """
         return self._CovImgUrl
@@ -61506,7 +63221,7 @@ class SegmentRecognitionItem(AbstractModel):
 
     @property
     def PersonId(self):
-        r"""Specify the figure ID.
+        r"""Specify the person ID.
         :rtype: str
         """
         return self._PersonId
@@ -61545,11 +63260,14 @@ class SegmentSpecificInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: Switch for segment duration at startup. Optional values:
+on: enable
+off: Turn off the switch
+Default value: off
         :type Switch: str
-        :param _FragmentTime: 
+        :param _FragmentTime: Segment duration at startup. Unit: second
         :type FragmentTime: int
-        :param _FragmentEndNum: 
+        :param _FragmentEndNum: Number of effective segments, indicating the first FragmentEndNum segments with FragmentTime. Value range: >=1
         :type FragmentEndNum: int
         """
         self._Switch = None
@@ -61558,7 +63276,10 @@ class SegmentSpecificInfo(AbstractModel):
 
     @property
     def Switch(self):
-        r"""
+        r"""Switch for segment duration at startup. Optional values:
+on: enable
+off: Turn off the switch
+Default value: off
         :rtype: str
         """
         return self._Switch
@@ -61569,7 +63290,7 @@ class SegmentSpecificInfo(AbstractModel):
 
     @property
     def FragmentTime(self):
-        r"""
+        r"""Segment duration at startup. Unit: second
         :rtype: int
         """
         return self._FragmentTime
@@ -61580,7 +63301,7 @@ class SegmentSpecificInfo(AbstractModel):
 
     @property
     def FragmentEndNum(self):
-        r"""
+        r"""Number of effective segments, indicating the first FragmentEndNum segments with FragmentTime. Value range: >=1
         :rtype: int
         """
         return self._FragmentEndNum
@@ -61605,17 +63326,18 @@ class SegmentSpecificInfo(AbstractModel):
 
 
 class SelectingSubtitleAreasConfig(AbstractModel):
-    r"""
+    r"""Area configurations for the subtitle OCR extraction box.
 
     """
 
     def __init__(self):
         r"""
-        :param _AutoAreas: 
+        :param _AutoAreas: Automatically select a custom region.
+For the selected areas, the AI model is used to automatically detect and extract the target content.
         :type AutoAreas: list of EraseArea
-        :param _SampleWidth: 
+        :param _SampleWidth: Width of the sample video or image, in pixels.
         :type SampleWidth: int
-        :param _SampleHeight: 
+        :param _SampleHeight: Height of the sample video or image, in pixels.
         :type SampleHeight: int
         """
         self._AutoAreas = None
@@ -61624,7 +63346,8 @@ class SelectingSubtitleAreasConfig(AbstractModel):
 
     @property
     def AutoAreas(self):
-        r"""
+        r"""Automatically select a custom region.
+For the selected areas, the AI model is used to automatically detect and extract the target content.
         :rtype: list of EraseArea
         """
         return self._AutoAreas
@@ -61635,7 +63358,7 @@ class SelectingSubtitleAreasConfig(AbstractModel):
 
     @property
     def SampleWidth(self):
-        r"""
+        r"""Width of the sample video or image, in pixels.
         :rtype: int
         """
         return self._SampleWidth
@@ -61646,7 +63369,7 @@ class SelectingSubtitleAreasConfig(AbstractModel):
 
     @property
     def SampleHeight(self):
-        r"""
+        r"""Height of the sample video or image, in pixels.
         :rtype: int
         """
         return self._SampleHeight
@@ -61676,18 +63399,18 @@ class SelectingSubtitleAreasConfig(AbstractModel):
 
 
 class SharpEnhanceConfig(AbstractModel):
-    r"""Detail enhancement configuration.
+    r"""Detail enhancement configuration
 
     """
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable the feature. Valid values:
-<li>ON</li>
-<li>OFF</li>
+        :param _Switch: Capability configuration switch. Valid values:
+<li>ON: enabled;</li>
+<li>OFF: disabled</li>
 Default value: ON.
         :type Switch: str
-        :param _Intensity: Strength, value ranges from 0.0 to 1.0.
+        :param _Intensity: Strength. Value range: 0.0 to 1.0.
 Default: 0.0.
         :type Intensity: float
         """
@@ -61696,9 +63419,9 @@ Default: 0.0.
 
     @property
     def Switch(self):
-        r"""Whether to enable the feature. Valid values:
-<li>ON</li>
-<li>OFF</li>
+        r"""Capability configuration switch. Valid values:
+<li>ON: enabled;</li>
+<li>OFF: disabled</li>
 Default value: ON.
         :rtype: str
         """
@@ -61710,7 +63433,7 @@ Default value: ON.
 
     @property
     def Intensity(self):
-        r"""Strength, value ranges from 0.0 to 1.0.
+        r"""Strength. Value range: 0.0 to 1.0.
 Default: 0.0.
         :rtype: float
         """
@@ -61741,11 +63464,11 @@ class SimpleAesDrm(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Uri: 
+        :param _Uri: Request decryption key uri address.
         :type Uri: str
-        :param _Key: 
+        :param _Key: Encryption key (32-byte hexadecimal string).
         :type Key: str
-        :param _Vector: 
+        :param _Vector: Encryption initialization vector (32-byte hexadecimal string).
         :type Vector: str
         """
         self._Uri = None
@@ -61754,7 +63477,7 @@ class SimpleAesDrm(AbstractModel):
 
     @property
     def Uri(self):
-        r"""
+        r"""Request decryption key uri address.
         :rtype: str
         """
         return self._Uri
@@ -61765,7 +63488,7 @@ class SimpleAesDrm(AbstractModel):
 
     @property
     def Key(self):
-        r"""
+        r"""Encryption key (32-byte hexadecimal string).
         :rtype: str
         """
         return self._Key
@@ -61776,7 +63499,7 @@ class SimpleAesDrm(AbstractModel):
 
     @property
     def Vector(self):
-        r"""
+        r"""Encryption initialization vector (32-byte hexadecimal string).
         :rtype: str
         """
         return self._Vector
@@ -61801,15 +63524,19 @@ class SimpleAesDrm(AbstractModel):
 
 
 class SmartErasePrivacyConfig(AbstractModel):
-    r"""
+    r"""Privacy protection configuration for the smart erasing template.
 
     """
 
     def __init__(self):
         r"""
-        :param _PrivacyModel: 
+        :param _PrivacyModel: Erasing method of privacy protection.
+- Blur: blur.
+- mosaic
         :type PrivacyModel: str
-        :param _PrivacyTargets: 
+        :param _PrivacyTargets: Privacy protection target. (When API Explorer is used, it is not required to specify an array. Add the corresponding items and enter the corresponding values.)
+- face Human face
+- plate: license plate.
         :type PrivacyTargets: list of str
         """
         self._PrivacyModel = None
@@ -61817,7 +63544,9 @@ class SmartErasePrivacyConfig(AbstractModel):
 
     @property
     def PrivacyModel(self):
-        r"""
+        r"""Erasing method of privacy protection.
+- Blur: blur.
+- mosaic
         :rtype: str
         """
         return self._PrivacyModel
@@ -61828,7 +63557,9 @@ class SmartErasePrivacyConfig(AbstractModel):
 
     @property
     def PrivacyTargets(self):
-        r"""
+        r"""Privacy protection target. (When API Explorer is used, it is not required to specify an array. Add the corresponding items and enter the corresponding values.)
+- face Human face
+- plate: license plate.
         :rtype: list of str
         """
         return self._PrivacyTargets
@@ -61852,35 +63583,35 @@ class SmartErasePrivacyConfig(AbstractModel):
 
 
 class SmartEraseSubtitleConfig(AbstractModel):
-    r"""
+    r"""Subtitle removal configuration for the smart erasing template.
 
     """
 
     def __init__(self):
         r"""
-        :param _SubtitleEraseMethod: 
+        :param _SubtitleEraseMethod: <p>Subtitle erasure method.<br><strong>Automatic erasing:</strong> Video subtitles are automatically recognized using an AI model and are erased without traces to generate a new video. However, missed or incorrect erasing may occur due to image interference and special subtitle styles. In this case, you can specify the erasing area.<br>When using automatic erasing, if you do not specify AutoAreas, the default region (lower middle part of the frame) will be erased automatically. If AutoAreas is specified, the designated region will be erased instead.<br><strong>Specified area erasure:</strong> If your subtitle position is fixed, it is recommended to directly specify the erasure area to minimize missed erasures.<br>When choosing specified area erasure, please input at least one designated region in CustomAreas.</p><ul><li>auto: Automatic erasing</li><li>custom: Specified area erasure</li></ul>
         :type SubtitleEraseMethod: str
-        :param _SubtitleModel: 
+        :param _SubtitleModel: <p>Subtitle erasure model.<br><strong>Standard version (recommended):</strong> If your subtitles have a standard style, it is usually recommended to select this version for better effectiveness in seamless detail removal.<br><strong>Area edition:</strong> If the subtitles have special styles, such as calligraphy, shadow, or motion effects, you are recommended to select this edition to ensure a larger erasing area. However, the erasing effect in the details is not as good as the standard edition.</p><ul><li>standard Standard model</li><li>area Regional model</li></ul>
         :type SubtitleModel: str
-        :param _OcrSwitch: 
+        :param _OcrSwitch: <p>Whether OCR subtitle extraction is enabled. The default value is OFF.<br>OCR subtitle extraction is supported if and only if SubtitleEraseMethod is set to auto. When enabled, it identifies the text region that appears most persistently and stably within the automatic erasing area as the subtitle area. The text within the subtitle area is extracted and erased.</p><ul><li>ON Enable</li><li>OFF Disable</li></ul>
         :type OcrSwitch: str
-        :param _SubtitleLang: 
+        :param _SubtitleLang: <p>Subtitle language, used to guide OCR recognition, default value is zh_en. This parameter is valid only when OcrSwitch is "ON".</p><ul><li>zh_en Chinese and English</li><li>multi other<br>The following languages are supported for recognition:<br>Chinese, English, Japanese, Korean, Spanish, French, German, Portuguese, Vietnamese, Malay, Russian, Italian, Dutch, Swedish, Finnish, Danish, Norwegian, Hungarian, Thai, Hindi, Arabic, Bengali, Gujarati, Kannada, Malayalam, Tamil, Telugu, Slovenian, Polish, Catalan, Bosnia, Czech, Estonian, Croatian, Punjabi, Marathi, Azerbaijan, Indonesian, Luxembourg, Lithuanian, Latvian, Malta, Slovak, Turkish, Kazakh, Greek, Irish, Belarus, Khmer, Tagalog, Pashto, Persian, Tajikistan</li></ul>
         :type SubtitleLang: str
-        :param _SubtitleFormat: 
+        :param _SubtitleFormat: <p>Subtitle file format. Default value is vtt. This parameter is valid only when OcrSwitch takes value "ON".</p><ul><li>srt srt format</li><li>vtt WebVTT format</li><li>When SubtitleEmbedId is filled, it can take value empty string, which means no subtitle file is output.</li></ul>
         :type SubtitleFormat: str
-        :param _TransSwitch: 
+        :param _TransSwitch: <p>Whether to enable subtitle translation. The default value is OFF. This parameter is valid only when OcrSwitch is set to "ON".</p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul>
         :type TransSwitch: str
-        :param _TransDstLang: 
+        :param _TransDstLang: <p>The target language for subtitle translation defaults to en. This parameter is valid only when TransSwitch is set to "ON".<br>The following languages are currently supported:<br>zh: Simplified Chinese<br>en: English<br>ja: Japanese<br>ko: Korean<br>fr: French<br>es: Spanish<br>it: Italian<br>de: German<br>tr: Turkish<br>ru: Russian<br>pt: Portuguese<br>vi: Vietnamese<br>id: Indonesian<br>ms: Malay<br>th: Thai<br>ar: Arabic<br>hi: Hindi</p>
         :type TransDstLang: str
-        :param _AutoAreas: 
+        :param _AutoAreas: <p>Automatically erase custom regions.<br>For selected regions, use the AI model to automatically detect and erase existing targets.<br>Note: When the erase method is set to custom, this parameter will not take effect. To modify the template, input [] for region cleanup. If not provided, the template region information remains unchanged.</p>
         :type AutoAreas: list of EraseArea
-        :param _CustomAreas: 
+        :param _CustomAreas: <p>Designate the removal of custom regions.<br>For specified regions, directly perform erasure without detection and recognition within a selected time range.<br>Note: When modifying the template, import [] to clear regions. The template region information remains unchanged if not imported.</p>
         :type CustomAreas: list of EraseTimeArea
-        :param _SubtitleEmbedId: 
+        :param _SubtitleEmbedId: <p>Subtitle suppression template id. Only allowed to fill in when OCR translation is enabled.</p>
         :type SubtitleEmbedId: int
-        :param _UseOriginalPos: 
+        :param _UseOriginalPos: <p>Suppression configuration, enabled by default, compresses subtitles back to their original position. It can be filled only when OCR translation is turned on. A value of 0 indicates disabled suppression.</p>
         :type UseOriginalPos: int
-        :param _UseOriginalSize: 
+        :param _UseOriginalSize: <p>Suppression configuration, enabled by default. After being turned on, the original subtitle font size is used. It can only be filled when OCR translation is enabled. Setting it to 0 means non-use of the original font size.</p>
         :type UseOriginalSize: int
         """
         self._SubtitleEraseMethod = None
@@ -61898,7 +63629,7 @@ class SmartEraseSubtitleConfig(AbstractModel):
 
     @property
     def SubtitleEraseMethod(self):
-        r"""
+        r"""<p>Subtitle erasure method.<br><strong>Automatic erasing:</strong> Video subtitles are automatically recognized using an AI model and are erased without traces to generate a new video. However, missed or incorrect erasing may occur due to image interference and special subtitle styles. In this case, you can specify the erasing area.<br>When using automatic erasing, if you do not specify AutoAreas, the default region (lower middle part of the frame) will be erased automatically. If AutoAreas is specified, the designated region will be erased instead.<br><strong>Specified area erasure:</strong> If your subtitle position is fixed, it is recommended to directly specify the erasure area to minimize missed erasures.<br>When choosing specified area erasure, please input at least one designated region in CustomAreas.</p><ul><li>auto: Automatic erasing</li><li>custom: Specified area erasure</li></ul>
         :rtype: str
         """
         return self._SubtitleEraseMethod
@@ -61909,7 +63640,7 @@ class SmartEraseSubtitleConfig(AbstractModel):
 
     @property
     def SubtitleModel(self):
-        r"""
+        r"""<p>Subtitle erasure model.<br><strong>Standard version (recommended):</strong> If your subtitles have a standard style, it is usually recommended to select this version for better effectiveness in seamless detail removal.<br><strong>Area edition:</strong> If the subtitles have special styles, such as calligraphy, shadow, or motion effects, you are recommended to select this edition to ensure a larger erasing area. However, the erasing effect in the details is not as good as the standard edition.</p><ul><li>standard Standard model</li><li>area Regional model</li></ul>
         :rtype: str
         """
         return self._SubtitleModel
@@ -61920,7 +63651,7 @@ class SmartEraseSubtitleConfig(AbstractModel):
 
     @property
     def OcrSwitch(self):
-        r"""
+        r"""<p>Whether OCR subtitle extraction is enabled. The default value is OFF.<br>OCR subtitle extraction is supported if and only if SubtitleEraseMethod is set to auto. When enabled, it identifies the text region that appears most persistently and stably within the automatic erasing area as the subtitle area. The text within the subtitle area is extracted and erased.</p><ul><li>ON Enable</li><li>OFF Disable</li></ul>
         :rtype: str
         """
         return self._OcrSwitch
@@ -61931,7 +63662,7 @@ class SmartEraseSubtitleConfig(AbstractModel):
 
     @property
     def SubtitleLang(self):
-        r"""
+        r"""<p>Subtitle language, used to guide OCR recognition, default value is zh_en. This parameter is valid only when OcrSwitch is "ON".</p><ul><li>zh_en Chinese and English</li><li>multi other<br>The following languages are supported for recognition:<br>Chinese, English, Japanese, Korean, Spanish, French, German, Portuguese, Vietnamese, Malay, Russian, Italian, Dutch, Swedish, Finnish, Danish, Norwegian, Hungarian, Thai, Hindi, Arabic, Bengali, Gujarati, Kannada, Malayalam, Tamil, Telugu, Slovenian, Polish, Catalan, Bosnia, Czech, Estonian, Croatian, Punjabi, Marathi, Azerbaijan, Indonesian, Luxembourg, Lithuanian, Latvian, Malta, Slovak, Turkish, Kazakh, Greek, Irish, Belarus, Khmer, Tagalog, Pashto, Persian, Tajikistan</li></ul>
         :rtype: str
         """
         return self._SubtitleLang
@@ -61942,7 +63673,7 @@ class SmartEraseSubtitleConfig(AbstractModel):
 
     @property
     def SubtitleFormat(self):
-        r"""
+        r"""<p>Subtitle file format. Default value is vtt. This parameter is valid only when OcrSwitch takes value "ON".</p><ul><li>srt srt format</li><li>vtt WebVTT format</li><li>When SubtitleEmbedId is filled, it can take value empty string, which means no subtitle file is output.</li></ul>
         :rtype: str
         """
         return self._SubtitleFormat
@@ -61953,7 +63684,7 @@ class SmartEraseSubtitleConfig(AbstractModel):
 
     @property
     def TransSwitch(self):
-        r"""
+        r"""<p>Whether to enable subtitle translation. The default value is OFF. This parameter is valid only when OcrSwitch is set to "ON".</p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul>
         :rtype: str
         """
         return self._TransSwitch
@@ -61964,7 +63695,7 @@ class SmartEraseSubtitleConfig(AbstractModel):
 
     @property
     def TransDstLang(self):
-        r"""
+        r"""<p>The target language for subtitle translation defaults to en. This parameter is valid only when TransSwitch is set to "ON".<br>The following languages are currently supported:<br>zh: Simplified Chinese<br>en: English<br>ja: Japanese<br>ko: Korean<br>fr: French<br>es: Spanish<br>it: Italian<br>de: German<br>tr: Turkish<br>ru: Russian<br>pt: Portuguese<br>vi: Vietnamese<br>id: Indonesian<br>ms: Malay<br>th: Thai<br>ar: Arabic<br>hi: Hindi</p>
         :rtype: str
         """
         return self._TransDstLang
@@ -61975,7 +63706,7 @@ class SmartEraseSubtitleConfig(AbstractModel):
 
     @property
     def AutoAreas(self):
-        r"""
+        r"""<p>Automatically erase custom regions.<br>For selected regions, use the AI model to automatically detect and erase existing targets.<br>Note: When the erase method is set to custom, this parameter will not take effect. To modify the template, input [] for region cleanup. If not provided, the template region information remains unchanged.</p>
         :rtype: list of EraseArea
         """
         return self._AutoAreas
@@ -61986,7 +63717,7 @@ class SmartEraseSubtitleConfig(AbstractModel):
 
     @property
     def CustomAreas(self):
-        r"""
+        r"""<p>Designate the removal of custom regions.<br>For specified regions, directly perform erasure without detection and recognition within a selected time range.<br>Note: When modifying the template, import [] to clear regions. The template region information remains unchanged if not imported.</p>
         :rtype: list of EraseTimeArea
         """
         return self._CustomAreas
@@ -61997,7 +63728,7 @@ class SmartEraseSubtitleConfig(AbstractModel):
 
     @property
     def SubtitleEmbedId(self):
-        r"""
+        r"""<p>Subtitle suppression template id. Only allowed to fill in when OCR translation is enabled.</p>
         :rtype: int
         """
         return self._SubtitleEmbedId
@@ -62008,7 +63739,7 @@ class SmartEraseSubtitleConfig(AbstractModel):
 
     @property
     def UseOriginalPos(self):
-        r"""
+        r"""<p>Suppression configuration, enabled by default, compresses subtitles back to their original position. It can be filled only when OCR translation is turned on. A value of 0 indicates disabled suppression.</p>
         :rtype: int
         """
         return self._UseOriginalPos
@@ -62019,7 +63750,7 @@ class SmartEraseSubtitleConfig(AbstractModel):
 
     @property
     def UseOriginalSize(self):
-        r"""
+        r"""<p>Suppression configuration, enabled by default. After being turned on, the original subtitle font size is used. It can only be filled when OCR translation is enabled. Setting it to 0 means non-use of the original font size.</p>
         :rtype: int
         """
         return self._UseOriginalSize
@@ -62063,21 +63794,29 @@ class SmartEraseSubtitleConfig(AbstractModel):
 
 
 class SmartEraseTaskInput(AbstractModel):
-    r"""
+    r"""Intelligent erasure task
 
     """
 
     def __init__(self):
         r"""
-        :param _Definition: 
+        :param _Definition: Smart erasing template id.
         :type Definition: int
-        :param _RawParameter: 
+        :param _RawParameter: Custom parameter for smart erasing. Valid when Definition is set to 0. This parameter is used for highly customized scenarios. We recommend you prioritize using Definition to specify smart erasing parameters.
         :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawSmartEraseParameter`
-        :param _OverrideParameter: 
+        :param _OverrideParameter: Custom parameters for smart erasing. When the value of Definition is not 0, this parameter is valid. When certain erasing parameters in this structure are specified, the specified parameters will be used to overwrite those in the smart erasing template. This parameter is used in highly customized scenarios. It is recommended to use only Definition to specify smart erasing parameters.
         :type OverrideParameter: :class:`tencentcloud.mps.v20190612.models.OverrideEraseParameter`
-        :param _OutputStorage: 
+        :param _OutputStorage: Target storage for files. If left blank, it inherits the upper-level OutputStorage value.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OutputObjectPath: 
+        :param _OutputObjectPath: Output path of the file, which can be a relative or absolute path.
+To define the output path, it must end with `.{format}`. For variable names, please refer to [Filename Variable Explanation](https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1).
+Relative path example:
+<li>Filename_{Variable name}.{format}.</li>
+<li>Filename.{format}.</li>
+Absolute path example:
+<li>/Custom path/Filename_{Variable name}.{format}</li>
+
+**Note**: The `BatchProcessMedia` API is currently not supported.
         :type OutputObjectPath: str
         """
         self._Definition = None
@@ -62088,7 +63827,7 @@ class SmartEraseTaskInput(AbstractModel):
 
     @property
     def Definition(self):
-        r"""
+        r"""Smart erasing template id.
         :rtype: int
         """
         return self._Definition
@@ -62099,7 +63838,7 @@ class SmartEraseTaskInput(AbstractModel):
 
     @property
     def RawParameter(self):
-        r"""
+        r"""Custom parameter for smart erasing. Valid when Definition is set to 0. This parameter is used for highly customized scenarios. We recommend you prioritize using Definition to specify smart erasing parameters.
         :rtype: :class:`tencentcloud.mps.v20190612.models.RawSmartEraseParameter`
         """
         return self._RawParameter
@@ -62110,7 +63849,7 @@ class SmartEraseTaskInput(AbstractModel):
 
     @property
     def OverrideParameter(self):
-        r"""
+        r"""Custom parameters for smart erasing. When the value of Definition is not 0, this parameter is valid. When certain erasing parameters in this structure are specified, the specified parameters will be used to overwrite those in the smart erasing template. This parameter is used in highly customized scenarios. It is recommended to use only Definition to specify smart erasing parameters.
         :rtype: :class:`tencentcloud.mps.v20190612.models.OverrideEraseParameter`
         """
         return self._OverrideParameter
@@ -62121,7 +63860,7 @@ class SmartEraseTaskInput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""
+        r"""Target storage for files. If left blank, it inherits the upper-level OutputStorage value.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -62132,7 +63871,15 @@ class SmartEraseTaskInput(AbstractModel):
 
     @property
     def OutputObjectPath(self):
-        r"""
+        r"""Output path of the file, which can be a relative or absolute path.
+To define the output path, it must end with `.{format}`. For variable names, please refer to [Filename Variable Explanation](https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1).
+Relative path example:
+<li>Filename_{Variable name}.{format}.</li>
+<li>Filename.{format}.</li>
+Absolute path example:
+<li>/Custom path/Filename_{Variable name}.{format}</li>
+
+**Note**: The `BatchProcessMedia` API is currently not supported.
         :rtype: str
         """
         return self._OutputObjectPath
@@ -62165,7 +63912,7 @@ class SmartEraseTaskInput(AbstractModel):
 
 
 class SmartEraseTaskResult(AbstractModel):
-    r"""Intelligent erasure task result
+    r"""Intelligent erasure task result.
 
     """
 
@@ -62177,9 +63924,9 @@ class SmartEraseTaskResult(AbstractModel):
         :type ErrCodeExt: str
         :param _Message: Error message.
         :type Message: str
-        :param _Input: 
+        :param _Input: Intelligent removal input.
         :type Input: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskInput`
-        :param _Output: 
+        :param _Output: Output of the intelligent erasure task.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoOutput`
         :param _Progress: Task progress.	
         :type Progress: int
@@ -62232,7 +63979,7 @@ class SmartEraseTaskResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""
+        r"""Intelligent removal input.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskInput`
         """
         return self._Input
@@ -62243,7 +63990,7 @@ class SmartEraseTaskResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output of the intelligent erasure task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoOutput`
         """
         return self._Output
@@ -62518,19 +64265,34 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SmartEraseWatermarkConfig(AbstractModel):
-    r"""
+    r"""Watermark removal configuration for the smart erasing template.
 
     """
 
     def __init__(self):
         r"""
-        :param _WatermarkEraseMethod: 
+        :param _WatermarkEraseMethod: Watermark erasing method.
+**Automatic erasing: ** Video watermarks are automatically recognized using an AI model and are erased to generate a new video. It applies to dynamic watermarks.
+When automatic erasing is used, if AutoAreas is not specified, the full-screen video image area will be erased automatically. If AutoAreas is specified, the specified area will be erased automatically.
+**Specified area erasure:** For static watermarks in fixed positions, we recommend you directly specify the erasure area.
+When you choose specified area erasure, import at least one specified region.
+
+- auto: automatic erasing.
+- custom: specified area erasing.
         :type WatermarkEraseMethod: str
-        :param _WatermarkModel: 
+        :param _WatermarkModel: Watermark erasing model.
+Basic Edition: provide average effects and high cost performance. It applies to animations or videos with clean backgrounds.
+Advanced Edition: provide better effects. It applies to reality-style videos, such as short dramas.
+- basic: Basic Edition.
+- advanced: Advanced Edition.
         :type WatermarkModel: str
-        :param _AutoAreas: 
+        :param _AutoAreas: Custom area for automatic erasing.
+For the specified area, AI models are used to automatically detect and erase the target objects.
+Note: When the erasing method is set to custom, this parameter is invalid. When a template is modified, input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.
         :type AutoAreas: list of EraseArea
-        :param _CustomAreas: 
+        :param _CustomAreas: Specify a custom region for erasure.
+For the specified area, erase the target objects directly without detection and recognition within a selected time period.
+Note: When a template is modified, input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.
         :type CustomAreas: list of EraseTimeArea
         """
         self._WatermarkEraseMethod = None
@@ -62540,7 +64302,14 @@ class SmartEraseWatermarkConfig(AbstractModel):
 
     @property
     def WatermarkEraseMethod(self):
-        r"""
+        r"""Watermark erasing method.
+**Automatic erasing: ** Video watermarks are automatically recognized using an AI model and are erased to generate a new video. It applies to dynamic watermarks.
+When automatic erasing is used, if AutoAreas is not specified, the full-screen video image area will be erased automatically. If AutoAreas is specified, the specified area will be erased automatically.
+**Specified area erasure:** For static watermarks in fixed positions, we recommend you directly specify the erasure area.
+When you choose specified area erasure, import at least one specified region.
+
+- auto: automatic erasing.
+- custom: specified area erasing.
         :rtype: str
         """
         return self._WatermarkEraseMethod
@@ -62551,7 +64320,11 @@ class SmartEraseWatermarkConfig(AbstractModel):
 
     @property
     def WatermarkModel(self):
-        r"""
+        r"""Watermark erasing model.
+Basic Edition: provide average effects and high cost performance. It applies to animations or videos with clean backgrounds.
+Advanced Edition: provide better effects. It applies to reality-style videos, such as short dramas.
+- basic: Basic Edition.
+- advanced: Advanced Edition.
         :rtype: str
         """
         return self._WatermarkModel
@@ -62562,7 +64335,9 @@ class SmartEraseWatermarkConfig(AbstractModel):
 
     @property
     def AutoAreas(self):
-        r"""
+        r"""Custom area for automatic erasing.
+For the specified area, AI models are used to automatically detect and erase the target objects.
+Note: When the erasing method is set to custom, this parameter is invalid. When a template is modified, input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.
         :rtype: list of EraseArea
         """
         return self._AutoAreas
@@ -62573,7 +64348,9 @@ class SmartEraseWatermarkConfig(AbstractModel):
 
     @property
     def CustomAreas(self):
-        r"""
+        r"""Specify a custom region for erasure.
+For the specified area, erase the target objects directly without detection and recognition within a selected time period.
+Note: When a template is modified, input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.
         :rtype: list of EraseTimeArea
         """
         return self._CustomAreas
@@ -62623,11 +64400,11 @@ class SmartSubtitleTaskAsrFullTextResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: 
+        :param _Input: Input information on the full speech recognition task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
-        :param _Output: 
+        :param _Output: Output information on the full speech recognition task.
         :type Output: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskAsrFullTextResultOutput`
-        :param _Progress: 
+        :param _Progress: Task progress.
         :type Progress: int
         """
         self._Status = None
@@ -62684,7 +64461,7 @@ class SmartSubtitleTaskAsrFullTextResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""
+        r"""Input information on the full speech recognition task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
         """
         return self._Input
@@ -62695,7 +64472,7 @@ class SmartSubtitleTaskAsrFullTextResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output information on the full speech recognition task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskAsrFullTextResultOutput`
         """
         return self._Output
@@ -62706,7 +64483,7 @@ class SmartSubtitleTaskAsrFullTextResult(AbstractModel):
 
     @property
     def Progress(self):
-        r"""
+        r"""Task progress.
         :rtype: int
         """
         return self._Progress
@@ -62745,7 +64522,7 @@ class SmartSubtitleTaskAsrFullTextResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SegmentSet: 
+        :param _SegmentSet: <p>List of segments for full speech recognition.</p>
         :type SegmentSet: list of SmartSubtitleTaskAsrFullTextSegmentItem
         :param _Path: <p>Subtitle file path</p>
         :type Path: str
@@ -62764,7 +64541,7 @@ class SmartSubtitleTaskAsrFullTextResultOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
-        r"""
+        r"""<p>List of segments for full speech recognition.</p>
         :rtype: list of SmartSubtitleTaskAsrFullTextSegmentItem
         """
         return self._SegmentSet
@@ -62858,7 +64635,7 @@ class SmartSubtitleTaskAsrFullTextSegmentItem(AbstractModel):
         :type EndTimeOffset: float
         :param _Text: <p>Recognized text.</p>
         :type Text: str
-        :param _Wordlist: 
+        :param _Wordlist: <p>Word timestamp information.</p>
         :type Wordlist: list of WordResult
         :param _SpeakerId: <p>Speaker ID (if speaker recognition is enabled).</p>
         :type SpeakerId: str
@@ -62916,7 +64693,7 @@ class SmartSubtitleTaskAsrFullTextSegmentItem(AbstractModel):
 
     @property
     def Wordlist(self):
-        r"""
+        r"""<p>Word timestamp information.</p>
         :rtype: list of WordResult
         """
         return self._Wordlist
@@ -62974,9 +64751,9 @@ class SmartSubtitleTaskBatchOutput(AbstractModel):
         :type ErrCodeExt: str
         :param _Message: <p>Error message.</p>
         :type Message: str
-        :param _TransTextTask: 
+        :param _TransTextTask: <p>Translation task output information.</p>
         :type TransTextTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResultOutput`
-        :param _AsrFullTextTask: 
+        :param _AsrFullTextTask: <p>Full speech recognition task output information.</p>
         :type AsrFullTextTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskAsrFullTextResultOutput`
         """
         self._Progress = None
@@ -63032,7 +64809,7 @@ class SmartSubtitleTaskBatchOutput(AbstractModel):
 
     @property
     def TransTextTask(self):
-        r"""
+        r"""<p>Translation task output information.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResultOutput`
         """
         return self._TransTextTask
@@ -63043,7 +64820,7 @@ class SmartSubtitleTaskBatchOutput(AbstractModel):
 
     @property
     def AsrFullTextTask(self):
-        r"""
+        r"""<p>Full speech recognition task output information.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskAsrFullTextResultOutput`
         """
         return self._AsrFullTextTask
@@ -63089,11 +64866,11 @@ class SmartSubtitleTaskFullTextResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: 
+        :param _Input: Input information for smart subtitle tasks.
         :type Input: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
-        :param _Output: 
+        :param _Output: Smart subtitle task output information.
         :type Output: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTextResultOutput`
-        :param _Progress: 
+        :param _Progress: Task progress.
         :type Progress: int
         """
         self._Status = None
@@ -63150,7 +64927,7 @@ class SmartSubtitleTaskFullTextResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""
+        r"""Input information for smart subtitle tasks.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
         """
         return self._Input
@@ -63161,7 +64938,7 @@ class SmartSubtitleTaskFullTextResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Smart subtitle task output information.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTextResultOutput`
         """
         return self._Output
@@ -63172,7 +64949,7 @@ class SmartSubtitleTaskFullTextResult(AbstractModel):
 
     @property
     def Progress(self):
-        r"""
+        r"""Task progress.
         :rtype: int
         """
         return self._Progress
@@ -63324,7 +65101,7 @@ class SmartSubtitleTaskResultInput(AbstractModel):
         r"""
         :param _Definition: <p>Smart subtitle template ID.</p>
         :type Definition: int
-        :param _RawParameter: 
+        :param _RawParameter: <p>Custom smart subtitle parameter. It takes effect when Definition is set to 0.<br>This parameter is used in highly customized scenarios. We recommend that you use Definition to specify smart subtitle parameters.</p>
         :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawSmartSubtitleParameter`
         :param _UserExtPara: <p>Extended parameter.</p>
         :type UserExtPara: str
@@ -63346,7 +65123,7 @@ class SmartSubtitleTaskResultInput(AbstractModel):
 
     @property
     def RawParameter(self):
-        r"""
+        r"""<p>Custom smart subtitle parameter. It takes effect when Definition is set to 0.<br>This parameter is used in highly customized scenarios. We recommend that you use Definition to specify smart subtitle parameters.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.RawSmartSubtitleParameter`
         """
         return self._RawParameter
@@ -63390,13 +65167,13 @@ class SmartSubtitleTaskTextResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SegmentSet: 
+        :param _SegmentSet: <p>List of segments for smart subtitle recognition.</p>
         :type SegmentSet: list of SmartSubtitleTaskFullTextSegmentItem
-        :param _RecognizeSubtitleResult: 
+        :param _RecognizeSubtitleResult: <p>Subtitle recognition result</p>
         :type RecognizeSubtitleResult: list of SubtitleResult
-        :param _TransSubtitleResult: 
+        :param _TransSubtitleResult: <p>Translated subtitles</p>
         :type TransSubtitleResult: list of SubtitleResult
-        :param _OutputStorage: 
+        :param _OutputStorage: <p>Storage location of the subtitle file</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._SegmentSet = None
@@ -63406,7 +65183,7 @@ class SmartSubtitleTaskTextResultOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
-        r"""
+        r"""<p>List of segments for smart subtitle recognition.</p>
         :rtype: list of SmartSubtitleTaskFullTextSegmentItem
         """
         return self._SegmentSet
@@ -63417,7 +65194,7 @@ class SmartSubtitleTaskTextResultOutput(AbstractModel):
 
     @property
     def RecognizeSubtitleResult(self):
-        r"""
+        r"""<p>Subtitle recognition result</p>
         :rtype: list of SubtitleResult
         """
         return self._RecognizeSubtitleResult
@@ -63428,7 +65205,7 @@ class SmartSubtitleTaskTextResultOutput(AbstractModel):
 
     @property
     def TransSubtitleResult(self):
-        r"""
+        r"""<p>Translated subtitles</p>
         :rtype: list of SubtitleResult
         """
         return self._TransSubtitleResult
@@ -63439,7 +65216,7 @@ class SmartSubtitleTaskTextResultOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""
+        r"""<p>Storage location of the subtitle file</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -63496,11 +65273,11 @@ class SmartSubtitleTaskTransTextResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: 
+        :param _Input: Translation task input information.
         :type Input: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
-        :param _Output: 
+        :param _Output: Translation task output information.
         :type Output: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResultOutput`
-        :param _Progress: 
+        :param _Progress: Task progress.
         :type Progress: int
         """
         self._Status = None
@@ -63557,7 +65334,7 @@ class SmartSubtitleTaskTransTextResult(AbstractModel):
 
     @property
     def Input(self):
-        r"""
+        r"""Translation task input information.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
         """
         return self._Input
@@ -63568,7 +65345,7 @@ class SmartSubtitleTaskTransTextResult(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Translation task output information.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResultOutput`
         """
         return self._Output
@@ -63579,7 +65356,7 @@ class SmartSubtitleTaskTransTextResult(AbstractModel):
 
     @property
     def Progress(self):
-        r"""
+        r"""Task progress.
         :rtype: int
         """
         return self._Progress
@@ -63618,7 +65395,7 @@ class SmartSubtitleTaskTransTextResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SegmentSet: 
+        :param _SegmentSet: <p>List of segments for translation.</p>
         :type SegmentSet: list of SmartSubtitleTaskTransTextSegmentItem
         :param _SubtitlePath: <p>Subtitle file URL.</p>
         :type SubtitlePath: str
@@ -63637,7 +65414,7 @@ class SmartSubtitleTaskTransTextResultOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
-        r"""
+        r"""<p>List of segments for translation.</p>
         :rtype: list of SmartSubtitleTaskTransTextSegmentItem
         """
         return self._SegmentSet
@@ -63736,7 +65513,7 @@ class SmartSubtitleTaskTransTextSegmentItem(AbstractModel):
         :type Text: str
         :param _Trans: <p>Translated text.</p>
         :type Trans: str
-        :param _Wordlist: 
+        :param _Wordlist: <p>Word timestamp information.</p>
         :type Wordlist: list of WordResult
         :param _SpeakerId: <p>Speaker ID (if speaker recognition is enabled).</p>
         :type SpeakerId: str
@@ -63806,7 +65583,7 @@ class SmartSubtitleTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def Wordlist(self):
-        r"""
+        r"""<p>Word timestamp information.</p>
         :rtype: list of WordResult
         """
         return self._Wordlist
@@ -64188,18 +65965,22 @@ class SmartSubtitlesResult(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: Task type. Valid values:
-- AsrFullTextRecognition: full speech recognition
-- TransTextRecognition: speech translation
+- AsrFullTextRecognition: full speech recognition.
+- TransTextRecognition: speech translation.
 - PureSubtitleTrans: pure subtitle translation.
 - OcrFullTextRecognition: text-based subtitle extraction.
         :type Type: str
-        :param _AsrFullTextTask: 
+        :param _AsrFullTextTask: Full speech recognition result. When Type is
+Valid when AsrFullTextRecognition is set.
         :type AsrFullTextTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskAsrFullTextResult`
-        :param _TransTextTask: 
+        :param _TransTextTask: Translation result. When Type is
+
+Valid when set to TransTextRecognition.
         :type TransTextTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResult`
-        :param _PureSubtitleTransTask: 
+        :param _PureSubtitleTransTask: The translation result of the pure subtitle file is returned when the translation type is PureSubtitleTrans.
         :type PureSubtitleTransTask: :class:`tencentcloud.mps.v20190612.models.PureSubtitleTransResult`
-        :param _OcrFullTextTask: 
+        :param _OcrFullTextTask: Text-based subtitle extraction result. This field is valid when the value of Type is
+Valid when OcrFullTextRecognition is set.
         :type OcrFullTextTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskFullTextResult`
         """
         self._Type = None
@@ -64211,8 +65992,8 @@ class SmartSubtitlesResult(AbstractModel):
     @property
     def Type(self):
         r"""Task type. Valid values:
-- AsrFullTextRecognition: full speech recognition
-- TransTextRecognition: speech translation
+- AsrFullTextRecognition: full speech recognition.
+- TransTextRecognition: speech translation.
 - PureSubtitleTrans: pure subtitle translation.
 - OcrFullTextRecognition: text-based subtitle extraction.
         :rtype: str
@@ -64225,7 +66006,8 @@ class SmartSubtitlesResult(AbstractModel):
 
     @property
     def AsrFullTextTask(self):
-        r"""
+        r"""Full speech recognition result. When Type is
+Valid when AsrFullTextRecognition is set.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskAsrFullTextResult`
         """
         return self._AsrFullTextTask
@@ -64236,7 +66018,9 @@ class SmartSubtitlesResult(AbstractModel):
 
     @property
     def TransTextTask(self):
-        r"""
+        r"""Translation result. When Type is
+
+Valid when set to TransTextRecognition.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResult`
         """
         return self._TransTextTask
@@ -64247,7 +66031,7 @@ class SmartSubtitlesResult(AbstractModel):
 
     @property
     def PureSubtitleTransTask(self):
-        r"""
+        r"""The translation result of the pure subtitle file is returned when the translation type is PureSubtitleTrans.
         :rtype: :class:`tencentcloud.mps.v20190612.models.PureSubtitleTransResult`
         """
         return self._PureSubtitleTransTask
@@ -64258,7 +66042,8 @@ class SmartSubtitlesResult(AbstractModel):
 
     @property
     def OcrFullTextTask(self):
-        r"""
+        r"""Text-based subtitle extraction result. This field is valid when the value of Type is
+Valid when OcrFullTextRecognition is set.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskFullTextResult`
         """
         return self._OcrFullTextTask
@@ -64293,21 +66078,32 @@ class SmartSubtitlesResult(AbstractModel):
 
 
 class SmartSubtitlesTaskInput(AbstractModel):
-    r"""
+    r"""Smart subtitle input struct.
 
     """
 
     def __init__(self):
         r"""
-        :param _Definition: 
+        :param _Definition: Smart subtitle template ID.	
         :type Definition: int
-        :param _UserExtPara: 
+        :param _UserExtPara: User extension field, which does not need to be filled in for general scenarios.
         :type UserExtPara: str
-        :param _RawParameter: 
+        :param _RawParameter: Custom smart subtitle parameter. It takes effect when Definition is set to 0. This parameter is used in high customization scenarios. It is recommended that you preferentially use Definition to specify smart subtitle parameters.	
         :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawSmartSubtitleParameter`
-        :param _OutputStorage: 
+        :param _OutputStorage: Target storage of media processing output files. If not specified, inherits the storage location in InputInfo. 
+**Note**: This parameter is required when InputInfo.Type is set to URL.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OutputObjectPath: 
+        :param _OutputObjectPath: Output path of the generated subtitle file, which can be a relative or absolute path.
+To define the output path, the path must end with `.{format}`. For variable names, please refer to [Filename Variable Explanation](https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1).
+
+Relative path example:
+- File name_{variable name}.{format}.
+-File name.{format}
+
+Absolute path example:
+-/Custom path/File name_{variable name}.{format}.
+
+If this field is left unspecified, the default value is the relative path in the following format: {inputName}_smartsubtitle_{definition}.{format}.
         :type OutputObjectPath: str
         """
         self._Definition = None
@@ -64318,7 +66114,7 @@ class SmartSubtitlesTaskInput(AbstractModel):
 
     @property
     def Definition(self):
-        r"""
+        r"""Smart subtitle template ID.	
         :rtype: int
         """
         return self._Definition
@@ -64329,7 +66125,7 @@ class SmartSubtitlesTaskInput(AbstractModel):
 
     @property
     def UserExtPara(self):
-        r"""
+        r"""User extension field, which does not need to be filled in for general scenarios.
         :rtype: str
         """
         return self._UserExtPara
@@ -64340,7 +66136,7 @@ class SmartSubtitlesTaskInput(AbstractModel):
 
     @property
     def RawParameter(self):
-        r"""
+        r"""Custom smart subtitle parameter. It takes effect when Definition is set to 0. This parameter is used in high customization scenarios. It is recommended that you preferentially use Definition to specify smart subtitle parameters.	
         :rtype: :class:`tencentcloud.mps.v20190612.models.RawSmartSubtitleParameter`
         """
         return self._RawParameter
@@ -64351,7 +66147,8 @@ class SmartSubtitlesTaskInput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""
+        r"""Target storage of media processing output files. If not specified, inherits the storage location in InputInfo. 
+**Note**: This parameter is required when InputInfo.Type is set to URL.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -64362,7 +66159,17 @@ class SmartSubtitlesTaskInput(AbstractModel):
 
     @property
     def OutputObjectPath(self):
-        r"""
+        r"""Output path of the generated subtitle file, which can be a relative or absolute path.
+To define the output path, the path must end with `.{format}`. For variable names, please refer to [Filename Variable Explanation](https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1).
+
+Relative path example:
+- File name_{variable name}.{format}.
+-File name.{format}
+
+Absolute path example:
+-/Custom path/File name_{variable name}.{format}.
+
+If this field is left unspecified, the default value is the relative path in the following format: {inputName}_smartsubtitle_{definition}.{format}.
         :rtype: str
         """
         return self._OutputObjectPath
@@ -64393,7 +66200,7 @@ class SmartSubtitlesTaskInput(AbstractModel):
 
 
 class SnapshotByTimeOffsetTaskInput(AbstractModel):
-    r"""Screenshot taking at specified time points task input parameter type
+    r"""Task input parameter type for time point screenshot taking of a video.
 
     """
 
@@ -64407,11 +66214,11 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
         :type TimeOffsetSet: list of float
         :param _WatermarkSet: <p>Watermark list. Up to 10 image or text watermarks are supported.</p>
         :type WatermarkSet: list of WatermarkInput
-        :param _OutputStorage: 
+        :param _OutputStorage: <p>Target storage for the file after the time point screenshot is taken. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputObjectPath: <p>Output path of the image file after the time point screenshot is taken, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href="https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1">File Name Variable Description</a>.<br>Relative path example:</p><li>File name_{variable name}.{format}</li><li>File name.{format}</li>Absolute path example:<li>/custom path/file name_{variable name}.{format}</li>If this is not specified, the default relative path is <code>{inputName}_snapshotByTimeOffset_{definition}_{number}.{format}</code>.
         :type OutputObjectPath: str
-        :param _ObjectNumberFormat: 
+        :param _ObjectNumberFormat: <p>Rule of the <code>{number}</code> variable in the output path after the time point screenshot is taken.</p>
         :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
         :param _ExtInfo: <p>Extended parameter.</p>
         :type ExtInfo: str
@@ -64471,7 +66278,7 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""
+        r"""<p>Target storage for the file after the time point screenshot is taken. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -64493,7 +66300,7 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
 
     @property
     def ObjectNumberFormat(self):
-        r"""
+        r"""<p>Rule of the <code>{number}</code> variable in the output path after the time point screenshot is taken.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
         """
         return self._ObjectNumberFormat
@@ -64947,20 +66754,20 @@ class SpekeDrm(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: Resource tagging. The field content is user-customized;
+        :param _ResourceId: Resource tag. The field content is user-customized;
 Supports 1 to 128 characters consisting of digits, letters, underscores (_), and hyphens (-).
 This field corresponds to the cid field in the Speke request.
 Note: Different DRM vendors have different restrictions on this field (for example, SDMC Technology Co., Ltd. does not support this field containing underscores). For specific rules, check with the vendors.
         :type ResourceId: str
         :param _KeyServerUrl: DRM manufacturer access address. This field content is obtained from the DRM manufacturer.
 
-Note: Different DRM manufacturers have different limits on the number of substreams. For example, PallyCon limits the number to 5 substreams, while DRMtoday supports stream encryption for a maximum of 9 substreams.
+Note: Different DRM manufacturers have different limits on the number of substreams. For example, PallyCon cannot exceed 5 substreams, while DRMtoday supports stream encryption for a maximum of 9 substreams.
         :type KeyServerUrl: str
         :param _Vector: Encryption initialization vector (32-byte hexadecimal string). This field content is user-customized.
         :type Vector: str
         :param _EncryptionMethod: Encryption method. Valid values:
 cbcs: PlayReady, Widevine, FairPlay, WideVine+FairPlay, Widevine+Playready, Playready+Fairplay, Widevine+Playready+Fairplay are supported.
-cenc: PlayReady, Widevine, and Widevine+PlayReady are supported.
+cenc: PlayReady, Widevine, and Widevine+Playready are supported.
 
 If it is left unspecified:
 Use cbcs for FairPlay by default.
@@ -64968,9 +66775,9 @@ Use cenc for PlayReady and Widevine by default.
 WideVine+FairPlay, Playready+Fairplay, Widevine+Playready+Fairplay default to cbcs.
 Use cenc for Widevine+PlayReady by default.
         :type EncryptionMethod: str
-        :param _EncryptionPreset: Substream encryption rule. Default value: preset0.
+        :param _EncryptionPreset: Encryption rule for substreams. Default value: preset 0
 preset 0: use the same key to encrypt all substreams;
-preset1: use different keys for each substream
+preset1: use different keys for each substream;
 
         :type EncryptionPreset: str
         """
@@ -64982,7 +66789,7 @@ preset1: use different keys for each substream
 
     @property
     def ResourceId(self):
-        r"""Resource tagging. The field content is user-customized;
+        r"""Resource tag. The field content is user-customized;
 Supports 1 to 128 characters consisting of digits, letters, underscores (_), and hyphens (-).
 This field corresponds to the cid field in the Speke request.
 Note: Different DRM vendors have different restrictions on this field (for example, SDMC Technology Co., Ltd. does not support this field containing underscores). For specific rules, check with the vendors.
@@ -64998,7 +66805,7 @@ Note: Different DRM vendors have different restrictions on this field (for examp
     def KeyServerUrl(self):
         r"""DRM manufacturer access address. This field content is obtained from the DRM manufacturer.
 
-Note: Different DRM manufacturers have different limits on the number of substreams. For example, PallyCon limits the number to 5 substreams, while DRMtoday supports stream encryption for a maximum of 9 substreams.
+Note: Different DRM manufacturers have different limits on the number of substreams. For example, PallyCon cannot exceed 5 substreams, while DRMtoday supports stream encryption for a maximum of 9 substreams.
         :rtype: str
         """
         return self._KeyServerUrl
@@ -65022,7 +66829,7 @@ Note: Different DRM manufacturers have different limits on the number of substre
     def EncryptionMethod(self):
         r"""Encryption method. Valid values:
 cbcs: PlayReady, Widevine, FairPlay, WideVine+FairPlay, Widevine+Playready, Playready+Fairplay, Widevine+Playready+Fairplay are supported.
-cenc: PlayReady, Widevine, and Widevine+PlayReady are supported.
+cenc: PlayReady, Widevine, and Widevine+Playready are supported.
 
 If it is left unspecified:
 Use cbcs for FairPlay by default.
@@ -65039,9 +66846,9 @@ Use cenc for Widevine+PlayReady by default.
 
     @property
     def EncryptionPreset(self):
-        r"""Substream encryption rule. Default value: preset0.
+        r"""Encryption rule for substreams. Default value: preset 0
 preset 0: use the same key to encrypt all substreams;
-preset1: use different keys for each substream
+preset1: use different keys for each substream;
 
         :rtype: str
         """
@@ -66475,39 +68282,117 @@ class SubtitleTemplate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Path: 
+        :param _Path: Subtitle file URL to be suppressed into the video.
         :type Path: str
-        :param _StreamIndex: 
+        :param _StreamIndex: Specifies the subtitle track for embedding subtitles into the video. The Streamindex value starts from 0, where 0 indicates usage of the first subtitle track in the source video. If Path is specified, use Path preferentially. Either Path or Streamindex should be specified.
+
+-Note: StreamIndex must match the subtitle track index in the source file. For example, if the subtitle track in the source file is stream#0:3, StreamIndex should be 3. Otherwise, task processing may fail.
+
+
         :type StreamIndex: int
-        :param _SubtitleFileInput: 
+        :param _SubtitleFileInput: Input information on the subtitle file to be embedded into the video. Currently, only subtitle files stored in COS are supported.
         :type SubtitleFileInput: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
-        :param _FontFileInput: Input information for the subtitle font file to be suppressed. Currently only support url and cos. If both are filled, url takes precedence over cos. If FontFileInput is filled, FontFileInput takes precedence over FontType.
+        :param _FontFileInput: Input information for suppressing subtitle font files. Currently only support url and cos. If both are filled, url takes precedence over cos. If FontFileInput is filled, FontFileInput takes precedence over FontType.
 
         :type FontFileInput: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
-        :param _FontType: 
+        :param _FontType: Font type. Valid values:
+<li>hei.ttf: SimHei</li>
+<li>song.ttf: SimSun.</li>
+<li>kai.ttf (recommend) or simkai.ttf: KaiTi.</li>
+<li>msyh.ttf: Microsoft YaHei.</li>
+<li>msyhbd.ttf: Microsoft YaHei Bold.</li>
+<li>hkjgt.ttf: DynaFont King Gothic.</li>
+<li>dhttx.ttf: DianHei Extra Light.</li>
+<li>xqgdzt.ttf: XiQue GuZiDian.</li>
+<li>qpcyt.ttf: Smart Splice Super Round Body</li>
+<li>arial.ttf: English only.</li>
+<li>dinalternate.ttf:DIN Alternate Bold</li>
+<li>helveticalt.ttf:Helvetica</li>
+<li>helveticains.ttf:Helvetica Inserat</li>
+<li>trajanpro.ttf:TrajanPro-Bold</li>
+<li>korean.ttf: Korean.</li>
+<li>japanese.ttf: Japanese.</li>
+<li>thai.ttf: Thai.</li>
+<li>roboto.ttf:Roboto</li>
+<li>notosans.ttf:NotoSans</li>
+<li>notosansthai.ttf: Thai NotoSansThai</li>
+<li>sarabun.ttf: Thai Sarabun</li>
+<li>kanit.ttf: Thai Kanit</li>
+<li>charmonman.ttf: Thai Charmonman.</li>
+<li>notonaskharabic.ttf: Arabic NotoNaskhArabic.</li>
+<li>notosansdevanagari.ttf: NotoSansDevanagari for India.</li>
+<li>notosanstc.ttf: Cantonese Source Han Sans NotoSansTC</li>
+<li>notosanskr.ttf: Korean NotoSansKR.</li>
+<li>gothica1.ttf: Korean GothicA1.</li>
+<li>nanummyeongjo.ttf: Korean NanumMyeongjo.</li>
+<li>notosansjp.ttf: Japanese NotoSansJP.</li>
+<li>notoserifjp.ttf: Japanese NotoSerifJP.</li>
+<li>shipporimincho.ttf: Japanese ShipporiMincho.</li>
+Default value: hei.ttf.
+<br>Note:
+<li>kai.ttf is recommended for SimKai.</li>
+<li>FontFileInput takes precedence when specified.</li>
+
         :type FontType: str
-        :param _FontSize: 
+        :param _FontSize: Font size. If not specified, the font size of the subtitle file applies. Pixel and percentage formats are supported:
+
+- Pixel: Npx. Value range of N: (0,4096].
+- Percentage: N%. Value range of N: (0,100]. For example, 10% means the subtitle font size is 10% of the source video height.
+
+The default size is 5% of the source video height if this parameter is not specified or the font size is not configured in the subtitle file.
+
         :type FontSize: str
-        :param _FontColor: 
+        :param _FontColor: Font color. Format: 0xRRGGBB. Default value: 0xFFFFFF (white).
         :type FontColor: str
-        :param _FontAlpha: 
+        :param _FontAlpha: Text opacity, value ranges from 0 to 1.
+<li>0: completely transparent.</li>
+<li>1: completely opaque.</li>
+Default value: 1.
         :type FontAlpha: float
-        :param _YPos: 
+        :param _YPos: Subtitle y-axis coordinate position. If you specify this parameter, the built-in coordinates of the subtitle file are ignored. Pixel and percentage formats are supported.
+
+- Pixel: Npx. Value range of N: [0,4096].
+-Percentage: N%, N range: [0,100]. For example, 10% means the subtitle y-coordinate = 10% * source video height.
+
+Default value: 4% of the source video height.
+Note: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the subtitle reference position is at the bottom of the central axis of the subtitles, as shown in the figure below.
+![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+
         :type YPos: str
-        :param _BoardY: 
+        :param _BoardY: y-axis coordinate position of the subtitle background base plate. Supports pixel and percentage formats.
+
+- Pixel: Npx. Value range of N: [0,4096].
+-Percentage: N%, N range: [0,100]. For example, 10% means the y-coordinate of the subtitle background base plate = 10% * source video height.
+
+If this parameter is not specified, the subtitle background base plate is disabled.
+Note: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the reference position of the subtitle background base plate is at the bottom of its central axis, as shown in the figure below.
+![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+
         :type BoardY: str
-        :param _BoardWidth: 
+        :param _BoardWidth: Base plate width. The value should be a positive integer.
+- Value range for pixels: [0,4096].
+- Value range for percentages: [0, 100].
+If background is enabled and this parameter is not specified, the default width is 90% of the source video width.
+
         :type BoardWidth: int
-        :param _BoardHeight: 
+        :param _BoardHeight: Height of the base plate. Positive integer.
+- Value range for pixels: [0,4096].
+- Value range for percentages: [0, 100].
+If background is enabled and this parameter is not specified, the default height is 15% of the source video height.
+
         :type BoardHeight: int
-        :param _BoardColor: 
+        :param _BoardColor: Board color. Format: 0xRRGGBB.
+Default value: 0x000000 (black).
         :type BoardColor: str
-        :param _BoardAlpha: 
+        :param _BoardAlpha: Subtitle background transparency. Value range: [0, 1].
+<li>0: completely transparent.</li>
+<li>1: completely opaque.</li>
+Default value: 0.8.
         :type BoardAlpha: float
         :param _OutlineWidth: Stroke width. The value should be a floating-point number.
 - Value range for pixels: [0, 1000].
 - Value range for percentages: [0, 100].
-0.3% of the source video height by default if left blank.
+If this is not specified, the default width is 0.3% of the source video height.
 
         :type OutlineWidth: float
         :param _OutlineColor: Border color. 6-digit hexadecimal RGB. Black by default if left blank.
@@ -66519,13 +68404,13 @@ class SubtitleTemplate(AbstractModel):
         :param _ShadowWidth: Shadow width. Floating-point number.
 - Value range for pixels: [0, 1000].
 - Value range for percentages: [0, 100].
-No shading by default if left blank.
+If this is not specified, no shadow is applied by default.
 
         :type ShadowWidth: float
-        :param _ShadowColor: Shadow color. 6-bit base RGB. Black by default if left blank (when shadow has set).
+        :param _ShadowColor: Shadow color. 6-bit base-16 RGB. Black by default if left blank (when shadow has been set).
 
         :type ShadowColor: str
-        :param _ShadowAlpha: Shadow transparency. The value should be a positive floating-point number in the range of (0, 1]. If this is not specified, the default value is 1, which means completely opaque (with shadow configured).
+        :param _ShadowAlpha: Shadow transparency. The value should be a positive floating-point number in the range of (0, 1]. If not specified, the default value is 1, which means completely opaque (with shadow configured).
 
         :type ShadowAlpha: float
         :param _LineSpacing: Line spacing. The value should be a positive integer.
@@ -66548,7 +68433,7 @@ No shading by default if left blank.
         :param _ShadowWidthUnit: Default value is 0. If this is set to 1, the value of ShadowWidth is a percentage based on the video height.
 
         :type ShadowWidthUnit: int
-        :param _LineSpacingUnit: Default value: 0. If this is set to 1, the value of LineSpacing is a percentage based on the video height.
+        :param _LineSpacingUnit: Default value is 0. If this is set to 1, the value of LineSpacing is a percentage based on the video height.
 
         :type LineSpacingUnit: int
         """
@@ -66582,7 +68467,7 @@ No shading by default if left blank.
 
     @property
     def Path(self):
-        r"""
+        r"""Subtitle file URL to be suppressed into the video.
         :rtype: str
         """
         return self._Path
@@ -66593,7 +68478,11 @@ No shading by default if left blank.
 
     @property
     def StreamIndex(self):
-        r"""
+        r"""Specifies the subtitle track for embedding subtitles into the video. The Streamindex value starts from 0, where 0 indicates usage of the first subtitle track in the source video. If Path is specified, use Path preferentially. Either Path or Streamindex should be specified.
+
+-Note: StreamIndex must match the subtitle track index in the source file. For example, if the subtitle track in the source file is stream#0:3, StreamIndex should be 3. Otherwise, task processing may fail.
+
+
         :rtype: int
         """
         return self._StreamIndex
@@ -66604,7 +68493,7 @@ No shading by default if left blank.
 
     @property
     def SubtitleFileInput(self):
-        r"""
+        r"""Input information on the subtitle file to be embedded into the video. Currently, only subtitle files stored in COS are supported.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
         return self._SubtitleFileInput
@@ -66615,7 +68504,7 @@ No shading by default if left blank.
 
     @property
     def FontFileInput(self):
-        r"""Input information for the subtitle font file to be suppressed. Currently only support url and cos. If both are filled, url takes precedence over cos. If FontFileInput is filled, FontFileInput takes precedence over FontType.
+        r"""Input information for suppressing subtitle font files. Currently only support url and cos. If both are filled, url takes precedence over cos. If FontFileInput is filled, FontFileInput takes precedence over FontType.
 
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
@@ -66627,7 +68516,44 @@ No shading by default if left blank.
 
     @property
     def FontType(self):
-        r"""
+        r"""Font type. Valid values:
+<li>hei.ttf: SimHei</li>
+<li>song.ttf: SimSun.</li>
+<li>kai.ttf (recommend) or simkai.ttf: KaiTi.</li>
+<li>msyh.ttf: Microsoft YaHei.</li>
+<li>msyhbd.ttf: Microsoft YaHei Bold.</li>
+<li>hkjgt.ttf: DynaFont King Gothic.</li>
+<li>dhttx.ttf: DianHei Extra Light.</li>
+<li>xqgdzt.ttf: XiQue GuZiDian.</li>
+<li>qpcyt.ttf: Smart Splice Super Round Body</li>
+<li>arial.ttf: English only.</li>
+<li>dinalternate.ttf:DIN Alternate Bold</li>
+<li>helveticalt.ttf:Helvetica</li>
+<li>helveticains.ttf:Helvetica Inserat</li>
+<li>trajanpro.ttf:TrajanPro-Bold</li>
+<li>korean.ttf: Korean.</li>
+<li>japanese.ttf: Japanese.</li>
+<li>thai.ttf: Thai.</li>
+<li>roboto.ttf:Roboto</li>
+<li>notosans.ttf:NotoSans</li>
+<li>notosansthai.ttf: Thai NotoSansThai</li>
+<li>sarabun.ttf: Thai Sarabun</li>
+<li>kanit.ttf: Thai Kanit</li>
+<li>charmonman.ttf: Thai Charmonman.</li>
+<li>notonaskharabic.ttf: Arabic NotoNaskhArabic.</li>
+<li>notosansdevanagari.ttf: NotoSansDevanagari for India.</li>
+<li>notosanstc.ttf: Cantonese Source Han Sans NotoSansTC</li>
+<li>notosanskr.ttf: Korean NotoSansKR.</li>
+<li>gothica1.ttf: Korean GothicA1.</li>
+<li>nanummyeongjo.ttf: Korean NanumMyeongjo.</li>
+<li>notosansjp.ttf: Japanese NotoSansJP.</li>
+<li>notoserifjp.ttf: Japanese NotoSerifJP.</li>
+<li>shipporimincho.ttf: Japanese ShipporiMincho.</li>
+Default value: hei.ttf.
+<br>Note:
+<li>kai.ttf is recommended for SimKai.</li>
+<li>FontFileInput takes precedence when specified.</li>
+
         :rtype: str
         """
         return self._FontType
@@ -66638,7 +68564,13 @@ No shading by default if left blank.
 
     @property
     def FontSize(self):
-        r"""
+        r"""Font size. If not specified, the font size of the subtitle file applies. Pixel and percentage formats are supported:
+
+- Pixel: Npx. Value range of N: (0,4096].
+- Percentage: N%. Value range of N: (0,100]. For example, 10% means the subtitle font size is 10% of the source video height.
+
+The default size is 5% of the source video height if this parameter is not specified or the font size is not configured in the subtitle file.
+
         :rtype: str
         """
         return self._FontSize
@@ -66649,7 +68581,7 @@ No shading by default if left blank.
 
     @property
     def FontColor(self):
-        r"""
+        r"""Font color. Format: 0xRRGGBB. Default value: 0xFFFFFF (white).
         :rtype: str
         """
         return self._FontColor
@@ -66660,7 +68592,10 @@ No shading by default if left blank.
 
     @property
     def FontAlpha(self):
-        r"""
+        r"""Text opacity, value ranges from 0 to 1.
+<li>0: completely transparent.</li>
+<li>1: completely opaque.</li>
+Default value: 1.
         :rtype: float
         """
         return self._FontAlpha
@@ -66671,7 +68606,15 @@ No shading by default if left blank.
 
     @property
     def YPos(self):
-        r"""
+        r"""Subtitle y-axis coordinate position. If you specify this parameter, the built-in coordinates of the subtitle file are ignored. Pixel and percentage formats are supported.
+
+- Pixel: Npx. Value range of N: [0,4096].
+-Percentage: N%, N range: [0,100]. For example, 10% means the subtitle y-coordinate = 10% * source video height.
+
+Default value: 4% of the source video height.
+Note: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the subtitle reference position is at the bottom of the central axis of the subtitles, as shown in the figure below.
+![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+
         :rtype: str
         """
         return self._YPos
@@ -66682,7 +68625,15 @@ No shading by default if left blank.
 
     @property
     def BoardY(self):
-        r"""
+        r"""y-axis coordinate position of the subtitle background base plate. Supports pixel and percentage formats.
+
+- Pixel: Npx. Value range of N: [0,4096].
+-Percentage: N%, N range: [0,100]. For example, 10% means the y-coordinate of the subtitle background base plate = 10% * source video height.
+
+If this parameter is not specified, the subtitle background base plate is disabled.
+Note: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the reference position of the subtitle background base plate is at the bottom of its central axis, as shown in the figure below.
+![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+
         :rtype: str
         """
         return self._BoardY
@@ -66693,7 +68644,11 @@ No shading by default if left blank.
 
     @property
     def BoardWidth(self):
-        r"""
+        r"""Base plate width. The value should be a positive integer.
+- Value range for pixels: [0,4096].
+- Value range for percentages: [0, 100].
+If background is enabled and this parameter is not specified, the default width is 90% of the source video width.
+
         :rtype: int
         """
         return self._BoardWidth
@@ -66704,7 +68659,11 @@ No shading by default if left blank.
 
     @property
     def BoardHeight(self):
-        r"""
+        r"""Height of the base plate. Positive integer.
+- Value range for pixels: [0,4096].
+- Value range for percentages: [0, 100].
+If background is enabled and this parameter is not specified, the default height is 15% of the source video height.
+
         :rtype: int
         """
         return self._BoardHeight
@@ -66715,7 +68674,8 @@ No shading by default if left blank.
 
     @property
     def BoardColor(self):
-        r"""
+        r"""Board color. Format: 0xRRGGBB.
+Default value: 0x000000 (black).
         :rtype: str
         """
         return self._BoardColor
@@ -66726,7 +68686,10 @@ No shading by default if left blank.
 
     @property
     def BoardAlpha(self):
-        r"""
+        r"""Subtitle background transparency. Value range: [0, 1].
+<li>0: completely transparent.</li>
+<li>1: completely opaque.</li>
+Default value: 0.8.
         :rtype: float
         """
         return self._BoardAlpha
@@ -66740,7 +68703,7 @@ No shading by default if left blank.
         r"""Stroke width. The value should be a floating-point number.
 - Value range for pixels: [0, 1000].
 - Value range for percentages: [0, 100].
-0.3% of the source video height by default if left blank.
+If this is not specified, the default width is 0.3% of the source video height.
 
         :rtype: float
         """
@@ -66779,7 +68742,7 @@ No shading by default if left blank.
         r"""Shadow width. Floating-point number.
 - Value range for pixels: [0, 1000].
 - Value range for percentages: [0, 100].
-No shading by default if left blank.
+If this is not specified, no shadow is applied by default.
 
         :rtype: float
         """
@@ -66791,7 +68754,7 @@ No shading by default if left blank.
 
     @property
     def ShadowColor(self):
-        r"""Shadow color. 6-bit base RGB. Black by default if left blank (when shadow has set).
+        r"""Shadow color. 6-bit base-16 RGB. Black by default if left blank (when shadow has been set).
 
         :rtype: str
         """
@@ -66803,7 +68766,7 @@ No shading by default if left blank.
 
     @property
     def ShadowAlpha(self):
-        r"""Shadow transparency. The value should be a positive floating-point number in the range of (0, 1]. If this is not specified, the default value is 1, which means completely opaque (with shadow configured).
+        r"""Shadow transparency. The value should be a positive floating-point number in the range of (0, 1]. If not specified, the default value is 1, which means completely opaque (with shadow configured).
 
         :rtype: float
         """
@@ -66889,7 +68852,7 @@ No shading by default if left blank.
 
     @property
     def LineSpacingUnit(self):
-        r"""Default value: 0. If this is set to 1, the value of LineSpacing is a percentage based on the video height.
+        r"""Default value is 0. If this is set to 1, the value of LineSpacing is a percentage based on the video height.
 
         :rtype: int
         """
@@ -67060,14 +69023,19 @@ class SuperResolutionConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Capability configuration switch. Available values:
-<li>ON: enabled;</li>
+        :param _Switch: Capability configuration switch. Valid values:
+<li>ON: enabled</li>
 <li>OFF: disabled</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: 
+        :param _Type: Type. Valid values:
+<li>lq: super resolution for low resolution videos with considerable noise;</li>
+<li>hq: For high resolution video super-resolution.</li>
+Default value: lq.
         :type Type: str
-        :param _Size: 
+        :param _Size: Upscaling multiple. Available values:
+<li>2: currently only support 2x super resolution.</li>
+Default value: 2.
         :type Size: int
         """
         self._Switch = None
@@ -67076,8 +69044,8 @@ Default value: ON.
 
     @property
     def Switch(self):
-        r"""Capability configuration switch. Available values:
-<li>ON: enabled;</li>
+        r"""Capability configuration switch. Valid values:
+<li>ON: enabled</li>
 <li>OFF: disabled</li>
 Default value: ON.
         :rtype: str
@@ -67090,7 +69058,10 @@ Default value: ON.
 
     @property
     def Type(self):
-        r"""
+        r"""Type. Valid values:
+<li>lq: super resolution for low resolution videos with considerable noise;</li>
+<li>hq: For high resolution video super-resolution.</li>
+Default value: lq.
         :rtype: str
         """
         return self._Type
@@ -67101,7 +69072,9 @@ Default value: ON.
 
     @property
     def Size(self):
-        r"""
+        r"""Upscaling multiple. Available values:
+<li>2: currently only support 2x super resolution.</li>
+Default value: 2.
         :rtype: int
         """
         return self._Size
@@ -67292,20 +69265,20 @@ Default value: 0px.
 
 
 class SyncDubbingOutputOption(AbstractModel):
-    r"""
+    r"""Output parameter setting for synchronous dubbing.
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: 
+        :param _Type: <p>Output type of the synthesis result. </p><p>Enumeration values: </p><ul><li>data: Audio base64 encoding, </li><li>url: Audio URL, valid for 24 hours.</li></ul>
         :type Type: str
         """
         self._Type = None
 
     @property
     def Type(self):
-        r"""
+        r"""<p>Output type of the synthesis result. </p><p>Enumeration values: </p><ul><li>data: Audio base64 encoding, </li><li>url: Audio URL, valid for 24 hours.</li></ul>
         :rtype: str
         """
         return self._Type
@@ -67513,11 +69486,11 @@ class SyncDubbingResponse(AbstractModel):
         :type ErrorCode: int
         :param _Msg: <p>Error message. success is returned if the request is successful.</p>
         :type Msg: str
-        :param _AudioData: 
+        :param _AudioData: <p>base64-encoded synthetic audio in wav format.</p>
         :type AudioData: str
         :param _AudioUrl: <p>Synthetic audio URL. It is valid for 24 hours.</p>
         :type AudioUrl: str
-        :param _VoiceId: 
+        :param _VoiceId: <p>Id of the cloned voice type.</p>
         :type VoiceId: str
         :param _ExtInfo: <p>Extended information in the format of a JSON string. </p><p>duration: Duration of the resulting audio, in seconds.</p>
         :type ExtInfo: str
@@ -67556,7 +69529,7 @@ class SyncDubbingResponse(AbstractModel):
 
     @property
     def AudioData(self):
-        r"""
+        r"""<p>base64-encoded synthetic audio in wav format.</p>
         :rtype: str
         """
         return self._AudioData
@@ -67578,7 +69551,7 @@ class SyncDubbingResponse(AbstractModel):
 
     @property
     def VoiceId(self):
-        r"""
+        r"""<p>Id of the cloned voice type.</p>
         :rtype: str
         """
         return self._VoiceId
@@ -67621,19 +69594,19 @@ class SyncDubbingResponse(AbstractModel):
 
 
 class TEHDConfig(AbstractModel):
-    r"""TSC parameter configuration.
+    r"""Top Speed Codec parameter configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: Top speed Codec type. Available values:
-<li>TEHD-100: top speed codec-100 (video top speed codec).</li>
-<li>TEHD-200: top speed codec-200 (audio top speed codec).</li>
-If not specified, top speed Codec is not enabled.
+        :param _Type: TSC type. Available values:
+<li>TEHD-100: TSC-100 (video top speed codec).</li>
+<li>TEHD-200: Top Speed Codec-200 (audio top speed codec).</li>
+If not specified, Top Speed Codec is not enabled.
         :type Type: str
-        :param _MaxVideoBitrate: Maximum video bitrate. Valid when Type is set to top speed Codec.
-If this is not specified or is set to 0, no upper limit is set for the video bitrate.
+        :param _MaxVideoBitrate: Maximum video bitrate. Valid when Type is set to Top Speed Codec.
+If this parameter is not specified or is set to 0, no upper limit is set for the video bitrate.
         :type MaxVideoBitrate: int
         """
         self._Type = None
@@ -67641,10 +69614,10 @@ If this is not specified or is set to 0, no upper limit is set for the video bit
 
     @property
     def Type(self):
-        r"""Top speed Codec type. Available values:
-<li>TEHD-100: top speed codec-100 (video top speed codec).</li>
-<li>TEHD-200: top speed codec-200 (audio top speed codec).</li>
-If not specified, top speed Codec is not enabled.
+        r"""TSC type. Available values:
+<li>TEHD-100: TSC-100 (video top speed codec).</li>
+<li>TEHD-200: Top Speed Codec-200 (audio top speed codec).</li>
+If not specified, Top Speed Codec is not enabled.
         :rtype: str
         """
         return self._Type
@@ -67655,8 +69628,8 @@ If not specified, top speed Codec is not enabled.
 
     @property
     def MaxVideoBitrate(self):
-        r"""Maximum video bitrate. Valid when Type is set to top speed Codec.
-If this is not specified or is set to 0, no upper limit is set for the video bitrate.
+        r"""Maximum video bitrate. Valid when Type is set to Top Speed Codec.
+If this parameter is not specified or is set to 0, no upper limit is set for the video bitrate.
         :rtype: int
         """
         return self._MaxVideoBitrate
@@ -67680,15 +69653,18 @@ If this is not specified or is set to 0, no upper limit is set for the video bit
 
 
 class TEHDConfigForUpdate(AbstractModel):
-    r"""TSC parameter configuration.
+    r"""Top Speed Codec parameter configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: 
+        :param _Type: Top Speed Codec type. Available values:
+<li>TEHD-100: Top Speed Codec-100 (video top speed codec).</li>
+<li>TEHD-200: Top Speed Codec-200 (audio TSC).</li>
+Leave it blank to indicate no modification.
         :type Type: str
-        :param _MaxVideoBitrate: 
+        :param _MaxVideoBitrate: Maximum video bitrate. If this parameter is left empty, no modification is made.
         :type MaxVideoBitrate: int
         """
         self._Type = None
@@ -67696,7 +69672,10 @@ class TEHDConfigForUpdate(AbstractModel):
 
     @property
     def Type(self):
-        r"""
+        r"""Top Speed Codec type. Available values:
+<li>TEHD-100: Top Speed Codec-100 (video top speed codec).</li>
+<li>TEHD-200: Top Speed Codec-200 (audio TSC).</li>
+Leave it blank to indicate no modification.
         :rtype: str
         """
         return self._Type
@@ -67707,7 +69686,7 @@ class TEHDConfigForUpdate(AbstractModel):
 
     @property
     def MaxVideoBitrate(self):
-        r"""
+        r"""Maximum video bitrate. If this parameter is left empty, no modification is made.
         :rtype: int
         """
         return self._MaxVideoBitrate
@@ -67811,7 +69790,7 @@ class TagConfigureInfoForUpdate(AbstractModel):
 
 
 class TaskNotifyConfig(AbstractModel):
-    r"""Event notification configuration of the task.
+    r"""Event notification configuration of a task.
 
     """
 
@@ -67831,7 +69810,7 @@ class TaskNotifyConfig(AbstractModel):
         :type TopicName: str
         :param _QueueName: <p>This field takes effect if the model is Queue. It indicates the queue name of the CMQ or TDMQ for CMQ for receiving event notifications.</p>
         :type QueueName: str
-        :param _AwsSQS: 
+        :param _AwsSQS: <p>AWS SQS callback. This is required if NotifyType is AWS-SQS.</p>
         :type AwsSQS: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
         :param _NotifyKey: <p>Key used to generate the callback signature.</p>
         :type NotifyKey: str
@@ -67925,7 +69904,7 @@ class TaskNotifyConfig(AbstractModel):
 
     @property
     def AwsSQS(self):
-        r"""
+        r"""<p>AWS SQS callback. This is required if NotifyType is AWS-SQS.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
         """
         return self._AwsSQS
@@ -67975,16 +69954,16 @@ class TaskOutputStorage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: Type of the media processing output object storage location. Supported values:
+        :param _Type: Type of the storage location for MPS output objects. Supported values:
 <li>COS: COS storage</li>
-<li>AWS-S3: AWS storage, suitable for AWS tasks only and requires the same region</li>
+<li>AWS-S3: AWS storage, only suitable for AWS tasks and requires the same region</li>
 <li> VOD: VOD Pro Edition </li>
         :type Type: str
-        :param _CosOutputStorage: 
+        :param _CosOutputStorage: Required when `Type` is `COS`. It refers to the COS output location for media processing.
         :type CosOutputStorage: :class:`tencentcloud.mps.v20190612.models.CosOutputStorage`
-        :param _S3OutputStorage: 
+        :param _S3OutputStorage: Valid when Type is AWS-S3. Required. Indicates the AWS S3 output location for media processing.
         :type S3OutputStorage: :class:`tencentcloud.mps.v20190612.models.S3OutputStorage`
-        :param _VODOutputStorage: 
+        :param _VODOutputStorage: Valid when Type is VOD. This item is required and indicates the output location of MPS VOD Pro Edition.
         :type VODOutputStorage: :class:`tencentcloud.mps.v20190612.models.VODOutputStorage`
         """
         self._Type = None
@@ -67994,9 +69973,9 @@ class TaskOutputStorage(AbstractModel):
 
     @property
     def Type(self):
-        r"""Type of the media processing output object storage location. Supported values:
+        r"""Type of the storage location for MPS output objects. Supported values:
 <li>COS: COS storage</li>
-<li>AWS-S3: AWS storage, suitable for AWS tasks only and requires the same region</li>
+<li>AWS-S3: AWS storage, only suitable for AWS tasks and requires the same region</li>
 <li> VOD: VOD Pro Edition </li>
         :rtype: str
         """
@@ -68008,7 +69987,7 @@ class TaskOutputStorage(AbstractModel):
 
     @property
     def CosOutputStorage(self):
-        r"""
+        r"""Required when `Type` is `COS`. It refers to the COS output location for media processing.
         :rtype: :class:`tencentcloud.mps.v20190612.models.CosOutputStorage`
         """
         return self._CosOutputStorage
@@ -68019,7 +69998,7 @@ class TaskOutputStorage(AbstractModel):
 
     @property
     def S3OutputStorage(self):
-        r"""
+        r"""Valid when Type is AWS-S3. Required. Indicates the AWS S3 output location for media processing.
         :rtype: :class:`tencentcloud.mps.v20190612.models.S3OutputStorage`
         """
         return self._S3OutputStorage
@@ -68030,7 +70009,7 @@ class TaskOutputStorage(AbstractModel):
 
     @property
     def VODOutputStorage(self):
-        r"""
+        r"""Valid when Type is VOD. This item is required and indicates the output location of MPS VOD Pro Edition.
         :rtype: :class:`tencentcloud.mps.v20190612.models.VODOutputStorage`
         """
         return self._VODOutputStorage
@@ -69924,9 +71903,19 @@ class TrackInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TrackNum: 
+        :param _TrackNum: Audio track and number of sound channels. Description:
+When SelectType is track, this value is an integer, for example: 1;
+When SelectType is track_channel, this value is a decimal, for example: 1.0;
+Default value: 1.0.
+Note: The integer part represents the audio track serial number, and the decimal part represents the sound channel. The audio track serial number is the stream index of the audio track, and supports input of 0 and positive integers. The decimal part supports up to 2 decimal places and only supports 0-63. However, if Codec is aac/eac3/ac3, the decimal part only supports 0-15. For example: For an audio track with stream index 1, 1.0 represents the first sound channel of this audio track, and 1.1 represents the second sound channel of this audio track.
         :type TrackNum: str
-        :param _ChannelVolume: 
+        :param _ChannelVolume: Sound channel volume. Description:
+When the value of AudioChannel is 1, the length of this array is 1, for example: [6];
+When the value of AudioChannel is 2, the length of this array is 2, for example: [0,6];
+When the value of AudioChannel is 6, the length of this array is greater than 2 and less than 16, for example: [-60,0,0,6].
+Value range: [-60, 6]. -60 means mute, 0 means keep the original volume, and 6 means double the original volume. Default value: -60.
+Note: Supports 3 decimal places.
+
         :type ChannelVolume: list of float
         """
         self._TrackNum = None
@@ -69934,7 +71923,11 @@ class TrackInfo(AbstractModel):
 
     @property
     def TrackNum(self):
-        r"""
+        r"""Audio track and number of sound channels. Description:
+When SelectType is track, this value is an integer, for example: 1;
+When SelectType is track_channel, this value is a decimal, for example: 1.0;
+Default value: 1.0.
+Note: The integer part represents the audio track serial number, and the decimal part represents the sound channel. The audio track serial number is the stream index of the audio track, and supports input of 0 and positive integers. The decimal part supports up to 2 decimal places and only supports 0-63. However, if Codec is aac/eac3/ac3, the decimal part only supports 0-15. For example: For an audio track with stream index 1, 1.0 represents the first sound channel of this audio track, and 1.1 represents the second sound channel of this audio track.
         :rtype: str
         """
         return self._TrackNum
@@ -69945,7 +71938,13 @@ class TrackInfo(AbstractModel):
 
     @property
     def ChannelVolume(self):
-        r"""
+        r"""Sound channel volume. Description:
+When the value of AudioChannel is 1, the length of this array is 1, for example: [6];
+When the value of AudioChannel is 2, the length of this array is 2, for example: [0,6];
+When the value of AudioChannel is 6, the length of this array is greater than 2 and less than 16, for example: [-60,0,0,6].
+Value range: [-60, 6]. -60 means mute, 0 means keep the original volume, and 6 means double the original volume. Default value: -60.
+Note: Supports 3 decimal places.
+
         :rtype: list of float
         """
         return self._ChannelVolume
@@ -69980,41 +71979,43 @@ class TranscodeTaskInput(AbstractModel):
         :param _RawParameter: Custom video transcoding parameter. It takes effect when Definition is set to 0.
 This parameter is used in high customization scenarios. It is recommended that you preferentially use Definition to specify transcoding parameters.
         :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawTranscodeParameter`
-        :param _OverrideParameter: 
+        :param _OverrideParameter: Custom video transcoding parameter. It takes effect when Definition is not set to 0.
+When some transcoding parameters in this structure are filled in, the filled parameters will be used to override the parameters in the transcoding template.
+This parameter is used in high customization scenarios. It is recommended that you use only Definition to specify transcoding parameters.
         :type OverrideParameter: :class:`tencentcloud.mps.v20190612.models.OverrideTranscodeParameter`
         :param _WatermarkSet: Watermark list. Multiple image or text watermarks up to a maximum of 10 are supported.
         :type WatermarkSet: list of WatermarkInput
-        :param _BlindWatermark: 
+        :param _BlindWatermark: Digital watermark parameter.
         :type BlindWatermark: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkInput`
-        :param _MosaicSet: Mosaic list. A maximum of 10 images is supported.
+        :param _MosaicSet: Mosaic list. Up to 10 images supported.
         :type MosaicSet: list of MosaicInput
         :param _StartTimeOffset: Start time offset of the transcoded video, in seconds.
-<li>If this parameter is not specified or is set to 0, the transcoded video starts from the start position of the original video;</li>
+<li>Leave this parameter empty or set it to 0: transcoding starts from the start of the original video;</li>
 <li>When the value is greater than 0 (assuming n), it means the transcoded video starts from the nth second of the original video;</li>
-<li>When the value is less than 0 (assuming -n), it means the transcoded video starts n seconds before the end of the original video.</li>
+<li>When the value is less than 0 (assuming -n), it means the transcoded video starts from the position n seconds before the end of the original video.</li>
         :type StartTimeOffset: float
         :param _EndTimeOffset: End time offset of the transcoded video, in seconds.
 <li>If not set or set to 0, the transcoded video will last until the end of the original video.</li>
-<li>When the value is greater than 0 (assuming n), it means the transcoded video ends at the nth second of the original video.</li>
-<li>When the value is less than 0 (assuming -n), it means the transcoded video lasts until n seconds before the end of the original video.</li>
+<li>When the value is greater than 0 (assuming n), it means the transcoded video lasts until the nth second of the original video and then ends;</li>
+<li>When the value is less than 0 (assuming -n), it means the transcoded video lasts until n seconds before the original video ends.</li>
         :type EndTimeOffset: float
-        :param _OutputStorage: 
+        :param _OutputStorage: Target storage for transcoded files. If left blank, it inherits the upper-level OutputStorage value.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputObjectPath: Output path of the main file after transcoding, which can be a relative or absolute path.
 To define the output path, the path must end with `.{format}`. For variable names, please refer to [Filename Variable Explanation](https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1).
 Relative path example:
-<li>Filename_{Variable name}.{format}</li>
+<li>Filename_{Variable name}.{format}.</li>
 <li>Filename.{format}.</li>
 Absolute path example:
 <li>/Custom path/Filename_{Variable name}.{format}</li>
-If left empty, the default relative path is `{inputName}_transcode_{definition}.{format}`.
+If not filled in, default relative path: `{inputName}_transcode_{definition}.{format}`.
 
         :type OutputObjectPath: str
-        :param _SegmentObjectName: Output path for segment files after transcoding (the path of TS files when transcoding to HLS), which can only be a relative path. If left empty, it defaults to `{inputName}_transcode_{definition}_{number}.{format}`.
+        :param _SegmentObjectName: Output path for segment files after transcoding (the path of TS files when transcoding to HLS), which can only be a relative path. If left empty, it defaults to: `{inputName}_transcode_{definition}_{number}.{format}`.
         :type SegmentObjectName: str
-        :param _ObjectNumberFormat: 
+        :param _ObjectNumberFormat: Rule of the `{number}` variable in the output path after transcoding.
         :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
-        :param _HeadTailParameter: 
+        :param _HeadTailParameter: Opening and ending content parameters.
         :type HeadTailParameter: :class:`tencentcloud.mps.v20190612.models.HeadTailParameter`
         """
         self._Definition = None
@@ -70056,7 +72057,9 @@ This parameter is used in high customization scenarios. It is recommended that y
 
     @property
     def OverrideParameter(self):
-        r"""
+        r"""Custom video transcoding parameter. It takes effect when Definition is not set to 0.
+When some transcoding parameters in this structure are filled in, the filled parameters will be used to override the parameters in the transcoding template.
+This parameter is used in high customization scenarios. It is recommended that you use only Definition to specify transcoding parameters.
         :rtype: :class:`tencentcloud.mps.v20190612.models.OverrideTranscodeParameter`
         """
         return self._OverrideParameter
@@ -70078,7 +72081,7 @@ This parameter is used in high customization scenarios. It is recommended that y
 
     @property
     def BlindWatermark(self):
-        r"""
+        r"""Digital watermark parameter.
         :rtype: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkInput`
         """
         return self._BlindWatermark
@@ -70089,7 +72092,7 @@ This parameter is used in high customization scenarios. It is recommended that y
 
     @property
     def MosaicSet(self):
-        r"""Mosaic list. A maximum of 10 images is supported.
+        r"""Mosaic list. Up to 10 images supported.
         :rtype: list of MosaicInput
         """
         return self._MosaicSet
@@ -70101,9 +72104,9 @@ This parameter is used in high customization scenarios. It is recommended that y
     @property
     def StartTimeOffset(self):
         r"""Start time offset of the transcoded video, in seconds.
-<li>If this parameter is not specified or is set to 0, the transcoded video starts from the start position of the original video;</li>
+<li>Leave this parameter empty or set it to 0: transcoding starts from the start of the original video;</li>
 <li>When the value is greater than 0 (assuming n), it means the transcoded video starts from the nth second of the original video;</li>
-<li>When the value is less than 0 (assuming -n), it means the transcoded video starts n seconds before the end of the original video.</li>
+<li>When the value is less than 0 (assuming -n), it means the transcoded video starts from the position n seconds before the end of the original video.</li>
         :rtype: float
         """
         return self._StartTimeOffset
@@ -70116,8 +72119,8 @@ This parameter is used in high customization scenarios. It is recommended that y
     def EndTimeOffset(self):
         r"""End time offset of the transcoded video, in seconds.
 <li>If not set or set to 0, the transcoded video will last until the end of the original video.</li>
-<li>When the value is greater than 0 (assuming n), it means the transcoded video ends at the nth second of the original video.</li>
-<li>When the value is less than 0 (assuming -n), it means the transcoded video lasts until n seconds before the end of the original video.</li>
+<li>When the value is greater than 0 (assuming n), it means the transcoded video lasts until the nth second of the original video and then ends;</li>
+<li>When the value is less than 0 (assuming -n), it means the transcoded video lasts until n seconds before the original video ends.</li>
         :rtype: float
         """
         return self._EndTimeOffset
@@ -70128,7 +72131,7 @@ This parameter is used in high customization scenarios. It is recommended that y
 
     @property
     def OutputStorage(self):
-        r"""
+        r"""Target storage for transcoded files. If left blank, it inherits the upper-level OutputStorage value.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -70142,11 +72145,11 @@ This parameter is used in high customization scenarios. It is recommended that y
         r"""Output path of the main file after transcoding, which can be a relative or absolute path.
 To define the output path, the path must end with `.{format}`. For variable names, please refer to [Filename Variable Explanation](https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1).
 Relative path example:
-<li>Filename_{Variable name}.{format}</li>
+<li>Filename_{Variable name}.{format}.</li>
 <li>Filename.{format}.</li>
 Absolute path example:
 <li>/Custom path/Filename_{Variable name}.{format}</li>
-If left empty, the default relative path is `{inputName}_transcode_{definition}.{format}`.
+If not filled in, default relative path: `{inputName}_transcode_{definition}.{format}`.
 
         :rtype: str
         """
@@ -70158,7 +72161,7 @@ If left empty, the default relative path is `{inputName}_transcode_{definition}.
 
     @property
     def SegmentObjectName(self):
-        r"""Output path for segment files after transcoding (the path of TS files when transcoding to HLS), which can only be a relative path. If left empty, it defaults to `{inputName}_transcode_{definition}_{number}.{format}`.
+        r"""Output path for segment files after transcoding (the path of TS files when transcoding to HLS), which can only be a relative path. If left empty, it defaults to: `{inputName}_transcode_{definition}_{number}.{format}`.
         :rtype: str
         """
         return self._SegmentObjectName
@@ -70169,7 +72172,7 @@ If left empty, the default relative path is `{inputName}_transcode_{definition}.
 
     @property
     def ObjectNumberFormat(self):
-        r"""
+        r"""Rule of the `{number}` variable in the output path after transcoding.
         :rtype: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
         """
         return self._ObjectNumberFormat
@@ -70180,7 +72183,7 @@ If left empty, the default relative path is `{inputName}_transcode_{definition}.
 
     @property
     def HeadTailParameter(self):
-        r"""
+        r"""Opening and ending content parameters.
         :rtype: :class:`tencentcloud.mps.v20190612.models.HeadTailParameter`
         """
         return self._HeadTailParameter
@@ -70699,17 +72702,20 @@ class UnderstandImageConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Model: <p>Image understanding model</p><p>Enumeration value:</p><ul><li>WAND-understand-1.0-lite: Lightweight understanding model</li><li>WAND-understand-1.0-flash: Quality-speed balanced understanding model</li><li>WAND-understand-1.0-pro: High-quality understanding model</li></ul>
+        :param _Model: <p>Image understanding model</p><p>Enumeration values:</p><ul><li>understand-1.0-lite: Lightweight understanding model</li><li>understand-1.0-flash: Quality-speed balanced understanding model</li><li>understand-1.0-pro: High-quality understanding model</li></ul>
         :type Model: str
-        :param _Prompt: <p>Image understanding directive</p>
+        :param _Prompt: <p>Image understanding instruction</p>
         :type Prompt: str
+        :param _Parameters: <p>Image understanding model parameters, of JSON string type.</p>
+        :type Parameters: str
         """
         self._Model = None
         self._Prompt = None
+        self._Parameters = None
 
     @property
     def Model(self):
-        r"""<p>Image understanding model</p><p>Enumeration value:</p><ul><li>WAND-understand-1.0-lite: Lightweight understanding model</li><li>WAND-understand-1.0-flash: Quality-speed balanced understanding model</li><li>WAND-understand-1.0-pro: High-quality understanding model</li></ul>
+        r"""<p>Image understanding model</p><p>Enumeration values:</p><ul><li>understand-1.0-lite: Lightweight understanding model</li><li>understand-1.0-flash: Quality-speed balanced understanding model</li><li>understand-1.0-pro: High-quality understanding model</li></ul>
         :rtype: str
         """
         return self._Model
@@ -70720,7 +72726,7 @@ class UnderstandImageConfig(AbstractModel):
 
     @property
     def Prompt(self):
-        r"""<p>Image understanding directive</p>
+        r"""<p>Image understanding instruction</p>
         :rtype: str
         """
         return self._Prompt
@@ -70729,10 +72735,22 @@ class UnderstandImageConfig(AbstractModel):
     def Prompt(self, Prompt):
         self._Prompt = Prompt
 
+    @property
+    def Parameters(self):
+        r"""<p>Image understanding model parameters, of JSON string type.</p>
+        :rtype: str
+        """
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
         self._Prompt = params.get("Prompt")
+        self._Parameters = params.get("Parameters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -70878,15 +72896,19 @@ class UpdateProjectResponse(AbstractModel):
 
 
 class UpdateSmartErasePrivacyConfig(AbstractModel):
-    r"""
+    r"""Privacy protection configuration for the smart erasing template.
 
     """
 
     def __init__(self):
         r"""
-        :param _PrivacyModel: 
+        :param _PrivacyModel: Erasing method of privacy protection.
+- Blur: blur.
+- mosaic
         :type PrivacyModel: str
-        :param _PrivacyTargets: 
+        :param _PrivacyTargets: Privacy protection target. (When API Explorer is used, it is not required to specify an array. Add the corresponding items and enter the corresponding values.)
+- face: human face.
+- plate: license plate.
         :type PrivacyTargets: list of str
         """
         self._PrivacyModel = None
@@ -70894,7 +72916,9 @@ class UpdateSmartErasePrivacyConfig(AbstractModel):
 
     @property
     def PrivacyModel(self):
-        r"""
+        r"""Erasing method of privacy protection.
+- Blur: blur.
+- mosaic
         :rtype: str
         """
         return self._PrivacyModel
@@ -70905,7 +72929,9 @@ class UpdateSmartErasePrivacyConfig(AbstractModel):
 
     @property
     def PrivacyTargets(self):
-        r"""
+        r"""Privacy protection target. (When API Explorer is used, it is not required to specify an array. Add the corresponding items and enter the corresponding values.)
+- face: human face.
+- plate: license plate.
         :rtype: list of str
         """
         return self._PrivacyTargets
@@ -70929,29 +72955,75 @@ class UpdateSmartErasePrivacyConfig(AbstractModel):
 
 
 class UpdateSmartEraseSubtitleConfig(AbstractModel):
-    r"""
+    r"""Subtitle removal configuration for the smart erasing template.
 
     """
 
     def __init__(self):
         r"""
-        :param _SubtitleEraseMethod: 
+        :param _SubtitleEraseMethod: Subtitle erasing method.
+**Automatic erasing:** Video subtitles are automatically recognized using an AI model and are erased without traces to generate a new video. However, missed or incorrect erasing may occur due to image interference and special subtitle styles. In this case, you can specify the erasing area.
+When automatic erasing is used, if AutoAreas is not specified, the default area (lower middle part of the image) will be erased automatically. If AutoAreas is specified, the specified area will be erased automatically.
+**Specified area erasing:** If the subtitle position is relatively fixed, you are recommended to specify the erasing area directly to minimize missed erasing.
+When you choose specified area erasing, specify at least one area for CustomAreas.
+- auto: automatic erasing.
+- custom: specified area erasing.
+
         :type SubtitleEraseMethod: str
-        :param _SubtitleModel: 
+        :param _SubtitleModel: Subtitle erasing model.
+**Standard edition (recommended):** For standard subtitle styles, you are recommended to select this edition to ensure better traceless effects in the details.
+**Area edition:** If the subtitles have special styles, such as calligraphy, shadow, or motion effects, you are recommended to select this edition to ensure a larger erasing area. However, the erasing effect in the details is not as good as the standard edition.
+- standard: standard edition.
+- area: area edition.
         :type SubtitleModel: str
-        :param _OcrSwitch: 
+        :param _OcrSwitch: Whether to enable OCR subtitle extraction. The default value is OFF.
+OCR subtitle extraction is supported if and only if SubtitleEraseMethod is set to auto. When enabled, it identifies the text region that appears most persistently and stably within the automatic erasing area as the subtitle area. The text within the subtitle area is extracted and erased.
+- ON: enabled.
+-OFF: disabled.
         :type OcrSwitch: str
-        :param _SubtitleLang: 
+        :param _SubtitleLang: Subtitle language, used for OCR recognition. Default value: zh_en. This parameter is valid only when OcrSwitch is ON.
+- zh_en: Chinese and English.
+- `multi`: others.
+The following are other languages supported for recognition:
+Chinese, English, Japanese, Korean, Spanish, French, German, Portuguese, Vietnamese, Malay, Russian, Italian, Dutch, Swedish, Finnish, Danish, Norwegian, Hungarian, Thai, Hindi, Arabic, Bengali (India), Gujarati (India), Kannada (India), Malayalam (India), Tamil (India), Telugu (India), Slovenian, Polish, Catalan, Bosnian, Czech, Estonian, Croatian, Punjabi, Marathi, Azerbaijani, Indonesian, Luxembourgish, Lithuanian, Latvian, Maltese, Slovak, Turkish, Kazakh, Greek, Irish, Belarusian, Khmer, Tagalog, Pashto, Persian, Tajik
+
+
         :type SubtitleLang: str
-        :param _SubtitleFormat: 
+        :param _SubtitleFormat: Subtitle file format. Default value: vtt. This parameter is valid only when OcrSwitch is set to ON.
+-srt format
+- vtt: WebVTT format.
         :type SubtitleFormat: str
-        :param _TransSwitch: 
+        :param _TransSwitch: Whether to enable subtitle translation. Default value: OFF. This parameter is valid only when OcrSwitch is ON.
+- ON: enabled.
+-OFF: disabled.
         :type TransSwitch: str
-        :param _TransDstLang: 
+        :param _TransDstLang: Subtitle translation target language. Default value: en. This parameter is valid only when TransSwitch is set to "ON".
+Supported languages:
+zh: Simplified Chinese
+English
+ja: Japanese
+ko: Korean
+fr: French
+es: Spanish
+it: Italian
+de: German
+tr: Turkish
+ru: Russian
+pt: Portuguese
+vi: Vietnamese
+id: Indonesian
+ms: Malay
+th: Thai
+ar: Arabic
+hi: Hindi
         :type TransDstLang: str
-        :param _AutoAreas: 
+        :param _AutoAreas: Custom area for automatic erasing.
+For the specified area, AI models are used to automatically detect and erase the target objects.
+Note: When the erasing method is set to custom, this parameter is invalid. When a template is modified, input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.
         :type AutoAreas: list of EraseArea
-        :param _CustomAreas: 
+        :param _CustomAreas: Specify a custom region for erasure.
+For the specified area, erase the target objects directly without detection and recognition within a selected time period.
+Note: When a template is modified, input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.
         :type CustomAreas: list of EraseTimeArea
         """
         self._SubtitleEraseMethod = None
@@ -70966,7 +73038,14 @@ class UpdateSmartEraseSubtitleConfig(AbstractModel):
 
     @property
     def SubtitleEraseMethod(self):
-        r"""
+        r"""Subtitle erasing method.
+**Automatic erasing:** Video subtitles are automatically recognized using an AI model and are erased without traces to generate a new video. However, missed or incorrect erasing may occur due to image interference and special subtitle styles. In this case, you can specify the erasing area.
+When automatic erasing is used, if AutoAreas is not specified, the default area (lower middle part of the image) will be erased automatically. If AutoAreas is specified, the specified area will be erased automatically.
+**Specified area erasing:** If the subtitle position is relatively fixed, you are recommended to specify the erasing area directly to minimize missed erasing.
+When you choose specified area erasing, specify at least one area for CustomAreas.
+- auto: automatic erasing.
+- custom: specified area erasing.
+
         :rtype: str
         """
         return self._SubtitleEraseMethod
@@ -70977,7 +73056,11 @@ class UpdateSmartEraseSubtitleConfig(AbstractModel):
 
     @property
     def SubtitleModel(self):
-        r"""
+        r"""Subtitle erasing model.
+**Standard edition (recommended):** For standard subtitle styles, you are recommended to select this edition to ensure better traceless effects in the details.
+**Area edition:** If the subtitles have special styles, such as calligraphy, shadow, or motion effects, you are recommended to select this edition to ensure a larger erasing area. However, the erasing effect in the details is not as good as the standard edition.
+- standard: standard edition.
+- area: area edition.
         :rtype: str
         """
         return self._SubtitleModel
@@ -70988,7 +73071,10 @@ class UpdateSmartEraseSubtitleConfig(AbstractModel):
 
     @property
     def OcrSwitch(self):
-        r"""
+        r"""Whether to enable OCR subtitle extraction. The default value is OFF.
+OCR subtitle extraction is supported if and only if SubtitleEraseMethod is set to auto. When enabled, it identifies the text region that appears most persistently and stably within the automatic erasing area as the subtitle area. The text within the subtitle area is extracted and erased.
+- ON: enabled.
+-OFF: disabled.
         :rtype: str
         """
         return self._OcrSwitch
@@ -70999,7 +73085,13 @@ class UpdateSmartEraseSubtitleConfig(AbstractModel):
 
     @property
     def SubtitleLang(self):
-        r"""
+        r"""Subtitle language, used for OCR recognition. Default value: zh_en. This parameter is valid only when OcrSwitch is ON.
+- zh_en: Chinese and English.
+- `multi`: others.
+The following are other languages supported for recognition:
+Chinese, English, Japanese, Korean, Spanish, French, German, Portuguese, Vietnamese, Malay, Russian, Italian, Dutch, Swedish, Finnish, Danish, Norwegian, Hungarian, Thai, Hindi, Arabic, Bengali (India), Gujarati (India), Kannada (India), Malayalam (India), Tamil (India), Telugu (India), Slovenian, Polish, Catalan, Bosnian, Czech, Estonian, Croatian, Punjabi, Marathi, Azerbaijani, Indonesian, Luxembourgish, Lithuanian, Latvian, Maltese, Slovak, Turkish, Kazakh, Greek, Irish, Belarusian, Khmer, Tagalog, Pashto, Persian, Tajik
+
+
         :rtype: str
         """
         return self._SubtitleLang
@@ -71010,7 +73102,9 @@ class UpdateSmartEraseSubtitleConfig(AbstractModel):
 
     @property
     def SubtitleFormat(self):
-        r"""
+        r"""Subtitle file format. Default value: vtt. This parameter is valid only when OcrSwitch is set to ON.
+-srt format
+- vtt: WebVTT format.
         :rtype: str
         """
         return self._SubtitleFormat
@@ -71021,7 +73115,9 @@ class UpdateSmartEraseSubtitleConfig(AbstractModel):
 
     @property
     def TransSwitch(self):
-        r"""
+        r"""Whether to enable subtitle translation. Default value: OFF. This parameter is valid only when OcrSwitch is ON.
+- ON: enabled.
+-OFF: disabled.
         :rtype: str
         """
         return self._TransSwitch
@@ -71032,7 +73128,25 @@ class UpdateSmartEraseSubtitleConfig(AbstractModel):
 
     @property
     def TransDstLang(self):
-        r"""
+        r"""Subtitle translation target language. Default value: en. This parameter is valid only when TransSwitch is set to "ON".
+Supported languages:
+zh: Simplified Chinese
+English
+ja: Japanese
+ko: Korean
+fr: French
+es: Spanish
+it: Italian
+de: German
+tr: Turkish
+ru: Russian
+pt: Portuguese
+vi: Vietnamese
+id: Indonesian
+ms: Malay
+th: Thai
+ar: Arabic
+hi: Hindi
         :rtype: str
         """
         return self._TransDstLang
@@ -71043,7 +73157,9 @@ class UpdateSmartEraseSubtitleConfig(AbstractModel):
 
     @property
     def AutoAreas(self):
-        r"""
+        r"""Custom area for automatic erasing.
+For the specified area, AI models are used to automatically detect and erase the target objects.
+Note: When the erasing method is set to custom, this parameter is invalid. When a template is modified, input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.
         :rtype: list of EraseArea
         """
         return self._AutoAreas
@@ -71054,7 +73170,9 @@ class UpdateSmartEraseSubtitleConfig(AbstractModel):
 
     @property
     def CustomAreas(self):
-        r"""
+        r"""Specify a custom region for erasure.
+For the specified area, erase the target objects directly without detection and recognition within a selected time period.
+Note: When a template is modified, input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.
         :rtype: list of EraseTimeArea
         """
         return self._CustomAreas
@@ -71095,19 +73213,34 @@ class UpdateSmartEraseSubtitleConfig(AbstractModel):
 
 
 class UpdateSmartEraseWatermarkConfig(AbstractModel):
-    r"""
+    r"""Watermark removal configuration for the smart erasing template.
 
     """
 
     def __init__(self):
         r"""
-        :param _WatermarkEraseMethod: 
+        :param _WatermarkEraseMethod: Watermark erasing method.
+**Automatic erasing: ** Video watermarks are automatically recognized using an AI model and are erased to generate a new video. It applies to dynamic watermarks.
+When automatic erasing is used, if AutoAreas is not specified, the full-screen video image area will be erased automatically. If AutoAreas is specified, the specified area will be erased automatically.
+**Specified area erasure:** For static watermarks with fixed positions, we recommend you directly specify the erasure area.
+If you choose specified area erasure, input at least one specified region.
+
+- auto: automatic erasing.
+- custom: specified area erasing.
         :type WatermarkEraseMethod: str
-        :param _WatermarkModel: 
+        :param _WatermarkModel: Watermark erasing model.
+Basic Edition: provide average effects and high cost performance. It applies to animations or videos with clean backgrounds.
+Advanced Edition: provide better effects. It applies to reality-style videos, such as short dramas.
+- basic: Basic Edition.
+- advanced: Advanced Edition.
         :type WatermarkModel: str
-        :param _AutoAreas: 
+        :param _AutoAreas: Custom area for automatic erasing.
+For the specified area, AI models are used to automatically detect and erase the target objects.
+Note: When the erasing method is set to custom, this parameter is invalid. Input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.
         :type AutoAreas: list of EraseArea
-        :param _CustomAreas: 
+        :param _CustomAreas: Specify a custom region for erasure.
+For the specified area, erase the target objects directly without detection and recognition within a selected time period.
+Note: Input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.
         :type CustomAreas: list of EraseTimeArea
         """
         self._WatermarkEraseMethod = None
@@ -71117,7 +73250,14 @@ class UpdateSmartEraseWatermarkConfig(AbstractModel):
 
     @property
     def WatermarkEraseMethod(self):
-        r"""
+        r"""Watermark erasing method.
+**Automatic erasing: ** Video watermarks are automatically recognized using an AI model and are erased to generate a new video. It applies to dynamic watermarks.
+When automatic erasing is used, if AutoAreas is not specified, the full-screen video image area will be erased automatically. If AutoAreas is specified, the specified area will be erased automatically.
+**Specified area erasure:** For static watermarks with fixed positions, we recommend you directly specify the erasure area.
+If you choose specified area erasure, input at least one specified region.
+
+- auto: automatic erasing.
+- custom: specified area erasing.
         :rtype: str
         """
         return self._WatermarkEraseMethod
@@ -71128,7 +73268,11 @@ class UpdateSmartEraseWatermarkConfig(AbstractModel):
 
     @property
     def WatermarkModel(self):
-        r"""
+        r"""Watermark erasing model.
+Basic Edition: provide average effects and high cost performance. It applies to animations or videos with clean backgrounds.
+Advanced Edition: provide better effects. It applies to reality-style videos, such as short dramas.
+- basic: Basic Edition.
+- advanced: Advanced Edition.
         :rtype: str
         """
         return self._WatermarkModel
@@ -71139,7 +73283,9 @@ class UpdateSmartEraseWatermarkConfig(AbstractModel):
 
     @property
     def AutoAreas(self):
-        r"""
+        r"""Custom area for automatic erasing.
+For the specified area, AI models are used to automatically detect and erase the target objects.
+Note: When the erasing method is set to custom, this parameter is invalid. Input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.
         :rtype: list of EraseArea
         """
         return self._AutoAreas
@@ -71150,7 +73296,9 @@ class UpdateSmartEraseWatermarkConfig(AbstractModel):
 
     @property
     def CustomAreas(self):
-        r"""
+        r"""Specify a custom region for erasure.
+For the specified area, erase the target objects directly without detection and recognition within a selected time period.
+Note: Input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.
         :rtype: list of EraseTimeArea
         """
         return self._CustomAreas
@@ -71335,14 +73483,14 @@ class UrlInputInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: Video URL.
+        :param _Url: URL of the video.
         :type Url: str
         """
         self._Url = None
 
     @property
     def Url(self):
-        r"""Video URL.
+        r"""URL of the video.
         :rtype: str
         """
         return self._Url
@@ -72037,23 +74185,23 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
 
 class VODInputInfo(AbstractModel):
-    r"""
+    r"""Media processing VOD object information.
 
     """
 
     def __init__(self):
         r"""
-        :param _Bucket: 
+        :param _Bucket: <p><em>Bucket ID</em> where the media processing object file resides</p>
         :type Bucket: str
-        :param _Region: 
+        :param _Region: <p>Region of the Bucket where the media processing object file resides</p>
         :type Region: str
-        :param _Object: 
+        :param _Object: <p>Input path of the media processing object file</p>
         :type Object: str
-        :param _SubAppId: 
+        :param _SubAppId: <p>VOD application ID.</p>
         :type SubAppId: int
-        :param _VodBasic: 
+        :param _VodBasic: <p>Whether to use VOD Standard Edition.<br>Attention: If left empty, VOD Pro Edition is used.</p><p>Enumeration values: </p><ul><li>Use VOD Pro Edition</li><li>Use VOD Standard Edition, allowing tasks to be initiated with FileId</li></ul><p>Default value: 0</p>
         :type VodBasic: int
-        :param _FileId: 
+        :param _FileId: <p>VOD Standard Edition FileId</p>
         :type FileId: str
         """
         self._Bucket = None
@@ -72065,7 +74213,7 @@ class VODInputInfo(AbstractModel):
 
     @property
     def Bucket(self):
-        r"""
+        r"""<p><em>Bucket ID</em> where the media processing object file resides</p>
         :rtype: str
         """
         return self._Bucket
@@ -72076,7 +74224,7 @@ class VODInputInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""
+        r"""<p>Region of the Bucket where the media processing object file resides</p>
         :rtype: str
         """
         return self._Region
@@ -72087,7 +74235,7 @@ class VODInputInfo(AbstractModel):
 
     @property
     def Object(self):
-        r"""
+        r"""<p>Input path of the media processing object file</p>
         :rtype: str
         """
         return self._Object
@@ -72098,7 +74246,7 @@ class VODInputInfo(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""
+        r"""<p>VOD application ID.</p>
         :rtype: int
         """
         return self._SubAppId
@@ -72109,7 +74257,7 @@ class VODInputInfo(AbstractModel):
 
     @property
     def VodBasic(self):
-        r"""
+        r"""<p>Whether to use VOD Standard Edition.<br>Attention: If left empty, VOD Pro Edition is used.</p><p>Enumeration values: </p><ul><li>Use VOD Pro Edition</li><li>Use VOD Standard Edition, allowing tasks to be initiated with FileId</li></ul><p>Default value: 0</p>
         :rtype: int
         """
         return self._VodBasic
@@ -72120,7 +74268,7 @@ class VODInputInfo(AbstractModel):
 
     @property
     def FileId(self):
-        r"""
+        r"""<p>VOD Standard Edition FileId</p>
         :rtype: str
         """
         return self._FileId
@@ -72148,19 +74296,19 @@ class VODInputInfo(AbstractModel):
 
 
 class VODOutputStorage(AbstractModel):
-    r"""
+    r"""Media processing VOD output object information.
 
     """
 
     def __init__(self):
         r"""
-        :param _Bucket: 
+        :param _Bucket: <p>Target <em>Bucket ID</em> for the output file generated by media processing</p>
         :type Bucket: str
-        :param _Region: 
+        :param _Region: <p>Region of the target Bucket for the output file generated by media processing</p>
         :type Region: str
-        :param _SubAppId: 
+        :param _SubAppId: <p>VOD application ID</p>
         :type SubAppId: int
-        :param _VodBasic: 
+        :param _VodBasic: <p>Whether to use VOD Standard Edition.<br>Attention: If left empty, VOD Pro Edition is used.</p><p>Enumeration values: </p><ul><li>0: Do not use VOD Standard Edition</li><li>1: Use VOD Standard Edition</li></ul>
         :type VodBasic: int
         """
         self._Bucket = None
@@ -72170,7 +74318,7 @@ class VODOutputStorage(AbstractModel):
 
     @property
     def Bucket(self):
-        r"""
+        r"""<p>Target <em>Bucket ID</em> for the output file generated by media processing</p>
         :rtype: str
         """
         return self._Bucket
@@ -72181,7 +74329,7 @@ class VODOutputStorage(AbstractModel):
 
     @property
     def Region(self):
-        r"""
+        r"""<p>Region of the target Bucket for the output file generated by media processing</p>
         :rtype: str
         """
         return self._Region
@@ -72192,7 +74340,7 @@ class VODOutputStorage(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""
+        r"""<p>VOD application ID</p>
         :rtype: int
         """
         return self._SubAppId
@@ -72203,7 +74351,7 @@ class VODOutputStorage(AbstractModel):
 
     @property
     def VodBasic(self):
-        r"""
+        r"""<p>Whether to use VOD Standard Edition.<br>Attention: If left empty, VOD Pro Edition is used.</p><p>Enumeration values: </p><ul><li>0: Do not use VOD Standard Edition</li><li>1: Use VOD Standard Edition</li></ul>
         :rtype: int
         """
         return self._VodBasic
@@ -72229,22 +74377,22 @@ class VODOutputStorage(AbstractModel):
 
 
 class VideoComprehensionResultItem(AbstractModel):
-    r"""Video shot recognition result
+    r"""Video storyboard recognition result.
 
     """
 
     def __init__(self):
         r"""
-        :param _StartTime: Segment start time (unit: seconds)
+        :param _StartTime: Start time of the storyboard segment, in seconds.
 
         :type StartTime: float
-        :param _EndTime: Segment end time (unit: seconds)
+        :param _EndTime: Segment end time (unit: second)
         :type EndTime: float
-        :param _Title: Storyboard clip title
+        :param _Title: Segment title.
         :type Title: str
-        :param _Description: Segment information description
+        :param _Description: Description of the storyboard segment information
         :type Description: str
-        :param _Keywords: Storyboard clip keywords
+        :param _Keywords: Segment keywords.
         :type Keywords: list of str
         """
         self._StartTime = None
@@ -72255,7 +74403,7 @@ class VideoComprehensionResultItem(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Segment start time (unit: seconds)
+        r"""Start time of the storyboard segment, in seconds.
 
         :rtype: float
         """
@@ -72267,7 +74415,7 @@ class VideoComprehensionResultItem(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""Segment end time (unit: seconds)
+        r"""Segment end time (unit: second)
         :rtype: float
         """
         return self._EndTime
@@ -72278,7 +74426,7 @@ class VideoComprehensionResultItem(AbstractModel):
 
     @property
     def Title(self):
-        r"""Storyboard clip title
+        r"""Segment title.
         :rtype: str
         """
         return self._Title
@@ -72289,7 +74437,7 @@ class VideoComprehensionResultItem(AbstractModel):
 
     @property
     def Description(self):
-        r"""Segment information description
+        r"""Description of the storyboard segment information
         :rtype: str
         """
         return self._Description
@@ -72300,7 +74448,7 @@ class VideoComprehensionResultItem(AbstractModel):
 
     @property
     def Keywords(self):
-        r"""Storyboard clip keywords
+        r"""Segment keywords.
         :rtype: list of str
         """
         return self._Keywords
@@ -72333,12 +74481,15 @@ class VideoDenoiseConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Capability configuration switch. Valid values:
+        :param _Switch: Capability configuration switch. Available values:
 <li>ON: enabled;</li>
 <li>OFF: disabled</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: 
+        :param _Type: Type. Valid values:
+<li>weak</li>
+<li>strong</li>
+Default value: weak.
         :type Type: str
         """
         self._Switch = None
@@ -72346,7 +74497,7 @@ Default value: ON.
 
     @property
     def Switch(self):
-        r"""Capability configuration switch. Valid values:
+        r"""Capability configuration switch. Available values:
 <li>ON: enabled;</li>
 <li>OFF: disabled</li>
 Default value: ON.
@@ -72360,7 +74511,10 @@ Default value: ON.
 
     @property
     def Type(self):
-        r"""
+        r"""Type. Valid values:
+<li>weak</li>
+<li>strong</li>
+Default value: weak.
         :rtype: str
         """
         return self._Type
@@ -72456,32 +74610,34 @@ class VideoEnhanceConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FrameRate: 
+        :param _FrameRate: <p>Frame rate configuration (old) for the frame interpolation. New users are recommended to use FrameRateWithDen for configuring the frame rate of frame interpolation, which supports fractions and provides better results. Note that FrameRate and FrameRateWithDen are mutually exclusive; configuring both simultaneously may cause task failures. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.</p>
         :type FrameRate: :class:`tencentcloud.mps.v20190612.models.FrameRateConfig`
-        :param _SuperResolution: 
+        :param _SuperResolution: <p>Super-resolution configuration. The video is not processed when the source resolution is higher than the target resolution. Note that it cannot be enabled simultaneously with LLM enhancement.</p>
         :type SuperResolution: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
-        :param _Hdr: 
+        :param _Hdr: <p>HDR configuration.</p>
         :type Hdr: :class:`tencentcloud.mps.v20190612.models.HdrConfig`
-        :param _Denoise: 
+        :param _Denoise: <p>Video noise reduction configuration. Note that it cannot be enabled simultaneously with LLM enhancement.</p>
         :type Denoise: :class:`tencentcloud.mps.v20190612.models.VideoDenoiseConfig`
-        :param _ImageQualityEnhance: 
+        :param _ImageQualityEnhance: <p>Comprehensive enhancement configuration. Note that only one of the three items, large model, comprehensive enhancement, and artifacts removal, can be configured.</p>
         :type ImageQualityEnhance: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
-        :param _ColorEnhance: 
+        :param _ColorEnhance: <p>Color enhancement configuration.</p>
         :type ColorEnhance: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
-        :param _LowLightEnhance: 
+        :param _LowLightEnhance: <p>Low-light enhancement configuration.</p>
         :type LowLightEnhance: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
-        :param _ScratchRepair: 
+        :param _ScratchRepair: <p>Scratch removal configuration.</p>
         :type ScratchRepair: :class:`tencentcloud.mps.v20190612.models.ScratchRepairConfig`
-        :param _ArtifactRepair: 
+        :param _ArtifactRepair: <p>Artifacts removal configuration. Note that only one of the three items, large model, comprehensive enhancement, and artifacts removal, can be configured.</p>
         :type ArtifactRepair: :class:`tencentcloud.mps.v20190612.models.ArtifactRepairConfig`
-        :param _EnhanceSceneType: 
+        :param _EnhanceSceneType: <p>Enhancement scenario configuration. Available values:</p><li>common: general enhancement parameters, basic optimization parameters suitable for various video types, improving overall video quality.</li><li>AIGC: overall resolution enhancement, using AI technology to improve the overall video resolution and enhance image clarity.</li><li>short_play (mini-drama & AI virtual human drama): enhances face and subtitle details, highlights facial expression details and subtitle clarity, improving the viewing experience.</li><li>AI_comic (AI comic drama): enhances comic-style image details.</li><li>short_video: optimizes complex and diverse video quality issues, optimizes video quality for complex short video scenarios, and resolves various visual issues.</li><li>game (game video): repairs motion blur and enhances details, focusing on enhancing the clarity of game details, restoring motion blur areas, and making the game screen content clearer and richer.</li><li>HD_movie_series (UHD TV shows and movies): obtains UHD smooth effects, generates 4K 60fps HDR UHD standard videos for broadcasting/OTT UHD video demands. Supports broadcasting scenario format standards.</li><li>LQ_material (low-quality material/classic film restoration): overall resolution enhancement, specially optimized for issues in old videos such as insufficient resolution, blur distortion, scratch damage, and color temperature due to their age.</li><li>lecture (live show/e-commerce/conference/lecture): beautifies and enhances face effects, specially optimized for face region, noise reduction, and burr processing in scenarios where people explain, such as live shows/e-commerce/conferences/lectures.</li><li>An empty string indicates non-use of enhancement scenarios.</li>
         :type EnhanceSceneType: str
-        :param _DiffusionEnhance: 
+        :param _DiffusionEnhance: <p>Large model enhancement configuration. Note that only one of the three items, large model, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super resolution and noise reduction.</p>
         :type DiffusionEnhance: :class:`tencentcloud.mps.v20190612.models.DiffusionEnhanceConfig`
-        :param _FrameRateWithDen: 
+        :param _FrameRateWithDen: <p>New frame interpolation frame rate configuration, supporting fractions. Note that you can only choose one between this and FrameRate. The capacity will not take effect when the source frame rate is equal to or greater than the target frame rate.</p>
         :type FrameRateWithDen: :class:`tencentcloud.mps.v20190612.models.FrameRateWithDenConfig`
-        :param _AiRestoration: 
+        :param _AiRestoration: <p>Large model repair configuration. Note that at most one of large model, comprehensive enhancement, and jitter removal can be configured. It cannot be enabled simultaneously with super resolution or noise reduction.</p>
         :type AiRestoration: :class:`tencentcloud.mps.v20190612.models.AiRestorationConfig`
+        :param _DiffusionEnhanceV2: <p>Configuration of the large model enhancement pro edition. Note that at most one of the large model, comprehensive enhancement, and artifacts removal can be configured. It cannot intersect with super resolution and noise reduction.</p>
+        :type DiffusionEnhanceV2: :class:`tencentcloud.mps.v20190612.models.DiffusionEnhanceV2Config`
         """
         self._FrameRate = None
         self._SuperResolution = None
@@ -72496,10 +74652,11 @@ class VideoEnhanceConfig(AbstractModel):
         self._DiffusionEnhance = None
         self._FrameRateWithDen = None
         self._AiRestoration = None
+        self._DiffusionEnhanceV2 = None
 
     @property
     def FrameRate(self):
-        r"""
+        r"""<p>Frame rate configuration (old) for the frame interpolation. New users are recommended to use FrameRateWithDen for configuring the frame rate of frame interpolation, which supports fractions and provides better results. Note that FrameRate and FrameRateWithDen are mutually exclusive; configuring both simultaneously may cause task failures. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.FrameRateConfig`
         """
         return self._FrameRate
@@ -72510,7 +74667,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def SuperResolution(self):
-        r"""
+        r"""<p>Super-resolution configuration. The video is not processed when the source resolution is higher than the target resolution. Note that it cannot be enabled simultaneously with LLM enhancement.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
         """
         return self._SuperResolution
@@ -72521,7 +74678,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def Hdr(self):
-        r"""
+        r"""<p>HDR configuration.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.HdrConfig`
         """
         return self._Hdr
@@ -72532,7 +74689,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def Denoise(self):
-        r"""
+        r"""<p>Video noise reduction configuration. Note that it cannot be enabled simultaneously with LLM enhancement.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.VideoDenoiseConfig`
         """
         return self._Denoise
@@ -72543,7 +74700,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def ImageQualityEnhance(self):
-        r"""
+        r"""<p>Comprehensive enhancement configuration. Note that only one of the three items, large model, comprehensive enhancement, and artifacts removal, can be configured.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
         """
         return self._ImageQualityEnhance
@@ -72554,7 +74711,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def ColorEnhance(self):
-        r"""
+        r"""<p>Color enhancement configuration.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
         """
         return self._ColorEnhance
@@ -72565,7 +74722,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def LowLightEnhance(self):
-        r"""
+        r"""<p>Low-light enhancement configuration.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
         """
         return self._LowLightEnhance
@@ -72576,7 +74733,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def ScratchRepair(self):
-        r"""
+        r"""<p>Scratch removal configuration.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.ScratchRepairConfig`
         """
         return self._ScratchRepair
@@ -72587,7 +74744,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def ArtifactRepair(self):
-        r"""
+        r"""<p>Artifacts removal configuration. Note that only one of the three items, large model, comprehensive enhancement, and artifacts removal, can be configured.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.ArtifactRepairConfig`
         """
         return self._ArtifactRepair
@@ -72598,7 +74755,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def EnhanceSceneType(self):
-        r"""
+        r"""<p>Enhancement scenario configuration. Available values:</p><li>common: general enhancement parameters, basic optimization parameters suitable for various video types, improving overall video quality.</li><li>AIGC: overall resolution enhancement, using AI technology to improve the overall video resolution and enhance image clarity.</li><li>short_play (mini-drama & AI virtual human drama): enhances face and subtitle details, highlights facial expression details and subtitle clarity, improving the viewing experience.</li><li>AI_comic (AI comic drama): enhances comic-style image details.</li><li>short_video: optimizes complex and diverse video quality issues, optimizes video quality for complex short video scenarios, and resolves various visual issues.</li><li>game (game video): repairs motion blur and enhances details, focusing on enhancing the clarity of game details, restoring motion blur areas, and making the game screen content clearer and richer.</li><li>HD_movie_series (UHD TV shows and movies): obtains UHD smooth effects, generates 4K 60fps HDR UHD standard videos for broadcasting/OTT UHD video demands. Supports broadcasting scenario format standards.</li><li>LQ_material (low-quality material/classic film restoration): overall resolution enhancement, specially optimized for issues in old videos such as insufficient resolution, blur distortion, scratch damage, and color temperature due to their age.</li><li>lecture (live show/e-commerce/conference/lecture): beautifies and enhances face effects, specially optimized for face region, noise reduction, and burr processing in scenarios where people explain, such as live shows/e-commerce/conferences/lectures.</li><li>An empty string indicates non-use of enhancement scenarios.</li>
         :rtype: str
         """
         return self._EnhanceSceneType
@@ -72609,7 +74766,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def DiffusionEnhance(self):
-        r"""
+        r"""<p>Large model enhancement configuration. Note that only one of the three items, large model, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super resolution and noise reduction.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.DiffusionEnhanceConfig`
         """
         return self._DiffusionEnhance
@@ -72620,7 +74777,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def FrameRateWithDen(self):
-        r"""
+        r"""<p>New frame interpolation frame rate configuration, supporting fractions. Note that you can only choose one between this and FrameRate. The capacity will not take effect when the source frame rate is equal to or greater than the target frame rate.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.FrameRateWithDenConfig`
         """
         return self._FrameRateWithDen
@@ -72631,7 +74788,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def AiRestoration(self):
-        r"""
+        r"""<p>Large model repair configuration. Note that at most one of large model, comprehensive enhancement, and jitter removal can be configured. It cannot be enabled simultaneously with super resolution or noise reduction.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRestorationConfig`
         """
         return self._AiRestoration
@@ -72639,6 +74796,17 @@ class VideoEnhanceConfig(AbstractModel):
     @AiRestoration.setter
     def AiRestoration(self, AiRestoration):
         self._AiRestoration = AiRestoration
+
+    @property
+    def DiffusionEnhanceV2(self):
+        r"""<p>Configuration of the large model enhancement pro edition. Note that at most one of the large model, comprehensive enhancement, and artifacts removal can be configured. It cannot intersect with super resolution and noise reduction.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DiffusionEnhanceV2Config`
+        """
+        return self._DiffusionEnhanceV2
+
+    @DiffusionEnhanceV2.setter
+    def DiffusionEnhanceV2(self, DiffusionEnhanceV2):
+        self._DiffusionEnhanceV2 = DiffusionEnhanceV2
 
 
     def _deserialize(self, params):
@@ -72679,6 +74847,9 @@ class VideoEnhanceConfig(AbstractModel):
         if params.get("AiRestoration") is not None:
             self._AiRestoration = AiRestorationConfig()
             self._AiRestoration._deserialize(params.get("AiRestoration"))
+        if params.get("DiffusionEnhanceV2") is not None:
+            self._DiffusionEnhanceV2 = DiffusionEnhanceV2Config()
+            self._DiffusionEnhanceV2._deserialize(params.get("DiffusionEnhanceV2"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -72845,7 +75016,7 @@ class VideoTemplateInfo(AbstractModel):
 <li>dnxhd: DNxHD encoding.</li>
 <li>mv-hevc: MV-HEVC encoding.</li>
 
-Note: av1 encoding container currently only supports mp4, webm, and mkv.
+Note: av1 encoding containers currently only support mp4, webm, and mkv.
 Note: H.266 encoding containers currently only support mp4, hls, ts, and mov.
 Note: VP8 and VP9 encoding containers currently only support webm and mkv.
 Note: MPEG2 and dnxhd encoding containers currently only support mxf.
@@ -72856,7 +75027,7 @@ When FpsDenominator is empty, the range is [0, 120], in Hz.
 When FpsDenominator is not empty, the Fps/FpsDenominator range is [0, 120].
 If the value is 0, the frame rate will be the same as that of the source video.
         :type Fps: int
-        :param _Bitrate: Bitrate of the video stream. Value range: 0 and [128, 100000]. Unit: kbps.
+        :param _Bitrate: Video stream bitrate, in kbps. Value range: 0 and [128, 100000].
 If the value is 0, the bitrate of the video will be the same as that of the source video.
         :type Bitrate: int
         :param _ResolutionAdaptive: Resolution adaptation, available values:
@@ -72873,7 +75044,7 @@ Note: In self-adaptation mode, Width cannot be less than Height.
 Default value: 0.
 Note: If Codec is set to MV-HEVC, the maximum value can be 7680.
         :type Width: int
-        :param _Height: Maximum value of the video stream height (or short side). Value range: 0 and [128, 4096]. Unit: px.
+        :param _Height: Maximum height (or short side) of the video stream. Value range: 0 and [128, 4096]. Unit: px.
 <li>If both Width and Height are 0, the resolution is the same as the source.</li>
 <li>If Width is 0 but Height is not 0, the width will be proportionally scaled.</li>
 <li>If Width is not 0 but Height is 0, the height will be proportionally scaled.</li>
@@ -72884,7 +75055,10 @@ Note: If Codec is set to MV-HEVC, the maximum value can be 7680.
         :param _Gop: Interval between I-frames (keyframes), which can be customized in frames or seconds. GOP value range: 0 and [1, 100000].
 If this parameter is 0 or left blank, the system will automatically set the GOP length.
         :type Gop: int
-        :param _GopUnit: 
+        :param _GopUnit: Gop value unit. Value range:
+frame: indicates frame
+second: indicates second
+Default value: frame
         :type GopUnit: str
         :param _FillType: Filling method, when video stream configuration width and height parameters are inconsistent with the aspect ratio of the original video, the processing method for transcoding is "padding". Optional filling modes:
 <li> stretch: stretches each frame to fill the entire screen, possibly causing the transcoded video to be "squashed" or "stretched";</li>
@@ -72894,41 +75068,97 @@ If this parameter is 0 or left blank, the system will automatically set the GOP 
 <li>smarttailor: intelligent cropping: smartly select video images to ensure proportional image cropping.</li>
 Default value: black.
         :type FillType: str
-        :param _Vcrf: 
+        :param _Vcrf: Control factor for constant video bitrate. Value range: [0, 51]. If not specified, it means "auto". If there are no special requirements, it is advisable not to specify this parameter.
+If Mode is set to VBR and Vcrf is configured, MPS processes video in VBR mode, taking into account both Vcrf and Bitrate parameter settings to balance video quality, bitrate, transcoding efficiency, and file size.
+When Mode is set to CRF, the Bitrate setting will become invalid, and encoding will be performed based on the Vcrf value.
+If Mode is set to ABR or CBR, the Vcrf value does not need to be configured.
         :type Vcrf: int
-        :param _HlsTime: 
+        :param _HlsTime: Average segment duration. Value range: (0-10], unit: second.
+If not specified, it means auto. The appropriate segment duration will be automatically selected based on video features such as GOP.
         :type HlsTime: int
-        :param _SegmentType: 
+        :param _SegmentType: hls fragment type. Available values:
+<li>0: HLS+TS segment.</li>
+<li>2:HLS+TS byte range</li>
+<li>7: HLS+MP4 segment.</li>
+<li>5:HLS+MP4 byte range</li>
+Default value: 0
+Note: This field is used for ordinary/TSC transcoding settings and does not take effect for adaptive bitrate streams. To configure the shard type for an adaptive bitrate stream, use the outer field.
         :type SegmentType: int
-        :param _FpsDenominator: 
+        :param _FpsDenominator: Denominator of the frame rate.
+Note: The value must be greater than 0.
         :type FpsDenominator: int
-        :param _Stereo3dType: 
+        :param _Stereo3dType: 3D video splicing mode. It takes effect only for mv-hevc and 3D videos. Available values:
+<li>side_by_side: left-right layout arrangement of the original video content.</li>
+<li>top_bottom: top-bottom layout arrangement of the original video content.</li>
+Billing will be based on the segmented resolution size to report usage and charges.
+Default value: side_by_side.
         :type Stereo3dType: str
-        :param _VideoProfile: 
+        :param _VideoProfile: Profile, suitable for different scenarios.
+baseline: It only supports I/P-frames and non-interlaced scenarios, and is suitable for scenarios such as video calls and mobile videos.
+Main: Mainstream Profile, provides I-frames, P-frames, and B-frames, and supports both interlaced and non-interlaced modes. It is mainly used in mainstream audio and video consumption products such as video players and streaming media transmission devices.
+high: Highest encoding level. It adds 8X8 prediction to Main Profile and supports custom quantization. It is widely used in Blu-ray storage, HDTV, and other scenarios.
+default: automatic filling along with the original video.    
+
+This configuration appears only when the encoding standard is set to H264. baseline/main/high is supported. Default value: default
         :type VideoProfile: str
-        :param _VideoLevel: 
+        :param _VideoLevel: Encoder level. Default value: auto ("")
+If the encoding standard is set to H264, the following options are supported: "", 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, and 5.1.
+If the encoding standard is set to H265, the following options are supported: "", 1, 2, 2.1, 3, 3.1, 4, 4.1, 5, 5.1, 5.2, 6, 6.1, 6.2, and 8.5.
         :type VideoLevel: str
-        :param _Bframes: 
+        :param _Bframes: Number of B-frames between reference frames. The default is auto, and a range of 0 - 16 is supported.
+Note: Leaving it blank means using the auto option.
         :type Bframes: int
-        :param _Mode: 
+        :param _Mode: Bitrate control mode. Available values:
+VBR (Variable Bit Rate): adjust the output bitrate based on the complexity of the video image to ensure higher image quality. It is suitable for storage scenarios and applications with high image quality requirements.
+ABR (Average Bit Rate): Try to keep the average bitrate of the output video stable as much as possible, but allow short-term bitrate fluctuation. It is suitable for scenarios where the overall bitrate needs to be minimized while maintaining a certain image quality.
+CBR (Constant Bit Rate): maintains a constant output bitrate during video encoding, regardless of image complexity changes. It is suitable for scenarios with strict network bandwidth requirements, such as live streaming.
+VCRF (Constant Rate Factor): A constant quality factor. It controls video quality by setting a quality factor to achieve constant quality encoding of videos. The bitrate is automatically adjusted based on content complexity, making it suitable for scenarios where maintaining a certain quality is desired.
+VBR is selected by default.
         :type Mode: str
-        :param _Sar: 
+        :param _Sar: Display aspect ratio. Optional values: [1:1, 2:1, default]
+Default value: default
         :type Sar: str
-        :param _NoScenecut: 
+        :param _NoScenecut: Adaptive I-frame decision. When it is enabled, Media Processing Service will automatically identify transition points between different scenarios in the video (usually they are visually distinct frames, such as those of switching from one shot to another) and adaptively insert keyframes (I-frames) at these points to improve the random accessibility and encoding efficiency of the video. Available values:
+0: Disable adaptive I-frame decision 
+1: Enable the adaptive I-frame decision
+Default value: 0
         :type NoScenecut: int
-        :param _BitDepth: 
+        :param _BitDepth: Bit: 8/10 is supported. Default value: 8
         :type BitDepth: int
-        :param _RawPts: 
+        :param _RawPts: Preserve original timestamp. Optional values:
+0: Disabled
+1: Indicates open
+Default value: Disabled
         :type RawPts: int
-        :param _Compress: 
+        :param _Compress: Proportional compression bitrate. When enabled, the output video's bitrate is adjusted according to the proportion. After the compression ratio is entered, the system automatically calculates the target output bitrate based on the source video bitrate. Compression ratio range: 0-100
+Leaving this value blank means it is not enabled by default.
         :type Compress: int
-        :param _SegmentSpecificInfo: 
+        :param _SegmentSpecificInfo: Segment duration at startup
         :type SegmentSpecificInfo: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
-        :param _ScenarioBased: 
+        :param _ScenarioBased: Whether to enable scenario-based settings for the template 
+0: disable 
+1: enable 
+Default value: 0	
+Note: The values of the SceneType and CompressType fields are effective only when the value of this field is 1.
         :type ScenarioBased: int
-        :param _SceneType: 
+        :param _SceneType: Video scenario. Optional values: 
+normal: General transcoding scenario: General transcoding and compression scenario.
+pgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
+materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
+ugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
+e-commerce_video: Fashion show/e-commerce: During compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
+educational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. 
+Default value: normal.
+Note: To use this value, the value of ScenarioBased must be 1. Otherwise, this value does not take effect.
         :type SceneType: str
-        :param _CompressType: 
+        :param _CompressType: Transcoding policy. Optional values: 
+ultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
+standard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
+high_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
+low_compress: Image quality priority: Priority is given to ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
+Default value: standard_compress. 
+Note: The ultra_compress policy is not recommended for use if you need to watch videos on TV. The billing standard for the ultra_compress policy is TSC transcoding + audio/video enhancement-artifacts removal.
+Note: To use this value, the value of ScenarioBased must be 1. Otherwise, this value does not take effect.
         :type CompressType: str
         """
         self._Codec = None
@@ -72972,7 +75202,7 @@ Default value: black.
 <li>dnxhd: DNxHD encoding.</li>
 <li>mv-hevc: MV-HEVC encoding.</li>
 
-Note: av1 encoding container currently only supports mp4, webm, and mkv.
+Note: av1 encoding containers currently only support mp4, webm, and mkv.
 Note: H.266 encoding containers currently only support mp4, hls, ts, and mov.
 Note: VP8 and VP9 encoding containers currently only support webm and mkv.
 Note: MPEG2 and dnxhd encoding containers currently only support mxf.
@@ -73001,7 +75231,7 @@ If the value is 0, the frame rate will be the same as that of the source video.
 
     @property
     def Bitrate(self):
-        r"""Bitrate of the video stream. Value range: 0 and [128, 100000]. Unit: kbps.
+        r"""Video stream bitrate, in kbps. Value range: 0 and [128, 100000].
 If the value is 0, the bitrate of the video will be the same as that of the source video.
         :rtype: int
         """
@@ -73045,7 +75275,7 @@ Note: If Codec is set to MV-HEVC, the maximum value can be 7680.
 
     @property
     def Height(self):
-        r"""Maximum value of the video stream height (or short side). Value range: 0 and [128, 4096]. Unit: px.
+        r"""Maximum height (or short side) of the video stream. Value range: 0 and [128, 4096]. Unit: px.
 <li>If both Width and Height are 0, the resolution is the same as the source.</li>
 <li>If Width is 0 but Height is not 0, the width will be proportionally scaled.</li>
 <li>If Width is not 0 but Height is 0, the height will be proportionally scaled.</li>
@@ -73074,7 +75304,10 @@ If this parameter is 0 or left blank, the system will automatically set the GOP 
 
     @property
     def GopUnit(self):
-        r"""
+        r"""Gop value unit. Value range:
+frame: indicates frame
+second: indicates second
+Default value: frame
         :rtype: str
         """
         return self._GopUnit
@@ -73102,7 +75335,10 @@ Default value: black.
 
     @property
     def Vcrf(self):
-        r"""
+        r"""Control factor for constant video bitrate. Value range: [0, 51]. If not specified, it means "auto". If there are no special requirements, it is advisable not to specify this parameter.
+If Mode is set to VBR and Vcrf is configured, MPS processes video in VBR mode, taking into account both Vcrf and Bitrate parameter settings to balance video quality, bitrate, transcoding efficiency, and file size.
+When Mode is set to CRF, the Bitrate setting will become invalid, and encoding will be performed based on the Vcrf value.
+If Mode is set to ABR or CBR, the Vcrf value does not need to be configured.
         :rtype: int
         """
         return self._Vcrf
@@ -73113,7 +75349,8 @@ Default value: black.
 
     @property
     def HlsTime(self):
-        r"""
+        r"""Average segment duration. Value range: (0-10], unit: second.
+If not specified, it means auto. The appropriate segment duration will be automatically selected based on video features such as GOP.
         :rtype: int
         """
         return self._HlsTime
@@ -73124,7 +75361,13 @@ Default value: black.
 
     @property
     def SegmentType(self):
-        r"""
+        r"""hls fragment type. Available values:
+<li>0: HLS+TS segment.</li>
+<li>2:HLS+TS byte range</li>
+<li>7: HLS+MP4 segment.</li>
+<li>5:HLS+MP4 byte range</li>
+Default value: 0
+Note: This field is used for ordinary/TSC transcoding settings and does not take effect for adaptive bitrate streams. To configure the shard type for an adaptive bitrate stream, use the outer field.
         :rtype: int
         """
         return self._SegmentType
@@ -73135,7 +75378,8 @@ Default value: black.
 
     @property
     def FpsDenominator(self):
-        r"""
+        r"""Denominator of the frame rate.
+Note: The value must be greater than 0.
         :rtype: int
         """
         return self._FpsDenominator
@@ -73146,7 +75390,11 @@ Default value: black.
 
     @property
     def Stereo3dType(self):
-        r"""
+        r"""3D video splicing mode. It takes effect only for mv-hevc and 3D videos. Available values:
+<li>side_by_side: left-right layout arrangement of the original video content.</li>
+<li>top_bottom: top-bottom layout arrangement of the original video content.</li>
+Billing will be based on the segmented resolution size to report usage and charges.
+Default value: side_by_side.
         :rtype: str
         """
         return self._Stereo3dType
@@ -73157,7 +75405,13 @@ Default value: black.
 
     @property
     def VideoProfile(self):
-        r"""
+        r"""Profile, suitable for different scenarios.
+baseline: It only supports I/P-frames and non-interlaced scenarios, and is suitable for scenarios such as video calls and mobile videos.
+Main: Mainstream Profile, provides I-frames, P-frames, and B-frames, and supports both interlaced and non-interlaced modes. It is mainly used in mainstream audio and video consumption products such as video players and streaming media transmission devices.
+high: Highest encoding level. It adds 8X8 prediction to Main Profile and supports custom quantization. It is widely used in Blu-ray storage, HDTV, and other scenarios.
+default: automatic filling along with the original video.    
+
+This configuration appears only when the encoding standard is set to H264. baseline/main/high is supported. Default value: default
         :rtype: str
         """
         return self._VideoProfile
@@ -73168,7 +75422,9 @@ Default value: black.
 
     @property
     def VideoLevel(self):
-        r"""
+        r"""Encoder level. Default value: auto ("")
+If the encoding standard is set to H264, the following options are supported: "", 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, and 5.1.
+If the encoding standard is set to H265, the following options are supported: "", 1, 2, 2.1, 3, 3.1, 4, 4.1, 5, 5.1, 5.2, 6, 6.1, 6.2, and 8.5.
         :rtype: str
         """
         return self._VideoLevel
@@ -73179,7 +75435,8 @@ Default value: black.
 
     @property
     def Bframes(self):
-        r"""
+        r"""Number of B-frames between reference frames. The default is auto, and a range of 0 - 16 is supported.
+Note: Leaving it blank means using the auto option.
         :rtype: int
         """
         return self._Bframes
@@ -73190,7 +75447,12 @@ Default value: black.
 
     @property
     def Mode(self):
-        r"""
+        r"""Bitrate control mode. Available values:
+VBR (Variable Bit Rate): adjust the output bitrate based on the complexity of the video image to ensure higher image quality. It is suitable for storage scenarios and applications with high image quality requirements.
+ABR (Average Bit Rate): Try to keep the average bitrate of the output video stable as much as possible, but allow short-term bitrate fluctuation. It is suitable for scenarios where the overall bitrate needs to be minimized while maintaining a certain image quality.
+CBR (Constant Bit Rate): maintains a constant output bitrate during video encoding, regardless of image complexity changes. It is suitable for scenarios with strict network bandwidth requirements, such as live streaming.
+VCRF (Constant Rate Factor): A constant quality factor. It controls video quality by setting a quality factor to achieve constant quality encoding of videos. The bitrate is automatically adjusted based on content complexity, making it suitable for scenarios where maintaining a certain quality is desired.
+VBR is selected by default.
         :rtype: str
         """
         return self._Mode
@@ -73201,7 +75463,8 @@ Default value: black.
 
     @property
     def Sar(self):
-        r"""
+        r"""Display aspect ratio. Optional values: [1:1, 2:1, default]
+Default value: default
         :rtype: str
         """
         return self._Sar
@@ -73212,7 +75475,10 @@ Default value: black.
 
     @property
     def NoScenecut(self):
-        r"""
+        r"""Adaptive I-frame decision. When it is enabled, Media Processing Service will automatically identify transition points between different scenarios in the video (usually they are visually distinct frames, such as those of switching from one shot to another) and adaptively insert keyframes (I-frames) at these points to improve the random accessibility and encoding efficiency of the video. Available values:
+0: Disable adaptive I-frame decision 
+1: Enable the adaptive I-frame decision
+Default value: 0
         :rtype: int
         """
         return self._NoScenecut
@@ -73223,7 +75489,7 @@ Default value: black.
 
     @property
     def BitDepth(self):
-        r"""
+        r"""Bit: 8/10 is supported. Default value: 8
         :rtype: int
         """
         return self._BitDepth
@@ -73234,7 +75500,10 @@ Default value: black.
 
     @property
     def RawPts(self):
-        r"""
+        r"""Preserve original timestamp. Optional values:
+0: Disabled
+1: Indicates open
+Default value: Disabled
         :rtype: int
         """
         return self._RawPts
@@ -73245,7 +75514,8 @@ Default value: black.
 
     @property
     def Compress(self):
-        r"""
+        r"""Proportional compression bitrate. When enabled, the output video's bitrate is adjusted according to the proportion. After the compression ratio is entered, the system automatically calculates the target output bitrate based on the source video bitrate. Compression ratio range: 0-100
+Leaving this value blank means it is not enabled by default.
         :rtype: int
         """
         return self._Compress
@@ -73256,7 +75526,7 @@ Default value: black.
 
     @property
     def SegmentSpecificInfo(self):
-        r"""
+        r"""Segment duration at startup
         :rtype: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
         """
         return self._SegmentSpecificInfo
@@ -73267,7 +75537,11 @@ Default value: black.
 
     @property
     def ScenarioBased(self):
-        r"""
+        r"""Whether to enable scenario-based settings for the template 
+0: disable 
+1: enable 
+Default value: 0	
+Note: The values of the SceneType and CompressType fields are effective only when the value of this field is 1.
         :rtype: int
         """
         return self._ScenarioBased
@@ -73278,7 +75552,15 @@ Default value: black.
 
     @property
     def SceneType(self):
-        r"""
+        r"""Video scenario. Optional values: 
+normal: General transcoding scenario: General transcoding and compression scenario.
+pgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
+materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
+ugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
+e-commerce_video: Fashion show/e-commerce: During compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
+educational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. 
+Default value: normal.
+Note: To use this value, the value of ScenarioBased must be 1. Otherwise, this value does not take effect.
         :rtype: str
         """
         return self._SceneType
@@ -73289,7 +75571,14 @@ Default value: black.
 
     @property
     def CompressType(self):
-        r"""
+        r"""Transcoding policy. Optional values: 
+ultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
+standard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
+high_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
+low_compress: Image quality priority: Priority is given to ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
+Default value: standard_compress. 
+Note: The ultra_compress policy is not recommended for use if you need to watch videos on TV. The billing standard for the ultra_compress policy is TSC transcoding + audio/video enhancement-artifacts removal.
+Note: To use this value, the value of ScenarioBased must be 1. Otherwise, this value does not take effect.
         :rtype: str
         """
         return self._CompressType
@@ -73346,61 +75635,161 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Codec: 
+        :param _Codec: Encoding format for video streams. Optional values:
+<li>h264: H.264 encoding.</li>
+<li>h265: H.265 encoding.</li>
+<li>h266: H.266 encoding.</li>
+<li>av1: AOMedia Video 1 encoding</li>
+<li>vp8: VP8 encoding.</li>
+<li>vp9: VP9 encoding.</li>
+<li>mpeg2: MPEG2 encoding.</li>
+<li>dnxhd: DNxHD encoding.</li>
+<li>mv-hevc: MV-HEVC encoding.</li>
+
+Note: The av1 encoding container currently only supports mp4, webm, and mkv.
+Note: H.266 encoding containers currently only support mp4, hls, ts, and mov.
+Note: VP8 and VP9 encoding containers currently only support webm and mkv.
+Note: MPEG2 and dnxhd encoding containers currently only support mxf.
+Note: The MV-HEVC codec currently only supports mp4, hls, and mov. Among them, the HLS format only supports the MP4 segmented format and requires the input source to be a panoramic video (with multiple views).
         :type Codec: str
-        :param _Fps: 
+        :param _Fps: Video frame rate. Value range:
+When FpsDenominator is empty, the range is [0, 120], in Hz.
+When FpsDenominator is not empty, the Fps/FpsDenominator range is [0, 120].
+If the value is 0, the frame rate will be the same as that of the source video.
         :type Fps: int
-        :param _Bitrate: 
+        :param _Bitrate: Bitrate of video stream. Value range: 0 and [128, 100000]. Unit: kbps.
+If the value is 0, the bitrate of the video will be the same as that of the source video.
         :type Bitrate: int
-        :param _ResolutionAdaptive: 
+        :param _ResolutionAdaptive: Resolution adaptation, available values:
+<li>open: turn on. At this point, Width represents the long side of the video, and Height indicates the short side of the video;</li>
+<li>close: close. At this point, Width represents the width of the video, and Height indicates the height of the video.</li>
+Note: In self-adaptation mode, Width cannot be less than Height.
         :type ResolutionAdaptive: str
-        :param _Width: 
+        :param _Width: Maximum value of the video stream width (or long edge) in px. Value range: 0 and [128, 4096].
+<li>If both Width and Height are 0, the resolution is the same as the source.</li>
+<li>If Width is 0 but Height is not 0, the width will be proportionally scaled.</li>
+<li>If Width is not 0 but Height is 0, the height will be proportionally scaled.</li>
+<li>If both Width and Height are not 0, the resolution is as specified by the user.</li>
+Note: If Codec is set to MV-HEVC, the maximum value can be 7680.
         :type Width: int
-        :param _Height: 
+        :param _Height: Maximum value of the video stream height (or short side). Value range: 0 and [128, 4096]. Unit: px.
+Note: If Codec is set to MV-HEVC, the maximum value can be 7680.
         :type Height: int
-        :param _Gop: 
+        :param _Gop: Interval between I-frames (keyframes), which can be customized in frames or seconds. GOP value range: 0 and [1, 100000].
+When set to 0, the system will automatically set the gop length.
         :type Gop: int
-        :param _GopUnit: 
+        :param _GopUnit: Gop value unit. Value range: 
+frame: indicates frame 
+second: indicates second
+Default value: frame
         :type GopUnit: str
-        :param _FillType: 
+        :param _FillType: Filling method, when video stream configuration width and height parameters are inconsistent with the aspect ratio of the original video, the processing method for transcoding is "padding". Optional filling modes:
+<li> stretch: Stretch each frame to fill the entire screen, possibly causing the transcoded video to be "squashed" or "stretched";</li>
+<li>black: Keep black, maintain video aspect ratio, edges filled with black.</li>
+<li>White: Leave blank, maintain video aspect ratio, edge remainder filled with white.</li>
+<li>gauss: Gaussian blur, maintain video aspect ratio, and use Gaussian blur filling for the rest of the edges.</li>
+<li>smarttailor: intelligent cropping: smartly select video images to ensure proportional image cropping.</li>
+Default value: black.
         :type FillType: str
-        :param _Vcrf: 
+        :param _Vcrf: Control factor for constant video bitrate. Value range: [0, 51]. If not specified, it means "auto". If there are no special requirements, it is advisable not to specify this parameter.
+If Mode is set to VBR and Vcrf is configured, MPS processes video in VBR mode, taking into account both Vcrf and Bitrate parameter settings to balance video quality, bitrate, transcoding efficiency, and file size.
+If Mode is set to CRF, the Bitrate setting will become invalid, and encoding will be performed based on the Vcrf value.
+When Mode is set to ABR or CBR, the Vcrf value does not need to be configured.
+Note: To change it to automatic, fill in 100.
+
         :type Vcrf: int
-        :param _ContentAdaptStream: 
+        :param _ContentAdaptStream: Content adaptive encoding. Available values:
+<li>0: disable</li>
+<li>1: Turn on</li>
+Default value: 0. When this parameter is enabled, multiple streams with different resolutions and bitrates will be generated automatically. The width and height in VideoTemplate are the maximum resolution among the multiple streams, the bitrate in VideoTemplate is the highest bitrate among the multiple streams, and the vcrf in VideoTemplate is the highest quality among the multiple streams. When resolution, bitrate, and vcrf are not set, the highest resolution generated by the ContentAdaptStream parameter is the resolution of the video source, and the video quality is close to a vmaf score of 95. To enable this parameter or learn about billing details, contact your Tencent Cloud business.
         :type ContentAdaptStream: int
-        :param _HlsTime: 
+        :param _HlsTime: Average segment duration. Value range: (0-10], unit: second
+Default value: 10
+Note: It is used only in the HLS format.
         :type HlsTime: int
-        :param _SegmentType: 
+        :param _SegmentType: hls fragment type. Available values:
+<li>0: HLS+TS segment.</li>
+<li>2:HLS+TS byte range</li>
+<li>7: HLS+MP4 segment.</li>
+<li>5:HLS+MP4 byte range</li>
+Default value: 0
+Note: This field is used for ordinary/TSC transcoding settings and does not take effect for adaptive bitrate streams. To configure the sharding type for adaptive bitrate streams, use the outer field.
         :type SegmentType: int
-        :param _FpsDenominator: 
+        :param _FpsDenominator: Denominator of the frame rate.
+Note: The value must be greater than 0.
         :type FpsDenominator: int
-        :param _Stereo3dType: 
+        :param _Stereo3dType: 3D video splicing mode. It takes effect only for mv-hevc and 3D videos. Available values:
+<li>side_by_side: left-right layout arrangement of the original video content.</li>
+<li>top_bottom: top-bottom layout arrangement of the original video content.</li>
+Billing will be based on the segmented resolution dimensions to report usage and fees.
+Default value: side_by_side
         :type Stereo3dType: str
-        :param _VideoProfile: 
+        :param _VideoProfile: Profile, suitable for different scenarios. 
+baseline: It only supports I/P-frames and non-interlaced scenarios, and is suitable for scenarios such as video calls and mobile videos. 
+Main Profile, which provides I-frames, P-frames, and B-frames, and supports both interlaced and non-interlaced modes. It is mainly used in mainstream audio and video consumption products such as video players and streaming media transmission devices. 
+high: Highest encoding level. It adds 8X8 prediction to Main Profile and supports custom quantification. It is widely used in Blu-ray storage and HDTV scenarios.
+default: automatic filling along with the original video
+
+This configuration appears only when the encoding standard is set to H264. Default value: default
         :type VideoProfile: str
-        :param _VideoLevel: 
+        :param _VideoLevel: Encoder level. Default value: auto ("")
+If the encoding standard is set to H264, the following options are supported: "", 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, and 5.1. 
+If the encoding standard is set to H265, the following options are supported: "", 1, 2, 2.1, 3, 3.1, 4, 4.1, 5, 5.1, 5.2, 6, 6.1, 6.2, and 8.5.
         :type VideoLevel: str
-        :param _Bframes: 
+        :param _Bframes: Maximum number of consecutive B-frames. The default is auto, and 0 - 16 and -1 are supported.
+Note:
+-1 indicates auto.	
         :type Bframes: int
-        :param _Mode: 
+        :param _Mode: Bitrate control mode. Available values: 
+VBR (Variable Bit Rate): A dynamic bitrate that adjusts the output bitrate based on the complexity of the video image to ensure higher image quality. It is suitable for storage scenarios and applications with high image quality requirements. 
+ABR (Average Bit Rate): It tries to stabilize the average bitrate of the output video as much as possible, but allows short-term bitrate fluctuation. It is suitable for scenarios where the overall bitrate needs to be minimized while maintaining a certain image quality. 
+CBR (Constant Bit Rate): The output bitrate remains constant during video encoding, regardless of image complexity changes. It is suitable for scenarios with strict network bandwidth requirements, such as live streaming. 
+VCRF (Constant Rate Factor): A constant quality factor. It controls video quality by setting a Quality Factor to achieve constant quality encoding of videos. Bitrate adjustment based on content complexity makes it suitable for scenarios where maintaining a certain quality is desired. 
+VBR is selected by default.
         :type Mode: str
-        :param _Sar: 
+        :param _Sar: Display aspect ratio. Optional values: [1:1, 2:1, default]
+Default value: default
         :type Sar: str
-        :param _NoScenecut: 
+        :param _NoScenecut: Adaptive I-frame decision. When it is enabled, Media Processing Service will automatically identify transition points between different scenarios in the video (usually they are visually distinct frames, such as those of switching from one shot to another) and adaptively insert keyframes (I-frames) at these points to improve the random accessibility and encoding efficiency of the video. Available values: 
+0: Disable adaptive I-frame decision 
+1: Enable the adaptive I-frame decision 
+Default value: 0	
         :type NoScenecut: int
-        :param _BitDepth: 
+        :param _BitDepth: Bit: 8/10 is supported. Default value: 8	
         :type BitDepth: int
-        :param _RawPts: 
+        :param _RawPts: Preserve original timestamp. Available values: 
+0: Disabled 
+1: Enabled 
+Default value: Disabled	
         :type RawPts: int
-        :param _Compress: 
+        :param _Compress: Proportional compression bitrate. When it is enabled, the bitrate of the output video will be adjusted according to the proportion. After the compression ratio is entered, the system will automatically calculate the target output bitrate based on the source video bitrate. Compression ratio range: 0-100, optional values: [0-100] and -1. 
+Note: -1 indicates auto.	
         :type Compress: int
-        :param _SegmentSpecificInfo: 
+        :param _SegmentSpecificInfo: Segment duration at startup
         :type SegmentSpecificInfo: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
-        :param _ScenarioBased: 
+        :param _ScenarioBased: Whether to enable scenario-based settings for the template 
+0: disable 
+1: enable 
+Default value: 0	
+Note: The values of SceneType and CompressType take effect only when this field is set to 1.
         :type ScenarioBased: int
-        :param _SceneType: 
+        :param _SceneType: Video scenario. Optional values: 
+normal: General transcoding scenario: general transcoding and compression scenario. pgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality video and audio content is retained. 
+materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
+ugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
+e-commerce_video: Fashion show/e-commerce: During compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
+educational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed.
+Default value: normal.
+Note: To use this value, the value of ScenarioBased must be 1. Otherwise, this value does not take effect.
         :type SceneType: str
-        :param _CompressType: 
+        :param _CompressType: Transcoding policy. Optional values: 
+ultra_compress: Ultimate compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
+standard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
+high_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
+low_compress: Image quality priority: Priority is given to ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
+Default value: standard_compress. 
+Note: The ultra_compress policy is not recommended for use if you need to watch videos on TV. The billing standard for the ultra_compress policy is TSC transcoding + audio/video enhancement-artifacts removal.
+Note: To use this value, the value of ScenarioBased must be 1. Otherwise, this value does not take effect.
         :type CompressType: str
         """
         self._Codec = None
@@ -73434,7 +75823,22 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Codec(self):
-        r"""
+        r"""Encoding format for video streams. Optional values:
+<li>h264: H.264 encoding.</li>
+<li>h265: H.265 encoding.</li>
+<li>h266: H.266 encoding.</li>
+<li>av1: AOMedia Video 1 encoding</li>
+<li>vp8: VP8 encoding.</li>
+<li>vp9: VP9 encoding.</li>
+<li>mpeg2: MPEG2 encoding.</li>
+<li>dnxhd: DNxHD encoding.</li>
+<li>mv-hevc: MV-HEVC encoding.</li>
+
+Note: The av1 encoding container currently only supports mp4, webm, and mkv.
+Note: H.266 encoding containers currently only support mp4, hls, ts, and mov.
+Note: VP8 and VP9 encoding containers currently only support webm and mkv.
+Note: MPEG2 and dnxhd encoding containers currently only support mxf.
+Note: The MV-HEVC codec currently only supports mp4, hls, and mov. Among them, the HLS format only supports the MP4 segmented format and requires the input source to be a panoramic video (with multiple views).
         :rtype: str
         """
         return self._Codec
@@ -73445,7 +75849,10 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Fps(self):
-        r"""
+        r"""Video frame rate. Value range:
+When FpsDenominator is empty, the range is [0, 120], in Hz.
+When FpsDenominator is not empty, the Fps/FpsDenominator range is [0, 120].
+If the value is 0, the frame rate will be the same as that of the source video.
         :rtype: int
         """
         return self._Fps
@@ -73456,7 +75863,8 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Bitrate(self):
-        r"""
+        r"""Bitrate of video stream. Value range: 0 and [128, 100000]. Unit: kbps.
+If the value is 0, the bitrate of the video will be the same as that of the source video.
         :rtype: int
         """
         return self._Bitrate
@@ -73467,7 +75875,10 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ResolutionAdaptive(self):
-        r"""
+        r"""Resolution adaptation, available values:
+<li>open: turn on. At this point, Width represents the long side of the video, and Height indicates the short side of the video;</li>
+<li>close: close. At this point, Width represents the width of the video, and Height indicates the height of the video.</li>
+Note: In self-adaptation mode, Width cannot be less than Height.
         :rtype: str
         """
         return self._ResolutionAdaptive
@@ -73478,7 +75889,12 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Width(self):
-        r"""
+        r"""Maximum value of the video stream width (or long edge) in px. Value range: 0 and [128, 4096].
+<li>If both Width and Height are 0, the resolution is the same as the source.</li>
+<li>If Width is 0 but Height is not 0, the width will be proportionally scaled.</li>
+<li>If Width is not 0 but Height is 0, the height will be proportionally scaled.</li>
+<li>If both Width and Height are not 0, the resolution is as specified by the user.</li>
+Note: If Codec is set to MV-HEVC, the maximum value can be 7680.
         :rtype: int
         """
         return self._Width
@@ -73489,7 +75905,8 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Height(self):
-        r"""
+        r"""Maximum value of the video stream height (or short side). Value range: 0 and [128, 4096]. Unit: px.
+Note: If Codec is set to MV-HEVC, the maximum value can be 7680.
         :rtype: int
         """
         return self._Height
@@ -73500,7 +75917,8 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Gop(self):
-        r"""
+        r"""Interval between I-frames (keyframes), which can be customized in frames or seconds. GOP value range: 0 and [1, 100000].
+When set to 0, the system will automatically set the gop length.
         :rtype: int
         """
         return self._Gop
@@ -73511,7 +75929,10 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def GopUnit(self):
-        r"""
+        r"""Gop value unit. Value range: 
+frame: indicates frame 
+second: indicates second
+Default value: frame
         :rtype: str
         """
         return self._GopUnit
@@ -73522,7 +75943,13 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def FillType(self):
-        r"""
+        r"""Filling method, when video stream configuration width and height parameters are inconsistent with the aspect ratio of the original video, the processing method for transcoding is "padding". Optional filling modes:
+<li> stretch: Stretch each frame to fill the entire screen, possibly causing the transcoded video to be "squashed" or "stretched";</li>
+<li>black: Keep black, maintain video aspect ratio, edges filled with black.</li>
+<li>White: Leave blank, maintain video aspect ratio, edge remainder filled with white.</li>
+<li>gauss: Gaussian blur, maintain video aspect ratio, and use Gaussian blur filling for the rest of the edges.</li>
+<li>smarttailor: intelligent cropping: smartly select video images to ensure proportional image cropping.</li>
+Default value: black.
         :rtype: str
         """
         return self._FillType
@@ -73533,7 +75960,12 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Vcrf(self):
-        r"""
+        r"""Control factor for constant video bitrate. Value range: [0, 51]. If not specified, it means "auto". If there are no special requirements, it is advisable not to specify this parameter.
+If Mode is set to VBR and Vcrf is configured, MPS processes video in VBR mode, taking into account both Vcrf and Bitrate parameter settings to balance video quality, bitrate, transcoding efficiency, and file size.
+If Mode is set to CRF, the Bitrate setting will become invalid, and encoding will be performed based on the Vcrf value.
+When Mode is set to ABR or CBR, the Vcrf value does not need to be configured.
+Note: To change it to automatic, fill in 100.
+
         :rtype: int
         """
         return self._Vcrf
@@ -73544,7 +75976,10 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ContentAdaptStream(self):
-        r"""
+        r"""Content adaptive encoding. Available values:
+<li>0: disable</li>
+<li>1: Turn on</li>
+Default value: 0. When this parameter is enabled, multiple streams with different resolutions and bitrates will be generated automatically. The width and height in VideoTemplate are the maximum resolution among the multiple streams, the bitrate in VideoTemplate is the highest bitrate among the multiple streams, and the vcrf in VideoTemplate is the highest quality among the multiple streams. When resolution, bitrate, and vcrf are not set, the highest resolution generated by the ContentAdaptStream parameter is the resolution of the video source, and the video quality is close to a vmaf score of 95. To enable this parameter or learn about billing details, contact your Tencent Cloud business.
         :rtype: int
         """
         return self._ContentAdaptStream
@@ -73555,7 +75990,9 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def HlsTime(self):
-        r"""
+        r"""Average segment duration. Value range: (0-10], unit: second
+Default value: 10
+Note: It is used only in the HLS format.
         :rtype: int
         """
         return self._HlsTime
@@ -73566,7 +76003,13 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def SegmentType(self):
-        r"""
+        r"""hls fragment type. Available values:
+<li>0: HLS+TS segment.</li>
+<li>2:HLS+TS byte range</li>
+<li>7: HLS+MP4 segment.</li>
+<li>5:HLS+MP4 byte range</li>
+Default value: 0
+Note: This field is used for ordinary/TSC transcoding settings and does not take effect for adaptive bitrate streams. To configure the sharding type for adaptive bitrate streams, use the outer field.
         :rtype: int
         """
         return self._SegmentType
@@ -73577,7 +76020,8 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def FpsDenominator(self):
-        r"""
+        r"""Denominator of the frame rate.
+Note: The value must be greater than 0.
         :rtype: int
         """
         return self._FpsDenominator
@@ -73588,7 +76032,11 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Stereo3dType(self):
-        r"""
+        r"""3D video splicing mode. It takes effect only for mv-hevc and 3D videos. Available values:
+<li>side_by_side: left-right layout arrangement of the original video content.</li>
+<li>top_bottom: top-bottom layout arrangement of the original video content.</li>
+Billing will be based on the segmented resolution dimensions to report usage and fees.
+Default value: side_by_side
         :rtype: str
         """
         return self._Stereo3dType
@@ -73599,7 +76047,13 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def VideoProfile(self):
-        r"""
+        r"""Profile, suitable for different scenarios. 
+baseline: It only supports I/P-frames and non-interlaced scenarios, and is suitable for scenarios such as video calls and mobile videos. 
+Main Profile, which provides I-frames, P-frames, and B-frames, and supports both interlaced and non-interlaced modes. It is mainly used in mainstream audio and video consumption products such as video players and streaming media transmission devices. 
+high: Highest encoding level. It adds 8X8 prediction to Main Profile and supports custom quantification. It is widely used in Blu-ray storage and HDTV scenarios.
+default: automatic filling along with the original video
+
+This configuration appears only when the encoding standard is set to H264. Default value: default
         :rtype: str
         """
         return self._VideoProfile
@@ -73610,7 +76064,9 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def VideoLevel(self):
-        r"""
+        r"""Encoder level. Default value: auto ("")
+If the encoding standard is set to H264, the following options are supported: "", 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, and 5.1. 
+If the encoding standard is set to H265, the following options are supported: "", 1, 2, 2.1, 3, 3.1, 4, 4.1, 5, 5.1, 5.2, 6, 6.1, 6.2, and 8.5.
         :rtype: str
         """
         return self._VideoLevel
@@ -73621,7 +76077,9 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Bframes(self):
-        r"""
+        r"""Maximum number of consecutive B-frames. The default is auto, and 0 - 16 and -1 are supported.
+Note:
+-1 indicates auto.	
         :rtype: int
         """
         return self._Bframes
@@ -73632,7 +76090,12 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Mode(self):
-        r"""
+        r"""Bitrate control mode. Available values: 
+VBR (Variable Bit Rate): A dynamic bitrate that adjusts the output bitrate based on the complexity of the video image to ensure higher image quality. It is suitable for storage scenarios and applications with high image quality requirements. 
+ABR (Average Bit Rate): It tries to stabilize the average bitrate of the output video as much as possible, but allows short-term bitrate fluctuation. It is suitable for scenarios where the overall bitrate needs to be minimized while maintaining a certain image quality. 
+CBR (Constant Bit Rate): The output bitrate remains constant during video encoding, regardless of image complexity changes. It is suitable for scenarios with strict network bandwidth requirements, such as live streaming. 
+VCRF (Constant Rate Factor): A constant quality factor. It controls video quality by setting a Quality Factor to achieve constant quality encoding of videos. Bitrate adjustment based on content complexity makes it suitable for scenarios where maintaining a certain quality is desired. 
+VBR is selected by default.
         :rtype: str
         """
         return self._Mode
@@ -73643,7 +76106,8 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Sar(self):
-        r"""
+        r"""Display aspect ratio. Optional values: [1:1, 2:1, default]
+Default value: default
         :rtype: str
         """
         return self._Sar
@@ -73654,7 +76118,10 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def NoScenecut(self):
-        r"""
+        r"""Adaptive I-frame decision. When it is enabled, Media Processing Service will automatically identify transition points between different scenarios in the video (usually they are visually distinct frames, such as those of switching from one shot to another) and adaptively insert keyframes (I-frames) at these points to improve the random accessibility and encoding efficiency of the video. Available values: 
+0: Disable adaptive I-frame decision 
+1: Enable the adaptive I-frame decision 
+Default value: 0	
         :rtype: int
         """
         return self._NoScenecut
@@ -73665,7 +76132,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BitDepth(self):
-        r"""
+        r"""Bit: 8/10 is supported. Default value: 8	
         :rtype: int
         """
         return self._BitDepth
@@ -73676,7 +76143,10 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def RawPts(self):
-        r"""
+        r"""Preserve original timestamp. Available values: 
+0: Disabled 
+1: Enabled 
+Default value: Disabled	
         :rtype: int
         """
         return self._RawPts
@@ -73687,7 +76157,8 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Compress(self):
-        r"""
+        r"""Proportional compression bitrate. When it is enabled, the bitrate of the output video will be adjusted according to the proportion. After the compression ratio is entered, the system will automatically calculate the target output bitrate based on the source video bitrate. Compression ratio range: 0-100, optional values: [0-100] and -1. 
+Note: -1 indicates auto.	
         :rtype: int
         """
         return self._Compress
@@ -73698,7 +76169,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def SegmentSpecificInfo(self):
-        r"""
+        r"""Segment duration at startup
         :rtype: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
         """
         return self._SegmentSpecificInfo
@@ -73709,7 +76180,11 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ScenarioBased(self):
-        r"""
+        r"""Whether to enable scenario-based settings for the template 
+0: disable 
+1: enable 
+Default value: 0	
+Note: The values of SceneType and CompressType take effect only when this field is set to 1.
         :rtype: int
         """
         return self._ScenarioBased
@@ -73720,7 +76195,14 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def SceneType(self):
-        r"""
+        r"""Video scenario. Optional values: 
+normal: General transcoding scenario: general transcoding and compression scenario. pgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality video and audio content is retained. 
+materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
+ugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
+e-commerce_video: Fashion show/e-commerce: During compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
+educational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed.
+Default value: normal.
+Note: To use this value, the value of ScenarioBased must be 1. Otherwise, this value does not take effect.
         :rtype: str
         """
         return self._SceneType
@@ -73731,7 +76213,14 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def CompressType(self):
-        r"""
+        r"""Transcoding policy. Optional values: 
+ultra_compress: Ultimate compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
+standard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
+high_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
+low_compress: Image quality priority: Priority is given to ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
+Default value: standard_compress. 
+Note: The ultra_compress policy is not recommended for use if you need to watch videos on TV. The billing standard for the ultra_compress policy is TSC transcoding + audio/video enhancement-artifacts removal.
+Note: To use this value, the value of ScenarioBased must be 1. Otherwise, this value does not take effect.
         :rtype: str
         """
         return self._CompressType
@@ -74020,25 +76509,25 @@ class VoiceInfo(AbstractModel):
 
 
 class VoiceProfile(AbstractModel):
-    r"""
+    r"""Voice attribute.
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: 
+        :param _Name: <p>Voice name.</p>
         :type Name: str
-        :param _Description: 
+        :param _Description: <p>Voice description.</p>
         :type Description: str
-        :param _Gender: 
+        :param _Gender: <p>Gender.</p><p>Enumeration values:</p><ul><li>male: male</li><li>female: female</li><li>unknown: unknown</li></ul>
         :type Gender: str
-        :param _Age: 
+        :param _Age: <p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>
         :type Age: str
-        :param _Languages: 
+        :param _Languages: <p>Language. Supported languages:<br>zh Chinese<br>en English<br>ja Japanese<br>de German<br>fr French<br>ko Korean<br>ru Russian<br>uk Ukrainian<br>pt Portuguese<br>it Italian<br>es Spanish<br>id Indonesian<br>nl Dutch<br>tr Turkish<br>fil Filipino<br>ms Malay<br>el Greek<br>fi Finnish<br>hr Croatian<br>sk Slovak<br>pl Polish<br>sv Swedish<br>hi Hindi<br>bg Bulgarian<br>ro Romanian<br>ar Arabic<br>cs Czech<br>da Danish<br>ta Tamil<br>hun Hungarian<br>vi Vietnamese<br>no Norwegian<br>yue Cantonese<br>th Thai<br>he Hebrew<br>ca Catalan<br>nn Nynorsk<br>af Afrikaans<br>fa Persian<br>sl Slovenian</p>
         :type Languages: list of str
-        :param _Labels: 
+        :param _Labels: <p>Tag.</p>
         :type Labels: list of str
-        :param _Scenes: 
+        :param _Scenes: <p>Scenario.</p>
         :type Scenes: list of str
         """
         self._Name = None
@@ -74051,7 +76540,7 @@ class VoiceProfile(AbstractModel):
 
     @property
     def Name(self):
-        r"""
+        r"""<p>Voice name.</p>
         :rtype: str
         """
         return self._Name
@@ -74062,7 +76551,7 @@ class VoiceProfile(AbstractModel):
 
     @property
     def Description(self):
-        r"""
+        r"""<p>Voice description.</p>
         :rtype: str
         """
         return self._Description
@@ -74073,7 +76562,7 @@ class VoiceProfile(AbstractModel):
 
     @property
     def Gender(self):
-        r"""
+        r"""<p>Gender.</p><p>Enumeration values:</p><ul><li>male: male</li><li>female: female</li><li>unknown: unknown</li></ul>
         :rtype: str
         """
         return self._Gender
@@ -74084,7 +76573,7 @@ class VoiceProfile(AbstractModel):
 
     @property
     def Age(self):
-        r"""
+        r"""<p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>
         :rtype: str
         """
         return self._Age
@@ -74095,7 +76584,7 @@ class VoiceProfile(AbstractModel):
 
     @property
     def Languages(self):
-        r"""
+        r"""<p>Language. Supported languages:<br>zh Chinese<br>en English<br>ja Japanese<br>de German<br>fr French<br>ko Korean<br>ru Russian<br>uk Ukrainian<br>pt Portuguese<br>it Italian<br>es Spanish<br>id Indonesian<br>nl Dutch<br>tr Turkish<br>fil Filipino<br>ms Malay<br>el Greek<br>fi Finnish<br>hr Croatian<br>sk Slovak<br>pl Polish<br>sv Swedish<br>hi Hindi<br>bg Bulgarian<br>ro Romanian<br>ar Arabic<br>cs Czech<br>da Danish<br>ta Tamil<br>hun Hungarian<br>vi Vietnamese<br>no Norwegian<br>yue Cantonese<br>th Thai<br>he Hebrew<br>ca Catalan<br>nn Nynorsk<br>af Afrikaans<br>fa Persian<br>sl Slovenian</p>
         :rtype: list of str
         """
         return self._Languages
@@ -74106,7 +76595,7 @@ class VoiceProfile(AbstractModel):
 
     @property
     def Labels(self):
-        r"""
+        r"""<p>Tag.</p>
         :rtype: list of str
         """
         return self._Labels
@@ -74117,7 +76606,7 @@ class VoiceProfile(AbstractModel):
 
     @property
     def Scenes(self):
-        r"""
+        r"""<p>Scenario.</p>
         :rtype: list of str
         """
         return self._Scenes
@@ -74298,7 +76787,10 @@ class VolumeBalanceConfig(AbstractModel):
 <li>OFF: disabled</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: 
+        :param _Type: Type. Valid values:
+<li>loudNorm: loudness normalization</li>
+<li>gainControl: reduce abrupt change</li>
+Default value: loudNorm.
         :type Type: str
         """
         self._Switch = None
@@ -74320,7 +76812,10 @@ Default value: ON.
 
     @property
     def Type(self):
-        r"""
+        r"""Type. Valid values:
+<li>loudNorm: loudness normalization</li>
+<li>gainControl: reduce abrupt change</li>
+Default value: loudNorm.
         :rtype: str
         """
         return self._Type
@@ -74344,7 +76839,7 @@ Default value: ON.
 
 
 class WatermarkInput(AbstractModel):
-    r"""Watermark parameter type in the media processing task.
+    r"""Watermark parameter type in the MPS task.
 
     """
 
@@ -74352,15 +76847,15 @@ class WatermarkInput(AbstractModel):
         r"""
         :param _Definition: <p>Watermark template ID.</p>
         :type Definition: int
-        :param _RawParameter: <p>Watermark custom parameter, valid when Definition is set to 0.<br>This parameter is used for highly customized scenarios. We recommend you prioritize using Definition to specify watermark parameters.<br>Watermark custom parameters are not supported for screenshot watermarking.</p>
+        :param _RawParameter: <p>Watermark custom parameter, valid when Definition is set to 0.<br>This parameter is used for highly custom scenarios. We recommend you prioritize using Definition to specify watermark parameters.<br>Watermark custom parameters do not support watermarking screenshots.</p>
         :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawWatermarkParameter`
-        :param _TextContent: <p>Text content, length not exceeding 100 characters. Fill in only when the watermark type is text watermark.<br>Text watermark does not support screenshot watermarking.</p>
+        :param _TextContent: <p>Text content, not exceeding 100 characters in length. Fill in only when the watermark type is text watermark.<br>Text watermark does not support screenshot watermarking.</p>
         :type TextContent: str
         :param _SvgContent: <p>SVG content. Length not exceeding 2000000 characters. Fill in only when the watermark type is SVG watermark.<br>SVG watermark does not support screenshot watermarking.</p>
         :type SvgContent: str
-        :param _StartTimeOffset: <p>Start time offset of a watermark, in seconds. If not set or set to 0, a watermark starts appearing when a video starts.</p><li>If not set or set to 0, a watermark starts appearing when a video starts;</li><li>If the value is greater than 0 (assuming n), the watermark appears at second n after the video starts;</li><li>If the value is less than 0 (assuming -n), the watermark appears n seconds before the end of the video.</li>Note: Only used for video scenes. Screenshots do not support it.
+        :param _StartTimeOffset: <p>Start time offset of a watermark, in seconds. If not set or set to 0, a watermark starts appearing when a video starts.</p><li>If not set or set to 0, a watermark starts appearing when a video starts;</li><li>If the value is greater than 0 (assuming n), a watermark appears at second n after a video starts;</li><li>If the value is less than 0 (assuming -n), a watermark appears n seconds before the end of a video.</li>Note: This parameter only applies to video scenes. Screenshots do not support it.
         :type StartTimeOffset: float
-        :param _EndTimeOffset: <p>End time offset of a watermark, in seconds.</p><li>Leave empty or set to 0: the watermark lasts until the end of the video.</li><li>Value greater than 0 (assuming n): the watermark disappears at second n.</li><li>Value smaller than 0 (assuming -n): the watermark disappears n seconds before the end of the video.</li>Note: Only used for video scenes. Screenshot is not supported.
+        :param _EndTimeOffset: <p>End time offset of a watermark. Unit: second.</p><li>If not specified or set to 0, the watermark lasts until the end of the video.</li><li>If the value is greater than 0 (assuming n), the watermark disappears at second n.</li><li>If the value is less than 0 (assuming -n), the watermark disappears n seconds before the end of the video.</li>Note: Only used for video scenes. Screenshots do not support it.
         :type EndTimeOffset: float
         """
         self._Definition = None
@@ -74383,7 +76878,7 @@ class WatermarkInput(AbstractModel):
 
     @property
     def RawParameter(self):
-        r"""<p>Watermark custom parameter, valid when Definition is set to 0.<br>This parameter is used for highly customized scenarios. We recommend you prioritize using Definition to specify watermark parameters.<br>Watermark custom parameters are not supported for screenshot watermarking.</p>
+        r"""<p>Watermark custom parameter, valid when Definition is set to 0.<br>This parameter is used for highly custom scenarios. We recommend you prioritize using Definition to specify watermark parameters.<br>Watermark custom parameters do not support watermarking screenshots.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.RawWatermarkParameter`
         """
         return self._RawParameter
@@ -74394,7 +76889,7 @@ class WatermarkInput(AbstractModel):
 
     @property
     def TextContent(self):
-        r"""<p>Text content, length not exceeding 100 characters. Fill in only when the watermark type is text watermark.<br>Text watermark does not support screenshot watermarking.</p>
+        r"""<p>Text content, not exceeding 100 characters in length. Fill in only when the watermark type is text watermark.<br>Text watermark does not support screenshot watermarking.</p>
         :rtype: str
         """
         return self._TextContent
@@ -74416,7 +76911,7 @@ class WatermarkInput(AbstractModel):
 
     @property
     def StartTimeOffset(self):
-        r"""<p>Start time offset of a watermark, in seconds. If not set or set to 0, a watermark starts appearing when a video starts.</p><li>If not set or set to 0, a watermark starts appearing when a video starts;</li><li>If the value is greater than 0 (assuming n), the watermark appears at second n after the video starts;</li><li>If the value is less than 0 (assuming -n), the watermark appears n seconds before the end of the video.</li>Note: Only used for video scenes. Screenshots do not support it.
+        r"""<p>Start time offset of a watermark, in seconds. If not set or set to 0, a watermark starts appearing when a video starts.</p><li>If not set or set to 0, a watermark starts appearing when a video starts;</li><li>If the value is greater than 0 (assuming n), a watermark appears at second n after a video starts;</li><li>If the value is less than 0 (assuming -n), a watermark appears n seconds before the end of a video.</li>Note: This parameter only applies to video scenes. Screenshots do not support it.
         :rtype: float
         """
         return self._StartTimeOffset
@@ -74427,7 +76922,7 @@ class WatermarkInput(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        r"""<p>End time offset of a watermark, in seconds.</p><li>Leave empty or set to 0: the watermark lasts until the end of the video.</li><li>Value greater than 0 (assuming n): the watermark disappears at second n.</li><li>Value smaller than 0 (assuming -n): the watermark disappears n seconds before the end of the video.</li>Note: Only used for video scenes. Screenshot is not supported.
+        r"""<p>End time offset of a watermark. Unit: second.</p><li>If not specified or set to 0, the watermark lasts until the end of the video.</li><li>If the value is greater than 0 (assuming n), the watermark disappears at second n.</li><li>If the value is less than 0 (assuming -n), the watermark disappears n seconds before the end of the video.</li>Note: Only used for video scenes. Screenshots do not support it.
         :rtype: float
         """
         return self._EndTimeOffset
@@ -75030,40 +77525,40 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class WorkflowTask(AbstractModel):
-    r"""Media Processing Service task information
+    r"""Media processing task information
 
     """
 
     def __init__(self):
         r"""
-        :param _TaskId: Media processing task ID.
+        :param _TaskId: <p>Media processing task ID.</p>
         :type TaskId: str
-        :param _Status: Task flow status. Valid values:
-<li>PROCESSING: Processing;</li>
-<li>FINISH: completed</li>
+        :param _Status: <p>Task flow status. Valid values: </p><li>PROCESSING: Processing; </li><li>FINISH: Completed.</li>
         :type Status: str
-        :param _ErrCode: An error code other than 0 is returned in case of a source exception. Use the error code of the specific task when a value of 0 is returned.
+        :param _ErrCode: <p>Returns a non-zero error code when a source error occurs. If 0 is returned, use the ErrCode of each specific task.</p>
         :type ErrCode: int
-        :param _Message: The corresponding exception message is returned in case of a source exception. If no source exception occurs, use the message of each specific task.
+        :param _Message: <p>Returns the corresponding error Message when a source error occurs. Otherwise, use the Message of each specific task.</p>
         :type Message: str
-        :param _InputInfo: 
+        :param _InputInfo: <p>Target file information of media processing.</p>
         :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
-        :param _MetaData: 
+        :param _MetaData: <p>Metadata of the original video.</p>
         :type MetaData: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
-        :param _MediaProcessResultSet: Execution status and results of a Media Processing Service task.
+        :param _MediaProcessResultSet: <p>Execution status and result of the media processing task.</p>
         :type MediaProcessResultSet: list of MediaProcessTaskResult
-        :param _AiContentReviewResultSet: Execution status and results of a video content review task.
+        :param _AiContentReviewResultSet: <p>Execution status and results of the video content review task.</p>
         :type AiContentReviewResultSet: list of AiContentReviewResult
-        :param _AiAnalysisResultSet: Execution status and results of a video content analysis task.
+        :param _AiAnalysisResultSet: <p>Execution status and results of the video content analysis task.</p>
         :type AiAnalysisResultSet: list of AiAnalysisResult
-        :param _AiRecognitionResultSet: Task execution status and results of the video content recognition task.
+        :param _AiRecognitionResultSet: <p>Execution status and results of the video content recognition task.</p>
         :type AiRecognitionResultSet: list of AiRecognitionResult
-        :param _AiQualityControlTaskResult: 
+        :param _AiQualityControlTaskResult: <p>Execution status and results of a media quality inspection task.</p>
         :type AiQualityControlTaskResult: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
-        :param _SmartSubtitlesTaskResult: 
+        :param _SmartSubtitlesTaskResult: <p>Execution result of the smart subtitle task</p>
         :type SmartSubtitlesTaskResult: list of SmartSubtitlesResult
-        :param _SmartEraseTaskResult: 
+        :param _SmartEraseTaskResult: <p>Outcome of the intelligent erasure task</p>
         :type SmartEraseTaskResult: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskResult`
+        :param _AiDubbingTaskResult: <p>Outcome of the AI dubbing task.</p>
+        :type AiDubbingTaskResult: :class:`tencentcloud.mps.v20190612.models.AIDubbingTaskResult`
         """
         self._TaskId = None
         self._Status = None
@@ -75078,10 +77573,11 @@ class WorkflowTask(AbstractModel):
         self._AiQualityControlTaskResult = None
         self._SmartSubtitlesTaskResult = None
         self._SmartEraseTaskResult = None
+        self._AiDubbingTaskResult = None
 
     @property
     def TaskId(self):
-        r"""Media processing task ID.
+        r"""<p>Media processing task ID.</p>
         :rtype: str
         """
         return self._TaskId
@@ -75092,9 +77588,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def Status(self):
-        r"""Task flow status. Valid values:
-<li>PROCESSING: Processing;</li>
-<li>FINISH: completed</li>
+        r"""<p>Task flow status. Valid values: </p><li>PROCESSING: Processing; </li><li>FINISH: Completed.</li>
         :rtype: str
         """
         return self._Status
@@ -75105,7 +77599,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def ErrCode(self):
-        r"""An error code other than 0 is returned in case of a source exception. Use the error code of the specific task when a value of 0 is returned.
+        r"""<p>Returns a non-zero error code when a source error occurs. If 0 is returned, use the ErrCode of each specific task.</p>
         :rtype: int
         """
         return self._ErrCode
@@ -75116,7 +77610,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def Message(self):
-        r"""The corresponding exception message is returned in case of a source exception. If no source exception occurs, use the message of each specific task.
+        r"""<p>Returns the corresponding error Message when a source error occurs. Otherwise, use the Message of each specific task.</p>
         :rtype: str
         """
         return self._Message
@@ -75127,7 +77621,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def InputInfo(self):
-        r"""
+        r"""<p>Target file information of media processing.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
         return self._InputInfo
@@ -75138,7 +77632,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def MetaData(self):
-        r"""
+        r"""<p>Metadata of the original video.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
         """
         return self._MetaData
@@ -75149,7 +77643,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def MediaProcessResultSet(self):
-        r"""Execution status and results of a Media Processing Service task.
+        r"""<p>Execution status and result of the media processing task.</p>
         :rtype: list of MediaProcessTaskResult
         """
         return self._MediaProcessResultSet
@@ -75160,7 +77654,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def AiContentReviewResultSet(self):
-        r"""Execution status and results of a video content review task.
+        r"""<p>Execution status and results of the video content review task.</p>
         :rtype: list of AiContentReviewResult
         """
         return self._AiContentReviewResultSet
@@ -75171,7 +77665,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def AiAnalysisResultSet(self):
-        r"""Execution status and results of a video content analysis task.
+        r"""<p>Execution status and results of the video content analysis task.</p>
         :rtype: list of AiAnalysisResult
         """
         return self._AiAnalysisResultSet
@@ -75182,7 +77676,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def AiRecognitionResultSet(self):
-        r"""Task execution status and results of the video content recognition task.
+        r"""<p>Execution status and results of the video content recognition task.</p>
         :rtype: list of AiRecognitionResult
         """
         return self._AiRecognitionResultSet
@@ -75193,7 +77687,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def AiQualityControlTaskResult(self):
-        r"""
+        r"""<p>Execution status and results of a media quality inspection task.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
         """
         return self._AiQualityControlTaskResult
@@ -75204,7 +77698,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def SmartSubtitlesTaskResult(self):
-        r"""
+        r"""<p>Execution result of the smart subtitle task</p>
         :rtype: list of SmartSubtitlesResult
         """
         return self._SmartSubtitlesTaskResult
@@ -75215,7 +77709,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def SmartEraseTaskResult(self):
-        r"""
+        r"""<p>Outcome of the intelligent erasure task</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskResult`
         """
         return self._SmartEraseTaskResult
@@ -75223,6 +77717,17 @@ class WorkflowTask(AbstractModel):
     @SmartEraseTaskResult.setter
     def SmartEraseTaskResult(self, SmartEraseTaskResult):
         self._SmartEraseTaskResult = SmartEraseTaskResult
+
+    @property
+    def AiDubbingTaskResult(self):
+        r"""<p>Outcome of the AI dubbing task.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AIDubbingTaskResult`
+        """
+        return self._AiDubbingTaskResult
+
+    @AiDubbingTaskResult.setter
+    def AiDubbingTaskResult(self, AiDubbingTaskResult):
+        self._AiDubbingTaskResult = AiDubbingTaskResult
 
 
     def _deserialize(self, params):
@@ -75272,6 +77777,9 @@ class WorkflowTask(AbstractModel):
         if params.get("SmartEraseTaskResult") is not None:
             self._SmartEraseTaskResult = SmartEraseTaskResult()
             self._SmartEraseTaskResult._deserialize(params.get("SmartEraseTaskResult"))
+        if params.get("AiDubbingTaskResult") is not None:
+            self._AiDubbingTaskResult = AIDubbingTaskResult()
+            self._AiDubbingTaskResult._deserialize(params.get("AiDubbingTaskResult"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -27,7 +27,7 @@ class MpsClient(AbstractClient):
 
 
     def BatchProcessMedia(self, request):
-        r"""This API is used to initiate batch processing tasks for URL video links, with features:
+        r"""This API is used to initiate batch processing tasks for URL video links, with features including:
         Smart subtitle (full speech, speech hotword, and speech translation)
 
         :param request: Request instance for BatchProcessMedia.
@@ -97,7 +97,7 @@ class MpsClient(AbstractClient):
 
 
     def CloneVoice(self, request):
-        r"""This API is used to clone a voice type from a reference audio.
+        r"""This API is used to clone a voice from reference audio.
 
         :param request: Request instance for CloneVoice.
         :type request: :class:`tencentcloud.mps.v20190612.models.CloneVoiceRequest`
@@ -1505,7 +1505,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeAigcTaskList(self, request):
-        r"""Query AIGC task list details
+        r"""Query the list details of AIGC tasks.
 
         :param request: Request instance for DescribeAigcTaskList.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAigcTaskListRequest`
@@ -3112,8 +3112,8 @@ class MpsClient(AbstractClient):
 
 
     def ParseLiveStreamProcessNotification(self, request):
-        r"""After receiving the message from CMQ, parse out the content of the MPS live stream processing event notification from the msgBody field of the message.
-        This API is not used to trigger network calls, but to help generate SDKs for each language platform. You can refer to the parsing implementation in the SDK to parse event notifications.
+        r"""After receiving a message from CMQ, parse out the content of the MPS live stream processing event notification from the msgBody field in the message.
+        This API is not used to initiate network calls. Instead, it helps generate SDKs for each language platform. You can refer to the parsing implementation in the SDK for event notification parsing.
 
         :param request: Request instance for ParseLiveStreamProcessNotification.
         :type request: :class:`tencentcloud.mps.v20190612.models.ParseLiveStreamProcessNotificationRequest`
@@ -3136,8 +3136,8 @@ class MpsClient(AbstractClient):
 
 
     def ParseNotification(self, request):
-        r"""After receiving a message from CMQ, parse out the content of the MPS event notification from the msgBody field of the message.
-        This API is not used to trigger network calls, but to help generate SDKs for each language platform. You can refer to the parsing function in the SDK to implement event notification parsing.
+        r"""After a message is received from CMQ, parse out the content of the MPS event notification from the msgBody field.
+        This API is not used to initiate network calls. Instead, it is used to help generate SDKs for each language platform. You can refer to the parsing functions in the SDK to implement event notification parsing.
 
         :param request: Request instance for ParseNotification.
         :type request: :class:`tencentcloud.mps.v20190612.models.ParseNotificationRequest`
@@ -3163,7 +3163,8 @@ class MpsClient(AbstractClient):
         r"""This API is used to initiate image processing. Its features include:
         1. Format conversion;
         2. Image enhancement;
-        3. Image erasure;4. Digital watermark;
+        3. Image erasure.
+        4. Digital watermark;
         5. Beauty filter;
 
         :param request: Request instance for ProcessImage.
@@ -3187,15 +3188,15 @@ class MpsClient(AbstractClient):
 
 
     def ProcessLiveStream(self, request):
-        r"""This API is used to initiate processing tasks on a live stream. Features include:
+        r"""Initiate processing task for live streaming. Features include:
 
-        Intelligent content moderation (porn detection in images, sensitive information detection, audio pornography detection);
+        * Intelligent content moderation (porn detection in images, sensitive information detection, and audio pornography detection);
         * Smart content recognition (human faces, full texts, text keywords, full speech, speech keywords, real-time speech translation, object recognition, and game tagging).
-        Intelligent content analysis (clipping, highlights).
+        Intelligent content analysis (highlight splitting and compilation).
         Quality inspection (live stream format diagnosis, audio and video content detection (jitter, blur, low light, overexposure, black and white edges, black and white screens, screen glitch, noise, mosaic, QR code, and more), and no-reference scoring).
-        Recording
+        * Recording
 
-        Live stream processing event notification supports HTTP callbacks and also supports real-time writing to the message queue CMQ specified by the user. The user obtains the event notification result from the message queue CMQ. Meanwhile, if an output file exists during the process, it will be written to the target storage of the output file specified by the user.
+        Live stream processing event notification supports HTTP callback and real-time writing to a user-specified TDMQ CMQ. Users obtain event notification results from TDMQ CMQ. If output files exist during the process, they are written to the target storage of the user-specified output files.
 
         :param request: Request instance for ProcessLiveStream.
         :type request: :class:`tencentcloud.mps.v20190612.models.ProcessLiveStreamRequest`

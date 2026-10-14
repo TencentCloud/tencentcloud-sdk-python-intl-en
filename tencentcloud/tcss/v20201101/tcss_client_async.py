@@ -71,7 +71,7 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AddAssetImageRegistryRegistryDetailResponse:
         """
-        This API is used to add the details of an image repository.
+        This example shows you how to add details for an image repository.
         """
         
         kwargs = {}
@@ -477,7 +477,7 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAssetImageRegistryScanTaskOneKeyResponse:
         """
-        This API is used to create a quick image scan task for an image repository.
+        Creating a Task to Scan Images in an Image Repository with One Click
         """
         
         kwargs = {}
@@ -1894,7 +1894,7 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAssetHostDetailResponse:
         """
-        This API is used to query the details of a server.
+        This example shows you how to query host details.
         """
         
         kwargs = {}
@@ -2164,7 +2164,7 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAssetImageRegistrySummaryResponse:
         """
-        This API is used to query the image statistics of an image repository.
+        Querying the Image Statistics of an Image Repository
         """
         
         kwargs = {}
@@ -2488,7 +2488,7 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAssetSyncLastTimeResponse:
         """
-        This API is used to query the last asset sync time.
+        Query the latest time for asset synchronization.
         """
         
         kwargs = {}
@@ -3046,7 +3046,7 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeImageAuthorizedInfoResponse:
         """
-        This API is used to query the image licensing information.
+        This API is used to query image authorization info.
         """
         
         kwargs = {}
@@ -3082,7 +3082,7 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeImageAutoAuthorizedRuleResponse:
         """
-        This API is used to query an automatic licensing rule for local images.
+        Query local image auto-authorization rules.
         """
         
         kwargs = {}
@@ -3838,7 +3838,7 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribePurchaseStateInfoResponse:
         """
-        This API is used to check whether TCSS is purchased.
+        This API is used to query the purchase information on the container security service.
         """
         
         kwargs = {}
@@ -6308,7 +6308,7 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateImageRegistryTimingScanTaskResponse:
         """
-        This API is used to update a scheduled task for an image repository.
+        Update scheduled tasks in the mirror repository
         """
         
         kwargs = {}

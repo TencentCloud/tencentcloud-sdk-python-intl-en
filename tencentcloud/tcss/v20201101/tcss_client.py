@@ -77,7 +77,7 @@ class TcssClient(AbstractClient):
 
 
     def AddAssetImageRegistryRegistryDetail(self, request):
-        r"""This API is used to add the details of an image repository.
+        r"""This example shows you how to add details for an image repository.
 
         :param request: Request instance for AddAssetImageRegistryRegistryDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddAssetImageRegistryRegistryDetailRequest`
@@ -593,7 +593,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateAssetImageRegistryScanTaskOneKey(self, request):
-        r"""This API is used to create a quick image scan task for an image repository.
+        r"""Creating a Task to Scan Images in an Image Repository with One Click
 
         :param request: Request instance for CreateAssetImageRegistryScanTaskOneKey.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateAssetImageRegistryScanTaskOneKeyRequest`
@@ -2400,7 +2400,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetHostDetail(self, request):
-        r"""This API is used to query the details of a server.
+        r"""This example shows you how to query host details.
 
         :param request: Request instance for DescribeAssetHostDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetHostDetailRequest`
@@ -2745,7 +2745,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistrySummary(self, request):
-        r"""This API is used to query the image statistics of an image repository.
+        r"""Querying the Image Statistics of an Image Repository
 
         :param request: Request instance for DescribeAssetImageRegistrySummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistrySummaryRequest`
@@ -3159,7 +3159,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetSyncLastTime(self, request):
-        r"""This API is used to query the last asset sync time.
+        r"""Query the latest time for asset synchronization.
 
         :param request: Request instance for DescribeAssetSyncLastTime.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetSyncLastTimeRequest`
@@ -3872,7 +3872,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageAuthorizedInfo(self, request):
-        r"""This API is used to query the image licensing information.
+        r"""This API is used to query image authorization info.
 
         :param request: Request instance for DescribeImageAuthorizedInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageAuthorizedInfoRequest`
@@ -3918,7 +3918,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageAutoAuthorizedRule(self, request):
-        r"""This API is used to query an automatic licensing rule for local images.
+        r"""Query local image auto-authorization rules.
 
         :param request: Request instance for DescribeImageAutoAuthorizedRule.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageAutoAuthorizedRuleRequest`
@@ -4879,7 +4879,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribePurchaseStateInfo(self, request):
-        r"""This API is used to check whether TCSS is purchased.
+        r"""This API is used to query the purchase information on the container security service.
 
         :param request: Request instance for DescribePurchaseStateInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribePurchaseStateInfoRequest`
@@ -8034,7 +8034,7 @@ class TcssClient(AbstractClient):
 
 
     def UpdateImageRegistryTimingScanTask(self, request):
-        r"""This API is used to update a scheduled task for an image repository.
+        r"""Update scheduled tasks in the mirror repository
 
         :param request: Request instance for UpdateImageRegistryTimingScanTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateImageRegistryTimingScanTaskRequest`

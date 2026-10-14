@@ -373,20 +373,20 @@ class AsyncTriggerConfig(AbstractModel):
 
 
 class CfsConfig(AbstractModel):
-    r"""File system (CFS) configuration description
+    r"""Configuration description of the file system (cfs)
 
     """
 
     def __init__(self):
         r"""
-        :param _CfsInsList: File system information list
+        :param _CfsInsList: List of file system information
         :type CfsInsList: list of CfsInsInfo
         """
         self._CfsInsList = None
 
     @property
     def CfsInsList(self):
-        r"""File system information list
+        r"""List of file system information
         :rtype: list of CfsInsInfo
         """
         return self._CfsInsList
@@ -414,7 +414,7 @@ class CfsConfig(AbstractModel):
 
 
 class CfsInsInfo(AbstractModel):
-    r"""Configuration information of the CFS instance associated with function
+    r"""cfs configuration message associated with the SCF
 
     """
 
@@ -422,24 +422,24 @@ class CfsInsInfo(AbstractModel):
         r"""
         :param _UserId: User ID
         :type UserId: str
-        :param _UserGroupId: User group ID
+        :param _UserGroupId: User group id.
         :type UserGroupId: str
-        :param _CfsId: CFS instance ID
+        :param _CfsId: File system instance id
         :type CfsId: str
-        :param _MountInsId: File system mount target ID
+        :param _MountInsId: File system mount point id
         :type MountInsId: str
-        :param _LocalMountDir: Local mount target
+        :param _LocalMountDir: Local mount point
         :type LocalMountDir: str
-        :param _RemoteMountDir: Remote mount target
+        :param _RemoteMountDir: Remote mount point.
         :type RemoteMountDir: str
-        :param _IpAddress: File system IP, which is not required when you configure CFS.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _IpAddress: File system ip. No need to specify when configuring cfs.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type IpAddress: str
-        :param _MountVpcId: VPC ID of file system, which is not required when you configure CFS.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _MountVpcId: VPC id where the file system is located. Not required when configuring cfs.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MountVpcId: str
-        :param _MountSubnetId: VPC subnet ID of file system, which is not required when you configure CFS.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _MountSubnetId: Subnet id of the private network where the file system resides. Not required when configuring cfs.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MountSubnetId: str
         """
         self._UserId = None
@@ -465,7 +465,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserGroupId(self):
-        r"""User group ID
+        r"""User group id.
         :rtype: str
         """
         return self._UserGroupId
@@ -476,7 +476,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CfsId(self):
-        r"""CFS instance ID
+        r"""File system instance id
         :rtype: str
         """
         return self._CfsId
@@ -487,7 +487,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MountInsId(self):
-        r"""File system mount target ID
+        r"""File system mount point id
         :rtype: str
         """
         return self._MountInsId
@@ -498,7 +498,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LocalMountDir(self):
-        r"""Local mount target
+        r"""Local mount point
         :rtype: str
         """
         return self._LocalMountDir
@@ -509,7 +509,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RemoteMountDir(self):
-        r"""Remote mount target
+        r"""Remote mount point.
         :rtype: str
         """
         return self._RemoteMountDir
@@ -520,8 +520,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IpAddress(self):
-        r"""File system IP, which is not required when you configure CFS.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""File system ip. No need to specify when configuring cfs.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._IpAddress
@@ -532,8 +532,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MountVpcId(self):
-        r"""VPC ID of file system, which is not required when you configure CFS.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""VPC id where the file system is located. Not required when configuring cfs.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MountVpcId
@@ -544,8 +544,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MountSubnetId(self):
-        r"""VPC subnet ID of file system, which is not required when you configure CFS.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Subnet id of the private network where the file system resides. Not required when configuring cfs.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MountSubnetId
@@ -1154,7 +1154,7 @@ class CreateNamespaceRequest(AbstractModel):
         :type Namespace: str
         :param _Description: Namespace description
         :type Description: str
-        :param _ResourceEnv: 
+        :param _ResourceEnv: Resource pool configuration
         :type ResourceEnv: :class:`tencentcloud.scf.v20180416.models.NamespaceResourceEnv`
         """
         self._Namespace = None
@@ -1185,7 +1185,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def ResourceEnv(self):
-        r"""
+        r"""Resource pool configuration
         :rtype: :class:`tencentcloud.scf.v20180416.models.NamespaceResourceEnv`
         """
         return self._ResourceEnv
@@ -1246,25 +1246,23 @@ class CreateTriggerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FunctionName: Name of the function bound to the new trigger
+        :param _FunctionName: Function name bound to the created trigger
         :type FunctionName: str
-        :param _TriggerName: Name of a new trigger. For a timer trigger, the name can contain up to 100 letters, digits, dashes, and underscores; for a COS trigger, it should be an access domain name of the corresponding COS bucket applicable to the XML API (e.g., 5401-5ff414-12345.cos.ap-shanghai.myqcloud.com); for other triggers, please see the descriptions of parameters bound to the specific trigger.
+        :param _TriggerName: Name of the trigger to create. If it is a scheduled trigger, the name supports English letters, digits, hyphens, and underscores, up to 100 characters. If it is a COS trigger, it must be the access domain of the corresponding COS storage bucket suitable for the XML API (for example, 5401-5ff414-12345.cos.ap-shanghai.myqcloud.com). For other triggers, see the parameter description of the specific trigger binding.
         :type TriggerName: str
-        :param _Type: Type of trigger. Values: `cos`, `cmq`, `timer`, `ckafka`, `http`. 
-To create Function URL please refer to [Creating a Function URL](https://www.tencentcloud.com/document/product/583/69492?lang=en&pg=)
-To create a CLS trigger, please refer to [Create Deliver CloudFunction (SCF)](https://www.tencentcloud.com/zh/document/product/614/59903).
+        :param _Type: Trigger type. Currently supports cos, cls, timer, ckafka, and http types. To create a function URL, please use the http type. See [Creating a Function URL](https://www.tencentcloud.com/document/product/583/100227?from_cn_redirect=1#33bbbda4-9131-48a6-ac37-ac62ffe01424). To create a cls trigger, see CLS Creating Delivery SCF Task.
         :type Type: str
-        :param _TriggerDesc: For parameters of triggers, see [Trigger Description](https://intl.cloud.tencent.com/document/product/583/39901?from_cn_redirect=1)
+        :param _TriggerDesc: Parameters corresponding to the trigger. For details, see [Trigger Description](https://www.tencentcloud.com/document/product/583/39901?from_cn_redirect=1).
         :type TriggerDesc: str
-        :param _Namespace: Function namespace
+        :param _Namespace: Namespace of the function
         :type Namespace: str
-        :param _Qualifier: Function version. It defaults to `$LATEST`. It's recommended to use [$DEFAULT](https://www.tencentcloud.com/document/product/583/37458?lang=en&pg=) for canary release.
+        :param _Qualifier: Version or alias that the trigger takes effect on. It is recommended to fill in $DEFAULT for future grayscale release. Default value: $LATEST.
         :type Qualifier: str
-        :param _Enable: Initial enabling status of the trigger. `OPEN` indicates enabled, and `CLOSE` indicates disabled.
+        :param _Enable: Initial status of the trigger. OPEN means enabling, and CLOSE means disabling.
         :type Enable: str
-        :param _CustomArgument: Custom argument, supporting only the timer trigger.
+        :param _CustomArgument: User-defined parameter. Only timer triggers are supported.
         :type CustomArgument: str
-        :param _Description: Trigger description
+        :param _Description: Trigger description.
         :type Description: str
         """
         self._FunctionName = None
@@ -1279,7 +1277,7 @@ To create a CLS trigger, please refer to [Create Deliver CloudFunction (SCF)](ht
 
     @property
     def FunctionName(self):
-        r"""Name of the function bound to the new trigger
+        r"""Function name bound to the created trigger
         :rtype: str
         """
         return self._FunctionName
@@ -1290,7 +1288,7 @@ To create a CLS trigger, please refer to [Create Deliver CloudFunction (SCF)](ht
 
     @property
     def TriggerName(self):
-        r"""Name of a new trigger. For a timer trigger, the name can contain up to 100 letters, digits, dashes, and underscores; for a COS trigger, it should be an access domain name of the corresponding COS bucket applicable to the XML API (e.g., 5401-5ff414-12345.cos.ap-shanghai.myqcloud.com); for other triggers, please see the descriptions of parameters bound to the specific trigger.
+        r"""Name of the trigger to create. If it is a scheduled trigger, the name supports English letters, digits, hyphens, and underscores, up to 100 characters. If it is a COS trigger, it must be the access domain of the corresponding COS storage bucket suitable for the XML API (for example, 5401-5ff414-12345.cos.ap-shanghai.myqcloud.com). For other triggers, see the parameter description of the specific trigger binding.
         :rtype: str
         """
         return self._TriggerName
@@ -1301,9 +1299,7 @@ To create a CLS trigger, please refer to [Create Deliver CloudFunction (SCF)](ht
 
     @property
     def Type(self):
-        r"""Type of trigger. Values: `cos`, `cmq`, `timer`, `ckafka`, `http`. 
-To create Function URL please refer to [Creating a Function URL](https://www.tencentcloud.com/document/product/583/69492?lang=en&pg=)
-To create a CLS trigger, please refer to [Create Deliver CloudFunction (SCF)](https://www.tencentcloud.com/zh/document/product/614/59903).
+        r"""Trigger type. Currently supports cos, cls, timer, ckafka, and http types. To create a function URL, please use the http type. See [Creating a Function URL](https://www.tencentcloud.com/document/product/583/100227?from_cn_redirect=1#33bbbda4-9131-48a6-ac37-ac62ffe01424). To create a cls trigger, see CLS Creating Delivery SCF Task.
         :rtype: str
         """
         return self._Type
@@ -1314,7 +1310,7 @@ To create a CLS trigger, please refer to [Create Deliver CloudFunction (SCF)](ht
 
     @property
     def TriggerDesc(self):
-        r"""For parameters of triggers, see [Trigger Description](https://intl.cloud.tencent.com/document/product/583/39901?from_cn_redirect=1)
+        r"""Parameters corresponding to the trigger. For details, see [Trigger Description](https://www.tencentcloud.com/document/product/583/39901?from_cn_redirect=1).
         :rtype: str
         """
         return self._TriggerDesc
@@ -1325,7 +1321,7 @@ To create a CLS trigger, please refer to [Create Deliver CloudFunction (SCF)](ht
 
     @property
     def Namespace(self):
-        r"""Function namespace
+        r"""Namespace of the function
         :rtype: str
         """
         return self._Namespace
@@ -1336,7 +1332,7 @@ To create a CLS trigger, please refer to [Create Deliver CloudFunction (SCF)](ht
 
     @property
     def Qualifier(self):
-        r"""Function version. It defaults to `$LATEST`. It's recommended to use [$DEFAULT](https://www.tencentcloud.com/document/product/583/37458?lang=en&pg=) for canary release.
+        r"""Version or alias that the trigger takes effect on. It is recommended to fill in $DEFAULT for future grayscale release. Default value: $LATEST.
         :rtype: str
         """
         return self._Qualifier
@@ -1347,7 +1343,7 @@ To create a CLS trigger, please refer to [Create Deliver CloudFunction (SCF)](ht
 
     @property
     def Enable(self):
-        r"""Initial enabling status of the trigger. `OPEN` indicates enabled, and `CLOSE` indicates disabled.
+        r"""Initial status of the trigger. OPEN means enabling, and CLOSE means disabling.
         :rtype: str
         """
         return self._Enable
@@ -1358,7 +1354,7 @@ To create a CLS trigger, please refer to [Create Deliver CloudFunction (SCF)](ht
 
     @property
     def CustomArgument(self):
-        r"""Custom argument, supporting only the timer trigger.
+        r"""User-defined parameter. Only timer triggers are supported.
         :rtype: str
         """
         return self._CustomArgument
@@ -1369,7 +1365,7 @@ To create a CLS trigger, please refer to [Create Deliver CloudFunction (SCF)](ht
 
     @property
     def Description(self):
-        r"""Trigger description
+        r"""Trigger description.
         :rtype: str
         """
         return self._Description
@@ -1406,7 +1402,7 @@ class CreateTriggerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TriggerInfo: Trigger information
+        :param _TriggerInfo: Trigger information.
         :type TriggerInfo: :class:`tencentcloud.scf.v20180416.models.Trigger`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -1416,7 +1412,7 @@ class CreateTriggerResponse(AbstractModel):
 
     @property
     def TriggerInfo(self):
-        r"""Trigger information
+        r"""Trigger information.
         :rtype: :class:`tencentcloud.scf.v20180416.models.Trigger`
         """
         return self._TriggerInfo
@@ -1455,7 +1451,7 @@ class DeadLetterConfig(AbstractModel):
         :type Type: str
         :param _Name: Dead letter queue name
         :type Name: str
-        :param _FilterType: Tag form of a dead letter queue topic mode
+        :param _FilterType: Tag format of the DLQ topic model
         :type FilterType: str
         """
         self._Type = None
@@ -1486,7 +1482,7 @@ class DeadLetterConfig(AbstractModel):
 
     @property
     def FilterType(self):
-        r"""Tag form of a dead letter queue topic mode
+        r"""Tag format of the DLQ topic model
         :rtype: str
         """
         return self._FilterType
@@ -2023,15 +2019,15 @@ class DeleteTriggerRequest(AbstractModel):
         r"""
         :param _FunctionName: Function name
         :type FunctionName: str
-        :param _TriggerName: Name of the trigger to be deleted
+        :param _TriggerName: Trigger name to delete
         :type TriggerName: str
-        :param _Type: Type of the trigger to be deleted. Currently, COS, CMQ, timer, and ckafka triggers are supported.
+        :param _Type: Trigger type to delete. Currently only `timer`, `ckafka`, `apigw`, `cls`, `cos`, `cmq`, and `http` are supported.
         :type Type: str
-        :param _Namespace: Function namespace
+        :param _Namespace: Namespace of the function
         :type Namespace: str
-        :param _TriggerDesc: This field is required if a COS trigger is to be deleted. It stores the data {"event":"cos:ObjectCreated:*"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.
+        :param _TriggerDesc: If the trigger type to delete is COS trigger, this field must be specified, storing data in JSON format {"event":"cos:ObjectCreated:*"}. The data content is in the same format as this field in the SetTrigger API. If the trigger type to delete is scheduled trigger or CMQ trigger, this field can be unspecified.
         :type TriggerDesc: str
-        :param _Qualifier: Function version. It defaults to `$LATEST`. It's recommended to use `[$DEFAULT](https://www.tencentcloud.com/document/product/583/37458#glossary)` for canary release.
+        :param _Qualifier: The version or alias that the trigger to be deleted actually points to. Default value: $LATEST.
         :type Qualifier: str
         """
         self._FunctionName = None
@@ -2054,7 +2050,7 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def TriggerName(self):
-        r"""Name of the trigger to be deleted
+        r"""Trigger name to delete
         :rtype: str
         """
         return self._TriggerName
@@ -2065,7 +2061,7 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""Type of the trigger to be deleted. Currently, COS, CMQ, timer, and ckafka triggers are supported.
+        r"""Trigger type to delete. Currently only `timer`, `ckafka`, `apigw`, `cls`, `cos`, `cmq`, and `http` are supported.
         :rtype: str
         """
         return self._Type
@@ -2076,7 +2072,7 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""Function namespace
+        r"""Namespace of the function
         :rtype: str
         """
         return self._Namespace
@@ -2087,7 +2083,7 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def TriggerDesc(self):
-        r"""This field is required if a COS trigger is to be deleted. It stores the data {"event":"cos:ObjectCreated:*"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.
+        r"""If the trigger type to delete is COS trigger, this field must be specified, storing data in JSON format {"event":"cos:ObjectCreated:*"}. The data content is in the same format as this field in the SetTrigger API. If the trigger type to delete is scheduled trigger or CMQ trigger, this field can be unspecified.
         :rtype: str
         """
         return self._TriggerDesc
@@ -2098,7 +2094,7 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def Qualifier(self):
-        r"""Function version. It defaults to `$LATEST`. It's recommended to use `[$DEFAULT](https://www.tencentcloud.com/document/product/583/37458#glossary)` for canary release.
+        r"""The version or alias that the trigger to be deleted actually points to. Default value: $LATEST.
         :rtype: str
         """
         return self._Qualifier
@@ -2154,20 +2150,20 @@ class DeleteTriggerResponse(AbstractModel):
 
 
 class EipConfigIn(AbstractModel):
-    r"""Fixed IP configuration for public network access
+    r"""Public network access fixed ip configuration
 
     """
 
     def __init__(self):
         r"""
-        :param _EipStatus: Status of the EIP. Values: ['ENABLE','DISABLE']
+        :param _EipStatus: Eip status. Valid values: `ENABLE` and `DISABLE`
         :type EipStatus: str
         """
         self._EipStatus = None
 
     @property
     def EipStatus(self):
-        r"""Status of the EIP. Values: ['ENABLE','DISABLE']
+        r"""Eip status. Valid values: `ENABLE` and `DISABLE`
         :rtype: str
         """
         return self._EipStatus
@@ -2190,7 +2186,7 @@ class EipConfigIn(AbstractModel):
 
 
 class Environment(AbstractModel):
-    r"""Environment variable parameter of the function
+    r"""Environment variable parameters of the function
 
     """
 
@@ -2573,31 +2569,31 @@ class FunctionLog(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FunctionName: Function name
+        :param _FunctionName: Function name.
         :type FunctionName: str
-        :param _RetMsg: Return value after the function is executed
+        :param _RetMsg: Returned value after function execution
         :type RetMsg: str
-        :param _RequestId: RequestId corresponding to the executed function
+        :param _RequestId: requestId for executing the function
         :type RequestId: str
-        :param _StartTime: Start time of the function execution
+        :param _StartTime: Time point when the function starts execution
         :type StartTime: str
-        :param _RetCode: Function execution result. `0` indicates successful execution and other values indicate failure.
+        :param _RetCode: Function execution result. 0 indicates successful execution, 2 indicates the function is running, 3 indicates an execution interrupt, and other values indicate failure.
         :type RetCode: int
-        :param _InvokeFinished: It specifies whether the function invocation is finished. `1` indicates execution completion and other values indicate that exceptions occurred during the invocation.
+        :param _InvokeFinished: Whether the function call ends. If so, 1 means execution ended, and additional values indicate a call exception.
         :type InvokeFinished: int
-        :param _Duration: Duration of the function execution. The unit is millisecond (ms).
+        :param _Duration: Function execution duration in milliseconds.
         :type Duration: float
-        :param _BillDuration: Function billing duration. The unit is millisecond (ms). The value is rounded up to a multiple of 100 ms.
+        :param _BillDuration: Billing duration of a function. It is rounded up to the nearest 100 ms based on the duration, in ms.
         :type BillDuration: int
-        :param _MemUsage: Actual memory size used during the function execution. The unit is byte.
+        :param _MemUsage: Memory size actually consumed during function execution, in bytes.
         :type MemUsage: int
-        :param _Log: Function execution logs
+        :param _Log: Log output during function execution
         :type Log: str
-        :param _Level: Log level
+        :param _Level: Log level.
         :type Level: str
         :param _Source: Log source
         :type Source: str
-        :param _RetryNum: Number of retries
+        :param _RetryNum: Number of retries.
         :type RetryNum: int
         """
         self._FunctionName = None
@@ -2616,7 +2612,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def FunctionName(self):
-        r"""Function name
+        r"""Function name.
         :rtype: str
         """
         return self._FunctionName
@@ -2627,7 +2623,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def RetMsg(self):
-        r"""Return value after the function is executed
+        r"""Returned value after function execution
         :rtype: str
         """
         return self._RetMsg
@@ -2638,7 +2634,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""RequestId corresponding to the executed function
+        r"""requestId for executing the function
         :rtype: str
         """
         return self._RequestId
@@ -2649,7 +2645,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Start time of the function execution
+        r"""Time point when the function starts execution
         :rtype: str
         """
         return self._StartTime
@@ -2660,7 +2656,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def RetCode(self):
-        r"""Function execution result. `0` indicates successful execution and other values indicate failure.
+        r"""Function execution result. 0 indicates successful execution, 2 indicates the function is running, 3 indicates an execution interrupt, and other values indicate failure.
         :rtype: int
         """
         return self._RetCode
@@ -2671,7 +2667,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def InvokeFinished(self):
-        r"""It specifies whether the function invocation is finished. `1` indicates execution completion and other values indicate that exceptions occurred during the invocation.
+        r"""Whether the function call ends. If so, 1 means execution ended, and additional values indicate a call exception.
         :rtype: int
         """
         return self._InvokeFinished
@@ -2682,7 +2678,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def Duration(self):
-        r"""Duration of the function execution. The unit is millisecond (ms).
+        r"""Function execution duration in milliseconds.
         :rtype: float
         """
         return self._Duration
@@ -2693,7 +2689,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def BillDuration(self):
-        r"""Function billing duration. The unit is millisecond (ms). The value is rounded up to a multiple of 100 ms.
+        r"""Billing duration of a function. It is rounded up to the nearest 100 ms based on the duration, in ms.
         :rtype: int
         """
         return self._BillDuration
@@ -2704,7 +2700,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def MemUsage(self):
-        r"""Actual memory size used during the function execution. The unit is byte.
+        r"""Memory size actually consumed during function execution, in bytes.
         :rtype: int
         """
         return self._MemUsage
@@ -2715,7 +2711,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def Log(self):
-        r"""Function execution logs
+        r"""Log output during function execution
         :rtype: str
         """
         return self._Log
@@ -2728,7 +2724,7 @@ class FunctionLog(AbstractModel):
     def Level(self):
         warnings.warn("parameter `Level` is deprecated", DeprecationWarning) 
 
-        r"""Log level
+        r"""Log level.
         :rtype: str
         """
         return self._Level
@@ -2756,7 +2752,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def RetryNum(self):
-        r"""Number of retries
+        r"""Number of retries.
         :rtype: int
         """
         return self._RetryNum
@@ -3478,30 +3474,30 @@ class GetFunctionLogsRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _FunctionName: Function name.
-- To ensure the compatibility of the [`GetFunctionLogs`](https://intl.cloud.tencent.com/document/product/583/18583) API, the input parameter `FunctionName` is optional, but we recommend you enter it; otherwise, log acquisition may fail.
-- After the function is connected to CLS, we recommend you use the [related CLS API](https://intl.cloud.tencent.com/document/product/614/16875) to get the best log retrieval experience.
+-To ensure compatibility of the [retrieve function execution log](https://www.tencentcloud.com/document/product/583/18583?from_cn_redirect=1) API `GetFunctionLogs`, the input parameter `FunctionName` remains an optional field, but it is recommended to fill in this parameter. Otherwise, log acquisition failure may occur.
+- After associating a function with CLS, it is recommended to use the relevant CLS APIs (https://www.tencentcloud.com/document/product/614/16875?from_cn_redirect=1) to get the best log retrieval experience.
         :type FunctionName: str
-        :param _Offset: Data offset. The addition of `Offset` and `Limit` cannot exceed 10,000.
+        :param _Offset: Offset of the data. Offset + Limit cannot be greater than 10000.
         :type Offset: int
-        :param _Limit: Length of the return data. The addition of `Offset` and `Limit` cannot exceed 10,000.
+        :param _Limit: Length of the returned data. Offset + Limit cannot be greater than 10000.
         :type Limit: int
-        :param _Order: It specifies whether to sort the logs in an ascending or descending order. The value is `desc` or `asc`.
+        :param _Order: Whether to sort logs in descending or ascending order. Available values: `desc` and `asc`.
         :type Order: str
-        :param _OrderBy: It specifies the sorting order of the logs based on a specified field, such as `function_name`, `duration`, `mem_usage`, and `start_time`.
+        :param _OrderBy: Sort logs by a certain field. The following fields are supported: function_name, duration, mem_usage, start_time
         :type OrderBy: str
-        :param _Filter: Log filter used to identify whether to return logs of successful or failed requests. `filter.RetCode=not0` indicates that only the logs of failed requests will be returned. `filter.RetCode=is0` indicates that only the logs of successful requests will be returned. If this parameter is left blank, all logs will be returned. 
+        :param _Filter: Log filter criteria. It can be used to distinguish correct and error logs. filter.RetCode=not0 means only return error logs, filter.RetCode=is0 means only return correct logs. If not passed, all logs are returned.
         :type Filter: :class:`tencentcloud.scf.v20180416.models.LogFilter`
-        :param _Namespace: Function namespace
+        :param _Namespace: Namespace of the function
         :type Namespace: str
         :param _Qualifier: Function version
         :type Qualifier: str
-        :param _FunctionRequestId: RequestId corresponding to the executed function
+        :param _FunctionRequestId: Request ID for executing the function
         :type FunctionRequestId: str
-        :param _StartTime: Query date, for example, 2017-05-16 20:00:00. The date must be within one day of the end time.
+        :param _StartTime: Specific date of the query, for example: 2017-05-16 20:00:00. It must differ from endtime by no more than one day.
         :type StartTime: str
-        :param _EndTime: Query date, for example, 2017-05-16 20:59:59. The date must be within one day of the start time.
+        :param _EndTime: Specific date of the query, for example: 2017-05-16 20:59:59. It must differ from startTime by no more than one day.
         :type EndTime: str
-        :param _SearchContext: This field is disused.
+        :param _SearchContext: This field is offline.
         :type SearchContext: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`
         """
         self._FunctionName = None
@@ -3520,8 +3516,8 @@ class GetFunctionLogsRequest(AbstractModel):
     @property
     def FunctionName(self):
         r"""Function name.
-- To ensure the compatibility of the [`GetFunctionLogs`](https://intl.cloud.tencent.com/document/product/583/18583) API, the input parameter `FunctionName` is optional, but we recommend you enter it; otherwise, log acquisition may fail.
-- After the function is connected to CLS, we recommend you use the [related CLS API](https://intl.cloud.tencent.com/document/product/614/16875) to get the best log retrieval experience.
+-To ensure compatibility of the [retrieve function execution log](https://www.tencentcloud.com/document/product/583/18583?from_cn_redirect=1) API `GetFunctionLogs`, the input parameter `FunctionName` remains an optional field, but it is recommended to fill in this parameter. Otherwise, log acquisition failure may occur.
+- After associating a function with CLS, it is recommended to use the relevant CLS APIs (https://www.tencentcloud.com/document/product/614/16875?from_cn_redirect=1) to get the best log retrieval experience.
         :rtype: str
         """
         return self._FunctionName
@@ -3532,7 +3528,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Data offset. The addition of `Offset` and `Limit` cannot exceed 10,000.
+        r"""Offset of the data. Offset + Limit cannot be greater than 10000.
         :rtype: int
         """
         return self._Offset
@@ -3543,7 +3539,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Length of the return data. The addition of `Offset` and `Limit` cannot exceed 10,000.
+        r"""Length of the returned data. Offset + Limit cannot be greater than 10000.
         :rtype: int
         """
         return self._Limit
@@ -3554,7 +3550,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""It specifies whether to sort the logs in an ascending or descending order. The value is `desc` or `asc`.
+        r"""Whether to sort logs in descending or ascending order. Available values: `desc` and `asc`.
         :rtype: str
         """
         return self._Order
@@ -3565,7 +3561,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""It specifies the sorting order of the logs based on a specified field, such as `function_name`, `duration`, `mem_usage`, and `start_time`.
+        r"""Sort logs by a certain field. The following fields are supported: function_name, duration, mem_usage, start_time
         :rtype: str
         """
         return self._OrderBy
@@ -3576,7 +3572,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Filter(self):
-        r"""Log filter used to identify whether to return logs of successful or failed requests. `filter.RetCode=not0` indicates that only the logs of failed requests will be returned. `filter.RetCode=is0` indicates that only the logs of successful requests will be returned. If this parameter is left blank, all logs will be returned. 
+        r"""Log filter criteria. It can be used to distinguish correct and error logs. filter.RetCode=not0 means only return error logs, filter.RetCode=is0 means only return correct logs. If not passed, all logs are returned.
         :rtype: :class:`tencentcloud.scf.v20180416.models.LogFilter`
         """
         return self._Filter
@@ -3587,7 +3583,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""Function namespace
+        r"""Namespace of the function
         :rtype: str
         """
         return self._Namespace
@@ -3609,7 +3605,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def FunctionRequestId(self):
-        r"""RequestId corresponding to the executed function
+        r"""Request ID for executing the function
         :rtype: str
         """
         return self._FunctionRequestId
@@ -3620,7 +3616,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Query date, for example, 2017-05-16 20:00:00. The date must be within one day of the end time.
+        r"""Specific date of the query, for example: 2017-05-16 20:00:00. It must differ from endtime by no more than one day.
         :rtype: str
         """
         return self._StartTime
@@ -3631,7 +3627,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""Query date, for example, 2017-05-16 20:59:59. The date must be within one day of the start time.
+        r"""Specific date of the query, for example: 2017-05-16 20:59:59. It must differ from startTime by no more than one day.
         :rtype: str
         """
         return self._EndTime
@@ -3642,7 +3638,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def SearchContext(self):
-        r"""This field is disused.
+        r"""This field is offline.
         :rtype: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`
         """
         return self._SearchContext
@@ -3690,7 +3686,7 @@ class GetFunctionLogsResponse(AbstractModel):
         :type TotalCount: int
         :param _Data: Function log information
         :type Data: list of FunctionLog
-        :param _SearchContext: This field is disused.
+        :param _SearchContext: This field is offline.
         :type SearchContext: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3724,7 +3720,7 @@ class GetFunctionLogsResponse(AbstractModel):
 
     @property
     def SearchContext(self):
-        r"""This field is disused.
+        r"""This field is offline.
         :rtype: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`
         """
         return self._SearchContext
@@ -4520,6 +4516,166 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class InstanceConcurrencyConfig(AbstractModel):
+    r"""Configuration description for multiple concurrent executions
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DynamicEnabled: Whether intelligent dynamic concurrency is enabled. If set to `FALSE`, static concurrency is used. If set to `''`, the multi-concurrency configuration is canceled.
+        :type DynamicEnabled: str
+        :param _MaxConcurrency: Maximum number of concurrent requests per instance. Value range: [1,100]
+        :type MaxConcurrency: int
+        :param _InstanceIsolationEnabled: Safety isolation switch
+        :type InstanceIsolationEnabled: str
+        :param _Type: Session-Based or Request-Based. Choose one.
+        :type Type: str
+        :param _MixNodeConfig: Dynamic concurrency parameter
+        :type MixNodeConfig: list of MixNodeConfig
+        :param _SessionConfig: Session configuration parameters
+        :type SessionConfig: :class:`tencentcloud.scf.v20180416.models.SessionConfig`
+        """
+        self._DynamicEnabled = None
+        self._MaxConcurrency = None
+        self._InstanceIsolationEnabled = None
+        self._Type = None
+        self._MixNodeConfig = None
+        self._SessionConfig = None
+
+    @property
+    def DynamicEnabled(self):
+        r"""Whether intelligent dynamic concurrency is enabled. If set to `FALSE`, static concurrency is used. If set to `''`, the multi-concurrency configuration is canceled.
+        :rtype: str
+        """
+        return self._DynamicEnabled
+
+    @DynamicEnabled.setter
+    def DynamicEnabled(self, DynamicEnabled):
+        self._DynamicEnabled = DynamicEnabled
+
+    @property
+    def MaxConcurrency(self):
+        r"""Maximum number of concurrent requests per instance. Value range: [1,100]
+        :rtype: int
+        """
+        return self._MaxConcurrency
+
+    @MaxConcurrency.setter
+    def MaxConcurrency(self, MaxConcurrency):
+        self._MaxConcurrency = MaxConcurrency
+
+    @property
+    def InstanceIsolationEnabled(self):
+        r"""Safety isolation switch
+        :rtype: str
+        """
+        return self._InstanceIsolationEnabled
+
+    @InstanceIsolationEnabled.setter
+    def InstanceIsolationEnabled(self, InstanceIsolationEnabled):
+        self._InstanceIsolationEnabled = InstanceIsolationEnabled
+
+    @property
+    def Type(self):
+        r"""Session-Based or Request-Based. Choose one.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def MixNodeConfig(self):
+        r"""Dynamic concurrency parameter
+        :rtype: list of MixNodeConfig
+        """
+        return self._MixNodeConfig
+
+    @MixNodeConfig.setter
+    def MixNodeConfig(self, MixNodeConfig):
+        self._MixNodeConfig = MixNodeConfig
+
+    @property
+    def SessionConfig(self):
+        r"""Session configuration parameters
+        :rtype: :class:`tencentcloud.scf.v20180416.models.SessionConfig`
+        """
+        return self._SessionConfig
+
+    @SessionConfig.setter
+    def SessionConfig(self, SessionConfig):
+        self._SessionConfig = SessionConfig
+
+
+    def _deserialize(self, params):
+        self._DynamicEnabled = params.get("DynamicEnabled")
+        self._MaxConcurrency = params.get("MaxConcurrency")
+        self._InstanceIsolationEnabled = params.get("InstanceIsolationEnabled")
+        self._Type = params.get("Type")
+        if params.get("MixNodeConfig") is not None:
+            self._MixNodeConfig = []
+            for item in params.get("MixNodeConfig"):
+                obj = MixNodeConfig()
+                obj._deserialize(item)
+                self._MixNodeConfig.append(obj)
+        if params.get("SessionConfig") is not None:
+            self._SessionConfig = SessionConfig()
+            self._SessionConfig._deserialize(params.get("SessionConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntranetConfigIn(AbstractModel):
+    r"""Private network configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IpFixed: Whether a fixed private IP address is enabled
+ENABLE: enable
+DISABLE means not enabled.
+
+        :type IpFixed: str
+        """
+        self._IpFixed = None
+
+    @property
+    def IpFixed(self):
+        r"""Whether a fixed private IP address is enabled
+ENABLE: enable
+DISABLE means not enabled.
+
+        :rtype: str
+        """
+        return self._IpFixed
+
+    @IpFixed.setter
+    def IpFixed(self, IpFixed):
+        self._IpFixed = IpFixed
+
+
+    def _deserialize(self, params):
+        self._IpFixed = params.get("IpFixed")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InvokeFunctionRequest(AbstractModel):
     r"""InvokeFunction request structure.
 
@@ -4854,9 +5010,9 @@ class K8SLabel(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: 
+        :param _Key: Name of the label
         :type Key: str
-        :param _Value: 
+        :param _Value: Value of the label
         :type Value: str
         """
         self._Key = None
@@ -4864,7 +5020,7 @@ class K8SLabel(AbstractModel):
 
     @property
     def Key(self):
-        r"""
+        r"""Name of the label
         :rtype: str
         """
         return self._Key
@@ -4875,7 +5031,7 @@ class K8SLabel(AbstractModel):
 
     @property
     def Value(self):
-        r"""
+        r"""Value of the label
         :rtype: str
         """
         return self._Value
@@ -4899,21 +5055,22 @@ class K8SLabel(AbstractModel):
 
 
 class K8SToleration(AbstractModel):
-    r"""
+    r"""Kubernetes taint and toleration. Please note the supported fields for your Kubernetes version during use.
+    See https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
 
     """
 
     def __init__(self):
         r"""
-        :param _Key: 
+        :param _Key: Matched taint name
         :type Key: str
-        :param _Operator: 
+        :param _Operator: Match mode. Default value: Equal.
         :type Operator: str
-        :param _Effect: 
+        :param _Effect: Execution policy
         :type Effect: str
-        :param _Value: 
+        :param _Value: Taint value to match. Required when Operator is Equal.
         :type Value: str
-        :param _TolerationSeconds: 
+        :param _TolerationSeconds: How long a Pod can still run on a node when the taint is not tolerated
         :type TolerationSeconds: int
         """
         self._Key = None
@@ -4924,7 +5081,7 @@ class K8SToleration(AbstractModel):
 
     @property
     def Key(self):
-        r"""
+        r"""Matched taint name
         :rtype: str
         """
         return self._Key
@@ -4935,7 +5092,7 @@ class K8SToleration(AbstractModel):
 
     @property
     def Operator(self):
-        r"""
+        r"""Match mode. Default value: Equal.
         :rtype: str
         """
         return self._Operator
@@ -4946,7 +5103,7 @@ class K8SToleration(AbstractModel):
 
     @property
     def Effect(self):
-        r"""
+        r"""Execution policy
         :rtype: str
         """
         return self._Effect
@@ -4957,7 +5114,7 @@ class K8SToleration(AbstractModel):
 
     @property
     def Value(self):
-        r"""
+        r"""Taint value to match. Required when Operator is Equal.
         :rtype: str
         """
         return self._Value
@@ -4968,7 +5125,7 @@ class K8SToleration(AbstractModel):
 
     @property
     def TolerationSeconds(self):
-        r"""
+        r"""How long a Pod can still run on a node when the taint is not tolerated
         :rtype: int
         """
         return self._TolerationSeconds
@@ -5144,15 +5301,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class LayerVersionSimple(AbstractModel):
-    r"""Specifies a layer version
+    r"""Specify a Layer version
 
     """
 
     def __init__(self):
         r"""
-        :param _LayerName: Name of the layer to bind. Leave it blank if you want to unbind layers
+        :param _LayerName: Name of the bound layer. Pass an empty string to unbind the layer.
         :type LayerName: str
-        :param _LayerVersion: Version ID f the layer to bind/unbind. If the layer version to unbind is the only layer version of the function version, enter `0`.
+        :param _LayerVersion: Bind or unbind a layer version. To unbind the last layer version associated with a function version, set LayerVersion to 0.
         :type LayerVersion: int
         """
         self._LayerName = None
@@ -5160,7 +5317,7 @@ class LayerVersionSimple(AbstractModel):
 
     @property
     def LayerName(self):
-        r"""Name of the layer to bind. Leave it blank if you want to unbind layers
+        r"""Name of the bound layer. Pass an empty string to unbind the layer.
         :rtype: str
         """
         return self._LayerName
@@ -5171,7 +5328,7 @@ class LayerVersionSimple(AbstractModel):
 
     @property
     def LayerVersion(self):
-        r"""Version ID f the layer to bind/unbind. If the layer version to unbind is the only layer version of the function version, enter `0`.
+        r"""Bind or unbind a layer version. To unbind the last layer version associated with a function version, set LayerVersion to 0.
         :rtype: int
         """
         return self._LayerVersion
@@ -6693,32 +6850,32 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class LogFilter(AbstractModel):
-    r"""Log filtering criteria, which is for distinguishing between logs of successful and failed execution
+    r"""Log filter criteria, used to distinguish between correct and error logs
 
     """
 
     def __init__(self):
         r"""
-        :param _RetCode: Values of `filter.RetCode` include:
-not0, indicating that only logs of failed execution will be returned.
-is0, indicating that only logs of successful execution will be returned.
-TimeLimitExceeded, indicating that logs of function invocations which timed out will be returned.
-ResourceLimitExceeded, indicating that logs of function invocations during which resources exceeded the upper limit will be returned.
-UserCodeException, indicating that logs of function invocations during which a user code error occurred will be returned.
-Blank, indicating that all logs will be returned.
+        :param _RetCode: Valid values of filter.RetCode:
+not0 means only error logs are returned.
+is0 means only return correct logs.
+TimeLimitExceeded returns the logs of function call timed out.
+ResourceLimitExceeded returns the logs of resource limit exceeded during function calls.
+UserCodeException returns the logs of user code errors in function calls.
+If there is no input, all logs are returned.
         :type RetCode: str
         """
         self._RetCode = None
 
     @property
     def RetCode(self):
-        r"""Values of `filter.RetCode` include:
-not0, indicating that only logs of failed execution will be returned.
-is0, indicating that only logs of successful execution will be returned.
-TimeLimitExceeded, indicating that logs of function invocations which timed out will be returned.
-ResourceLimitExceeded, indicating that logs of function invocations during which resources exceeded the upper limit will be returned.
-UserCodeException, indicating that logs of function invocations during which a user code error occurred will be returned.
-Blank, indicating that all logs will be returned.
+        r"""Valid values of filter.RetCode:
+not0 means only error logs are returned.
+is0 means only return correct logs.
+TimeLimitExceeded returns the logs of function call timed out.
+ResourceLimitExceeded returns the logs of resource limit exceeded during function calls.
+UserCodeException returns the logs of user code errors in function calls.
+If there is no input, all logs are returned.
         :rtype: str
         """
         return self._RetCode
@@ -6749,11 +6906,11 @@ class LogSearchContext(AbstractModel):
         r"""
         :param _Offset: Offset.
         :type Offset: str
-        :param _Limit: Log record number
+        :param _Limit: Number of logs.
         :type Limit: int
         :param _Keyword: Log keyword
         :type Keyword: str
-        :param _Type: Log type. The value is `Application` (default) or `Platform`.
+        :param _Type: Log type. Valid values: `Application`, `Platform`. Default value: `Application`.
         :type Type: str
         """
         self._Offset = None
@@ -6774,7 +6931,7 @@ class LogSearchContext(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Log record number
+        r"""Number of logs.
         :rtype: int
         """
         return self._Limit
@@ -6796,7 +6953,7 @@ class LogSearchContext(AbstractModel):
 
     @property
     def Type(self):
-        r"""Log type. The value is `Application` (default) or `Platform`.
+        r"""Log type. Valid values: `Application`, `Platform`. Default value: `Application`.
         :rtype: str
         """
         return self._Type
@@ -6811,6 +6968,57 @@ class LogSearchContext(AbstractModel):
         self._Limit = params.get("Limit")
         self._Keyword = params.get("Keyword")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MixNodeConfig(AbstractModel):
+    r"""Dynamic concurrency configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeSpec: GPU model name
+        :type NodeSpec: str
+        :param _Num: Number of concurrencies
+        :type Num: int
+        """
+        self._NodeSpec = None
+        self._Num = None
+
+    @property
+    def NodeSpec(self):
+        r"""GPU model name
+        :rtype: str
+        """
+        return self._NodeSpec
+
+    @NodeSpec.setter
+    def NodeSpec(self, NodeSpec):
+        self._NodeSpec = NodeSpec
+
+    @property
+    def Num(self):
+        r"""Number of concurrencies
+        :rtype: int
+        """
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
+
+
+    def _deserialize(self, params):
+        self._NodeSpec = params.get("NodeSpec")
+        self._Num = params.get("Num")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7093,15 +7301,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class NamespaceResourceEnv(AbstractModel):
-    r"""
+    r"""Namespace resource pool configuration
 
     """
 
     def __init__(self):
         r"""
-        :param _TKE: 
+        :param _TKE: Resource pool based on a TKE cluster
         :type TKE: :class:`tencentcloud.scf.v20180416.models.NamespaceResourceEnvTKE`
-        :param _OFFLINE: 
+        :param _OFFLINE: Namespace of the near-offline computing type
         :type OFFLINE: bool
         """
         self._TKE = None
@@ -7109,7 +7317,7 @@ class NamespaceResourceEnv(AbstractModel):
 
     @property
     def TKE(self):
-        r"""
+        r"""Resource pool based on a TKE cluster
         :rtype: :class:`tencentcloud.scf.v20180416.models.NamespaceResourceEnvTKE`
         """
         return self._TKE
@@ -7120,7 +7328,7 @@ class NamespaceResourceEnv(AbstractModel):
 
     @property
     def OFFLINE(self):
-        r"""
+        r"""Namespace of the near-offline computing type
         :rtype: bool
         """
         return self._OFFLINE
@@ -7146,27 +7354,30 @@ class NamespaceResourceEnv(AbstractModel):
 
 
 class NamespaceResourceEnvTKE(AbstractModel):
-    r"""
+    r"""Resource pool options based on TKE
 
     """
 
     def __init__(self):
         r"""
-        :param _ClusterID: 
+        :param _ClusterID: Cluster ID
         :type ClusterID: str
-        :param _SubnetID: 
+        :param _SubnetID: Subnet ID.
         :type SubnetID: str
-        :param _Namespace: 
+        :param _Namespace: Namespace
         :type Namespace: str
-        :param _DataPath: 
+        :param _DataPath: Data storage address
         :type DataPath: str
-        :param _NodeSelector: 
+        :param _NodeSelector: node selector
         :type NodeSelector: list of K8SLabel
-        :param _Tolerations: 
+        :param _Tolerations: Taint and toleration
         :type Tolerations: list of K8SToleration
-        :param _Port: 
+        :param _Port: Starting node port number occupied by the scf component
         :type Port: int
-        :param _PodTemplatePatch: 
+        :param _PodTemplatePatch: pod patch content in yaml format, for example
+metadata:
+  labels:
+    key: value
         :type PodTemplatePatch: str
         """
         self._ClusterID = None
@@ -7180,7 +7391,7 @@ class NamespaceResourceEnvTKE(AbstractModel):
 
     @property
     def ClusterID(self):
-        r"""
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterID
@@ -7191,7 +7402,7 @@ class NamespaceResourceEnvTKE(AbstractModel):
 
     @property
     def SubnetID(self):
-        r"""
+        r"""Subnet ID.
         :rtype: str
         """
         return self._SubnetID
@@ -7202,7 +7413,7 @@ class NamespaceResourceEnvTKE(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""
+        r"""Namespace
         :rtype: str
         """
         return self._Namespace
@@ -7213,7 +7424,7 @@ class NamespaceResourceEnvTKE(AbstractModel):
 
     @property
     def DataPath(self):
-        r"""
+        r"""Data storage address
         :rtype: str
         """
         return self._DataPath
@@ -7224,7 +7435,7 @@ class NamespaceResourceEnvTKE(AbstractModel):
 
     @property
     def NodeSelector(self):
-        r"""
+        r"""node selector
         :rtype: list of K8SLabel
         """
         return self._NodeSelector
@@ -7235,7 +7446,7 @@ class NamespaceResourceEnvTKE(AbstractModel):
 
     @property
     def Tolerations(self):
-        r"""
+        r"""Taint and toleration
         :rtype: list of K8SToleration
         """
         return self._Tolerations
@@ -7246,7 +7457,7 @@ class NamespaceResourceEnvTKE(AbstractModel):
 
     @property
     def Port(self):
-        r"""
+        r"""Starting node port number occupied by the scf component
         :rtype: int
         """
         return self._Port
@@ -7257,7 +7468,10 @@ class NamespaceResourceEnvTKE(AbstractModel):
 
     @property
     def PodTemplatePatch(self):
-        r"""
+        r"""pod patch content in yaml format, for example
+metadata:
+  labels:
+    key: value
         :rtype: str
         """
         return self._PodTemplatePatch
@@ -7414,22 +7628,20 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class ProtocolParams(AbstractModel):
-    r"""Parameters of the protocol
+    r"""Parameters for HTTP function support of other access protocols
 
     """
 
     def __init__(self):
         r"""
-        :param _WSParams: Parameters of WebSockets protocol
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _WSParams: Supported parameters of the WebSockets protocol
         :type WSParams: :class:`tencentcloud.scf.v20180416.models.WSParams`
         """
         self._WSParams = None
 
     @property
     def WSParams(self):
-        r"""Parameters of WebSockets protocol
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Supported parameters of the WebSockets protocol
         :rtype: :class:`tencentcloud.scf.v20180416.models.WSParams`
         """
         return self._WSParams
@@ -7460,9 +7672,9 @@ class PublicNetConfigIn(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PublicNetStatus: Whether to enable public network access. Valid values: ['DISABLE', 'ENABLE']
+        :param _PublicNetStatus: Whether to enable public network access. Valid values: DISABLE, ENABLE.
         :type PublicNetStatus: str
-        :param _EipConfig: EIP configuration
+        :param _EipConfig: Eip configuration
         :type EipConfig: :class:`tencentcloud.scf.v20180416.models.EipConfigIn`
         """
         self._PublicNetStatus = None
@@ -7470,7 +7682,7 @@ class PublicNetConfigIn(AbstractModel):
 
     @property
     def PublicNetStatus(self):
-        r"""Whether to enable public network access. Valid values: ['DISABLE', 'ENABLE']
+        r"""Whether to enable public network access. Valid values: DISABLE, ENABLE.
         :rtype: str
         """
         return self._PublicNetStatus
@@ -7481,7 +7693,7 @@ class PublicNetConfigIn(AbstractModel):
 
     @property
     def EipConfig(self):
-        r"""EIP configuration
+        r"""Eip configuration
         :rtype: :class:`tencentcloud.scf.v20180416.models.EipConfigIn`
         """
         return self._EipConfig
@@ -8665,6 +8877,132 @@ class SearchKey(AbstractModel):
         
 
 
+class SessionConfig(AbstractModel):
+    r"""Session parameter
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionSource: session source. Valid values: 'HEADER', 'COOKIE', 'QUERY_STRING'
+        :type SessionSource: str
+        :param _SessionName: session name. It must start with a letter. Other characters can consist of digits, letters, underscores, and hyphens. Length: 5-40 characters.
+        :type SessionName: str
+        :param _MaximumConcurrencySessionPerInstance: Maximum concurrent sessions
+        :type MaximumConcurrencySessionPerInstance: int
+        :param _MaximumTTLInSeconds: Lifecycle
+        :type MaximumTTLInSeconds: int
+        :param _MaximumIdleTimeInSeconds: Idle duration
+        :type MaximumIdleTimeInSeconds: int
+        :param _SessionPath: Path information corresponding to the session
+        :type SessionPath: str
+        :param _IdleTimeoutStrategy: Automatically destroy FATAL and auto-pause PAUSE. This only occurs when security isolation is started.
+        :type IdleTimeoutStrategy: str
+        """
+        self._SessionSource = None
+        self._SessionName = None
+        self._MaximumConcurrencySessionPerInstance = None
+        self._MaximumTTLInSeconds = None
+        self._MaximumIdleTimeInSeconds = None
+        self._SessionPath = None
+        self._IdleTimeoutStrategy = None
+
+    @property
+    def SessionSource(self):
+        r"""session source. Valid values: 'HEADER', 'COOKIE', 'QUERY_STRING'
+        :rtype: str
+        """
+        return self._SessionSource
+
+    @SessionSource.setter
+    def SessionSource(self, SessionSource):
+        self._SessionSource = SessionSource
+
+    @property
+    def SessionName(self):
+        r"""session name. It must start with a letter. Other characters can consist of digits, letters, underscores, and hyphens. Length: 5-40 characters.
+        :rtype: str
+        """
+        return self._SessionName
+
+    @SessionName.setter
+    def SessionName(self, SessionName):
+        self._SessionName = SessionName
+
+    @property
+    def MaximumConcurrencySessionPerInstance(self):
+        r"""Maximum concurrent sessions
+        :rtype: int
+        """
+        return self._MaximumConcurrencySessionPerInstance
+
+    @MaximumConcurrencySessionPerInstance.setter
+    def MaximumConcurrencySessionPerInstance(self, MaximumConcurrencySessionPerInstance):
+        self._MaximumConcurrencySessionPerInstance = MaximumConcurrencySessionPerInstance
+
+    @property
+    def MaximumTTLInSeconds(self):
+        r"""Lifecycle
+        :rtype: int
+        """
+        return self._MaximumTTLInSeconds
+
+    @MaximumTTLInSeconds.setter
+    def MaximumTTLInSeconds(self, MaximumTTLInSeconds):
+        self._MaximumTTLInSeconds = MaximumTTLInSeconds
+
+    @property
+    def MaximumIdleTimeInSeconds(self):
+        r"""Idle duration
+        :rtype: int
+        """
+        return self._MaximumIdleTimeInSeconds
+
+    @MaximumIdleTimeInSeconds.setter
+    def MaximumIdleTimeInSeconds(self, MaximumIdleTimeInSeconds):
+        self._MaximumIdleTimeInSeconds = MaximumIdleTimeInSeconds
+
+    @property
+    def SessionPath(self):
+        r"""Path information corresponding to the session
+        :rtype: str
+        """
+        return self._SessionPath
+
+    @SessionPath.setter
+    def SessionPath(self, SessionPath):
+        self._SessionPath = SessionPath
+
+    @property
+    def IdleTimeoutStrategy(self):
+        r"""Automatically destroy FATAL and auto-pause PAUSE. This only occurs when security isolation is started.
+        :rtype: str
+        """
+        return self._IdleTimeoutStrategy
+
+    @IdleTimeoutStrategy.setter
+    def IdleTimeoutStrategy(self, IdleTimeoutStrategy):
+        self._IdleTimeoutStrategy = IdleTimeoutStrategy
+
+
+    def _deserialize(self, params):
+        self._SessionSource = params.get("SessionSource")
+        self._SessionName = params.get("SessionName")
+        self._MaximumConcurrencySessionPerInstance = params.get("MaximumConcurrencySessionPerInstance")
+        self._MaximumTTLInSeconds = params.get("MaximumTTLInSeconds")
+        self._MaximumIdleTimeInSeconds = params.get("MaximumIdleTimeInSeconds")
+        self._SessionPath = params.get("SessionPath")
+        self._IdleTimeoutStrategy = params.get("IdleTimeoutStrategy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StatusReason(AbstractModel):
     r"""State reason description
 
@@ -8934,31 +9272,31 @@ class Trigger(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModTime: Latest modification time of the trigger
+        :param _ModTime: Last modification time of the trigger
         :type ModTime: str
         :param _Type: Trigger type
         :type Type: str
-        :param _TriggerDesc: Detailed trigger configuration
+        :param _TriggerDesc: Trigger detailed configuration
         :type TriggerDesc: str
-        :param _TriggerName: Trigger name
+        :param _TriggerName: Trigger name.
         :type TriggerName: str
-        :param _AddTime: Creation time of the trigger
+        :param _AddTime: Trigger creation time
         :type AddTime: str
-        :param _Enable: Enabling switch
+        :param _Enable: Enable switch
         :type Enable: int
-        :param _CustomArgument: Custom parameter
+        :param _CustomArgument: Customer custom parameter
         :type CustomArgument: str
         :param _AvailableStatus: Trigger status
         :type AvailableStatus: str
-        :param _ResourceId: Minimum resource ID of trigger
+        :param _ResourceId: Minimum resource ID of the trigger
         :type ResourceId: str
-        :param _BindStatus: Trigger-Function binding status
+        :param _BindStatus: Binding status of the trigger and SCF
         :type BindStatus: str
-        :param _TriggerAttribute: Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console
+        :param _TriggerAttribute: Trigger type. Two-way means both the left and right consoles can operate. One-way means only the SCF console can create.
         :type TriggerAttribute: str
-        :param _Qualifier: The alias or version bound with the trigger
+        :param _Qualifier: Alias name or version bound to the trigger
         :type Qualifier: str
-        :param _Description: Trigger description
+        :param _Description: Trigger description.
         :type Description: str
         """
         self._ModTime = None
@@ -8977,7 +9315,7 @@ class Trigger(AbstractModel):
 
     @property
     def ModTime(self):
-        r"""Latest modification time of the trigger
+        r"""Last modification time of the trigger
         :rtype: str
         """
         return self._ModTime
@@ -8999,7 +9337,7 @@ class Trigger(AbstractModel):
 
     @property
     def TriggerDesc(self):
-        r"""Detailed trigger configuration
+        r"""Trigger detailed configuration
         :rtype: str
         """
         return self._TriggerDesc
@@ -9010,7 +9348,7 @@ class Trigger(AbstractModel):
 
     @property
     def TriggerName(self):
-        r"""Trigger name
+        r"""Trigger name.
         :rtype: str
         """
         return self._TriggerName
@@ -9021,7 +9359,7 @@ class Trigger(AbstractModel):
 
     @property
     def AddTime(self):
-        r"""Creation time of the trigger
+        r"""Trigger creation time
         :rtype: str
         """
         return self._AddTime
@@ -9032,7 +9370,7 @@ class Trigger(AbstractModel):
 
     @property
     def Enable(self):
-        r"""Enabling switch
+        r"""Enable switch
         :rtype: int
         """
         return self._Enable
@@ -9043,7 +9381,7 @@ class Trigger(AbstractModel):
 
     @property
     def CustomArgument(self):
-        r"""Custom parameter
+        r"""Customer custom parameter
         :rtype: str
         """
         return self._CustomArgument
@@ -9067,7 +9405,7 @@ class Trigger(AbstractModel):
     def ResourceId(self):
         warnings.warn("parameter `ResourceId` is deprecated", DeprecationWarning) 
 
-        r"""Minimum resource ID of trigger
+        r"""Minimum resource ID of the trigger
         :rtype: str
         """
         return self._ResourceId
@@ -9082,7 +9420,7 @@ class Trigger(AbstractModel):
     def BindStatus(self):
         warnings.warn("parameter `BindStatus` is deprecated", DeprecationWarning) 
 
-        r"""Trigger-Function binding status
+        r"""Binding status of the trigger and SCF
         :rtype: str
         """
         return self._BindStatus
@@ -9097,7 +9435,7 @@ class Trigger(AbstractModel):
     def TriggerAttribute(self):
         warnings.warn("parameter `TriggerAttribute` is deprecated", DeprecationWarning) 
 
-        r"""Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console
+        r"""Trigger type. Two-way means both the left and right consoles can operate. One-way means only the SCF console can create.
         :rtype: str
         """
         return self._TriggerAttribute
@@ -9110,7 +9448,7 @@ class Trigger(AbstractModel):
 
     @property
     def Qualifier(self):
-        r"""The alias or version bound with the trigger
+        r"""Alias name or version bound to the trigger
         :rtype: str
         """
         return self._Qualifier
@@ -9121,7 +9459,7 @@ class Trigger(AbstractModel):
 
     @property
     def Description(self):
-        r"""Trigger description
+        r"""Trigger description.
         :rtype: str
         """
         return self._Description
@@ -10058,46 +10396,55 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FunctionName: Name of the function to be modified
+        :param _FunctionName: The function name to be modified
         :type FunctionName: str
-        :param _Description: Function description. It can contain up to 1,000 characters, including letters, digits, spaces, commas (,), periods (.), and Chinese characters.
+        :param _Description: Function description. Supports up to 1,000 English letters, digits, spaces, commas, and periods. Chinese is supported.
         :type Description: str
-        :param _MemorySize: Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128-3,072 MB in increments of 128 MB.
+        :param _MemorySize: Memory size of the function runtime. Default value: 128 MB. Selectable range: 64 MB, or 128 MB to 3072 MB in 128 MB increments.
         :type MemorySize: int
-        :param _Timeout: Maximum execution duration of function in seconds. Value range: 1-900 seconds. Default value: 3 seconds
+        :param _Timeout: Maximum execution time of the function, in seconds. Value range: 1-900 seconds. Default value: 3 seconds.
         :type Timeout: int
-        :param _Runtime: Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Go1, Java8, CustomRuntime
+        :param _Runtime: Runtime environment. It is specified upon creation and currently does not support modification.
         :type Runtime: str
-        :param _Environment: Function environment variable
+        :param _Environment: Environment variable of the function
         :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`
-        :param _Namespace: Function namespace
+        :param _Namespace: Namespace of the function
+Default value: default
         :type Namespace: str
-        :param _VpcConfig: Function VPC configuration
+        :param _VpcConfig: VPC configuration of the function
         :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
-        :param _Role: Role bound to the function
+        :param _Role: Role bound to a function
         :type Role: str
-        :param _InstallDependency: Specifies whether to [install dependency online](https://intl.cloud.tencent.com/document/product/583/37920?from_cn_redirect=1). `TRUE`: yes. Default to `FALSE`. It is only available for Node.js functions.
+        :param _InstallDependency: [Install dependency online](https://www.tencentcloud.com/document/product/583/37920?from_cn_redirect=1). TRUE indicates installation. Default value: FALSE. Only supported for Node.js functions.
         :type InstallDependency: str
-        :param _ClsLogsetId: CLS logset ID to which logs are shipped
+        :param _ClsLogsetId: ID of the cls Log Set for log delivery
         :type ClsLogsetId: str
-        :param _ClsTopicId: CLS Topic ID to which logs are shipped
+        :param _ClsTopicId: cls Topic ID for log delivery
         :type ClsTopicId: str
-        :param _Publish: It specifies whether to synchronously publish a new version during the update. The default value is `FALSE`, indicating not to publish a new version
+        :param _Publish: Whether to release a new version synchronously when updating. Default value: FALSE, which means no new version is released.
         :type Publish: str
-        :param _L5Enable: Whether to enable L5 access. TRUE: enable; FALSE: not enable
+        :param _L5Enable: Whether L5 access capability is enabled. TRUE to enable, FALSE to shutdown.
         :type L5Enable: str
-        :param _Layers: List of layer versions that bound with the function. Files with the same name will be overridden by the bound layer versions according to the ascending order in the list. 
+        :param _Layers: List of layer versions to associate with the function. The layer versions overwrite each other sequentially in the order in the list.
         :type Layers: list of LayerVersionSimple
-        :param _DeadLetterConfig: Information of a dead letter queue associated with a function
+        :param _DeadLetterConfig: Dead letter queue information associated with the function
         :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
         :param _PublicNetConfig: Public network access configuration
         :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
-        :param _CfsConfig: File system configuration input parameter, which is used for the function to bind the CFS file system
+        :param _CfsConfig: File system configuration parameters for binding a CFS file system in SCF
         :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
-        :param _InitTimeout: The function initialization timeout period
+        :param _InitTimeout: Function initialization timeout period
         :type InitTimeout: int
-        :param _ProtocolParams: Parameters of the specified protocol
+        :param _ProtocolParams: Configure ProtocolType access protocol for an HTTP function. Parameters configurable for the current protocol.
         :type ProtocolParams: :class:`tencentcloud.scf.v20180416.models.ProtocolParams`
+        :param _InstanceConcurrencyConfig: Single-instance multi-concurrency configuration. Supports only Web functions.
+        :type InstanceConcurrencyConfig: :class:`tencentcloud.scf.v20180416.models.InstanceConcurrencyConfig`
+        :param _DnsCache: Whether the Dns caching capability is enabled. Supports only the EVENT function. Defaults to FALSE. TRUE to enable, FALSE to shutdown.
+        :type DnsCache: str
+        :param _IntranetConfig: Private network access configuration
+        :type IntranetConfig: :class:`tencentcloud.scf.v20180416.models.IntranetConfigIn`
+        :param _IgnoreSysLog: Ignorable system log reporting
+        :type IgnoreSysLog: bool
         """
         self._FunctionName = None
         self._Description = None
@@ -10119,10 +10466,14 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self._CfsConfig = None
         self._InitTimeout = None
         self._ProtocolParams = None
+        self._InstanceConcurrencyConfig = None
+        self._DnsCache = None
+        self._IntranetConfig = None
+        self._IgnoreSysLog = None
 
     @property
     def FunctionName(self):
-        r"""Name of the function to be modified
+        r"""The function name to be modified
         :rtype: str
         """
         return self._FunctionName
@@ -10133,7 +10484,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""Function description. It can contain up to 1,000 characters, including letters, digits, spaces, commas (,), periods (.), and Chinese characters.
+        r"""Function description. Supports up to 1,000 English letters, digits, spaces, commas, and periods. Chinese is supported.
         :rtype: str
         """
         return self._Description
@@ -10144,7 +10495,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def MemorySize(self):
-        r"""Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128-3,072 MB in increments of 128 MB.
+        r"""Memory size of the function runtime. Default value: 128 MB. Selectable range: 64 MB, or 128 MB to 3072 MB in 128 MB increments.
         :rtype: int
         """
         return self._MemorySize
@@ -10155,7 +10506,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def Timeout(self):
-        r"""Maximum execution duration of function in seconds. Value range: 1-900 seconds. Default value: 3 seconds
+        r"""Maximum execution time of the function, in seconds. Value range: 1-900 seconds. Default value: 3 seconds.
         :rtype: int
         """
         return self._Timeout
@@ -10166,7 +10517,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def Runtime(self):
-        r"""Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Go1, Java8, CustomRuntime
+        r"""Runtime environment. It is specified upon creation and currently does not support modification.
         :rtype: str
         """
         return self._Runtime
@@ -10177,7 +10528,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def Environment(self):
-        r"""Function environment variable
+        r"""Environment variable of the function
         :rtype: :class:`tencentcloud.scf.v20180416.models.Environment`
         """
         return self._Environment
@@ -10188,7 +10539,8 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""Function namespace
+        r"""Namespace of the function
+Default value: default
         :rtype: str
         """
         return self._Namespace
@@ -10199,7 +10551,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def VpcConfig(self):
-        r"""Function VPC configuration
+        r"""VPC configuration of the function
         :rtype: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
         """
         return self._VpcConfig
@@ -10210,7 +10562,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def Role(self):
-        r"""Role bound to the function
+        r"""Role bound to a function
         :rtype: str
         """
         return self._Role
@@ -10221,7 +10573,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def InstallDependency(self):
-        r"""Specifies whether to [install dependency online](https://intl.cloud.tencent.com/document/product/583/37920?from_cn_redirect=1). `TRUE`: yes. Default to `FALSE`. It is only available for Node.js functions.
+        r"""[Install dependency online](https://www.tencentcloud.com/document/product/583/37920?from_cn_redirect=1). TRUE indicates installation. Default value: FALSE. Only supported for Node.js functions.
         :rtype: str
         """
         return self._InstallDependency
@@ -10232,7 +10584,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def ClsLogsetId(self):
-        r"""CLS logset ID to which logs are shipped
+        r"""ID of the cls Log Set for log delivery
         :rtype: str
         """
         return self._ClsLogsetId
@@ -10243,7 +10595,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def ClsTopicId(self):
-        r"""CLS Topic ID to which logs are shipped
+        r"""cls Topic ID for log delivery
         :rtype: str
         """
         return self._ClsTopicId
@@ -10254,7 +10606,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def Publish(self):
-        r"""It specifies whether to synchronously publish a new version during the update. The default value is `FALSE`, indicating not to publish a new version
+        r"""Whether to release a new version synchronously when updating. Default value: FALSE, which means no new version is released.
         :rtype: str
         """
         return self._Publish
@@ -10265,7 +10617,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def L5Enable(self):
-        r"""Whether to enable L5 access. TRUE: enable; FALSE: not enable
+        r"""Whether L5 access capability is enabled. TRUE to enable, FALSE to shutdown.
         :rtype: str
         """
         return self._L5Enable
@@ -10276,7 +10628,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def Layers(self):
-        r"""List of layer versions that bound with the function. Files with the same name will be overridden by the bound layer versions according to the ascending order in the list. 
+        r"""List of layer versions to associate with the function. The layer versions overwrite each other sequentially in the order in the list.
         :rtype: list of LayerVersionSimple
         """
         return self._Layers
@@ -10287,7 +10639,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def DeadLetterConfig(self):
-        r"""Information of a dead letter queue associated with a function
+        r"""Dead letter queue information associated with the function
         :rtype: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
         """
         return self._DeadLetterConfig
@@ -10309,7 +10661,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def CfsConfig(self):
-        r"""File system configuration input parameter, which is used for the function to bind the CFS file system
+        r"""File system configuration parameters for binding a CFS file system in SCF
         :rtype: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
         """
         return self._CfsConfig
@@ -10320,7 +10672,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def InitTimeout(self):
-        r"""The function initialization timeout period
+        r"""Function initialization timeout period
         :rtype: int
         """
         return self._InitTimeout
@@ -10331,7 +10683,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def ProtocolParams(self):
-        r"""Parameters of the specified protocol
+        r"""Configure ProtocolType access protocol for an HTTP function. Parameters configurable for the current protocol.
         :rtype: :class:`tencentcloud.scf.v20180416.models.ProtocolParams`
         """
         return self._ProtocolParams
@@ -10339,6 +10691,50 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
     @ProtocolParams.setter
     def ProtocolParams(self, ProtocolParams):
         self._ProtocolParams = ProtocolParams
+
+    @property
+    def InstanceConcurrencyConfig(self):
+        r"""Single-instance multi-concurrency configuration. Supports only Web functions.
+        :rtype: :class:`tencentcloud.scf.v20180416.models.InstanceConcurrencyConfig`
+        """
+        return self._InstanceConcurrencyConfig
+
+    @InstanceConcurrencyConfig.setter
+    def InstanceConcurrencyConfig(self, InstanceConcurrencyConfig):
+        self._InstanceConcurrencyConfig = InstanceConcurrencyConfig
+
+    @property
+    def DnsCache(self):
+        r"""Whether the Dns caching capability is enabled. Supports only the EVENT function. Defaults to FALSE. TRUE to enable, FALSE to shutdown.
+        :rtype: str
+        """
+        return self._DnsCache
+
+    @DnsCache.setter
+    def DnsCache(self, DnsCache):
+        self._DnsCache = DnsCache
+
+    @property
+    def IntranetConfig(self):
+        r"""Private network access configuration
+        :rtype: :class:`tencentcloud.scf.v20180416.models.IntranetConfigIn`
+        """
+        return self._IntranetConfig
+
+    @IntranetConfig.setter
+    def IntranetConfig(self, IntranetConfig):
+        self._IntranetConfig = IntranetConfig
+
+    @property
+    def IgnoreSysLog(self):
+        r"""Ignorable system log reporting
+        :rtype: bool
+        """
+        return self._IgnoreSysLog
+
+    @IgnoreSysLog.setter
+    def IgnoreSysLog(self, IgnoreSysLog):
+        self._IgnoreSysLog = IgnoreSysLog
 
 
     def _deserialize(self, params):
@@ -10379,6 +10775,14 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         if params.get("ProtocolParams") is not None:
             self._ProtocolParams = ProtocolParams()
             self._ProtocolParams._deserialize(params.get("ProtocolParams"))
+        if params.get("InstanceConcurrencyConfig") is not None:
+            self._InstanceConcurrencyConfig = InstanceConcurrencyConfig()
+            self._InstanceConcurrencyConfig._deserialize(params.get("InstanceConcurrencyConfig"))
+        self._DnsCache = params.get("DnsCache")
+        if params.get("IntranetConfig") is not None:
+            self._IntranetConfig = IntranetConfigIn()
+            self._IntranetConfig._deserialize(params.get("IntranetConfig"))
+        self._IgnoreSysLog = params.get("IgnoreSysLog")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10848,15 +11252,15 @@ class UsageInfo(AbstractModel):
 
 
 class Variable(AbstractModel):
-    r"""Variable parameter
+    r"""Variable parameters
 
     """
 
     def __init__(self):
         r"""
-        :param _Key: Variable name
+        :param _Key: Variable name. Cannot be empty.
         :type Key: str
-        :param _Value: Variable value
+        :param _Value: Variable value. Cannot be empty.
         :type Value: str
         """
         self._Key = None
@@ -10864,7 +11268,7 @@ class Variable(AbstractModel):
 
     @property
     def Key(self):
-        r"""Variable name
+        r"""Variable name. Cannot be empty.
         :rtype: str
         """
         return self._Key
@@ -10875,7 +11279,7 @@ class Variable(AbstractModel):
 
     @property
     def Value(self):
-        r"""Variable value
+        r"""Variable value. Cannot be empty.
         :rtype: str
         """
         return self._Value
@@ -11163,15 +11567,15 @@ class VersionWeight(AbstractModel):
 
 
 class VpcConfig(AbstractModel):
-    r"""VPC parameter configuration
+    r"""Private network parameter configuration
 
     """
 
     def __init__(self):
         r"""
-        :param _VpcId: VPC ID
+        :param _VpcId: Id of the private network
         :type VpcId: str
-        :param _SubnetId: Subnet ID
+        :param _SubnetId: Subnet Id
         :type SubnetId: str
         """
         self._VpcId = None
@@ -11179,7 +11583,7 @@ class VpcConfig(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""VPC ID
+        r"""Id of the private network
         :rtype: str
         """
         return self._VpcId
@@ -11190,7 +11594,7 @@ class VpcConfig(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""Subnet ID
+        r"""Subnet Id
         :rtype: str
         """
         return self._SubnetId
@@ -11214,22 +11618,20 @@ class VpcConfig(AbstractModel):
 
 
 class WSParams(AbstractModel):
-    r"""Parameters of the specified protocol
+    r"""Parameters for accessing an HTTP function over the WebSockets protocol
 
     """
 
     def __init__(self):
         r"""
-        :param _IdleTimeOut: Idle timeout period in seconds. Default: 15; range: 1 to 1800
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _IdleTimeOut: Idle timeout in seconds. Default value: 15s. Configurable range: 1-1800s.
         :type IdleTimeOut: int
         """
         self._IdleTimeOut = None
 
     @property
     def IdleTimeOut(self):
-        r"""Idle timeout period in seconds. Default: 15; range: 1 to 1800
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Idle timeout in seconds. Default value: 15s. Configurable range: 1-1800s.
         :rtype: int
         """
         return self._IdleTimeOut

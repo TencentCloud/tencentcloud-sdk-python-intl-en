@@ -369,9 +369,22 @@ false : Expired HKID is rejected and cannot enter the liveness process.
         :param _AllowUploadPhoto: <p>Whether uploading photos from the album is permitted for verification during the ID validation phase (prohibited when single-angle multi-image forgery detection is enabled)
  </p><p>Enumeration values:</p><ul><li>true: Album photo upload for verification enabled</li><li>false: Album photo upload for verification disabled</li></ul><p>Default value: false</p>
         :type AllowUploadPhoto: bool
-        :param _EnableBotBgDetection: <p>Whether to enable Bank of Thailand-specific background detection.<br>This parameter requires whitelist activation; please contact us to request access before it can take effect.</p><p>Default value: false</p>
+        :param _EnableBotBgDetection: <p>Whether to enable Bank of Thailand-specific background detection.<br>This parameter requires whitelist activation; please contact us to request access before it can take effect.</p><p>Default value: false
 
         :type EnableBotBgDetection: bool
+        :param _OcrAutoDetectTimeout: OCR Auto Capture Mode Timeout (ms)
+Value Range: [5000, 180000]
+Default Value: 20000
+Values less than 5000 will be clamped to 5000; values greater than 180000 will be clamped to 180000
+        :type OcrAutoDetectTimeout: int
+        :param _OcrModeType: OCR Capture Mode
+Enum Values:
+<li>OCR_DETECT_MANUAL: Manual capture mode. Recognition starts after the user taps to take a photo.</li>
+<li>OCR_DETECT_AUTO_MANUAL: Auto recognition mode. The system performs automatic recognition; fallback to manual photo capture is available upon recognition timeout.</li>
+<li>OCR_DETECT_AUTO: Auto-only recognition mode. The system performs automatic recognition; no fallback to manual photo capture upon recognition timeout.</li>
+<li>OCR_DETECT_AUTO_MULTI: Multi-shot auto-only recognition mode. The system automatically captures multiple document images with flash enabled.
+Default Value: OCR_DETECT_AUTO_MANUAL
+        :type OcrModeType: str
         """
         self._CheckMode = None
         self._SecurityLevel = None
@@ -395,6 +408,8 @@ false : Expired HKID is rejected and cannot enter the liveness process.
         self._HideProgressBar = None
         self._AllowUploadPhoto = None
         self._EnableBotBgDetection = None
+        self._OcrAutoDetectTimeout = None
+        self._OcrModeType = None
 
     @property
     def CheckMode(self):
@@ -675,7 +690,7 @@ false : Expired HKID is rejected and cannot enter the liveness process.
 
     @property
     def EnableBotBgDetection(self):
-        r"""<p>Whether to enable Bank of Thailand-specific background detection.<br>This parameter requires whitelist activation; please contact us to request access before it can take effect.</p><p>Default value: false</p>
+        r"""<p>Whether to enable Bank of Thailand-specific background detection.<br>This parameter requires whitelist activation; please contact us to request access before it can take effect.</p><p>Default value: false
 
         :rtype: bool
         """
@@ -684,6 +699,37 @@ false : Expired HKID is rejected and cannot enter the liveness process.
     @EnableBotBgDetection.setter
     def EnableBotBgDetection(self, EnableBotBgDetection):
         self._EnableBotBgDetection = EnableBotBgDetection
+
+    @property
+    def OcrAutoDetectTimeout(self):
+        r"""OCR Auto Capture Mode Timeout (ms)
+Value Range: [5000, 180000]
+Default Value: 20000
+Values less than 5000 will be clamped to 5000; values greater than 180000 will be clamped to 180000
+        :rtype: int
+        """
+        return self._OcrAutoDetectTimeout
+
+    @OcrAutoDetectTimeout.setter
+    def OcrAutoDetectTimeout(self, OcrAutoDetectTimeout):
+        self._OcrAutoDetectTimeout = OcrAutoDetectTimeout
+
+    @property
+    def OcrModeType(self):
+        r"""OCR Capture Mode
+Enum Values:
+<li>OCR_DETECT_MANUAL: Manual capture mode. Recognition starts after the user taps to take a photo.</li>
+<li>OCR_DETECT_AUTO_MANUAL: Auto recognition mode. The system performs automatic recognition; fallback to manual photo capture is available upon recognition timeout.</li>
+<li>OCR_DETECT_AUTO: Auto-only recognition mode. The system performs automatic recognition; no fallback to manual photo capture upon recognition timeout.</li>
+<li>OCR_DETECT_AUTO_MULTI: Multi-shot auto-only recognition mode. The system automatically captures multiple document images with flash enabled.
+Default Value: OCR_DETECT_AUTO_MANUAL
+        :rtype: str
+        """
+        return self._OcrModeType
+
+    @OcrModeType.setter
+    def OcrModeType(self, OcrModeType):
+        self._OcrModeType = OcrModeType
 
 
     def _deserialize(self, params):
@@ -709,6 +755,8 @@ false : Expired HKID is rejected and cannot enter the liveness process.
         self._HideProgressBar = params.get("HideProgressBar")
         self._AllowUploadPhoto = params.get("AllowUploadPhoto")
         self._EnableBotBgDetection = params.get("EnableBotBgDetection")
+        self._OcrAutoDetectTimeout = params.get("OcrAutoDetectTimeout")
+        self._OcrModeType = params.get("OcrModeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

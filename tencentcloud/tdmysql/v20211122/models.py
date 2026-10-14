@@ -431,26 +431,45 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class AutoScalingConfig(AbstractModel):
-    r"""
+    r"""Scope of resources for instance configuration adjustment
+    When ResourceType is cpu, it means ccu.
+    When the value is nodecount, it indicates the range of the number of nodes.
+    For disk, it indicates the disk capacity range (unit: GB).
+    Whether ScaleUpEnabled enables scale-up
+    Whether ScaleDownEnabled is enabled
+    ThresholdPercent is the trigger threshold (%).
+    Step is the step length for configuration change
 
     """
 
     def __init__(self):
         r"""
-        :param _RangeMin: 
+        :param _RangeMin: <p>Minimum value</p>
         :type RangeMin: float
-        :param _RangeMax: 
+        :param _RangeMax: <p>Maximum value</p>
         :type RangeMax: float
-        :param _ResourceType: 
+        :param _ResourceType: <p>Resource type corresponding to the returned range parameter</p><p>Enumeration values:</p><ul><li>cpu: Returns the CPU adjustment return limit. When no mem limit exists, it represents ccu.</li><li>nodecount: Returns the limit range of the number of nodes for horizontal scaling.</li><li>datadisk: Returns the capacity limit range for disk scale-out.</li></ul>
         :type ResourceType: str
+        :param _ScaleUpEnabled: <p>Whether upgrade is allowed</p>
+        :type ScaleUpEnabled: bool
+        :param _ScaleDownEnabled: <p>Whether to allow downgrade</p>
+        :type ScaleDownEnabled: bool
+        :param _ThresholdPercent: <p>Trigger threshold (%)</p>
+        :type ThresholdPercent: int
+        :param _Step: <p>Configuration change step length</p>
+        :type Step: float
         """
         self._RangeMin = None
         self._RangeMax = None
         self._ResourceType = None
+        self._ScaleUpEnabled = None
+        self._ScaleDownEnabled = None
+        self._ThresholdPercent = None
+        self._Step = None
 
     @property
     def RangeMin(self):
-        r"""
+        r"""<p>Minimum value</p>
         :rtype: float
         """
         return self._RangeMin
@@ -461,7 +480,7 @@ class AutoScalingConfig(AbstractModel):
 
     @property
     def RangeMax(self):
-        r"""
+        r"""<p>Maximum value</p>
         :rtype: float
         """
         return self._RangeMax
@@ -472,7 +491,7 @@ class AutoScalingConfig(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""
+        r"""<p>Resource type corresponding to the returned range parameter</p><p>Enumeration values:</p><ul><li>cpu: Returns the CPU adjustment return limit. When no mem limit exists, it represents ccu.</li><li>nodecount: Returns the limit range of the number of nodes for horizontal scaling.</li><li>datadisk: Returns the capacity limit range for disk scale-out.</li></ul>
         :rtype: str
         """
         return self._ResourceType
@@ -481,11 +500,59 @@ class AutoScalingConfig(AbstractModel):
     def ResourceType(self, ResourceType):
         self._ResourceType = ResourceType
 
+    @property
+    def ScaleUpEnabled(self):
+        r"""<p>Whether upgrade is allowed</p>
+        :rtype: bool
+        """
+        return self._ScaleUpEnabled
+
+    @ScaleUpEnabled.setter
+    def ScaleUpEnabled(self, ScaleUpEnabled):
+        self._ScaleUpEnabled = ScaleUpEnabled
+
+    @property
+    def ScaleDownEnabled(self):
+        r"""<p>Whether to allow downgrade</p>
+        :rtype: bool
+        """
+        return self._ScaleDownEnabled
+
+    @ScaleDownEnabled.setter
+    def ScaleDownEnabled(self, ScaleDownEnabled):
+        self._ScaleDownEnabled = ScaleDownEnabled
+
+    @property
+    def ThresholdPercent(self):
+        r"""<p>Trigger threshold (%)</p>
+        :rtype: int
+        """
+        return self._ThresholdPercent
+
+    @ThresholdPercent.setter
+    def ThresholdPercent(self, ThresholdPercent):
+        self._ThresholdPercent = ThresholdPercent
+
+    @property
+    def Step(self):
+        r"""<p>Configuration change step length</p>
+        :rtype: float
+        """
+        return self._Step
+
+    @Step.setter
+    def Step(self, Step):
+        self._Step = Step
+
 
     def _deserialize(self, params):
         self._RangeMin = params.get("RangeMin")
         self._RangeMax = params.get("RangeMax")
         self._ResourceType = params.get("ResourceType")
+        self._ScaleUpEnabled = params.get("ScaleUpEnabled")
+        self._ScaleDownEnabled = params.get("ScaleDownEnabled")
+        self._ThresholdPercent = params.get("ThresholdPercent")
+        self._Step = params.get("Step")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2694,17 +2761,17 @@ class CreateDBInstancesRequest(AbstractModel):
         :type TemplateId: str
         :param _SQLMode: <p>Compatible mode, enum:MySQL,HBase</p>
         :type SQLMode: str
-        :param _AutoScaleConfig: 
+        :param _AutoScaleConfig: <p>ccu configuration change of the SVLS instance</p><p>Input limit: This parameter no longer takes effect when AutoScaleConfigs is also input</p>
         :type AutoScaleConfig: :class:`tencentcloud.tdmysql.v20211122.models.AutoScalingConfig`
-        :param _SecurityGroupIds: <p>Security group binding list</p>
+        :param _SecurityGroupIds: <p>List of bound security groups</p>
         :type SecurityGroupIds: list of str
-        :param _UserName: <p>root userName. It defaults to dbaadmin in the current version, and the passed value will be reset to dbaadmin</p>
+        :param _UserName: <p>root userName. The current version defaults to dbaadmin, and the passed value will reset to dbaadmin.</p>
         :type UserName: str
         :param _Password: <p>dbaadmin password</p>
         :type Password: str
-        :param _EncryptionEnable: <p>Whether transparent encryption is enabled. 0: not enabled. 1: enabled</p>
+        :param _EncryptionEnable: <p>Whether to enable transparent encryption. 0: disable, 1: enable</p>
         :type EncryptionEnable: int
-        :param _AutoScaleConfigs: 
+        :param _AutoScaleConfigs: <p>Relevant restrictions on automatic configuration adjustment for SVLS instances</p><p>Input parameter restriction: The AutoScaleConfig parameter will no longer take effect when passed in</p>
         :type AutoScaleConfigs: list of AutoScalingConfig
         """
         self._Zone = None
@@ -3064,7 +3131,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def AutoScaleConfig(self):
-        r"""
+        r"""<p>ccu configuration change of the SVLS instance</p><p>Input limit: This parameter no longer takes effect when AutoScaleConfigs is also input</p>
         :rtype: :class:`tencentcloud.tdmysql.v20211122.models.AutoScalingConfig`
         """
         return self._AutoScaleConfig
@@ -3075,7 +3142,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""<p>Security group binding list</p>
+        r"""<p>List of bound security groups</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -3086,7 +3153,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""<p>root userName. It defaults to dbaadmin in the current version, and the passed value will be reset to dbaadmin</p>
+        r"""<p>root userName. The current version defaults to dbaadmin, and the passed value will reset to dbaadmin.</p>
         :rtype: str
         """
         return self._UserName
@@ -3108,7 +3175,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def EncryptionEnable(self):
-        r"""<p>Whether transparent encryption is enabled. 0: not enabled. 1: enabled</p>
+        r"""<p>Whether to enable transparent encryption. 0: disable, 1: enable</p>
         :rtype: int
         """
         return self._EncryptionEnable
@@ -3119,7 +3186,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def AutoScaleConfigs(self):
-        r"""
+        r"""<p>Relevant restrictions on automatic configuration adjustment for SVLS instances</p><p>Input parameter restriction: The AutoScaleConfig parameter will no longer take effect when passed in</p>
         :rtype: list of AutoScalingConfig
         """
         return self._AutoScaleConfigs
@@ -5008,17 +5075,17 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         :type RenewFlag: int
         :param _PayMode: <p>Payment mode, 0 pay-as-you-go, 1 prepaid</p>
         :type PayMode: str
-        :param _ExpireAt: 
+        :param _ExpireAt: <p>Expiration time.</p>
         :type ExpireAt: str
-        :param _IsolatedAt: 
+        :param _IsolatedAt: <p>Isolation time</p>
         :type IsolatedAt: str
-        :param _InstanceType: 
+        :param _InstanceType: <p>Instance Architecture Type, separate: decoupled architecture; hybrid: peer-to-peer architecture</p>
         :type InstanceType: str
-        :param _StorageType: 
+        :param _StorageType: <p>Disk Type, CLOUD_HSSD enhanced SSD, CLOUD_TCS local SSD disk</p>
         :type StorageType: str
         :param _Zones: <p>List of instance node availability zones. Zones[0] refers to the primary AZ</p>
         :type Zones: list of str
-        :param _DiskUsage: 
+        :param _DiskUsage: <p>Disk usage of the largest node</p>
         :type DiskUsage: int
         :param _BinlogStatus: <p>Whether binlog is enabled</p>
         :type BinlogStatus: int
@@ -5076,9 +5143,9 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         :type MaintenanceWindow: :class:`tencentcloud.tdmysql.v20211122.models.MaintenanceWindowInfo`
         :param _EncryptionEnable: <p>Whether transparent encryption is enabled. 0: not enabled; 1: enabled</p>
         :type EncryptionEnable: int
-        :param _EncryptionKmsRegion: <p>Real use kms region for subsequent call to kms service</p>
+        :param _EncryptionKmsRegion: <p>Real use kms region for subsequent calls to the kms service</p>
         :type EncryptionKmsRegion: str
-        :param _AutoScaleConfigs: 
+        :param _AutoScaleConfigs: <p>serverless automatic configuration adjustment configuration</p>
         :type AutoScaleConfigs: list of AutoScalingConfig
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -5435,7 +5502,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def ExpireAt(self):
-        r"""
+        r"""<p>Expiration time.</p>
         :rtype: str
         """
         return self._ExpireAt
@@ -5446,7 +5513,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def IsolatedAt(self):
-        r"""
+        r"""<p>Isolation time</p>
         :rtype: str
         """
         return self._IsolatedAt
@@ -5457,7 +5524,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""
+        r"""<p>Instance Architecture Type, separate: decoupled architecture; hybrid: peer-to-peer architecture</p>
         :rtype: str
         """
         return self._InstanceType
@@ -5468,7 +5535,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def StorageType(self):
-        r"""
+        r"""<p>Disk Type, CLOUD_HSSD enhanced SSD, CLOUD_TCS local SSD disk</p>
         :rtype: str
         """
         return self._StorageType
@@ -5490,7 +5557,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def DiskUsage(self):
-        r"""
+        r"""<p>Disk usage of the largest node</p>
         :rtype: int
         """
         return self._DiskUsage
@@ -5809,7 +5876,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def EncryptionKmsRegion(self):
-        r"""<p>Real use kms region for subsequent call to kms service</p>
+        r"""<p>Real use kms region for subsequent calls to the kms service</p>
         :rtype: str
         """
         return self._EncryptionKmsRegion
@@ -5820,7 +5887,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
 
     @property
     def AutoScaleConfigs(self):
-        r"""
+        r"""<p>serverless automatic configuration adjustment configuration</p>
         :rtype: list of AutoScalingConfig
         """
         return self._AutoScaleConfigs
@@ -5953,9 +6020,9 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type Offset: int
         :param _EngineType: <p>Specified query engine type</p><p>Enumeration value:</p><ul><li>libra: column storage engine</li></ul>
         :type EngineType: str
-        :param _OrderBy: 
+        :param _OrderBy: <p>Query By Field, supporting StorageNodeNum/CreateTime/CreateVersion</p>
         :type OrderBy: str
-        :param _OrderDirection: 
+        :param _OrderDirection: <p>Sorting order</p><p>Enumeration values:</p><ul><li>ASC: ascending</li><li>DESC: descending</li></ul><p>Default value: DESC</p>
         :type OrderDirection: str
         """
         self._Filters = None
@@ -6011,7 +6078,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""
+        r"""<p>Query By Field, supporting StorageNodeNum/CreateTime/CreateVersion</p>
         :rtype: str
         """
         return self._OrderBy
@@ -6022,7 +6089,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
-        r"""
+        r"""<p>Sorting order</p><p>Enumeration values:</p><ul><li>ASC: ascending</li><li>DESC: descending</li></ul><p>Default value: DESC</p>
         :rtype: str
         """
         return self._OrderDirection
@@ -6063,7 +6130,7 @@ class DescribeDBInstancesResponse(AbstractModel):
         r"""
         :param _Instances: <p>Return to instance list information</p>
         :type Instances: list of InstanceInfo
-        :param _TotalCount: <p>Total number of items that meet the conditions.</p>
+        :param _TotalCount: <p>Total number of items that meet the conditions</p>
         :type TotalCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -6085,7 +6152,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""<p>Total number of items that meet the conditions.</p>
+        r"""<p>Total number of items that meet the conditions</p>
         :rtype: int
         """
         return self._TotalCount
@@ -9074,9 +9141,12 @@ class DescribeSpecsRequest(AbstractModel):
         :type FullReplications: int
         :param _IsExclusiveInstance: <p>Exclusive instance</p>
         :type IsExclusiveInstance: int
+        :param _Zones: <p>Availability zone combination list</p>
+        :type Zones: list of str
         """
         self._FullReplications = None
         self._IsExclusiveInstance = None
+        self._Zones = None
 
     @property
     def FullReplications(self):
@@ -9100,10 +9170,22 @@ class DescribeSpecsRequest(AbstractModel):
     def IsExclusiveInstance(self, IsExclusiveInstance):
         self._IsExclusiveInstance = IsExclusiveInstance
 
+    @property
+    def Zones(self):
+        r"""<p>Availability zone combination list</p>
+        :rtype: list of str
+        """
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
 
     def _deserialize(self, params):
         self._FullReplications = params.get("FullReplications")
         self._IsExclusiveInstance = params.get("IsExclusiveInstance")
+        self._Zones = params.get("Zones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9121,11 +9203,11 @@ class DescribeSpecsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HybridNodeSpecs: 
+        :param _HybridNodeSpecs: <p>Purchasable specification list of peer nodes</p>
         :type HybridNodeSpecs: list of StorageNodeSpec
         :param _ServerlessCcuSpec: <p>Purchasable specification list of svls nodes</p>
         :type ServerlessCcuSpec: list of ServerlessCcu
-        :param _ServerlessNodeNumSpec: 
+        :param _ServerlessNodeNumSpec: <p>serverless node quantity configuration</p>
         :type ServerlessNodeNumSpec: :class:`tencentcloud.tdmysql.v20211122.models.ServerlessNodeNumSpec`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -9137,7 +9219,7 @@ class DescribeSpecsResponse(AbstractModel):
 
     @property
     def HybridNodeSpecs(self):
-        r"""
+        r"""<p>Purchasable specification list of peer nodes</p>
         :rtype: list of StorageNodeSpec
         """
         return self._HybridNodeSpecs
@@ -9159,7 +9241,7 @@ class DescribeSpecsResponse(AbstractModel):
 
     @property
     def ServerlessNodeNumSpec(self):
-        r"""
+        r"""<p>serverless node quantity configuration</p>
         :rtype: :class:`tencentcloud.tdmysql.v20211122.models.ServerlessNodeNumSpec`
         """
         return self._ServerlessNodeNumSpec
@@ -10124,9 +10206,9 @@ class InstanceInfo(AbstractModel):
         :type ComputeNodeNum: int
         :param _Zone: <p>Region</p>
         :type Zone: str
-        :param _CreateVersion: 
+        :param _CreateVersion: <p>Create an instance version</p>
         :type CreateVersion: str
-        :param _InitParams: 
+        :param _InitParams: <p>Initialize instance parameters</p>
         :type InitParams: list of InstanceParam
         :param _Status: <p>Instance status: creating, created, initializing, running, modifying, isolating, isolated, destroying, destroyed</p>
         :type Status: str
@@ -10134,9 +10216,9 @@ class InstanceInfo(AbstractModel):
         :type InstanceId: str
         :param _StorageNodeNum: <p>Number of storage nodes</p>
         :type StorageNodeNum: int
-        :param _ResourceTags: 
+        :param _ResourceTags: <p>Instance tag information.</p>
         :type ResourceTags: list of ResourceTag
-        :param _InstanceName: 
+        :param _InstanceName: <p>Instance name</p>
         :type InstanceName: str
         :param _Cpu: <p>cpu cores of the computing node</p>
         :type Cpu: int
@@ -10158,29 +10240,29 @@ class InstanceInfo(AbstractModel):
         :type Region: str
         :param _StatusDesc: <p>Status description in Chinese of the instance</p>
         :type StatusDesc: str
-        :param _MCCpu: 
+        :param _MCCpu: <p>CPU cores of the control node</p>
         :type MCCpu: int
-        :param _MCMem: 
+        :param _MCMem: <p>CPU size of the control node</p>
         :type MCMem: int
-        :param _ComputerNodeCpu: 
+        :param _ComputerNodeCpu: <p>CPU cores of the computing node</p>
         :type ComputerNodeCpu: int
-        :param _ComputerNodeMem: 
+        :param _ComputerNodeMem: <p>Compute node memory size</p>
         :type ComputerNodeMem: int
-        :param _StorageNodeCpu: 
+        :param _StorageNodeCpu: <p>CPU cores of the storage node</p>
         :type StorageNodeCpu: int
-        :param _StorageNodeMem: 
+        :param _StorageNodeMem: <p>Storage node memory size</p>
         :type StorageNodeMem: int
-        :param _MCNum: 
+        :param _MCNum: <p>Number of control nodes</p>
         :type MCNum: int
-        :param _RenewFlag: 
+        :param _RenewFlag: <p>Renewal flag</p>
         :type RenewFlag: int
         :param _PayMode: <p>Payment mode, 0 pay-as-you-go; 1 annual/monthly subscription</p>
         :type PayMode: str
-        :param _AccountTag: 
+        :param _AccountTag: <p>User tag, inner: internal user; external: external user</p>
         :type AccountTag: str
-        :param _InstanceType: 
+        :param _InstanceType: <p>Instance Architecture Type, separate: decoupled architecture; hyper: peer-to-peer architecture</p>
         :type InstanceType: str
-        :param _StorageType: 
+        :param _StorageType: <p>Disk Type, CLOUD_HSSD enhanced SSD, CLOUD_TCS local SSD disk</p>
         :type StorageType: str
         :param _DestroyedAt: <p>&quot;0000-00-00 00:00:00&quot;</p>
         :type DestroyedAt: str
@@ -10194,15 +10276,15 @@ class InstanceInfo(AbstractModel):
         :type Replications: int
         :param _FullReplications: <p>Number of replicas</p>
         :type FullReplications: int
-        :param _AppId: 
+        :param _AppId: <p>Account information</p>
         :type AppId: int
-        :param _SubAccountUin: 
+        :param _SubAccountUin: <p>Account information</p>
         :type SubAccountUin: str
-        :param _Uin: 
+        :param _Uin: <p>Account information</p>
         :type Uin: str
-        :param _Zones: 
+        :param _Zones: <p>AZ information</p>
         :type Zones: list of str
-        :param _Nodes: 
+        :param _Nodes: <p>Instance node</p>
         :type Nodes: list of InstanceNode
         :param _BinlogStatus: <p>Whether binlog is on</p>
         :type BinlogStatus: int
@@ -10212,11 +10294,11 @@ class InstanceInfo(AbstractModel):
         :type CdcNodeMem: int
         :param _CdcNodeNum: <p>Number of cdc nodes</p>
         :type CdcNodeNum: int
-        :param _AZMode: 
+        :param _AZMode: <p>az mode. 1: Single az 2: Multi-az non-primary az mode 3: Multi-az primary az mode</p>
         :type AZMode: int
-        :param _StandbyFlag: 
+        :param _StandbyFlag: <p>Disaster recovery flag. 1: No disaster recovery relationship; 2: Primary instance for disaster recovery; 3: Disaster Recovery Standby Instance</p>
         :type StandbyFlag: int
-        :param _StandbySecondaryNum: 
+        :param _StandbySecondaryNum: <p>Number of connected standby instances (Valid only when StandbyFlag == 2)</p>
         :type StandbySecondaryNum: int
         :param _ColumnarNodeCpu: <p>cpu cores of the columnar node</p>
         :type ColumnarNodeCpu: int
@@ -10246,7 +10328,7 @@ class InstanceInfo(AbstractModel):
         :type AnalysisRelationInfos: list of AnalysisRelationInfo
         :param _AnalysisInstanceInfo: <p>Analysis engine instance information</p>
         :type AnalysisInstanceInfo: :class:`tencentcloud.tdmysql.v20211122.models.AnalysisInstanceInfo`
-        :param _AutoScaleConfigs: 
+        :param _AutoScaleConfigs: <p>Multiple automatic configuration adjustment configurations of the instance, including ccu and nodecount values</p>
         :type AutoScaleConfigs: list of AutoScalingConfig
         """
         self._ComputeNodeNum = None
@@ -10342,7 +10424,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def CreateVersion(self):
-        r"""
+        r"""<p>Create an instance version</p>
         :rtype: str
         """
         return self._CreateVersion
@@ -10353,7 +10435,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InitParams(self):
-        r"""
+        r"""<p>Initialize instance parameters</p>
         :rtype: list of InstanceParam
         """
         return self._InitParams
@@ -10397,7 +10479,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ResourceTags(self):
-        r"""
+        r"""<p>Instance tag information.</p>
         :rtype: list of ResourceTag
         """
         return self._ResourceTags
@@ -10408,7 +10490,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""
+        r"""<p>Instance name</p>
         :rtype: str
         """
         return self._InstanceName
@@ -10539,7 +10621,7 @@ class InstanceInfo(AbstractModel):
     def MCCpu(self):
         warnings.warn("parameter `MCCpu` is deprecated", DeprecationWarning) 
 
-        r"""
+        r"""<p>CPU cores of the control node</p>
         :rtype: int
         """
         return self._MCCpu
@@ -10554,7 +10636,7 @@ class InstanceInfo(AbstractModel):
     def MCMem(self):
         warnings.warn("parameter `MCMem` is deprecated", DeprecationWarning) 
 
-        r"""
+        r"""<p>CPU size of the control node</p>
         :rtype: int
         """
         return self._MCMem
@@ -10569,7 +10651,7 @@ class InstanceInfo(AbstractModel):
     def ComputerNodeCpu(self):
         warnings.warn("parameter `ComputerNodeCpu` is deprecated", DeprecationWarning) 
 
-        r"""
+        r"""<p>CPU cores of the computing node</p>
         :rtype: int
         """
         return self._ComputerNodeCpu
@@ -10584,7 +10666,7 @@ class InstanceInfo(AbstractModel):
     def ComputerNodeMem(self):
         warnings.warn("parameter `ComputerNodeMem` is deprecated", DeprecationWarning) 
 
-        r"""
+        r"""<p>Compute node memory size</p>
         :rtype: int
         """
         return self._ComputerNodeMem
@@ -10597,7 +10679,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def StorageNodeCpu(self):
-        r"""
+        r"""<p>CPU cores of the storage node</p>
         :rtype: int
         """
         return self._StorageNodeCpu
@@ -10608,7 +10690,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def StorageNodeMem(self):
-        r"""
+        r"""<p>Storage node memory size</p>
         :rtype: int
         """
         return self._StorageNodeMem
@@ -10621,7 +10703,7 @@ class InstanceInfo(AbstractModel):
     def MCNum(self):
         warnings.warn("parameter `MCNum` is deprecated", DeprecationWarning) 
 
-        r"""
+        r"""<p>Number of control nodes</p>
         :rtype: int
         """
         return self._MCNum
@@ -10634,7 +10716,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""
+        r"""<p>Renewal flag</p>
         :rtype: int
         """
         return self._RenewFlag
@@ -10656,7 +10738,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def AccountTag(self):
-        r"""
+        r"""<p>User tag, inner: internal user; external: external user</p>
         :rtype: str
         """
         return self._AccountTag
@@ -10667,7 +10749,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""
+        r"""<p>Instance Architecture Type, separate: decoupled architecture; hyper: peer-to-peer architecture</p>
         :rtype: str
         """
         return self._InstanceType
@@ -10678,7 +10760,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def StorageType(self):
-        r"""
+        r"""<p>Disk Type, CLOUD_HSSD enhanced SSD, CLOUD_TCS local SSD disk</p>
         :rtype: str
         """
         return self._StorageType
@@ -10755,7 +10837,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def AppId(self):
-        r"""
+        r"""<p>Account information</p>
         :rtype: int
         """
         return self._AppId
@@ -10766,7 +10848,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def SubAccountUin(self):
-        r"""
+        r"""<p>Account information</p>
         :rtype: str
         """
         return self._SubAccountUin
@@ -10777,7 +10859,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Uin(self):
-        r"""
+        r"""<p>Account information</p>
         :rtype: str
         """
         return self._Uin
@@ -10788,7 +10870,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Zones(self):
-        r"""
+        r"""<p>AZ information</p>
         :rtype: list of str
         """
         return self._Zones
@@ -10799,7 +10881,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Nodes(self):
-        r"""
+        r"""<p>Instance node</p>
         :rtype: list of InstanceNode
         """
         return self._Nodes
@@ -10866,7 +10948,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def AZMode(self):
-        r"""
+        r"""<p>az mode. 1: Single az 2: Multi-az non-primary az mode 3: Multi-az primary az mode</p>
         :rtype: int
         """
         return self._AZMode
@@ -10877,7 +10959,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def StandbyFlag(self):
-        r"""
+        r"""<p>Disaster recovery flag. 1: No disaster recovery relationship; 2: Primary instance for disaster recovery; 3: Disaster Recovery Standby Instance</p>
         :rtype: int
         """
         return self._StandbyFlag
@@ -10888,7 +10970,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def StandbySecondaryNum(self):
-        r"""
+        r"""<p>Number of connected standby instances (Valid only when StandbyFlag == 2)</p>
         :rtype: int
         """
         return self._StandbySecondaryNum
@@ -11057,7 +11139,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def AutoScaleConfigs(self):
-        r"""
+        r"""<p>Multiple automatic configuration adjustment configurations of the instance, including ccu and nodecount values</p>
         :rtype: list of AutoScalingConfig
         """
         return self._AutoScaleConfigs
@@ -11178,57 +11260,57 @@ class InstanceNode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ID: 
+        :param _ID: Primary key
         :type ID: int
-        :param _InstanceId: 
+        :param _InstanceId: Instance ID.
         :type InstanceId: str
         :param _NodeId: Node Id
         :type NodeId: str
-        :param _Ip: 
+        :param _Ip: Instance Ip
         :type Ip: str
-        :param _EniIp: 
+        :param _EniIp: Instance EniIp
         :type EniIp: str
-        :param _Port: 
+        :param _Port: Instance Port
         :type Port: int
-        :param _SpecCode: 
+        :param _SpecCode: Instance SpecCode
         :type SpecCode: str
-        :param _NodeName: 
+        :param _NodeName: Instance NodeName
         :type NodeName: str
-        :param _Cpu: 
+        :param _Cpu: Instance Cpu
         :type Cpu: int
-        :param _Mem: 
+        :param _Mem: Instance memory
         :type Mem: int
-        :param _Disk: 
+        :param _Disk: Instance Disk
         :type Disk: int
-        :param _Type: 
+        :param _Type: Instance type
         :type Type: str
-        :param _Status: 
+        :param _Status: Instance status
         :type Status: str
-        :param _Version: 
+        :param _Version: Instance version
         :type Version: str
-        :param _Zone: 
+        :param _Zone: Instance region
         :type Zone: str
-        :param _LocalDNS: 
+        :param _LocalDNS: Instance LocalDNS
         :type LocalDNS: str
-        :param _Region: 
+        :param _Region: Instance Region
         :type Region: str
-        :param _LogDisk: 
+        :param _LogDisk: Instance log disk
         :type LogDisk: int
-        :param _DataDisk: 
+        :param _DataDisk: Instance data disk
         :type DataDisk: int
-        :param _ZoneID: 
+        :param _ZoneID: Instance Zone ID
         :type ZoneID: str
-        :param _SpecName: 
+        :param _SpecName: Instance SpecName
         :type SpecName: str
-        :param _Replicas: 
+        :param _Replicas: Instance Replicas
         :type Replicas: int
-        :param _Shards: 
+        :param _Shards: Instance Shards
         :type Shards: int
-        :param _DataReplicas: 
+        :param _DataReplicas: Instance data replica
         :type DataReplicas: int
-        :param _Params: 
+        :param _Params: Instance initialization parameter
         :type Params: str
-        :param _StorageType: 
+        :param _StorageType: Storage medium, CLOUD_PREMIUM: Premium Cloud Disk, CLOUD_SSD: SSD cloud disk, CLOUD_HSSD: HSSD cloud disk
         :type StorageType: str
         """
         self._ID = None
@@ -11260,7 +11342,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def ID(self):
-        r"""
+        r"""Primary key
         :rtype: int
         """
         return self._ID
@@ -11271,7 +11353,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""
+        r"""Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -11293,7 +11375,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def Ip(self):
-        r"""
+        r"""Instance Ip
         :rtype: str
         """
         return self._Ip
@@ -11304,7 +11386,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def EniIp(self):
-        r"""
+        r"""Instance EniIp
         :rtype: str
         """
         return self._EniIp
@@ -11315,7 +11397,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def Port(self):
-        r"""
+        r"""Instance Port
         :rtype: int
         """
         return self._Port
@@ -11326,7 +11408,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def SpecCode(self):
-        r"""
+        r"""Instance SpecCode
         :rtype: str
         """
         return self._SpecCode
@@ -11337,7 +11419,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def NodeName(self):
-        r"""
+        r"""Instance NodeName
         :rtype: str
         """
         return self._NodeName
@@ -11348,7 +11430,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""
+        r"""Instance Cpu
         :rtype: int
         """
         return self._Cpu
@@ -11359,7 +11441,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def Mem(self):
-        r"""
+        r"""Instance memory
         :rtype: int
         """
         return self._Mem
@@ -11370,7 +11452,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def Disk(self):
-        r"""
+        r"""Instance Disk
         :rtype: int
         """
         return self._Disk
@@ -11381,7 +11463,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def Type(self):
-        r"""
+        r"""Instance type
         :rtype: str
         """
         return self._Type
@@ -11392,7 +11474,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""Instance status
         :rtype: str
         """
         return self._Status
@@ -11403,7 +11485,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def Version(self):
-        r"""
+        r"""Instance version
         :rtype: str
         """
         return self._Version
@@ -11414,7 +11496,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def Zone(self):
-        r"""
+        r"""Instance region
         :rtype: str
         """
         return self._Zone
@@ -11425,7 +11507,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def LocalDNS(self):
-        r"""
+        r"""Instance LocalDNS
         :rtype: str
         """
         return self._LocalDNS
@@ -11436,7 +11518,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def Region(self):
-        r"""
+        r"""Instance Region
         :rtype: str
         """
         return self._Region
@@ -11447,7 +11529,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def LogDisk(self):
-        r"""
+        r"""Instance log disk
         :rtype: int
         """
         return self._LogDisk
@@ -11458,7 +11540,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def DataDisk(self):
-        r"""
+        r"""Instance data disk
         :rtype: int
         """
         return self._DataDisk
@@ -11469,7 +11551,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def ZoneID(self):
-        r"""
+        r"""Instance Zone ID
         :rtype: str
         """
         return self._ZoneID
@@ -11480,7 +11562,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def SpecName(self):
-        r"""
+        r"""Instance SpecName
         :rtype: str
         """
         return self._SpecName
@@ -11491,7 +11573,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def Replicas(self):
-        r"""
+        r"""Instance Replicas
         :rtype: int
         """
         return self._Replicas
@@ -11502,7 +11584,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def Shards(self):
-        r"""
+        r"""Instance Shards
         :rtype: int
         """
         return self._Shards
@@ -11513,7 +11595,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def DataReplicas(self):
-        r"""
+        r"""Instance data replica
         :rtype: int
         """
         return self._DataReplicas
@@ -11524,7 +11606,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def Params(self):
-        r"""
+        r"""Instance initialization parameter
         :rtype: str
         """
         return self._Params
@@ -11535,7 +11617,7 @@ class InstanceNode(AbstractModel):
 
     @property
     def StorageType(self):
-        r"""
+        r"""Storage medium, CLOUD_PREMIUM: Premium Cloud Disk, CLOUD_SSD: SSD cloud disk, CLOUD_HSSD: HSSD cloud disk
         :rtype: str
         """
         return self._StorageType
@@ -13232,17 +13314,17 @@ class NodeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IP: 
+        :param _IP: <p>Node IP information</p>
         :type IP: str
-        :param _Type: 
+        :param _Type: <p>Node types, such as sqlengine, tdstore, mc</p>
         :type Type: str
-        :param _NodeId: 
+        :param _NodeId: <p>Unique identifier of the node</p>
         :type NodeId: str
-        :param _Port: 
+        :param _Port: <p>Node port information</p>
         :type Port: int
-        :param _Zone: 
+        :param _Zone: <p>Availability zone of the node</p>
         :type Zone: str
-        :param _Host: 
+        :param _Host: <p>Machine ip of the node</p>
         :type Host: str
         :param _BinlogInfo: <p>Node log service information</p>
         :type BinlogInfo: list of BinlogInfo
@@ -13266,7 +13348,7 @@ class NodeInfo(AbstractModel):
 
     @property
     def IP(self):
-        r"""
+        r"""<p>Node IP information</p>
         :rtype: str
         """
         return self._IP
@@ -13277,7 +13359,7 @@ class NodeInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""
+        r"""<p>Node types, such as sqlengine, tdstore, mc</p>
         :rtype: str
         """
         return self._Type
@@ -13288,7 +13370,7 @@ class NodeInfo(AbstractModel):
 
     @property
     def NodeId(self):
-        r"""
+        r"""<p>Unique identifier of the node</p>
         :rtype: str
         """
         return self._NodeId
@@ -13299,7 +13381,7 @@ class NodeInfo(AbstractModel):
 
     @property
     def Port(self):
-        r"""
+        r"""<p>Node port information</p>
         :rtype: int
         """
         return self._Port
@@ -13310,7 +13392,7 @@ class NodeInfo(AbstractModel):
 
     @property
     def Zone(self):
-        r"""
+        r"""<p>Availability zone of the node</p>
         :rtype: str
         """
         return self._Zone
@@ -13321,7 +13403,7 @@ class NodeInfo(AbstractModel):
 
     @property
     def Host(self):
-        r"""
+        r"""<p>Machine ip of the node</p>
         :rtype: str
         """
         return self._Host
@@ -14297,15 +14379,15 @@ class ServerlessCcu(AbstractModel):
 
 
 class ServerlessNodeNumSpec(AbstractModel):
-    r"""
+    r"""Upper and lower limit of the hybrid node quantity allowed for adjustment for a Serverless instance
 
     """
 
     def __init__(self):
         r"""
-        :param _MinNodeNum: 
+        :param _MinNodeNum: <p>Minimum number of nodes.</p>
         :type MinNodeNum: int
-        :param _MaxNodeNum: 
+        :param _MaxNodeNum: <p>Maximum number of nodes.</p>
         :type MaxNodeNum: int
         """
         self._MinNodeNum = None
@@ -14313,7 +14395,7 @@ class ServerlessNodeNumSpec(AbstractModel):
 
     @property
     def MinNodeNum(self):
-        r"""
+        r"""<p>Minimum number of nodes.</p>
         :rtype: int
         """
         return self._MinNodeNum
@@ -14324,7 +14406,7 @@ class ServerlessNodeNumSpec(AbstractModel):
 
     @property
     def MaxNodeNum(self):
-        r"""
+        r"""<p>Maximum number of nodes.</p>
         :rtype: int
         """
         return self._MaxNodeNum
@@ -15037,7 +15119,7 @@ class StorageNodeSpec(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SpecCode: 
+        :param _SpecCode: <p>Specification code</p>
         :type SpecCode: str
         :param _StorageNodeCpu: <p>CPU cores of the storage node</p>
         :type StorageNodeCpu: int
@@ -15051,9 +15133,9 @@ class StorageNodeSpec(AbstractModel):
         :type StorageNodeMinNum: int
         :param _StorageNodeMinDisk: <p>Node disk size minimum</p>
         :type StorageNodeMinDisk: int
-        :param _StorageType: 
+        :param _StorageType: <p>Disk Type, CLOUD_HSSD enhanced SSD, CLOUD_TCS local SSD disk</p>
         :type StorageType: str
-        :param _StorageNodeDefaultDisk: 
+        :param _StorageNodeDefaultDisk: <p>Default disk size of storage node for frontend display</p>
         :type StorageNodeDefaultDisk: int
         :param _InstanceMode: <p>Specification support billing mode list</p>
         :type InstanceMode: list of str
@@ -15074,7 +15156,7 @@ class StorageNodeSpec(AbstractModel):
 
     @property
     def SpecCode(self):
-        r"""
+        r"""<p>Specification code</p>
         :rtype: str
         """
         return self._SpecCode
@@ -15151,7 +15233,7 @@ class StorageNodeSpec(AbstractModel):
 
     @property
     def StorageType(self):
-        r"""
+        r"""<p>Disk Type, CLOUD_HSSD enhanced SSD, CLOUD_TCS local SSD disk</p>
         :rtype: str
         """
         return self._StorageType
@@ -15162,7 +15244,7 @@ class StorageNodeSpec(AbstractModel):
 
     @property
     def StorageNodeDefaultDisk(self):
-        r"""
+        r"""<p>Default disk size of storage node for frontend display</p>
         :rtype: int
         """
         return self._StorageNodeDefaultDisk

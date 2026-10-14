@@ -19,21 +19,21 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AICallConfig(AbstractModel):
-    r"""
+    r"""Intelligent call
 
     """
 
     def __init__(self):
         r"""
-        :param _EnableVoiceInteract: 
+        :param _EnableVoiceInteract: Enable the voice interaction feature
         :type EnableVoiceInteract: bool
-        :param _EnableVoiceCall: 
+        :param _EnableVoiceCall: Enable voice call
         :type EnableVoiceCall: bool
-        :param _EnableDigitalHuman: 
+        :param _EnableDigitalHuman: Enable digital human
         :type EnableDigitalHuman: bool
-        :param _Voice: 
+        :param _Voice: Voice type configuration
         :type Voice: :class:`tencentcloud.lke.v20231130.models.VoiceConfig`
-        :param _DigitalHuman: 
+        :param _DigitalHuman: Digital human configuration
         :type DigitalHuman: :class:`tencentcloud.lke.v20231130.models.DigitalHumanConfig`
         """
         self._EnableVoiceInteract = None
@@ -44,7 +44,7 @@ class AICallConfig(AbstractModel):
 
     @property
     def EnableVoiceInteract(self):
-        r"""
+        r"""Enable the voice interaction feature
         :rtype: bool
         """
         return self._EnableVoiceInteract
@@ -55,7 +55,7 @@ class AICallConfig(AbstractModel):
 
     @property
     def EnableVoiceCall(self):
-        r"""
+        r"""Enable voice call
         :rtype: bool
         """
         return self._EnableVoiceCall
@@ -66,7 +66,7 @@ class AICallConfig(AbstractModel):
 
     @property
     def EnableDigitalHuman(self):
-        r"""
+        r"""Enable digital human
         :rtype: bool
         """
         return self._EnableDigitalHuman
@@ -77,7 +77,7 @@ class AICallConfig(AbstractModel):
 
     @property
     def Voice(self):
-        r"""
+        r"""Voice type configuration
         :rtype: :class:`tencentcloud.lke.v20231130.models.VoiceConfig`
         """
         return self._Voice
@@ -88,7 +88,7 @@ class AICallConfig(AbstractModel):
 
     @property
     def DigitalHuman(self):
-        r"""
+        r"""Digital human configuration
         :rtype: :class:`tencentcloud.lke.v20231130.models.DigitalHumanConfig`
         """
         return self._DigitalHuman
@@ -119,17 +119,17 @@ class AICallConfig(AbstractModel):
 
 
 class AgentDebugInfo(AbstractModel):
-    r"""
+    r"""Agent debugging information
 
     """
 
     def __init__(self):
         r"""
-        :param _Input: 
+        :param _Input: Input information of the tool and large model, json
         :type Input: str
-        :param _Output: 
+        :param _Output: Output information of tools and large models, in json format
         :type Output: str
-        :param _ModelName: 
+        :param _ModelName: Model name.
         :type ModelName: str
         """
         self._Input = None
@@ -138,7 +138,7 @@ class AgentDebugInfo(AbstractModel):
 
     @property
     def Input(self):
-        r"""
+        r"""Input information of the tool and large model, json
         :rtype: str
         """
         return self._Input
@@ -149,7 +149,7 @@ class AgentDebugInfo(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""Output information of tools and large models, in json format
         :rtype: str
         """
         return self._Output
@@ -160,7 +160,7 @@ class AgentDebugInfo(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""
+        r"""Model name.
         :rtype: str
         """
         return self._ModelName
@@ -740,17 +740,17 @@ class AgentReference(AbstractModel):
 
 
 class AgentTask(AbstractModel):
-    r"""
+    r"""Intelligent Agent task information
 
     """
 
     def __init__(self):
         r"""
-        :param _Index: 
+        :param _Index: <p>Task serial number</p>
         :type Index: int
-        :param _Content: 
+        :param _Content: <p>Task content</p>
         :type Content: str
-        :param _Status: 
+        :param _Status: <p>Task status.</p>
         :type Status: str
         """
         self._Index = None
@@ -759,7 +759,7 @@ class AgentTask(AbstractModel):
 
     @property
     def Index(self):
-        r"""
+        r"""<p>Task serial number</p>
         :rtype: int
         """
         return self._Index
@@ -770,7 +770,7 @@ class AgentTask(AbstractModel):
 
     @property
     def Content(self):
-        r"""
+        r"""<p>Task content</p>
         :rtype: str
         """
         return self._Content
@@ -781,7 +781,7 @@ class AgentTask(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""<p>Task status.</p>
         :rtype: str
         """
         return self._Status
@@ -2756,46 +2756,50 @@ class ClassifyLabel(AbstractModel):
 
 
 class Content(AbstractModel):
-    r"""
+    r"""Dialogue record content details
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: 
+        :param _Type: <p>Message content type<br>text: text<br>image: image<br>file: file<br>option_cards: tabs<br>custom_params: custom business parameters<br>sandbox: cloud desktop<br>custom_variables: custom input parameters<br>web_search: web search content<br>file_collection: file collection information<br>widget: widget info<br>widget_action: client-side widget action information</p>
         :type Type: str
-        :param _Text: 
+        :param _Text: <p>Text content</p>
         :type Text: str
-        :param _QuoteInfos: 
+        :param _QuoteInfos: <p>Reference info.</p>
         :type QuoteInfos: list of QuoteInfo
-        :param _References: 
+        :param _References: <p>Reference information</p>
         :type References: list of ContentReference
-        :param _Image: 
+        :param _Image: <p>Image information.</p>
         :type Image: :class:`tencentcloud.lke.v20231130.models.ImageInfoContent`
-        :param _File: 
+        :param _File: <p>File information</p>
         :type File: :class:`tencentcloud.lke.v20231130.models.FileInfoContent`
-        :param _OptionCards: 
+        :param _OptionCards: <p>Tab info.</p>
         :type OptionCards: list of str
-        :param _CustomParams: 
+        :param _CustomParams: <p>User-customized business parameter information.</p>
         :type CustomParams: list of str
-        :param _CustomVariables: 
+        :param _CustomVariables: <p>Custom Variable</p>
         :type CustomVariables: list of str
-        :param _Sandbox: 
+        :param _Sandbox: <p>Sandbox information</p>
         :type Sandbox: :class:`tencentcloud.lke.v20231130.models.SandboxContent`
-        :param _WebSearch: 
+        :param _WebSearch: <p>Web page search content</p>
         :type WebSearch: :class:`tencentcloud.lke.v20231130.models.WebSearchContent`
-        :param _FileCollection: 
+        :param _FileCollection: <p>File information collection</p>
         :type FileCollection: :class:`tencentcloud.lke.v20231130.models.FileCollection`
-        :param _Widget: 
+        :param _Widget: <p>Widget information.</p>
         :type Widget: :class:`tencentcloud.lke.v20231130.models.Widget`
-        :param _WidgetAction: 
+        :param _WidgetAction: <p>Widget action information</p>
         :type WidgetAction: :class:`tencentcloud.lke.v20231130.models.WidgetAction`
-        :param _Tasks: 
+        :param _Tasks: <p>Task List</p>
         :type Tasks: list of AgentTask
-        :param _Questionnaire: 
+        :param _Questionnaire: <p>Questionnaire information</p>
         :type Questionnaire: :class:`tencentcloud.lke.v20231130.models.Questionnaire`
-        :param _OptionMode: 
+        :param _OptionMode: <p>Tab mode</p>
         :type OptionMode: int
+        :param _McpApp: <p>MCP APP information returned</p>
+        :type McpApp: :class:`tencentcloud.lke.v20231130.models.ConversationMcpApp`
+        :param _Resource: <p>Application or workflow resource product</p>
+        :type Resource: :class:`tencentcloud.lke.v20231130.models.ConversationResourceArtifact`
         """
         self._Type = None
         self._Text = None
@@ -2814,10 +2818,12 @@ class Content(AbstractModel):
         self._Tasks = None
         self._Questionnaire = None
         self._OptionMode = None
+        self._McpApp = None
+        self._Resource = None
 
     @property
     def Type(self):
-        r"""
+        r"""<p>Message content type<br>text: text<br>image: image<br>file: file<br>option_cards: tabs<br>custom_params: custom business parameters<br>sandbox: cloud desktop<br>custom_variables: custom input parameters<br>web_search: web search content<br>file_collection: file collection information<br>widget: widget info<br>widget_action: client-side widget action information</p>
         :rtype: str
         """
         return self._Type
@@ -2828,7 +2834,7 @@ class Content(AbstractModel):
 
     @property
     def Text(self):
-        r"""
+        r"""<p>Text content</p>
         :rtype: str
         """
         return self._Text
@@ -2839,7 +2845,7 @@ class Content(AbstractModel):
 
     @property
     def QuoteInfos(self):
-        r"""
+        r"""<p>Reference info.</p>
         :rtype: list of QuoteInfo
         """
         return self._QuoteInfos
@@ -2850,7 +2856,7 @@ class Content(AbstractModel):
 
     @property
     def References(self):
-        r"""
+        r"""<p>Reference information</p>
         :rtype: list of ContentReference
         """
         return self._References
@@ -2861,7 +2867,7 @@ class Content(AbstractModel):
 
     @property
     def Image(self):
-        r"""
+        r"""<p>Image information.</p>
         :rtype: :class:`tencentcloud.lke.v20231130.models.ImageInfoContent`
         """
         return self._Image
@@ -2872,7 +2878,7 @@ class Content(AbstractModel):
 
     @property
     def File(self):
-        r"""
+        r"""<p>File information</p>
         :rtype: :class:`tencentcloud.lke.v20231130.models.FileInfoContent`
         """
         return self._File
@@ -2883,7 +2889,7 @@ class Content(AbstractModel):
 
     @property
     def OptionCards(self):
-        r"""
+        r"""<p>Tab info.</p>
         :rtype: list of str
         """
         return self._OptionCards
@@ -2894,7 +2900,7 @@ class Content(AbstractModel):
 
     @property
     def CustomParams(self):
-        r"""
+        r"""<p>User-customized business parameter information.</p>
         :rtype: list of str
         """
         return self._CustomParams
@@ -2905,7 +2911,7 @@ class Content(AbstractModel):
 
     @property
     def CustomVariables(self):
-        r"""
+        r"""<p>Custom Variable</p>
         :rtype: list of str
         """
         return self._CustomVariables
@@ -2916,7 +2922,7 @@ class Content(AbstractModel):
 
     @property
     def Sandbox(self):
-        r"""
+        r"""<p>Sandbox information</p>
         :rtype: :class:`tencentcloud.lke.v20231130.models.SandboxContent`
         """
         return self._Sandbox
@@ -2927,7 +2933,7 @@ class Content(AbstractModel):
 
     @property
     def WebSearch(self):
-        r"""
+        r"""<p>Web page search content</p>
         :rtype: :class:`tencentcloud.lke.v20231130.models.WebSearchContent`
         """
         return self._WebSearch
@@ -2938,7 +2944,7 @@ class Content(AbstractModel):
 
     @property
     def FileCollection(self):
-        r"""
+        r"""<p>File information collection</p>
         :rtype: :class:`tencentcloud.lke.v20231130.models.FileCollection`
         """
         return self._FileCollection
@@ -2949,7 +2955,7 @@ class Content(AbstractModel):
 
     @property
     def Widget(self):
-        r"""
+        r"""<p>Widget information.</p>
         :rtype: :class:`tencentcloud.lke.v20231130.models.Widget`
         """
         return self._Widget
@@ -2960,7 +2966,7 @@ class Content(AbstractModel):
 
     @property
     def WidgetAction(self):
-        r"""
+        r"""<p>Widget action information</p>
         :rtype: :class:`tencentcloud.lke.v20231130.models.WidgetAction`
         """
         return self._WidgetAction
@@ -2971,7 +2977,7 @@ class Content(AbstractModel):
 
     @property
     def Tasks(self):
-        r"""
+        r"""<p>Task List</p>
         :rtype: list of AgentTask
         """
         return self._Tasks
@@ -2982,7 +2988,7 @@ class Content(AbstractModel):
 
     @property
     def Questionnaire(self):
-        r"""
+        r"""<p>Questionnaire information</p>
         :rtype: :class:`tencentcloud.lke.v20231130.models.Questionnaire`
         """
         return self._Questionnaire
@@ -2993,7 +2999,7 @@ class Content(AbstractModel):
 
     @property
     def OptionMode(self):
-        r"""
+        r"""<p>Tab mode</p>
         :rtype: int
         """
         return self._OptionMode
@@ -3001,6 +3007,28 @@ class Content(AbstractModel):
     @OptionMode.setter
     def OptionMode(self, OptionMode):
         self._OptionMode = OptionMode
+
+    @property
+    def McpApp(self):
+        r"""<p>MCP APP information returned</p>
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ConversationMcpApp`
+        """
+        return self._McpApp
+
+    @McpApp.setter
+    def McpApp(self, McpApp):
+        self._McpApp = McpApp
+
+    @property
+    def Resource(self):
+        r"""<p>Application or workflow resource product</p>
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ConversationResourceArtifact`
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
 
 
     def _deserialize(self, params):
@@ -3052,6 +3080,12 @@ class Content(AbstractModel):
             self._Questionnaire = Questionnaire()
             self._Questionnaire._deserialize(params.get("Questionnaire"))
         self._OptionMode = params.get("OptionMode")
+        if params.get("McpApp") is not None:
+            self._McpApp = ConversationMcpApp()
+            self._McpApp._deserialize(params.get("McpApp"))
+        if params.get("Resource") is not None:
+            self._Resource = ConversationResourceArtifact()
+            self._Resource._deserialize(params.get("Resource"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3063,23 +3097,26 @@ class Content(AbstractModel):
 
 
 class ContentReference(AbstractModel):
-    r"""
+    r"""Session content reference information
 
     """
 
     def __init__(self):
         r"""
-        :param _Index: 
+        :param _Index: Source index ID
         :type Index: int
-        :param _Name: 
+        :param _Name: Reference source name
         :type Name: str
-        :param _Type: 
+        :param _Type: Reference source type
+1: QA
+2: Document fragment
+4: Online retrieved content
         :type Type: int
-        :param _DocRefer: 
+        :param _DocRefer: Document fragment reference
         :type DocRefer: :class:`tencentcloud.lke.v20231130.models.DocReference`
-        :param _QaRefer: 
+        :param _QaRefer: QA reference
         :type QaRefer: :class:`tencentcloud.lke.v20231130.models.QaReference`
-        :param _WebSearchRefer: 
+        :param _WebSearchRefer: Reference information for online retrieval content
         :type WebSearchRefer: :class:`tencentcloud.lke.v20231130.models.WebSearchReference`
         """
         self._Index = None
@@ -3091,7 +3128,7 @@ class ContentReference(AbstractModel):
 
     @property
     def Index(self):
-        r"""
+        r"""Source index ID
         :rtype: int
         """
         return self._Index
@@ -3102,7 +3139,7 @@ class ContentReference(AbstractModel):
 
     @property
     def Name(self):
-        r"""
+        r"""Reference source name
         :rtype: str
         """
         return self._Name
@@ -3113,7 +3150,10 @@ class ContentReference(AbstractModel):
 
     @property
     def Type(self):
-        r"""
+        r"""Reference source type
+1: QA
+2: Document fragment
+4: Online retrieved content
         :rtype: int
         """
         return self._Type
@@ -3124,7 +3164,7 @@ class ContentReference(AbstractModel):
 
     @property
     def DocRefer(self):
-        r"""
+        r"""Document fragment reference
         :rtype: :class:`tencentcloud.lke.v20231130.models.DocReference`
         """
         return self._DocRefer
@@ -3135,7 +3175,7 @@ class ContentReference(AbstractModel):
 
     @property
     def QaRefer(self):
-        r"""
+        r"""QA reference
         :rtype: :class:`tencentcloud.lke.v20231130.models.QaReference`
         """
         return self._QaRefer
@@ -3146,7 +3186,7 @@ class ContentReference(AbstractModel):
 
     @property
     def WebSearchRefer(self):
-        r"""
+        r"""Reference information for online retrieval content
         :rtype: :class:`tencentcloud.lke.v20231130.models.WebSearchReference`
         """
         return self._WebSearchRefer
@@ -3300,6 +3340,334 @@ class Context(AbstractModel):
                 obj._deserialize(item)
                 self._FileInfos.append(obj)
         self._ReplyMethod = params.get("ReplyMethod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConversationAppArtifact(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppAvatar: 
+        :type AppAvatar: str
+        :param _AppId: 
+        :type AppId: str
+        :param _AppPattern: 
+        :type AppPattern: int
+        :param _Name: 
+        :type Name: str
+        :param _SpaceId: 
+        :type SpaceId: str
+        """
+        self._AppAvatar = None
+        self._AppId = None
+        self._AppPattern = None
+        self._Name = None
+        self._SpaceId = None
+
+    @property
+    def AppAvatar(self):
+        r"""
+        :rtype: str
+        """
+        return self._AppAvatar
+
+    @AppAvatar.setter
+    def AppAvatar(self, AppAvatar):
+        self._AppAvatar = AppAvatar
+
+    @property
+    def AppId(self):
+        r"""
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AppPattern(self):
+        r"""
+        :rtype: int
+        """
+        return self._AppPattern
+
+    @AppPattern.setter
+    def AppPattern(self, AppPattern):
+        self._AppPattern = AppPattern
+
+    @property
+    def Name(self):
+        r"""
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SpaceId(self):
+        r"""
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+
+    def _deserialize(self, params):
+        self._AppAvatar = params.get("AppAvatar")
+        self._AppId = params.get("AppId")
+        self._AppPattern = params.get("AppPattern")
+        self._Name = params.get("Name")
+        self._SpaceId = params.get("SpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConversationMcpApp(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PluginId: 
+        :type PluginId: str
+        :param _ResourceUri: 
+        :type ResourceUri: str
+        :param _ThreadId: 
+        :type ThreadId: str
+        :param _ToolResult: 
+        :type ToolResult: str
+        """
+        self._PluginId = None
+        self._ResourceUri = None
+        self._ThreadId = None
+        self._ToolResult = None
+
+    @property
+    def PluginId(self):
+        r"""
+        :rtype: str
+        """
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def ResourceUri(self):
+        r"""
+        :rtype: str
+        """
+        return self._ResourceUri
+
+    @ResourceUri.setter
+    def ResourceUri(self, ResourceUri):
+        self._ResourceUri = ResourceUri
+
+    @property
+    def ThreadId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ThreadId
+
+    @ThreadId.setter
+    def ThreadId(self, ThreadId):
+        self._ThreadId = ThreadId
+
+    @property
+    def ToolResult(self):
+        r"""
+        :rtype: str
+        """
+        return self._ToolResult
+
+    @ToolResult.setter
+    def ToolResult(self, ToolResult):
+        self._ToolResult = ToolResult
+
+
+    def _deserialize(self, params):
+        self._PluginId = params.get("PluginId")
+        self._ResourceUri = params.get("ResourceUri")
+        self._ThreadId = params.get("ThreadId")
+        self._ToolResult = params.get("ToolResult")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConversationResourceArtifact(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _App: 
+        :type App: :class:`tencentcloud.lke.v20231130.models.ConversationAppArtifact`
+        :param _Type: 
+        :type Type: int
+        :param _Workflow: 
+        :type Workflow: :class:`tencentcloud.lke.v20231130.models.ConversationWorkflowArtifact`
+        """
+        self._App = None
+        self._Type = None
+        self._Workflow = None
+
+    @property
+    def App(self):
+        r"""
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ConversationAppArtifact`
+        """
+        return self._App
+
+    @App.setter
+    def App(self, App):
+        self._App = App
+
+    @property
+    def Type(self):
+        r"""
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Workflow(self):
+        r"""
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ConversationWorkflowArtifact`
+        """
+        return self._Workflow
+
+    @Workflow.setter
+    def Workflow(self, Workflow):
+        self._Workflow = Workflow
+
+
+    def _deserialize(self, params):
+        if params.get("App") is not None:
+            self._App = ConversationAppArtifact()
+            self._App._deserialize(params.get("App"))
+        self._Type = params.get("Type")
+        if params.get("Workflow") is not None:
+            self._Workflow = ConversationWorkflowArtifact()
+            self._Workflow._deserialize(params.get("Workflow"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConversationWorkflowArtifact(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: 
+        :type AppId: str
+        :param _Name: 
+        :type Name: str
+        :param _SpaceId: 
+        :type SpaceId: str
+        :param _WorkflowId: 
+        :type WorkflowId: str
+        """
+        self._AppId = None
+        self._Name = None
+        self._SpaceId = None
+        self._WorkflowId = None
+
+    @property
+    def AppId(self):
+        r"""
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Name(self):
+        r"""
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SpaceId(self):
+        r"""
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def WorkflowId(self):
+        r"""
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._Name = params.get("Name")
+        self._SpaceId = params.get("SpaceId")
+        self._WorkflowId = params.get("WorkflowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9351,19 +9719,19 @@ class DescribeUnsatisfiedReplyContextResponse(AbstractModel):
 
 
 class DigitalHumanConfig(AbstractModel):
-    r"""
+    r"""Digital human configuration
 
     """
 
     def __init__(self):
         r"""
-        :param _AssetKey: 
+        :param _AssetKey: Digital human asset key
         :type AssetKey: str
-        :param _Name: 
+        :param _Name: Digital human name
         :type Name: str
-        :param _Avatar: 
+        :param _Avatar: image
         :type Avatar: str
-        :param _PreviewUrl: 
+        :param _PreviewUrl: Preview image
         :type PreviewUrl: str
         """
         self._AssetKey = None
@@ -9373,7 +9741,7 @@ class DigitalHumanConfig(AbstractModel):
 
     @property
     def AssetKey(self):
-        r"""
+        r"""Digital human asset key
         :rtype: str
         """
         return self._AssetKey
@@ -9384,7 +9752,7 @@ class DigitalHumanConfig(AbstractModel):
 
     @property
     def Name(self):
-        r"""
+        r"""Digital human name
         :rtype: str
         """
         return self._Name
@@ -9395,7 +9763,7 @@ class DigitalHumanConfig(AbstractModel):
 
     @property
     def Avatar(self):
-        r"""
+        r"""image
         :rtype: str
         """
         return self._Avatar
@@ -9406,7 +9774,7 @@ class DigitalHumanConfig(AbstractModel):
 
     @property
     def PreviewUrl(self):
-        r"""
+        r"""Preview image
         :rtype: str
         """
         return self._PreviewUrl
@@ -9432,15 +9800,15 @@ class DigitalHumanConfig(AbstractModel):
 
 
 class DocFilterFlag(AbstractModel):
-    r"""
+    r"""Filter flag bit for the document list
 
     """
 
     def __init__(self):
         r"""
-        :param _Flag: 
+        :param _Flag: Identifier bit
         :type Flag: str
-        :param _Value: 
+        :param _Value: Identifier value
         :type Value: bool
         """
         self._Flag = None
@@ -9448,7 +9816,7 @@ class DocFilterFlag(AbstractModel):
 
     @property
     def Flag(self):
-        r"""
+        r"""Identifier bit
         :rtype: str
         """
         return self._Flag
@@ -9459,7 +9827,7 @@ class DocFilterFlag(AbstractModel):
 
     @property
     def Value(self):
-        r"""
+        r"""Identifier value
         :rtype: bool
         """
         return self._Value
@@ -9483,23 +9851,23 @@ class DocFilterFlag(AbstractModel):
 
 
 class DocReference(AbstractModel):
-    r"""
+    r"""Documentation reference source info
 
     """
 
     def __init__(self):
         r"""
-        :param _DocBizId: 
-        :type DocBizId: int
-        :param _ReferBizId: 
-        :type ReferBizId: int
-        :param _DocName: 
+        :param _DocBizId: <p>Document business ID</p>
+        :type DocBizId: str
+        :param _ReferBizId: <p>Document fragment reference ID</p>
+        :type ReferBizId: str
+        :param _DocName: <p>Document name</p>
         :type DocName: str
-        :param _KnowledgeBizId: 
-        :type KnowledgeBizId: int
-        :param _KnowledgeName: 
+        :param _KnowledgeBizId: <p>Business ID of the knowledge base where the document resides</p>
+        :type KnowledgeBizId: str
+        :param _KnowledgeName: <p>Name of the knowledge base where the document resides</p>
         :type KnowledgeName: str
-        :param _Url: 
+        :param _Url: <p>Document Access Address</p>
         :type Url: str
         """
         self._DocBizId = None
@@ -9511,8 +9879,8 @@ class DocReference(AbstractModel):
 
     @property
     def DocBizId(self):
-        r"""
-        :rtype: int
+        r"""<p>Document business ID</p>
+        :rtype: str
         """
         return self._DocBizId
 
@@ -9522,8 +9890,8 @@ class DocReference(AbstractModel):
 
     @property
     def ReferBizId(self):
-        r"""
-        :rtype: int
+        r"""<p>Document fragment reference ID</p>
+        :rtype: str
         """
         return self._ReferBizId
 
@@ -9533,7 +9901,7 @@ class DocReference(AbstractModel):
 
     @property
     def DocName(self):
-        r"""
+        r"""<p>Document name</p>
         :rtype: str
         """
         return self._DocName
@@ -9544,8 +9912,8 @@ class DocReference(AbstractModel):
 
     @property
     def KnowledgeBizId(self):
-        r"""
-        :rtype: int
+        r"""<p>Business ID of the knowledge base where the document resides</p>
+        :rtype: str
         """
         return self._KnowledgeBizId
 
@@ -9555,7 +9923,7 @@ class DocReference(AbstractModel):
 
     @property
     def KnowledgeName(self):
-        r"""
+        r"""<p>Name of the knowledge base where the document resides</p>
         :rtype: str
         """
         return self._KnowledgeName
@@ -9566,7 +9934,7 @@ class DocReference(AbstractModel):
 
     @property
     def Url(self):
-        r"""
+        r"""<p>Document Access Address</p>
         :rtype: str
         """
         return self._Url
@@ -9765,15 +10133,15 @@ class DocSegment(AbstractModel):
 
 
 class DuplicateFileHandle(AbstractModel):
-    r"""
+    r"""Processing method for duplicate documents
 
     """
 
     def __init__(self):
         r"""
-        :param _CheckType: 
+        :param _CheckType: Document repetition judgment method. 1: Judge whether to repeat by document content, that is, the cos_hash field.
         :type CheckType: int
-        :param _HandleType: 
+        :param _HandleType: Duplicate document processing method. 1: return an error. 2: skip and return the business ID of the duplicate document.
         :type HandleType: int
         """
         self._CheckType = None
@@ -9781,7 +10149,7 @@ class DuplicateFileHandle(AbstractModel):
 
     @property
     def CheckType(self):
-        r"""
+        r"""Document repetition judgment method. 1: Judge whether to repeat by document content, that is, the cos_hash field.
         :rtype: int
         """
         return self._CheckType
@@ -9792,7 +10160,7 @@ class DuplicateFileHandle(AbstractModel):
 
     @property
     def HandleType(self):
-        r"""
+        r"""Duplicate document processing method. 1: return an error. 2: skip and return the business ID of the duplicate document.
         :rtype: int
         """
         return self._HandleType
@@ -10179,20 +10547,20 @@ class ExportUnsatisfiedReplyResponse(AbstractModel):
 
 
 class ExtraInfo(AbstractModel):
-    r"""
+    r"""Extension Information
 
     """
 
     def __init__(self):
         r"""
-        :param _EChartsInfo: 
+        :param _EChartsInfo: ECharts information
         :type EChartsInfo: list of str
         """
         self._EChartsInfo = None
 
     @property
     def EChartsInfo(self):
-        r"""
+        r"""ECharts information
         :rtype: list of str
         """
         return self._EChartsInfo
@@ -10215,15 +10583,15 @@ class ExtraInfo(AbstractModel):
 
 
 class FileCollection(AbstractModel):
-    r"""
+    r"""File collection information
 
     """
 
     def __init__(self):
         r"""
-        :param _MaxFileCount: 
+        :param _MaxFileCount: Maximum number of files to be uploaded
         :type MaxFileCount: int
-        :param _SupportedFileTypes: 
+        :param _SupportedFileTypes: Supported upload file types
         :type SupportedFileTypes: list of str
         """
         self._MaxFileCount = None
@@ -10231,7 +10599,7 @@ class FileCollection(AbstractModel):
 
     @property
     def MaxFileCount(self):
-        r"""
+        r"""Maximum number of files to be uploaded
         :rtype: int
         """
         return self._MaxFileCount
@@ -10242,7 +10610,7 @@ class FileCollection(AbstractModel):
 
     @property
     def SupportedFileTypes(self):
-        r"""
+        r"""Supported upload file types
         :rtype: list of str
         """
         return self._SupportedFileTypes
@@ -10377,26 +10745,30 @@ class FileInfo(AbstractModel):
 
 
 class FileInfoContent(AbstractModel):
-    r"""
+    r"""File information content
 
     """
 
     def __init__(self):
         r"""
-        :param _DocBizId: 
+        :param _DocBizId: <p>DocBizId returned by the real-time document parsing API</p>
         :type DocBizId: str
-        :param _FileName: 
+        :param _FileName: <p>File name.</p>
         :type FileName: str
-        :param _FileType: 
+        :param _FileType: <p>File type</p>
         :type FileType: str
-        :param _FileSize: 
+        :param _FileSize: <p>File size in bytes</p>
         :type FileSize: str
-        :param _FileUrl: 
+        :param _FileUrl: <p>File URL</p>
         :type FileUrl: str
-        :param _DocId: 
+        :param _DocId: <p>doc_id returned by the real-time document parsing API.</p>
         :type DocId: str
-        :param _CreateTime: 
+        :param _CreateTime: <p>File creation time</p>
         :type CreateTime: str
+        :param _LocalPath: <p>Local path of the file in the sandbox</p>
+        :type LocalPath: str
+        :param _AuditStatus: <p>File moderation status</p><p>Enumeration values:</p><ul><li>1: under review</li><li>2: pass review</li><li>3: fail review</li></ul>
+        :type AuditStatus: int
         """
         self._DocBizId = None
         self._FileName = None
@@ -10405,12 +10777,14 @@ class FileInfoContent(AbstractModel):
         self._FileUrl = None
         self._DocId = None
         self._CreateTime = None
+        self._LocalPath = None
+        self._AuditStatus = None
 
     @property
     def DocBizId(self):
         warnings.warn("parameter `DocBizId` is deprecated", DeprecationWarning) 
 
-        r"""
+        r"""<p>DocBizId returned by the real-time document parsing API</p>
         :rtype: str
         """
         return self._DocBizId
@@ -10423,7 +10797,7 @@ class FileInfoContent(AbstractModel):
 
     @property
     def FileName(self):
-        r"""
+        r"""<p>File name.</p>
         :rtype: str
         """
         return self._FileName
@@ -10434,7 +10808,7 @@ class FileInfoContent(AbstractModel):
 
     @property
     def FileType(self):
-        r"""
+        r"""<p>File type</p>
         :rtype: str
         """
         return self._FileType
@@ -10445,7 +10819,7 @@ class FileInfoContent(AbstractModel):
 
     @property
     def FileSize(self):
-        r"""
+        r"""<p>File size in bytes</p>
         :rtype: str
         """
         return self._FileSize
@@ -10456,7 +10830,7 @@ class FileInfoContent(AbstractModel):
 
     @property
     def FileUrl(self):
-        r"""
+        r"""<p>File URL</p>
         :rtype: str
         """
         return self._FileUrl
@@ -10467,7 +10841,7 @@ class FileInfoContent(AbstractModel):
 
     @property
     def DocId(self):
-        r"""
+        r"""<p>doc_id returned by the real-time document parsing API.</p>
         :rtype: str
         """
         return self._DocId
@@ -10478,7 +10852,7 @@ class FileInfoContent(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""
+        r"""<p>File creation time</p>
         :rtype: str
         """
         return self._CreateTime
@@ -10486,6 +10860,28 @@ class FileInfoContent(AbstractModel):
     @CreateTime.setter
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
+
+    @property
+    def LocalPath(self):
+        r"""<p>Local path of the file in the sandbox</p>
+        :rtype: str
+        """
+        return self._LocalPath
+
+    @LocalPath.setter
+    def LocalPath(self, LocalPath):
+        self._LocalPath = LocalPath
+
+    @property
+    def AuditStatus(self):
+        r"""<p>File moderation status</p><p>Enumeration values:</p><ul><li>1: under review</li><li>2: pass review</li><li>3: fail review</li></ul>
+        :rtype: int
+        """
+        return self._AuditStatus
+
+    @AuditStatus.setter
+    def AuditStatus(self, AuditStatus):
+        self._AuditStatus = AuditStatus
 
 
     def _deserialize(self, params):
@@ -10496,6 +10892,8 @@ class FileInfoContent(AbstractModel):
         self._FileUrl = params.get("FileUrl")
         self._DocId = params.get("DocId")
         self._CreateTime = params.get("CreateTime")
+        self._LocalPath = params.get("LocalPath")
+        self._AuditStatus = params.get("AuditStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10507,15 +10905,20 @@ class FileInfoContent(AbstractModel):
 
 
 class FilterItem(AbstractModel):
-    r"""
+    r"""Filter criteria.
 
     """
 
     def __init__(self):
         r"""
-        :param _FilterKey: 
+        :param _FilterKey: Filter the content.
+For example, you can use "AuditStatus" to filter by review status.
         :type FilterKey: str
-        :param _FilterValue: 
+        :param _FilterValue: Filtering criteria.
+For example, for the filter content "AuditStatus", use the following filtering conditions:
+"ContentFailed": "Content review failed"
+"PictureFailed": "Image review failed",
+"ContentAndPictureFailed": "Image and content review failed",
         :type FilterValue: list of str
         """
         self._FilterKey = None
@@ -10523,7 +10926,8 @@ class FilterItem(AbstractModel):
 
     @property
     def FilterKey(self):
-        r"""
+        r"""Filter the content.
+For example, you can use "AuditStatus" to filter by review status.
         :rtype: str
         """
         return self._FilterKey
@@ -10534,7 +10938,11 @@ class FilterItem(AbstractModel):
 
     @property
     def FilterValue(self):
-        r"""
+        r"""Filtering criteria.
+For example, for the filter content "AuditStatus", use the following filtering conditions:
+"ContentFailed": "Content review failed"
+"PictureFailed": "Image review failed",
+"ContentAndPictureFailed": "Image and content review failed",
         :rtype: list of str
         """
         return self._FilterValue
@@ -12723,15 +13131,15 @@ class ImageInfoContent(AbstractModel):
 
 
 class IntentAchievement(AbstractModel):
-    r"""
+    r"""Method to attain the intent
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: 
+        :param _Name: Intent attainment method. `qa`: QA reply, `doc`: document reply, `workflow`: workflow reply, `llm`: large model reply.
         :type Name: str
-        :param _Desc: 
+        :param _Desc: Description of the method to attain the intent
         :type Desc: str
         """
         self._Name = None
@@ -12739,7 +13147,7 @@ class IntentAchievement(AbstractModel):
 
     @property
     def Name(self):
-        r"""
+        r"""Intent attainment method. `qa`: QA reply, `doc`: document reply, `workflow`: workflow reply, `llm`: large model reply.
         :rtype: str
         """
         return self._Name
@@ -12750,7 +13158,7 @@ class IntentAchievement(AbstractModel):
 
     @property
     def Desc(self):
-        r"""
+        r"""Description of the method to attain the intent
         :rtype: str
         """
         return self._Desc
@@ -21658,19 +22066,19 @@ class QAQuery(AbstractModel):
 
 
 class QaReference(AbstractModel):
-    r"""
+    r"""Reference information of the Q&A pair
 
     """
 
     def __init__(self):
         r"""
-        :param _QaBizId: 
-        :type QaBizId: int
-        :param _ReferBizId: 
-        :type ReferBizId: int
-        :param _KnowledgeBizId: 
-        :type KnowledgeBizId: int
-        :param _KnowledgeName: 
+        :param _QaBizId: <p>QA business ID</p>
+        :type QaBizId: str
+        :param _ReferBizId: <p>Document fragment reference ID</p>
+        :type ReferBizId: str
+        :param _KnowledgeBizId: <p>Business ID of the knowledge base where the QA resides</p>
+        :type KnowledgeBizId: str
+        :param _KnowledgeName: <p>Name of the knowledge base where the QA resides</p>
         :type KnowledgeName: str
         """
         self._QaBizId = None
@@ -21680,8 +22088,8 @@ class QaReference(AbstractModel):
 
     @property
     def QaBizId(self):
-        r"""
-        :rtype: int
+        r"""<p>QA business ID</p>
+        :rtype: str
         """
         return self._QaBizId
 
@@ -21691,8 +22099,8 @@ class QaReference(AbstractModel):
 
     @property
     def ReferBizId(self):
-        r"""
-        :rtype: int
+        r"""<p>Document fragment reference ID</p>
+        :rtype: str
         """
         return self._ReferBizId
 
@@ -21702,8 +22110,8 @@ class QaReference(AbstractModel):
 
     @property
     def KnowledgeBizId(self):
-        r"""
-        :rtype: int
+        r"""<p>Business ID of the knowledge base where the QA resides</p>
+        :rtype: str
         """
         return self._KnowledgeBizId
 
@@ -21713,7 +22121,7 @@ class QaReference(AbstractModel):
 
     @property
     def KnowledgeName(self):
-        r"""
+        r"""<p>Name of the knowledge base where the QA resides</p>
         :rtype: str
         """
         return self._KnowledgeName
@@ -21739,15 +22147,15 @@ class QaReference(AbstractModel):
 
 
 class QuestionOption(AbstractModel):
-    r"""
+    r"""Optional issue
 
     """
 
     def __init__(self):
         r"""
-        :param _Label: 
+        :param _Label: <p>Tag of the option</p>
         :type Label: str
-        :param _Description: 
+        :param _Description: <p>Description of the option.</p>
         :type Description: str
         """
         self._Label = None
@@ -21755,7 +22163,7 @@ class QuestionOption(AbstractModel):
 
     @property
     def Label(self):
-        r"""
+        r"""<p>Tag of the option</p>
         :rtype: str
         """
         return self._Label
@@ -21766,7 +22174,7 @@ class QuestionOption(AbstractModel):
 
     @property
     def Description(self):
-        r"""
+        r"""<p>Description of the option.</p>
         :rtype: str
         """
         return self._Description
@@ -21790,17 +22198,17 @@ class QuestionOption(AbstractModel):
 
 
 class Questionnaire(AbstractModel):
-    r"""
+    r"""Questionnaire information
 
     """
 
     def __init__(self):
         r"""
-        :param _Title: 
+        :param _Title: <p>Questionnaire title</p>
         :type Title: str
-        :param _Questions: 
+        :param _Questions: <p>Question list of the questionnaire</p>
         :type Questions: list of QuestionnaireQuestion
-        :param _Answers: 
+        :param _Answers: <p>List of answers to the questionnaire</p>
         :type Answers: list of QuestionnaireQuestionAnswer
         """
         self._Title = None
@@ -21809,7 +22217,7 @@ class Questionnaire(AbstractModel):
 
     @property
     def Title(self):
-        r"""
+        r"""<p>Questionnaire title</p>
         :rtype: str
         """
         return self._Title
@@ -21820,7 +22228,7 @@ class Questionnaire(AbstractModel):
 
     @property
     def Questions(self):
-        r"""
+        r"""<p>Question list of the questionnaire</p>
         :rtype: list of QuestionnaireQuestion
         """
         return self._Questions
@@ -21831,7 +22239,7 @@ class Questionnaire(AbstractModel):
 
     @property
     def Answers(self):
-        r"""
+        r"""<p>List of answers to the questionnaire</p>
         :rtype: list of QuestionnaireQuestionAnswer
         """
         return self._Answers
@@ -21866,21 +22274,21 @@ class Questionnaire(AbstractModel):
 
 
 class QuestionnaireQuestion(AbstractModel):
-    r"""
+    r"""Question of the questionnaire
 
     """
 
     def __init__(self):
         r"""
-        :param _Index: 
+        :param _Index: <p>Serial number of the issue</p>
         :type Index: int
-        :param _Question: 
+        :param _Question: <p>Content of the issue</p>
         :type Question: str
-        :param _Type: 
+        :param _Type: <p>Problem type</p>
         :type Type: int
-        :param _Required: 
+        :param _Required: <p>Required or optional</p>
         :type Required: bool
-        :param _Options: 
+        :param _Options: <p>Options for the question</p>
         :type Options: list of QuestionOption
         """
         self._Index = None
@@ -21891,7 +22299,7 @@ class QuestionnaireQuestion(AbstractModel):
 
     @property
     def Index(self):
-        r"""
+        r"""<p>Serial number of the issue</p>
         :rtype: int
         """
         return self._Index
@@ -21902,7 +22310,7 @@ class QuestionnaireQuestion(AbstractModel):
 
     @property
     def Question(self):
-        r"""
+        r"""<p>Content of the issue</p>
         :rtype: str
         """
         return self._Question
@@ -21913,7 +22321,7 @@ class QuestionnaireQuestion(AbstractModel):
 
     @property
     def Type(self):
-        r"""
+        r"""<p>Problem type</p>
         :rtype: int
         """
         return self._Type
@@ -21924,7 +22332,7 @@ class QuestionnaireQuestion(AbstractModel):
 
     @property
     def Required(self):
-        r"""
+        r"""<p>Required or optional</p>
         :rtype: bool
         """
         return self._Required
@@ -21935,7 +22343,7 @@ class QuestionnaireQuestion(AbstractModel):
 
     @property
     def Options(self):
-        r"""
+        r"""<p>Options for the question</p>
         :rtype: list of QuestionOption
         """
         return self._Options
@@ -21967,15 +22375,15 @@ class QuestionnaireQuestion(AbstractModel):
 
 
 class QuestionnaireQuestionAnswer(AbstractModel):
-    r"""
+    r"""Answer to the questionnaire question
 
     """
 
     def __init__(self):
         r"""
-        :param _Question: 
+        :param _Question: <p>Issue.</p>
         :type Question: str
-        :param _SelectedLabels: 
+        :param _SelectedLabels: <p>Selected answer tag.</p>
         :type SelectedLabels: list of str
         """
         self._Question = None
@@ -21983,7 +22391,7 @@ class QuestionnaireQuestionAnswer(AbstractModel):
 
     @property
     def Question(self):
-        r"""
+        r"""<p>Issue.</p>
         :rtype: str
         """
         return self._Question
@@ -21994,7 +22402,7 @@ class QuestionnaireQuestionAnswer(AbstractModel):
 
     @property
     def SelectedLabels(self):
-        r"""
+        r"""<p>Selected answer tag.</p>
         :rtype: list of str
         """
         return self._SelectedLabels
@@ -23538,17 +23946,17 @@ class RunNodeInfo(AbstractModel):
 
 
 class SandboxContent(AbstractModel):
-    r"""
+    r"""Sandbox information content
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: 
+        :param _Url: URL address of the sandbox
         :type Url: str
-        :param _DisplayUrl: 
+        :param _DisplayUrl: URL address for opening the sandbox through a browser
         :type DisplayUrl: str
-        :param _Content: 
+        :param _Content: Sandbox output content
         :type Content: str
         """
         self._Url = None
@@ -23557,7 +23965,7 @@ class SandboxContent(AbstractModel):
 
     @property
     def Url(self):
-        r"""
+        r"""URL address of the sandbox
         :rtype: str
         """
         return self._Url
@@ -23568,7 +23976,7 @@ class SandboxContent(AbstractModel):
 
     @property
     def DisplayUrl(self):
-        r"""
+        r"""URL address for opening the sandbox through a browser
         :rtype: str
         """
         return self._DisplayUrl
@@ -23579,7 +23987,7 @@ class SandboxContent(AbstractModel):
 
     @property
     def Content(self):
-        r"""
+        r"""Sandbox output content
         :rtype: str
         """
         return self._Content
@@ -25440,20 +25848,20 @@ class UnsatisfiedReply(AbstractModel):
 
 
 class UpdatePeriodInfo(AbstractModel):
-    r"""
+    r"""Update time policy
 
     """
 
     def __init__(self):
         r"""
-        :param _UpdatePeriodH: 
+        :param _UpdatePeriodH: Document update frequency type: 0 does not update. -H 1-hour granularity. Currently only support 24 (1 day), 72 (3 days), and 168 (7 days). Only valid for the Tencent document type when source=2.
         :type UpdatePeriodH: int
         """
         self._UpdatePeriodH = None
 
     @property
     def UpdatePeriodH(self):
-        r"""
+        r"""Document update frequency type: 0 does not update. -H 1-hour granularity. Currently only support 24 (1 day), 72 (3 days), and 168 (7 days). Only valid for the Tencent document type when source=2.
         :rtype: int
         """
         return self._UpdatePeriodH
@@ -25930,17 +26338,17 @@ class VerifyQAResponse(AbstractModel):
 
 
 class VoiceConfig(AbstractModel):
-    r"""
+    r"""Timbre parameters
 
     """
 
     def __init__(self):
         r"""
-        :param _VoiceType: 
+        :param _VoiceType: Public cloud timbre id
         :type VoiceType: int
-        :param _TimbreKey: 
+        :param _TimbreKey: Timbre key
         :type TimbreKey: str
-        :param _VoiceName: 
+        :param _VoiceName: Timbre name.
         :type VoiceName: str
         """
         self._VoiceType = None
@@ -25949,7 +26357,7 @@ class VoiceConfig(AbstractModel):
 
     @property
     def VoiceType(self):
-        r"""
+        r"""Public cloud timbre id
         :rtype: int
         """
         return self._VoiceType
@@ -25960,7 +26368,7 @@ class VoiceConfig(AbstractModel):
 
     @property
     def TimbreKey(self):
-        r"""
+        r"""Timbre key
         :rtype: str
         """
         return self._TimbreKey
@@ -25971,7 +26379,7 @@ class VoiceConfig(AbstractModel):
 
     @property
     def VoiceName(self):
-        r"""
+        r"""Timbre name.
         :rtype: str
         """
         return self._VoiceName
@@ -25996,20 +26404,20 @@ class VoiceConfig(AbstractModel):
 
 
 class WebSearchContent(AbstractModel):
-    r"""
+    r"""Web page search content
 
     """
 
     def __init__(self):
         r"""
-        :param _Content: 
+        :param _Content: Web search result, a string in json format
         :type Content: str
         """
         self._Content = None
 
     @property
     def Content(self):
-        r"""
+        r"""Web search result, a string in json format
         :rtype: str
         """
         return self._Content
@@ -26032,20 +26440,20 @@ class WebSearchContent(AbstractModel):
 
 
 class WebSearchReference(AbstractModel):
-    r"""
+    r"""Online retrieval content reference details
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: 
+        :param _Url: Webpage URL
         :type Url: str
         """
         self._Url = None
 
     @property
     def Url(self):
-        r"""
+        r"""Webpage URL
         :rtype: str
         """
         return self._Url
@@ -26068,25 +26476,26 @@ class WebSearchReference(AbstractModel):
 
 
 class Widget(AbstractModel):
-    r"""
+    r"""Widget structure of the dialogue side
 
     """
 
     def __init__(self):
         r"""
-        :param _WidgetId: 
+        :param _WidgetId: Widget configuration ID
+
         :type WidgetId: str
-        :param _WidgetRunId: 
+        :param _WidgetRunId: Widget instance ID
         :type WidgetRunId: str
-        :param _View: 
+        :param _View: Widget display data
         :type View: str
-        :param _State: 
+        :param _State: Widget status information
         :type State: str
-        :param _Position: 
+        :param _Position: Widget position
         :type Position: int
-        :param _EncodedWidget: 
+        :param _EncodedWidget: Base64-encoded Widget information.
         :type EncodedWidget: str
-        :param _Payload: 
+        :param _Payload: payload of the user's last submission
         :type Payload: str
         """
         self._WidgetId = None
@@ -26099,7 +26508,8 @@ class Widget(AbstractModel):
 
     @property
     def WidgetId(self):
-        r"""
+        r"""Widget configuration ID
+
         :rtype: str
         """
         return self._WidgetId
@@ -26110,7 +26520,7 @@ class Widget(AbstractModel):
 
     @property
     def WidgetRunId(self):
-        r"""
+        r"""Widget instance ID
         :rtype: str
         """
         return self._WidgetRunId
@@ -26121,7 +26531,7 @@ class Widget(AbstractModel):
 
     @property
     def View(self):
-        r"""
+        r"""Widget display data
         :rtype: str
         """
         return self._View
@@ -26132,7 +26542,7 @@ class Widget(AbstractModel):
 
     @property
     def State(self):
-        r"""
+        r"""Widget status information
         :rtype: str
         """
         return self._State
@@ -26143,7 +26553,7 @@ class Widget(AbstractModel):
 
     @property
     def Position(self):
-        r"""
+        r"""Widget position
         :rtype: int
         """
         return self._Position
@@ -26154,7 +26564,7 @@ class Widget(AbstractModel):
 
     @property
     def EncodedWidget(self):
-        r"""
+        r"""Base64-encoded Widget information.
         :rtype: str
         """
         return self._EncodedWidget
@@ -26165,7 +26575,7 @@ class Widget(AbstractModel):
 
     @property
     def Payload(self):
-        r"""
+        r"""payload of the user's last submission
         :rtype: str
         """
         return self._Payload
@@ -26194,19 +26604,19 @@ class Widget(AbstractModel):
 
 
 class WidgetAction(AbstractModel):
-    r"""
+    r"""Widget action submission structure for the dialogue side
 
     """
 
     def __init__(self):
         r"""
-        :param _WidgetId: 
+        :param _WidgetId: Widget configuration ID
         :type WidgetId: str
-        :param _WidgetRunId: 
+        :param _WidgetRunId: Widget instance ID
         :type WidgetRunId: str
-        :param _ActionType: 
+        :param _ActionType: Widget action
         :type ActionType: str
-        :param _Payload: 
+        :param _Payload: Data submitted by the Widget action
         :type Payload: str
         """
         self._WidgetId = None
@@ -26216,7 +26626,7 @@ class WidgetAction(AbstractModel):
 
     @property
     def WidgetId(self):
-        r"""
+        r"""Widget configuration ID
         :rtype: str
         """
         return self._WidgetId
@@ -26227,7 +26637,7 @@ class WidgetAction(AbstractModel):
 
     @property
     def WidgetRunId(self):
-        r"""
+        r"""Widget instance ID
         :rtype: str
         """
         return self._WidgetRunId
@@ -26238,7 +26648,7 @@ class WidgetAction(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""
+        r"""Widget action
         :rtype: str
         """
         return self._ActionType
@@ -26249,7 +26659,7 @@ class WidgetAction(AbstractModel):
 
     @property
     def Payload(self):
-        r"""
+        r"""Data submitted by the Widget action
         :rtype: str
         """
         return self._Payload
@@ -26406,27 +26816,27 @@ class WorkFlowSummary(AbstractModel):
 
 
 class WorkflowInfo(AbstractModel):
-    r"""
+    r"""Workflow information.
 
     """
 
     def __init__(self):
         r"""
-        :param _WorkflowId: 
+        :param _WorkflowId: <p>Workflow ID</p>
         :type WorkflowId: str
-        :param _WorkflowName: 
+        :param _WorkflowName: <p>Workflow name.</p>
         :type WorkflowName: str
-        :param _WorkflowRunId: 
+        :param _WorkflowRunId: <p>Workflow run ID</p>
         :type WorkflowRunId: str
-        :param _OptionCards: 
+        :param _OptionCards: <p>Tab</p>
         :type OptionCards: list of str
-        :param _Outputs: 
+        :param _Outputs: <p>Output result of multiple bubbles</p>
         :type Outputs: list of str
-        :param _WorkflowReleaseTime: 
+        :param _WorkflowReleaseTime: <p>Workflow release time, unix timestamp.</p>
         :type WorkflowReleaseTime: str
-        :param _Contents: 
+        :param _Contents: <p>Workflow multi-bubble output</p>
         :type Contents: list of Content
-        :param _OptionMode: 
+        :param _OptionMode: <p>Flag indicating whether the tab is single-selection or dual-selection</p><p>Enumeration values:</p><ul><li>0: single selection</li><li>1: multiple selection</li></ul>
         :type OptionMode: int
         """
         self._WorkflowId = None
@@ -26440,7 +26850,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def WorkflowId(self):
-        r"""
+        r"""<p>Workflow ID</p>
         :rtype: str
         """
         return self._WorkflowId
@@ -26451,7 +26861,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def WorkflowName(self):
-        r"""
+        r"""<p>Workflow name.</p>
         :rtype: str
         """
         return self._WorkflowName
@@ -26462,7 +26872,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def WorkflowRunId(self):
-        r"""
+        r"""<p>Workflow run ID</p>
         :rtype: str
         """
         return self._WorkflowRunId
@@ -26473,7 +26883,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def OptionCards(self):
-        r"""
+        r"""<p>Tab</p>
         :rtype: list of str
         """
         return self._OptionCards
@@ -26484,7 +26894,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def Outputs(self):
-        r"""
+        r"""<p>Output result of multiple bubbles</p>
         :rtype: list of str
         """
         return self._Outputs
@@ -26495,7 +26905,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def WorkflowReleaseTime(self):
-        r"""
+        r"""<p>Workflow release time, unix timestamp.</p>
         :rtype: str
         """
         return self._WorkflowReleaseTime
@@ -26506,7 +26916,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def Contents(self):
-        r"""
+        r"""<p>Workflow multi-bubble output</p>
         :rtype: list of Content
         """
         return self._Contents
@@ -26517,7 +26927,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def OptionMode(self):
-        r"""
+        r"""<p>Flag indicating whether the tab is single-selection or dual-selection</p><p>Enumeration values:</p><ul><li>0: single selection</li><li>1: multiple selection</li></ul>
         :rtype: int
         """
         return self._OptionMode

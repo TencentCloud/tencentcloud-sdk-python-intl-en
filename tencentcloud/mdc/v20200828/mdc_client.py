@@ -95,6 +95,29 @@ class MdcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateStreamLinkSecurityGroup(self, request):
+        r"""Create security group.
+
+        :param request: Request instance for CreateStreamLinkSecurityGroup.
+        :type request: :class:`tencentcloud.mdc.v20200828.models.CreateStreamLinkSecurityGroupRequest`
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateStreamLinkSecurityGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStreamLinkSecurityGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateStreamLinkSecurityGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteStreamLinkFlow(self, request):
         r"""This API is used to delete a StreamLink flow.
 

@@ -19,47 +19,35 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AddressInfo(AbstractModel):
-    r"""Overseas document recognition address information.
+    r"""Overseas document recognition address information
 
     """
 
     def __init__(self):
         r"""
-        :param _Country: Country.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Country: <p>Country</p>
         :type Country: str
-        :param _PostalCode: Postal code.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PostalCode: <p>Postal code</p>
         :type PostalCode: str
-        :param _Subdivision: Sub-region or state/province.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Subdivision: <p>Sub-region</p>
         :type Subdivision: str
-        :param _District: District or county.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _District: <p>District</p>
         :type District: str
-        :param _City: City name.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _City: <p>City</p>
         :type City: str
-        :param _Subdistrict: Subdistrict or township.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Subdistrict: <p>Sub-district office</p>
         :type Subdistrict: str
-        :param _FormattedAddress: Formatted complete address.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FormattedAddress: <p>Complete address</p>
         :type FormattedAddress: str
-        :param _LineOne: First line of the address bar.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _LineOne: <p>First line of the address bar</p>
         :type LineOne: str
-        :param _LineTwo: Second line of the address bar.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _LineTwo: <p>Second line of the address bar</p>
         :type LineTwo: str
-        :param _LineThree: Specifies the third line of the address bar.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _LineThree: <p>Third line of the address bar</p>
         :type LineThree: str
-        :param _LineFour: Specifies the fourth line of the address bar.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _LineFour: <p>Fourth line of the address bar</p>
         :type LineFour: str
-        :param _LineFive: Specifies the fifth line of the address bar.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _LineFive: <p>Fifth line of the address bar</p>
         :type LineFive: str
         """
         self._Country = None
@@ -77,8 +65,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Country(self):
-        r"""Country.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Country</p>
         :rtype: str
         """
         return self._Country
@@ -89,8 +76,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PostalCode(self):
-        r"""Postal code.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Postal code</p>
         :rtype: str
         """
         return self._PostalCode
@@ -101,8 +87,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Subdivision(self):
-        r"""Sub-region or state/province.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Sub-region</p>
         :rtype: str
         """
         return self._Subdivision
@@ -113,8 +98,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def District(self):
-        r"""District or county.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>District</p>
         :rtype: str
         """
         return self._District
@@ -125,8 +109,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def City(self):
-        r"""City name.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>City</p>
         :rtype: str
         """
         return self._City
@@ -137,8 +120,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Subdistrict(self):
-        r"""Subdistrict or township.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Sub-district office</p>
         :rtype: str
         """
         return self._Subdistrict
@@ -149,8 +131,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FormattedAddress(self):
-        r"""Formatted complete address.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Complete address</p>
         :rtype: str
         """
         return self._FormattedAddress
@@ -161,8 +142,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LineOne(self):
-        r"""First line of the address bar.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>First line of the address bar</p>
         :rtype: str
         """
         return self._LineOne
@@ -173,8 +153,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LineTwo(self):
-        r"""Second line of the address bar.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Second line of the address bar</p>
         :rtype: str
         """
         return self._LineTwo
@@ -185,8 +164,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LineThree(self):
-        r"""Specifies the third line of the address bar.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Third line of the address bar</p>
         :rtype: str
         """
         return self._LineThree
@@ -197,8 +175,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LineFour(self):
-        r"""Specifies the fourth line of the address bar.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Fourth line of the address bar</p>
         :rtype: str
         """
         return self._LineFour
@@ -209,8 +186,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LineFive(self):
-        r"""Specifies the fifth line of the address bar.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Fifth line of the address bar</p>
         :rtype: str
         """
         return self._LineFive
@@ -543,6 +519,263 @@ class ApplyCardVerificationExternalResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._CardVerificationToken = params.get("CardVerificationToken")
+        self._RequestId = params.get("RequestId")
+
+
+class ApplyOcrTokenRequest(AbstractModel):
+    r"""ApplyOcrToken request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Nationality: Country code. ISO 3166-1 Alpha-3 country/region code standard.
+        :type Nationality: str
+        :param _CardType: Supported countries/regions and document types:
+
+Mainland China: ID_CARD, PERMIT
+Hong Kong: ID_CARD
+Macao: ID_CARD
+Hong Kong/Macao/Taiwan: MAINLAND_PERMIT, HMT_RESIDENT_PERMIT
+Thailand: ID_CARD, THA_PINK_CARD
+Indonesia: ID_CARD
+Malaysia: ID_CARD
+Singapore: ID_CARD
+Philippines: PHL_UMID, PHL_VOTE_ID, PHL_TIN_ID, PHL_SSS_ID, DRIVING_LICENSE
+Any country/region: PASSPORT
+        :type CardType: str
+        :param _EncryptedConfig: SDK-generated device-related encryption configuration information.
+        :type EncryptedConfig: str
+        :param _ReturnHeadImage: <p>Whether to extract the portrait image from the document. false by default</p><p>Default value: false</p>
+        :type ReturnHeadImage: bool
+        :param _RetryLimit: <p>Maximum number of token retries</p><p>Value range: [1, 5]</p><p>Default value: 3</p>
+        :type RetryLimit: int
+        :param _OcrModeType: <p>SDK capture mode</p><p>Enumeration values:</p><ul><li>OCR_DETECT_MANUAL: Photo recognition mode. The system performs recognition after you tap to take a photo.</li><li>OCR_DETECT_AUTO_MANUAL: Automatic recognition mode. The system recognizes automatically, and you can switch to photo recognition after a recognition timeout.</li><li>OCR_DETECT_AUTO: Pure automatic recognition mode. The system recognizes automatically, and you cannot switch to photo recognition after a recognition timeout.</li><li>OCR_DETECT_AUTO_MULTI: Pure automatic recognition mode (multiple images). The system turns on the flash and automatically collects multiple document photos.</li></ul><p>Default value: OCR_DETECT_AUTO_MANUAL</p>
+        :type OcrModeType: str
+        :param _AllowUploadPhoto: <p>Whether to allow uploading gallery images for recognition.</p><p>Default value: true</p>
+        :type AllowUploadPhoto: bool
+        :param _CropIdCard: <p>Whether to enable ID card photo cropping (remove extra edges outside the document and automatically correct the shooting angle). It is false by default and only applicable to Mainland ID cards.</p><p>Default value: false</p>
+        :type CropIdCard: bool
+        :param _SdkVersion: <p>SDK-supported recognition version mode</p><p>Enumeration values:</p><ul><li>BASIC: Basic version</li><li>ENHANCED: Enhanced version</li></ul><p>Default value: BASIC</p>
+        :type SdkVersion: str
+        :param _OcrAutoDetectTimeout: OCR automatic capture mode timeout (ms).
+Value range: [5000, 180000].
+Default value: 20000.
+If the value is below 5000, it is set to 5000; if above 180000, it is set to 180000.
+        :type OcrAutoDetectTimeout: int
+        """
+        self._Nationality = None
+        self._CardType = None
+        self._EncryptedConfig = None
+        self._ReturnHeadImage = None
+        self._RetryLimit = None
+        self._OcrModeType = None
+        self._AllowUploadPhoto = None
+        self._CropIdCard = None
+        self._SdkVersion = None
+        self._OcrAutoDetectTimeout = None
+
+    @property
+    def Nationality(self):
+        r"""Country code. ISO 3166-1 Alpha-3 country/region code standard.
+        :rtype: str
+        """
+        return self._Nationality
+
+    @Nationality.setter
+    def Nationality(self, Nationality):
+        self._Nationality = Nationality
+
+    @property
+    def CardType(self):
+        r"""Supported countries/regions and document types:
+
+Mainland China: ID_CARD, PERMIT
+Hong Kong: ID_CARD
+Macao: ID_CARD
+Hong Kong/Macao/Taiwan: MAINLAND_PERMIT, HMT_RESIDENT_PERMIT
+Thailand: ID_CARD, THA_PINK_CARD
+Indonesia: ID_CARD
+Malaysia: ID_CARD
+Singapore: ID_CARD
+Philippines: PHL_UMID, PHL_VOTE_ID, PHL_TIN_ID, PHL_SSS_ID, DRIVING_LICENSE
+Any country/region: PASSPORT
+        :rtype: str
+        """
+        return self._CardType
+
+    @CardType.setter
+    def CardType(self, CardType):
+        self._CardType = CardType
+
+    @property
+    def EncryptedConfig(self):
+        r"""SDK-generated device-related encryption configuration information.
+        :rtype: str
+        """
+        return self._EncryptedConfig
+
+    @EncryptedConfig.setter
+    def EncryptedConfig(self, EncryptedConfig):
+        self._EncryptedConfig = EncryptedConfig
+
+    @property
+    def ReturnHeadImage(self):
+        r"""<p>Whether to extract the portrait image from the document. false by default</p><p>Default value: false</p>
+        :rtype: bool
+        """
+        return self._ReturnHeadImage
+
+    @ReturnHeadImage.setter
+    def ReturnHeadImage(self, ReturnHeadImage):
+        self._ReturnHeadImage = ReturnHeadImage
+
+    @property
+    def RetryLimit(self):
+        r"""<p>Maximum number of token retries</p><p>Value range: [1, 5]</p><p>Default value: 3</p>
+        :rtype: int
+        """
+        return self._RetryLimit
+
+    @RetryLimit.setter
+    def RetryLimit(self, RetryLimit):
+        self._RetryLimit = RetryLimit
+
+    @property
+    def OcrModeType(self):
+        r"""<p>SDK capture mode</p><p>Enumeration values:</p><ul><li>OCR_DETECT_MANUAL: Photo recognition mode. The system performs recognition after you tap to take a photo.</li><li>OCR_DETECT_AUTO_MANUAL: Automatic recognition mode. The system recognizes automatically, and you can switch to photo recognition after a recognition timeout.</li><li>OCR_DETECT_AUTO: Pure automatic recognition mode. The system recognizes automatically, and you cannot switch to photo recognition after a recognition timeout.</li><li>OCR_DETECT_AUTO_MULTI: Pure automatic recognition mode (multiple images). The system turns on the flash and automatically collects multiple document photos.</li></ul><p>Default value: OCR_DETECT_AUTO_MANUAL</p>
+        :rtype: str
+        """
+        return self._OcrModeType
+
+    @OcrModeType.setter
+    def OcrModeType(self, OcrModeType):
+        self._OcrModeType = OcrModeType
+
+    @property
+    def AllowUploadPhoto(self):
+        r"""<p>Whether to allow uploading gallery images for recognition.</p><p>Default value: true</p>
+        :rtype: bool
+        """
+        return self._AllowUploadPhoto
+
+    @AllowUploadPhoto.setter
+    def AllowUploadPhoto(self, AllowUploadPhoto):
+        self._AllowUploadPhoto = AllowUploadPhoto
+
+    @property
+    def CropIdCard(self):
+        r"""<p>Whether to enable ID card photo cropping (remove extra edges outside the document and automatically correct the shooting angle). It is false by default and only applicable to Mainland ID cards.</p><p>Default value: false</p>
+        :rtype: bool
+        """
+        return self._CropIdCard
+
+    @CropIdCard.setter
+    def CropIdCard(self, CropIdCard):
+        self._CropIdCard = CropIdCard
+
+    @property
+    def SdkVersion(self):
+        r"""<p>SDK-supported recognition version mode</p><p>Enumeration values:</p><ul><li>BASIC: Basic version</li><li>ENHANCED: Enhanced version</li></ul><p>Default value: BASIC</p>
+        :rtype: str
+        """
+        return self._SdkVersion
+
+    @SdkVersion.setter
+    def SdkVersion(self, SdkVersion):
+        self._SdkVersion = SdkVersion
+
+    @property
+    def OcrAutoDetectTimeout(self):
+        r"""OCR automatic capture mode timeout (ms).
+Value range: [5000, 180000].
+Default value: 20000.
+If the value is below 5000, it is set to 5000; if above 180000, it is set to 180000.
+        :rtype: int
+        """
+        return self._OcrAutoDetectTimeout
+
+    @OcrAutoDetectTimeout.setter
+    def OcrAutoDetectTimeout(self, OcrAutoDetectTimeout):
+        self._OcrAutoDetectTimeout = OcrAutoDetectTimeout
+
+
+    def _deserialize(self, params):
+        self._Nationality = params.get("Nationality")
+        self._CardType = params.get("CardType")
+        self._EncryptedConfig = params.get("EncryptedConfig")
+        self._ReturnHeadImage = params.get("ReturnHeadImage")
+        self._RetryLimit = params.get("RetryLimit")
+        self._OcrModeType = params.get("OcrModeType")
+        self._AllowUploadPhoto = params.get("AllowUploadPhoto")
+        self._CropIdCard = params.get("CropIdCard")
+        self._SdkVersion = params.get("SdkVersion")
+        self._OcrAutoDetectTimeout = params.get("OcrAutoDetectTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyOcrTokenResponse(AbstractModel):
+    r"""ApplyOcrToken response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkToken: Token that identifies an SDK verification process. It is valid for 10 minutes. After the process completes, use this token to obtain the verification result information.
+        :type SdkToken: str
+        :param _EncryptedConfig: Encryption configuration generated on the server side.
+        :type EncryptedConfig: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._SdkToken = None
+        self._EncryptedConfig = None
+        self._RequestId = None
+
+    @property
+    def SdkToken(self):
+        r"""Token that identifies an SDK verification process. It is valid for 10 minutes. After the process completes, use this token to obtain the verification result information.
+        :rtype: str
+        """
+        return self._SdkToken
+
+    @SdkToken.setter
+    def SdkToken(self, SdkToken):
+        self._SdkToken = SdkToken
+
+    @property
+    def EncryptedConfig(self):
+        r"""Encryption configuration generated on the server side.
+        :rtype: str
+        """
+        return self._EncryptedConfig
+
+    @EncryptedConfig.setter
+    def EncryptedConfig(self, EncryptedConfig):
+        self._EncryptedConfig = EncryptedConfig
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SdkToken = params.get("SdkToken")
+        self._EncryptedConfig = params.get("EncryptedConfig")
         self._RequestId = params.get("RequestId")
 
 
@@ -2733,125 +2966,85 @@ class GeneralBasicOCRResponse(AbstractModel):
 
 
 class GeneralCard(AbstractModel):
-    r"""General card certificate information.
+    r"""General card certificate information
 
     """
 
     def __init__(self):
         r"""
-        :param _LicenseNumber: ID number.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _LicenseNumber: <p>ID number</p>
         :type LicenseNumber: str
-        :param _PersonalNumber: Personal number. 
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PersonalNumber: <p>Personal number, returned when the identity document type is passport</p>
         :type PersonalNumber: str
-        :param _FullName: Full name on the document.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FullName: <p>Name</p>
         :type FullName: str
-        :param _FullNameLocal: Full name in local language.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FullNameLocal: <p>Localized name</p>
         :type FullNameLocal: str
-        :param _FirstName: First name or given name.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FirstName: <p>Name</p>
         :type FirstName: str
-        :param _FirstNameLocal: First name in local language.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FirstNameLocal: <p>Localized name</p>
         :type FirstNameLocal: str
-        :param _MiddleName: Middle name.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MiddleName: <p>Middle name</p>
         :type MiddleName: str
-        :param _MiddleNameLocal: Middle name in local language.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MiddleNameLocal: <p>Localized middle name</p>
         :type MiddleNameLocal: str
-        :param _LastName: Last name or surname.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _LastName: <p>Last name</p>
         :type LastName: str
-        :param _LastNameLocal: Last name in local language.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _LastNameLocal: <p>Localized last name</p>
         :type LastNameLocal: str
-        :param _Sex: Gender on the document.
-- M: man.
-- F: woman.
-- X: other gender identity.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Sex: <p>Gender on the document</p><ul><li>M: man</li><li>F: woman</li><li>X: other gender identity</li></ul>
         :type Sex: str
-        :param _Birthday: Date of birth.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Birthday: <p>Date of birth</p>
         :type Birthday: str
-        :param _BirthPlace: Birth place.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _BirthPlace: <p>Birth place</p>
         :type BirthPlace: str
-        :param _IssuedDate: Issue date.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _IssuedDate: <p>Issue date, in YYYY-MM-DD format</p>
         :type IssuedDate: str
-        :param _IssuedAuthority: Issuing authority.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _IssuedAuthority: <p>Issuing authority</p>
         :type IssuedAuthority: str
-        :param _IssuedPlace: Place of issue.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _IssuedPlace: <p>Place where the specified file is issued</p>
         :type IssuedPlace: str
-        :param _IssuedCountry: Issuing country.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _IssuedCountry: <p>Issuing country</p>
         :type IssuedCountry: str
-        :param _IssuedCountryCode: Country code of issue, ISO Alpha-3 format.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _IssuedCountryCode: <p>Country code of the country that issued the file, ISO ALPHA-3 country/region code</p>
         :type IssuedCountryCode: str
-        :param _ExpirationDate: Expiry date.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ExpirationDate: <p>Expiration date, in YYYY-MM-DD format</p>
         :type ExpirationDate: str
-        :param _MRZLine1: First line of the Machine Readable Zone (MRZ).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MRZLine1: <p>Content of the single-line machine-readable zone (MRZ) on the document. The number represents the order in which the line appears in the MRZ</p>
         :type MRZLine1: str
-        :param _MRZLine2: Second line of the Machine Readable Zone (MRZ).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MRZLine2: <p>Content of the single-line machine-readable zone (MRZ) on the document. The number represents the line count in the order of the MRZ</p>
         :type MRZLine2: str
-        :param _Nationality: Document nationality, following ISO 3166 country coding specification.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Nationality: <p>Document nationality, returned following the ISO 3166 country coding specification</p>
         :type Nationality: str
-        :param _Address: Address information on the document.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Address: <p>Address information on the document</p>
         :type Address: :class:`tencentcloud.ocr.v20181119.models.AddressInfo`
-        :param _Religion: Religion (if displayed on the document).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Religion: <p>Religious belief</p>
         :type Religion: str
-        :param _Type: Type of document.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Type: <p>Document type</p>
         :type Type: str
-        :param _BloodType: Blood type.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _BloodType: <p>Blood type</p>
         :type BloodType: str
-        :param _Height: Height.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Height: <p>Height</p>
         :type Height: str
-        :param _Weight: Weight.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Weight: <p>Weight</p>
         :type Weight: str
-        :param _VehicleClass: Vehicle class authorized on the driver license (e.g., A, B, C).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _VehicleClass: <p>Driver's license vehicle type (for example, A/B/C)</p>
         :type VehicleClass: str
-        :param _Restrictions: Restrictions on the driver license.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Restrictions: <p>Driver's license restriction condition</p>
         :type Restrictions: str
-        :param _Endorsement: Endorsements or additional records on the driver license.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Endorsement: <p>Driver's license extra records</p>
         :type Endorsement: str
-        :param _Others: Supplementary fields (varies by document type).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Others: <p>Additional field</p>
         :type Others: str
-        :param _PassportCodeFirst: First line of the passport MRZ (Machine Readable Zone).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PassportCodeFirst: <p>MRZ line 1 of the passport</p>
         :type PassportCodeFirst: str
-        :param _PassportCodeSecond: Second line of the passport MRZ (Machine Readable Zone).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PassportCodeSecond: <p>MRZ line 2 of the passport</p>
         :type PassportCodeSecond: str
-        :param _DueDate: Expiry date.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DueDate: <p>Validity date, in YYYY-MM-DD format</p>
         :type DueDate: str
-        :param _Age: Age. 0 means no valid info.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Age: <p>Age. 0 means no valid info is obtained</p>
         :type Age: str
-        :param _RegistrationNumber: Registration number.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RegistrationNumber: <p>Registration number</p>
         :type RegistrationNumber: str
         """
         self._LicenseNumber = None
@@ -2894,8 +3087,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LicenseNumber(self):
-        r"""ID number.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>ID number</p>
         :rtype: str
         """
         return self._LicenseNumber
@@ -2906,8 +3098,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PersonalNumber(self):
-        r"""Personal number. 
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Personal number, returned when the identity document type is passport</p>
         :rtype: str
         """
         return self._PersonalNumber
@@ -2918,8 +3109,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FullName(self):
-        r"""Full name on the document.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Name</p>
         :rtype: str
         """
         return self._FullName
@@ -2930,8 +3120,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FullNameLocal(self):
-        r"""Full name in local language.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Localized name</p>
         :rtype: str
         """
         return self._FullNameLocal
@@ -2942,8 +3131,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FirstName(self):
-        r"""First name or given name.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Name</p>
         :rtype: str
         """
         return self._FirstName
@@ -2954,8 +3142,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FirstNameLocal(self):
-        r"""First name in local language.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Localized name</p>
         :rtype: str
         """
         return self._FirstNameLocal
@@ -2966,8 +3153,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MiddleName(self):
-        r"""Middle name.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Middle name</p>
         :rtype: str
         """
         return self._MiddleName
@@ -2978,8 +3164,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MiddleNameLocal(self):
-        r"""Middle name in local language.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Localized middle name</p>
         :rtype: str
         """
         return self._MiddleNameLocal
@@ -2990,8 +3175,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastName(self):
-        r"""Last name or surname.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Last name</p>
         :rtype: str
         """
         return self._LastName
@@ -3002,8 +3186,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastNameLocal(self):
-        r"""Last name in local language.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Localized last name</p>
         :rtype: str
         """
         return self._LastNameLocal
@@ -3014,11 +3197,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sex(self):
-        r"""Gender on the document.
-- M: man.
-- F: woman.
-- X: other gender identity.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Gender on the document</p><ul><li>M: man</li><li>F: woman</li><li>X: other gender identity</li></ul>
         :rtype: str
         """
         return self._Sex
@@ -3029,8 +3208,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Birthday(self):
-        r"""Date of birth.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Date of birth</p>
         :rtype: str
         """
         return self._Birthday
@@ -3041,8 +3219,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BirthPlace(self):
-        r"""Birth place.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Birth place</p>
         :rtype: str
         """
         return self._BirthPlace
@@ -3053,8 +3230,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssuedDate(self):
-        r"""Issue date.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Issue date, in YYYY-MM-DD format</p>
         :rtype: str
         """
         return self._IssuedDate
@@ -3065,8 +3241,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssuedAuthority(self):
-        r"""Issuing authority.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Issuing authority</p>
         :rtype: str
         """
         return self._IssuedAuthority
@@ -3077,8 +3252,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssuedPlace(self):
-        r"""Place of issue.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Place where the specified file is issued</p>
         :rtype: str
         """
         return self._IssuedPlace
@@ -3089,8 +3263,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssuedCountry(self):
-        r"""Issuing country.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Issuing country</p>
         :rtype: str
         """
         return self._IssuedCountry
@@ -3101,8 +3274,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssuedCountryCode(self):
-        r"""Country code of issue, ISO Alpha-3 format.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Country code of the country that issued the file, ISO ALPHA-3 country/region code</p>
         :rtype: str
         """
         return self._IssuedCountryCode
@@ -3113,8 +3285,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpirationDate(self):
-        r"""Expiry date.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Expiration date, in YYYY-MM-DD format</p>
         :rtype: str
         """
         return self._ExpirationDate
@@ -3125,8 +3296,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MRZLine1(self):
-        r"""First line of the Machine Readable Zone (MRZ).
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Content of the single-line machine-readable zone (MRZ) on the document. The number represents the order in which the line appears in the MRZ</p>
         :rtype: str
         """
         return self._MRZLine1
@@ -3137,8 +3307,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MRZLine2(self):
-        r"""Second line of the Machine Readable Zone (MRZ).
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Content of the single-line machine-readable zone (MRZ) on the document. The number represents the line count in the order of the MRZ</p>
         :rtype: str
         """
         return self._MRZLine2
@@ -3149,8 +3318,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Nationality(self):
-        r"""Document nationality, following ISO 3166 country coding specification.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Document nationality, returned following the ISO 3166 country coding specification</p>
         :rtype: str
         """
         return self._Nationality
@@ -3161,8 +3329,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Address(self):
-        r"""Address information on the document.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Address information on the document</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.AddressInfo`
         """
         return self._Address
@@ -3173,8 +3340,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Religion(self):
-        r"""Religion (if displayed on the document).
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Religious belief</p>
         :rtype: str
         """
         return self._Religion
@@ -3185,8 +3351,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        r"""Type of document.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Document type</p>
         :rtype: str
         """
         return self._Type
@@ -3197,8 +3362,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BloodType(self):
-        r"""Blood type.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Blood type</p>
         :rtype: str
         """
         return self._BloodType
@@ -3209,8 +3373,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Height(self):
-        r"""Height.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Height</p>
         :rtype: str
         """
         return self._Height
@@ -3221,8 +3384,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Weight(self):
-        r"""Weight.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Weight</p>
         :rtype: str
         """
         return self._Weight
@@ -3233,8 +3395,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VehicleClass(self):
-        r"""Vehicle class authorized on the driver license (e.g., A, B, C).
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Driver's license vehicle type (for example, A/B/C)</p>
         :rtype: str
         """
         return self._VehicleClass
@@ -3245,8 +3406,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Restrictions(self):
-        r"""Restrictions on the driver license.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Driver's license restriction condition</p>
         :rtype: str
         """
         return self._Restrictions
@@ -3257,8 +3417,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Endorsement(self):
-        r"""Endorsements or additional records on the driver license.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Driver's license extra records</p>
         :rtype: str
         """
         return self._Endorsement
@@ -3269,8 +3428,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Others(self):
-        r"""Supplementary fields (varies by document type).
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Additional field</p>
         :rtype: str
         """
         return self._Others
@@ -3283,8 +3441,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def PassportCodeFirst(self):
         warnings.warn("parameter `PassportCodeFirst` is deprecated", DeprecationWarning) 
 
-        r"""First line of the passport MRZ (Machine Readable Zone).
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>MRZ line 1 of the passport</p>
         :rtype: str
         """
         return self._PassportCodeFirst
@@ -3299,8 +3456,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def PassportCodeSecond(self):
         warnings.warn("parameter `PassportCodeSecond` is deprecated", DeprecationWarning) 
 
-        r"""Second line of the passport MRZ (Machine Readable Zone).
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>MRZ line 2 of the passport</p>
         :rtype: str
         """
         return self._PassportCodeSecond
@@ -3315,8 +3471,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def DueDate(self):
         warnings.warn("parameter `DueDate` is deprecated", DeprecationWarning) 
 
-        r"""Expiry date.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Validity date, in YYYY-MM-DD format</p>
         :rtype: str
         """
         return self._DueDate
@@ -3331,8 +3486,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Age(self):
         warnings.warn("parameter `Age` is deprecated", DeprecationWarning) 
 
-        r"""Age. 0 means no valid info.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Age. 0 means no valid info is obtained</p>
         :rtype: str
         """
         return self._Age
@@ -3347,8 +3501,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def RegistrationNumber(self):
         warnings.warn("parameter `RegistrationNumber` is deprecated", DeprecationWarning) 
 
-        r"""Registration number.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Registration number</p>
         :rtype: str
         """
         return self._RegistrationNumber
@@ -3618,6 +3771,260 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._BackCardInfo._deserialize(params.get("BackCardInfo"))
         self._CardVerificationToken = params.get("CardVerificationToken")
         self._HeadImageBase64 = params.get("HeadImageBase64")
+        self._RequestId = params.get("RequestId")
+
+
+class GetOcrVerificationResultRequest(AbstractModel):
+    r"""GetOcrVerificationResult request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkToken: Token that identifies an SDK verification process. It is valid for 10 minutes. After the process completes, use this token to obtain the verification result information.
+        :type SdkToken: str
+        """
+        self._SdkToken = None
+
+    @property
+    def SdkToken(self):
+        r"""Token that identifies an SDK verification process. It is valid for 10 minutes. After the process completes, use this token to obtain the verification result information.
+        :rtype: str
+        """
+        return self._SdkToken
+
+    @SdkToken.setter
+    def SdkToken(self, SdkToken):
+        self._SdkToken = SdkToken
+
+
+    def _deserialize(self, params):
+        self._SdkToken = params.get("SdkToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetOcrVerificationResultResponse(AbstractModel):
+    r"""GetOcrVerificationResult response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>Indicates the completion status of an SDK verification process.</p><p>Enumeration values: </p><ul><li>PROCESSING: PROCESSING.</li><li>COMPLETE: Completed.</li></ul>
+        :type Status: str
+        :param _CardImage: Front image of the card.
+        :type CardImage: str
+        :param _CardImageBack: Back image of the card.
+        :type CardImageBack: str
+        :param _HeadImage: Portrait image on the front of the card.
+        :type HeadImage: str
+        :param _ResultCode: Result code of this verification.
+        :type ResultCode: str
+        :param _DeviceInfoLevel: Indicates the risk level of the device from which the current request is sent. There are four levels:
+1 - Safe.
+2 - Low risk.
+3 - Medium risk.
+4 - High risk.
+Empty - The risk level is not obtained.
+Returned only in the enhanced version. Empty by default.
+        :type DeviceInfoLevel: str
+        :param _CardInfo: Card recognition result. The latest result is taken as the valid one.
+        :type CardInfo: :class:`tencentcloud.ocr.v20181119.models.GeneralCard`
+        :param _BackCardInfo: Recognition result on the back of the card.
+        :type BackCardInfo: :class:`tencentcloud.ocr.v20181119.models.GeneralCard`
+        :param _FakeDetectResult: Authenticity check. Valid values:
+0: Unable to determine (caused by blur, incompleteness, glare, or low brightness).
+1: Fake.
+2: Genuine.
+Only effective for Hong Kong, China ID card recognition. This field is gradually being phased out.
+        :type FakeDetectResult: int
+        :param _WarnCardInfos: Card Warning Information
+
+-9101 Alarm for covered certificate
+-9102 Alarm for photocopied certificate
+-9103 Alarm for photographed certificate
+-9104 Alarm for tamper certificate
+-9107 Alarm for reflective certificate
+-9108 Alarm for blurry certificate 
+-9109 This capability is not enabled. Please contact customer support to activate the alert service.
+        :type WarnCardInfos: list of int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Status = None
+        self._CardImage = None
+        self._CardImageBack = None
+        self._HeadImage = None
+        self._ResultCode = None
+        self._DeviceInfoLevel = None
+        self._CardInfo = None
+        self._BackCardInfo = None
+        self._FakeDetectResult = None
+        self._WarnCardInfos = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>Indicates the completion status of an SDK verification process.</p><p>Enumeration values: </p><ul><li>PROCESSING: PROCESSING.</li><li>COMPLETE: Completed.</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CardImage(self):
+        r"""Front image of the card.
+        :rtype: str
+        """
+        return self._CardImage
+
+    @CardImage.setter
+    def CardImage(self, CardImage):
+        self._CardImage = CardImage
+
+    @property
+    def CardImageBack(self):
+        r"""Back image of the card.
+        :rtype: str
+        """
+        return self._CardImageBack
+
+    @CardImageBack.setter
+    def CardImageBack(self, CardImageBack):
+        self._CardImageBack = CardImageBack
+
+    @property
+    def HeadImage(self):
+        r"""Portrait image on the front of the card.
+        :rtype: str
+        """
+        return self._HeadImage
+
+    @HeadImage.setter
+    def HeadImage(self, HeadImage):
+        self._HeadImage = HeadImage
+
+    @property
+    def ResultCode(self):
+        r"""Result code of this verification.
+        :rtype: str
+        """
+        return self._ResultCode
+
+    @ResultCode.setter
+    def ResultCode(self, ResultCode):
+        self._ResultCode = ResultCode
+
+    @property
+    def DeviceInfoLevel(self):
+        r"""Indicates the risk level of the device from which the current request is sent. There are four levels:
+1 - Safe.
+2 - Low risk.
+3 - Medium risk.
+4 - High risk.
+Empty - The risk level is not obtained.
+Returned only in the enhanced version. Empty by default.
+        :rtype: str
+        """
+        return self._DeviceInfoLevel
+
+    @DeviceInfoLevel.setter
+    def DeviceInfoLevel(self, DeviceInfoLevel):
+        self._DeviceInfoLevel = DeviceInfoLevel
+
+    @property
+    def CardInfo(self):
+        r"""Card recognition result. The latest result is taken as the valid one.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCard`
+        """
+        return self._CardInfo
+
+    @CardInfo.setter
+    def CardInfo(self, CardInfo):
+        self._CardInfo = CardInfo
+
+    @property
+    def BackCardInfo(self):
+        r"""Recognition result on the back of the card.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCard`
+        """
+        return self._BackCardInfo
+
+    @BackCardInfo.setter
+    def BackCardInfo(self, BackCardInfo):
+        self._BackCardInfo = BackCardInfo
+
+    @property
+    def FakeDetectResult(self):
+        r"""Authenticity check. Valid values:
+0: Unable to determine (caused by blur, incompleteness, glare, or low brightness).
+1: Fake.
+2: Genuine.
+Only effective for Hong Kong, China ID card recognition. This field is gradually being phased out.
+        :rtype: int
+        """
+        return self._FakeDetectResult
+
+    @FakeDetectResult.setter
+    def FakeDetectResult(self, FakeDetectResult):
+        self._FakeDetectResult = FakeDetectResult
+
+    @property
+    def WarnCardInfos(self):
+        r"""Card Warning Information
+
+-9101 Alarm for covered certificate
+-9102 Alarm for photocopied certificate
+-9103 Alarm for photographed certificate
+-9104 Alarm for tamper certificate
+-9107 Alarm for reflective certificate
+-9108 Alarm for blurry certificate 
+-9109 This capability is not enabled. Please contact customer support to activate the alert service.
+        :rtype: list of int
+        """
+        return self._WarnCardInfos
+
+    @WarnCardInfos.setter
+    def WarnCardInfos(self, WarnCardInfos):
+        self._WarnCardInfos = WarnCardInfos
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._CardImage = params.get("CardImage")
+        self._CardImageBack = params.get("CardImageBack")
+        self._HeadImage = params.get("HeadImage")
+        self._ResultCode = params.get("ResultCode")
+        self._DeviceInfoLevel = params.get("DeviceInfoLevel")
+        if params.get("CardInfo") is not None:
+            self._CardInfo = GeneralCard()
+            self._CardInfo._deserialize(params.get("CardInfo"))
+        if params.get("BackCardInfo") is not None:
+            self._BackCardInfo = GeneralCard()
+            self._BackCardInfo._deserialize(params.get("BackCardInfo"))
+        self._FakeDetectResult = params.get("FakeDetectResult")
+        self._WarnCardInfos = params.get("WarnCardInfos")
         self._RequestId = params.get("RequestId")
 
 
@@ -10186,7 +10593,7 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HeadPortrait: The Base64-encoded identity photo.
+        :param _HeadPortrait: Base64 encoded result of portrait photo.
         :type HeadPortrait: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         :param _Name: Full name of the license holder.
         :type Name: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
@@ -10198,7 +10605,7 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
         :type MiddleName: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         :param _Nationality: Nationality of the license holder.
         :type Nationality: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
-        :param _Sex: Gender
+        :param _Sex: Gender.
         :type Sex: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         :param _Address: Address of the license holder.
         :type Address: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
@@ -10210,6 +10617,20 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
         :type AgencyCode: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         :param _Birthday: Date of birth of the license holder.
         :type Birthday: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param _BloodType: Blood type of the  license holder.
+        :type BloodType: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param _Height: Height of the license holder, in metres as printed on the card (e.g. 1.69).
+        :type Height: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param _Weight: Weight of the license holder, in kilograms (e.g. 65).
+        :type Weight: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param _EyeColor: Eye color of the license holder (e.g. BLACK).
+        :type EyeColor: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param _DLCodes: Driver's license codes indicating the vehicle categories the license holder is authorized to operate (e.g. A, A1, B, B1, B2, C, D, BE, CE).
+        :type DLCodes: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param _Restrictions: Restrictions that limit the license holder's driving privileges, such as transmission type (AT / MT) or vehicle-class limits.
+        :type Restrictions: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param _Conditions: Driving conditions of the license holder (e.g. A = must wear glasses, D = daytime driving only).
+        :type Conditions: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -10225,11 +10646,18 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
         self._ExpiresDate = None
         self._AgencyCode = None
         self._Birthday = None
+        self._BloodType = None
+        self._Height = None
+        self._Weight = None
+        self._EyeColor = None
+        self._DLCodes = None
+        self._Restrictions = None
+        self._Conditions = None
         self._RequestId = None
 
     @property
     def HeadPortrait(self):
-        r"""The Base64-encoded identity photo.
+        r"""Base64 encoded result of portrait photo.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._HeadPortrait
@@ -10295,7 +10723,7 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        r"""Gender
+        r"""Gender.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._Sex
@@ -10360,6 +10788,83 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
         self._Birthday = Birthday
 
     @property
+    def BloodType(self):
+        r"""Blood type of the  license holder.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        """
+        return self._BloodType
+
+    @BloodType.setter
+    def BloodType(self, BloodType):
+        self._BloodType = BloodType
+
+    @property
+    def Height(self):
+        r"""Height of the license holder, in metres as printed on the card (e.g. 1.69).
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Weight(self):
+        r"""Weight of the license holder, in kilograms (e.g. 65).
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def EyeColor(self):
+        r"""Eye color of the license holder (e.g. BLACK).
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        """
+        return self._EyeColor
+
+    @EyeColor.setter
+    def EyeColor(self, EyeColor):
+        self._EyeColor = EyeColor
+
+    @property
+    def DLCodes(self):
+        r"""Driver's license codes indicating the vehicle categories the license holder is authorized to operate (e.g. A, A1, B, B1, B2, C, D, BE, CE).
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        """
+        return self._DLCodes
+
+    @DLCodes.setter
+    def DLCodes(self, DLCodes):
+        self._DLCodes = DLCodes
+
+    @property
+    def Restrictions(self):
+        r"""Restrictions that limit the license holder's driving privileges, such as transmission type (AT / MT) or vehicle-class limits.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        """
+        return self._Restrictions
+
+    @Restrictions.setter
+    def Restrictions(self, Restrictions):
+        self._Restrictions = Restrictions
+
+    @property
+    def Conditions(self):
+        r"""Driving conditions of the license holder (e.g. A = must wear glasses, D = daytime driving only).
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        """
+        return self._Conditions
+
+    @Conditions.setter
+    def Conditions(self, Conditions):
+        self._Conditions = Conditions
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -10408,6 +10913,27 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
         if params.get("Birthday") is not None:
             self._Birthday = TextDetectionResult()
             self._Birthday._deserialize(params.get("Birthday"))
+        if params.get("BloodType") is not None:
+            self._BloodType = TextDetectionResult()
+            self._BloodType._deserialize(params.get("BloodType"))
+        if params.get("Height") is not None:
+            self._Height = TextDetectionResult()
+            self._Height._deserialize(params.get("Height"))
+        if params.get("Weight") is not None:
+            self._Weight = TextDetectionResult()
+            self._Weight._deserialize(params.get("Weight"))
+        if params.get("EyeColor") is not None:
+            self._EyeColor = TextDetectionResult()
+            self._EyeColor._deserialize(params.get("EyeColor"))
+        if params.get("DLCodes") is not None:
+            self._DLCodes = TextDetectionResult()
+            self._DLCodes._deserialize(params.get("DLCodes"))
+        if params.get("Restrictions") is not None:
+            self._Restrictions = TextDetectionResult()
+            self._Restrictions._deserialize(params.get("Restrictions"))
+        if params.get("Conditions") is not None:
+            self._Conditions = TextDetectionResult()
+            self._Conditions._deserialize(params.get("Conditions"))
         self._RequestId = params.get("RequestId")
 
 
@@ -10418,7 +10944,7 @@ class RecognizePhilippinesSssIDOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReturnHeadImage: Whether to return the identity photo.
+        :param _ReturnHeadImage: Whether to return the portrait photo.
         :type ReturnHeadImage: bool
         :param _ImageBase64: The Base64-encoded value of an image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
@@ -10438,7 +10964,7 @@ For a non-Tencent Cloud URL, the download speed and stability may be affected.
 
     @property
     def ReturnHeadImage(self):
-        r"""Whether to return the identity photo.
+        r"""Whether to return the portrait photo.
         :rtype: bool
         """
         return self._ReturnHeadImage
@@ -10498,7 +11024,7 @@ class RecognizePhilippinesSssIDOCRResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HeadPortrait: The Base64-encoded identity photo.
+        :param _HeadPortrait: Base64 encoded result of portrait photo.
         :type HeadPortrait: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         :param _LicenseNumber: The license number (SSSID number).
         :type LicenseNumber: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
@@ -10506,6 +11032,12 @@ class RecognizePhilippinesSssIDOCRResponse(AbstractModel):
         :type FullName: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         :param _Birthday: The date of birth.
         :type Birthday: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param _GivenName: First name (given name) of the cardholder.
+        :type GivenName: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param _Surname: Family name (surname) of the cardholder.
+        :type Surname: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param _MiddleName: Middle name of the cardholder.
+        :type MiddleName: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -10513,11 +11045,14 @@ class RecognizePhilippinesSssIDOCRResponse(AbstractModel):
         self._LicenseNumber = None
         self._FullName = None
         self._Birthday = None
+        self._GivenName = None
+        self._Surname = None
+        self._MiddleName = None
         self._RequestId = None
 
     @property
     def HeadPortrait(self):
-        r"""The Base64-encoded identity photo.
+        r"""Base64 encoded result of portrait photo.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._HeadPortrait
@@ -10560,6 +11095,39 @@ class RecognizePhilippinesSssIDOCRResponse(AbstractModel):
         self._Birthday = Birthday
 
     @property
+    def GivenName(self):
+        r"""First name (given name) of the cardholder.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        """
+        return self._GivenName
+
+    @GivenName.setter
+    def GivenName(self, GivenName):
+        self._GivenName = GivenName
+
+    @property
+    def Surname(self):
+        r"""Family name (surname) of the cardholder.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        """
+        return self._Surname
+
+    @Surname.setter
+    def Surname(self, Surname):
+        self._Surname = Surname
+
+    @property
+    def MiddleName(self):
+        r"""Middle name of the cardholder.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        """
+        return self._MiddleName
+
+    @MiddleName.setter
+    def MiddleName(self, MiddleName):
+        self._MiddleName = MiddleName
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -10584,6 +11152,15 @@ class RecognizePhilippinesSssIDOCRResponse(AbstractModel):
         if params.get("Birthday") is not None:
             self._Birthday = TextDetectionResult()
             self._Birthday._deserialize(params.get("Birthday"))
+        if params.get("GivenName") is not None:
+            self._GivenName = TextDetectionResult()
+            self._GivenName._deserialize(params.get("GivenName"))
+        if params.get("Surname") is not None:
+            self._Surname = TextDetectionResult()
+            self._Surname._deserialize(params.get("Surname"))
+        if params.get("MiddleName") is not None:
+            self._MiddleName = TextDetectionResult()
+            self._MiddleName._deserialize(params.get("MiddleName"))
         self._RequestId = params.get("RequestId")
 
 
@@ -10674,11 +11251,11 @@ class RecognizePhilippinesTinIDOCRResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HeadPortrait: The Base64-encoded identity photo.
+        :param _HeadPortrait: Base64 encoded result of portrait photo.
         :type HeadPortrait: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         :param _LicenseNumber: The tax identification number (TIN).
         :type LicenseNumber: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
-        :param _FullName: The full name.
+        :param _FullName: Full name of the taxpayer.
         :type FullName: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         :param _Address: The address.
         :type Address: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
@@ -10686,6 +11263,14 @@ class RecognizePhilippinesTinIDOCRResponse(AbstractModel):
         :type Birthday: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         :param _IssueDate: The issue date.
         :type IssueDate: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param _GivenName: Given name of the taxpayer.
+        :type GivenName: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param _LastName: Last name of the taxpayer.
+        :type LastName: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param _MiddleName: Middle name of the taxpayer.
+        :type MiddleName: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param _RDO: Revenue district office where the taxpayer is registered.
+        :type RDO: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -10695,11 +11280,15 @@ class RecognizePhilippinesTinIDOCRResponse(AbstractModel):
         self._Address = None
         self._Birthday = None
         self._IssueDate = None
+        self._GivenName = None
+        self._LastName = None
+        self._MiddleName = None
+        self._RDO = None
         self._RequestId = None
 
     @property
     def HeadPortrait(self):
-        r"""The Base64-encoded identity photo.
+        r"""Base64 encoded result of portrait photo.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._HeadPortrait
@@ -10721,7 +11310,7 @@ class RecognizePhilippinesTinIDOCRResponse(AbstractModel):
 
     @property
     def FullName(self):
-        r"""The full name.
+        r"""Full name of the taxpayer.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._FullName
@@ -10764,6 +11353,50 @@ class RecognizePhilippinesTinIDOCRResponse(AbstractModel):
         self._IssueDate = IssueDate
 
     @property
+    def GivenName(self):
+        r"""Given name of the taxpayer.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        """
+        return self._GivenName
+
+    @GivenName.setter
+    def GivenName(self, GivenName):
+        self._GivenName = GivenName
+
+    @property
+    def LastName(self):
+        r"""Last name of the taxpayer.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        """
+        return self._LastName
+
+    @LastName.setter
+    def LastName(self, LastName):
+        self._LastName = LastName
+
+    @property
+    def MiddleName(self):
+        r"""Middle name of the taxpayer.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        """
+        return self._MiddleName
+
+    @MiddleName.setter
+    def MiddleName(self, MiddleName):
+        self._MiddleName = MiddleName
+
+    @property
+    def RDO(self):
+        r"""Revenue district office where the taxpayer is registered.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        """
+        return self._RDO
+
+    @RDO.setter
+    def RDO(self, RDO):
+        self._RDO = RDO
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -10794,6 +11427,18 @@ class RecognizePhilippinesTinIDOCRResponse(AbstractModel):
         if params.get("IssueDate") is not None:
             self._IssueDate = TextDetectionResult()
             self._IssueDate._deserialize(params.get("IssueDate"))
+        if params.get("GivenName") is not None:
+            self._GivenName = TextDetectionResult()
+            self._GivenName._deserialize(params.get("GivenName"))
+        if params.get("LastName") is not None:
+            self._LastName = TextDetectionResult()
+            self._LastName._deserialize(params.get("LastName"))
+        if params.get("MiddleName") is not None:
+            self._MiddleName = TextDetectionResult()
+            self._MiddleName._deserialize(params.get("MiddleName"))
+        if params.get("RDO") is not None:
+            self._RDO = TextDetectionResult()
+            self._RDO._deserialize(params.get("RDO"))
         self._RequestId = params.get("RequestId")
 
 
@@ -11048,7 +11693,7 @@ class RecognizePhilippinesVoteIDOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReturnHeadImage: Whether to return the identity photo.
+        :param _ReturnHeadImage: Whether to return the portrait photo.
         :type ReturnHeadImage: bool
         :param _ImageBase64: The Base64-encoded value of an image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
@@ -11068,7 +11713,7 @@ For a non-Tencent Cloud URL, the download speed and stability may be affected.
 
     @property
     def ReturnHeadImage(self):
-        r"""Whether to return the identity photo.
+        r"""Whether to return the portrait photo.
         :rtype: bool
         """
         return self._ReturnHeadImage
@@ -11128,7 +11773,7 @@ class RecognizePhilippinesVoteIDOCRResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HeadPortrait: The Base64-encoded identity photo.
+        :param _HeadPortrait: Base64 encoded result of portrait photo.
         :type HeadPortrait: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         :param _VIN: The voter's identification number (VIN).
         :type VIN: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
@@ -11136,7 +11781,7 @@ class RecognizePhilippinesVoteIDOCRResponse(AbstractModel):
         :type LastName: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         :param _FirstName: The first name.
         :type FirstName: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
-        :param _MiddleName: 
+        :param _MiddleName: The middle name.
         :type MiddleName: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         :param _Birthday: The date of birth.
         :type Birthday: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
@@ -11165,7 +11810,7 @@ class RecognizePhilippinesVoteIDOCRResponse(AbstractModel):
 
     @property
     def HeadPortrait(self):
-        r"""The Base64-encoded identity photo.
+        r"""Base64 encoded result of portrait photo.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._HeadPortrait
@@ -11209,7 +11854,7 @@ class RecognizePhilippinesVoteIDOCRResponse(AbstractModel):
 
     @property
     def MiddleName(self):
-        r"""
+        r"""The middle name.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._MiddleName
@@ -11647,7 +12292,7 @@ class RecognizeThaiIDCardOCRRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _ImageBase64: The Base64-encoded value of an image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
-Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, `ImageUrl` is used.
+Either ImageUrl or ImageBase64 of the image must be provided. If both are provided, ImageUrl is used.
         :type ImageBase64: str
         :param _BackImageBase64: Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
         :type BackImageBase64: str
@@ -11656,8 +12301,8 @@ We recommend that you store the image in Tencent Cloud for higher download speed
         :type ImageUrl: str
         :param _BackImageUrl: The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. Storing images in Tencent Cloud URLs can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent.
         :type BackImageUrl: str
-        :param _CropPortrait: Whether to crop the profile photo. The default value is `false`, meaning not to return the Base64-encoded value of the profile photo on the Thai identity card.
-When this parameter is set to `true`, the Base64-encoded value of the profile photo on the Thai identity card after rotation correction is returned.
+        :param _CropPortrait: Whether to crop the profile photo. The default value is false, meaning not to return the Base64-encoded value of the profile photo on the Thai identity card.
+When this parameter is set to true, the Base64-encoded value of the profile photo on the Thai identity card after rotation correction is returned.
         :type CropPortrait: bool
         """
         self._ImageBase64 = None
@@ -11669,7 +12314,7 @@ When this parameter is set to `true`, the Base64-encoded value of the profile ph
     @property
     def ImageBase64(self):
         r"""The Base64-encoded value of an image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
-Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, `ImageUrl` is used.
+Either ImageUrl or ImageBase64 of the image must be provided. If both are provided, ImageUrl is used.
         :rtype: str
         """
         return self._ImageBase64
@@ -11714,8 +12359,8 @@ We recommend that you store the image in Tencent Cloud for higher download speed
 
     @property
     def CropPortrait(self):
-        r"""Whether to crop the profile photo. The default value is `false`, meaning not to return the Base64-encoded value of the profile photo on the Thai identity card.
-When this parameter is set to `true`, the Base64-encoded value of the profile photo on the Thai identity card after rotation correction is returned.
+        r"""Whether to crop the profile photo. The default value is false, meaning not to return the Base64-encoded value of the profile photo on the Thai identity card.
+When this parameter is set to true, the Base64-encoded value of the profile photo on the Thai identity card after rotation correction is returned.
         :rtype: bool
         """
         return self._CropPortrait
@@ -11774,7 +12419,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         :type SerialNumber: str
         :param _Address: Address
         :type Address: str
-        :param _LaserID: Laser ID on the back of the card.
+        :param _LaserID: Laser ID on the back of the card
         :type LaserID: str
         :param _PortraitImage: Identity photo
         :type PortraitImage: str
@@ -11785,16 +12430,20 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 -9103 Alarm for photographed certificate
 -9104 Alarm for tamper certificate
 -9107 Alarm for reflective certificate
--9108 Alarm for blurry certificate 
+-9108 Alarm for blurry certificate
 -9109 This capability is not enabled. Please contact customer support to activate the alert service
         :type WarnCardInfos: list of int
-        :param _AdvancedInfo: This field is deprecated and will always return "1". Usage is not recommended.
+        :param _AdvancedInfo: <p>This field is deprecated and will always return "1". It is not recommended for use.</p>
         :type AdvancedInfo: str
         :param _CardCount: The number of cards detected in the input image provided via ImageBase64 parameter.(Currently supported only in ap-bangkok region)
         :type CardCount: int
         :param _IsComplete: The card information field complete or not
 true: complete; false: incomplete
         :type IsComplete: bool
+        :param _ThaiFirstName: First name in Thai
+        :type ThaiFirstName: str
+        :param _ThaiLastName: Last name in Thai
+        :type ThaiLastName: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -11817,6 +12466,8 @@ true: complete; false: incomplete
         self._AdvancedInfo = None
         self._CardCount = None
         self._IsComplete = None
+        self._ThaiFirstName = None
+        self._ThaiLastName = None
         self._RequestId = None
 
     @property
@@ -11964,7 +12615,7 @@ true: complete; false: incomplete
 
     @property
     def LaserID(self):
-        r"""Laser ID on the back of the card.
+        r"""Laser ID on the back of the card
         :rtype: str
         """
         return self._LaserID
@@ -11993,7 +12644,7 @@ true: complete; false: incomplete
 -9103 Alarm for photographed certificate
 -9104 Alarm for tamper certificate
 -9107 Alarm for reflective certificate
--9108 Alarm for blurry certificate 
+-9108 Alarm for blurry certificate
 -9109 This capability is not enabled. Please contact customer support to activate the alert service
         :rtype: list of int
         """
@@ -12007,7 +12658,7 @@ true: complete; false: incomplete
     def AdvancedInfo(self):
         warnings.warn("parameter `AdvancedInfo` is deprecated", DeprecationWarning) 
 
-        r"""This field is deprecated and will always return "1". Usage is not recommended.
+        r"""<p>This field is deprecated and will always return "1". It is not recommended for use.</p>
         :rtype: str
         """
         return self._AdvancedInfo
@@ -12042,6 +12693,28 @@ true: complete; false: incomplete
         self._IsComplete = IsComplete
 
     @property
+    def ThaiFirstName(self):
+        r"""First name in Thai
+        :rtype: str
+        """
+        return self._ThaiFirstName
+
+    @ThaiFirstName.setter
+    def ThaiFirstName(self, ThaiFirstName):
+        self._ThaiFirstName = ThaiFirstName
+
+    @property
+    def ThaiLastName(self):
+        r"""Last name in Thai
+        :rtype: str
+        """
+        return self._ThaiLastName
+
+    @ThaiLastName.setter
+    def ThaiLastName(self, ThaiLastName):
+        self._ThaiLastName = ThaiLastName
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -12073,6 +12746,8 @@ true: complete; false: incomplete
         self._AdvancedInfo = params.get("AdvancedInfo")
         self._CardCount = params.get("CardCount")
         self._IsComplete = params.get("IsComplete")
+        self._ThaiFirstName = params.get("ThaiFirstName")
+        self._ThaiLastName = params.get("ThaiLastName")
         self._RequestId = params.get("RequestId")
 
 

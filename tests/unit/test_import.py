@@ -234,6 +234,11 @@ def test_import_cynosdb_v20190107():
     from tencentcloud.cynosdb.v20190107 import models
 
 
+def test_import_databuddy_v20260715():
+    from tencentcloud.databuddy.v20260715 import databuddy_client
+    from tencentcloud.databuddy.v20260715 import models
+
+
 def test_import_dataintegration_v20220613():
     from tencentcloud.dataintegration.v20220613 import dataintegration_client
     from tencentcloud.dataintegration.v20220613 import models

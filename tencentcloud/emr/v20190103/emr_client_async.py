@@ -31,7 +31,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AddMetricScaleStrategyResponse:
         """
-        This API is used to add scaling rules by load and time.
+        This API is used to add an automatic scaling rule by load and time.
         """
         
         kwargs = {}
@@ -49,7 +49,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AddNodeResourceConfigResponse:
         """
-        This API is used to add node specifications of the current cluster.
+        This API is used to add node specifications for the current cluster.
         """
         
         kwargs = {}
@@ -67,8 +67,8 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AddUsersForUserManagerResponse:
         """
-        This API is available for clusters with OpenLDAP components configured.
-        This API is used to add user lists (user management).
+        This API is used for clusters with the OpenLDAP component installed.
+        This API is used to add a user list (user management).
         """
         
         kwargs = {}
@@ -86,7 +86,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AttachDisksResponse:
         """
-        This API is used to mount cloud disks.
+        This API is used to mount a cloud disk.
         """
         
         kwargs = {}
@@ -104,7 +104,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ConvertPreToPostClusterResponse:
         """
-        This API is used to convert a monthly subscription cluster to a pay-as-you-go cluster (excluding cdb).
+        This API is used to convert a monthly subscription cluster to a pay-as-you-go cluster (excluding CDB).
         """
         
         kwargs = {}
@@ -122,7 +122,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateClusterResponse:
         """
-        This API is used to create an EMR cluster instance.
+        This API is used to create an EMR cluster.
         """
         
         kwargs = {}
@@ -134,13 +134,31 @@ class EmrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDynamicInstance(
+            self,
+            request: models.CreateDynamicInstanceRequest,
+            opts: Dict = None,
+    ) -> models.CreateDynamicInstanceResponse:
+        """
+        This API is used to create a DynamicInstance in a containerized EMR on TKE cluster.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDynamicInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDynamicInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateGroupsSTD(
             self,
             request: models.CreateGroupsSTDRequest,
             opts: Dict = None,
     ) -> models.CreateGroupsSTDResponse:
         """
-        This API is used to create user groups in batches under User Management.
+        This API is used to create user groups in batches in user management.
         """
         
         kwargs = {}
@@ -158,7 +176,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateInstanceResponse:
         """
-        This API is used to create an EMR cluster instance.
+        This API is used to create an EMR cluster.
         """
         
         kwargs = {}
@@ -176,7 +194,8 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateSLInstanceResponse:
         """
-        This API is used to create a Serverless HBase instance.- If the API call is successful, a Serverless HBase instance will be created. If the instance creation request is successful, the InstanceId of the created instance and the RequestID of the request will be returned.- This is an asynchronous API. The operation is not completed immediately when the API call returns. The instance operation result can be viewed by calling DescribeInstancesList to view the StatusDesc status of the current instance.
+        This API is used to create a Serverless instance, for example, HBase, StarRocks, and TCBase instances.- This API is successfully called, and a Serverless instance is created. If the instance creation request succeeds, InstanceId of the instance and RequestID of the request are returned.
+        - This is an asynchronous API. The operation is not completed immediately when the API call returns. The instance operation result can be viewed by calling the DescribeInstancesList API, and the StatusDesc field for the current instance can be returned.
         """
         
         kwargs = {}
@@ -194,7 +213,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteAutoScaleStrategyResponse:
         """
-        This API is used to delete automatic scaling rules. Nodes scaled based on these rules are destroyed in the background.
+        This API is used to delete an automatic scaling rule. Nodes scaled based on this rule are terminated in the backend.
         """
         
         kwargs = {}
@@ -230,7 +249,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteNodeResourceConfigResponse:
         """
-        This API is used to delete the node specifications of the current cluster.
+        This API is used to delete node specifications of the current cluster.
         """
         
         kwargs = {}
@@ -248,7 +267,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeployYarnConfResponse:
         """
-        This API is used to bring the configuration into effect in YARN resource scheduling after deployment.
+        This API is used to bring the deployment into effect in YARN resource scheduling.
         """
         
         kwargs = {}
@@ -266,7 +285,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAutoScaleGroupGlobalConfResponse:
         """
-        This API is used to access the global configuration of automatic scaling.
+        This API is used to obtain the global configuration of auto scaling.
         """
         
         kwargs = {}
@@ -284,7 +303,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAutoScaleRecordsResponse:
         """
-        This API is used to inquiry detailed records of cluster autoscaling.
+        This API is used to obtain the detailed automatic scaling records of a cluster.
         """
         
         kwargs = {}
@@ -302,7 +321,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAutoScaleStrategiesResponse:
         """
-        This API is used to access automatic scaling rules.
+        This API is used to obtain an automatic scaling rule.
         """
         
         kwargs = {}
@@ -314,13 +333,31 @@ class EmrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBootScript(
+            self,
+            request: models.DescribeBootScriptRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBootScriptResponse:
+        """
+        This API is used to obtain a bootstrap script.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBootScript"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBootScriptResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeClusterFlowStatusDetail(
             self,
             request: models.DescribeClusterFlowStatusDetailRequest,
             opts: Dict = None,
     ) -> models.DescribeClusterFlowStatusDetailResponse:
         """
-        This API is used to query the EMR task running details status.
+        This API is used to query the running status details of an EMR cluster task.
         """
         
         kwargs = {}
@@ -338,7 +375,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeClusterNodesResponse:
         """
-        This API is used to query the information of nodes in a cluster.
+        This API is used to query information of a cluster node.
         """
         
         kwargs = {}
@@ -368,13 +405,67 @@ class EmrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDynamicInstanceDetail(
+            self,
+            request: models.DescribeDynamicInstanceDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDynamicInstanceDetailResponse:
+        """
+        This API is used to describe the details of a DynamicInstance in an EMR on TKE cluster.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDynamicInstanceDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDynamicInstanceDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDynamicInstanceList(
+            self,
+            request: models.DescribeDynamicInstanceListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDynamicInstanceListResponse:
+        """
+        This API is used to describe the DynamicInstance list of an EMR on TKE cluster.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDynamicInstanceList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDynamicInstanceListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeEMREventList(
+            self,
+            request: models.DescribeEMREventListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEMREventListResponse:
+        """
+        This API is used to query EMR event monitoring data.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEMREventList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEMREventListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeEmrApplicationStatics(
             self,
             request: models.DescribeEmrApplicationStaticsRequest,
             opts: Dict = None,
     ) -> models.DescribeEmrApplicationStaticsResponse:
         """
-        This API is used to query the YARN application statistics API.
+        This API is used to query the YARN task statistics information.
         """
         
         kwargs = {}
@@ -392,7 +483,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeEmrOverviewMetricsResponse:
         """
-        This API is used to query the metric data on the monitoring overview page.
+        This API is used to query metric data on the monitoring overview page.
         """
         
         kwargs = {}
@@ -404,13 +495,31 @@ class EmrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeExportConfs(
+            self,
+            request: models.DescribeExportConfsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeExportConfsResponse:
+        """
+        This API is used to query the export configuration.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeExportConfs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeExportConfsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeGlobalConfig(
             self,
             request: models.DescribeGlobalConfigRequest,
             opts: Dict = None,
     ) -> models.DescribeGlobalConfigResponse:
         """
-        This API is used to query the global configurations of YARN Resource Scheduling.
+        This API is used to query the global configuration of YARN resource scheduling.
         """
         
         kwargs = {}
@@ -446,7 +555,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeHBaseTableOverviewResponse:
         """
-        This API is used to access the overview of HBase table-level monitoring data.
+        This API is used to obtain an overview of HBase table-level monitoring data.
         """
         
         kwargs = {}
@@ -458,13 +567,49 @@ class EmrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeHBaseTableRequestMetric(
+            self,
+            request: models.DescribeHBaseTableRequestMetricRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHBaseTableRequestMetricResponse:
+        """
+        This API is used to obtain the read/write rate at the HBase table level.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHBaseTableRequestMetric"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHBaseTableRequestMetricResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeHBaseTableStoreSizeMetric(
+            self,
+            request: models.DescribeHBaseTableStoreSizeMetricRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHBaseTableStoreSizeMetricResponse:
+        """
+        This API is used to query the StoreSize monitoring metric data at the HBase table level.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHBaseTableStoreSizeMetric"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHBaseTableStoreSizeMetricResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeHDFSStorageInfo(
             self,
             request: models.DescribeHDFSStorageInfoRequest,
             opts: Dict = None,
     ) -> models.DescribeHDFSStorageInfoResponse:
         """
-        This API is used to query information of file(s) stored in HDFS.
+        This API is used to query information of files stored in HDFS.
         """
         
         kwargs = {}
@@ -482,7 +627,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeHiveQueriesResponse:
         """
-        This API is used to inquiry Hive query data.
+        This API is used to obtain Hive query information.
         """
         
         kwargs = {}
@@ -530,13 +675,31 @@ class EmrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeInstanceOplog(
+            self,
+            request: models.DescribeInstanceOplogRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstanceOplogResponse:
+        """
+        This API is used to obtain the instance operation logs.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstanceOplog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstanceOplogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeInstances(
             self,
             request: models.DescribeInstancesRequest,
             opts: Dict = None,
     ) -> models.DescribeInstancesResponse:
         """
-        This API is used to query the information of instances in a cluster.
+        This API is used to query cluster information.
         """
         
         kwargs = {}
@@ -572,7 +735,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeKyuubiQueryInfoResponse:
         """
-        This API is used to query Kyuubi query information.
+        This API is used to obtain Kyuubi query information.
         """
         
         kwargs = {}
@@ -584,13 +747,31 @@ class EmrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMetaDBInfo(
+            self,
+            request: models.DescribeMetaDBInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMetaDBInfoResponse:
+        """
+        This API is used to obtain cluster MetaDB data.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMetaDBInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMetaDBInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeNodeDataDisks(
             self,
             request: models.DescribeNodeDataDisksRequest,
             opts: Dict = None,
     ) -> models.DescribeNodeDataDisksResponse:
         """
-        This API is used to query data disk information of nodes.
+        This API is used to query data disk information of a node.
         """
         
         kwargs = {}
@@ -644,7 +825,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeResourceScheduleResponse:
         """
-        This API is used to query YARN resource scheduling information. It has been deprecated. You can use the DescribeYarnQueue API to query queue information.
+        This API is used to query YARN resource scheduling information. It has been deprecated. Please use `DescribeYarnQueue` to query queue information.
         """
         
         kwargs = {}
@@ -662,7 +843,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeResourceScheduleDiffDetailResponse:
         """
-        This API is used to query change details in YARN resource scheduling.
+        This API is used to query the change details of YARN resource scheduling.
         """
         
         kwargs = {}
@@ -680,7 +861,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeSLInstanceResponse:
         """
-        This API is used to query the basic information of Serverless HBase instances.
+        This API is used to query basic information of a Serverless HBase instance.
         """
         
         kwargs = {}
@@ -698,7 +879,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeSLInstanceListResponse:
         """
-        This API is used to query the detailed information of the Serverless HBase instance list.
+        This API is used to query detailed information of the Serverless HBase instance list.
         """
         
         kwargs = {}
@@ -752,7 +933,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeSparkApplicationsResponse:
         """
-        This API is used to obtain a Spark application list.
+        This API is used to obtain the Spark application list.
         """
         
         kwargs = {}
@@ -770,7 +951,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeSparkQueriesResponse:
         """
-        This API is used to query the Spark query information list.
+        This API is used to obtain the Spark query information list.
         """
         
         kwargs = {}
@@ -788,7 +969,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeStarRocksQueryInfoResponse:
         """
-        This API is used to query StarRocks information.
+        This API is used to obtain StarRocks query information.
         """
         
         kwargs = {}
@@ -806,7 +987,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeTrinoQueryInfoResponse:
         """
-        This API is used to query Trino(PrestoSQL) query information.
+        This API is used to obtain Trino (PrestoSQL) query information.
         """
         
         kwargs = {}
@@ -824,8 +1005,8 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeUsersForUserManagerResponse:
         """
-        This API is available for clusters with OpenLDAP components configured.
-        This API is used to export users in batches. For a Kerberos cluster, set `NeedKeytabInfo` to `true` to obtain the download link of the Keytab file. If `SupportDownLoadKeyTab` is `true`, but `DownLoadKeyTabUrl` is null, the Keytab file is not ready yet (being generated) in the backend.
+        This API is used for clusters with the OpenLDAP component installed.
+        This API is used to export users in batches. For a Kerberos cluster, if the keytab file download link is required, set NeedKeytabInfo to true. Note: If SupportDownLoadKeyTab is set to true but DownLoadKeyTabUrl is an empty string, the keytab file is not ready (being generated).
         """
         
         kwargs = {}
@@ -861,7 +1042,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeYarnScheduleHistoryResponse:
         """
-        This API is used to view the YARN resource scheduling history. It has been deprecated. You can use the Process Center to view the history records.
+        This API is used to view the YARN resource scheduling history. It has been deprecated. Please use Task Center to view the history records.
         """
         
         kwargs = {}
@@ -879,7 +1060,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.InquiryPriceCreateInstanceResponse:
         """
-        This API is used to query price of instance creation.
+        This API is used to inquire the price for instance creation.
         """
         
         kwargs = {}
@@ -897,7 +1078,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.InquiryPriceRenewInstanceResponse:
         """
-        This API is used to query the price for renewal.
+        This API is used to inquire the price for renewal.
         """
         
         kwargs = {}
@@ -915,7 +1096,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.InquiryPriceScaleOutInstanceResponse:
         """
-        This API is used to query price of scale-out.
+        This API is used to inquire the price for a scale-out.
         """
         
         kwargs = {}
@@ -933,7 +1114,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.InquiryPriceUpdateInstanceResponse:
         """
-        This API is used to query price of scaling.
+        This API is used to inquire the price for the configuration change.
         """
         
         kwargs = {}
@@ -945,14 +1126,32 @@ class EmrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def InstallSoftware(
+            self,
+            request: models.InstallSoftwareRequest,
+            opts: Dict = None,
+    ) -> models.InstallSoftwareResponse:
+        """
+        This API is used to install a component. For components dependent on the MetaDB, a CDB order may be required. The components that can be installed on the current cluster and the components that might require a CDB order can be viewed via InstallSoftWareInfo.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InstallSoftware"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InstallSoftwareResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyAutoRenewFlag(
             self,
             request: models.ModifyAutoRenewFlagRequest,
             opts: Dict = None,
     ) -> models.ModifyAutoRenewFlagResponse:
         """
-        This API is used to introduce the prerequisite prepaid clusters.
-        This API is used to enable or disable automatic renewal at the resource level.
+        This API is used to introduce the prerequisites for a prepaid cluster.
+        This API is used to enable or disable auto-renewal at the resource level.
         """
         
         kwargs = {}
@@ -970,7 +1169,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyAutoScaleStrategyResponse:
         """
-        This API is used to modify automatic scaling rules.
+        This API is used to modify an automatic scaling rule.
         """
         
         kwargs = {}
@@ -982,13 +1181,49 @@ class EmrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyBootScript(
+            self,
+            request: models.ModifyBootScriptRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBootScriptResponse:
+        """
+        This API is used to modify a bootstrap script.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBootScript"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBootScriptResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDynamicInstance(
+            self,
+            request: models.ModifyDynamicInstanceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDynamicInstanceResponse:
+        """
+        This API is used to update a DynamicInstance in a containerized EMR on TKE cluster.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDynamicInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDynamicInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyGlobalConfig(
             self,
             request: models.ModifyGlobalConfigRequest,
             opts: Dict = None,
     ) -> models.ModifyGlobalConfigResponse:
         """
-        This API is used to modify the global configuration of YARN Resource Scheduling.
+        This API is used to modify the global configuration of YARN resource scheduling.
         """
         
         kwargs = {}
@@ -1006,7 +1241,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyInspectionSettingsResponse:
         """
-        This API is used to set inspection task configurations.
+        This API is used to set the inspection task configuration.
         """
         
         kwargs = {}
@@ -1024,7 +1259,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyInstanceBasicResponse:
         """
-        This API is used to modify a cluster name.
+        This API is used to modify the cluster name.
         """
         
         kwargs = {}
@@ -1042,7 +1277,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyResourceResponse:
         """
-        This API is used to resize an instance.
+        This API is used to change the instance configuration.
         """
         
         kwargs = {}
@@ -1080,7 +1315,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyResourceSchedulerResponse:
         """
-        This API is used to modify a YARN resource scheduler. After the modification, you can click Deploy to bring it into effect.
+        This API is used to modify a YARN resource scheduler. After the modification, click Deploy to make the modification take effect.
         """
         
         kwargs = {}
@@ -1098,7 +1333,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyResourcesTagsResponse:
         """
-        This API is used to forcibly modify tags.
+        This API is used to forcibly modify a tag.
         """
         
         kwargs = {}
@@ -1116,7 +1351,9 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifySLInstanceResponse:
         """
-        This API is used to resize a Serverless HBase instance.- If the API call is successful, a Serverless HBase instance will be created. If the instance creation request is successful, the RequestID of the request will be returned.- This is an asynchronous API. The operation is not completed immediately when the API call returns. The instance operation result can be viewed by calling DescribeInstancesList to view the StatusDesc status of the current instance.
+        This API is used to change the configuration of a Serverless HBase instance.
+        - This API is successfully called, and a Serverless HBase instance is created. If the instance creation request succeeds, RequestID of the request is returned.
+        - This is an asynchronous API. The operation is not completed immediately when the API call returns. The instance operation result can be viewed by calling the DescribeInstancesList API, and the StatusDesc field for the current instance can be returned.
         """
         
         kwargs = {}
@@ -1134,7 +1371,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifySLInstanceBasicResponse:
         """
-        This API is used to modify the Serverless HBase instance name.
+        This API is used to modify the Serverless HBase instance name.
         """
         
         kwargs = {}
@@ -1146,13 +1383,31 @@ class EmrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyServiceParamsByExportConfs(
+            self,
+            request: models.ModifyServiceParamsByExportConfsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyServiceParamsByExportConfsResponse:
+        """
+        Configuration import and delivery
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyServiceParamsByExportConfs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyServiceParamsByExportConfsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyUserGroup(
             self,
             request: models.ModifyUserGroupRequest,
             opts: Dict = None,
     ) -> models.ModifyUserGroupResponse:
         """
-        This API is used to modify user groups under User Management.
+        This API is used to modify a user group in user management.
         """
         
         kwargs = {}
@@ -1170,7 +1425,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyUserManagerPwdResponse:
         """
-        This API is used to change user password (user management).
+        This API is used to modify a user password (user management).
         """
         
         kwargs = {}
@@ -1188,7 +1443,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyUsersOfGroupSTDResponse:
         """
-        This API is used to change the user information of user groups.
+        This API is used to change user information in a user group.
         """
         
         kwargs = {}
@@ -1262,7 +1517,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ResizeDataDisksResponse:
         """
-        This API is used to scale out the cloud data disk.
+        This API is used to scale out cloud data disks.
         """
         
         kwargs = {}
@@ -1280,7 +1535,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ScaleOutClusterResponse:
         """
-        This API is used to scale out a cluster.
+        This API is used to scale out cluster nodes.
         """
         
         kwargs = {}
@@ -1298,7 +1553,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ScaleOutInstanceResponse:
         """
-        This API is used to scale out instances.
+        This API is used to scale out nodes.
         """
         
         kwargs = {}
@@ -1316,7 +1571,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SetNodeResourceConfigDefaultResponse:
         """
-        This API is used to set specifications for a node in the current cluster to default or not.
+        This API is used to set specifications of a node in the current cluster as the default or cancel the default setting.
         """
         
         kwargs = {}
@@ -1334,7 +1589,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.StartStopServiceOrMonitorResponse:
         """
-        This API is used to start, stop, or restart services.
+        This API is used to execute operations such as starting, stopping, and restarting a service.
         """
         
         kwargs = {}
@@ -1352,7 +1607,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.TerminateClusterNodesResponse:
         """
-        This API is used to terminate cluster nodes.
+        This API is used to terminate a cluster node.
         """
         
         kwargs = {}
@@ -1364,13 +1619,31 @@ class EmrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def TerminateDynamicInstances(
+            self,
+            request: models.TerminateDynamicInstancesRequest,
+            opts: Dict = None,
+    ) -> models.TerminateDynamicInstancesResponse:
+        """
+        This API is used to terminate a DynamicInstance in a containerized EMR on TKE cluster.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TerminateDynamicInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TerminateDynamicInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def TerminateInstance(
             self,
             request: models.TerminateInstanceRequest,
             opts: Dict = None,
     ) -> models.TerminateInstanceResponse:
         """
-        This API is used to terminate EMR instances. It is only supported in the official paid edition of EMR.
+        This API is used to terminate an EMR instance. It is supported only for the officially billed version of EMR.
         """
         
         kwargs = {}
@@ -1388,7 +1661,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.TerminateSLInstanceResponse:
         """
-        This API is used to terminate a Serverless HBase instance.
+        This API is used to terminate a Serverless HBase instance.
         """
         
         kwargs = {}
@@ -1406,7 +1679,7 @@ class EmrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.TerminateTasksResponse:
         """
-        This API is used to terminate a task node.
+        This API is used to scale in Task nodes.
         """
         
         kwargs = {}

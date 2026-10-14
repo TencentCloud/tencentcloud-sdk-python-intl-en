@@ -79,6 +79,24 @@ class MdcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateStreamLinkSecurityGroup(
+            self,
+            request: models.CreateStreamLinkSecurityGroupRequest,
+            opts: Dict = None,
+    ) -> models.CreateStreamLinkSecurityGroupResponse:
+        """
+        Create security group.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateStreamLinkSecurityGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateStreamLinkSecurityGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteStreamLinkFlow(
             self,
             request: models.DeleteStreamLinkFlowRequest,

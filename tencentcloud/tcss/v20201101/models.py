@@ -3170,27 +3170,27 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Repository name
+        :param _Name: Repository Name
         :type Name: str
-        :param _Username: Username
+        :param _Username: Username.
         :type Username: str
-        :param _Password: Password
+        :param _Password: Password.
         :type Password: str
-        :param _Url: Repository URL
+        :param _Url: Warehouse url
         :type Url: str
         :param _RegistryType: Repository type. Valid values: harbor, quay, jfrog, aws, azure, and other-tcr.
         :type RegistryType: str
-        :param _NetType: Network type, which can be `public` (public network).
+        :param _NetType: Network type. List: public
         :type NetType: str
-        :param _RegistryVersion: Repository version
+        :param _RegistryVersion: Warehouse version
         :type RegistryVersion: str
-        :param _RegistryRegion: Region. Default value: `default`.
+        :param _RegistryRegion: Region, list: default.
         :type RegistryRegion: str
         :param _SpeedLimit: Speed limit
         :type SpeedLimit: int
-        :param _Insecure: Valid values: `0` (secure mode with certificate verification, which is the default value); `1` (unsecure mode that skips certificate verification).
+        :param _Insecure: 0: Secure Mode (Certificate Verification) (Default); 1: Insecure Mode (Skip Certificate Verification)
         :type Insecure: int
-        :param _ConnDetectConfig: 
+        :param _ConnDetectConfig: Record ID of Connectivity Check
         :type ConnDetectConfig: list of ConnDetectConfig
         :param _NeedScan: Whether authorization and scanning are performed automatically. For full synchronization, only images of the latest version are involved. For incremental synchronization, all new images are involved.
         :type NeedScan: bool
@@ -3222,7 +3222,7 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""Repository name
+        r"""Repository Name
         :rtype: str
         """
         return self._Name
@@ -3233,7 +3233,7 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
 
     @property
     def Username(self):
-        r"""Username
+        r"""Username.
         :rtype: str
         """
         return self._Username
@@ -3244,7 +3244,7 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""Password
+        r"""Password.
         :rtype: str
         """
         return self._Password
@@ -3255,7 +3255,7 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
 
     @property
     def Url(self):
-        r"""Repository URL
+        r"""Warehouse url
         :rtype: str
         """
         return self._Url
@@ -3277,7 +3277,7 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
 
     @property
     def NetType(self):
-        r"""Network type, which can be `public` (public network).
+        r"""Network type. List: public
         :rtype: str
         """
         return self._NetType
@@ -3288,7 +3288,7 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
 
     @property
     def RegistryVersion(self):
-        r"""Repository version
+        r"""Warehouse version
         :rtype: str
         """
         return self._RegistryVersion
@@ -3299,7 +3299,7 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
 
     @property
     def RegistryRegion(self):
-        r"""Region. Default value: `default`.
+        r"""Region, list: default.
         :rtype: str
         """
         return self._RegistryRegion
@@ -3321,7 +3321,7 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
 
     @property
     def Insecure(self):
-        r"""Valid values: `0` (secure mode with certificate verification, which is the default value); `1` (unsecure mode that skips certificate verification).
+        r"""0: Secure Mode (Certificate Verification) (Default); 1: Insecure Mode (Skip Certificate Verification)
         :rtype: int
         """
         return self._Insecure
@@ -3332,7 +3332,7 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
 
     @property
     def ConnDetectConfig(self):
-        r"""
+        r"""Record ID of Connectivity Check
         :rtype: list of ConnDetectConfig
         """
         return self._ConnDetectConfig
@@ -3436,9 +3436,9 @@ class AddAssetImageRegistryRegistryDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HealthCheckErr: Connection error message
+        :param _HealthCheckErr: Connection error information
         :type HealthCheckErr: str
-        :param _NameRepeatErr: Error message of the name
+        :param _NameRepeatErr: Incorrect name message
         :type NameRepeatErr: str
         :param _RegistryId: Repository unique id
         :type RegistryId: int
@@ -3452,7 +3452,7 @@ class AddAssetImageRegistryRegistryDetailResponse(AbstractModel):
 
     @property
     def HealthCheckErr(self):
-        r"""Connection error message
+        r"""Connection error information
         :rtype: str
         """
         return self._HealthCheckErr
@@ -3463,7 +3463,7 @@ class AddAssetImageRegistryRegistryDetailResponse(AbstractModel):
 
     @property
     def NameRepeatErr(self):
-        r"""Error message of the name
+        r"""Incorrect name message
         :rtype: str
         """
         return self._NameRepeatErr
@@ -5548,16 +5548,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class AssetFilters(AbstractModel):
-    r"""TCSS
-    Key-value pair filter for conditional filtering queries, such as filter ID, name, and status
-    If more than one filter exists, the logical relationship between these filters is `AND`.
-    If multiple values exist in one filter, the logical relationship between these values is `OR`.
+    r"""Container security
+    Description key-value pair filter, which is used for conditional filtering queries. For example, filter by ID, name, and status.
+    If there are multiple Filters, the logical relationship between them is AND.
+    If there are multiple Values in the same Filter, the logical relationship between the Values under the same Filter is OR.
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: Filter name
+        :param _Name: Name of the filter key
         :type Name: str
         :param _Values: One or more filter values
         :type Values: list of str
@@ -5570,7 +5570,7 @@ class AssetFilters(AbstractModel):
 
     @property
     def Name(self):
-        r"""Filter name
+        r"""Name of the filter key
         :rtype: str
         """
         return self._Name
@@ -10738,15 +10738,15 @@ class ConfirmNetworkFirewallPolicyResponse(AbstractModel):
 
 
 class ConnDetectConfig(AbstractModel):
-    r"""
+    r"""Connectivity Check Configuration
 
     """
 
     def __init__(self):
         r"""
-        :param _Quuid: 
+        :param _Quuid: Host QUUID
         :type Quuid: str
-        :param _Uuid: 
+        :param _Uuid: Host UUID
         :type Uuid: str
         """
         self._Quuid = None
@@ -10754,7 +10754,7 @@ class ConnDetectConfig(AbstractModel):
 
     @property
     def Quuid(self):
-        r"""
+        r"""Host QUUID
         :rtype: str
         """
         return self._Quuid
@@ -10765,7 +10765,7 @@ class ConnDetectConfig(AbstractModel):
 
     @property
     def Uuid(self):
-        r"""
+        r"""Host UUID
         :rtype: str
         """
         return self._Uuid
@@ -11826,27 +11826,27 @@ class CreateAssetImageRegistryScanTaskOneKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _All: Whether to scan all images
+        :param _All: Scan All Images (Deprecated)
         :type All: bool
-        :param _Images: List of scanned images
+        :param _Images: Scanned Image List
         :type Images: list of ImageInfo
-        :param _ScanType: Array of scan types
+        :param _ScanType: Type Array for scanning
         :type ScanType: list of str
-        :param _Id: List of IDs of scanned images
+        :param _Id: Scanned Image List ID
         :type Id: list of int non-negative
         :param _ExcludeIDs: List of image IDs excluded from scanning.
         :type ExcludeIDs: list of int non-negative
-        :param _IsLatest: 
+        :param _IsLatest: Whether the Latest Image
         :type IsLatest: bool
-        :param _ScanScope: 
+        :param _ScanScope: Scan Scope. 0: All Images; 1: Custom Images; 2: Recommended Scan Images
         :type ScanScope: int
-        :param _RegistryType: 
+        :param _RegistryType: Repository type
         :type RegistryType: list of str
-        :param _Namespace: 
+        :param _Namespace: Namespace
         :type Namespace: list of str
-        :param _ContainerRunning: 
+        :param _ContainerRunning: Whether There Are Running Containers
         :type ContainerRunning: bool
-        :param _Timeout: 
+        :param _Timeout: Task Timeout Duration Unit (s)
         :type Timeout: int
         """
         self._All = None
@@ -11865,7 +11865,7 @@ class CreateAssetImageRegistryScanTaskOneKeyRequest(AbstractModel):
     def All(self):
         warnings.warn("parameter `All` is deprecated", DeprecationWarning) 
 
-        r"""Whether to scan all images
+        r"""Scan All Images (Deprecated)
         :rtype: bool
         """
         return self._All
@@ -11878,7 +11878,7 @@ class CreateAssetImageRegistryScanTaskOneKeyRequest(AbstractModel):
 
     @property
     def Images(self):
-        r"""List of scanned images
+        r"""Scanned Image List
         :rtype: list of ImageInfo
         """
         return self._Images
@@ -11889,7 +11889,7 @@ class CreateAssetImageRegistryScanTaskOneKeyRequest(AbstractModel):
 
     @property
     def ScanType(self):
-        r"""Array of scan types
+        r"""Type Array for scanning
         :rtype: list of str
         """
         return self._ScanType
@@ -11900,7 +11900,7 @@ class CreateAssetImageRegistryScanTaskOneKeyRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""List of IDs of scanned images
+        r"""Scanned Image List ID
         :rtype: list of int non-negative
         """
         return self._Id
@@ -11922,7 +11922,7 @@ class CreateAssetImageRegistryScanTaskOneKeyRequest(AbstractModel):
 
     @property
     def IsLatest(self):
-        r"""
+        r"""Whether the Latest Image
         :rtype: bool
         """
         return self._IsLatest
@@ -11933,7 +11933,7 @@ class CreateAssetImageRegistryScanTaskOneKeyRequest(AbstractModel):
 
     @property
     def ScanScope(self):
-        r"""
+        r"""Scan Scope. 0: All Images; 1: Custom Images; 2: Recommended Scan Images
         :rtype: int
         """
         return self._ScanScope
@@ -11944,7 +11944,7 @@ class CreateAssetImageRegistryScanTaskOneKeyRequest(AbstractModel):
 
     @property
     def RegistryType(self):
-        r"""
+        r"""Repository type
         :rtype: list of str
         """
         return self._RegistryType
@@ -11955,7 +11955,7 @@ class CreateAssetImageRegistryScanTaskOneKeyRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""
+        r"""Namespace
         :rtype: list of str
         """
         return self._Namespace
@@ -11966,7 +11966,7 @@ class CreateAssetImageRegistryScanTaskOneKeyRequest(AbstractModel):
 
     @property
     def ContainerRunning(self):
-        r"""
+        r"""Whether There Are Running Containers
         :rtype: bool
         """
         return self._ContainerRunning
@@ -11977,7 +11977,7 @@ class CreateAssetImageRegistryScanTaskOneKeyRequest(AbstractModel):
 
     @property
     def Timeout(self):
-        r"""
+        r"""Task Timeout Duration Unit (s)
         :rtype: int
         """
         return self._Timeout
@@ -12021,7 +12021,7 @@ class CreateAssetImageRegistryScanTaskOneKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskID: The task id 
+        :param _TaskID: Scan Task ID
         :type TaskID: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -12031,7 +12031,7 @@ class CreateAssetImageRegistryScanTaskOneKeyResponse(AbstractModel):
 
     @property
     def TaskID(self):
-        r"""The task id 
+        r"""Scan Task ID
         :rtype: int
         """
         return self._TaskID
@@ -22956,14 +22956,14 @@ class DescribeAssetHostDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HostId: Server ID
+        :param _HostId: Host ID
         :type HostId: str
         """
         self._HostId = None
 
     @property
     def HostId(self):
-        r"""Server ID
+        r"""Host ID
         :rtype: str
         """
         return self._HostId
@@ -22992,63 +22992,63 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UUID: TCSS UUID
+        :param _UUID: Container Security UUID
         :type UUID: str
-        :param _UpdateTime: Update time
+        :param _UpdateTime: Update time.
         :type UpdateTime: str
-        :param _HostName: Server name
+        :param _HostName: Host name
         :type HostName: str
-        :param _Group: Server group
+        :param _Group: Host grouping
         :type Group: str
-        :param _HostIP: Server IP
+        :param _HostIP: Host IP address
         :type HostIP: str
-        :param _OsName: OS
+        :param _OsName: Operating system.
         :type OsName: str
         :param _AgentVersion: Agent version
         :type AgentVersion: str
         :param _KernelVersion: Kernel version
         :type KernelVersion: str
-        :param _DockerVersion: Docker version
+        :param _DockerVersion: docker version
         :type DockerVersion: str
-        :param _DockerAPIVersion: Docker API version
+        :param _DockerAPIVersion: docker api version
         :type DockerAPIVersion: str
-        :param _DockerGoVersion: Docker version for Go
+        :param _DockerGoVersion: docker go version
         :type DockerGoVersion: str
-        :param _DockerFileSystemDriver: Docker file system type
+        :param _DockerFileSystemDriver: docker file system type
         :type DockerFileSystemDriver: str
-        :param _DockerRootDir: Docker root directory
+        :param _DockerRootDir: docker root directory
         :type DockerRootDir: str
-        :param _ImageCnt: Number of images
+        :param _ImageCnt: Image count
         :type ImageCnt: int
         :param _ContainerCnt: Number of containers
         :type ContainerCnt: int
-        :param _K8sMasterIP: K8s IP
+        :param _K8sMasterIP: k8s IP
         :type K8sMasterIP: str
-        :param _K8sVersion: K8s version
+        :param _K8sVersion: k8s version
         :type K8sVersion: str
         :param _KubeProxyVersion: kube proxy
         :type KubeProxyVersion: str
-        :param _Status: Valid values: `UNINSTALL` (not installed); `OFFLINE` (offline); `ONLINE` (defended).
+        :param _Status: "UNINSTALL": Not Installed; "OFFLINE": Offline; "ONLINE": Protected
         :type Status: str
-        :param _IsContainerd: Whether it is Containerd
+        :param _IsContainerd: Is Containerd
         :type IsContainerd: bool
-        :param _MachineType: Server source. Valid values: `TENCENTCLOUD` (Tencent Cloud instance); `OTHERCLOUD` (non-Tencent Cloud instance).
+        :param _MachineType: Host Source. "TENCENTCLOUD": "Tencent Cloud Servers"; "OTHERCLOUD": "Non-Tencent Cloud Servers"
         :type MachineType: str
-        :param _PublicIp: Public IP
+        :param _PublicIp: Public IP address
         :type PublicIp: str
-        :param _InstanceID: Server instance ID
+        :param _InstanceID: Host instance ID
         :type InstanceID: str
-        :param _RegionID: Region ID
+        :param _RegionID: Region ID.
         :type RegionID: int
-        :param _Project: Project
+        :param _Project: Associated project
         :type Project: :class:`tencentcloud.tcss.v20201101.models.ProjectInfo`
-        :param _Tags: Tags
+        :param _Tags: Tag.
         :type Tags: list of TagInfo
-        :param _ClusterID: 
+        :param _ClusterID: Cluster ID
         :type ClusterID: str
-        :param _ClusterName: 
+        :param _ClusterName: Cluster name.
         :type ClusterName: str
-        :param _ClusterAccessedStatus: 
+        :param _ClusterAccessedStatus: Cluster Access Status
         :type ClusterAccessedStatus: str
         :param _AssetSyncTime: Asset synchronization time.
         :type AssetSyncTime: str
@@ -23089,7 +23089,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def UUID(self):
-        r"""TCSS UUID
+        r"""Container Security UUID
         :rtype: str
         """
         return self._UUID
@@ -23100,7 +23100,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Update time
+        r"""Update time.
         :rtype: str
         """
         return self._UpdateTime
@@ -23111,7 +23111,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def HostName(self):
-        r"""Server name
+        r"""Host name
         :rtype: str
         """
         return self._HostName
@@ -23122,7 +23122,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def Group(self):
-        r"""Server group
+        r"""Host grouping
         :rtype: str
         """
         return self._Group
@@ -23133,7 +23133,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def HostIP(self):
-        r"""Server IP
+        r"""Host IP address
         :rtype: str
         """
         return self._HostIP
@@ -23144,7 +23144,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def OsName(self):
-        r"""OS
+        r"""Operating system.
         :rtype: str
         """
         return self._OsName
@@ -23177,7 +23177,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def DockerVersion(self):
-        r"""Docker version
+        r"""docker version
         :rtype: str
         """
         return self._DockerVersion
@@ -23188,7 +23188,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def DockerAPIVersion(self):
-        r"""Docker API version
+        r"""docker api version
         :rtype: str
         """
         return self._DockerAPIVersion
@@ -23199,7 +23199,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def DockerGoVersion(self):
-        r"""Docker version for Go
+        r"""docker go version
         :rtype: str
         """
         return self._DockerGoVersion
@@ -23210,7 +23210,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def DockerFileSystemDriver(self):
-        r"""Docker file system type
+        r"""docker file system type
         :rtype: str
         """
         return self._DockerFileSystemDriver
@@ -23221,7 +23221,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def DockerRootDir(self):
-        r"""Docker root directory
+        r"""docker root directory
         :rtype: str
         """
         return self._DockerRootDir
@@ -23232,7 +23232,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def ImageCnt(self):
-        r"""Number of images
+        r"""Image count
         :rtype: int
         """
         return self._ImageCnt
@@ -23254,7 +23254,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def K8sMasterIP(self):
-        r"""K8s IP
+        r"""k8s IP
         :rtype: str
         """
         return self._K8sMasterIP
@@ -23265,7 +23265,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def K8sVersion(self):
-        r"""K8s version
+        r"""k8s version
         :rtype: str
         """
         return self._K8sVersion
@@ -23287,7 +23287,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""Valid values: `UNINSTALL` (not installed); `OFFLINE` (offline); `ONLINE` (defended).
+        r""""UNINSTALL": Not Installed; "OFFLINE": Offline; "ONLINE": Protected
         :rtype: str
         """
         return self._Status
@@ -23298,7 +23298,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def IsContainerd(self):
-        r"""Whether it is Containerd
+        r"""Is Containerd
         :rtype: bool
         """
         return self._IsContainerd
@@ -23309,7 +23309,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def MachineType(self):
-        r"""Server source. Valid values: `TENCENTCLOUD` (Tencent Cloud instance); `OTHERCLOUD` (non-Tencent Cloud instance).
+        r"""Host Source. "TENCENTCLOUD": "Tencent Cloud Servers"; "OTHERCLOUD": "Non-Tencent Cloud Servers"
         :rtype: str
         """
         return self._MachineType
@@ -23320,7 +23320,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def PublicIp(self):
-        r"""Public IP
+        r"""Public IP address
         :rtype: str
         """
         return self._PublicIp
@@ -23331,7 +23331,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""Server instance ID
+        r"""Host instance ID
         :rtype: str
         """
         return self._InstanceID
@@ -23342,7 +23342,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def RegionID(self):
-        r"""Region ID
+        r"""Region ID.
         :rtype: int
         """
         return self._RegionID
@@ -23353,7 +23353,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def Project(self):
-        r"""Project
+        r"""Associated project
         :rtype: :class:`tencentcloud.tcss.v20201101.models.ProjectInfo`
         """
         return self._Project
@@ -23364,7 +23364,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def Tags(self):
-        r"""Tags
+        r"""Tag.
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -23375,7 +23375,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def ClusterID(self):
-        r"""
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterID
@@ -23386,7 +23386,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""
+        r"""Cluster name.
         :rtype: str
         """
         return self._ClusterName
@@ -23397,7 +23397,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     @property
     def ClusterAccessedStatus(self):
-        r"""
+        r"""Cluster Access Status
         :rtype: str
         """
         return self._ClusterAccessedStatus
@@ -26802,14 +26802,14 @@ class DescribeAssetImageRegistrySummaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 
+        :param _Filters: Filter fields
         :type Filters: list of AssetFilters
         """
         self._Filters = None
 
     @property
     def Filters(self):
-        r"""
+        r"""Filter fields
         :rtype: list of AssetFilters
         """
         return self._Filters
@@ -29992,11 +29992,14 @@ class DescribeAssetSyncLastTimeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AssetSyncLastTime: Last asset sync time
+        :param _AssetSyncLastTime: Last Synchronization Time of Assets
         :type AssetSyncLastTime: str
-        :param _TaskStatus: 
+        :param _TaskStatus: Task status.
+PENDING: pending.
+PROCESSING: Processing
+PROCESSED: Completed
         :type TaskStatus: str
-        :param _TaskProcess: 
+        :param _TaskProcess: Task Progress (Percentage)
         :type TaskProcess: int
         :param _FailedHostCount: Number of failed hosts.
         :type FailedHostCount: int
@@ -30014,7 +30017,7 @@ class DescribeAssetSyncLastTimeResponse(AbstractModel):
 
     @property
     def AssetSyncLastTime(self):
-        r"""Last asset sync time
+        r"""Last Synchronization Time of Assets
         :rtype: str
         """
         return self._AssetSyncLastTime
@@ -30025,7 +30028,10 @@ class DescribeAssetSyncLastTimeResponse(AbstractModel):
 
     @property
     def TaskStatus(self):
-        r"""
+        r"""Task status.
+PENDING: pending.
+PROCESSING: Processing
+PROCESSED: Completed
         :rtype: str
         """
         return self._TaskStatus
@@ -30036,7 +30042,7 @@ class DescribeAssetSyncLastTimeResponse(AbstractModel):
 
     @property
     def TaskProcess(self):
-        r"""
+        r"""Task Progress (Percentage)
         :rtype: int
         """
         return self._TaskProcess
@@ -34698,25 +34704,25 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalAuthorizedCnt: Total number of valid image licenses
+        :param _TotalAuthorizedCnt: Total number of effective image licenses.
         :type TotalAuthorizedCnt: int
-        :param _UsedAuthorizedCnt: Number of used image licenses
+        :param _UsedAuthorizedCnt: Used image licenses
         :type UsedAuthorizedCnt: int
-        :param _ScannedImageCnt: Number of images with scan enabled
+        :param _ScannedImageCnt: Scan image count enabled
         :type ScannedImageCnt: int
-        :param _NotScannedImageCnt: Number of images with scan not enabled
+        :param _NotScannedImageCnt: Scan image count when not enabled
         :type NotScannedImageCnt: int
-        :param _NotScannedLocalImageCnt: Number of local images with scan not enabled
+        :param _NotScannedLocalImageCnt: Number of Local Images with Scans Not Enabled
         :type NotScannedLocalImageCnt: int
-        :param _TrialAuthorizedCnt: 
+        :param _TrialAuthorizedCnt: Number of licensed trial images.
         :type TrialAuthorizedCnt: int
-        :param _UsedTrialAuthorizedCnt: 
+        :param _UsedTrialAuthorizedCnt: Number of licensed trial images that have been used.
         :type UsedTrialAuthorizedCnt: int
-        :param _PurchasedAuthorizedCnt: 
+        :param _PurchasedAuthorizedCnt: Number of purchased image authorizations
         :type PurchasedAuthorizedCnt: int
-        :param _UsedPurchasedAuthorizedCnt: 
+        :param _UsedPurchasedAuthorizedCnt: Number of purchased licensed images that have been used.
         :type UsedPurchasedAuthorizedCnt: int
-        :param _CanApplyFreeImageAuthorize: 
+        :param _CanApplyFreeImageAuthorize: Whether the free image licenses can be collected.
         :type CanApplyFreeImageAuthorize: bool
         :param _ImageScanInquireInfo: Image scanning billing information.
         :type ImageScanInquireInfo: :class:`tencentcloud.tcss.v20201101.models.ImageScanInquireInfo`
@@ -34741,7 +34747,7 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
 
     @property
     def TotalAuthorizedCnt(self):
-        r"""Total number of valid image licenses
+        r"""Total number of effective image licenses.
         :rtype: int
         """
         return self._TotalAuthorizedCnt
@@ -34752,7 +34758,7 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
 
     @property
     def UsedAuthorizedCnt(self):
-        r"""Number of used image licenses
+        r"""Used image licenses
         :rtype: int
         """
         return self._UsedAuthorizedCnt
@@ -34763,7 +34769,7 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
 
     @property
     def ScannedImageCnt(self):
-        r"""Number of images with scan enabled
+        r"""Scan image count enabled
         :rtype: int
         """
         return self._ScannedImageCnt
@@ -34774,7 +34780,7 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
 
     @property
     def NotScannedImageCnt(self):
-        r"""Number of images with scan not enabled
+        r"""Scan image count when not enabled
         :rtype: int
         """
         return self._NotScannedImageCnt
@@ -34785,7 +34791,7 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
 
     @property
     def NotScannedLocalImageCnt(self):
-        r"""Number of local images with scan not enabled
+        r"""Number of Local Images with Scans Not Enabled
         :rtype: int
         """
         return self._NotScannedLocalImageCnt
@@ -34796,7 +34802,7 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
 
     @property
     def TrialAuthorizedCnt(self):
-        r"""
+        r"""Number of licensed trial images.
         :rtype: int
         """
         return self._TrialAuthorizedCnt
@@ -34807,7 +34813,7 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
 
     @property
     def UsedTrialAuthorizedCnt(self):
-        r"""
+        r"""Number of licensed trial images that have been used.
         :rtype: int
         """
         return self._UsedTrialAuthorizedCnt
@@ -34818,7 +34824,7 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
 
     @property
     def PurchasedAuthorizedCnt(self):
-        r"""
+        r"""Number of purchased image authorizations
         :rtype: int
         """
         return self._PurchasedAuthorizedCnt
@@ -34829,7 +34835,7 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
 
     @property
     def UsedPurchasedAuthorizedCnt(self):
-        r"""
+        r"""Number of purchased licensed images that have been used.
         :rtype: int
         """
         return self._UsedPurchasedAuthorizedCnt
@@ -34840,7 +34846,7 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
 
     @property
     def CanApplyFreeImageAuthorize(self):
-        r"""
+        r"""Whether the free image licenses can be collected.
         :rtype: bool
         """
         return self._CanApplyFreeImageAuthorize
@@ -35093,7 +35099,7 @@ class DescribeImageAutoAuthorizedRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IsEnabled: Whether the rule takes effect. Valid values: `0` (no); `1` (yes).
+        :param _IsEnabled: Whether the Rule Is Effective. 0: Not Effective; 1: Effective
         :type IsEnabled: int
         :param _RangeType: Authorization Scope Category. MANUAL: Selected Host Nodes; ALL: All Images
         :type RangeType: str
@@ -35103,9 +35109,9 @@ class DescribeImageAutoAuthorizedRuleResponse(AbstractModel):
         :type MaxDailyCount: int
         :param _RuleId: Rule ID. Set it to 0 when it is not configured.
         :type RuleId: int
-        :param _AutoScanEnabled: 
+        :param _AutoScanEnabled: Auto-Scan Switch. 0: Off; 1: On
         :type AutoScanEnabled: int
-        :param _ScanType: 
+        :param _ScanType: Auto-Scan Range
         :type ScanType: list of str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -35121,7 +35127,7 @@ class DescribeImageAutoAuthorizedRuleResponse(AbstractModel):
 
     @property
     def IsEnabled(self):
-        r"""Whether the rule takes effect. Valid values: `0` (no); `1` (yes).
+        r"""Whether the Rule Is Effective. 0: Not Effective; 1: Effective
         :rtype: int
         """
         return self._IsEnabled
@@ -35176,7 +35182,7 @@ class DescribeImageAutoAuthorizedRuleResponse(AbstractModel):
 
     @property
     def AutoScanEnabled(self):
-        r"""
+        r"""Auto-Scan Switch. 0: Off; 1: On
         :rtype: int
         """
         return self._AutoScanEnabled
@@ -35187,7 +35193,7 @@ class DescribeImageAutoAuthorizedRuleResponse(AbstractModel):
 
     @property
     def ScanType(self):
-        r"""
+        r"""Auto-Scan Range
         :rtype: list of str
         """
         return self._ScanType
@@ -41534,49 +41540,50 @@ class DescribePurchaseStateInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _State: Valid values: `0` (available for trial and purchase); `1` (available for purchase only after failed trial review or trial expiration); `2` (trial effective); `3` (Pro Edition effective); `4` (Pro Edition expired).
+        :param _State: <p>0: available for trial application and purchase; 1: purchase only (including failed trial review and expired trial); 2: trial active; 3: Pro Edition active; 4: Pro Edition expired</p>
         :type State: int
-        :param _AllCoresCnt: 
+        :param _AllCoresCnt: <p>Total resource cores = total protected cores + unprotected cores</p>
         :type AllCoresCnt: int
-        :param _CoresCnt: Total number of protected cores. It is the sum of the number of purchased cores, the number of free trial cores, and the number of elastic billing cores.
+        :param _CoresCnt: <p>Total protected cores = purchased cores + trial granted cores + elastic billing cores</p>
         :type CoresCnt: int
-        :param _UndefendCoresCnt: 
+        :param _UndefendCoresCnt: <p>Unprotected cores (number of resource cores with protection not enabled)</p>
         :type UndefendCoresCnt: int
-        :param _AuthorizedCoresCnt: Number of purchased cores
+        :param _AuthorizedCoresCnt: <p>Number of purchased cores</p>
         :type AuthorizedCoresCnt: int
-        :param _GivenAuthorizedCoresCnt: Number of free trial cores for Pro Edition.
+        :param _GivenAuthorizedCoresCnt: <p>Trial giveaway of Pro Edition cores</p>
         :type GivenAuthorizedCoresCnt: int
-        :param _CurrentFlexibleCoresCnt: 
+        :param _CurrentFlexibleCoresCnt: <p>Current number of elastic billing cores</p>
         :type CurrentFlexibleCoresCnt: int
-        :param _ImageCnt: Image count
+        :param _ImageCnt: <p>Number of images.</p>
         :type ImageCnt: int
-        :param _AuthorizedImageCnt: Number of licensed images
+        :param _AuthorizedImageCnt: <p>Number of licensed images</p>
         :type AuthorizedImageCnt: int
-        :param _ExpirationTime: Expiration time
+        :param _ExpirationTime: <p>Expiration time.</p>
         :type ExpirationTime: str
-        :param _PurchasedAuthorizedCnt: Number of purchased image licenses
+        :param _PurchasedAuthorizedCnt: <p>Number of purchased image licenses</p>
         :type PurchasedAuthorizedCnt: int
-        :param _AutomaticRenewal: 0 indicates the default status (it has not been set by the user, namely the initial status); 1 indicates automatic renewal; 2 indicates explicit non-automatic renewal (it has been set by the user).
+        :param _AutomaticRenewal: <p>0 indicates the default state (not set by the user, i.e., the initial state), 1 indicates auto-renewal, and 2 indicates explicitly no auto-renewal (set by the user).</p>
         :type AutomaticRenewal: int
-        :param _GivenAuthorizedCnt: Complimentary image licenses during the trial period may expire.
+        :param _GivenAuthorizedCnt: <p>Complimentary image licenses during the trial period may expire.</p>
         :type GivenAuthorizedCnt: int
-        :param _BeginTime: Start time.
+        :param _BeginTime: <p>Start time</p>
         :type BeginTime: str
-        :param _SubState: Substatus (specific meaning depending on the State field)
-Valid values when State is 4: ISOLATE, TERMINATED.
+        :param _SubState: <p>Sub-status (specific meaning depending on the State field)<br>When State is 4, valid values: ISOLATE (isolated) DESTROED (terminated)</p>
         :type SubState: str
-        :param _InquireKey: Billing key.
+        :param _InquireKey: <p>Billing key</p>
         :type InquireKey: str
-        :param _DefendPolicy: 
+        :param _DefendPolicy: <p>Protection policy</p>
         :type DefendPolicy: str
-        :param _FlexibleCoresLimit: 
+        :param _FlexibleCoresLimit: <p>Upper limit of elastic billing cores</p>
         :type FlexibleCoresLimit: int
-        :param _DefendClusterCoresCnt: 
+        :param _DefendClusterCoresCnt: <p>Number of cores in the protected cluster</p>
         :type DefendClusterCoresCnt: int
-        :param _DefendHostCoresCnt: 
+        :param _DefendHostCoresCnt: <p>Protected host cores</p>
         :type DefendHostCoresCnt: int
-        :param _TrialCoresCnt: Number of trial cores for Pro Edition.
+        :param _TrialCoresCnt: <p>Number of cores of the Pro Edition for trial use</p>
         :type TrialCoresCnt: int
+        :param _NoContainerCoresCnt: <p>Number of machines with zero protection containers.</p>
+        :type NoContainerCoresCnt: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -41601,11 +41608,12 @@ Valid values when State is 4: ISOLATE, TERMINATED.
         self._DefendClusterCoresCnt = None
         self._DefendHostCoresCnt = None
         self._TrialCoresCnt = None
+        self._NoContainerCoresCnt = None
         self._RequestId = None
 
     @property
     def State(self):
-        r"""Valid values: `0` (available for trial and purchase); `1` (available for purchase only after failed trial review or trial expiration); `2` (trial effective); `3` (Pro Edition effective); `4` (Pro Edition expired).
+        r"""<p>0: available for trial application and purchase; 1: purchase only (including failed trial review and expired trial); 2: trial active; 3: Pro Edition active; 4: Pro Edition expired</p>
         :rtype: int
         """
         return self._State
@@ -41616,7 +41624,7 @@ Valid values when State is 4: ISOLATE, TERMINATED.
 
     @property
     def AllCoresCnt(self):
-        r"""
+        r"""<p>Total resource cores = total protected cores + unprotected cores</p>
         :rtype: int
         """
         return self._AllCoresCnt
@@ -41627,7 +41635,7 @@ Valid values when State is 4: ISOLATE, TERMINATED.
 
     @property
     def CoresCnt(self):
-        r"""Total number of protected cores. It is the sum of the number of purchased cores, the number of free trial cores, and the number of elastic billing cores.
+        r"""<p>Total protected cores = purchased cores + trial granted cores + elastic billing cores</p>
         :rtype: int
         """
         return self._CoresCnt
@@ -41638,7 +41646,7 @@ Valid values when State is 4: ISOLATE, TERMINATED.
 
     @property
     def UndefendCoresCnt(self):
-        r"""
+        r"""<p>Unprotected cores (number of resource cores with protection not enabled)</p>
         :rtype: int
         """
         return self._UndefendCoresCnt
@@ -41649,7 +41657,7 @@ Valid values when State is 4: ISOLATE, TERMINATED.
 
     @property
     def AuthorizedCoresCnt(self):
-        r"""Number of purchased cores
+        r"""<p>Number of purchased cores</p>
         :rtype: int
         """
         return self._AuthorizedCoresCnt
@@ -41660,7 +41668,7 @@ Valid values when State is 4: ISOLATE, TERMINATED.
 
     @property
     def GivenAuthorizedCoresCnt(self):
-        r"""Number of free trial cores for Pro Edition.
+        r"""<p>Trial giveaway of Pro Edition cores</p>
         :rtype: int
         """
         return self._GivenAuthorizedCoresCnt
@@ -41671,7 +41679,7 @@ Valid values when State is 4: ISOLATE, TERMINATED.
 
     @property
     def CurrentFlexibleCoresCnt(self):
-        r"""
+        r"""<p>Current number of elastic billing cores</p>
         :rtype: int
         """
         return self._CurrentFlexibleCoresCnt
@@ -41682,7 +41690,7 @@ Valid values when State is 4: ISOLATE, TERMINATED.
 
     @property
     def ImageCnt(self):
-        r"""Image count
+        r"""<p>Number of images.</p>
         :rtype: int
         """
         return self._ImageCnt
@@ -41693,7 +41701,7 @@ Valid values when State is 4: ISOLATE, TERMINATED.
 
     @property
     def AuthorizedImageCnt(self):
-        r"""Number of licensed images
+        r"""<p>Number of licensed images</p>
         :rtype: int
         """
         return self._AuthorizedImageCnt
@@ -41704,7 +41712,7 @@ Valid values when State is 4: ISOLATE, TERMINATED.
 
     @property
     def ExpirationTime(self):
-        r"""Expiration time
+        r"""<p>Expiration time.</p>
         :rtype: str
         """
         return self._ExpirationTime
@@ -41715,7 +41723,7 @@ Valid values when State is 4: ISOLATE, TERMINATED.
 
     @property
     def PurchasedAuthorizedCnt(self):
-        r"""Number of purchased image licenses
+        r"""<p>Number of purchased image licenses</p>
         :rtype: int
         """
         return self._PurchasedAuthorizedCnt
@@ -41726,7 +41734,7 @@ Valid values when State is 4: ISOLATE, TERMINATED.
 
     @property
     def AutomaticRenewal(self):
-        r"""0 indicates the default status (it has not been set by the user, namely the initial status); 1 indicates automatic renewal; 2 indicates explicit non-automatic renewal (it has been set by the user).
+        r"""<p>0 indicates the default state (not set by the user, i.e., the initial state), 1 indicates auto-renewal, and 2 indicates explicitly no auto-renewal (set by the user).</p>
         :rtype: int
         """
         return self._AutomaticRenewal
@@ -41737,7 +41745,7 @@ Valid values when State is 4: ISOLATE, TERMINATED.
 
     @property
     def GivenAuthorizedCnt(self):
-        r"""Complimentary image licenses during the trial period may expire.
+        r"""<p>Complimentary image licenses during the trial period may expire.</p>
         :rtype: int
         """
         return self._GivenAuthorizedCnt
@@ -41748,7 +41756,7 @@ Valid values when State is 4: ISOLATE, TERMINATED.
 
     @property
     def BeginTime(self):
-        r"""Start time.
+        r"""<p>Start time</p>
         :rtype: str
         """
         return self._BeginTime
@@ -41759,8 +41767,7 @@ Valid values when State is 4: ISOLATE, TERMINATED.
 
     @property
     def SubState(self):
-        r"""Substatus (specific meaning depending on the State field)
-Valid values when State is 4: ISOLATE, TERMINATED.
+        r"""<p>Sub-status (specific meaning depending on the State field)<br>When State is 4, valid values: ISOLATE (isolated) DESTROED (terminated)</p>
         :rtype: str
         """
         return self._SubState
@@ -41771,7 +41778,7 @@ Valid values when State is 4: ISOLATE, TERMINATED.
 
     @property
     def InquireKey(self):
-        r"""Billing key.
+        r"""<p>Billing key</p>
         :rtype: str
         """
         return self._InquireKey
@@ -41782,7 +41789,7 @@ Valid values when State is 4: ISOLATE, TERMINATED.
 
     @property
     def DefendPolicy(self):
-        r"""
+        r"""<p>Protection policy</p>
         :rtype: str
         """
         return self._DefendPolicy
@@ -41793,7 +41800,7 @@ Valid values when State is 4: ISOLATE, TERMINATED.
 
     @property
     def FlexibleCoresLimit(self):
-        r"""
+        r"""<p>Upper limit of elastic billing cores</p>
         :rtype: int
         """
         return self._FlexibleCoresLimit
@@ -41804,7 +41811,7 @@ Valid values when State is 4: ISOLATE, TERMINATED.
 
     @property
     def DefendClusterCoresCnt(self):
-        r"""
+        r"""<p>Number of cores in the protected cluster</p>
         :rtype: int
         """
         return self._DefendClusterCoresCnt
@@ -41815,7 +41822,7 @@ Valid values when State is 4: ISOLATE, TERMINATED.
 
     @property
     def DefendHostCoresCnt(self):
-        r"""
+        r"""<p>Protected host cores</p>
         :rtype: int
         """
         return self._DefendHostCoresCnt
@@ -41826,7 +41833,7 @@ Valid values when State is 4: ISOLATE, TERMINATED.
 
     @property
     def TrialCoresCnt(self):
-        r"""Number of trial cores for Pro Edition.
+        r"""<p>Number of cores of the Pro Edition for trial use</p>
         :rtype: int
         """
         return self._TrialCoresCnt
@@ -41834,6 +41841,17 @@ Valid values when State is 4: ISOLATE, TERMINATED.
     @TrialCoresCnt.setter
     def TrialCoresCnt(self, TrialCoresCnt):
         self._TrialCoresCnt = TrialCoresCnt
+
+    @property
+    def NoContainerCoresCnt(self):
+        r"""<p>Number of machines with zero protection containers.</p>
+        :rtype: int
+        """
+        return self._NoContainerCoresCnt
+
+    @NoContainerCoresCnt.setter
+    def NoContainerCoresCnt(self, NoContainerCoresCnt):
+        self._NoContainerCoresCnt = NoContainerCoresCnt
 
     @property
     def RequestId(self):
@@ -41869,6 +41887,7 @@ Valid values when State is 4: ISOLATE, TERMINATED.
         self._DefendClusterCoresCnt = params.get("DefendClusterCoresCnt")
         self._DefendHostCoresCnt = params.get("DefendHostCoresCnt")
         self._TrialCoresCnt = params.get("TrialCoresCnt")
+        self._NoContainerCoresCnt = params.get("NoContainerCoresCnt")
         self._RequestId = params.get("RequestId")
 
 
@@ -57213,29 +57232,29 @@ class ImageHost(AbstractModel):
 
 
 class ImageInfo(AbstractModel):
-    r"""Basic image information
+    r"""Basic mirror information
 
     """
 
     def __init__(self):
         r"""
-        :param _InstanceName: Instance name
+        :param _InstanceName: Instance name.
         :type InstanceName: str
         :param _Namespace: Namespace
         :type Namespace: str
-        :param _ImageName: Image name
+        :param _ImageName: Image name.
         :type ImageName: str
         :param _ImageTag: Image tag
         :type ImageTag: str
-        :param _Force: Forced scan
+        :param _Force: Force scan
         :type Force: str
-        :param _ImageDigest: Image ID
+        :param _ImageDigest: Image id
         :type ImageDigest: str
         :param _RegistryType: Repository type
         :type RegistryType: str
         :param _ImageRepoAddress: Image repository address
         :type ImageRepoAddress: str
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID.
         :type InstanceId: str
         """
         self._InstanceName = None
@@ -57250,7 +57269,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""Instance name
+        r"""Instance name.
         :rtype: str
         """
         return self._InstanceName
@@ -57272,7 +57291,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def ImageName(self):
-        r"""Image name
+        r"""Image name.
         :rtype: str
         """
         return self._ImageName
@@ -57294,7 +57313,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def Force(self):
-        r"""Forced scan
+        r"""Force scan
         :rtype: str
         """
         return self._Force
@@ -57305,7 +57324,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def ImageDigest(self):
-        r"""Image ID
+        r"""Image id
         :rtype: str
         """
         return self._ImageDigest
@@ -57338,7 +57357,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -58921,19 +58940,19 @@ class ImageScanInquireInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InquireKey: Billing item
+        :param _InquireKey: Billing item.
         :type InquireKey: str
-        :param _Capcity: Total Capacity
+        :param _Capcity: Total capacity
         :type Capcity: int
         :param _Useage: Used amount
         :type Useage: int
         :param _StartTime: Start time.
         :type StartTime: str
-        :param _EndTime: End time
+        :param _EndTime: End time.
         :type EndTime: str
         :param _PurchaseStatus: Billing status
-Pending purchase
-Normal: Normal.
+Pending: To be purchased
+Normal: normal.
 Isolate
         :type PurchaseStatus: str
         :param _ResourceID: Resource ID
@@ -58958,7 +58977,7 @@ Isolate
 
     @property
     def InquireKey(self):
-        r"""Billing item
+        r"""Billing item.
         :rtype: str
         """
         return self._InquireKey
@@ -58969,7 +58988,7 @@ Isolate
 
     @property
     def Capcity(self):
-        r"""Total Capacity
+        r"""Total capacity
         :rtype: int
         """
         return self._Capcity
@@ -59002,7 +59021,7 @@ Isolate
 
     @property
     def EndTime(self):
-        r"""End time
+        r"""End time.
         :rtype: str
         """
         return self._EndTime
@@ -59014,8 +59033,8 @@ Isolate
     @property
     def PurchaseStatus(self):
         r"""Billing status
-Pending purchase
-Normal: Normal.
+Pending: To be purchased
+Normal: normal.
 Isolate
         :rtype: str
         """
@@ -68516,15 +68535,15 @@ class ProcessInfo(AbstractModel):
 
 
 class ProjectInfo(AbstractModel):
-    r"""The project to which the host belongs
+    r"""Host Project Ownership
 
     """
 
     def __init__(self):
         r"""
-        :param _ProjectName: Project name
+        :param _ProjectName: Project name.
         :type ProjectName: str
-        :param _ProjectID: Project ID
+        :param _ProjectID: Project ID.
         :type ProjectID: int
         """
         self._ProjectName = None
@@ -68532,7 +68551,7 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectName(self):
-        r"""Project name
+        r"""Project name.
         :rtype: str
         """
         return self._ProjectName
@@ -68543,7 +68562,7 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectID(self):
-        r"""Project ID
+        r"""Project ID.
         :rtype: int
         """
         return self._ProjectID
@@ -74706,15 +74725,15 @@ class SyncAssetImageRegistryAssetResponse(AbstractModel):
 
 
 class TagInfo(AbstractModel):
-    r"""Host tag information
+    r"""Host Tag Information
 
     """
 
     def __init__(self):
         r"""
-        :param _TagKey: Tag key
+        :param _TagKey: Tag key.
         :type TagKey: str
-        :param _TagValue: Tag value
+        :param _TagValue: Tag value.
         :type TagValue: str
         """
         self._TagKey = None
@@ -74722,7 +74741,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagKey(self):
-        r"""Tag key
+        r"""Tag key.
         :rtype: str
         """
         return self._TagKey
@@ -74733,7 +74752,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagValue(self):
-        r"""Tag value
+        r"""Tag value.
         :rtype: str
         """
         return self._TagValue
@@ -75573,28 +75592,30 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
         :type ScanPeriod: int
         :param _Enable: Scheduled scan switch
         :type Enable: bool
-        :param _ScanTime: Scheduled scan time
+        :param _ScanTime: The time for scheduled scan
         :type ScanTime: str
-        :param _ScanType: Array of the scanned trojan types
+        :param _ScanType: Array of Trojan horse types to scan
         :type ScanType: list of str
-        :param _Images: Scanned image
+        :param _Images: Scan image
         :type Images: list of ImageInfo
         :param _All: Whether to scan all
         :type All: bool
-        :param _Id: ID of the image to be scanned
+        :param _Id: Scan Image ID
         :type Id: list of int non-negative
-        :param _Latest: Whether to scan for the latest version
+        :param _Latest: Whether to Scan the Latest Version
         :type Latest: bool
-        :param _ContainerRunning: 
+        :param _ContainerRunning: Whether There Are Running Containers
         :type ContainerRunning: bool
-        :param _ScanEndTime: 
+        :param _ScanEndTime: Scan end time
         :type ScanEndTime: str
-        :param _ScanScope: 
+        :param _ScanScope: Scan Scope. 0: All Images; 1: Custom Images; 2: Recommended Scan Images
         :type ScanScope: int
-        :param _RegistryType: 
+        :param _RegistryType: Repository Type: tcr, ccr, harbor
         :type RegistryType: list of str
-        :param _Namespace: 
+        :param _Namespace: Namespace
         :type Namespace: list of str
+        :param _ExcludeImageAssetIds: IDs of excluded image assets.
+        :type ExcludeImageAssetIds: list of int non-negative
         """
         self._ScanPeriod = None
         self._Enable = None
@@ -75609,6 +75630,7 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
         self._ScanScope = None
         self._RegistryType = None
         self._Namespace = None
+        self._ExcludeImageAssetIds = None
 
     @property
     def ScanPeriod(self):
@@ -75634,7 +75656,7 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
 
     @property
     def ScanTime(self):
-        r"""Scheduled scan time
+        r"""The time for scheduled scan
         :rtype: str
         """
         return self._ScanTime
@@ -75645,7 +75667,7 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
 
     @property
     def ScanType(self):
-        r"""Array of the scanned trojan types
+        r"""Array of Trojan horse types to scan
         :rtype: list of str
         """
         return self._ScanType
@@ -75656,7 +75678,7 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
 
     @property
     def Images(self):
-        r"""Scanned image
+        r"""Scan image
         :rtype: list of ImageInfo
         """
         return self._Images
@@ -75682,7 +75704,7 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""ID of the image to be scanned
+        r"""Scan Image ID
         :rtype: list of int non-negative
         """
         return self._Id
@@ -75693,7 +75715,7 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
 
     @property
     def Latest(self):
-        r"""Whether to scan for the latest version
+        r"""Whether to Scan the Latest Version
         :rtype: bool
         """
         return self._Latest
@@ -75704,7 +75726,7 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
 
     @property
     def ContainerRunning(self):
-        r"""
+        r"""Whether There Are Running Containers
         :rtype: bool
         """
         return self._ContainerRunning
@@ -75715,7 +75737,7 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
 
     @property
     def ScanEndTime(self):
-        r"""
+        r"""Scan end time
         :rtype: str
         """
         return self._ScanEndTime
@@ -75726,7 +75748,7 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
 
     @property
     def ScanScope(self):
-        r"""
+        r"""Scan Scope. 0: All Images; 1: Custom Images; 2: Recommended Scan Images
         :rtype: int
         """
         return self._ScanScope
@@ -75737,7 +75759,7 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
 
     @property
     def RegistryType(self):
-        r"""
+        r"""Repository Type: tcr, ccr, harbor
         :rtype: list of str
         """
         return self._RegistryType
@@ -75748,7 +75770,7 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""
+        r"""Namespace
         :rtype: list of str
         """
         return self._Namespace
@@ -75756,6 +75778,17 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
     @Namespace.setter
     def Namespace(self, Namespace):
         self._Namespace = Namespace
+
+    @property
+    def ExcludeImageAssetIds(self):
+        r"""IDs of excluded image assets.
+        :rtype: list of int non-negative
+        """
+        return self._ExcludeImageAssetIds
+
+    @ExcludeImageAssetIds.setter
+    def ExcludeImageAssetIds(self, ExcludeImageAssetIds):
+        self._ExcludeImageAssetIds = ExcludeImageAssetIds
 
 
     def _deserialize(self, params):
@@ -75777,6 +75810,7 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
         self._ScanScope = params.get("ScanScope")
         self._RegistryType = params.get("RegistryType")
         self._Namespace = params.get("Namespace")
+        self._ExcludeImageAssetIds = params.get("ExcludeImageAssetIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
