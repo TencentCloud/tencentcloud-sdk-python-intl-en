@@ -295,6 +295,24 @@ class DbbrainClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDBAuditLogs(
+            self,
+            request: models.DescribeDBAuditLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBAuditLogsResponse:
+        """
+        Queries the audit log details of a specified instance within a time window, support by SQL type, execution time, error code, keyword, and other multi-condition filtering. Currently only support dcdb and mariadb products (cdb and cynosdb have been migrated to the central platform). Note that Filter.MultiSql and Filter.ExcludeMultiSql need to be transmitted as a JSON string in the form of a two-dimensional array, for example, [["a","b"]] means (a OR b), and the server will automatically parse it.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBAuditLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBAuditLogsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDBDiagEvent(
             self,
             request: models.DescribeDBDiagEventRequest,

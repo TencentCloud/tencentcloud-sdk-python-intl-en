@@ -50,7 +50,7 @@ FAILEDOPERATION_CREATESOURCEPACKAGEERROR = 'FailedOperation.CreateSourcePackageE
 # Failed to set the backup policy. Please try again later. If the failure persists, please contact customer service for handling.
 FAILEDOPERATION_CYNOSDBMYSQLSETBACKUPSTRATEGY = 'FailedOperation.CynosdbMysqlSetBackupStrategy'
 
-# Failed to access the database. Please try again later. If the problem persists, please contact customer service.
+# Database access failed. Try again later. If the issue persists, contact customer service.
 FAILEDOPERATION_DATABASEACCESSERROR = 'FailedOperation.DatabaseAccessError'
 
 # Failed to modify account permissions.
@@ -101,6 +101,9 @@ FAILEDOPERATION_REFUNDSOURCEPACKAGEERROR = 'FailedOperation.RefundSourcePackageE
 # Policy modification failed.
 FAILEDOPERATION_SERVERLESSSETSTRATEGYERROR = 'FailedOperation.ServerlessSetStrategyError'
 
+# Log query failed. Narrow down the query range. If the issue persists, contact customer service.
+FAILEDOPERATION_SERVICEACCESSERROR = 'FailedOperation.ServiceAccessError'
+
 # Specification information {{1}} search failure.
 FAILEDOPERATION_SPECNOTFOUNDERROR = 'FailedOperation.SpecNotFoundError'
 
@@ -131,7 +134,7 @@ INTERNALERROR_GETSUBNETFAILED = 'InternalError.GetSubnetFailed'
 # Failed to get the VPC.
 INTERNALERROR_GETVPCFAILED = 'InternalError.GetVpcFailed'
 
-# Network error
+# Network error.
 INTERNALERROR_HTTPERROR = 'InternalError.HttpError'
 
 # An exception occurred while executing the HTTP request.
@@ -170,10 +173,10 @@ INVALIDPARAMETER = 'InvalidParameter'
 # This API was not found.
 INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = 'InvalidParameter.ControllerNotFoundError'
 
-# Parameter passing error.
+# Parameter error.
 INVALIDPARAMETER_EXCEPTIONPARAM = 'InvalidParameter.ExceptionParam'
 
-# Unknown parameter. Please check whether the parameter is valid.
+# Unknown parameter. Check whether the parameter is valid.
 INVALIDPARAMETER_INVALIDPARAMETERERROR = 'InvalidParameter.InvalidParameterError'
 
 # The current instance cannot be isolated.
@@ -227,7 +230,7 @@ INVALIDPARAMETERVALUE_INTERNALDOMAINRESERVETOOSHORTERROR = 'InvalidParameterValu
 # Invalid instance version.
 INVALIDPARAMETERVALUE_INVALIDDBVERSION = 'InvalidParameterValue.InvalidDBVersion'
 
-# Invalid parameter value.
+# Parameter value is invalid.
 INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.InvalidParameterValueError'
 
 # The password is invalid.

@@ -25,24 +25,6 @@ class CfwClient(AbstractClient):
     _endpoint = 'cfw.intl.tencentcloudapi.com'
     _service = 'cfw'
 
-    async def AddAcRule(
-            self,
-            request: models.AddAcRuleRequest,
-            opts: Dict = None,
-    ) -> models.AddAcRuleResponse:
-        """
-        This API is used to add edge firewall rules.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "AddAcRule"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.AddAcRuleResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def AddAclRule(
             self,
             request: models.AddAclRuleRequest,
@@ -187,24 +169,6 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DeleteAllAccessControlRule(
-            self,
-            request: models.DeleteAllAccessControlRuleRequest,
-            opts: Dict = None,
-    ) -> models.DeleteAllAccessControlRuleResponse:
-        """
-        This API is used to delete all rules.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteAllAccessControlRule"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteAllAccessControlRuleResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DeleteResourceGroup(
             self,
             request: models.DeleteResourceGroupRequest,
@@ -236,24 +200,6 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "DeleteSecurityGroupRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteSecurityGroupRuleResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteVpcInstance(
-            self,
-            request: models.DeleteVpcInstanceRequest,
-            opts: Dict = None,
-    ) -> models.DeleteVpcInstanceResponse:
-        """
-        This API is used to delete firewall instance.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteVpcInstance"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteVpcInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -745,6 +691,24 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeVpcFwIpStat(
+            self,
+            request: models.DescribeVpcFwIpStatRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVpcFwIpStatResponse:
+        """
+        This API is used to query the traffic statistics under VPC firewalls at the single IP granularity.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVpcFwIpStat"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVpcFwIpStatResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ExpandCfwVertical(
             self,
             request: models.ExpandCfwVerticalRequest,
@@ -812,24 +776,6 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "ModifyAllRuleStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyAllRuleStatusResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ModifyAllVPCSwitchStatus(
-            self,
-            request: models.ModifyAllVPCSwitchStatusRequest,
-            opts: Dict = None,
-    ) -> models.ModifyAllVPCSwitchStatusResponse:
-        """
-        This API is used to enable or disable one or multiple VPC firewalls.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ModifyAllVPCSwitchStatus"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ModifyAllVPCSwitchStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1013,24 +959,6 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "ModifyNatSequenceRules"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyNatSequenceRulesResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ModifyPublicIPSwitchStatus(
-            self,
-            request: models.ModifyPublicIPSwitchStatusRequest,
-            opts: Dict = None,
-    ) -> models.ModifyPublicIPSwitchStatusResponse:
-        """
-        This API is used to enable or disable an edge firewall.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ModifyPublicIPSwitchStatus"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ModifyPublicIPSwitchStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

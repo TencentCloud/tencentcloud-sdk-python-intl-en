@@ -223,6 +223,24 @@ class MnaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAccessPointList(
+            self,
+            request: models.DescribeAccessPointListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAccessPointListResponse:
+        """
+        This API is used to query the access point list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAccessPointList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAccessPointListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAccessRegions(
             self,
             request: models.DescribeAccessRegionsRequest,

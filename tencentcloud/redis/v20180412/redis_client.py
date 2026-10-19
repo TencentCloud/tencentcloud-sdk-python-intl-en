@@ -578,6 +578,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBackupEncryptConfig(self, request):
+        r"""This API is used to query information related to backup encryption for an instance, including the enabled status and encryption keys.
+
+        :param request: Request instance for DescribeBackupEncryptConfig.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeBackupEncryptConfigRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeBackupEncryptConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupEncryptConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupEncryptConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBackupUrl(self, request):
         r"""This API is used to query the download address of a backup RDB file.
 
@@ -1098,6 +1121,29 @@ class RedisClient(AbstractClient):
             body = self.call("DescribeInstanceParams", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstanceParamsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstancePasswordPolicy(self, request):
+        r"""This API is used to query the current password complexity configuration of a specified instance.
+
+        :param request: Request instance for DescribeInstancePasswordPolicy.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstancePasswordPolicyRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstancePasswordPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstancePasswordPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstancePasswordPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1958,6 +2004,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyBackupEncrypt(self, request):
+        r"""This API is used to turn on or disable backup encryption and modify backup key functionality.
+
+        :param request: Request instance for ModifyBackupEncrypt.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyBackupEncryptRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyBackupEncryptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBackupEncrypt", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBackupEncryptResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyConnectionConfig(self, request):
         r"""This API is used to modify the connection configuration of an instance, including the bandwidth and maximum number of connections.
 
@@ -2202,6 +2271,29 @@ class RedisClient(AbstractClient):
             body = self.call("ModifyInstancePassword", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyInstancePasswordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstancePasswordPolicy(self, request):
+        r"""This API is used to modify the password complexity of an instance.
+
+        :param request: Request instance for ModifyInstancePasswordPolicy.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstancePasswordPolicyRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyInstancePasswordPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstancePasswordPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstancePasswordPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2639,6 +2731,29 @@ class RedisClient(AbstractClient):
             body = self.call("UpgradeInstance", params, headers=headers)
             response = json.loads(body)
             model = models.UpgradeInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpgradeInstanceProductVersion(self, request):
+        r"""This API is used to upgrade the instance type from common I to common II.
+
+        :param request: Request instance for UpgradeInstanceProductVersion.
+        :type request: :class:`tencentcloud.redis.v20180412.models.UpgradeInstanceProductVersionRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.UpgradeInstanceProductVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeInstanceProductVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeInstanceProductVersionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

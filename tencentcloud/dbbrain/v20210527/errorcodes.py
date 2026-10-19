@@ -14,44 +14,68 @@
 # limitations under the License.
 
 
-# Error with CAM signature/authentication.
+# CAM signature/authentication error.
 AUTHFAILURE = 'AuthFailure'
 
-# DryRun operation, which means the DryRun parameter is passed in yet the request will still be successful.
+# DryRun operation means the request will be successful, but the DryRun parameter is passed.
 DRYRUNOPERATION = 'DryRunOperation'
 
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
-# 
+# Instance audit is not enabled.
+FAILEDOPERATION_AUDITNOTOPENED = 'FailedOperation.AuditNotOpened'
+
+# Commercial audit status is not enabled on the paas side.
 FAILEDOPERATION_PAASAUDITNOTOPENED = 'FailedOperation.PaasAuditNotOpened'
 
-# Loading data
+# Data loading
 FAILEDOPERATION_SEGMENTLOADING = 'FailedOperation.SegmentLoading'
 
 # Internal error.
 INTERNALERROR = 'InternalError'
 
-# 
+# Database operation failed.
 INTERNALERROR_DBOPERATIONFAILED = 'InternalError.DbOperationFailed'
 
-# Incorrect parameter.
+# InternalError.InternalError
+INTERNALERROR_INTERNALERROR = 'InternalError.InternalError'
+
+# Invalid Filter
+INVALIDFILTER = 'InvalidFilter'
+
+# Parameter error.
 INVALIDPARAMETER = 'InvalidParameter'
 
-# Incorrect parameter value.
+# InvalidParameter.InvalidParameter
+INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
+
+# Invalid parameter combination
+INVALIDPARAMETERCOMBINATION = 'InvalidParameterCombination'
+
+# Parameter value error.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
+# InvalidParameterValue.InvalidParameterValue
+INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = 'InvalidParameterValue.InvalidParameterValue'
 
 # The quota limit is exceeded.
 LIMITEXCEEDED = 'LimitExceeded'
 
-# Missing parameter.
+# Parameters are missing.
 MISSINGPARAMETER = 'MissingParameter'
+
+# MissingParameter.MissingParameter
+MISSINGPARAMETER_MISSINGPARAMETER = 'MissingParameter.MissingParameter'
 
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
 
-# Error with CAM authentication.
+# CAM authentication error.
 OPERATIONDENIED_USERHASNOSTRATEGY = 'OperationDenied.UserHasNoStrategy'
+
+# Region error
+REGIONERROR = 'RegionError'
 
 # The number of requests exceeds the frequency limit.
 REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
@@ -59,23 +83,29 @@ REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
 # The resource is occupied.
 RESOURCEINUSE = 'ResourceInUse'
 
-# Insufficient resource.
+# Insufficient resources.
 RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
 
-# The resource is unavailable.
+# Resources are unavailable.
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 
-# The resources have been sold out.
+# Resources have been sold out.
 RESOURCESSOLDOUT = 'ResourcesSoldOut'
 
-# The operation is unauthorized.
+# Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
-# Unknown parameter.
+# UnauthorizedOperation.UnauthorizedOperation
+UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = 'UnauthorizedOperation.UnauthorizedOperation'
+
+# Unknown parameter error.
 UNKNOWNPARAMETER = 'UnknownParameter'
 
-# Unsupported operation.
+# The operation is not supported.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# Audit logs within the time range downloaded
+UNSUPPORTEDOPERATION_HASDUPLICATEDTASK = 'UnsupportedOperation.HasDuplicatedTask'

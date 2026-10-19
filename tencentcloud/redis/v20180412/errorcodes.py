@@ -83,6 +83,9 @@ INTERNALERROR_DBOPERATIONFAILED = 'InternalError.DbOperationFailed'
 # Failed to execute the HTTP request. Try again later.
 INTERNALERROR_EXECHTTPREQUESTERROR = 'InternalError.ExecHttpRequestError'
 
+# Instance not found.
+INTERNALERROR_INSTANCENOTFOUNDERROR = 'InternalError.InstanceNotFoundError'
+
 # You do not have the operation permission.
 INTERNALERROR_INSTANCEOPERATEPERMISSIONERROR = 'InternalError.InstanceOperatePermissionError'
 

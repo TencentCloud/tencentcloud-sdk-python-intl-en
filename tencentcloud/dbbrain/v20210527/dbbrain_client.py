@@ -371,6 +371,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBAuditLogs(self, request):
+        r"""Queries the audit log details of a specified instance within a time window, support by SQL type, execution time, error code, keyword, and other multi-condition filtering. Currently only support dcdb and mariadb products (cdb and cynosdb have been migrated to the central platform). Note that Filter.MultiSql and Filter.ExcludeMultiSql need to be transmitted as a JSON string in the form of a two-dimensional array, for example, [["a","b"]] means (a OR b), and the server will automatically parse it.
+
+        :param request: Request instance for DescribeDBAuditLogs.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBAuditLogsRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBAuditLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBAuditLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBAuditLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBDiagEvent(self, request):
         r"""This API is used to get the details of an instance exception diagnosis event.
 

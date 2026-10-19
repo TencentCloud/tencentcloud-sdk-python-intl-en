@@ -26,29 +26,6 @@ class CfwClient(AbstractClient):
     _service = 'cfw'
 
 
-    def AddAcRule(self, request):
-        r"""This API is used to add edge firewall rules.
-
-        :param request: Request instance for AddAcRule.
-        :type request: :class:`tencentcloud.cfw.v20190904.models.AddAcRuleRequest`
-        :rtype: :class:`tencentcloud.cfw.v20190904.models.AddAcRuleResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("AddAcRule", params, headers=headers)
-            response = json.loads(body)
-            model = models.AddAcRuleResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def AddAclRule(self, request):
         r"""Add one or more Internet Boundary Access Control Rules.
 
@@ -233,29 +210,6 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DeleteAllAccessControlRule(self, request):
-        r"""This API is used to delete all rules.
-
-        :param request: Request instance for DeleteAllAccessControlRule.
-        :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteAllAccessControlRuleRequest`
-        :rtype: :class:`tencentcloud.cfw.v20190904.models.DeleteAllAccessControlRuleResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteAllAccessControlRule", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteAllAccessControlRuleResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteResourceGroup(self, request):
         r"""This API is used to delete asset groups in Asset Management.
 
@@ -293,29 +247,6 @@ class CfwClient(AbstractClient):
             body = self.call("DeleteSecurityGroupRule", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteSecurityGroupRuleResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteVpcInstance(self, request):
-        r"""This API is used to delete firewall instance.
-
-        :param request: Request instance for DeleteVpcInstance.
-        :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteVpcInstanceRequest`
-        :rtype: :class:`tencentcloud.cfw.v20190904.models.DeleteVpcInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteVpcInstance", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteVpcInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -946,6 +877,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeVpcFwIpStat(self, request):
+        r"""This API is used to query the traffic statistics under VPC firewalls at the single IP granularity.
+
+        :param request: Request instance for DescribeVpcFwIpStat.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeVpcFwIpStatRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeVpcFwIpStatResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVpcFwIpStat", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVpcFwIpStatResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExpandCfwVertical(self, request):
         r"""This API is used to increase the firewall bandwidth.
 
@@ -1029,29 +983,6 @@ class CfwClient(AbstractClient):
             body = self.call("ModifyAllRuleStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAllRuleStatusResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyAllVPCSwitchStatus(self, request):
-        r"""This API is used to enable or disable one or multiple VPC firewalls.
-
-        :param request: Request instance for ModifyAllVPCSwitchStatus.
-        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyAllVPCSwitchStatusRequest`
-        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifyAllVPCSwitchStatusResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyAllVPCSwitchStatus", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyAllVPCSwitchStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1285,29 +1216,6 @@ class CfwClient(AbstractClient):
             body = self.call("ModifyNatSequenceRules", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyNatSequenceRulesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyPublicIPSwitchStatus(self, request):
-        r"""This API is used to enable or disable an edge firewall.
-
-        :param request: Request instance for ModifyPublicIPSwitchStatus.
-        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyPublicIPSwitchStatusRequest`
-        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifyPublicIPSwitchStatusResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyPublicIPSwitchStatus", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyPublicIPSwitchStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

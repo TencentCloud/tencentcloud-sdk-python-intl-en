@@ -27540,6 +27540,4779 @@ class CopyBaselinePolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CosAccessInfo(AbstractModel):
+    r"""cos access permission information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessUin: Access account uin
+        :type AccessUin: str
+        :param _AccessUid: Accessible account uid
+        :type AccessUid: str
+        :param _NickName: Nickname
+        :type NickName: str
+        :param _Identity: Identifier 
+1 Root account
+2 Sub-account
+        :type Identity: int
+        :param _MainNickName: Root Account Name
+        :type MainNickName: str
+        :param _AkList: List of accessible AKs
+        :type AkList: list of str
+        :param _CamPolicyCount: Number of accessible permissions
+        :type CamPolicyCount: int
+        :param _UpdateTime: Last modified Unix timestamp in milliseconds
+        :type UpdateTime: int
+        """
+        self._AccessUin = None
+        self._AccessUid = None
+        self._NickName = None
+        self._Identity = None
+        self._MainNickName = None
+        self._AkList = None
+        self._CamPolicyCount = None
+        self._UpdateTime = None
+
+    @property
+    def AccessUin(self):
+        r"""Access account uin
+        :rtype: str
+        """
+        return self._AccessUin
+
+    @AccessUin.setter
+    def AccessUin(self, AccessUin):
+        self._AccessUin = AccessUin
+
+    @property
+    def AccessUid(self):
+        r"""Accessible account uid
+        :rtype: str
+        """
+        return self._AccessUid
+
+    @AccessUid.setter
+    def AccessUid(self, AccessUid):
+        self._AccessUid = AccessUid
+
+    @property
+    def NickName(self):
+        r"""Nickname
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def Identity(self):
+        r"""Identifier 
+1 Root account
+2 Sub-account
+        :rtype: int
+        """
+        return self._Identity
+
+    @Identity.setter
+    def Identity(self, Identity):
+        self._Identity = Identity
+
+    @property
+    def MainNickName(self):
+        r"""Root Account Name
+        :rtype: str
+        """
+        return self._MainNickName
+
+    @MainNickName.setter
+    def MainNickName(self, MainNickName):
+        self._MainNickName = MainNickName
+
+    @property
+    def AkList(self):
+        r"""List of accessible AKs
+        :rtype: list of str
+        """
+        return self._AkList
+
+    @AkList.setter
+    def AkList(self, AkList):
+        self._AkList = AkList
+
+    @property
+    def CamPolicyCount(self):
+        r"""Number of accessible permissions
+        :rtype: int
+        """
+        return self._CamPolicyCount
+
+    @CamPolicyCount.setter
+    def CamPolicyCount(self, CamPolicyCount):
+        self._CamPolicyCount = CamPolicyCount
+
+    @property
+    def UpdateTime(self):
+        r"""Last modified Unix timestamp in milliseconds
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._AccessUin = params.get("AccessUin")
+        self._AccessUid = params.get("AccessUid")
+        self._NickName = params.get("NickName")
+        self._Identity = params.get("Identity")
+        self._MainNickName = params.get("MainNickName")
+        self._AkList = params.get("AkList")
+        self._CamPolicyCount = params.get("CamPolicyCount")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosActionInfo(AbstractModel):
+    r"""cos command information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionName: Api name
+        :type ActionName: str
+        :param _ActionNameCn: Interface Chinese name
+        :type ActionNameCn: str
+        :param _ActionDescription: This API is used to describe APIs.
+        :type ActionDescription: str
+        """
+        self._ActionName = None
+        self._ActionNameCn = None
+        self._ActionDescription = None
+
+    @property
+    def ActionName(self):
+        r"""Api name
+        :rtype: str
+        """
+        return self._ActionName
+
+    @ActionName.setter
+    def ActionName(self, ActionName):
+        self._ActionName = ActionName
+
+    @property
+    def ActionNameCn(self):
+        r"""Interface Chinese name
+        :rtype: str
+        """
+        return self._ActionNameCn
+
+    @ActionNameCn.setter
+    def ActionNameCn(self, ActionNameCn):
+        self._ActionNameCn = ActionNameCn
+
+    @property
+    def ActionDescription(self):
+        r"""This API is used to describe APIs.
+        :rtype: str
+        """
+        return self._ActionDescription
+
+    @ActionDescription.setter
+    def ActionDescription(self, ActionDescription):
+        self._ActionDescription = ActionDescription
+
+
+    def _deserialize(self, params):
+        self._ActionName = params.get("ActionName")
+        self._ActionNameCn = params.get("ActionNameCn")
+        self._ActionDescription = params.get("ActionDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosAkAssetInfo(AbstractModel):
+    r"""cos-associated ak asset information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: appid
+        :type AppId: int
+        :param _AkId: ak id
+        :type AkId: str
+        :param _AkName: ak name
+        :type AkName: str
+        :param _AkRemark: ak remark
+        :type AkRemark: str
+        :param _AkOwnerUin: uin associated with the ak
+        :type AkOwnerUin: str
+        :param _AkOwnerType: ak type. 1: primary. 2: sub
+        :type AkOwnerType: int
+        :param _AkOwnerName: ak account name
+        :type AkOwnerName: str
+        :param _AkMainOwnerName: ak main account name
+        :type AkMainOwnerName: str
+        :param _AkRelBucketSet: ak-associated bucket collection
+        :type AkRelBucketSet: list of str
+        :param _AkRelAlarmSet: ak associated alarm collection
+        :type AkRelAlarmSet: list of CosRiskInfo
+        :param _AkRelIpCount: Number of IPs associated with Ak
+        :type AkRelIpCount: int
+        :param _AkStatus: ak status. 0: disabled. 1: enabled.
+        :type AkStatus: int
+        :param _CreateTimestamp: Creation time.
+        :type CreateTimestamp: int
+        :param _LastAccessTimestamp: Last access time
+        :type LastAccessTimestamp: int
+        """
+        self._AppId = None
+        self._AkId = None
+        self._AkName = None
+        self._AkRemark = None
+        self._AkOwnerUin = None
+        self._AkOwnerType = None
+        self._AkOwnerName = None
+        self._AkMainOwnerName = None
+        self._AkRelBucketSet = None
+        self._AkRelAlarmSet = None
+        self._AkRelIpCount = None
+        self._AkStatus = None
+        self._CreateTimestamp = None
+        self._LastAccessTimestamp = None
+
+    @property
+    def AppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AkId(self):
+        r"""ak id
+        :rtype: str
+        """
+        return self._AkId
+
+    @AkId.setter
+    def AkId(self, AkId):
+        self._AkId = AkId
+
+    @property
+    def AkName(self):
+        r"""ak name
+        :rtype: str
+        """
+        return self._AkName
+
+    @AkName.setter
+    def AkName(self, AkName):
+        self._AkName = AkName
+
+    @property
+    def AkRemark(self):
+        r"""ak remark
+        :rtype: str
+        """
+        return self._AkRemark
+
+    @AkRemark.setter
+    def AkRemark(self, AkRemark):
+        self._AkRemark = AkRemark
+
+    @property
+    def AkOwnerUin(self):
+        r"""uin associated with the ak
+        :rtype: str
+        """
+        return self._AkOwnerUin
+
+    @AkOwnerUin.setter
+    def AkOwnerUin(self, AkOwnerUin):
+        self._AkOwnerUin = AkOwnerUin
+
+    @property
+    def AkOwnerType(self):
+        r"""ak type. 1: primary. 2: sub
+        :rtype: int
+        """
+        return self._AkOwnerType
+
+    @AkOwnerType.setter
+    def AkOwnerType(self, AkOwnerType):
+        self._AkOwnerType = AkOwnerType
+
+    @property
+    def AkOwnerName(self):
+        r"""ak account name
+        :rtype: str
+        """
+        return self._AkOwnerName
+
+    @AkOwnerName.setter
+    def AkOwnerName(self, AkOwnerName):
+        self._AkOwnerName = AkOwnerName
+
+    @property
+    def AkMainOwnerName(self):
+        r"""ak main account name
+        :rtype: str
+        """
+        return self._AkMainOwnerName
+
+    @AkMainOwnerName.setter
+    def AkMainOwnerName(self, AkMainOwnerName):
+        self._AkMainOwnerName = AkMainOwnerName
+
+    @property
+    def AkRelBucketSet(self):
+        r"""ak-associated bucket collection
+        :rtype: list of str
+        """
+        return self._AkRelBucketSet
+
+    @AkRelBucketSet.setter
+    def AkRelBucketSet(self, AkRelBucketSet):
+        self._AkRelBucketSet = AkRelBucketSet
+
+    @property
+    def AkRelAlarmSet(self):
+        r"""ak associated alarm collection
+        :rtype: list of CosRiskInfo
+        """
+        return self._AkRelAlarmSet
+
+    @AkRelAlarmSet.setter
+    def AkRelAlarmSet(self, AkRelAlarmSet):
+        self._AkRelAlarmSet = AkRelAlarmSet
+
+    @property
+    def AkRelIpCount(self):
+        r"""Number of IPs associated with Ak
+        :rtype: int
+        """
+        return self._AkRelIpCount
+
+    @AkRelIpCount.setter
+    def AkRelIpCount(self, AkRelIpCount):
+        self._AkRelIpCount = AkRelIpCount
+
+    @property
+    def AkStatus(self):
+        r"""ak status. 0: disabled. 1: enabled.
+        :rtype: int
+        """
+        return self._AkStatus
+
+    @AkStatus.setter
+    def AkStatus(self, AkStatus):
+        self._AkStatus = AkStatus
+
+    @property
+    def CreateTimestamp(self):
+        r"""Creation time.
+        :rtype: int
+        """
+        return self._CreateTimestamp
+
+    @CreateTimestamp.setter
+    def CreateTimestamp(self, CreateTimestamp):
+        self._CreateTimestamp = CreateTimestamp
+
+    @property
+    def LastAccessTimestamp(self):
+        r"""Last access time
+        :rtype: int
+        """
+        return self._LastAccessTimestamp
+
+    @LastAccessTimestamp.setter
+    def LastAccessTimestamp(self, LastAccessTimestamp):
+        self._LastAccessTimestamp = LastAccessTimestamp
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._AkId = params.get("AkId")
+        self._AkName = params.get("AkName")
+        self._AkRemark = params.get("AkRemark")
+        self._AkOwnerUin = params.get("AkOwnerUin")
+        self._AkOwnerType = params.get("AkOwnerType")
+        self._AkOwnerName = params.get("AkOwnerName")
+        self._AkMainOwnerName = params.get("AkMainOwnerName")
+        self._AkRelBucketSet = params.get("AkRelBucketSet")
+        if params.get("AkRelAlarmSet") is not None:
+            self._AkRelAlarmSet = []
+            for item in params.get("AkRelAlarmSet"):
+                obj = CosRiskInfo()
+                obj._deserialize(item)
+                self._AkRelAlarmSet.append(obj)
+        self._AkRelIpCount = params.get("AkRelIpCount")
+        self._AkStatus = params.get("AkStatus")
+        self._CreateTimestamp = params.get("CreateTimestamp")
+        self._LastAccessTimestamp = params.get("LastAccessTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosAkSet(AbstractModel):
+    r"""cos ak collection
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: App ID of the ak
+        :type AppId: int
+        :param _AkNameSet: Collection of ak names
+        :type AkNameSet: list of str
+        """
+        self._AppId = None
+        self._AkNameSet = None
+
+    @property
+    def AppId(self):
+        r"""App ID of the ak
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AkNameSet(self):
+        r"""Collection of ak names
+        :rtype: list of str
+        """
+        return self._AkNameSet
+
+    @AkNameSet.setter
+    def AkNameSet(self, AkNameSet):
+        self._AkNameSet = AkNameSet
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._AkNameSet = params.get("AkNameSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosAlarmInfo(AbstractModel):
+    r"""Object storage alarm info
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: appid
+
+        :type AppId: int
+        :param _PolicyId: Policy ID
+        :type PolicyId: int
+        :param _PolicyName: Policy name.
+        :type PolicyName: str
+        :param _PolicyAbnormalType: Policy type. 0: Unknown rule category; 1: abnormal behavior; 2: excessive permissions; 3: resource enumeration; 4: anonymous access.
+
+        :type PolicyAbnormalType: int
+        :param _PolicyRiskLevel: Risk level: 0: Normal, 1: Tip, 2: Low, 3: Middle, 4: High, 5: Critical
+        :type PolicyRiskLevel: int
+        :param _PolicyDescription: Policy information description
+        :type PolicyDescription: str
+        :param _BucketName: Bucket name
+        :type BucketName: str
+        :param _BucketRegion: Bucket region.
+        :type BucketRegion: str
+        :param _BucketMarker: Bucket remarks.
+        :type BucketMarker: str
+        :param _BucketTagInfo: Bucket tag information
+        :type BucketTagInfo: str
+        :param _BucketAccessWay: Bucket accessible property
+        :type BucketAccessWay: str
+        :param _AccountUin: Account uin
+        :type AccountUin: str
+        :param _AccountNickName: Account nickname
+        :type AccountNickName: str
+        :param _AccountIdentify: Identity of the associated account. 1 - Main account. 2 - Sub-account
+        :type AccountIdentify: int
+        :param _AccountMainNickName: Nickname of the main account to which the sub-account belongs
+        :type AccountMainNickName: str
+        :param _AlarmTimestamp: Alarm timestamp in Unix time in milliseconds
+        :type AlarmTimestamp: int
+        :param _HandleStatus: Handling status. 0: unprocessed. 1: tag disposal. 2: marked as ignored.
+        :type HandleStatus: int
+        :param _AlarmId: Alarm object id
+        :type AlarmId: int
+        :param _BucketRegionCode: Bucket region code value
+        :type BucketRegionCode: str
+        :param _CategoryDetails: Data identification and categorization details
+        :type CategoryDetails: list of CosIdentifyCategoryDetail
+        """
+        self._AppId = None
+        self._PolicyId = None
+        self._PolicyName = None
+        self._PolicyAbnormalType = None
+        self._PolicyRiskLevel = None
+        self._PolicyDescription = None
+        self._BucketName = None
+        self._BucketRegion = None
+        self._BucketMarker = None
+        self._BucketTagInfo = None
+        self._BucketAccessWay = None
+        self._AccountUin = None
+        self._AccountNickName = None
+        self._AccountIdentify = None
+        self._AccountMainNickName = None
+        self._AlarmTimestamp = None
+        self._HandleStatus = None
+        self._AlarmId = None
+        self._BucketRegionCode = None
+        self._CategoryDetails = None
+
+    @property
+    def AppId(self):
+        r"""appid
+
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def PolicyId(self):
+        r"""Policy ID
+        :rtype: int
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyName(self):
+        r"""Policy name.
+        :rtype: str
+        """
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def PolicyAbnormalType(self):
+        r"""Policy type. 0: Unknown rule category; 1: abnormal behavior; 2: excessive permissions; 3: resource enumeration; 4: anonymous access.
+
+        :rtype: int
+        """
+        return self._PolicyAbnormalType
+
+    @PolicyAbnormalType.setter
+    def PolicyAbnormalType(self, PolicyAbnormalType):
+        self._PolicyAbnormalType = PolicyAbnormalType
+
+    @property
+    def PolicyRiskLevel(self):
+        r"""Risk level: 0: Normal, 1: Tip, 2: Low, 3: Middle, 4: High, 5: Critical
+        :rtype: int
+        """
+        return self._PolicyRiskLevel
+
+    @PolicyRiskLevel.setter
+    def PolicyRiskLevel(self, PolicyRiskLevel):
+        self._PolicyRiskLevel = PolicyRiskLevel
+
+    @property
+    def PolicyDescription(self):
+        r"""Policy information description
+        :rtype: str
+        """
+        return self._PolicyDescription
+
+    @PolicyDescription.setter
+    def PolicyDescription(self, PolicyDescription):
+        self._PolicyDescription = PolicyDescription
+
+    @property
+    def BucketName(self):
+        r"""Bucket name
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def BucketRegion(self):
+        r"""Bucket region.
+        :rtype: str
+        """
+        return self._BucketRegion
+
+    @BucketRegion.setter
+    def BucketRegion(self, BucketRegion):
+        self._BucketRegion = BucketRegion
+
+    @property
+    def BucketMarker(self):
+        r"""Bucket remarks.
+        :rtype: str
+        """
+        return self._BucketMarker
+
+    @BucketMarker.setter
+    def BucketMarker(self, BucketMarker):
+        self._BucketMarker = BucketMarker
+
+    @property
+    def BucketTagInfo(self):
+        r"""Bucket tag information
+        :rtype: str
+        """
+        return self._BucketTagInfo
+
+    @BucketTagInfo.setter
+    def BucketTagInfo(self, BucketTagInfo):
+        self._BucketTagInfo = BucketTagInfo
+
+    @property
+    def BucketAccessWay(self):
+        r"""Bucket accessible property
+        :rtype: str
+        """
+        return self._BucketAccessWay
+
+    @BucketAccessWay.setter
+    def BucketAccessWay(self, BucketAccessWay):
+        self._BucketAccessWay = BucketAccessWay
+
+    @property
+    def AccountUin(self):
+        r"""Account uin
+        :rtype: str
+        """
+        return self._AccountUin
+
+    @AccountUin.setter
+    def AccountUin(self, AccountUin):
+        self._AccountUin = AccountUin
+
+    @property
+    def AccountNickName(self):
+        r"""Account nickname
+        :rtype: str
+        """
+        return self._AccountNickName
+
+    @AccountNickName.setter
+    def AccountNickName(self, AccountNickName):
+        self._AccountNickName = AccountNickName
+
+    @property
+    def AccountIdentify(self):
+        r"""Identity of the associated account. 1 - Main account. 2 - Sub-account
+        :rtype: int
+        """
+        return self._AccountIdentify
+
+    @AccountIdentify.setter
+    def AccountIdentify(self, AccountIdentify):
+        self._AccountIdentify = AccountIdentify
+
+    @property
+    def AccountMainNickName(self):
+        r"""Nickname of the main account to which the sub-account belongs
+        :rtype: str
+        """
+        return self._AccountMainNickName
+
+    @AccountMainNickName.setter
+    def AccountMainNickName(self, AccountMainNickName):
+        self._AccountMainNickName = AccountMainNickName
+
+    @property
+    def AlarmTimestamp(self):
+        r"""Alarm timestamp in Unix time in milliseconds
+        :rtype: int
+        """
+        return self._AlarmTimestamp
+
+    @AlarmTimestamp.setter
+    def AlarmTimestamp(self, AlarmTimestamp):
+        self._AlarmTimestamp = AlarmTimestamp
+
+    @property
+    def HandleStatus(self):
+        r"""Handling status. 0: unprocessed. 1: tag disposal. 2: marked as ignored.
+        :rtype: int
+        """
+        return self._HandleStatus
+
+    @HandleStatus.setter
+    def HandleStatus(self, HandleStatus):
+        self._HandleStatus = HandleStatus
+
+    @property
+    def AlarmId(self):
+        r"""Alarm object id
+        :rtype: int
+        """
+        return self._AlarmId
+
+    @AlarmId.setter
+    def AlarmId(self, AlarmId):
+        self._AlarmId = AlarmId
+
+    @property
+    def BucketRegionCode(self):
+        r"""Bucket region code value
+        :rtype: str
+        """
+        return self._BucketRegionCode
+
+    @BucketRegionCode.setter
+    def BucketRegionCode(self, BucketRegionCode):
+        self._BucketRegionCode = BucketRegionCode
+
+    @property
+    def CategoryDetails(self):
+        r"""Data identification and categorization details
+        :rtype: list of CosIdentifyCategoryDetail
+        """
+        return self._CategoryDetails
+
+    @CategoryDetails.setter
+    def CategoryDetails(self, CategoryDetails):
+        self._CategoryDetails = CategoryDetails
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyName = params.get("PolicyName")
+        self._PolicyAbnormalType = params.get("PolicyAbnormalType")
+        self._PolicyRiskLevel = params.get("PolicyRiskLevel")
+        self._PolicyDescription = params.get("PolicyDescription")
+        self._BucketName = params.get("BucketName")
+        self._BucketRegion = params.get("BucketRegion")
+        self._BucketMarker = params.get("BucketMarker")
+        self._BucketTagInfo = params.get("BucketTagInfo")
+        self._BucketAccessWay = params.get("BucketAccessWay")
+        self._AccountUin = params.get("AccountUin")
+        self._AccountNickName = params.get("AccountNickName")
+        self._AccountIdentify = params.get("AccountIdentify")
+        self._AccountMainNickName = params.get("AccountMainNickName")
+        self._AlarmTimestamp = params.get("AlarmTimestamp")
+        self._HandleStatus = params.get("HandleStatus")
+        self._AlarmId = params.get("AlarmId")
+        self._BucketRegionCode = params.get("BucketRegionCode")
+        if params.get("CategoryDetails") is not None:
+            self._CategoryDetails = []
+            for item in params.get("CategoryDetails"):
+                obj = CosIdentifyCategoryDetail()
+                obj._deserialize(item)
+                self._CategoryDetails.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosAlarmRiskIdInfo(AbstractModel):
+    r"""Alarm or risk id information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlarmRiskId: Alarm id
+        :type AlarmRiskId: int
+        :param _AppId: Tenant ID
+        :type AppId: int
+        """
+        self._AlarmRiskId = None
+        self._AppId = None
+
+    @property
+    def AlarmRiskId(self):
+        r"""Alarm id
+        :rtype: int
+        """
+        return self._AlarmRiskId
+
+    @AlarmRiskId.setter
+    def AlarmRiskId(self, AlarmRiskId):
+        self._AlarmRiskId = AlarmRiskId
+
+    @property
+    def AppId(self):
+        r"""Tenant ID
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._AlarmRiskId = params.get("AlarmRiskId")
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosAlarmTrendInfo(AbstractModel):
+    r"""cos daily alerts/risk information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CurrentDateStr: Current date in string format
+        :type CurrentDateStr: str
+        :param _CurrentDayCount: Total count for the current date
+        :type CurrentDayCount: int
+        :param _CurrentDayOverView: Alarm category details on the day
+        :type CurrentDayOverView: list of CosRiskInfo
+        """
+        self._CurrentDateStr = None
+        self._CurrentDayCount = None
+        self._CurrentDayOverView = None
+
+    @property
+    def CurrentDateStr(self):
+        r"""Current date in string format
+        :rtype: str
+        """
+        return self._CurrentDateStr
+
+    @CurrentDateStr.setter
+    def CurrentDateStr(self, CurrentDateStr):
+        self._CurrentDateStr = CurrentDateStr
+
+    @property
+    def CurrentDayCount(self):
+        r"""Total count for the current date
+        :rtype: int
+        """
+        return self._CurrentDayCount
+
+    @CurrentDayCount.setter
+    def CurrentDayCount(self, CurrentDayCount):
+        self._CurrentDayCount = CurrentDayCount
+
+    @property
+    def CurrentDayOverView(self):
+        r"""Alarm category details on the day
+        :rtype: list of CosRiskInfo
+        """
+        return self._CurrentDayOverView
+
+    @CurrentDayOverView.setter
+    def CurrentDayOverView(self, CurrentDayOverView):
+        self._CurrentDayOverView = CurrentDayOverView
+
+
+    def _deserialize(self, params):
+        self._CurrentDateStr = params.get("CurrentDateStr")
+        self._CurrentDayCount = params.get("CurrentDayCount")
+        if params.get("CurrentDayOverView") is not None:
+            self._CurrentDayOverView = []
+            for item in params.get("CurrentDayOverView"):
+                obj = CosRiskInfo()
+                obj._deserialize(item)
+                self._CurrentDayOverView.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosAssetDataScanDetail(AbstractModel):
+    r"""cos audit asset data identification details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>Recognition task status. 0: unrecognized; 1: in process; 2: terminated; 3: successful; 4: failed.</p>
+        :type Status: int
+        :param _Progress: <p>Recognition progress</p>
+        :type Progress: float
+        :param _LatestScanTime: <p>Last scan time.</p>
+        :type LatestScanTime: int
+        :param _ErrorInfo: <p>Recognition failed information.</p>
+        :type ErrorInfo: str
+        :param _CategoryDetails: <p>Recognition result category details</p>
+        :type CategoryDetails: list of CosIdentifyCategoryDetail
+        :param _RuleDetails: <p>None.</p>
+        :type RuleDetails: list of CosIdentifyRuleDetail
+        :param _LevelDetails: <p>None.</p>
+        :type LevelDetails: list of CosIdentifyLevelDetail
+        :param _IsFullScanned: <p>Whether a full scan has been initiated</p>
+        :type IsFullScanned: bool
+        """
+        self._Status = None
+        self._Progress = None
+        self._LatestScanTime = None
+        self._ErrorInfo = None
+        self._CategoryDetails = None
+        self._RuleDetails = None
+        self._LevelDetails = None
+        self._IsFullScanned = None
+
+    @property
+    def Status(self):
+        r"""<p>Recognition task status. 0: unrecognized; 1: in process; 2: terminated; 3: successful; 4: failed.</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Progress(self):
+        r"""<p>Recognition progress</p>
+        :rtype: float
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def LatestScanTime(self):
+        r"""<p>Last scan time.</p>
+        :rtype: int
+        """
+        return self._LatestScanTime
+
+    @LatestScanTime.setter
+    def LatestScanTime(self, LatestScanTime):
+        self._LatestScanTime = LatestScanTime
+
+    @property
+    def ErrorInfo(self):
+        r"""<p>Recognition failed information.</p>
+        :rtype: str
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def CategoryDetails(self):
+        r"""<p>Recognition result category details</p>
+        :rtype: list of CosIdentifyCategoryDetail
+        """
+        return self._CategoryDetails
+
+    @CategoryDetails.setter
+    def CategoryDetails(self, CategoryDetails):
+        self._CategoryDetails = CategoryDetails
+
+    @property
+    def RuleDetails(self):
+        r"""<p>None.</p>
+        :rtype: list of CosIdentifyRuleDetail
+        """
+        return self._RuleDetails
+
+    @RuleDetails.setter
+    def RuleDetails(self, RuleDetails):
+        self._RuleDetails = RuleDetails
+
+    @property
+    def LevelDetails(self):
+        r"""<p>None.</p>
+        :rtype: list of CosIdentifyLevelDetail
+        """
+        return self._LevelDetails
+
+    @LevelDetails.setter
+    def LevelDetails(self, LevelDetails):
+        self._LevelDetails = LevelDetails
+
+    @property
+    def IsFullScanned(self):
+        r"""<p>Whether a full scan has been initiated</p>
+        :rtype: bool
+        """
+        return self._IsFullScanned
+
+    @IsFullScanned.setter
+    def IsFullScanned(self, IsFullScanned):
+        self._IsFullScanned = IsFullScanned
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Progress = params.get("Progress")
+        self._LatestScanTime = params.get("LatestScanTime")
+        self._ErrorInfo = params.get("ErrorInfo")
+        if params.get("CategoryDetails") is not None:
+            self._CategoryDetails = []
+            for item in params.get("CategoryDetails"):
+                obj = CosIdentifyCategoryDetail()
+                obj._deserialize(item)
+                self._CategoryDetails.append(obj)
+        if params.get("RuleDetails") is not None:
+            self._RuleDetails = []
+            for item in params.get("RuleDetails"):
+                obj = CosIdentifyRuleDetail()
+                obj._deserialize(item)
+                self._RuleDetails.append(obj)
+        if params.get("LevelDetails") is not None:
+            self._LevelDetails = []
+            for item in params.get("LevelDetails"):
+                obj = CosIdentifyLevelDetail()
+                obj._deserialize(item)
+                self._LevelDetails.append(obj)
+        self._IsFullScanned = params.get("IsFullScanned")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosAssetFileIdentifyInfo(AbstractModel):
+    r"""Object storage audit file data recognition information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: <p>File name.</p>
+        :type FileName: str
+        :param _DirName: <p>File path</p>
+        :type DirName: str
+        :param _CategoryDetails: <p>Details of categorical data items</p>
+        :type CategoryDetails: list of CosIdentifyCategoryDetail
+        :param _BucketInfo: <p>Bucket information</p>
+        :type BucketInfo: :class:`tencentcloud.csip.v20221121.models.CosBucketInfo`
+        :param _LastScanTime: <p>Last scan time</p>
+        :type LastScanTime: int
+        :param _HandleStatus: <p>Handling status</p>
+        :type HandleStatus: int
+        :param _ResultId: <p>Result unique ID</p>
+        :type ResultId: str
+        :param _RuleDetails: <p>Rule details</p>
+        :type RuleDetails: list of CosIdentifyRuleDetail
+        :param _LevelDetails: <p>Level details</p>
+        :type LevelDetails: list of CosIdentifyLevelDetail
+        :param _ComplianceId: <p>Template ID.</p>
+        :type ComplianceId: int
+        """
+        self._FileName = None
+        self._DirName = None
+        self._CategoryDetails = None
+        self._BucketInfo = None
+        self._LastScanTime = None
+        self._HandleStatus = None
+        self._ResultId = None
+        self._RuleDetails = None
+        self._LevelDetails = None
+        self._ComplianceId = None
+
+    @property
+    def FileName(self):
+        r"""<p>File name.</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def DirName(self):
+        r"""<p>File path</p>
+        :rtype: str
+        """
+        return self._DirName
+
+    @DirName.setter
+    def DirName(self, DirName):
+        self._DirName = DirName
+
+    @property
+    def CategoryDetails(self):
+        r"""<p>Details of categorical data items</p>
+        :rtype: list of CosIdentifyCategoryDetail
+        """
+        return self._CategoryDetails
+
+    @CategoryDetails.setter
+    def CategoryDetails(self, CategoryDetails):
+        self._CategoryDetails = CategoryDetails
+
+    @property
+    def BucketInfo(self):
+        r"""<p>Bucket information</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CosBucketInfo`
+        """
+        return self._BucketInfo
+
+    @BucketInfo.setter
+    def BucketInfo(self, BucketInfo):
+        self._BucketInfo = BucketInfo
+
+    @property
+    def LastScanTime(self):
+        r"""<p>Last scan time</p>
+        :rtype: int
+        """
+        return self._LastScanTime
+
+    @LastScanTime.setter
+    def LastScanTime(self, LastScanTime):
+        self._LastScanTime = LastScanTime
+
+    @property
+    def HandleStatus(self):
+        r"""<p>Handling status</p>
+        :rtype: int
+        """
+        return self._HandleStatus
+
+    @HandleStatus.setter
+    def HandleStatus(self, HandleStatus):
+        self._HandleStatus = HandleStatus
+
+    @property
+    def ResultId(self):
+        r"""<p>Result unique ID</p>
+        :rtype: str
+        """
+        return self._ResultId
+
+    @ResultId.setter
+    def ResultId(self, ResultId):
+        self._ResultId = ResultId
+
+    @property
+    def RuleDetails(self):
+        r"""<p>Rule details</p>
+        :rtype: list of CosIdentifyRuleDetail
+        """
+        return self._RuleDetails
+
+    @RuleDetails.setter
+    def RuleDetails(self, RuleDetails):
+        self._RuleDetails = RuleDetails
+
+    @property
+    def LevelDetails(self):
+        r"""<p>Level details</p>
+        :rtype: list of CosIdentifyLevelDetail
+        """
+        return self._LevelDetails
+
+    @LevelDetails.setter
+    def LevelDetails(self, LevelDetails):
+        self._LevelDetails = LevelDetails
+
+    @property
+    def ComplianceId(self):
+        r"""<p>Template ID.</p>
+        :rtype: int
+        """
+        return self._ComplianceId
+
+    @ComplianceId.setter
+    def ComplianceId(self, ComplianceId):
+        self._ComplianceId = ComplianceId
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._DirName = params.get("DirName")
+        if params.get("CategoryDetails") is not None:
+            self._CategoryDetails = []
+            for item in params.get("CategoryDetails"):
+                obj = CosIdentifyCategoryDetail()
+                obj._deserialize(item)
+                self._CategoryDetails.append(obj)
+        if params.get("BucketInfo") is not None:
+            self._BucketInfo = CosBucketInfo()
+            self._BucketInfo._deserialize(params.get("BucketInfo"))
+        self._LastScanTime = params.get("LastScanTime")
+        self._HandleStatus = params.get("HandleStatus")
+        self._ResultId = params.get("ResultId")
+        if params.get("RuleDetails") is not None:
+            self._RuleDetails = []
+            for item in params.get("RuleDetails"):
+                obj = CosIdentifyRuleDetail()
+                obj._deserialize(item)
+                self._RuleDetails.append(obj)
+        if params.get("LevelDetails") is not None:
+            self._LevelDetails = []
+            for item in params.get("LevelDetails"):
+                obj = CosIdentifyLevelDetail()
+                obj._deserialize(item)
+                self._LevelDetails.append(obj)
+        self._ComplianceId = params.get("ComplianceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosAssetInfo(AbstractModel):
+    r"""Cos asset information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>appid</p>
+        :type AppId: int
+        :param _BucketName: <p>cos bucket name</p>
+        :type BucketName: str
+        :param _BucketRegion: <p>cos region name</p>
+        :type BucketRegion: str
+        :param _BucketRegionCode: <p>Region code value</p>
+        :type BucketRegionCode: str
+        :param _BucketMarker: <p>cos bucket remark</p>
+        :type BucketMarker: str
+        :param _BucketOwnerUin: <p>Owner of the cos bucket root account</p>
+        :type BucketOwnerUin: str
+        :param _BucketOwnerNickName: <p>Nickname of the cos root account owner</p>
+        :type BucketOwnerNickName: str
+        :param _BucketTagInfo: <p>cos bucket tag detail</p>
+        :type BucketTagInfo: str
+        :param _BucketSecuritySuggestion: <p>Security advice<br>1 No abnormality detected<br>2 Hardening recommended<br>3 Process now</p>
+        :type BucketSecuritySuggestion: int
+        :param _BucketAlarmList: <p>alarm list</p>
+        :type BucketAlarmList: list of CosRiskAlarmInfo
+        :param _BucketRiskList: <p>Risk list</p>
+        :type BucketRiskList: list of CosRiskAlarmInfo
+        :param _BucketInvokeSourceIpCount: <p>Number of source IPs for calls</p>
+        :type BucketInvokeSourceIpCount: int
+        :param _BucketAccessWay: <p>Access policy</p>
+        :type BucketAccessWay: :class:`tencentcloud.csip.v20221121.models.CosBucketAccessWay`
+        :param _CreateTime: <p>Creation time Unix timestamp in milliseconds</p>
+        :type CreateTime: int
+        :param _LastAccessTime: <p>Last access time in Unix timestamp in milliseconds</p>
+        :type LastAccessTime: int
+        :param _BucketId: <p>Bucket id</p>
+        :type BucketId: int
+        :param _MonitorStatus: <p>0 Off<br>1 On</p>
+        :type MonitorStatus: int
+        :param _DataScanInfo: <p>Data identification scan information.</p>
+        :type DataScanInfo: :class:`tencentcloud.csip.v20221121.models.CosAssetDataScanDetail`
+        :param _BucketAzType: <p>Bucket Az type</p><p>Enumeration values:</p><ul><li>MAZ: Multi-Az</li><li>SAZ: Single-Az</li></ul>
+        :type BucketAzType: str
+        :param _BucketStorageSize: <p>Bucket storage size</p><p>Default value: 0</p>
+        :type BucketStorageSize: int
+        :param _BucketObjectCount: <p>Bucket object count</p><p>Default value: 0</p>
+        :type BucketObjectCount: int
+        :param _IdentifySampleRate: <p>Bucket sensitive identification sampling rate</p><p>Value range: [0, 1]</p><p>Default value: 0</p>
+        :type IdentifySampleRate: float
+        """
+        self._AppId = None
+        self._BucketName = None
+        self._BucketRegion = None
+        self._BucketRegionCode = None
+        self._BucketMarker = None
+        self._BucketOwnerUin = None
+        self._BucketOwnerNickName = None
+        self._BucketTagInfo = None
+        self._BucketSecuritySuggestion = None
+        self._BucketAlarmList = None
+        self._BucketRiskList = None
+        self._BucketInvokeSourceIpCount = None
+        self._BucketAccessWay = None
+        self._CreateTime = None
+        self._LastAccessTime = None
+        self._BucketId = None
+        self._MonitorStatus = None
+        self._DataScanInfo = None
+        self._BucketAzType = None
+        self._BucketStorageSize = None
+        self._BucketObjectCount = None
+        self._IdentifySampleRate = None
+
+    @property
+    def AppId(self):
+        r"""<p>appid</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def BucketName(self):
+        r"""<p>cos bucket name</p>
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def BucketRegion(self):
+        r"""<p>cos region name</p>
+        :rtype: str
+        """
+        return self._BucketRegion
+
+    @BucketRegion.setter
+    def BucketRegion(self, BucketRegion):
+        self._BucketRegion = BucketRegion
+
+    @property
+    def BucketRegionCode(self):
+        r"""<p>Region code value</p>
+        :rtype: str
+        """
+        return self._BucketRegionCode
+
+    @BucketRegionCode.setter
+    def BucketRegionCode(self, BucketRegionCode):
+        self._BucketRegionCode = BucketRegionCode
+
+    @property
+    def BucketMarker(self):
+        r"""<p>cos bucket remark</p>
+        :rtype: str
+        """
+        return self._BucketMarker
+
+    @BucketMarker.setter
+    def BucketMarker(self, BucketMarker):
+        self._BucketMarker = BucketMarker
+
+    @property
+    def BucketOwnerUin(self):
+        r"""<p>Owner of the cos bucket root account</p>
+        :rtype: str
+        """
+        return self._BucketOwnerUin
+
+    @BucketOwnerUin.setter
+    def BucketOwnerUin(self, BucketOwnerUin):
+        self._BucketOwnerUin = BucketOwnerUin
+
+    @property
+    def BucketOwnerNickName(self):
+        r"""<p>Nickname of the cos root account owner</p>
+        :rtype: str
+        """
+        return self._BucketOwnerNickName
+
+    @BucketOwnerNickName.setter
+    def BucketOwnerNickName(self, BucketOwnerNickName):
+        self._BucketOwnerNickName = BucketOwnerNickName
+
+    @property
+    def BucketTagInfo(self):
+        r"""<p>cos bucket tag detail</p>
+        :rtype: str
+        """
+        return self._BucketTagInfo
+
+    @BucketTagInfo.setter
+    def BucketTagInfo(self, BucketTagInfo):
+        self._BucketTagInfo = BucketTagInfo
+
+    @property
+    def BucketSecuritySuggestion(self):
+        r"""<p>Security advice<br>1 No abnormality detected<br>2 Hardening recommended<br>3 Process now</p>
+        :rtype: int
+        """
+        return self._BucketSecuritySuggestion
+
+    @BucketSecuritySuggestion.setter
+    def BucketSecuritySuggestion(self, BucketSecuritySuggestion):
+        self._BucketSecuritySuggestion = BucketSecuritySuggestion
+
+    @property
+    def BucketAlarmList(self):
+        r"""<p>alarm list</p>
+        :rtype: list of CosRiskAlarmInfo
+        """
+        return self._BucketAlarmList
+
+    @BucketAlarmList.setter
+    def BucketAlarmList(self, BucketAlarmList):
+        self._BucketAlarmList = BucketAlarmList
+
+    @property
+    def BucketRiskList(self):
+        r"""<p>Risk list</p>
+        :rtype: list of CosRiskAlarmInfo
+        """
+        return self._BucketRiskList
+
+    @BucketRiskList.setter
+    def BucketRiskList(self, BucketRiskList):
+        self._BucketRiskList = BucketRiskList
+
+    @property
+    def BucketInvokeSourceIpCount(self):
+        r"""<p>Number of source IPs for calls</p>
+        :rtype: int
+        """
+        return self._BucketInvokeSourceIpCount
+
+    @BucketInvokeSourceIpCount.setter
+    def BucketInvokeSourceIpCount(self, BucketInvokeSourceIpCount):
+        self._BucketInvokeSourceIpCount = BucketInvokeSourceIpCount
+
+    @property
+    def BucketAccessWay(self):
+        r"""<p>Access policy</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CosBucketAccessWay`
+        """
+        return self._BucketAccessWay
+
+    @BucketAccessWay.setter
+    def BucketAccessWay(self, BucketAccessWay):
+        self._BucketAccessWay = BucketAccessWay
+
+    @property
+    def CreateTime(self):
+        r"""<p>Creation time Unix timestamp in milliseconds</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def LastAccessTime(self):
+        r"""<p>Last access time in Unix timestamp in milliseconds</p>
+        :rtype: int
+        """
+        return self._LastAccessTime
+
+    @LastAccessTime.setter
+    def LastAccessTime(self, LastAccessTime):
+        self._LastAccessTime = LastAccessTime
+
+    @property
+    def BucketId(self):
+        r"""<p>Bucket id</p>
+        :rtype: int
+        """
+        return self._BucketId
+
+    @BucketId.setter
+    def BucketId(self, BucketId):
+        self._BucketId = BucketId
+
+    @property
+    def MonitorStatus(self):
+        r"""<p>0 Off<br>1 On</p>
+        :rtype: int
+        """
+        return self._MonitorStatus
+
+    @MonitorStatus.setter
+    def MonitorStatus(self, MonitorStatus):
+        self._MonitorStatus = MonitorStatus
+
+    @property
+    def DataScanInfo(self):
+        r"""<p>Data identification scan information.</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CosAssetDataScanDetail`
+        """
+        return self._DataScanInfo
+
+    @DataScanInfo.setter
+    def DataScanInfo(self, DataScanInfo):
+        self._DataScanInfo = DataScanInfo
+
+    @property
+    def BucketAzType(self):
+        r"""<p>Bucket Az type</p><p>Enumeration values:</p><ul><li>MAZ: Multi-Az</li><li>SAZ: Single-Az</li></ul>
+        :rtype: str
+        """
+        return self._BucketAzType
+
+    @BucketAzType.setter
+    def BucketAzType(self, BucketAzType):
+        self._BucketAzType = BucketAzType
+
+    @property
+    def BucketStorageSize(self):
+        r"""<p>Bucket storage size</p><p>Default value: 0</p>
+        :rtype: int
+        """
+        return self._BucketStorageSize
+
+    @BucketStorageSize.setter
+    def BucketStorageSize(self, BucketStorageSize):
+        self._BucketStorageSize = BucketStorageSize
+
+    @property
+    def BucketObjectCount(self):
+        r"""<p>Bucket object count</p><p>Default value: 0</p>
+        :rtype: int
+        """
+        return self._BucketObjectCount
+
+    @BucketObjectCount.setter
+    def BucketObjectCount(self, BucketObjectCount):
+        self._BucketObjectCount = BucketObjectCount
+
+    @property
+    def IdentifySampleRate(self):
+        r"""<p>Bucket sensitive identification sampling rate</p><p>Value range: [0, 1]</p><p>Default value: 0</p>
+        :rtype: float
+        """
+        return self._IdentifySampleRate
+
+    @IdentifySampleRate.setter
+    def IdentifySampleRate(self, IdentifySampleRate):
+        self._IdentifySampleRate = IdentifySampleRate
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._BucketName = params.get("BucketName")
+        self._BucketRegion = params.get("BucketRegion")
+        self._BucketRegionCode = params.get("BucketRegionCode")
+        self._BucketMarker = params.get("BucketMarker")
+        self._BucketOwnerUin = params.get("BucketOwnerUin")
+        self._BucketOwnerNickName = params.get("BucketOwnerNickName")
+        self._BucketTagInfo = params.get("BucketTagInfo")
+        self._BucketSecuritySuggestion = params.get("BucketSecuritySuggestion")
+        if params.get("BucketAlarmList") is not None:
+            self._BucketAlarmList = []
+            for item in params.get("BucketAlarmList"):
+                obj = CosRiskAlarmInfo()
+                obj._deserialize(item)
+                self._BucketAlarmList.append(obj)
+        if params.get("BucketRiskList") is not None:
+            self._BucketRiskList = []
+            for item in params.get("BucketRiskList"):
+                obj = CosRiskAlarmInfo()
+                obj._deserialize(item)
+                self._BucketRiskList.append(obj)
+        self._BucketInvokeSourceIpCount = params.get("BucketInvokeSourceIpCount")
+        if params.get("BucketAccessWay") is not None:
+            self._BucketAccessWay = CosBucketAccessWay()
+            self._BucketAccessWay._deserialize(params.get("BucketAccessWay"))
+        self._CreateTime = params.get("CreateTime")
+        self._LastAccessTime = params.get("LastAccessTime")
+        self._BucketId = params.get("BucketId")
+        self._MonitorStatus = params.get("MonitorStatus")
+        if params.get("DataScanInfo") is not None:
+            self._DataScanInfo = CosAssetDataScanDetail()
+            self._DataScanInfo._deserialize(params.get("DataScanInfo"))
+        self._BucketAzType = params.get("BucketAzType")
+        self._BucketStorageSize = params.get("BucketStorageSize")
+        self._BucketObjectCount = params.get("BucketObjectCount")
+        self._IdentifySampleRate = params.get("IdentifySampleRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosAssetSyncTaskInfo(AbstractModel):
+    r"""cos asset synchronization task information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: appid
+        :type AppId: int
+        :param _TaskId: Synchronization task ID.
+        :type TaskId: str
+        :param _LastScanTime: Last scanning time.
+        :type LastScanTime: int
+        """
+        self._AppId = None
+        self._TaskId = None
+        self._LastScanTime = None
+
+    @property
+    def AppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def TaskId(self):
+        r"""Synchronization task ID.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def LastScanTime(self):
+        r"""Last scanning time.
+        :rtype: int
+        """
+        return self._LastScanTime
+
+    @LastScanTime.setter
+    def LastScanTime(self, LastScanTime):
+        self._LastScanTime = LastScanTime
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._TaskId = params.get("TaskId")
+        self._LastScanTime = params.get("LastScanTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosAuditPayInfo(AbstractModel):
+    r"""cos audit payment information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>APPID</p>
+        :type AppId: int
+        :param _OrderStatus: <p>Order status. 0: Not purchased; 1: Normal; 2: Isolated; 3: Terminated; 6: In trial; 7: Expired</p>
+        :type OrderStatus: int
+        :param _BucketNum: <p>The number of purchased object storage entries</p>
+        :type BucketNum: int
+        :param _PayMode: <p>Payment mode. 0: postpaid. 1: prepaid.</p>
+        :type PayMode: int
+        :param _IsSelfBuy: <p>Whether to purchase separately. 1: purchase separately; 2: shared by other accounts</p>
+        :type IsSelfBuy: int
+        :param _BeginTime: <p>Order start time.</p>
+        :type BeginTime: str
+        :param _EndTime: <p>Order expiration time</p>
+        :type EndTime: str
+        :param _AutoRenew: <p>0: not set by the user, 1: set to auto-renew by the user, 2: set not to auto-renew by the user</p>
+        :type AutoRenew: int
+        :param _TimeSpan: <p>Order duration</p>
+        :type TimeSpan: int
+        :param _TimeUnit: <p>Duration unit</p>
+        :type TimeUnit: str
+        :param _ResourceId: <p>Resource id</p>
+        :type ResourceId: str
+        :param _BetaEndTime: <p>Open beta end time</p>
+        :type BetaEndTime: str
+        :param _TimeNow: <p>Current system time.</p>
+        :type TimeNow: str
+        :param _IsShareToOther: <p>Whether to share with other accounts. 1: yes; 2: no</p>
+        :type IsShareToOther: int
+        :param _Uin: <p>uin</p>
+        :type Uin: str
+        :param _NickName: <p>Nickname</p>
+        :type NickName: str
+        :param _BindBucket: <p>Shared bucketIdSet</p>
+        :type BindBucket: list of CosBucketId
+        :param _SharedAppIdSet: <p>Shared appid</p>
+        :type SharedAppIdSet: list of int non-negative
+        :param _PostPayStatus: <p>Whether pay-as-you-go is enabled</p>
+        :type PostPayStatus: int
+        :param _IsTestUser: <p>0: No trial use yet   1: Trial use completed</p>
+        :type IsTestUser: int
+        :param _AvailableBucketNum: <p>Remaining available quantity</p>
+        :type AvailableBucketNum: int
+        :param _MonitorBucketNum: <p>Number of buckets with monitoring on</p>
+        :type MonitorBucketNum: int
+        :param _TotalBucketNum: <p>Total number of buckets</p>
+        :type TotalBucketNum: int
+        :param _PostProductStatusList: <p>Postpaid product switch state</p>
+        :type PostProductStatusList: list of int non-negative
+        :param _PostProductBuyStatusList: <p>Purchase status of postpaid products.</p>
+        :type PostProductBuyStatusList: list of int non-negative
+        :param _NewPostPayResourceId: <p>New postpaid resource ID</p>
+        :type NewPostPayResourceId: str
+        """
+        self._AppId = None
+        self._OrderStatus = None
+        self._BucketNum = None
+        self._PayMode = None
+        self._IsSelfBuy = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._AutoRenew = None
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._ResourceId = None
+        self._BetaEndTime = None
+        self._TimeNow = None
+        self._IsShareToOther = None
+        self._Uin = None
+        self._NickName = None
+        self._BindBucket = None
+        self._SharedAppIdSet = None
+        self._PostPayStatus = None
+        self._IsTestUser = None
+        self._AvailableBucketNum = None
+        self._MonitorBucketNum = None
+        self._TotalBucketNum = None
+        self._PostProductStatusList = None
+        self._PostProductBuyStatusList = None
+        self._NewPostPayResourceId = None
+
+    @property
+    def AppId(self):
+        r"""<p>APPID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def OrderStatus(self):
+        r"""<p>Order status. 0: Not purchased; 1: Normal; 2: Isolated; 3: Terminated; 6: In trial; 7: Expired</p>
+        :rtype: int
+        """
+        return self._OrderStatus
+
+    @OrderStatus.setter
+    def OrderStatus(self, OrderStatus):
+        self._OrderStatus = OrderStatus
+
+    @property
+    def BucketNum(self):
+        r"""<p>The number of purchased object storage entries</p>
+        :rtype: int
+        """
+        return self._BucketNum
+
+    @BucketNum.setter
+    def BucketNum(self, BucketNum):
+        self._BucketNum = BucketNum
+
+    @property
+    def PayMode(self):
+        r"""<p>Payment mode. 0: postpaid. 1: prepaid.</p>
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def IsSelfBuy(self):
+        r"""<p>Whether to purchase separately. 1: purchase separately; 2: shared by other accounts</p>
+        :rtype: int
+        """
+        return self._IsSelfBuy
+
+    @IsSelfBuy.setter
+    def IsSelfBuy(self, IsSelfBuy):
+        self._IsSelfBuy = IsSelfBuy
+
+    @property
+    def BeginTime(self):
+        r"""<p>Order start time.</p>
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""<p>Order expiration time</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def AutoRenew(self):
+        r"""<p>0: not set by the user, 1: set to auto-renew by the user, 2: set not to auto-renew by the user</p>
+        :rtype: int
+        """
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
+    @property
+    def TimeSpan(self):
+        r"""<p>Order duration</p>
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        r"""<p>Duration unit</p>
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def ResourceId(self):
+        r"""<p>Resource id</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def BetaEndTime(self):
+        r"""<p>Open beta end time</p>
+        :rtype: str
+        """
+        return self._BetaEndTime
+
+    @BetaEndTime.setter
+    def BetaEndTime(self, BetaEndTime):
+        self._BetaEndTime = BetaEndTime
+
+    @property
+    def TimeNow(self):
+        r"""<p>Current system time.</p>
+        :rtype: str
+        """
+        return self._TimeNow
+
+    @TimeNow.setter
+    def TimeNow(self, TimeNow):
+        self._TimeNow = TimeNow
+
+    @property
+    def IsShareToOther(self):
+        r"""<p>Whether to share with other accounts. 1: yes; 2: no</p>
+        :rtype: int
+        """
+        return self._IsShareToOther
+
+    @IsShareToOther.setter
+    def IsShareToOther(self, IsShareToOther):
+        self._IsShareToOther = IsShareToOther
+
+    @property
+    def Uin(self):
+        r"""<p>uin</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def NickName(self):
+        r"""<p>Nickname</p>
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def BindBucket(self):
+        r"""<p>Shared bucketIdSet</p>
+        :rtype: list of CosBucketId
+        """
+        return self._BindBucket
+
+    @BindBucket.setter
+    def BindBucket(self, BindBucket):
+        self._BindBucket = BindBucket
+
+    @property
+    def SharedAppIdSet(self):
+        r"""<p>Shared appid</p>
+        :rtype: list of int non-negative
+        """
+        return self._SharedAppIdSet
+
+    @SharedAppIdSet.setter
+    def SharedAppIdSet(self, SharedAppIdSet):
+        self._SharedAppIdSet = SharedAppIdSet
+
+    @property
+    def PostPayStatus(self):
+        r"""<p>Whether pay-as-you-go is enabled</p>
+        :rtype: int
+        """
+        return self._PostPayStatus
+
+    @PostPayStatus.setter
+    def PostPayStatus(self, PostPayStatus):
+        self._PostPayStatus = PostPayStatus
+
+    @property
+    def IsTestUser(self):
+        r"""<p>0: No trial use yet   1: Trial use completed</p>
+        :rtype: int
+        """
+        return self._IsTestUser
+
+    @IsTestUser.setter
+    def IsTestUser(self, IsTestUser):
+        self._IsTestUser = IsTestUser
+
+    @property
+    def AvailableBucketNum(self):
+        r"""<p>Remaining available quantity</p>
+        :rtype: int
+        """
+        return self._AvailableBucketNum
+
+    @AvailableBucketNum.setter
+    def AvailableBucketNum(self, AvailableBucketNum):
+        self._AvailableBucketNum = AvailableBucketNum
+
+    @property
+    def MonitorBucketNum(self):
+        r"""<p>Number of buckets with monitoring on</p>
+        :rtype: int
+        """
+        return self._MonitorBucketNum
+
+    @MonitorBucketNum.setter
+    def MonitorBucketNum(self, MonitorBucketNum):
+        self._MonitorBucketNum = MonitorBucketNum
+
+    @property
+    def TotalBucketNum(self):
+        r"""<p>Total number of buckets</p>
+        :rtype: int
+        """
+        return self._TotalBucketNum
+
+    @TotalBucketNum.setter
+    def TotalBucketNum(self, TotalBucketNum):
+        self._TotalBucketNum = TotalBucketNum
+
+    @property
+    def PostProductStatusList(self):
+        r"""<p>Postpaid product switch state</p>
+        :rtype: list of int non-negative
+        """
+        return self._PostProductStatusList
+
+    @PostProductStatusList.setter
+    def PostProductStatusList(self, PostProductStatusList):
+        self._PostProductStatusList = PostProductStatusList
+
+    @property
+    def PostProductBuyStatusList(self):
+        r"""<p>Purchase status of postpaid products.</p>
+        :rtype: list of int non-negative
+        """
+        return self._PostProductBuyStatusList
+
+    @PostProductBuyStatusList.setter
+    def PostProductBuyStatusList(self, PostProductBuyStatusList):
+        self._PostProductBuyStatusList = PostProductBuyStatusList
+
+    @property
+    def NewPostPayResourceId(self):
+        r"""<p>New postpaid resource ID</p>
+        :rtype: str
+        """
+        return self._NewPostPayResourceId
+
+    @NewPostPayResourceId.setter
+    def NewPostPayResourceId(self, NewPostPayResourceId):
+        self._NewPostPayResourceId = NewPostPayResourceId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._OrderStatus = params.get("OrderStatus")
+        self._BucketNum = params.get("BucketNum")
+        self._PayMode = params.get("PayMode")
+        self._IsSelfBuy = params.get("IsSelfBuy")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._AutoRenew = params.get("AutoRenew")
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._ResourceId = params.get("ResourceId")
+        self._BetaEndTime = params.get("BetaEndTime")
+        self._TimeNow = params.get("TimeNow")
+        self._IsShareToOther = params.get("IsShareToOther")
+        self._Uin = params.get("Uin")
+        self._NickName = params.get("NickName")
+        if params.get("BindBucket") is not None:
+            self._BindBucket = []
+            for item in params.get("BindBucket"):
+                obj = CosBucketId()
+                obj._deserialize(item)
+                self._BindBucket.append(obj)
+        self._SharedAppIdSet = params.get("SharedAppIdSet")
+        self._PostPayStatus = params.get("PostPayStatus")
+        self._IsTestUser = params.get("IsTestUser")
+        self._AvailableBucketNum = params.get("AvailableBucketNum")
+        self._MonitorBucketNum = params.get("MonitorBucketNum")
+        self._TotalBucketNum = params.get("TotalBucketNum")
+        self._PostProductStatusList = params.get("PostProductStatusList")
+        self._PostProductBuyStatusList = params.get("PostProductBuyStatusList")
+        self._NewPostPayResourceId = params.get("NewPostPayResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosBucketAccessWay(AbstractModel):
+    r"""cos risk identification bucket access rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessType: Access methods:
+specify users
+anonymous access allowed
+        :type AccessType: str
+        :param _AccessUserCount: Number of users
+        :type AccessUserCount: int
+        :param _AccessAkCount: Number of AKs
+        :type AccessAkCount: int
+        :param _AccessRoleCount: Number of roles
+        :type AccessRoleCount: int
+        """
+        self._AccessType = None
+        self._AccessUserCount = None
+        self._AccessAkCount = None
+        self._AccessRoleCount = None
+
+    @property
+    def AccessType(self):
+        r"""Access methods:
+specify users
+anonymous access allowed
+        :rtype: str
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def AccessUserCount(self):
+        r"""Number of users
+        :rtype: int
+        """
+        return self._AccessUserCount
+
+    @AccessUserCount.setter
+    def AccessUserCount(self, AccessUserCount):
+        self._AccessUserCount = AccessUserCount
+
+    @property
+    def AccessAkCount(self):
+        r"""Number of AKs
+        :rtype: int
+        """
+        return self._AccessAkCount
+
+    @AccessAkCount.setter
+    def AccessAkCount(self, AccessAkCount):
+        self._AccessAkCount = AccessAkCount
+
+    @property
+    def AccessRoleCount(self):
+        r"""Number of roles
+        :rtype: int
+        """
+        return self._AccessRoleCount
+
+    @AccessRoleCount.setter
+    def AccessRoleCount(self, AccessRoleCount):
+        self._AccessRoleCount = AccessRoleCount
+
+
+    def _deserialize(self, params):
+        self._AccessType = params.get("AccessType")
+        self._AccessUserCount = params.get("AccessUserCount")
+        self._AccessAkCount = params.get("AccessAkCount")
+        self._AccessRoleCount = params.get("AccessRoleCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosBucketBillingInfo(AbstractModel):
+    r"""Number of Buckets
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>appid</p>
+        :type AppId: int
+        :param _OwnerUin: <p>uin</p>
+        :type OwnerUin: str
+        :param _OwnerNickName: <p>Nickname</p>
+        :type OwnerNickName: str
+        :param _BucketCount: <p>Number of buckets</p>
+        :type BucketCount: int
+        :param _BuyStatus: <p>0 Not purchased 1 Purchased separately 2 Shared</p>
+        :type BuyStatus: int
+        :param _ShareFromAppId: <p>Shared account appid.</p>
+        :type ShareFromAppId: int
+        :param _ShareFromUin: <p>uin of the shared account</p>
+        :type ShareFromUin: str
+        :param _ShareFromNickName: <p>Shared account nickname</p>
+        :type ShareFromNickName: str
+        :param _MonitorBucketCount: <p>Number of monitored buckets</p>
+        :type MonitorBucketCount: int
+        :param _IsAutoMonitor: <p>0: disable; 1: enable</p>
+        :type IsAutoMonitor: int
+        :param _LogFeatureWhitelist: <p>Whether to enable the allowlist log feature</p>
+        :type LogFeatureWhitelist: bool
+        :param _IsHaveNewPostOrder: <p>Existence of new postpaid orders</p>
+        :type IsHaveNewPostOrder: bool
+        :param _IsHaveOldPostOrder: <p>Existence of legacy postpaid orders</p>
+        :type IsHaveOldPostOrder: bool
+        :param _PostProductList: <p>Postpaid Product List</p>
+        :type PostProductList: list of int
+        :param _DefaultSampleRate: <p>Default sampling rate for newly-added buckets under this AppId, unit: ratio from 0 to 1</p><p>Value range: [0.001, 1]</p>
+        :type DefaultSampleRate: float
+        :param _BucketSamplingRateWhitelist: <p>Whether it is a whitelist, used only to control the frontend range and accuracy</p>
+        :type BucketSamplingRateWhitelist: bool
+        """
+        self._AppId = None
+        self._OwnerUin = None
+        self._OwnerNickName = None
+        self._BucketCount = None
+        self._BuyStatus = None
+        self._ShareFromAppId = None
+        self._ShareFromUin = None
+        self._ShareFromNickName = None
+        self._MonitorBucketCount = None
+        self._IsAutoMonitor = None
+        self._LogFeatureWhitelist = None
+        self._IsHaveNewPostOrder = None
+        self._IsHaveOldPostOrder = None
+        self._PostProductList = None
+        self._DefaultSampleRate = None
+        self._BucketSamplingRateWhitelist = None
+
+    @property
+    def AppId(self):
+        r"""<p>appid</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def OwnerUin(self):
+        r"""<p>uin</p>
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OwnerNickName(self):
+        r"""<p>Nickname</p>
+        :rtype: str
+        """
+        return self._OwnerNickName
+
+    @OwnerNickName.setter
+    def OwnerNickName(self, OwnerNickName):
+        self._OwnerNickName = OwnerNickName
+
+    @property
+    def BucketCount(self):
+        r"""<p>Number of buckets</p>
+        :rtype: int
+        """
+        return self._BucketCount
+
+    @BucketCount.setter
+    def BucketCount(self, BucketCount):
+        self._BucketCount = BucketCount
+
+    @property
+    def BuyStatus(self):
+        r"""<p>0 Not purchased 1 Purchased separately 2 Shared</p>
+        :rtype: int
+        """
+        return self._BuyStatus
+
+    @BuyStatus.setter
+    def BuyStatus(self, BuyStatus):
+        self._BuyStatus = BuyStatus
+
+    @property
+    def ShareFromAppId(self):
+        r"""<p>Shared account appid.</p>
+        :rtype: int
+        """
+        return self._ShareFromAppId
+
+    @ShareFromAppId.setter
+    def ShareFromAppId(self, ShareFromAppId):
+        self._ShareFromAppId = ShareFromAppId
+
+    @property
+    def ShareFromUin(self):
+        r"""<p>uin of the shared account</p>
+        :rtype: str
+        """
+        return self._ShareFromUin
+
+    @ShareFromUin.setter
+    def ShareFromUin(self, ShareFromUin):
+        self._ShareFromUin = ShareFromUin
+
+    @property
+    def ShareFromNickName(self):
+        r"""<p>Shared account nickname</p>
+        :rtype: str
+        """
+        return self._ShareFromNickName
+
+    @ShareFromNickName.setter
+    def ShareFromNickName(self, ShareFromNickName):
+        self._ShareFromNickName = ShareFromNickName
+
+    @property
+    def MonitorBucketCount(self):
+        r"""<p>Number of monitored buckets</p>
+        :rtype: int
+        """
+        return self._MonitorBucketCount
+
+    @MonitorBucketCount.setter
+    def MonitorBucketCount(self, MonitorBucketCount):
+        self._MonitorBucketCount = MonitorBucketCount
+
+    @property
+    def IsAutoMonitor(self):
+        r"""<p>0: disable; 1: enable</p>
+        :rtype: int
+        """
+        return self._IsAutoMonitor
+
+    @IsAutoMonitor.setter
+    def IsAutoMonitor(self, IsAutoMonitor):
+        self._IsAutoMonitor = IsAutoMonitor
+
+    @property
+    def LogFeatureWhitelist(self):
+        r"""<p>Whether to enable the allowlist log feature</p>
+        :rtype: bool
+        """
+        return self._LogFeatureWhitelist
+
+    @LogFeatureWhitelist.setter
+    def LogFeatureWhitelist(self, LogFeatureWhitelist):
+        self._LogFeatureWhitelist = LogFeatureWhitelist
+
+    @property
+    def IsHaveNewPostOrder(self):
+        r"""<p>Existence of new postpaid orders</p>
+        :rtype: bool
+        """
+        return self._IsHaveNewPostOrder
+
+    @IsHaveNewPostOrder.setter
+    def IsHaveNewPostOrder(self, IsHaveNewPostOrder):
+        self._IsHaveNewPostOrder = IsHaveNewPostOrder
+
+    @property
+    def IsHaveOldPostOrder(self):
+        r"""<p>Existence of legacy postpaid orders</p>
+        :rtype: bool
+        """
+        return self._IsHaveOldPostOrder
+
+    @IsHaveOldPostOrder.setter
+    def IsHaveOldPostOrder(self, IsHaveOldPostOrder):
+        self._IsHaveOldPostOrder = IsHaveOldPostOrder
+
+    @property
+    def PostProductList(self):
+        r"""<p>Postpaid Product List</p>
+        :rtype: list of int
+        """
+        return self._PostProductList
+
+    @PostProductList.setter
+    def PostProductList(self, PostProductList):
+        self._PostProductList = PostProductList
+
+    @property
+    def DefaultSampleRate(self):
+        r"""<p>Default sampling rate for newly-added buckets under this AppId, unit: ratio from 0 to 1</p><p>Value range: [0.001, 1]</p>
+        :rtype: float
+        """
+        return self._DefaultSampleRate
+
+    @DefaultSampleRate.setter
+    def DefaultSampleRate(self, DefaultSampleRate):
+        self._DefaultSampleRate = DefaultSampleRate
+
+    @property
+    def BucketSamplingRateWhitelist(self):
+        r"""<p>Whether it is a whitelist, used only to control the frontend range and accuracy</p>
+        :rtype: bool
+        """
+        return self._BucketSamplingRateWhitelist
+
+    @BucketSamplingRateWhitelist.setter
+    def BucketSamplingRateWhitelist(self, BucketSamplingRateWhitelist):
+        self._BucketSamplingRateWhitelist = BucketSamplingRateWhitelist
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._OwnerUin = params.get("OwnerUin")
+        self._OwnerNickName = params.get("OwnerNickName")
+        self._BucketCount = params.get("BucketCount")
+        self._BuyStatus = params.get("BuyStatus")
+        self._ShareFromAppId = params.get("ShareFromAppId")
+        self._ShareFromUin = params.get("ShareFromUin")
+        self._ShareFromNickName = params.get("ShareFromNickName")
+        self._MonitorBucketCount = params.get("MonitorBucketCount")
+        self._IsAutoMonitor = params.get("IsAutoMonitor")
+        self._LogFeatureWhitelist = params.get("LogFeatureWhitelist")
+        self._IsHaveNewPostOrder = params.get("IsHaveNewPostOrder")
+        self._IsHaveOldPostOrder = params.get("IsHaveOldPostOrder")
+        self._PostProductList = params.get("PostProductList")
+        self._DefaultSampleRate = params.get("DefaultSampleRate")
+        self._BucketSamplingRateWhitelist = params.get("BucketSamplingRateWhitelist")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosBucketId(AbstractModel):
+    r"""Bucket id
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>appid</p>
+        :type AppId: str
+        :param _IsAutoMonitor: <p>Whether to monitor automatically</p>
+        :type IsAutoMonitor: int
+        :param _BucketIdSet: <p>bucket id set</p>
+        :type BucketIdSet: list of str
+        """
+        self._AppId = None
+        self._IsAutoMonitor = None
+        self._BucketIdSet = None
+
+    @property
+    def AppId(self):
+        r"""<p>appid</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def IsAutoMonitor(self):
+        r"""<p>Whether to monitor automatically</p>
+        :rtype: int
+        """
+        return self._IsAutoMonitor
+
+    @IsAutoMonitor.setter
+    def IsAutoMonitor(self, IsAutoMonitor):
+        self._IsAutoMonitor = IsAutoMonitor
+
+    @property
+    def BucketIdSet(self):
+        r"""<p>bucket id set</p>
+        :rtype: list of str
+        """
+        return self._BucketIdSet
+
+    @BucketIdSet.setter
+    def BucketIdSet(self, BucketIdSet):
+        self._BucketIdSet = BucketIdSet
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._IsAutoMonitor = params.get("IsAutoMonitor")
+        self._BucketIdSet = params.get("BucketIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosBucketInfo(AbstractModel):
+    r"""cos bucket details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: App ID information
+        :type AppId: int
+        :param _BucketName: Bucket name.
+        :type BucketName: str
+        :param _BucketRegion: Region information
+        :type BucketRegion: str
+        :param _BucketRegionCode: Region code value
+        :type BucketRegionCode: str
+        :param _BucketMarker: Remarks.
+        :type BucketMarker: str
+        """
+        self._AppId = None
+        self._BucketName = None
+        self._BucketRegion = None
+        self._BucketRegionCode = None
+        self._BucketMarker = None
+
+    @property
+    def AppId(self):
+        r"""App ID information
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def BucketName(self):
+        r"""Bucket name.
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def BucketRegion(self):
+        r"""Region information
+        :rtype: str
+        """
+        return self._BucketRegion
+
+    @BucketRegion.setter
+    def BucketRegion(self, BucketRegion):
+        self._BucketRegion = BucketRegion
+
+    @property
+    def BucketRegionCode(self):
+        r"""Region code value
+        :rtype: str
+        """
+        return self._BucketRegionCode
+
+    @BucketRegionCode.setter
+    def BucketRegionCode(self, BucketRegionCode):
+        self._BucketRegionCode = BucketRegionCode
+
+    @property
+    def BucketMarker(self):
+        r"""Remarks.
+        :rtype: str
+        """
+        return self._BucketMarker
+
+    @BucketMarker.setter
+    def BucketMarker(self, BucketMarker):
+        self._BucketMarker = BucketMarker
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._BucketName = params.get("BucketName")
+        self._BucketRegion = params.get("BucketRegion")
+        self._BucketRegionCode = params.get("BucketRegionCode")
+        self._BucketMarker = params.get("BucketMarker")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosBucketTaskInfo(AbstractModel):
+    r"""cos storage bucket task information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>appid</p>
+        :type AppId: int
+        :param _BucketName: <p>Bucket name</p>
+        :type BucketName: str
+        :param _TaskId: <p>Task ID.</p>
+        :type TaskId: str
+        :param _LastScanTime: <p>Last scan time</p>
+        :type LastScanTime: int
+        :param _IdentifyFileCount: <p>Number of recognized files</p>
+        :type IdentifyFileCount: int
+        :param _SensitiveFileCount: <p>Number of sensitive files</p>
+        :type SensitiveFileCount: int
+        """
+        self._AppId = None
+        self._BucketName = None
+        self._TaskId = None
+        self._LastScanTime = None
+        self._IdentifyFileCount = None
+        self._SensitiveFileCount = None
+
+    @property
+    def AppId(self):
+        r"""<p>appid</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def BucketName(self):
+        r"""<p>Bucket name</p>
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def LastScanTime(self):
+        r"""<p>Last scan time</p>
+        :rtype: int
+        """
+        return self._LastScanTime
+
+    @LastScanTime.setter
+    def LastScanTime(self, LastScanTime):
+        self._LastScanTime = LastScanTime
+
+    @property
+    def IdentifyFileCount(self):
+        r"""<p>Number of recognized files</p>
+        :rtype: int
+        """
+        return self._IdentifyFileCount
+
+    @IdentifyFileCount.setter
+    def IdentifyFileCount(self, IdentifyFileCount):
+        self._IdentifyFileCount = IdentifyFileCount
+
+    @property
+    def SensitiveFileCount(self):
+        r"""<p>Number of sensitive files</p>
+        :rtype: int
+        """
+        return self._SensitiveFileCount
+
+    @SensitiveFileCount.setter
+    def SensitiveFileCount(self, SensitiveFileCount):
+        self._SensitiveFileCount = SensitiveFileCount
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._BucketName = params.get("BucketName")
+        self._TaskId = params.get("TaskId")
+        self._LastScanTime = params.get("LastScanTime")
+        self._IdentifyFileCount = params.get("IdentifyFileCount")
+        self._SensitiveFileCount = params.get("SensitiveFileCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosDictionary(AbstractModel):
+    r"""cos dictionary information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DictId: <p>Dictionary id.</p>
+        :type DictId: int
+        :param _DictName: <p>Dictionary name</p>
+        :type DictName: str
+        """
+        self._DictId = None
+        self._DictName = None
+
+    @property
+    def DictId(self):
+        r"""<p>Dictionary id.</p>
+        :rtype: int
+        """
+        return self._DictId
+
+    @DictId.setter
+    def DictId(self, DictId):
+        self._DictId = DictId
+
+    @property
+    def DictName(self):
+        r"""<p>Dictionary name</p>
+        :rtype: str
+        """
+        return self._DictName
+
+    @DictName.setter
+    def DictName(self, DictName):
+        self._DictName = DictName
+
+
+    def _deserialize(self, params):
+        self._DictId = params.get("DictId")
+        self._DictName = params.get("DictName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosIdentifyCategoryDetail(AbstractModel):
+    r"""cos Data recognition result category details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryId: <p>Category id</p>
+        :type CategoryId: int
+        :param _CategoryName: <p>Category name</p>
+        :type CategoryName: str
+        :param _RuleSet: <p>Data item collection.</p>
+        :type RuleSet: list of CosIdentifyRuleDetail
+        """
+        self._CategoryId = None
+        self._CategoryName = None
+        self._RuleSet = None
+
+    @property
+    def CategoryId(self):
+        r"""<p>Category id</p>
+        :rtype: int
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def CategoryName(self):
+        r"""<p>Category name</p>
+        :rtype: str
+        """
+        return self._CategoryName
+
+    @CategoryName.setter
+    def CategoryName(self, CategoryName):
+        self._CategoryName = CategoryName
+
+    @property
+    def RuleSet(self):
+        warnings.warn("parameter `RuleSet` is deprecated", DeprecationWarning) 
+
+        r"""<p>Data item collection.</p>
+        :rtype: list of CosIdentifyRuleDetail
+        """
+        return self._RuleSet
+
+    @RuleSet.setter
+    def RuleSet(self, RuleSet):
+        warnings.warn("parameter `RuleSet` is deprecated", DeprecationWarning) 
+
+        self._RuleSet = RuleSet
+
+
+    def _deserialize(self, params):
+        self._CategoryId = params.get("CategoryId")
+        self._CategoryName = params.get("CategoryName")
+        if params.get("RuleSet") is not None:
+            self._RuleSet = []
+            for item in params.get("RuleSet"):
+                obj = CosIdentifyRuleDetail()
+                obj._deserialize(item)
+                self._RuleSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosIdentifyLevelDetail(AbstractModel):
+    r"""cos audit level result item
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LevelId: <p>Level id</p>
+        :type LevelId: int
+        :param _LevelName: <p>Level name.</p>
+        :type LevelName: str
+        :param _LevelScore: <p>Level sensitivity</p>
+        :type LevelScore: int
+        """
+        self._LevelId = None
+        self._LevelName = None
+        self._LevelScore = None
+
+    @property
+    def LevelId(self):
+        r"""<p>Level id</p>
+        :rtype: int
+        """
+        return self._LevelId
+
+    @LevelId.setter
+    def LevelId(self, LevelId):
+        self._LevelId = LevelId
+
+    @property
+    def LevelName(self):
+        r"""<p>Level name.</p>
+        :rtype: str
+        """
+        return self._LevelName
+
+    @LevelName.setter
+    def LevelName(self, LevelName):
+        self._LevelName = LevelName
+
+    @property
+    def LevelScore(self):
+        r"""<p>Level sensitivity</p>
+        :rtype: int
+        """
+        return self._LevelScore
+
+    @LevelScore.setter
+    def LevelScore(self, LevelScore):
+        self._LevelScore = LevelScore
+
+
+    def _deserialize(self, params):
+        self._LevelId = params.get("LevelId")
+        self._LevelName = params.get("LevelName")
+        self._LevelScore = params.get("LevelScore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosIdentifyRuleDetail(AbstractModel):
+    r"""cos data item details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: Data item id
+        :type RuleId: int
+        :param _RuleName: Data item name
+        :type RuleName: str
+        :param _LevelId: Sensitivity level id
+        :type LevelId: int
+        :param _LevelName: Sensitivity level name
+        :type LevelName: str
+        :param _LevelScore: Sensitivity
+        :type LevelScore: int
+        """
+        self._RuleId = None
+        self._RuleName = None
+        self._LevelId = None
+        self._LevelName = None
+        self._LevelScore = None
+
+    @property
+    def RuleId(self):
+        r"""Data item id
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        r"""Data item name
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def LevelId(self):
+        r"""Sensitivity level id
+        :rtype: int
+        """
+        return self._LevelId
+
+    @LevelId.setter
+    def LevelId(self, LevelId):
+        self._LevelId = LevelId
+
+    @property
+    def LevelName(self):
+        r"""Sensitivity level name
+        :rtype: str
+        """
+        return self._LevelName
+
+    @LevelName.setter
+    def LevelName(self, LevelName):
+        self._LevelName = LevelName
+
+    @property
+    def LevelScore(self):
+        r"""Sensitivity
+        :rtype: int
+        """
+        return self._LevelScore
+
+    @LevelScore.setter
+    def LevelScore(self, LevelScore):
+        self._LevelScore = LevelScore
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._LevelId = params.get("LevelId")
+        self._LevelName = params.get("LevelName")
+        self._LevelScore = params.get("LevelScore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosInvokeDetailInfo(AbstractModel):
+    r"""cos call detailed information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InvokeTimestamp: Call time.
+        :type InvokeTimestamp: int
+        :param _InvokeRequestId: Request ID
+        :type InvokeRequestId: str
+        :param _InvokeContent: Call content
+        :type InvokeContent: str
+        """
+        self._InvokeTimestamp = None
+        self._InvokeRequestId = None
+        self._InvokeContent = None
+
+    @property
+    def InvokeTimestamp(self):
+        r"""Call time.
+        :rtype: int
+        """
+        return self._InvokeTimestamp
+
+    @InvokeTimestamp.setter
+    def InvokeTimestamp(self, InvokeTimestamp):
+        self._InvokeTimestamp = InvokeTimestamp
+
+    @property
+    def InvokeRequestId(self):
+        r"""Request ID
+        :rtype: str
+        """
+        return self._InvokeRequestId
+
+    @InvokeRequestId.setter
+    def InvokeRequestId(self, InvokeRequestId):
+        self._InvokeRequestId = InvokeRequestId
+
+    @property
+    def InvokeContent(self):
+        r"""Call content
+        :rtype: str
+        """
+        return self._InvokeContent
+
+    @InvokeContent.setter
+    def InvokeContent(self, InvokeContent):
+        self._InvokeContent = InvokeContent
+
+
+    def _deserialize(self, params):
+        self._InvokeTimestamp = params.get("InvokeTimestamp")
+        self._InvokeRequestId = params.get("InvokeRequestId")
+        self._InvokeContent = params.get("InvokeContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosInvokeIpVpcInfo(AbstractModel):
+    r"""Source ip vpc information for cos calls
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uin: uin of the account to which the vpc belongs
+        :type Uin: str
+        :param _AppId: App ID of the VPC.
+        :type AppId: int
+        :param _NickName: Nickname.
+        :type NickName: str
+        :param _VpcId: VPC ID information
+        :type VpcId: str
+        :param _VpcName: VPC name
+        :type VpcName: str
+        """
+        self._Uin = None
+        self._AppId = None
+        self._NickName = None
+        self._VpcId = None
+        self._VpcName = None
+
+    @property
+    def Uin(self):
+        r"""uin of the account to which the vpc belongs
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def AppId(self):
+        r"""App ID of the VPC.
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def NickName(self):
+        r"""Nickname.
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def VpcId(self):
+        r"""VPC ID information
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcName(self):
+        r"""VPC name
+        :rtype: str
+        """
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+
+    def _deserialize(self, params):
+        self._Uin = params.get("Uin")
+        self._AppId = params.get("AppId")
+        self._NickName = params.get("NickName")
+        self._VpcId = params.get("VpcId")
+        self._VpcName = params.get("VpcName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosInvokeLog(AbstractModel):
+    r"""cos call log
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InvokeTimestamp: Call timestamp
+        :type InvokeTimestamp: int
+        :param _RequestId: Request ID
+        :type RequestId: str
+        :param _RequestContent: Request content in base64 json structure
+        :type RequestContent: str
+        """
+        self._InvokeTimestamp = None
+        self._RequestId = None
+        self._RequestContent = None
+
+    @property
+    def InvokeTimestamp(self):
+        r"""Call timestamp
+        :rtype: int
+        """
+        return self._InvokeTimestamp
+
+    @InvokeTimestamp.setter
+    def InvokeTimestamp(self, InvokeTimestamp):
+        self._InvokeTimestamp = InvokeTimestamp
+
+    @property
+    def RequestId(self):
+        r"""Request ID
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+    @property
+    def RequestContent(self):
+        r"""Request content in base64 json structure
+        :rtype: str
+        """
+        return self._RequestContent
+
+    @RequestContent.setter
+    def RequestContent(self, RequestContent):
+        self._RequestContent = RequestContent
+
+
+    def _deserialize(self, params):
+        self._InvokeTimestamp = params.get("InvokeTimestamp")
+        self._RequestId = params.get("RequestId")
+        self._RequestContent = params.get("RequestContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosOverview(AbstractModel):
+    r"""Data structure of the COS audit overview page
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetCount: <p>Total number of assets</p>
+        :type AssetCount: int
+        :param _AlarmAssetCount: <p>Number of assets that need to be processed immediately</p>
+        :type AlarmAssetCount: int
+        :param _RiskAssetCount: <p>Number of assets to be hardened</p>
+        :type RiskAssetCount: int
+        :param _AlarmCount: <p>Total number of alarms</p>
+        :type AlarmCount: int
+        :param _IncrementAlarmCount: <p>Total number of new alarms on the day</p>
+        :type IncrementAlarmCount: int
+        :param _RiskCount: <p>Total number of risks</p>
+        :type RiskCount: int
+        :param _IncrementRiskCount: <p>Total number of new alarms on the day</p>
+        :type IncrementRiskCount: int
+        :param _RiskTop: <p>Risk top details</p>
+        :type RiskTop: list of CosRiskInfo
+        :param _AlarmTop: <p>top alarm risks</p>
+        :type AlarmTop: list of CosRiskInfo
+        :param _HighLevelSensitiveFileCount: <p>Number of high-level sensitive files</p>
+        :type HighLevelSensitiveFileCount: int
+        """
+        self._AssetCount = None
+        self._AlarmAssetCount = None
+        self._RiskAssetCount = None
+        self._AlarmCount = None
+        self._IncrementAlarmCount = None
+        self._RiskCount = None
+        self._IncrementRiskCount = None
+        self._RiskTop = None
+        self._AlarmTop = None
+        self._HighLevelSensitiveFileCount = None
+
+    @property
+    def AssetCount(self):
+        r"""<p>Total number of assets</p>
+        :rtype: int
+        """
+        return self._AssetCount
+
+    @AssetCount.setter
+    def AssetCount(self, AssetCount):
+        self._AssetCount = AssetCount
+
+    @property
+    def AlarmAssetCount(self):
+        r"""<p>Number of assets that need to be processed immediately</p>
+        :rtype: int
+        """
+        return self._AlarmAssetCount
+
+    @AlarmAssetCount.setter
+    def AlarmAssetCount(self, AlarmAssetCount):
+        self._AlarmAssetCount = AlarmAssetCount
+
+    @property
+    def RiskAssetCount(self):
+        r"""<p>Number of assets to be hardened</p>
+        :rtype: int
+        """
+        return self._RiskAssetCount
+
+    @RiskAssetCount.setter
+    def RiskAssetCount(self, RiskAssetCount):
+        self._RiskAssetCount = RiskAssetCount
+
+    @property
+    def AlarmCount(self):
+        r"""<p>Total number of alarms</p>
+        :rtype: int
+        """
+        return self._AlarmCount
+
+    @AlarmCount.setter
+    def AlarmCount(self, AlarmCount):
+        self._AlarmCount = AlarmCount
+
+    @property
+    def IncrementAlarmCount(self):
+        r"""<p>Total number of new alarms on the day</p>
+        :rtype: int
+        """
+        return self._IncrementAlarmCount
+
+    @IncrementAlarmCount.setter
+    def IncrementAlarmCount(self, IncrementAlarmCount):
+        self._IncrementAlarmCount = IncrementAlarmCount
+
+    @property
+    def RiskCount(self):
+        r"""<p>Total number of risks</p>
+        :rtype: int
+        """
+        return self._RiskCount
+
+    @RiskCount.setter
+    def RiskCount(self, RiskCount):
+        self._RiskCount = RiskCount
+
+    @property
+    def IncrementRiskCount(self):
+        r"""<p>Total number of new alarms on the day</p>
+        :rtype: int
+        """
+        return self._IncrementRiskCount
+
+    @IncrementRiskCount.setter
+    def IncrementRiskCount(self, IncrementRiskCount):
+        self._IncrementRiskCount = IncrementRiskCount
+
+    @property
+    def RiskTop(self):
+        r"""<p>Risk top details</p>
+        :rtype: list of CosRiskInfo
+        """
+        return self._RiskTop
+
+    @RiskTop.setter
+    def RiskTop(self, RiskTop):
+        self._RiskTop = RiskTop
+
+    @property
+    def AlarmTop(self):
+        r"""<p>top alarm risks</p>
+        :rtype: list of CosRiskInfo
+        """
+        return self._AlarmTop
+
+    @AlarmTop.setter
+    def AlarmTop(self, AlarmTop):
+        self._AlarmTop = AlarmTop
+
+    @property
+    def HighLevelSensitiveFileCount(self):
+        r"""<p>Number of high-level sensitive files</p>
+        :rtype: int
+        """
+        return self._HighLevelSensitiveFileCount
+
+    @HighLevelSensitiveFileCount.setter
+    def HighLevelSensitiveFileCount(self, HighLevelSensitiveFileCount):
+        self._HighLevelSensitiveFileCount = HighLevelSensitiveFileCount
+
+
+    def _deserialize(self, params):
+        self._AssetCount = params.get("AssetCount")
+        self._AlarmAssetCount = params.get("AlarmAssetCount")
+        self._RiskAssetCount = params.get("RiskAssetCount")
+        self._AlarmCount = params.get("AlarmCount")
+        self._IncrementAlarmCount = params.get("IncrementAlarmCount")
+        self._RiskCount = params.get("RiskCount")
+        self._IncrementRiskCount = params.get("IncrementRiskCount")
+        if params.get("RiskTop") is not None:
+            self._RiskTop = []
+            for item in params.get("RiskTop"):
+                obj = CosRiskInfo()
+                obj._deserialize(item)
+                self._RiskTop.append(obj)
+        if params.get("AlarmTop") is not None:
+            self._AlarmTop = []
+            for item in params.get("AlarmTop"):
+                obj = CosRiskInfo()
+                obj._deserialize(item)
+                self._AlarmTop.append(obj)
+        self._HighLevelSensitiveFileCount = params.get("HighLevelSensitiveFileCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosPermissionInfo(AbstractModel):
+    r"""cos permission information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PermissionSource: Permission source
+        :type PermissionSource: str
+        :param _PermissionContent: Permission content
+        :type PermissionContent: str
+        :param _GrantResource: Authorize resources
+        :type GrantResource: str
+        :param _GrantAction: Authorize the action
+        :type GrantAction: str
+        :param _GrantCondition: Authorization conditions
+        :type GrantCondition: str
+        """
+        self._PermissionSource = None
+        self._PermissionContent = None
+        self._GrantResource = None
+        self._GrantAction = None
+        self._GrantCondition = None
+
+    @property
+    def PermissionSource(self):
+        r"""Permission source
+        :rtype: str
+        """
+        return self._PermissionSource
+
+    @PermissionSource.setter
+    def PermissionSource(self, PermissionSource):
+        self._PermissionSource = PermissionSource
+
+    @property
+    def PermissionContent(self):
+        r"""Permission content
+        :rtype: str
+        """
+        return self._PermissionContent
+
+    @PermissionContent.setter
+    def PermissionContent(self, PermissionContent):
+        self._PermissionContent = PermissionContent
+
+    @property
+    def GrantResource(self):
+        r"""Authorize resources
+        :rtype: str
+        """
+        return self._GrantResource
+
+    @GrantResource.setter
+    def GrantResource(self, GrantResource):
+        self._GrantResource = GrantResource
+
+    @property
+    def GrantAction(self):
+        r"""Authorize the action
+        :rtype: str
+        """
+        return self._GrantAction
+
+    @GrantAction.setter
+    def GrantAction(self, GrantAction):
+        self._GrantAction = GrantAction
+
+    @property
+    def GrantCondition(self):
+        r"""Authorization conditions
+        :rtype: str
+        """
+        return self._GrantCondition
+
+    @GrantCondition.setter
+    def GrantCondition(self, GrantCondition):
+        self._GrantCondition = GrantCondition
+
+
+    def _deserialize(self, params):
+        self._PermissionSource = params.get("PermissionSource")
+        self._PermissionContent = params.get("PermissionContent")
+        self._GrantResource = params.get("GrantResource")
+        self._GrantAction = params.get("GrantAction")
+        self._GrantCondition = params.get("GrantCondition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosPolicyInfo(AbstractModel):
+    r"""cos policy information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyName: Policy name.
+        :type PolicyName: str
+        :param _PolicyType: Policy type
+PolicyType: 1 alarm policy 2 risk policy 3 allowlist policy 4 ip hiding policy
+        :type PolicyType: int
+        :param _PolicySource: system: system built-in user: user-customized
+        :type PolicySource: int
+        :param _PolicyContent: Policy content
+        :type PolicyContent: str
+        :param _PolicyStatus: 0: disabled
+1: enabled.
+        :type PolicyStatus: int
+        :param _PolicyAbnormalType: Policy classification
+        :type PolicyAbnormalType: int
+        :param _RiskLevel: Risk level
+        :type RiskLevel: int
+        :param _PolicyId: Policy ID
+        :type PolicyId: int
+        :param _PolicyCreateTime: Creation time.
+        :type PolicyCreateTime: int
+        :param _PolicyUpdateTime: Update time.
+        :type PolicyUpdateTime: int
+        :param _PolicyHitCount: Number of policy hits in the last 7 days
+        :type PolicyHitCount: int
+        :param _PolicyContentHash: Alarm content hash
+        :type PolicyContentHash: str
+        :param _RelAccountCount: Number of associated accounts.
+        :type RelAccountCount: int
+        :param _RelAccountUin: Associated account UIN
+        :type RelAccountUin: str
+        :param _RelAccountName: Name of the associated account
+        :type RelAccountName: str
+        :param _PolicyDescription: Description information
+        :type PolicyDescription: str
+        :param _PolicyMarker: Remarks
+        :type PolicyMarker: str
+        :param _AppId: appid
+        :type AppId: int
+        :param _PolicyIdSet: id set in a multi-account scenario
+        :type PolicyIdSet: list of int
+        :param _PolicyHistoryHandleStatus: Whether to dispose of historical data status. 0: no disposal required. 1: disposal required. 2: processed
+        :type PolicyHistoryHandleStatus: int
+        :param _SystemPolicyEditStatus: System policy edit status
+        :type SystemPolicyEditStatus: int
+        """
+        self._PolicyName = None
+        self._PolicyType = None
+        self._PolicySource = None
+        self._PolicyContent = None
+        self._PolicyStatus = None
+        self._PolicyAbnormalType = None
+        self._RiskLevel = None
+        self._PolicyId = None
+        self._PolicyCreateTime = None
+        self._PolicyUpdateTime = None
+        self._PolicyHitCount = None
+        self._PolicyContentHash = None
+        self._RelAccountCount = None
+        self._RelAccountUin = None
+        self._RelAccountName = None
+        self._PolicyDescription = None
+        self._PolicyMarker = None
+        self._AppId = None
+        self._PolicyIdSet = None
+        self._PolicyHistoryHandleStatus = None
+        self._SystemPolicyEditStatus = None
+
+    @property
+    def PolicyName(self):
+        r"""Policy name.
+        :rtype: str
+        """
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def PolicyType(self):
+        r"""Policy type
+PolicyType: 1 alarm policy 2 risk policy 3 allowlist policy 4 ip hiding policy
+        :rtype: int
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def PolicySource(self):
+        r"""system: system built-in user: user-customized
+        :rtype: int
+        """
+        return self._PolicySource
+
+    @PolicySource.setter
+    def PolicySource(self, PolicySource):
+        self._PolicySource = PolicySource
+
+    @property
+    def PolicyContent(self):
+        r"""Policy content
+        :rtype: str
+        """
+        return self._PolicyContent
+
+    @PolicyContent.setter
+    def PolicyContent(self, PolicyContent):
+        self._PolicyContent = PolicyContent
+
+    @property
+    def PolicyStatus(self):
+        r"""0: disabled
+1: enabled.
+        :rtype: int
+        """
+        return self._PolicyStatus
+
+    @PolicyStatus.setter
+    def PolicyStatus(self, PolicyStatus):
+        self._PolicyStatus = PolicyStatus
+
+    @property
+    def PolicyAbnormalType(self):
+        r"""Policy classification
+        :rtype: int
+        """
+        return self._PolicyAbnormalType
+
+    @PolicyAbnormalType.setter
+    def PolicyAbnormalType(self, PolicyAbnormalType):
+        self._PolicyAbnormalType = PolicyAbnormalType
+
+    @property
+    def RiskLevel(self):
+        r"""Risk level
+        :rtype: int
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def PolicyId(self):
+        r"""Policy ID
+        :rtype: int
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyCreateTime(self):
+        r"""Creation time.
+        :rtype: int
+        """
+        return self._PolicyCreateTime
+
+    @PolicyCreateTime.setter
+    def PolicyCreateTime(self, PolicyCreateTime):
+        self._PolicyCreateTime = PolicyCreateTime
+
+    @property
+    def PolicyUpdateTime(self):
+        r"""Update time.
+        :rtype: int
+        """
+        return self._PolicyUpdateTime
+
+    @PolicyUpdateTime.setter
+    def PolicyUpdateTime(self, PolicyUpdateTime):
+        self._PolicyUpdateTime = PolicyUpdateTime
+
+    @property
+    def PolicyHitCount(self):
+        r"""Number of policy hits in the last 7 days
+        :rtype: int
+        """
+        return self._PolicyHitCount
+
+    @PolicyHitCount.setter
+    def PolicyHitCount(self, PolicyHitCount):
+        self._PolicyHitCount = PolicyHitCount
+
+    @property
+    def PolicyContentHash(self):
+        r"""Alarm content hash
+        :rtype: str
+        """
+        return self._PolicyContentHash
+
+    @PolicyContentHash.setter
+    def PolicyContentHash(self, PolicyContentHash):
+        self._PolicyContentHash = PolicyContentHash
+
+    @property
+    def RelAccountCount(self):
+        r"""Number of associated accounts.
+        :rtype: int
+        """
+        return self._RelAccountCount
+
+    @RelAccountCount.setter
+    def RelAccountCount(self, RelAccountCount):
+        self._RelAccountCount = RelAccountCount
+
+    @property
+    def RelAccountUin(self):
+        r"""Associated account UIN
+        :rtype: str
+        """
+        return self._RelAccountUin
+
+    @RelAccountUin.setter
+    def RelAccountUin(self, RelAccountUin):
+        self._RelAccountUin = RelAccountUin
+
+    @property
+    def RelAccountName(self):
+        r"""Name of the associated account
+        :rtype: str
+        """
+        return self._RelAccountName
+
+    @RelAccountName.setter
+    def RelAccountName(self, RelAccountName):
+        self._RelAccountName = RelAccountName
+
+    @property
+    def PolicyDescription(self):
+        r"""Description information
+        :rtype: str
+        """
+        return self._PolicyDescription
+
+    @PolicyDescription.setter
+    def PolicyDescription(self, PolicyDescription):
+        self._PolicyDescription = PolicyDescription
+
+    @property
+    def PolicyMarker(self):
+        r"""Remarks
+        :rtype: str
+        """
+        return self._PolicyMarker
+
+    @PolicyMarker.setter
+    def PolicyMarker(self, PolicyMarker):
+        self._PolicyMarker = PolicyMarker
+
+    @property
+    def AppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def PolicyIdSet(self):
+        r"""id set in a multi-account scenario
+        :rtype: list of int
+        """
+        return self._PolicyIdSet
+
+    @PolicyIdSet.setter
+    def PolicyIdSet(self, PolicyIdSet):
+        self._PolicyIdSet = PolicyIdSet
+
+    @property
+    def PolicyHistoryHandleStatus(self):
+        r"""Whether to dispose of historical data status. 0: no disposal required. 1: disposal required. 2: processed
+        :rtype: int
+        """
+        return self._PolicyHistoryHandleStatus
+
+    @PolicyHistoryHandleStatus.setter
+    def PolicyHistoryHandleStatus(self, PolicyHistoryHandleStatus):
+        self._PolicyHistoryHandleStatus = PolicyHistoryHandleStatus
+
+    @property
+    def SystemPolicyEditStatus(self):
+        r"""System policy edit status
+        :rtype: int
+        """
+        return self._SystemPolicyEditStatus
+
+    @SystemPolicyEditStatus.setter
+    def SystemPolicyEditStatus(self, SystemPolicyEditStatus):
+        self._SystemPolicyEditStatus = SystemPolicyEditStatus
+
+
+    def _deserialize(self, params):
+        self._PolicyName = params.get("PolicyName")
+        self._PolicyType = params.get("PolicyType")
+        self._PolicySource = params.get("PolicySource")
+        self._PolicyContent = params.get("PolicyContent")
+        self._PolicyStatus = params.get("PolicyStatus")
+        self._PolicyAbnormalType = params.get("PolicyAbnormalType")
+        self._RiskLevel = params.get("RiskLevel")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyCreateTime = params.get("PolicyCreateTime")
+        self._PolicyUpdateTime = params.get("PolicyUpdateTime")
+        self._PolicyHitCount = params.get("PolicyHitCount")
+        self._PolicyContentHash = params.get("PolicyContentHash")
+        self._RelAccountCount = params.get("RelAccountCount")
+        self._RelAccountUin = params.get("RelAccountUin")
+        self._RelAccountName = params.get("RelAccountName")
+        self._PolicyDescription = params.get("PolicyDescription")
+        self._PolicyMarker = params.get("PolicyMarker")
+        self._AppId = params.get("AppId")
+        self._PolicyIdSet = params.get("PolicyIdSet")
+        self._PolicyHistoryHandleStatus = params.get("PolicyHistoryHandleStatus")
+        self._SystemPolicyEditStatus = params.get("SystemPolicyEditStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosRiskActionInfo(AbstractModel):
+    r"""Risk API status
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionName: API name
+        :type ActionName: str
+        :param _ActionNameCn: Chinese api name
+        :type ActionNameCn: str
+        :param _InvokeCount: Number of calls.
+        :type InvokeCount: int
+        :param _ActionAccessTime: Last access time in Unix timestamp in milliseconds.
+        :type ActionAccessTime: int
+        """
+        self._ActionName = None
+        self._ActionNameCn = None
+        self._InvokeCount = None
+        self._ActionAccessTime = None
+
+    @property
+    def ActionName(self):
+        r"""API name
+        :rtype: str
+        """
+        return self._ActionName
+
+    @ActionName.setter
+    def ActionName(self, ActionName):
+        self._ActionName = ActionName
+
+    @property
+    def ActionNameCn(self):
+        r"""Chinese api name
+        :rtype: str
+        """
+        return self._ActionNameCn
+
+    @ActionNameCn.setter
+    def ActionNameCn(self, ActionNameCn):
+        self._ActionNameCn = ActionNameCn
+
+    @property
+    def InvokeCount(self):
+        r"""Number of calls.
+        :rtype: int
+        """
+        return self._InvokeCount
+
+    @InvokeCount.setter
+    def InvokeCount(self, InvokeCount):
+        self._InvokeCount = InvokeCount
+
+    @property
+    def ActionAccessTime(self):
+        r"""Last access time in Unix timestamp in milliseconds.
+        :rtype: int
+        """
+        return self._ActionAccessTime
+
+    @ActionAccessTime.setter
+    def ActionAccessTime(self, ActionAccessTime):
+        self._ActionAccessTime = ActionAccessTime
+
+
+    def _deserialize(self, params):
+        self._ActionName = params.get("ActionName")
+        self._ActionNameCn = params.get("ActionNameCn")
+        self._InvokeCount = params.get("InvokeCount")
+        self._ActionAccessTime = params.get("ActionAccessTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosRiskAlarmInfo(AbstractModel):
+    r"""cos risk alert information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyType: Enumeration value of the policy type
+        :type PolicyType: int
+        :param _PolicyTypeName: Policy name
+        :type PolicyTypeName: str
+        :param _PolicyCount: Number of policies corresponding to the policy type
+        :type PolicyCount: int
+        """
+        self._PolicyType = None
+        self._PolicyTypeName = None
+        self._PolicyCount = None
+
+    @property
+    def PolicyType(self):
+        r"""Enumeration value of the policy type
+        :rtype: int
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def PolicyTypeName(self):
+        r"""Policy name
+        :rtype: str
+        """
+        return self._PolicyTypeName
+
+    @PolicyTypeName.setter
+    def PolicyTypeName(self, PolicyTypeName):
+        self._PolicyTypeName = PolicyTypeName
+
+    @property
+    def PolicyCount(self):
+        r"""Number of policies corresponding to the policy type
+        :rtype: int
+        """
+        return self._PolicyCount
+
+    @PolicyCount.setter
+    def PolicyCount(self, PolicyCount):
+        self._PolicyCount = PolicyCount
+
+
+    def _deserialize(self, params):
+        self._PolicyType = params.get("PolicyType")
+        self._PolicyTypeName = params.get("PolicyTypeName")
+        self._PolicyCount = params.get("PolicyCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosRiskBucketInfo(AbstractModel):
+    r"""Affected bucket information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: appid
+        :type AppId: int
+        :param _BucketName: Bucket name
+        :type BucketName: str
+        :param _BucketRegion: Bucket region.
+        :type BucketRegion: str
+        :param _BucketMarker: Bucket remark information
+        :type BucketMarker: str
+        :param _BucketUin: Bucket uin
+        :type BucketUin: str
+        :param _BucketNickName: uin nickname
+        :type BucketNickName: str
+        :param _BucketMainNickName: uin root account nickname
+        :type BucketMainNickName: str
+        :param _BucketIdentify: uin identity
+        :type BucketIdentify: int
+        :param _LastScanTimestamp: Risk detection time in Unix timestamp in milliseconds
+        :type LastScanTimestamp: int
+        :param _HandleStatus: Status Information
+        :type HandleStatus: int
+        :param _PolicyName: Risk name
+        :type PolicyName: str
+        :param _PolicyType: Risk type
+        :type PolicyType: int
+        :param _PolicyId: Policy ID
+        :type PolicyId: int
+        :param _PolicyLevel: Policy level
+        :type PolicyLevel: int
+        :param _PolicyDescription: Policy description
+        :type PolicyDescription: str
+        :param _BucketAccessWay: Access method
+        :type BucketAccessWay: str
+        :param _BucketTagInfo: Tag information.
+        :type BucketTagInfo: str
+        :param _RiskId: Risk id
+        :type RiskId: int
+        :param _BucketRegionCode: cos region code value
+        :type BucketRegionCode: str
+        :param _BucketMonitorStatus: Whether automatic monitoring is enabled. 0: disabled. 1: enabled.
+        :type BucketMonitorStatus: int
+        """
+        self._AppId = None
+        self._BucketName = None
+        self._BucketRegion = None
+        self._BucketMarker = None
+        self._BucketUin = None
+        self._BucketNickName = None
+        self._BucketMainNickName = None
+        self._BucketIdentify = None
+        self._LastScanTimestamp = None
+        self._HandleStatus = None
+        self._PolicyName = None
+        self._PolicyType = None
+        self._PolicyId = None
+        self._PolicyLevel = None
+        self._PolicyDescription = None
+        self._BucketAccessWay = None
+        self._BucketTagInfo = None
+        self._RiskId = None
+        self._BucketRegionCode = None
+        self._BucketMonitorStatus = None
+
+    @property
+    def AppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def BucketName(self):
+        r"""Bucket name
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def BucketRegion(self):
+        r"""Bucket region.
+        :rtype: str
+        """
+        return self._BucketRegion
+
+    @BucketRegion.setter
+    def BucketRegion(self, BucketRegion):
+        self._BucketRegion = BucketRegion
+
+    @property
+    def BucketMarker(self):
+        r"""Bucket remark information
+        :rtype: str
+        """
+        return self._BucketMarker
+
+    @BucketMarker.setter
+    def BucketMarker(self, BucketMarker):
+        self._BucketMarker = BucketMarker
+
+    @property
+    def BucketUin(self):
+        r"""Bucket uin
+        :rtype: str
+        """
+        return self._BucketUin
+
+    @BucketUin.setter
+    def BucketUin(self, BucketUin):
+        self._BucketUin = BucketUin
+
+    @property
+    def BucketNickName(self):
+        r"""uin nickname
+        :rtype: str
+        """
+        return self._BucketNickName
+
+    @BucketNickName.setter
+    def BucketNickName(self, BucketNickName):
+        self._BucketNickName = BucketNickName
+
+    @property
+    def BucketMainNickName(self):
+        r"""uin root account nickname
+        :rtype: str
+        """
+        return self._BucketMainNickName
+
+    @BucketMainNickName.setter
+    def BucketMainNickName(self, BucketMainNickName):
+        self._BucketMainNickName = BucketMainNickName
+
+    @property
+    def BucketIdentify(self):
+        r"""uin identity
+        :rtype: int
+        """
+        return self._BucketIdentify
+
+    @BucketIdentify.setter
+    def BucketIdentify(self, BucketIdentify):
+        self._BucketIdentify = BucketIdentify
+
+    @property
+    def LastScanTimestamp(self):
+        r"""Risk detection time in Unix timestamp in milliseconds
+        :rtype: int
+        """
+        return self._LastScanTimestamp
+
+    @LastScanTimestamp.setter
+    def LastScanTimestamp(self, LastScanTimestamp):
+        self._LastScanTimestamp = LastScanTimestamp
+
+    @property
+    def HandleStatus(self):
+        r"""Status Information
+        :rtype: int
+        """
+        return self._HandleStatus
+
+    @HandleStatus.setter
+    def HandleStatus(self, HandleStatus):
+        self._HandleStatus = HandleStatus
+
+    @property
+    def PolicyName(self):
+        r"""Risk name
+        :rtype: str
+        """
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def PolicyType(self):
+        r"""Risk type
+        :rtype: int
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def PolicyId(self):
+        r"""Policy ID
+        :rtype: int
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyLevel(self):
+        r"""Policy level
+        :rtype: int
+        """
+        return self._PolicyLevel
+
+    @PolicyLevel.setter
+    def PolicyLevel(self, PolicyLevel):
+        self._PolicyLevel = PolicyLevel
+
+    @property
+    def PolicyDescription(self):
+        r"""Policy description
+        :rtype: str
+        """
+        return self._PolicyDescription
+
+    @PolicyDescription.setter
+    def PolicyDescription(self, PolicyDescription):
+        self._PolicyDescription = PolicyDescription
+
+    @property
+    def BucketAccessWay(self):
+        r"""Access method
+        :rtype: str
+        """
+        return self._BucketAccessWay
+
+    @BucketAccessWay.setter
+    def BucketAccessWay(self, BucketAccessWay):
+        self._BucketAccessWay = BucketAccessWay
+
+    @property
+    def BucketTagInfo(self):
+        r"""Tag information.
+        :rtype: str
+        """
+        return self._BucketTagInfo
+
+    @BucketTagInfo.setter
+    def BucketTagInfo(self, BucketTagInfo):
+        self._BucketTagInfo = BucketTagInfo
+
+    @property
+    def RiskId(self):
+        r"""Risk id
+        :rtype: int
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+    @property
+    def BucketRegionCode(self):
+        r"""cos region code value
+        :rtype: str
+        """
+        return self._BucketRegionCode
+
+    @BucketRegionCode.setter
+    def BucketRegionCode(self, BucketRegionCode):
+        self._BucketRegionCode = BucketRegionCode
+
+    @property
+    def BucketMonitorStatus(self):
+        r"""Whether automatic monitoring is enabled. 0: disabled. 1: enabled.
+        :rtype: int
+        """
+        return self._BucketMonitorStatus
+
+    @BucketMonitorStatus.setter
+    def BucketMonitorStatus(self, BucketMonitorStatus):
+        self._BucketMonitorStatus = BucketMonitorStatus
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._BucketName = params.get("BucketName")
+        self._BucketRegion = params.get("BucketRegion")
+        self._BucketMarker = params.get("BucketMarker")
+        self._BucketUin = params.get("BucketUin")
+        self._BucketNickName = params.get("BucketNickName")
+        self._BucketMainNickName = params.get("BucketMainNickName")
+        self._BucketIdentify = params.get("BucketIdentify")
+        self._LastScanTimestamp = params.get("LastScanTimestamp")
+        self._HandleStatus = params.get("HandleStatus")
+        self._PolicyName = params.get("PolicyName")
+        self._PolicyType = params.get("PolicyType")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyLevel = params.get("PolicyLevel")
+        self._PolicyDescription = params.get("PolicyDescription")
+        self._BucketAccessWay = params.get("BucketAccessWay")
+        self._BucketTagInfo = params.get("BucketTagInfo")
+        self._RiskId = params.get("RiskId")
+        self._BucketRegionCode = params.get("BucketRegionCode")
+        self._BucketMonitorStatus = params.get("BucketMonitorStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosRiskInfo(AbstractModel):
+    r"""cos risk details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyType: Policy type code
+        :type PolicyType: int
+        :param _PolicyTypeName: Policy classification name
+        :type PolicyTypeName: str
+        :param _PolicyCount: Total hit policies
+        :type PolicyCount: int
+        """
+        self._PolicyType = None
+        self._PolicyTypeName = None
+        self._PolicyCount = None
+
+    @property
+    def PolicyType(self):
+        r"""Policy type code
+        :rtype: int
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def PolicyTypeName(self):
+        r"""Policy classification name
+        :rtype: str
+        """
+        return self._PolicyTypeName
+
+    @PolicyTypeName.setter
+    def PolicyTypeName(self, PolicyTypeName):
+        self._PolicyTypeName = PolicyTypeName
+
+    @property
+    def PolicyCount(self):
+        r"""Total hit policies
+        :rtype: int
+        """
+        return self._PolicyCount
+
+    @PolicyCount.setter
+    def PolicyCount(self, PolicyCount):
+        self._PolicyCount = PolicyCount
+
+
+    def _deserialize(self, params):
+        self._PolicyType = params.get("PolicyType")
+        self._PolicyTypeName = params.get("PolicyTypeName")
+        self._PolicyCount = params.get("PolicyCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosRiskTrendInfo(AbstractModel):
+    r"""Object Storage risk trend chart
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CurrentDateStr: Current date.
+        :type CurrentDateStr: str
+        :param _RiskDataSet: Risk data information
+        :type RiskDataSet: list of CosRiskInfo
+        """
+        self._CurrentDateStr = None
+        self._RiskDataSet = None
+
+    @property
+    def CurrentDateStr(self):
+        r"""Current date.
+        :rtype: str
+        """
+        return self._CurrentDateStr
+
+    @CurrentDateStr.setter
+    def CurrentDateStr(self, CurrentDateStr):
+        self._CurrentDateStr = CurrentDateStr
+
+    @property
+    def RiskDataSet(self):
+        r"""Risk data information
+        :rtype: list of CosRiskInfo
+        """
+        return self._RiskDataSet
+
+    @RiskDataSet.setter
+    def RiskDataSet(self, RiskDataSet):
+        self._RiskDataSet = RiskDataSet
+
+
+    def _deserialize(self, params):
+        self._CurrentDateStr = params.get("CurrentDateStr")
+        if params.get("RiskDataSet") is not None:
+            self._RiskDataSet = []
+            for item in params.get("RiskDataSet"):
+                obj = CosRiskInfo()
+                obj._deserialize(item)
+                self._RiskDataSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosRiskViewInfo(AbstractModel):
+    r"""Risk list from the risk perspective
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: appid
+        :type AppId: int
+        :param _PolicyName: Policy name.
+        :type PolicyName: str
+        :param _PolicyId: Policy ID
+        :type PolicyId: str
+        :param _PolicyType: Policy classification
+        :type PolicyType: int
+        :param _PolicyRiskLevel: Policy risk level
+        :type PolicyRiskLevel: int
+        :param _PolicyDescription: Policy description
+        :type PolicyDescription: str
+        :param _HandleBucketCount: Number of buckets to be processed
+        :type HandleBucketCount: int
+        :param _LastScanTimestamp: Most recent risk detection time in Unix timestamp in milliseconds
+        :type LastScanTimestamp: int
+        """
+        self._AppId = None
+        self._PolicyName = None
+        self._PolicyId = None
+        self._PolicyType = None
+        self._PolicyRiskLevel = None
+        self._PolicyDescription = None
+        self._HandleBucketCount = None
+        self._LastScanTimestamp = None
+
+    @property
+    def AppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def PolicyName(self):
+        r"""Policy name.
+        :rtype: str
+        """
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def PolicyId(self):
+        r"""Policy ID
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyType(self):
+        r"""Policy classification
+        :rtype: int
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def PolicyRiskLevel(self):
+        r"""Policy risk level
+        :rtype: int
+        """
+        return self._PolicyRiskLevel
+
+    @PolicyRiskLevel.setter
+    def PolicyRiskLevel(self, PolicyRiskLevel):
+        self._PolicyRiskLevel = PolicyRiskLevel
+
+    @property
+    def PolicyDescription(self):
+        r"""Policy description
+        :rtype: str
+        """
+        return self._PolicyDescription
+
+    @PolicyDescription.setter
+    def PolicyDescription(self, PolicyDescription):
+        self._PolicyDescription = PolicyDescription
+
+    @property
+    def HandleBucketCount(self):
+        r"""Number of buckets to be processed
+        :rtype: int
+        """
+        return self._HandleBucketCount
+
+    @HandleBucketCount.setter
+    def HandleBucketCount(self, HandleBucketCount):
+        self._HandleBucketCount = HandleBucketCount
+
+    @property
+    def LastScanTimestamp(self):
+        r"""Most recent risk detection time in Unix timestamp in milliseconds
+        :rtype: int
+        """
+        return self._LastScanTimestamp
+
+    @LastScanTimestamp.setter
+    def LastScanTimestamp(self, LastScanTimestamp):
+        self._LastScanTimestamp = LastScanTimestamp
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._PolicyName = params.get("PolicyName")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyType = params.get("PolicyType")
+        self._PolicyRiskLevel = params.get("PolicyRiskLevel")
+        self._PolicyDescription = params.get("PolicyDescription")
+        self._HandleBucketCount = params.get("HandleBucketCount")
+        self._LastScanTimestamp = params.get("LastScanTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosRoleAccessInfo(AbstractModel):
+    r"""List of roles associated with the Cos bucket
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleId: Role ID
+        :type RoleId: str
+        :param _RoleName: Role name.
+        :type RoleName: str
+        :param _RoleDescription: Role description
+        :type RoleDescription: str
+        :param _PermissionCount: Accessible permission count
+        :type PermissionCount: int
+        :param _CreateTime: Policy creation time.
+        :type CreateTime: int
+        """
+        self._RoleId = None
+        self._RoleName = None
+        self._RoleDescription = None
+        self._PermissionCount = None
+        self._CreateTime = None
+
+    @property
+    def RoleId(self):
+        r"""Role ID
+        :rtype: str
+        """
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RoleName(self):
+        r"""Role name.
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def RoleDescription(self):
+        r"""Role description
+        :rtype: str
+        """
+        return self._RoleDescription
+
+    @RoleDescription.setter
+    def RoleDescription(self, RoleDescription):
+        self._RoleDescription = RoleDescription
+
+    @property
+    def PermissionCount(self):
+        r"""Accessible permission count
+        :rtype: int
+        """
+        return self._PermissionCount
+
+    @PermissionCount.setter
+    def PermissionCount(self, PermissionCount):
+        self._PermissionCount = PermissionCount
+
+    @property
+    def CreateTime(self):
+        r"""Policy creation time.
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._RoleId = params.get("RoleId")
+        self._RoleName = params.get("RoleName")
+        self._RoleDescription = params.get("RoleDescription")
+        self._PermissionCount = params.get("PermissionCount")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosSourceIpInfo(AbstractModel):
+    r"""Source ip information of COS calls
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UA: UA call
+        :type UA: list of str
+        :param _VpcInfo: API call for vpc information
+        :type VpcInfo: :class:`tencentcloud.csip.v20221121.models.CosInvokeIpVpcInfo`
+        """
+        self._UA = None
+        self._VpcInfo = None
+
+    @property
+    def UA(self):
+        r"""UA call
+        :rtype: list of str
+        """
+        return self._UA
+
+    @UA.setter
+    def UA(self, UA):
+        self._UA = UA
+
+    @property
+    def VpcInfo(self):
+        r"""API call for vpc information
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CosInvokeIpVpcInfo`
+        """
+        return self._VpcInfo
+
+    @VpcInfo.setter
+    def VpcInfo(self, VpcInfo):
+        self._VpcInfo = VpcInfo
+
+
+    def _deserialize(self, params):
+        self._UA = params.get("UA")
+        if params.get("VpcInfo") is not None:
+            self._VpcInfo = CosInvokeIpVpcInfo()
+            self._VpcInfo._deserialize(params.get("VpcInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAIScheduleRequest(AbstractModel):
     r"""CreateAISchedule request structure.
 
@@ -31223,6 +35996,434 @@ class CreateComplianceRiskExportJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCosAssetSyncTaskRequest(AbstractModel):
+    r"""CreateCosAssetSyncTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _SyncType: 1 Sync all 2 Sync asset count only
+        :type SyncType: int
+        """
+        self._MemberId = None
+        self._SyncType = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def SyncType(self):
+        r"""1 Sync all 2 Sync asset count only
+        :rtype: int
+        """
+        return self._SyncType
+
+    @SyncType.setter
+    def SyncType(self, SyncType):
+        self._SyncType = SyncType
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._SyncType = params.get("SyncType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCosAssetSyncTaskResponse(AbstractModel):
+    r"""CreateCosAssetSyncTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Synchronization task ID.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Synchronization task ID.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCosObjectScanTaskRequest(AbstractModel):
+    r"""CreateCosObjectScanTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskType: <p>1: Sensitive data identification 2: Malicious file scanning 3: Batch scan sensitive data</p>
+        :type TaskType: int
+        :param _MemberId: <p>Group account member id</p>
+        :type MemberId: list of str
+        :param _BucketSet: <p>Bucket list</p>
+        :type BucketSet: list of str
+        :param _TaskArgs: <p>Task parameter</p>
+        :type TaskArgs: str
+        :param _IsScanAll: <p>Whether to scan all</p>
+        :type IsScanAll: bool
+        :param _DeleteBucketSet: <p>Buckets to remove during scanning</p>
+        :type DeleteBucketSet: list of str
+        """
+        self._TaskType = None
+        self._MemberId = None
+        self._BucketSet = None
+        self._TaskArgs = None
+        self._IsScanAll = None
+        self._DeleteBucketSet = None
+
+    @property
+    def TaskType(self):
+        r"""<p>1: Sensitive data identification 2: Malicious file scanning 3: Batch scan sensitive data</p>
+        :rtype: int
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def MemberId(self):
+        r"""<p>Group account member id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def BucketSet(self):
+        r"""<p>Bucket list</p>
+        :rtype: list of str
+        """
+        return self._BucketSet
+
+    @BucketSet.setter
+    def BucketSet(self, BucketSet):
+        self._BucketSet = BucketSet
+
+    @property
+    def TaskArgs(self):
+        r"""<p>Task parameter</p>
+        :rtype: str
+        """
+        return self._TaskArgs
+
+    @TaskArgs.setter
+    def TaskArgs(self, TaskArgs):
+        self._TaskArgs = TaskArgs
+
+    @property
+    def IsScanAll(self):
+        r"""<p>Whether to scan all</p>
+        :rtype: bool
+        """
+        return self._IsScanAll
+
+    @IsScanAll.setter
+    def IsScanAll(self, IsScanAll):
+        self._IsScanAll = IsScanAll
+
+    @property
+    def DeleteBucketSet(self):
+        r"""<p>Buckets to remove during scanning</p>
+        :rtype: list of str
+        """
+        return self._DeleteBucketSet
+
+    @DeleteBucketSet.setter
+    def DeleteBucketSet(self, DeleteBucketSet):
+        self._DeleteBucketSet = DeleteBucketSet
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        self._MemberId = params.get("MemberId")
+        self._BucketSet = params.get("BucketSet")
+        self._TaskArgs = params.get("TaskArgs")
+        self._IsScanAll = params.get("IsScanAll")
+        self._DeleteBucketSet = params.get("DeleteBucketSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCosObjectScanTaskResponse(AbstractModel):
+    r"""CreateCosObjectScanTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID.</p>
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCosPolicyRequest(AbstractModel):
+    r"""CreateCosPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosPolicyInfo: Policy information.
+        :type CosPolicyInfo: :class:`tencentcloud.csip.v20221121.models.CosPolicyInfo`
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        """
+        self._CosPolicyInfo = None
+        self._MemberId = None
+
+    @property
+    def CosPolicyInfo(self):
+        r"""Policy information.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CosPolicyInfo`
+        """
+        return self._CosPolicyInfo
+
+    @CosPolicyInfo.setter
+    def CosPolicyInfo(self, CosPolicyInfo):
+        self._CosPolicyInfo = CosPolicyInfo
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        if params.get("CosPolicyInfo") is not None:
+            self._CosPolicyInfo = CosPolicyInfo()
+            self._CosPolicyInfo._deserialize(params.get("CosPolicyInfo"))
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCosPolicyResponse(AbstractModel):
+    r"""CreateCosPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCosRiskScanTaskRequest(AbstractModel):
+    r"""CreateCosRiskScanTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _BucketNameSet: Bucket list to scan
+        :type BucketNameSet: list of CosBucketInfo
+        :param _IsScanAllBucket: Whether to scan all buckets
+        :type IsScanAllBucket: bool
+        """
+        self._MemberId = None
+        self._BucketNameSet = None
+        self._IsScanAllBucket = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def BucketNameSet(self):
+        r"""Bucket list to scan
+        :rtype: list of CosBucketInfo
+        """
+        return self._BucketNameSet
+
+    @BucketNameSet.setter
+    def BucketNameSet(self, BucketNameSet):
+        self._BucketNameSet = BucketNameSet
+
+    @property
+    def IsScanAllBucket(self):
+        r"""Whether to scan all buckets
+        :rtype: bool
+        """
+        return self._IsScanAllBucket
+
+    @IsScanAllBucket.setter
+    def IsScanAllBucket(self, IsScanAllBucket):
+        self._IsScanAllBucket = IsScanAllBucket
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("BucketNameSet") is not None:
+            self._BucketNameSet = []
+            for item in params.get("BucketNameSet"):
+                obj = CosBucketInfo()
+                obj._deserialize(item)
+                self._BucketNameSet.append(obj)
+        self._IsScanAllBucket = params.get("IsScanAllBucket")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCosRiskScanTaskResponse(AbstractModel):
+    r"""CreateCosRiskScanTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -43929,6 +49130,154 @@ class DeleteClusterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCosAkAssetRequest(AbstractModel):
+    r"""DeleteCosAkAsset request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosAkSet: Collection of cos AKs to delete
+        :type CosAkSet: list of CosAkSet
+        """
+        self._CosAkSet = None
+
+    @property
+    def CosAkSet(self):
+        r"""Collection of cos AKs to delete
+        :rtype: list of CosAkSet
+        """
+        return self._CosAkSet
+
+    @CosAkSet.setter
+    def CosAkSet(self, CosAkSet):
+        self._CosAkSet = CosAkSet
+
+
+    def _deserialize(self, params):
+        if params.get("CosAkSet") is not None:
+            self._CosAkSet = []
+            for item in params.get("CosAkSet"):
+                obj = CosAkSet()
+                obj._deserialize(item)
+                self._CosAkSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCosAkAssetResponse(AbstractModel):
+    r"""DeleteCosAkAsset response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCosPolicyRequest(AbstractModel):
+    r"""DeleteCosPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyIdSet: Collection of policies to delete
+        :type PolicyIdSet: list of int
+        :param _IsDeleteAll: Delete all or not
+        :type IsDeleteAll: int
+        """
+        self._PolicyIdSet = None
+        self._IsDeleteAll = None
+
+    @property
+    def PolicyIdSet(self):
+        r"""Collection of policies to delete
+        :rtype: list of int
+        """
+        return self._PolicyIdSet
+
+    @PolicyIdSet.setter
+    def PolicyIdSet(self, PolicyIdSet):
+        self._PolicyIdSet = PolicyIdSet
+
+    @property
+    def IsDeleteAll(self):
+        r"""Delete all or not
+        :rtype: int
+        """
+        return self._IsDeleteAll
+
+    @IsDeleteAll.setter
+    def IsDeleteAll(self, IsDeleteAll):
+        self._IsDeleteAll = IsDeleteAll
+
+
+    def _deserialize(self, params):
+        self._PolicyIdSet = params.get("PolicyIdSet")
+        self._IsDeleteAll = params.get("IsDeleteAll")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCosPolicyResponse(AbstractModel):
+    r"""DeleteCosPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteDomainAndIpRequest(AbstractModel):
     r"""DeleteDomainAndIp request structure.
 
@@ -53753,6 +59102,85 @@ class DescribeAssetViewVulRiskListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAssumeRoleRequest(AbstractModel):
+    r"""DescribeAssumeRole request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleName: Role name.
+        :type RoleName: str
+        """
+        self._RoleName = None
+
+    @property
+    def RoleName(self):
+        r"""Role name.
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+
+    def _deserialize(self, params):
+        self._RoleName = params.get("RoleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssumeRoleResponse(AbstractModel):
+    r"""DescribeAssumeRole response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Bind: Whether a role is bound. 0: not bound, 1: bound
+        :type Bind: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Bind = None
+        self._RequestId = None
+
+    @property
+    def Bind(self):
+        r"""Whether a role is bound. 0: not bound, 1: bound
+        :rtype: int
+        """
+        return self._Bind
+
+    @Bind.setter
+    def Bind(self, Bind):
+        self._Bind = Bind
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Bind = params.get("Bind")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBackendScanEngineRegionListRequest(AbstractModel):
     r"""DescribeBackendScanEngineRegionList request structure.
 
@@ -56723,6 +62151,137 @@ class DescribeBruteAttackRulesResponse(AbstractModel):
                 obj = BruteAttackRuleList()
                 obj._deserialize(item)
                 self._Rules.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBucketInvokeIpListRequest(AbstractModel):
+    r"""DescribeBucketInvokeIpList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: appid
+        :type RelAppId: int
+        :param _BucketName: Bucket name
+        :type BucketName: str
+        :param _Filter: Filter criteria.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._BucketName = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def BucketName(self):
+        r"""Bucket name
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def Filter(self):
+        r"""Filter criteria.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        self._BucketName = params.get("BucketName")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBucketInvokeIpListResponse(AbstractModel):
+    r"""DescribeBucketInvokeIpList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: IP information
+        :type Data: list of CosSourceIpInfo
+        :param _Total: Total number.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""IP information
+        :rtype: list of CosSourceIpInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosSourceIpInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -67879,6 +73438,3196 @@ class DescribeConfigCheckRulesResponse(AbstractModel):
                 obj = AttributeOptionSet()
                 obj._deserialize(item)
                 self._CheckTypeList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAccessPermissionRequest(AbstractModel):
+    r"""DescribeCosAccessPermission request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: Associated appid
+        :type RelAppId: int
+        :param _BucketName: Bucket name
+        :type BucketName: str
+        :param _RelUin: uin to view
+        :type RelUin: str
+        :param _Filter: Filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._BucketName = None
+        self._RelUin = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""Associated appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def BucketName(self):
+        r"""Bucket name
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def RelUin(self):
+        r"""uin to view
+        :rtype: str
+        """
+        return self._RelUin
+
+    @RelUin.setter
+    def RelUin(self, RelUin):
+        self._RelUin = RelUin
+
+    @property
+    def Filter(self):
+        r"""Filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        self._BucketName = params.get("BucketName")
+        self._RelUin = params.get("RelUin")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosAccessPermissionResponse(AbstractModel):
+    r"""DescribeCosAccessPermission response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: cos permission information
+        :type Data: list of CosPermissionInfo
+        :param _Total: Total number.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""cos permission information
+        :rtype: list of CosPermissionInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosPermissionInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAccessPermissionsRequest(AbstractModel):
+    r"""DescribeCosAccessPermissions request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: appid
+        :type RelAppId: int
+        :param _BucketName: Bucket name
+        :type BucketName: str
+        :param _Filter: Filter criteria.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._BucketName = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def BucketName(self):
+        r"""Bucket name
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def Filter(self):
+        r"""Filter criteria.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        self._BucketName = params.get("BucketName")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosAccessPermissionsResponse(AbstractModel):
+    r"""DescribeCosAccessPermissions response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Returned data list
+        :type Data: list of CosAccessInfo
+        :param _Total: Total number.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""Returned data list
+        :rtype: list of CosAccessInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosAccessInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosActionListRequest(AbstractModel):
+    r"""DescribeCosActionList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: Filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        r"""Filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosActionListResponse(AbstractModel):
+    r"""DescribeCosActionList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: List
+        :type Data: list of CosActionInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""List
+        :rtype: list of CosActionInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosActionInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAkAssetRequest(AbstractModel):
+    r"""DescribeCosAkAsset request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _Filter: Query filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""Query filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosAkAssetResponse(AbstractModel):
+    r"""DescribeCosAkAsset response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total number.
+        :type Total: int
+        :param _Data: ak asset list
+        :type Data: list of CosAkAssetInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""ak asset list
+        :rtype: list of CosAkAssetInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosAkAssetInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAkInvokeIpListRequest(AbstractModel):
+    r"""DescribeCosAkInvokeIpList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: appid
+        :type RelAppId: int
+        :param _Ak: ak
+        :type Ak: str
+        :param _Filter: Filter criteria.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._Ak = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def Ak(self):
+        r"""ak
+        :rtype: str
+        """
+        return self._Ak
+
+    @Ak.setter
+    def Ak(self, Ak):
+        self._Ak = Ak
+
+    @property
+    def Filter(self):
+        r"""Filter criteria.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        self._Ak = params.get("Ak")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosAkInvokeIpListResponse(AbstractModel):
+    r"""DescribeCosAkInvokeIpList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: IP information
+        :type Data: list of CosSourceIpInfo
+        :param _Total: Total number.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""IP information
+        :rtype: list of CosSourceIpInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosSourceIpInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAlarmListRequest(AbstractModel):
+    r"""DescribeCosAlarmList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _Filter: Filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""Filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosAlarmListResponse(AbstractModel):
+    r"""DescribeCosAlarmList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total number.
+        :type Total: int
+        :param _Data: Alarm list
+        :type Data: list of CosAlarmInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""Alarm list
+        :rtype: list of CosAlarmInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosAlarmInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAlarmTrendDataRequest(AbstractModel):
+    r"""DescribeCosAlarmTrendData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _LastDays: How long you want to view
+        :type LastDays: int
+        """
+        self._MemberId = None
+        self._LastDays = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def LastDays(self):
+        r"""How long you want to view
+        :rtype: int
+        """
+        return self._LastDays
+
+    @LastDays.setter
+    def LastDays(self, LastDays):
+        self._LastDays = LastDays
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._LastDays = params.get("LastDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosAlarmTrendDataResponse(AbstractModel):
+    r"""DescribeCosAlarmTrendData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosAlarmTrendInfo: Alarm trend information
+        :type CosAlarmTrendInfo: list of CosAlarmTrendInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CosAlarmTrendInfo = None
+        self._RequestId = None
+
+    @property
+    def CosAlarmTrendInfo(self):
+        r"""Alarm trend information
+        :rtype: list of CosAlarmTrendInfo
+        """
+        return self._CosAlarmTrendInfo
+
+    @CosAlarmTrendInfo.setter
+    def CosAlarmTrendInfo(self, CosAlarmTrendInfo):
+        self._CosAlarmTrendInfo = CosAlarmTrendInfo
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CosAlarmTrendInfo") is not None:
+            self._CosAlarmTrendInfo = []
+            for item in params.get("CosAlarmTrendInfo"):
+                obj = CosAlarmTrendInfo()
+                obj._deserialize(item)
+                self._CosAlarmTrendInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAssetRequest(AbstractModel):
+    r"""DescribeCosAsset request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: Request filter
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        """
+        self._Filter = None
+        self._MemberId = None
+
+    @property
+    def Filter(self):
+        r"""Request filter
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosAssetResponse(AbstractModel):
+    r"""DescribeCosAsset response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total number.
+        :type Total: int
+        :param _Data: Bucket information.
+        :type Data: list of CosAssetInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""Bucket information.
+        :rtype: list of CosAssetInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosAssetInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAssetSyncTaskRequest(AbstractModel):
+    r"""DescribeCosAssetSyncTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosAssetSyncTaskResponse(AbstractModel):
+    r"""DescribeCosAssetSyncTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Data information
+        :type Data: list of CosAssetSyncTaskInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""Data information
+        :rtype: list of CosAssetSyncTaskInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosAssetSyncTaskInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAuditAppIdListRequest(AbstractModel):
+    r"""DescribeCosAuditAppIdList request structure.
+
+    """
+
+
+class DescribeCosAuditAppIdListResponse(AbstractModel):
+    r"""DescribeCosAuditAppIdList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Purchased appid set
+        :type Data: list of int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""Purchased appid set
+        :rtype: list of int
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAuditDictionaryListRequest(AbstractModel):
+    r"""DescribeCosAuditDictionaryList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DictType: <p>Dictionary type (RootCategory: level-1 category, IdentifyRule: sensitive identification data item)</p>
+        :type DictType: str
+        :param _Filters: <p>Filtering criteria</p>
+        :type Filters: list of WhereFilter
+        """
+        self._DictType = None
+        self._Filters = None
+
+    @property
+    def DictType(self):
+        r"""<p>Dictionary type (RootCategory: level-1 category, IdentifyRule: sensitive identification data item)</p>
+        :rtype: str
+        """
+        return self._DictType
+
+    @DictType.setter
+    def DictType(self, DictType):
+        self._DictType = DictType
+
+    @property
+    def Filters(self):
+        r"""<p>Filtering criteria</p>
+        :rtype: list of WhereFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._DictType = params.get("DictType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = WhereFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosAuditDictionaryListResponse(AbstractModel):
+    r"""DescribeCosAuditDictionaryList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataSet: <p>Result set</p>
+        :type DataSet: list of CosDictionary
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DataSet = None
+        self._RequestId = None
+
+    @property
+    def DataSet(self):
+        r"""<p>Result set</p>
+        :rtype: list of CosDictionary
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataSet") is not None:
+            self._DataSet = []
+            for item in params.get("DataSet"):
+                obj = CosDictionary()
+                obj._deserialize(item)
+                self._DataSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAuditPayInfoRequest(AbstractModel):
+    r"""DescribeCosAuditPayInfo request structure.
+
+    """
+
+
+class DescribeCosAuditPayInfoResponse(AbstractModel):
+    r"""DescribeCosAuditPayInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosAuditPayInfo: cos audit payment information
+        :type CosAuditPayInfo: :class:`tencentcloud.csip.v20221121.models.CosAuditPayInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CosAuditPayInfo = None
+        self._RequestId = None
+
+    @property
+    def CosAuditPayInfo(self):
+        r"""cos audit payment information
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CosAuditPayInfo`
+        """
+        return self._CosAuditPayInfo
+
+    @CosAuditPayInfo.setter
+    def CosAuditPayInfo(self, CosAuditPayInfo):
+        self._CosAuditPayInfo = CosAuditPayInfo
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CosAuditPayInfo") is not None:
+            self._CosAuditPayInfo = CosAuditPayInfo()
+            self._CosAuditPayInfo._deserialize(params.get("CosAuditPayInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosBucketBillingInfoRequest(AbstractModel):
+    r"""DescribeCosBucketBillingInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>Group account member id</p>
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""<p>Group account member id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosBucketBillingInfoResponse(AbstractModel):
+    r"""DescribeCosBucketBillingInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosBucketBillingInfoSet: Bucket billing information
+        :type CosBucketBillingInfoSet: list of CosBucketBillingInfo
+        :param _Total: Total number.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CosBucketBillingInfoSet = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def CosBucketBillingInfoSet(self):
+        r"""Bucket billing information
+        :rtype: list of CosBucketBillingInfo
+        """
+        return self._CosBucketBillingInfoSet
+
+    @CosBucketBillingInfoSet.setter
+    def CosBucketBillingInfoSet(self, CosBucketBillingInfoSet):
+        self._CosBucketBillingInfoSet = CosBucketBillingInfoSet
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CosBucketBillingInfoSet") is not None:
+            self._CosBucketBillingInfoSet = []
+            for item in params.get("CosBucketBillingInfoSet"):
+                obj = CosBucketBillingInfo()
+                obj._deserialize(item)
+                self._CosBucketBillingInfoSet.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosBucketListRequest(AbstractModel):
+    r"""DescribeCosBucketList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>Group account member id</p>
+        :type MemberId: list of str
+        :param _Filter: Filter criteria.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""<p>Group account member id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""Filter criteria.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosBucketListResponse(AbstractModel):
+    r"""DescribeCosBucketList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total number.
+        :type Total: int
+        :param _Data: Asset information
+        :type Data: list of CosAssetInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""Asset information
+        :rtype: list of CosAssetInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosAssetInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosBucketRiskRequest(AbstractModel):
+    r"""DescribeCosBucketRisk request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _Filter: Filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""Filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosBucketRiskResponse(AbstractModel):
+    r"""DescribeCosBucketRisk response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total number.
+        :type Total: int
+        :param _Data: List
+        :type Data: list of CosRiskBucketInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""List
+        :rtype: list of CosRiskBucketInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosRiskBucketInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosIdentifyFileListRequest(AbstractModel):
+    r"""DescribeCosIdentifyFileList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BucketName: <p>Bucket name</p>
+        :type BucketName: str
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _Filter: <p>Filter item</p>
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _ResultStatus: <p>0: No recognition result. 1: Recognition result available.</p>
+        :type ResultStatus: int
+        """
+        self._BucketName = None
+        self._MemberId = None
+        self._Filter = None
+        self._ResultStatus = None
+
+    @property
+    def BucketName(self):
+        r"""<p>Bucket name</p>
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""<p>Filter item</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def ResultStatus(self):
+        r"""<p>0: No recognition result. 1: Recognition result available.</p>
+        :rtype: int
+        """
+        return self._ResultStatus
+
+    @ResultStatus.setter
+    def ResultStatus(self, ResultStatus):
+        self._ResultStatus = ResultStatus
+
+
+    def _deserialize(self, params):
+        self._BucketName = params.get("BucketName")
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._ResultStatus = params.get("ResultStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosIdentifyFileListResponse(AbstractModel):
+    r"""DescribeCosIdentifyFileList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>Total.</p>
+        :type TotalCount: int
+        :param _DataSet: <p>Result set</p>
+        :type DataSet: list of CosAssetFileIdentifyInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DataSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total.</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DataSet(self):
+        r"""<p>Result set</p>
+        :rtype: list of CosAssetFileIdentifyInfo
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DataSet") is not None:
+            self._DataSet = []
+            for item in params.get("DataSet"):
+                obj = CosAssetFileIdentifyInfo()
+                obj._deserialize(item)
+                self._DataSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosInvokeUaRequest(AbstractModel):
+    r"""DescribeCosInvokeUa request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: appid
+        :type RelAppId: int
+        :param _Filter: Filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def Filter(self):
+        r"""Filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosInvokeUaResponse(AbstractModel):
+    r"""DescribeCosInvokeUa response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total number.
+        :type Total: int
+        :param _Data: File list.
+        :type Data: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""File list.
+        :rtype: list of str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosIpInvokeLogRequest(AbstractModel):
+    r"""DescribeCosIpInvokeLog request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: appid
+        :type RelAppId: int
+        :param _Filter: Filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def Filter(self):
+        r"""Filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosIpInvokeLogResponse(AbstractModel):
+    r"""DescribeCosIpInvokeLog response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total number.
+        :type Total: int
+        :param _Data: Request log data
+        :type Data: list of CosInvokeLog
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""Request log data
+        :rtype: list of CosInvokeLog
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosInvokeLog()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosIpInvokeRecordFileRequest(AbstractModel):
+    r"""DescribeCosIpInvokeRecordFile request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: appid
+        :type RelAppId: int
+        :param _Filter: Filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def Filter(self):
+        r"""Filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosIpInvokeRecordFileResponse(AbstractModel):
+    r"""DescribeCosIpInvokeRecordFile response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total number.
+        :type Total: int
+        :param _Data: File list.
+        :type Data: list of str
+        :param _DataSet: File list details
+        :type DataSet: list of CosAssetFileIdentifyInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._DataSet = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        warnings.warn("parameter `Data` is deprecated", DeprecationWarning) 
+
+        r"""File list.
+        :rtype: list of str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        warnings.warn("parameter `Data` is deprecated", DeprecationWarning) 
+
+        self._Data = Data
+
+    @property
+    def DataSet(self):
+        r"""File list details
+        :rtype: list of CosAssetFileIdentifyInfo
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Data = params.get("Data")
+        if params.get("DataSet") is not None:
+            self._DataSet = []
+            for item in params.get("DataSet"):
+                obj = CosAssetFileIdentifyInfo()
+                obj._deserialize(item)
+                self._DataSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosObjectScanTaskRequest(AbstractModel):
+    r"""DescribeCosObjectScanTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskType: <p>1: sensitive data identification 2: malicious file scanning</p>
+        :type TaskType: int
+        :param _MemberId: <p>Group account member id</p>
+        :type MemberId: list of str
+        :param _BucketSet: <p>Bucket list</p>
+        :type BucketSet: list of str
+        """
+        self._TaskType = None
+        self._MemberId = None
+        self._BucketSet = None
+
+    @property
+    def TaskType(self):
+        r"""<p>1: sensitive data identification 2: malicious file scanning</p>
+        :rtype: int
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def MemberId(self):
+        r"""<p>Group account member id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def BucketSet(self):
+        r"""<p>Bucket list</p>
+        :rtype: list of str
+        """
+        return self._BucketSet
+
+    @BucketSet.setter
+    def BucketSet(self, BucketSet):
+        self._BucketSet = BucketSet
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        self._MemberId = params.get("MemberId")
+        self._BucketSet = params.get("BucketSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosObjectScanTaskResponse(AbstractModel):
+    r"""DescribeCosObjectScanTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BucketTaskIdSet: <p>Bucket task detail</p>
+        :type BucketTaskIdSet: list of CosBucketTaskInfo
+        :param _MemberTaskIdSet: <p>Task List by appid dimension</p>
+        :type MemberTaskIdSet: list of CosAssetSyncTaskInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._BucketTaskIdSet = None
+        self._MemberTaskIdSet = None
+        self._RequestId = None
+
+    @property
+    def BucketTaskIdSet(self):
+        r"""<p>Bucket task detail</p>
+        :rtype: list of CosBucketTaskInfo
+        """
+        return self._BucketTaskIdSet
+
+    @BucketTaskIdSet.setter
+    def BucketTaskIdSet(self, BucketTaskIdSet):
+        self._BucketTaskIdSet = BucketTaskIdSet
+
+    @property
+    def MemberTaskIdSet(self):
+        r"""<p>Task List by appid dimension</p>
+        :rtype: list of CosAssetSyncTaskInfo
+        """
+        return self._MemberTaskIdSet
+
+    @MemberTaskIdSet.setter
+    def MemberTaskIdSet(self, MemberTaskIdSet):
+        self._MemberTaskIdSet = MemberTaskIdSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("BucketTaskIdSet") is not None:
+            self._BucketTaskIdSet = []
+            for item in params.get("BucketTaskIdSet"):
+                obj = CosBucketTaskInfo()
+                obj._deserialize(item)
+                self._BucketTaskIdSet.append(obj)
+        if params.get("MemberTaskIdSet") is not None:
+            self._MemberTaskIdSet = []
+            for item in params.get("MemberTaskIdSet"):
+                obj = CosAssetSyncTaskInfo()
+                obj._deserialize(item)
+                self._MemberTaskIdSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosOverviewRequest(AbstractModel):
+    r"""DescribeCosOverview request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _Filter: Filter information.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""Filter information.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosOverviewResponse(AbstractModel):
+    r"""DescribeCosOverview response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosOverview: cos overview
+        :type CosOverview: :class:`tencentcloud.csip.v20221121.models.CosOverview`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CosOverview = None
+        self._RequestId = None
+
+    @property
+    def CosOverview(self):
+        r"""cos overview
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CosOverview`
+        """
+        return self._CosOverview
+
+    @CosOverview.setter
+    def CosOverview(self, CosOverview):
+        self._CosOverview = CosOverview
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CosOverview") is not None:
+            self._CosOverview = CosOverview()
+            self._CosOverview._deserialize(params.get("CosOverview"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosPolicyRequest(AbstractModel):
+    r"""DescribeCosPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _Filter: Filter criteria.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""Filter criteria.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosPolicyResponse(AbstractModel):
+    r"""DescribeCosPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total number of policies
+        :type Total: int
+        :param _Data: Policy information.
+        :type Data: list of CosPolicyInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""Total number of policies
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""Policy information.
+        :rtype: list of CosPolicyInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosPolicyInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosRiskActionListRequest(AbstractModel):
+    r"""DescribeCosRiskActionList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: appid
+        :type RelAppId: int
+        :param _PolicyId: Policy ID
+        :type PolicyId: int
+        :param _BucketName: Bucket name
+        :type BucketName: str
+        :param _Filter: Filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._PolicyId = None
+        self._BucketName = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def PolicyId(self):
+        r"""Policy ID
+        :rtype: int
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def BucketName(self):
+        r"""Bucket name
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def Filter(self):
+        r"""Filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        self._PolicyId = params.get("PolicyId")
+        self._BucketName = params.get("BucketName")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosRiskActionListResponse(AbstractModel):
+    r"""DescribeCosRiskActionList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total number.
+        :type Total: int
+        :param _Data: List
+        :type Data: list of CosRiskActionInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""List
+        :rtype: list of CosRiskActionInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosRiskActionInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosRiskEvidenceRequest(AbstractModel):
+    r"""DescribeCosRiskEvidence request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: appid
+        :type RelAppId: int
+        :param _PolicyId: Policy ID
+        :type PolicyId: int
+        :param _BucketName: Bucket name.
+        :type BucketName: str
+        :param _Filter: Filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._PolicyId = None
+        self._BucketName = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def PolicyId(self):
+        r"""Policy ID
+        :rtype: int
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def BucketName(self):
+        r"""Bucket name.
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def Filter(self):
+        r"""Filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        self._PolicyId = params.get("PolicyId")
+        self._BucketName = params.get("BucketName")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosRiskEvidenceResponse(AbstractModel):
+    r"""DescribeCosRiskEvidence response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Evidences: Evidence information
+        :type Evidences: list of CosPermissionInfo
+        :param _Total: Total number.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Evidences = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Evidences(self):
+        r"""Evidence information
+        :rtype: list of CosPermissionInfo
+        """
+        return self._Evidences
+
+    @Evidences.setter
+    def Evidences(self, Evidences):
+        self._Evidences = Evidences
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Evidences") is not None:
+            self._Evidences = []
+            for item in params.get("Evidences"):
+                obj = CosPermissionInfo()
+                obj._deserialize(item)
+                self._Evidences.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosRiskScanTaskRequest(AbstractModel):
+    r"""DescribeCosRiskScanTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BucketInfoSet: Bucket details to view
+        :type BucketInfoSet: list of CosBucketInfo
+        """
+        self._BucketInfoSet = None
+
+    @property
+    def BucketInfoSet(self):
+        r"""Bucket details to view
+        :rtype: list of CosBucketInfo
+        """
+        return self._BucketInfoSet
+
+    @BucketInfoSet.setter
+    def BucketInfoSet(self, BucketInfoSet):
+        self._BucketInfoSet = BucketInfoSet
+
+
+    def _deserialize(self, params):
+        if params.get("BucketInfoSet") is not None:
+            self._BucketInfoSet = []
+            for item in params.get("BucketInfoSet"):
+                obj = CosBucketInfo()
+                obj._deserialize(item)
+                self._BucketInfoSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosRiskScanTaskResponse(AbstractModel):
+    r"""DescribeCosRiskScanTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BucketTaskInfoSet: cos bucket task detail
+        :type BucketTaskInfoSet: list of CosBucketTaskInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._BucketTaskInfoSet = None
+        self._RequestId = None
+
+    @property
+    def BucketTaskInfoSet(self):
+        r"""cos bucket task detail
+        :rtype: list of CosBucketTaskInfo
+        """
+        return self._BucketTaskInfoSet
+
+    @BucketTaskInfoSet.setter
+    def BucketTaskInfoSet(self, BucketTaskInfoSet):
+        self._BucketTaskInfoSet = BucketTaskInfoSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("BucketTaskInfoSet") is not None:
+            self._BucketTaskInfoSet = []
+            for item in params.get("BucketTaskInfoSet"):
+                obj = CosBucketTaskInfo()
+                obj._deserialize(item)
+                self._BucketTaskInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosRoleAccessPermissionRequest(AbstractModel):
+    r"""DescribeCosRoleAccessPermission request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: Associated appid
+        :type RelAppId: int
+        :param _RelRoleId: Role id to view
+        :type RelRoleId: str
+        :param _BucketName: Bucket name
+        :type BucketName: str
+        :param _Filter: Filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._RelRoleId = None
+        self._BucketName = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""Associated appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def RelRoleId(self):
+        r"""Role id to view
+        :rtype: str
+        """
+        return self._RelRoleId
+
+    @RelRoleId.setter
+    def RelRoleId(self, RelRoleId):
+        self._RelRoleId = RelRoleId
+
+    @property
+    def BucketName(self):
+        r"""Bucket name
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def Filter(self):
+        r"""Filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        self._RelRoleId = params.get("RelRoleId")
+        self._BucketName = params.get("BucketName")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosRoleAccessPermissionResponse(AbstractModel):
+    r"""DescribeCosRoleAccessPermission response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: cos permission information
+        :type Data: list of CosPermissionInfo
+        :param _Total: Total number.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""cos permission information
+        :rtype: list of CosPermissionInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosPermissionInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosRoleAccessPermissionsRequest(AbstractModel):
+    r"""DescribeCosRoleAccessPermissions request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: App ID of the bucket
+        :type RelAppId: int
+        :param _BucketName: Bucket name.
+        :type BucketName: str
+        :param _Filter: Filter criteria.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._BucketName = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""App ID of the bucket
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def BucketName(self):
+        r"""Bucket name.
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def Filter(self):
+        r"""Filter criteria.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        self._BucketName = params.get("BucketName")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosRoleAccessPermissionsResponse(AbstractModel):
+    r"""DescribeCosRoleAccessPermissions response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total number.
+        :type Total: int
+        :param _Data: Role details
+        :type Data: list of CosRoleAccessInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""Role details
+        :rtype: list of CosRoleAccessInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosRoleAccessInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosSourceIpRequest(AbstractModel):
+    r"""DescribeCosSourceIp request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _Filter: Filter criteria.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""Filter criteria.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosSourceIpResponse(AbstractModel):
+    r"""DescribeCosSourceIp response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: List information
+        :type Data: list of CosSourceIpInfo
+        :param _Total: Total number.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""List information
+        :rtype: list of CosSourceIpInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosSourceIpInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -86948,6 +95697,178 @@ class DescribeImageVulWhitelistResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeIpInvokeRecordDetailRequest(AbstractModel):
+    r"""DescribeIpInvokeRecordDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: Filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        r"""Filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIpInvokeRecordDetailResponse(AbstractModel):
+    r"""DescribeIpInvokeRecordDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InvokeDetailInfo: Call details
+        :type InvokeDetailInfo: list of CosInvokeDetailInfo
+        :param _InvokePermission: Call permission related
+        :type InvokePermission: list of CosPermissionInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._InvokeDetailInfo = None
+        self._InvokePermission = None
+        self._RequestId = None
+
+    @property
+    def InvokeDetailInfo(self):
+        r"""Call details
+        :rtype: list of CosInvokeDetailInfo
+        """
+        return self._InvokeDetailInfo
+
+    @InvokeDetailInfo.setter
+    def InvokeDetailInfo(self, InvokeDetailInfo):
+        self._InvokeDetailInfo = InvokeDetailInfo
+
+    @property
+    def InvokePermission(self):
+        r"""Call permission related
+        :rtype: list of CosPermissionInfo
+        """
+        return self._InvokePermission
+
+    @InvokePermission.setter
+    def InvokePermission(self, InvokePermission):
+        self._InvokePermission = InvokePermission
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InvokeDetailInfo") is not None:
+            self._InvokeDetailInfo = []
+            for item in params.get("InvokeDetailInfo"):
+                obj = CosInvokeDetailInfo()
+                obj._deserialize(item)
+                self._InvokeDetailInfo.append(obj)
+        if params.get("InvokePermission") is not None:
+            self._InvokePermission = []
+            for item in params.get("InvokePermission"):
+                obj = CosPermissionInfo()
+                obj._deserialize(item)
+                self._InvokePermission.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIpInvokeRecordRequest(AbstractModel):
+    r"""DescribeIpInvokeRecord request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: Filter criteria.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        r"""Filter criteria.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIpInvokeRecordResponse(AbstractModel):
+    r"""DescribeIpInvokeRecord response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeKBDetailRequest(AbstractModel):
     r"""DescribeKBDetail request structure.
 
@@ -91983,6 +100904,105 @@ class DescribePodContainerListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePolicyHitDataRequest(AbstractModel):
+    r"""DescribePolicyHitData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IndexTimestamp: Timestamp of the date and time to view
+        :type IndexTimestamp: int
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        """
+        self._IndexTimestamp = None
+        self._MemberId = None
+
+    @property
+    def IndexTimestamp(self):
+        r"""Timestamp of the date and time to view
+        :rtype: int
+        """
+        return self._IndexTimestamp
+
+    @IndexTimestamp.setter
+    def IndexTimestamp(self, IndexTimestamp):
+        self._IndexTimestamp = IndexTimestamp
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._IndexTimestamp = params.get("IndexTimestamp")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePolicyHitDataResponse(AbstractModel):
+    r"""DescribePolicyHitData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyHitDetail: Policy hit details
+        :type PolicyHitDetail: list of CosRiskInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._PolicyHitDetail = None
+        self._RequestId = None
+
+    @property
+    def PolicyHitDetail(self):
+        r"""Policy hit details
+        :rtype: list of CosRiskInfo
+        """
+        return self._PolicyHitDetail
+
+    @PolicyHitDetail.setter
+    def PolicyHitDetail(self, PolicyHitDetail):
+        self._PolicyHitDetail = PolicyHitDetail
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PolicyHitDetail") is not None:
+            self._PolicyHitDetail = []
+            for item in params.get("PolicyHitDetail"):
+                obj = CosRiskInfo()
+                obj._deserialize(item)
+                self._PolicyHitDetail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePortDetectListRequest(AbstractModel):
     r"""DescribePortDetectList request structure.
 
@@ -94140,6 +103160,137 @@ class DescribeReverseShellSystemPolicyConfigResponse(AbstractModel):
         self._TCSSScope = params.get("TCSSScope")
         self._ClusterIDs = params.get("ClusterIDs")
         self._ExcludeClusterIDs = params.get("ExcludeClusterIDs")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRiskBucketListRequest(AbstractModel):
+    r"""DescribeRiskBucketList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: Associated appid
+        :type RelAppId: int
+        :param _PolicyId: Rule ID
+        :type PolicyId: str
+        :param _Filter: Filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._PolicyId = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""Associated appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def PolicyId(self):
+        r"""Rule ID
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def Filter(self):
+        r"""Filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        self._PolicyId = params.get("PolicyId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRiskBucketListResponse(AbstractModel):
+    r"""DescribeRiskBucketList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total number.
+        :type Total: int
+        :param _Data: Affected bucket
+        :type Data: list of CosRiskBucketInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""Affected bucket
+        :rtype: list of CosRiskBucketInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosRiskBucketInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -96568,6 +105719,122 @@ class DescribeRiskDetailListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRiskItemListRequest(AbstractModel):
+    r"""DescribeRiskItemList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _Filter: Filter.
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""Filter.
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRiskItemListResponse(AbstractModel):
+    r"""DescribeRiskItemList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: List information
+        :type Data: list of CosRiskViewInfo
+        :param _Total: Total number.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""List information
+        :rtype: list of CosRiskViewInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosRiskViewInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRiskRuleDetailRequest(AbstractModel):
     r"""DescribeRiskRuleDetail request structure.
 
@@ -96969,6 +106236,105 @@ class DescribeRiskScanCronConfigResponse(AbstractModel):
         if params.get("CronConfig") is not None:
             self._CronConfig = RiskCronConfig()
             self._CronConfig._deserialize(params.get("CronConfig"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRiskTrendDataRequest(AbstractModel):
+    r"""DescribeRiskTrendData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        :param _LastDays: Specified date.
+        :type LastDays: int
+        """
+        self._MemberId = None
+        self._LastDays = None
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def LastDays(self):
+        r"""Specified date.
+        :rtype: int
+        """
+        return self._LastDays
+
+    @LastDays.setter
+    def LastDays(self, LastDays):
+        self._LastDays = LastDays
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._LastDays = params.get("LastDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRiskTrendDataResponse(AbstractModel):
+    r"""DescribeRiskTrendData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosRiskTrendData: Risk trend data
+        :type CosRiskTrendData: list of CosRiskTrendInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CosRiskTrendData = None
+        self._RequestId = None
+
+    @property
+    def CosRiskTrendData(self):
+        r"""Risk trend data
+        :rtype: list of CosRiskTrendInfo
+        """
+        return self._CosRiskTrendData
+
+    @CosRiskTrendData.setter
+    def CosRiskTrendData(self, CosRiskTrendData):
+        self._CosRiskTrendData = CosRiskTrendData
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CosRiskTrendData") is not None:
+            self._CosRiskTrendData = []
+            for item in params.get("CosRiskTrendData"):
+                obj = CosRiskTrendInfo()
+                obj._deserialize(item)
+                self._CosRiskTrendData.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -140972,6 +150338,105 @@ class ModifyAgentRunPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyAlarmRiskStatusRequest(AbstractModel):
+    r"""ModifyAlarmRiskStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlarmRiskIdSet: Alarm or risk id
+        :type AlarmRiskIdSet: list of CosAlarmRiskIdInfo
+        :param _AlarmRiskType: Risk or alarm status. 1: alarm, 2: risk
+        :type AlarmRiskType: int
+        :param _HandleStatus: Handling status
+        :type HandleStatus: int
+        """
+        self._AlarmRiskIdSet = None
+        self._AlarmRiskType = None
+        self._HandleStatus = None
+
+    @property
+    def AlarmRiskIdSet(self):
+        r"""Alarm or risk id
+        :rtype: list of CosAlarmRiskIdInfo
+        """
+        return self._AlarmRiskIdSet
+
+    @AlarmRiskIdSet.setter
+    def AlarmRiskIdSet(self, AlarmRiskIdSet):
+        self._AlarmRiskIdSet = AlarmRiskIdSet
+
+    @property
+    def AlarmRiskType(self):
+        r"""Risk or alarm status. 1: alarm, 2: risk
+        :rtype: int
+        """
+        return self._AlarmRiskType
+
+    @AlarmRiskType.setter
+    def AlarmRiskType(self, AlarmRiskType):
+        self._AlarmRiskType = AlarmRiskType
+
+    @property
+    def HandleStatus(self):
+        r"""Handling status
+        :rtype: int
+        """
+        return self._HandleStatus
+
+    @HandleStatus.setter
+    def HandleStatus(self, HandleStatus):
+        self._HandleStatus = HandleStatus
+
+
+    def _deserialize(self, params):
+        if params.get("AlarmRiskIdSet") is not None:
+            self._AlarmRiskIdSet = []
+            for item in params.get("AlarmRiskIdSet"):
+                obj = CosAlarmRiskIdInfo()
+                obj._deserialize(item)
+                self._AlarmRiskIdSet.append(obj)
+        self._AlarmRiskType = params.get("AlarmRiskType")
+        self._HandleStatus = params.get("HandleStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAlarmRiskStatusResponse(AbstractModel):
+    r"""ModifyAlarmRiskStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyAssetCoreAttributeRequest(AbstractModel):
     r"""ModifyAssetCoreAttribute request structure.
 
@@ -143182,6 +152647,437 @@ class ModifyCosAuditBucketMonitorStatusRequest(AbstractModel):
 
 class ModifyCosAuditBucketMonitorStatusResponse(AbstractModel):
     r"""ModifyCosAuditBucketMonitorStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCosAuditMonitorAccountRequest(AbstractModel):
+    r"""ModifyCosAuditMonitorAccount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: Resource ID
+        :type ResourceId: str
+        :param _MonitorAppIdSet: appid information to monitor
+        :type MonitorAppIdSet: list of int non-negative
+        :param _BindBucket: Select a bucket mapping relationship
+        :type BindBucket: list of CosBucketId
+        """
+        self._ResourceId = None
+        self._MonitorAppIdSet = None
+        self._BindBucket = None
+
+    @property
+    def ResourceId(self):
+        r"""Resource ID
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def MonitorAppIdSet(self):
+        r"""appid information to monitor
+        :rtype: list of int non-negative
+        """
+        return self._MonitorAppIdSet
+
+    @MonitorAppIdSet.setter
+    def MonitorAppIdSet(self, MonitorAppIdSet):
+        self._MonitorAppIdSet = MonitorAppIdSet
+
+    @property
+    def BindBucket(self):
+        r"""Select a bucket mapping relationship
+        :rtype: list of CosBucketId
+        """
+        return self._BindBucket
+
+    @BindBucket.setter
+    def BindBucket(self, BindBucket):
+        self._BindBucket = BindBucket
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._MonitorAppIdSet = params.get("MonitorAppIdSet")
+        if params.get("BindBucket") is not None:
+            self._BindBucket = []
+            for item in params.get("BindBucket"):
+                obj = CosBucketId()
+                obj._deserialize(item)
+                self._BindBucket.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCosAuditMonitorAccountResponse(AbstractModel):
+    r"""ModifyCosAuditMonitorAccount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCosAuditObjectIdentifyStatusRequest(AbstractModel):
+    r"""ModifyCosAuditObjectIdentifyStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: <p>Resource id</p>
+        :type ResourceId: str
+        :param _TextIdentifyStatus: <p>Text recognition status</p>
+        :type TextIdentifyStatus: int
+        :param _ImageIdentifyStatus: <p>Image recognition status</p>
+        :type ImageIdentifyStatus: int
+        """
+        self._ResourceId = None
+        self._TextIdentifyStatus = None
+        self._ImageIdentifyStatus = None
+
+    @property
+    def ResourceId(self):
+        r"""<p>Resource id</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def TextIdentifyStatus(self):
+        r"""<p>Text recognition status</p>
+        :rtype: int
+        """
+        return self._TextIdentifyStatus
+
+    @TextIdentifyStatus.setter
+    def TextIdentifyStatus(self, TextIdentifyStatus):
+        self._TextIdentifyStatus = TextIdentifyStatus
+
+    @property
+    def ImageIdentifyStatus(self):
+        r"""<p>Image recognition status</p>
+        :rtype: int
+        """
+        return self._ImageIdentifyStatus
+
+    @ImageIdentifyStatus.setter
+    def ImageIdentifyStatus(self, ImageIdentifyStatus):
+        self._ImageIdentifyStatus = ImageIdentifyStatus
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._TextIdentifyStatus = params.get("TextIdentifyStatus")
+        self._ImageIdentifyStatus = params.get("ImageIdentifyStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCosAuditObjectIdentifyStatusResponse(AbstractModel):
+    r"""ModifyCosAuditObjectIdentifyStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCosAuditObjectSampleRateRequest(AbstractModel):
+    r"""ModifyCosAuditObjectSampleRate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BucketIdSet: <p>Bucket asset id set</p>
+        :type BucketIdSet: list of int non-negative
+        :param _SampleRateSet: <p>Sampling rate collection</p>
+        :type SampleRateSet: list of float
+        :param _TargetAppId: <p>appid; required when passing DefaultSampleRate; selectable when only modifying existing buckets</p>
+        :type TargetAppId: int
+        :param _DefaultSampleRate: <p>Modify the default value of the newly-added bucket for TargetAppId when passed in; do not modify the default value when not passed in</p><p>Value range: [0.001, 1]</p>
+        :type DefaultSampleRate: float
+        """
+        self._BucketIdSet = None
+        self._SampleRateSet = None
+        self._TargetAppId = None
+        self._DefaultSampleRate = None
+
+    @property
+    def BucketIdSet(self):
+        r"""<p>Bucket asset id set</p>
+        :rtype: list of int non-negative
+        """
+        return self._BucketIdSet
+
+    @BucketIdSet.setter
+    def BucketIdSet(self, BucketIdSet):
+        self._BucketIdSet = BucketIdSet
+
+    @property
+    def SampleRateSet(self):
+        r"""<p>Sampling rate collection</p>
+        :rtype: list of float
+        """
+        return self._SampleRateSet
+
+    @SampleRateSet.setter
+    def SampleRateSet(self, SampleRateSet):
+        self._SampleRateSet = SampleRateSet
+
+    @property
+    def TargetAppId(self):
+        r"""<p>appid; required when passing DefaultSampleRate; selectable when only modifying existing buckets</p>
+        :rtype: int
+        """
+        return self._TargetAppId
+
+    @TargetAppId.setter
+    def TargetAppId(self, TargetAppId):
+        self._TargetAppId = TargetAppId
+
+    @property
+    def DefaultSampleRate(self):
+        r"""<p>Modify the default value of the newly-added bucket for TargetAppId when passed in; do not modify the default value when not passed in</p><p>Value range: [0.001, 1]</p>
+        :rtype: float
+        """
+        return self._DefaultSampleRate
+
+    @DefaultSampleRate.setter
+    def DefaultSampleRate(self, DefaultSampleRate):
+        self._DefaultSampleRate = DefaultSampleRate
+
+
+    def _deserialize(self, params):
+        self._BucketIdSet = params.get("BucketIdSet")
+        self._SampleRateSet = params.get("SampleRateSet")
+        self._TargetAppId = params.get("TargetAppId")
+        self._DefaultSampleRate = params.get("DefaultSampleRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCosAuditObjectSampleRateResponse(AbstractModel):
+    r"""ModifyCosAuditObjectSampleRate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DefaultSampleRateUpdated: <p>Whether the default sampling rate was actually submitted this time</p>
+        :type DefaultSampleRateUpdated: bool
+        :param _DefaultSampleRate: <p>When DefaultSampleRateUpdated=true, the value after modification is returned</p>
+        :type DefaultSampleRate: float
+        :param _UpdatedBucketCount: <p>Number of existing buckets successfully submitted this time</p>
+        :type UpdatedBucketCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DefaultSampleRateUpdated = None
+        self._DefaultSampleRate = None
+        self._UpdatedBucketCount = None
+        self._RequestId = None
+
+    @property
+    def DefaultSampleRateUpdated(self):
+        r"""<p>Whether the default sampling rate was actually submitted this time</p>
+        :rtype: bool
+        """
+        return self._DefaultSampleRateUpdated
+
+    @DefaultSampleRateUpdated.setter
+    def DefaultSampleRateUpdated(self, DefaultSampleRateUpdated):
+        self._DefaultSampleRateUpdated = DefaultSampleRateUpdated
+
+    @property
+    def DefaultSampleRate(self):
+        r"""<p>When DefaultSampleRateUpdated=true, the value after modification is returned</p>
+        :rtype: float
+        """
+        return self._DefaultSampleRate
+
+    @DefaultSampleRate.setter
+    def DefaultSampleRate(self, DefaultSampleRate):
+        self._DefaultSampleRate = DefaultSampleRate
+
+    @property
+    def UpdatedBucketCount(self):
+        r"""<p>Number of existing buckets successfully submitted this time</p>
+        :rtype: int
+        """
+        return self._UpdatedBucketCount
+
+    @UpdatedBucketCount.setter
+    def UpdatedBucketCount(self, UpdatedBucketCount):
+        self._UpdatedBucketCount = UpdatedBucketCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DefaultSampleRateUpdated = params.get("DefaultSampleRateUpdated")
+        self._DefaultSampleRate = params.get("DefaultSampleRate")
+        self._UpdatedBucketCount = params.get("UpdatedBucketCount")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCosMarkInfoRequest(AbstractModel):
+    r"""ModifyCosMarkInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BucketNameSet: Bucket list that needs to be modified
+        :type BucketNameSet: list of CosBucketInfo
+        :param _MarkInfo: Remarks
+        :type MarkInfo: str
+        """
+        self._BucketNameSet = None
+        self._MarkInfo = None
+
+    @property
+    def BucketNameSet(self):
+        r"""Bucket list that needs to be modified
+        :rtype: list of CosBucketInfo
+        """
+        return self._BucketNameSet
+
+    @BucketNameSet.setter
+    def BucketNameSet(self, BucketNameSet):
+        self._BucketNameSet = BucketNameSet
+
+    @property
+    def MarkInfo(self):
+        r"""Remarks
+        :rtype: str
+        """
+        return self._MarkInfo
+
+    @MarkInfo.setter
+    def MarkInfo(self, MarkInfo):
+        self._MarkInfo = MarkInfo
+
+
+    def _deserialize(self, params):
+        if params.get("BucketNameSet") is not None:
+            self._BucketNameSet = []
+            for item in params.get("BucketNameSet"):
+                obj = CosBucketInfo()
+                obj._deserialize(item)
+                self._BucketNameSet.append(obj)
+        self._MarkInfo = params.get("MarkInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCosMarkInfoResponse(AbstractModel):
+    r"""ModifyCosMarkInfo response structure.
 
     """
 
@@ -152228,6 +162124,85 @@ class ModifyPayConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyPolicyStatusRequest(AbstractModel):
+    r"""ModifyPolicyStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyIdSet: Policy id set
+        :type PolicyIdSet: list of int
+        :param _Status: Status value
+        :type Status: int
+        """
+        self._PolicyIdSet = None
+        self._Status = None
+
+    @property
+    def PolicyIdSet(self):
+        r"""Policy id set
+        :rtype: list of int
+        """
+        return self._PolicyIdSet
+
+    @PolicyIdSet.setter
+    def PolicyIdSet(self, PolicyIdSet):
+        self._PolicyIdSet = PolicyIdSet
+
+    @property
+    def Status(self):
+        r"""Status value
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._PolicyIdSet = params.get("PolicyIdSet")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPolicyStatusResponse(AbstractModel):
+    r"""ModifyPolicyStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyProtectionSetting(AbstractModel):
     r"""Protection settings object.
 
@@ -155806,13 +165781,13 @@ class ModifyVulWhitelistConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: <p>id list</
+        :param _Id: <p>id list</p>
         :type Id: int
         :param _MemberId: <p>Group account member id</p>
         :type MemberId: list of str
         :param _Remark: <p>Remarks.</p>
         :type Remark: str
-        :param _AssetRange: <p>Asset scope</p><p>Enumeration value:</p><ul><li>0: All assets</li><li>1: Custom assets</li><li>2: Select all remove asset</li></ul>
+        :param _AssetRange: <p>Asset scope</p><p>Enumeration values:</p><ul><li>0: all assets</li><li>1: Custom assets</li><li>2: Select all and remove assets</li></ul>
         :type AssetRange: int
         :param _AssetList: <p>Asset list (Quuid list)</p>
         :type AssetList: list of str
@@ -155825,7 +165800,7 @@ class ModifyVulWhitelistConfigRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""<p>id list</
+        r"""<p>id list</p>
         :rtype: int
         """
         return self._Id
@@ -155858,7 +165833,7 @@ class ModifyVulWhitelistConfigRequest(AbstractModel):
 
     @property
     def AssetRange(self):
-        r"""<p>Asset scope</p><p>Enumeration value:</p><ul><li>0: All assets</li><li>1: Custom assets</li><li>2: Select all remove asset</li></ul>
+        r"""<p>Asset scope</p><p>Enumeration values:</p><ul><li>0: all assets</li><li>1: Custom assets</li><li>2: Select all and remove assets</li></ul>
         :rtype: int
         """
         return self._AssetRange

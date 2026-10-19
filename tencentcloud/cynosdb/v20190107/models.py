@@ -2270,6 +2270,593 @@ class AuditInstanceInfo(AbstractModel):
         
 
 
+class AuditLog(AbstractModel):
+    r"""Audit log details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AffectRows: Number of affected rows.
+        :type AffectRows: int
+        :param _ErrCode: Error code.
+        :type ErrCode: int
+        :param _SqlType: SQL type.
+        :type SqlType: str
+        :param _TableName: Table name.
+        :type TableName: str
+        :param _InstanceName: Instance name.
+        :type InstanceName: str
+        :param _PolicyName: Audit policy name.
+        :type PolicyName: str
+        :param _DBName: Database name.
+        :type DBName: str
+        :param _Sql: SQL statement.
+        :type Sql: str
+        :param _Host: Client address.
+        :type Host: str
+        :param _User: Username.
+        :type User: str
+        :param _ExecTime: Execution time, in microseconds.
+        :type ExecTime: int
+        :param _Timestamp: Time.
+        :type Timestamp: str
+        :param _SentRows: Number of rows returned.
+        :type SentRows: int
+        :param _ThreadId: Execution thread ID.
+        :type ThreadId: int
+        :param _CheckRows: Number of scanned rows.
+        :type CheckRows: int
+        :param _CpuTime: cpu execution time, in microseconds.
+        :type CpuTime: float
+        :param _IoWaitTime: IO wait time, in microseconds.
+        :type IoWaitTime: int
+        :param _LockWaitTime: Lock waiting time in microseconds.
+        :type LockWaitTime: int
+        :param _TrxLivingTime: Transaction continuous waiting time, in µs.
+        :type TrxLivingTime: int
+        :param _NsTime: Start time. Together with timestamp, it forms a nanosecond-precision time.
+        :type NsTime: int
+        :param _TemplateInfo: Basic information of the log hit rule template
+        :type TemplateInfo: list of LogRuleTemplateInfo
+        :param _TrxId: Transaction ID
+        :type TrxId: int
+        :param _ClientPort: Client port.
+        :type ClientPort: int
+        """
+        self._AffectRows = None
+        self._ErrCode = None
+        self._SqlType = None
+        self._TableName = None
+        self._InstanceName = None
+        self._PolicyName = None
+        self._DBName = None
+        self._Sql = None
+        self._Host = None
+        self._User = None
+        self._ExecTime = None
+        self._Timestamp = None
+        self._SentRows = None
+        self._ThreadId = None
+        self._CheckRows = None
+        self._CpuTime = None
+        self._IoWaitTime = None
+        self._LockWaitTime = None
+        self._TrxLivingTime = None
+        self._NsTime = None
+        self._TemplateInfo = None
+        self._TrxId = None
+        self._ClientPort = None
+
+    @property
+    def AffectRows(self):
+        r"""Number of affected rows.
+        :rtype: int
+        """
+        return self._AffectRows
+
+    @AffectRows.setter
+    def AffectRows(self, AffectRows):
+        self._AffectRows = AffectRows
+
+    @property
+    def ErrCode(self):
+        r"""Error code.
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def SqlType(self):
+        r"""SQL type.
+        :rtype: str
+        """
+        return self._SqlType
+
+    @SqlType.setter
+    def SqlType(self, SqlType):
+        self._SqlType = SqlType
+
+    @property
+    def TableName(self):
+        r"""Table name.
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def InstanceName(self):
+        r"""Instance name.
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def PolicyName(self):
+        r"""Audit policy name.
+        :rtype: str
+        """
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def DBName(self):
+        r"""Database name.
+        :rtype: str
+        """
+        return self._DBName
+
+    @DBName.setter
+    def DBName(self, DBName):
+        self._DBName = DBName
+
+    @property
+    def Sql(self):
+        r"""SQL statement.
+        :rtype: str
+        """
+        return self._Sql
+
+    @Sql.setter
+    def Sql(self, Sql):
+        self._Sql = Sql
+
+    @property
+    def Host(self):
+        r"""Client address.
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def User(self):
+        r"""Username.
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def ExecTime(self):
+        r"""Execution time, in microseconds.
+        :rtype: int
+        """
+        return self._ExecTime
+
+    @ExecTime.setter
+    def ExecTime(self, ExecTime):
+        self._ExecTime = ExecTime
+
+    @property
+    def Timestamp(self):
+        r"""Time.
+        :rtype: str
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def SentRows(self):
+        r"""Number of rows returned.
+        :rtype: int
+        """
+        return self._SentRows
+
+    @SentRows.setter
+    def SentRows(self, SentRows):
+        self._SentRows = SentRows
+
+    @property
+    def ThreadId(self):
+        r"""Execution thread ID.
+        :rtype: int
+        """
+        return self._ThreadId
+
+    @ThreadId.setter
+    def ThreadId(self, ThreadId):
+        self._ThreadId = ThreadId
+
+    @property
+    def CheckRows(self):
+        r"""Number of scanned rows.
+        :rtype: int
+        """
+        return self._CheckRows
+
+    @CheckRows.setter
+    def CheckRows(self, CheckRows):
+        self._CheckRows = CheckRows
+
+    @property
+    def CpuTime(self):
+        r"""cpu execution time, in microseconds.
+        :rtype: float
+        """
+        return self._CpuTime
+
+    @CpuTime.setter
+    def CpuTime(self, CpuTime):
+        self._CpuTime = CpuTime
+
+    @property
+    def IoWaitTime(self):
+        r"""IO wait time, in microseconds.
+        :rtype: int
+        """
+        return self._IoWaitTime
+
+    @IoWaitTime.setter
+    def IoWaitTime(self, IoWaitTime):
+        self._IoWaitTime = IoWaitTime
+
+    @property
+    def LockWaitTime(self):
+        r"""Lock waiting time in microseconds.
+        :rtype: int
+        """
+        return self._LockWaitTime
+
+    @LockWaitTime.setter
+    def LockWaitTime(self, LockWaitTime):
+        self._LockWaitTime = LockWaitTime
+
+    @property
+    def TrxLivingTime(self):
+        r"""Transaction continuous waiting time, in µs.
+        :rtype: int
+        """
+        return self._TrxLivingTime
+
+    @TrxLivingTime.setter
+    def TrxLivingTime(self, TrxLivingTime):
+        self._TrxLivingTime = TrxLivingTime
+
+    @property
+    def NsTime(self):
+        r"""Start time. Together with timestamp, it forms a nanosecond-precision time.
+        :rtype: int
+        """
+        return self._NsTime
+
+    @NsTime.setter
+    def NsTime(self, NsTime):
+        self._NsTime = NsTime
+
+    @property
+    def TemplateInfo(self):
+        r"""Basic information of the log hit rule template
+        :rtype: list of LogRuleTemplateInfo
+        """
+        return self._TemplateInfo
+
+    @TemplateInfo.setter
+    def TemplateInfo(self, TemplateInfo):
+        self._TemplateInfo = TemplateInfo
+
+    @property
+    def TrxId(self):
+        r"""Transaction ID
+        :rtype: int
+        """
+        return self._TrxId
+
+    @TrxId.setter
+    def TrxId(self, TrxId):
+        self._TrxId = TrxId
+
+    @property
+    def ClientPort(self):
+        r"""Client port.
+        :rtype: int
+        """
+        return self._ClientPort
+
+    @ClientPort.setter
+    def ClientPort(self, ClientPort):
+        self._ClientPort = ClientPort
+
+
+    def _deserialize(self, params):
+        self._AffectRows = params.get("AffectRows")
+        self._ErrCode = params.get("ErrCode")
+        self._SqlType = params.get("SqlType")
+        self._TableName = params.get("TableName")
+        self._InstanceName = params.get("InstanceName")
+        self._PolicyName = params.get("PolicyName")
+        self._DBName = params.get("DBName")
+        self._Sql = params.get("Sql")
+        self._Host = params.get("Host")
+        self._User = params.get("User")
+        self._ExecTime = params.get("ExecTime")
+        self._Timestamp = params.get("Timestamp")
+        self._SentRows = params.get("SentRows")
+        self._ThreadId = params.get("ThreadId")
+        self._CheckRows = params.get("CheckRows")
+        self._CpuTime = params.get("CpuTime")
+        self._IoWaitTime = params.get("IoWaitTime")
+        self._LockWaitTime = params.get("LockWaitTime")
+        self._TrxLivingTime = params.get("TrxLivingTime")
+        self._NsTime = params.get("NsTime")
+        if params.get("TemplateInfo") is not None:
+            self._TemplateInfo = []
+            for item in params.get("TemplateInfo"):
+                obj = LogRuleTemplateInfo()
+                obj._deserialize(item)
+                self._TemplateInfo.append(obj)
+        self._TrxId = params.get("TrxId")
+        self._ClientPort = params.get("ClientPort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditLogFilter(AbstractModel):
+    r"""Audit log filter criteria. When querying audit logs, filter the returned audit logs by user.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Host: Client address.
+        :type Host: list of str
+        :param _User: Username.
+        :type User: list of str
+        :param _DBName: Database name.
+        :type DBName: list of str
+        :param _TableName: Table name.
+        :type TableName: list of str
+        :param _PolicyName: Audit policy name.
+        :type PolicyName: list of str
+        :param _Sql: SQL statement. Fuzzy matching supported.
+        :type Sql: str
+        :param _SqlType: SQL type. Currently supports: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP", "ALTER", "SET", "REPLACE", "EXECUTE".
+        :type SqlType: str
+        :param _ExecTime: Execution time. Unit: ms. Filter audit logs with an execution time more than this value.
+        :type ExecTime: int
+        :param _AffectRows: Number of affected rows. Filter audit logs where the number of affected rows is more than this value.
+        :type AffectRows: int
+        :param _SqlTypes: SQL type. Supports simultaneous query of multiple types. Currently supports: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP", "ALTER", "SET", "REPLACE", "EXECUTE".
+        :type SqlTypes: list of str
+        :param _Sqls: SQL statement. Supports transmission of multiple sql statements.
+        :type Sqls: list of str
+        :param _SentRows: Number of rows returned.
+        :type SentRows: int
+        :param _ThreadId: Thread ID.
+        :type ThreadId: list of str
+        """
+        self._Host = None
+        self._User = None
+        self._DBName = None
+        self._TableName = None
+        self._PolicyName = None
+        self._Sql = None
+        self._SqlType = None
+        self._ExecTime = None
+        self._AffectRows = None
+        self._SqlTypes = None
+        self._Sqls = None
+        self._SentRows = None
+        self._ThreadId = None
+
+    @property
+    def Host(self):
+        r"""Client address.
+        :rtype: list of str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def User(self):
+        r"""Username.
+        :rtype: list of str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def DBName(self):
+        r"""Database name.
+        :rtype: list of str
+        """
+        return self._DBName
+
+    @DBName.setter
+    def DBName(self, DBName):
+        self._DBName = DBName
+
+    @property
+    def TableName(self):
+        r"""Table name.
+        :rtype: list of str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def PolicyName(self):
+        r"""Audit policy name.
+        :rtype: list of str
+        """
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def Sql(self):
+        r"""SQL statement. Fuzzy matching supported.
+        :rtype: str
+        """
+        return self._Sql
+
+    @Sql.setter
+    def Sql(self, Sql):
+        self._Sql = Sql
+
+    @property
+    def SqlType(self):
+        r"""SQL type. Currently supports: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP", "ALTER", "SET", "REPLACE", "EXECUTE".
+        :rtype: str
+        """
+        return self._SqlType
+
+    @SqlType.setter
+    def SqlType(self, SqlType):
+        self._SqlType = SqlType
+
+    @property
+    def ExecTime(self):
+        r"""Execution time. Unit: ms. Filter audit logs with an execution time more than this value.
+        :rtype: int
+        """
+        return self._ExecTime
+
+    @ExecTime.setter
+    def ExecTime(self, ExecTime):
+        self._ExecTime = ExecTime
+
+    @property
+    def AffectRows(self):
+        r"""Number of affected rows. Filter audit logs where the number of affected rows is more than this value.
+        :rtype: int
+        """
+        return self._AffectRows
+
+    @AffectRows.setter
+    def AffectRows(self, AffectRows):
+        self._AffectRows = AffectRows
+
+    @property
+    def SqlTypes(self):
+        r"""SQL type. Supports simultaneous query of multiple types. Currently supports: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP", "ALTER", "SET", "REPLACE", "EXECUTE".
+        :rtype: list of str
+        """
+        return self._SqlTypes
+
+    @SqlTypes.setter
+    def SqlTypes(self, SqlTypes):
+        self._SqlTypes = SqlTypes
+
+    @property
+    def Sqls(self):
+        r"""SQL statement. Supports transmission of multiple sql statements.
+        :rtype: list of str
+        """
+        return self._Sqls
+
+    @Sqls.setter
+    def Sqls(self, Sqls):
+        self._Sqls = Sqls
+
+    @property
+    def SentRows(self):
+        r"""Number of rows returned.
+        :rtype: int
+        """
+        return self._SentRows
+
+    @SentRows.setter
+    def SentRows(self, SentRows):
+        self._SentRows = SentRows
+
+    @property
+    def ThreadId(self):
+        r"""Thread ID.
+        :rtype: list of str
+        """
+        return self._ThreadId
+
+    @ThreadId.setter
+    def ThreadId(self, ThreadId):
+        self._ThreadId = ThreadId
+
+
+    def _deserialize(self, params):
+        self._Host = params.get("Host")
+        self._User = params.get("User")
+        self._DBName = params.get("DBName")
+        self._TableName = params.get("TableName")
+        self._PolicyName = params.get("PolicyName")
+        self._Sql = params.get("Sql")
+        self._SqlType = params.get("SqlType")
+        self._ExecTime = params.get("ExecTime")
+        self._AffectRows = params.get("AffectRows")
+        self._SqlTypes = params.get("SqlTypes")
+        self._Sqls = params.get("Sqls")
+        self._SentRows = params.get("SentRows")
+        self._ThreadId = params.get("ThreadId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuditRuleFilters(AbstractModel):
     r"""Filter of rule audit
 
@@ -17064,6 +17651,244 @@ class DescribeAuditInstanceListResponse(AbstractModel):
             self._Items = []
             for item in params.get("Items"):
                 obj = InstanceAuditStatus()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditLogsRequest(AbstractModel):
+    r"""DescribeAuditLogs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        :param _StartTime: Start time in the format of "2017-07-12 10:29:20".
+        :type StartTime: str
+        :param _EndTime: End time in the format: "2017-07-12 10:29:20".
+        :type EndTime: str
+        :param _Order: Sort order. Supported values: "ASC" - Ascending order, "DESC" - Descending order.
+        :type Order: str
+        :param _OrderBy: Sorting field. Supported values include:
+timestamp
+"affectRows" - Number of affected rows
+"execTime" - Execution time.
+        :type OrderBy: str
+        :param _Filter: Deprecated.
+        :type Filter: :class:`tencentcloud.cynosdb.v20190107.models.AuditLogFilter`
+        :param _Limit: Pagination parameter. Number of data entries returned per request. Default value: 100. Maximum value: 100.
+        :type Limit: int
+        :param _Offset: Pagination offset.
+Description: The sum of Limit and Offset must be less than or equal to 65536.
+        :type Offset: int
+        :param _LogFilter: Filter criteria. Multiple values have an AND relationship.
+        :type LogFilter: list of InstanceAuditLogFilter
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Order = None
+        self._OrderBy = None
+        self._Filter = None
+        self._Limit = None
+        self._Offset = None
+        self._LogFilter = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""Start time in the format of "2017-07-12 10:29:20".
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time in the format: "2017-07-12 10:29:20".
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Order(self):
+        r"""Sort order. Supported values: "ASC" - Ascending order, "DESC" - Descending order.
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderBy(self):
+        r"""Sorting field. Supported values include:
+timestamp
+"affectRows" - Number of affected rows
+"execTime" - Execution time.
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Filter(self):
+        warnings.warn("parameter `Filter` is deprecated", DeprecationWarning) 
+
+        r"""Deprecated.
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.AuditLogFilter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        warnings.warn("parameter `Filter` is deprecated", DeprecationWarning) 
+
+        self._Filter = Filter
+
+    @property
+    def Limit(self):
+        r"""Pagination parameter. Number of data entries returned per request. Default value: 100. Maximum value: 100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Pagination offset.
+Description: The sum of Limit and Offset must be less than or equal to 65536.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def LogFilter(self):
+        r"""Filter criteria. Multiple values have an AND relationship.
+        :rtype: list of InstanceAuditLogFilter
+        """
+        return self._LogFilter
+
+    @LogFilter.setter
+    def LogFilter(self, LogFilter):
+        self._LogFilter = LogFilter
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Order = params.get("Order")
+        self._OrderBy = params.get("OrderBy")
+        if params.get("Filter") is not None:
+            self._Filter = AuditLogFilter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("LogFilter") is not None:
+            self._LogFilter = []
+            for item in params.get("LogFilter"):
+                obj = InstanceAuditLogFilter()
+                obj._deserialize(item)
+                self._LogFilter.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditLogsResponse(AbstractModel):
+    r"""DescribeAuditLogs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Number of eligible audit log entries.
+        :type TotalCount: int
+        :param _Items: Audit log details.
+        :type Items: list of AuditLog
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Number of eligible audit log entries.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""Audit log details.
+        :rtype: list of AuditLog
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = AuditLog()
                 obj._deserialize(item)
                 self._Items.append(obj)
         self._RequestId = params.get("RequestId")
@@ -32368,6 +33193,102 @@ class InstanceAbility(AbstractModel):
         
 
 
+class InstanceAuditLogFilter(AbstractModel):
+    r"""Audit log search criteria
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Filter item. Currently supports the following search criteria:
+
+Includes, excludes, includes (segment dimension), excludes (segment dimension): sql - SQL detail; alarmLevel - alarm level; ruleTemplateId - rule template id
+
+Equal to, not equal to, contains, does not contain: host - client IP address; user - userName; dbName - database name;
+
+Equal, not equal to: sqlType - SQL type; errCode - error code; threadId - thread ID.
+
+Range search (time type is unified to µs): execTime - execution time; lockWaitTime - execution time; ioWaitTime - IO wait time; trxLivingTime - transaction duration; cpuTime - CPU time; checkRows - scanned rows; affectRows - number of affected rows; sentRows - rows returned.
+        :type Type: str
+        :param _Compare: Filter criteria. The following conditions are supported:
+WINC-Contains (segment dimension)
+WEXC - Excluding (segment dimension)
+INC - included
+EXC - Excluding
+EQS - equal to
+NEQ - not equal to
+RA - Range.
+        :type Compare: str
+        :param _Value: Filtered value. In reverse query, multiple values have an AND relationship. In forward query, multiple values have an OR relationship.
+        :type Value: list of str
+        """
+        self._Type = None
+        self._Compare = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        r"""Filter item. Currently supports the following search criteria:
+
+Includes, excludes, includes (segment dimension), excludes (segment dimension): sql - SQL detail; alarmLevel - alarm level; ruleTemplateId - rule template id
+
+Equal to, not equal to, contains, does not contain: host - client IP address; user - userName; dbName - database name;
+
+Equal, not equal to: sqlType - SQL type; errCode - error code; threadId - thread ID.
+
+Range search (time type is unified to µs): execTime - execution time; lockWaitTime - execution time; ioWaitTime - IO wait time; trxLivingTime - transaction duration; cpuTime - CPU time; checkRows - scanned rows; affectRows - number of affected rows; sentRows - rows returned.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Compare(self):
+        r"""Filter criteria. The following conditions are supported:
+WINC-Contains (segment dimension)
+WEXC - Excluding (segment dimension)
+INC - included
+EXC - Excluding
+EQS - equal to
+NEQ - not equal to
+RA - Range.
+        :rtype: str
+        """
+        return self._Compare
+
+    @Compare.setter
+    def Compare(self, Compare):
+        self._Compare = Compare
+
+    @property
+    def Value(self):
+        r"""Filtered value. In reverse query, multiple values have an AND relationship. In forward query, multiple values have an OR relationship.
+        :rtype: list of str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Compare = params.get("Compare")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceAuditRule(AbstractModel):
     r"""Audit rule details of the instance, which is an output parameter of the `DescribeAuditRuleWithInstanceIds` API.
 
@@ -36876,6 +37797,87 @@ class LogFilter(AbstractModel):
         self._Type = params.get("Type")
         self._Compare = params.get("Compare")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogRuleTemplateInfo(AbstractModel):
+    r"""Basic information of the audit log hit rule template
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleTemplateId: Template ID.
+        :type RuleTemplateId: str
+        :param _RuleTemplateName: Rule template name.
+        :type RuleTemplateName: str
+        :param _AlarmLevel: Alarm level. Valid values: 1 - Low risk, 2 - Medium risk, 3 - High risk.
+        :type AlarmLevel: str
+        :param _RuleTemplateStatus: Rule template change status. Valid values: 0 - unchanged, 1 - changed, 2 - deleted.
+        :type RuleTemplateStatus: int
+        """
+        self._RuleTemplateId = None
+        self._RuleTemplateName = None
+        self._AlarmLevel = None
+        self._RuleTemplateStatus = None
+
+    @property
+    def RuleTemplateId(self):
+        r"""Template ID.
+        :rtype: str
+        """
+        return self._RuleTemplateId
+
+    @RuleTemplateId.setter
+    def RuleTemplateId(self, RuleTemplateId):
+        self._RuleTemplateId = RuleTemplateId
+
+    @property
+    def RuleTemplateName(self):
+        r"""Rule template name.
+        :rtype: str
+        """
+        return self._RuleTemplateName
+
+    @RuleTemplateName.setter
+    def RuleTemplateName(self, RuleTemplateName):
+        self._RuleTemplateName = RuleTemplateName
+
+    @property
+    def AlarmLevel(self):
+        r"""Alarm level. Valid values: 1 - Low risk, 2 - Medium risk, 3 - High risk.
+        :rtype: str
+        """
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def RuleTemplateStatus(self):
+        r"""Rule template change status. Valid values: 0 - unchanged, 1 - changed, 2 - deleted.
+        :rtype: int
+        """
+        return self._RuleTemplateStatus
+
+    @RuleTemplateStatus.setter
+    def RuleTemplateStatus(self, RuleTemplateStatus):
+        self._RuleTemplateStatus = RuleTemplateStatus
+
+
+    def _deserialize(self, params):
+        self._RuleTemplateId = params.get("RuleTemplateId")
+        self._RuleTemplateName = params.get("RuleTemplateName")
+        self._AlarmLevel = params.get("AlarmLevel")
+        self._RuleTemplateStatus = params.get("RuleTemplateStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

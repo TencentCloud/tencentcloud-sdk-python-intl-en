@@ -279,6 +279,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAccessPointList(self, request):
+        r"""This API is used to query the access point list.
+
+        :param request: Request instance for DescribeAccessPointList.
+        :type request: :class:`tencentcloud.mna.v20210119.models.DescribeAccessPointListRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.DescribeAccessPointListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccessPointList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccessPointListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAccessRegions(self, request):
         r"""Query the access region list.
 

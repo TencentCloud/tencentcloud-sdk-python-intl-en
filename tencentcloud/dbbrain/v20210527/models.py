@@ -127,6 +127,462 @@ class AddUserContactResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AuditDBLogItem(AbstractModel):
+    r"""A single audit log detail at the DB layer. The fields are output by DruidCommonUtil#changeLogsTdsqlDB and BusinessCodeUtils. When LogType=All, FlowTime is added.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: <p>Time point of SQL execution (format string, yyyy-MM-dd HH:mm:ss).</p>
+        :type Timestamp: str
+        :param _ClusterId: <p>Cluster ID.</p>
+        :type ClusterId: str
+        :param _AffectRows: <p>Number of affected rows.</p>
+        :type AffectRows: int
+        :param _CheckRows: <p>Number of scanned rows.</p>
+        :type CheckRows: int
+        :param _CpuTime: <p>CPU time (µs).</p>
+        :type CpuTime: int
+        :param _SetHost: <p>Backend Set Host (source field dbHost).</p>
+        :type SetHost: str
+        :param _DBName: <p>Database name where the SQL is executed.</p>
+        :type DBName: str
+        :param _ErrCode: <p>Error code returned by SQL execution. 0 indicates success.</p>
+        :type ErrCode: str
+        :param _ExecTime: <p>SQL execution time (µs).</p>
+        :type ExecTime: int
+        :param _Host: <p>Client source IP.</p>
+        :type Host: str
+        :param _SetName: <p>Set Name (source field instanceId).</p>
+        :type SetName: str
+        :param _IoWaitTime: <p>IO wait time (µs).</p>
+        :type IoWaitTime: int
+        :param _LockWaitTime: <p>Lock waiting time (µs).</p>
+        :type LockWaitTime: int
+        :param _SqlStartTimeNs: <p>SQL start time (nanosecond timestamp).</p>
+        :type SqlStartTimeNs: int
+        :param _QueryId: <p>Query ID (used for join queries).</p>
+        :type QueryId: str
+        :param _QueryNo: <p>Serial number for queries (serial number of SQL in the same transaction).</p>
+        :type QueryNo: int
+        :param _SentRows: <p>Number of rows returned (rows in the scanning result set).</p>
+        :type SentRows: int
+        :param _Sql: <p>Original executed SQL statement.</p>
+        :type Sql: str
+        :param _SqlTemplateId: <p>SQL Template ID.</p>
+        :type SqlTemplateId: str
+        :param _SqlType: <p>SQL type (for example, Select, Insert, Update, Delete).</p>
+        :type SqlType: str
+        :param _Tables: <p>Tables involved.</p>
+        :type Tables: str
+        :param _ThreadId: <p>Thread ID.</p>
+        :type ThreadId: str
+        :param _SqlStartTime: <p>SQL start time (millisecond-level timestamp).</p>
+        :type SqlStartTime: int
+        :param _TrxLivingTime: <p>Transaction time to live (µs).</p>
+        :type TrxLivingTime: int
+        :param _User: <p>Database username that executes the SQL.</p>
+        :type User: str
+        :param _TrxId: <p>Transaction ID.</p>
+        :type TrxId: str
+        :param _InternalXId: <p>Internal XID.</p>
+        :type InternalXId: str
+        :param _BusinessCode: <p>Business code (extracted from i/o/p and other KV in business-side SQL annotations).</p>
+        :type BusinessCode: str
+        :param _FlowTime: <p>Gateway circulation duration (ms). It is returned only when LogType=All after gateway log association. When LogType=DB, this field is not delivered.</p>
+        :type FlowTime: int
+        """
+        self._Timestamp = None
+        self._ClusterId = None
+        self._AffectRows = None
+        self._CheckRows = None
+        self._CpuTime = None
+        self._SetHost = None
+        self._DBName = None
+        self._ErrCode = None
+        self._ExecTime = None
+        self._Host = None
+        self._SetName = None
+        self._IoWaitTime = None
+        self._LockWaitTime = None
+        self._SqlStartTimeNs = None
+        self._QueryId = None
+        self._QueryNo = None
+        self._SentRows = None
+        self._Sql = None
+        self._SqlTemplateId = None
+        self._SqlType = None
+        self._Tables = None
+        self._ThreadId = None
+        self._SqlStartTime = None
+        self._TrxLivingTime = None
+        self._User = None
+        self._TrxId = None
+        self._InternalXId = None
+        self._BusinessCode = None
+        self._FlowTime = None
+
+    @property
+    def Timestamp(self):
+        r"""<p>Time point of SQL execution (format string, yyyy-MM-dd HH:mm:ss).</p>
+        :rtype: str
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def ClusterId(self):
+        r"""<p>Cluster ID.</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AffectRows(self):
+        r"""<p>Number of affected rows.</p>
+        :rtype: int
+        """
+        return self._AffectRows
+
+    @AffectRows.setter
+    def AffectRows(self, AffectRows):
+        self._AffectRows = AffectRows
+
+    @property
+    def CheckRows(self):
+        r"""<p>Number of scanned rows.</p>
+        :rtype: int
+        """
+        return self._CheckRows
+
+    @CheckRows.setter
+    def CheckRows(self, CheckRows):
+        self._CheckRows = CheckRows
+
+    @property
+    def CpuTime(self):
+        r"""<p>CPU time (µs).</p>
+        :rtype: int
+        """
+        return self._CpuTime
+
+    @CpuTime.setter
+    def CpuTime(self, CpuTime):
+        self._CpuTime = CpuTime
+
+    @property
+    def SetHost(self):
+        r"""<p>Backend Set Host (source field dbHost).</p>
+        :rtype: str
+        """
+        return self._SetHost
+
+    @SetHost.setter
+    def SetHost(self, SetHost):
+        self._SetHost = SetHost
+
+    @property
+    def DBName(self):
+        r"""<p>Database name where the SQL is executed.</p>
+        :rtype: str
+        """
+        return self._DBName
+
+    @DBName.setter
+    def DBName(self, DBName):
+        self._DBName = DBName
+
+    @property
+    def ErrCode(self):
+        r"""<p>Error code returned by SQL execution. 0 indicates success.</p>
+        :rtype: str
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def ExecTime(self):
+        r"""<p>SQL execution time (µs).</p>
+        :rtype: int
+        """
+        return self._ExecTime
+
+    @ExecTime.setter
+    def ExecTime(self, ExecTime):
+        self._ExecTime = ExecTime
+
+    @property
+    def Host(self):
+        r"""<p>Client source IP.</p>
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def SetName(self):
+        r"""<p>Set Name (source field instanceId).</p>
+        :rtype: str
+        """
+        return self._SetName
+
+    @SetName.setter
+    def SetName(self, SetName):
+        self._SetName = SetName
+
+    @property
+    def IoWaitTime(self):
+        r"""<p>IO wait time (µs).</p>
+        :rtype: int
+        """
+        return self._IoWaitTime
+
+    @IoWaitTime.setter
+    def IoWaitTime(self, IoWaitTime):
+        self._IoWaitTime = IoWaitTime
+
+    @property
+    def LockWaitTime(self):
+        r"""<p>Lock waiting time (µs).</p>
+        :rtype: int
+        """
+        return self._LockWaitTime
+
+    @LockWaitTime.setter
+    def LockWaitTime(self, LockWaitTime):
+        self._LockWaitTime = LockWaitTime
+
+    @property
+    def SqlStartTimeNs(self):
+        r"""<p>SQL start time (nanosecond timestamp).</p>
+        :rtype: int
+        """
+        return self._SqlStartTimeNs
+
+    @SqlStartTimeNs.setter
+    def SqlStartTimeNs(self, SqlStartTimeNs):
+        self._SqlStartTimeNs = SqlStartTimeNs
+
+    @property
+    def QueryId(self):
+        r"""<p>Query ID (used for join queries).</p>
+        :rtype: str
+        """
+        return self._QueryId
+
+    @QueryId.setter
+    def QueryId(self, QueryId):
+        self._QueryId = QueryId
+
+    @property
+    def QueryNo(self):
+        r"""<p>Serial number for queries (serial number of SQL in the same transaction).</p>
+        :rtype: int
+        """
+        return self._QueryNo
+
+    @QueryNo.setter
+    def QueryNo(self, QueryNo):
+        self._QueryNo = QueryNo
+
+    @property
+    def SentRows(self):
+        r"""<p>Number of rows returned (rows in the scanning result set).</p>
+        :rtype: int
+        """
+        return self._SentRows
+
+    @SentRows.setter
+    def SentRows(self, SentRows):
+        self._SentRows = SentRows
+
+    @property
+    def Sql(self):
+        r"""<p>Original executed SQL statement.</p>
+        :rtype: str
+        """
+        return self._Sql
+
+    @Sql.setter
+    def Sql(self, Sql):
+        self._Sql = Sql
+
+    @property
+    def SqlTemplateId(self):
+        r"""<p>SQL Template ID.</p>
+        :rtype: str
+        """
+        return self._SqlTemplateId
+
+    @SqlTemplateId.setter
+    def SqlTemplateId(self, SqlTemplateId):
+        self._SqlTemplateId = SqlTemplateId
+
+    @property
+    def SqlType(self):
+        r"""<p>SQL type (for example, Select, Insert, Update, Delete).</p>
+        :rtype: str
+        """
+        return self._SqlType
+
+    @SqlType.setter
+    def SqlType(self, SqlType):
+        self._SqlType = SqlType
+
+    @property
+    def Tables(self):
+        r"""<p>Tables involved.</p>
+        :rtype: str
+        """
+        return self._Tables
+
+    @Tables.setter
+    def Tables(self, Tables):
+        self._Tables = Tables
+
+    @property
+    def ThreadId(self):
+        r"""<p>Thread ID.</p>
+        :rtype: str
+        """
+        return self._ThreadId
+
+    @ThreadId.setter
+    def ThreadId(self, ThreadId):
+        self._ThreadId = ThreadId
+
+    @property
+    def SqlStartTime(self):
+        r"""<p>SQL start time (millisecond-level timestamp).</p>
+        :rtype: int
+        """
+        return self._SqlStartTime
+
+    @SqlStartTime.setter
+    def SqlStartTime(self, SqlStartTime):
+        self._SqlStartTime = SqlStartTime
+
+    @property
+    def TrxLivingTime(self):
+        r"""<p>Transaction time to live (µs).</p>
+        :rtype: int
+        """
+        return self._TrxLivingTime
+
+    @TrxLivingTime.setter
+    def TrxLivingTime(self, TrxLivingTime):
+        self._TrxLivingTime = TrxLivingTime
+
+    @property
+    def User(self):
+        r"""<p>Database username that executes the SQL.</p>
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def TrxId(self):
+        r"""<p>Transaction ID.</p>
+        :rtype: str
+        """
+        return self._TrxId
+
+    @TrxId.setter
+    def TrxId(self, TrxId):
+        self._TrxId = TrxId
+
+    @property
+    def InternalXId(self):
+        r"""<p>Internal XID.</p>
+        :rtype: str
+        """
+        return self._InternalXId
+
+    @InternalXId.setter
+    def InternalXId(self, InternalXId):
+        self._InternalXId = InternalXId
+
+    @property
+    def BusinessCode(self):
+        r"""<p>Business code (extracted from i/o/p and other KV in business-side SQL annotations).</p>
+        :rtype: str
+        """
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def FlowTime(self):
+        r"""<p>Gateway circulation duration (ms). It is returned only when LogType=All after gateway log association. When LogType=DB, this field is not delivered.</p>
+        :rtype: int
+        """
+        return self._FlowTime
+
+    @FlowTime.setter
+    def FlowTime(self, FlowTime):
+        self._FlowTime = FlowTime
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._ClusterId = params.get("ClusterId")
+        self._AffectRows = params.get("AffectRows")
+        self._CheckRows = params.get("CheckRows")
+        self._CpuTime = params.get("CpuTime")
+        self._SetHost = params.get("SetHost")
+        self._DBName = params.get("DBName")
+        self._ErrCode = params.get("ErrCode")
+        self._ExecTime = params.get("ExecTime")
+        self._Host = params.get("Host")
+        self._SetName = params.get("SetName")
+        self._IoWaitTime = params.get("IoWaitTime")
+        self._LockWaitTime = params.get("LockWaitTime")
+        self._SqlStartTimeNs = params.get("SqlStartTimeNs")
+        self._QueryId = params.get("QueryId")
+        self._QueryNo = params.get("QueryNo")
+        self._SentRows = params.get("SentRows")
+        self._Sql = params.get("Sql")
+        self._SqlTemplateId = params.get("SqlTemplateId")
+        self._SqlType = params.get("SqlType")
+        self._Tables = params.get("Tables")
+        self._ThreadId = params.get("ThreadId")
+        self._SqlStartTime = params.get("SqlStartTime")
+        self._TrxLivingTime = params.get("TrxLivingTime")
+        self._User = params.get("User")
+        self._TrxId = params.get("TrxId")
+        self._InternalXId = params.get("InternalXId")
+        self._BusinessCode = params.get("BusinessCode")
+        self._FlowTime = params.get("FlowTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuditInstance(AbstractModel):
     r"""Instance details
 
@@ -482,6 +938,843 @@ class AuditInstanceInfo(AbstractModel):
         self._ProjectId = params.get("ProjectId")
         self._Region = params.get("Region")
         self._ResourceTags = params.get("ResourceTags")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditLogQueryFilter(AbstractModel):
+    r"""Collection of query filter criteria for audit logs. All fields are selectable. Note: MultiSql and ExcludeMultiSql carry a two-dimensional array as a JSON string (the cloud API platform does not support two-dimensional arrays). For example, [[a,b]] means (a OR b).
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SqlType: <p>SQL type list, with values such as SELECT, INSERT, UPDATE, and DELETE.</p>
+        :type SqlType: list of str
+        :param _ExecTime: <p>Execution duration range (ms), an array of length 2: [minimum value, maximum value].</p>
+        :type ExecTime: list of int
+        :param _IoWaitTime: <p>IO waiting duration range (ms), an array with a length of 2.</p>
+        :type IoWaitTime: list of int
+        :param _CpuTime: <p>CPU duration range (ms), an array of length 2.</p>
+        :type CpuTime: list of int
+        :param _LockWaitTime: <p>Lock wait time range (ms), an array with a length of 2.</p>
+        :type LockWaitTime: list of int
+        :param _ErrCode: <p>SQL execution error code. For example, 0 indicates success.</p>
+        :type ErrCode: str
+        :param _ErrInfo: <p>Error message.</p>
+        :type ErrInfo: str
+        :param _DBName: <p>Database name list.</p>
+        :type DBName: list of str
+        :param _User: <p>Username list.</p>
+        :type User: list of str
+        :param _Host: <p>Source IP list.</p>
+        :type Host: list of str
+        :param _ThreadId: <p>List of thread IDs.</p>
+        :type ThreadId: list of str
+        :param _ProxyHostList: <p>List of proxy node hosts.</p>
+        :type ProxyHostList: list of str
+        :param _SetHostList: <p>Backend Set Host list.</p>
+        :type SetHostList: list of str
+        :param _SetIdList: <p>Backend Set ID list.</p>
+        :type SetIdList: list of str
+        :param _MultiSql: <p>Multiple SQL keyword conditions, JSON string, internally a two-dimensional array: level 1 is AND, the second level is OR. Note that the cloud API platform does not support two-dimensional arrays. Here, a string is used to carry it, and the server automatically parses it.</p>
+        :type MultiSql: str
+        :param _ExcludeMultiSql: <p>Excluded multiple SQL keyword conditions, JSON string, with the same structure as MultiSql.</p>
+        :type ExcludeMultiSql: str
+        :param _SqlTemplateId: <p>SQL Template ID.</p>
+        :type SqlTemplateId: str
+        :param _SqlStartTime: <p>SQL start time, for example: 2026-10-10 11:05:06.002211</p><p>Parameter format: YYYY-MM-DD hh:mm:ss.SSSSSS</p>
+        :type SqlStartTime: str
+        :param _QueryId: <p>Query ID, used for join queries (required when LogType=All).</p>
+        :type QueryId: str
+        """
+        self._SqlType = None
+        self._ExecTime = None
+        self._IoWaitTime = None
+        self._CpuTime = None
+        self._LockWaitTime = None
+        self._ErrCode = None
+        self._ErrInfo = None
+        self._DBName = None
+        self._User = None
+        self._Host = None
+        self._ThreadId = None
+        self._ProxyHostList = None
+        self._SetHostList = None
+        self._SetIdList = None
+        self._MultiSql = None
+        self._ExcludeMultiSql = None
+        self._SqlTemplateId = None
+        self._SqlStartTime = None
+        self._QueryId = None
+
+    @property
+    def SqlType(self):
+        r"""<p>SQL type list, with values such as SELECT, INSERT, UPDATE, and DELETE.</p>
+        :rtype: list of str
+        """
+        return self._SqlType
+
+    @SqlType.setter
+    def SqlType(self, SqlType):
+        self._SqlType = SqlType
+
+    @property
+    def ExecTime(self):
+        r"""<p>Execution duration range (ms), an array of length 2: [minimum value, maximum value].</p>
+        :rtype: list of int
+        """
+        return self._ExecTime
+
+    @ExecTime.setter
+    def ExecTime(self, ExecTime):
+        self._ExecTime = ExecTime
+
+    @property
+    def IoWaitTime(self):
+        r"""<p>IO waiting duration range (ms), an array with a length of 2.</p>
+        :rtype: list of int
+        """
+        return self._IoWaitTime
+
+    @IoWaitTime.setter
+    def IoWaitTime(self, IoWaitTime):
+        self._IoWaitTime = IoWaitTime
+
+    @property
+    def CpuTime(self):
+        r"""<p>CPU duration range (ms), an array of length 2.</p>
+        :rtype: list of int
+        """
+        return self._CpuTime
+
+    @CpuTime.setter
+    def CpuTime(self, CpuTime):
+        self._CpuTime = CpuTime
+
+    @property
+    def LockWaitTime(self):
+        r"""<p>Lock wait time range (ms), an array with a length of 2.</p>
+        :rtype: list of int
+        """
+        return self._LockWaitTime
+
+    @LockWaitTime.setter
+    def LockWaitTime(self, LockWaitTime):
+        self._LockWaitTime = LockWaitTime
+
+    @property
+    def ErrCode(self):
+        r"""<p>SQL execution error code. For example, 0 indicates success.</p>
+        :rtype: str
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def ErrInfo(self):
+        r"""<p>Error message.</p>
+        :rtype: str
+        """
+        return self._ErrInfo
+
+    @ErrInfo.setter
+    def ErrInfo(self, ErrInfo):
+        self._ErrInfo = ErrInfo
+
+    @property
+    def DBName(self):
+        r"""<p>Database name list.</p>
+        :rtype: list of str
+        """
+        return self._DBName
+
+    @DBName.setter
+    def DBName(self, DBName):
+        self._DBName = DBName
+
+    @property
+    def User(self):
+        r"""<p>Username list.</p>
+        :rtype: list of str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Host(self):
+        r"""<p>Source IP list.</p>
+        :rtype: list of str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def ThreadId(self):
+        r"""<p>List of thread IDs.</p>
+        :rtype: list of str
+        """
+        return self._ThreadId
+
+    @ThreadId.setter
+    def ThreadId(self, ThreadId):
+        self._ThreadId = ThreadId
+
+    @property
+    def ProxyHostList(self):
+        r"""<p>List of proxy node hosts.</p>
+        :rtype: list of str
+        """
+        return self._ProxyHostList
+
+    @ProxyHostList.setter
+    def ProxyHostList(self, ProxyHostList):
+        self._ProxyHostList = ProxyHostList
+
+    @property
+    def SetHostList(self):
+        r"""<p>Backend Set Host list.</p>
+        :rtype: list of str
+        """
+        return self._SetHostList
+
+    @SetHostList.setter
+    def SetHostList(self, SetHostList):
+        self._SetHostList = SetHostList
+
+    @property
+    def SetIdList(self):
+        r"""<p>Backend Set ID list.</p>
+        :rtype: list of str
+        """
+        return self._SetIdList
+
+    @SetIdList.setter
+    def SetIdList(self, SetIdList):
+        self._SetIdList = SetIdList
+
+    @property
+    def MultiSql(self):
+        r"""<p>Multiple SQL keyword conditions, JSON string, internally a two-dimensional array: level 1 is AND, the second level is OR. Note that the cloud API platform does not support two-dimensional arrays. Here, a string is used to carry it, and the server automatically parses it.</p>
+        :rtype: str
+        """
+        return self._MultiSql
+
+    @MultiSql.setter
+    def MultiSql(self, MultiSql):
+        self._MultiSql = MultiSql
+
+    @property
+    def ExcludeMultiSql(self):
+        r"""<p>Excluded multiple SQL keyword conditions, JSON string, with the same structure as MultiSql.</p>
+        :rtype: str
+        """
+        return self._ExcludeMultiSql
+
+    @ExcludeMultiSql.setter
+    def ExcludeMultiSql(self, ExcludeMultiSql):
+        self._ExcludeMultiSql = ExcludeMultiSql
+
+    @property
+    def SqlTemplateId(self):
+        r"""<p>SQL Template ID.</p>
+        :rtype: str
+        """
+        return self._SqlTemplateId
+
+    @SqlTemplateId.setter
+    def SqlTemplateId(self, SqlTemplateId):
+        self._SqlTemplateId = SqlTemplateId
+
+    @property
+    def SqlStartTime(self):
+        r"""<p>SQL start time, for example: 2026-10-10 11:05:06.002211</p><p>Parameter format: YYYY-MM-DD hh:mm:ss.SSSSSS</p>
+        :rtype: str
+        """
+        return self._SqlStartTime
+
+    @SqlStartTime.setter
+    def SqlStartTime(self, SqlStartTime):
+        self._SqlStartTime = SqlStartTime
+
+    @property
+    def QueryId(self):
+        r"""<p>Query ID, used for join queries (required when LogType=All).</p>
+        :rtype: str
+        """
+        return self._QueryId
+
+    @QueryId.setter
+    def QueryId(self, QueryId):
+        self._QueryId = QueryId
+
+
+    def _deserialize(self, params):
+        self._SqlType = params.get("SqlType")
+        self._ExecTime = params.get("ExecTime")
+        self._IoWaitTime = params.get("IoWaitTime")
+        self._CpuTime = params.get("CpuTime")
+        self._LockWaitTime = params.get("LockWaitTime")
+        self._ErrCode = params.get("ErrCode")
+        self._ErrInfo = params.get("ErrInfo")
+        self._DBName = params.get("DBName")
+        self._User = params.get("User")
+        self._Host = params.get("Host")
+        self._ThreadId = params.get("ThreadId")
+        self._ProxyHostList = params.get("ProxyHostList")
+        self._SetHostList = params.get("SetHostList")
+        self._SetIdList = params.get("SetIdList")
+        self._MultiSql = params.get("MultiSql")
+        self._ExcludeMultiSql = params.get("ExcludeMultiSql")
+        self._SqlTemplateId = params.get("SqlTemplateId")
+        self._SqlStartTime = params.get("SqlStartTime")
+        self._QueryId = params.get("QueryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditProxyLogItem(AbstractModel):
+    r"""A single audit log detail at the proxy layer. The fields are output by DruidCommonUtil#changeLogsTdsqlProxy and BusinessCodeUtils.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: <p>Time point of SQL execution (format string, yyyy-MM-dd HH:mm:ss).</p>
+        :type Timestamp: str
+        :param _ClusterId: <p>Cluster ID (dcdb/mariadb cluster identifier, same as InstanceId).</p>
+        :type ClusterId: str
+        :param _AffectRows: <p>Number of affected rows.</p>
+        :type AffectRows: int
+        :param _Autocommit: <p>Whether to autocommit. 1 means enabling, and 0 means disabling.</p>
+        :type Autocommit: str
+        :param _ComType: <p>MySQL network protocol command types (such as COM_QUERY and COM_CONNECT).</p>
+        :type ComType: str
+        :param _ConnTc: <p>Duration of creating a connection.</p>
+        :type ConnTc: int
+        :param _DBHost: <p>Backend DB instance address (multiple entries are separated by commas).</p>
+        :type DBHost: str
+        :param _DBName: <p>Database name where the SQL is executed.</p>
+        :type DBName: str
+        :param _ErrCode: <p>Error code returned by SQL execution. 0 indicates success.</p>
+        :type ErrCode: str
+        :param _ErrInfo: <p>Error message.</p>
+        :type ErrInfo: str
+        :param _ExecTime: <p>SQL execution time (µs).</p>
+        :type ExecTime: int
+        :param _HoldConns: <p>Number of connections still occupied after request ends (typically 0 for non-transaction requests).</p>
+        :type HoldConns: str
+        :param _Host: <p>Client source IP.</p>
+        :type Host: str
+        :param _Mc: <p>Whether to enable global consistency read (0: no, 1: yes).</p>
+        :type Mc: str
+        :param _SqlStartTimeUs: <p>SQL start time (microsecond portion in microsecond precision).</p>
+        :type SqlStartTimeUs: int
+        :param _NewConnNum: <p>Number of connections created in the current request.</p>
+        :type NewConnNum: int
+        :param _ProxyHost: <p>Proxy node address.</p>
+        :type ProxyHost: str
+        :param _ProxyId: <p>Proxy ID.</p>
+        :type ProxyId: str
+        :param _QueryId: <p>Query ID (used for join queries).</p>
+        :type QueryId: str
+        :param _SentRows: <p>Number of rows returned (rows in the scanning result set).</p>
+        :type SentRows: int
+        :param _Splited: <p>Whether it is a query rewritten by Proxy: 0 original query, 1 rewritten query.</p>
+        :type Splited: int
+        :param _Sql: <p>Original executed SQL statement.</p>
+        :type Sql: str
+        :param _SqlTemplate: <p>SQL template.</p>
+        :type SqlTemplate: str
+        :param _SqlTemplateId: <p>SQL Template ID.</p>
+        :type SqlTemplateId: str
+        :param _SqlType: <p>SQL type (for example, Select, Insert, Create, Login, Set).</p>
+        :type SqlType: str
+        :param _Tables: <p>Tables involved (separated by commas for multiple tables).</p>
+        :type Tables: str
+        :param _ThreadId: <p>Thread ID.</p>
+        :type ThreadId: str
+        :param _SqlStartTime: <p>SQL start time (millisecond-level timestamp).</p>
+        :type SqlStartTime: int
+        :param _User: <p>Database username that executes the SQL.</p>
+        :type User: str
+        :param _HostPort: <p>HostPort of the client connection.</p>
+        :type HostPort: str
+        :param _ProxyThread: <p>Proxy Node processing thread ID.</p>
+        :type ProxyThread: str
+        :param _DbHostNum: <p>Number of backend DB hosts.</p>
+        :type DbHostNum: str
+        :param _BusinessCode: <p>Business code (extracted from i/o/p and other KV in business-side SQL annotations).</p>
+        :type BusinessCode: str
+        :param _BusinessTag: <p>Business tag (completed post based on the business code).</p>
+        :type BusinessTag: str
+        """
+        self._Timestamp = None
+        self._ClusterId = None
+        self._AffectRows = None
+        self._Autocommit = None
+        self._ComType = None
+        self._ConnTc = None
+        self._DBHost = None
+        self._DBName = None
+        self._ErrCode = None
+        self._ErrInfo = None
+        self._ExecTime = None
+        self._HoldConns = None
+        self._Host = None
+        self._Mc = None
+        self._SqlStartTimeUs = None
+        self._NewConnNum = None
+        self._ProxyHost = None
+        self._ProxyId = None
+        self._QueryId = None
+        self._SentRows = None
+        self._Splited = None
+        self._Sql = None
+        self._SqlTemplate = None
+        self._SqlTemplateId = None
+        self._SqlType = None
+        self._Tables = None
+        self._ThreadId = None
+        self._SqlStartTime = None
+        self._User = None
+        self._HostPort = None
+        self._ProxyThread = None
+        self._DbHostNum = None
+        self._BusinessCode = None
+        self._BusinessTag = None
+
+    @property
+    def Timestamp(self):
+        r"""<p>Time point of SQL execution (format string, yyyy-MM-dd HH:mm:ss).</p>
+        :rtype: str
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def ClusterId(self):
+        r"""<p>Cluster ID (dcdb/mariadb cluster identifier, same as InstanceId).</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AffectRows(self):
+        r"""<p>Number of affected rows.</p>
+        :rtype: int
+        """
+        return self._AffectRows
+
+    @AffectRows.setter
+    def AffectRows(self, AffectRows):
+        self._AffectRows = AffectRows
+
+    @property
+    def Autocommit(self):
+        r"""<p>Whether to autocommit. 1 means enabling, and 0 means disabling.</p>
+        :rtype: str
+        """
+        return self._Autocommit
+
+    @Autocommit.setter
+    def Autocommit(self, Autocommit):
+        self._Autocommit = Autocommit
+
+    @property
+    def ComType(self):
+        r"""<p>MySQL network protocol command types (such as COM_QUERY and COM_CONNECT).</p>
+        :rtype: str
+        """
+        return self._ComType
+
+    @ComType.setter
+    def ComType(self, ComType):
+        self._ComType = ComType
+
+    @property
+    def ConnTc(self):
+        r"""<p>Duration of creating a connection.</p>
+        :rtype: int
+        """
+        return self._ConnTc
+
+    @ConnTc.setter
+    def ConnTc(self, ConnTc):
+        self._ConnTc = ConnTc
+
+    @property
+    def DBHost(self):
+        r"""<p>Backend DB instance address (multiple entries are separated by commas).</p>
+        :rtype: str
+        """
+        return self._DBHost
+
+    @DBHost.setter
+    def DBHost(self, DBHost):
+        self._DBHost = DBHost
+
+    @property
+    def DBName(self):
+        r"""<p>Database name where the SQL is executed.</p>
+        :rtype: str
+        """
+        return self._DBName
+
+    @DBName.setter
+    def DBName(self, DBName):
+        self._DBName = DBName
+
+    @property
+    def ErrCode(self):
+        r"""<p>Error code returned by SQL execution. 0 indicates success.</p>
+        :rtype: str
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def ErrInfo(self):
+        r"""<p>Error message.</p>
+        :rtype: str
+        """
+        return self._ErrInfo
+
+    @ErrInfo.setter
+    def ErrInfo(self, ErrInfo):
+        self._ErrInfo = ErrInfo
+
+    @property
+    def ExecTime(self):
+        r"""<p>SQL execution time (µs).</p>
+        :rtype: int
+        """
+        return self._ExecTime
+
+    @ExecTime.setter
+    def ExecTime(self, ExecTime):
+        self._ExecTime = ExecTime
+
+    @property
+    def HoldConns(self):
+        r"""<p>Number of connections still occupied after request ends (typically 0 for non-transaction requests).</p>
+        :rtype: str
+        """
+        return self._HoldConns
+
+    @HoldConns.setter
+    def HoldConns(self, HoldConns):
+        self._HoldConns = HoldConns
+
+    @property
+    def Host(self):
+        r"""<p>Client source IP.</p>
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Mc(self):
+        r"""<p>Whether to enable global consistency read (0: no, 1: yes).</p>
+        :rtype: str
+        """
+        return self._Mc
+
+    @Mc.setter
+    def Mc(self, Mc):
+        self._Mc = Mc
+
+    @property
+    def SqlStartTimeUs(self):
+        r"""<p>SQL start time (microsecond portion in microsecond precision).</p>
+        :rtype: int
+        """
+        return self._SqlStartTimeUs
+
+    @SqlStartTimeUs.setter
+    def SqlStartTimeUs(self, SqlStartTimeUs):
+        self._SqlStartTimeUs = SqlStartTimeUs
+
+    @property
+    def NewConnNum(self):
+        r"""<p>Number of connections created in the current request.</p>
+        :rtype: int
+        """
+        return self._NewConnNum
+
+    @NewConnNum.setter
+    def NewConnNum(self, NewConnNum):
+        self._NewConnNum = NewConnNum
+
+    @property
+    def ProxyHost(self):
+        r"""<p>Proxy node address.</p>
+        :rtype: str
+        """
+        return self._ProxyHost
+
+    @ProxyHost.setter
+    def ProxyHost(self, ProxyHost):
+        self._ProxyHost = ProxyHost
+
+    @property
+    def ProxyId(self):
+        r"""<p>Proxy ID.</p>
+        :rtype: str
+        """
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+    @property
+    def QueryId(self):
+        r"""<p>Query ID (used for join queries).</p>
+        :rtype: str
+        """
+        return self._QueryId
+
+    @QueryId.setter
+    def QueryId(self, QueryId):
+        self._QueryId = QueryId
+
+    @property
+    def SentRows(self):
+        r"""<p>Number of rows returned (rows in the scanning result set).</p>
+        :rtype: int
+        """
+        return self._SentRows
+
+    @SentRows.setter
+    def SentRows(self, SentRows):
+        self._SentRows = SentRows
+
+    @property
+    def Splited(self):
+        r"""<p>Whether it is a query rewritten by Proxy: 0 original query, 1 rewritten query.</p>
+        :rtype: int
+        """
+        return self._Splited
+
+    @Splited.setter
+    def Splited(self, Splited):
+        self._Splited = Splited
+
+    @property
+    def Sql(self):
+        r"""<p>Original executed SQL statement.</p>
+        :rtype: str
+        """
+        return self._Sql
+
+    @Sql.setter
+    def Sql(self, Sql):
+        self._Sql = Sql
+
+    @property
+    def SqlTemplate(self):
+        r"""<p>SQL template.</p>
+        :rtype: str
+        """
+        return self._SqlTemplate
+
+    @SqlTemplate.setter
+    def SqlTemplate(self, SqlTemplate):
+        self._SqlTemplate = SqlTemplate
+
+    @property
+    def SqlTemplateId(self):
+        r"""<p>SQL Template ID.</p>
+        :rtype: str
+        """
+        return self._SqlTemplateId
+
+    @SqlTemplateId.setter
+    def SqlTemplateId(self, SqlTemplateId):
+        self._SqlTemplateId = SqlTemplateId
+
+    @property
+    def SqlType(self):
+        r"""<p>SQL type (for example, Select, Insert, Create, Login, Set).</p>
+        :rtype: str
+        """
+        return self._SqlType
+
+    @SqlType.setter
+    def SqlType(self, SqlType):
+        self._SqlType = SqlType
+
+    @property
+    def Tables(self):
+        r"""<p>Tables involved (separated by commas for multiple tables).</p>
+        :rtype: str
+        """
+        return self._Tables
+
+    @Tables.setter
+    def Tables(self, Tables):
+        self._Tables = Tables
+
+    @property
+    def ThreadId(self):
+        r"""<p>Thread ID.</p>
+        :rtype: str
+        """
+        return self._ThreadId
+
+    @ThreadId.setter
+    def ThreadId(self, ThreadId):
+        self._ThreadId = ThreadId
+
+    @property
+    def SqlStartTime(self):
+        r"""<p>SQL start time (millisecond-level timestamp).</p>
+        :rtype: int
+        """
+        return self._SqlStartTime
+
+    @SqlStartTime.setter
+    def SqlStartTime(self, SqlStartTime):
+        self._SqlStartTime = SqlStartTime
+
+    @property
+    def User(self):
+        r"""<p>Database username that executes the SQL.</p>
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def HostPort(self):
+        r"""<p>HostPort of the client connection.</p>
+        :rtype: str
+        """
+        return self._HostPort
+
+    @HostPort.setter
+    def HostPort(self, HostPort):
+        self._HostPort = HostPort
+
+    @property
+    def ProxyThread(self):
+        r"""<p>Proxy Node processing thread ID.</p>
+        :rtype: str
+        """
+        return self._ProxyThread
+
+    @ProxyThread.setter
+    def ProxyThread(self, ProxyThread):
+        self._ProxyThread = ProxyThread
+
+    @property
+    def DbHostNum(self):
+        r"""<p>Number of backend DB hosts.</p>
+        :rtype: str
+        """
+        return self._DbHostNum
+
+    @DbHostNum.setter
+    def DbHostNum(self, DbHostNum):
+        self._DbHostNum = DbHostNum
+
+    @property
+    def BusinessCode(self):
+        r"""<p>Business code (extracted from i/o/p and other KV in business-side SQL annotations).</p>
+        :rtype: str
+        """
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessTag(self):
+        r"""<p>Business tag (completed post based on the business code).</p>
+        :rtype: str
+        """
+        return self._BusinessTag
+
+    @BusinessTag.setter
+    def BusinessTag(self, BusinessTag):
+        self._BusinessTag = BusinessTag
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._ClusterId = params.get("ClusterId")
+        self._AffectRows = params.get("AffectRows")
+        self._Autocommit = params.get("Autocommit")
+        self._ComType = params.get("ComType")
+        self._ConnTc = params.get("ConnTc")
+        self._DBHost = params.get("DBHost")
+        self._DBName = params.get("DBName")
+        self._ErrCode = params.get("ErrCode")
+        self._ErrInfo = params.get("ErrInfo")
+        self._ExecTime = params.get("ExecTime")
+        self._HoldConns = params.get("HoldConns")
+        self._Host = params.get("Host")
+        self._Mc = params.get("Mc")
+        self._SqlStartTimeUs = params.get("SqlStartTimeUs")
+        self._NewConnNum = params.get("NewConnNum")
+        self._ProxyHost = params.get("ProxyHost")
+        self._ProxyId = params.get("ProxyId")
+        self._QueryId = params.get("QueryId")
+        self._SentRows = params.get("SentRows")
+        self._Splited = params.get("Splited")
+        self._Sql = params.get("Sql")
+        self._SqlTemplate = params.get("SqlTemplate")
+        self._SqlTemplateId = params.get("SqlTemplateId")
+        self._SqlType = params.get("SqlType")
+        self._Tables = params.get("Tables")
+        self._ThreadId = params.get("ThreadId")
+        self._SqlStartTime = params.get("SqlStartTime")
+        self._User = params.get("User")
+        self._HostPort = params.get("HostPort")
+        self._ProxyThread = params.get("ProxyThread")
+        self._DbHostNum = params.get("DbHostNum")
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessTag = params.get("BusinessTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2400,6 +3693,307 @@ Note: This field may return `null`, indicating that no valid values can be obtai
                 obj = AuditInstance()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBAuditLogsRequest(AbstractModel):
+    r"""DescribeDBAuditLogs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: <p>Service product type. Currently, Cloud API only supports: dcdb, mariadb (cdb and cynosdb have been migrated to the central platform).</p>
+        :type Product: str
+        :param _StartTime: <p>Start time, format yyyy-MM-dd HH:mm:ss.</p>
+        :type StartTime: str
+        :param _EndTime: <p>End time, format: yyyy-MM-dd HH:mm:ss.</p>
+        :type EndTime: str
+        :param _InstanceId: <p>Instance ID, required. In dcdb and mariadb scenarios, query audit logs by instance dimension.</p>
+        :type InstanceId: str
+        :param _LogType: <p>Log type: Proxy log, DB database log, All.</p>
+        :type LogType: str
+        :param _SortBy: <p>Sorting field. Default: Timestamp.</p>
+        :type SortBy: str
+        :param _OrderBy: <p>Sorting method: ASC for ascending order, DESC for descending order. Default: DESC.</p>
+        :type OrderBy: str
+        :param _Offset: <p>Offset. Default value: 0.</p>
+        :type Offset: int
+        :param _Limit: <p>Number of returned results. Default: 20. Maximum: 100.</p>
+        :type Limit: int
+        :param _SqlStartTime: <p>SQL start time (millisecond-level timestamp), used when performing a join query by QueryId.</p>
+        :type SqlStartTime: int
+        :param _Filter: <p>A collection of query filter criteria for audit logs.</p>
+        :type Filter: :class:`tencentcloud.dbbrain.v20210527.models.AuditLogQueryFilter`
+        :param _ClusterId: <p>Cluster ID. Query audit logs for the dcdb product at the cluster level</p>
+        :type ClusterId: str
+        """
+        self._Product = None
+        self._StartTime = None
+        self._EndTime = None
+        self._InstanceId = None
+        self._LogType = None
+        self._SortBy = None
+        self._OrderBy = None
+        self._Offset = None
+        self._Limit = None
+        self._SqlStartTime = None
+        self._Filter = None
+        self._ClusterId = None
+
+    @property
+    def Product(self):
+        r"""<p>Service product type. Currently, Cloud API only supports: dcdb, mariadb (cdb and cynosdb have been migrated to the central platform).</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def StartTime(self):
+        r"""<p>Start time, format yyyy-MM-dd HH:mm:ss.</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>End time, format: yyyy-MM-dd HH:mm:ss.</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def InstanceId(self):
+        r"""<p>Instance ID, required. In dcdb and mariadb scenarios, query audit logs by instance dimension.</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LogType(self):
+        r"""<p>Log type: Proxy log, DB database log, All.</p>
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def SortBy(self):
+        r"""<p>Sorting field. Default: Timestamp.</p>
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def OrderBy(self):
+        r"""<p>Sorting method: ASC for ascending order, DESC for descending order. Default: DESC.</p>
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Offset(self):
+        r"""<p>Offset. Default value: 0.</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>Number of returned results. Default: 20. Maximum: 100.</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SqlStartTime(self):
+        r"""<p>SQL start time (millisecond-level timestamp), used when performing a join query by QueryId.</p>
+        :rtype: int
+        """
+        return self._SqlStartTime
+
+    @SqlStartTime.setter
+    def SqlStartTime(self, SqlStartTime):
+        self._SqlStartTime = SqlStartTime
+
+    @property
+    def Filter(self):
+        r"""<p>A collection of query filter criteria for audit logs.</p>
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.AuditLogQueryFilter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def ClusterId(self):
+        r"""<p>Cluster ID. Query audit logs for the dcdb product at the cluster level</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._InstanceId = params.get("InstanceId")
+        self._LogType = params.get("LogType")
+        self._SortBy = params.get("SortBy")
+        self._OrderBy = params.get("OrderBy")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SqlStartTime = params.get("SqlStartTime")
+        if params.get("Filter") is not None:
+            self._Filter = AuditLogQueryFilter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBAuditLogsResponse(AbstractModel):
+    r"""DescribeDBAuditLogs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>Total number of eligible entries.</p>
+        :type TotalCount: int
+        :param _FilteredRecords: <p>Number of records after filtering.</p>
+        :type FilteredRecords: int
+        :param _ProxyLogs: <p>Proxy layer audit log list. Returned when LogType=Proxy or All. For field structure, see AuditProxyLogItem.</p>
+        :type ProxyLogs: list of AuditProxyLogItem
+        :param _DBLogs: <p>DB layer audit log list. Returned when LogType is DB or All. For the field structure, see AuditDBLogItem.</p>
+        :type DBLogs: list of AuditDBLogItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._FilteredRecords = None
+        self._ProxyLogs = None
+        self._DBLogs = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total number of eligible entries.</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def FilteredRecords(self):
+        r"""<p>Number of records after filtering.</p>
+        :rtype: int
+        """
+        return self._FilteredRecords
+
+    @FilteredRecords.setter
+    def FilteredRecords(self, FilteredRecords):
+        self._FilteredRecords = FilteredRecords
+
+    @property
+    def ProxyLogs(self):
+        r"""<p>Proxy layer audit log list. Returned when LogType=Proxy or All. For field structure, see AuditProxyLogItem.</p>
+        :rtype: list of AuditProxyLogItem
+        """
+        return self._ProxyLogs
+
+    @ProxyLogs.setter
+    def ProxyLogs(self, ProxyLogs):
+        self._ProxyLogs = ProxyLogs
+
+    @property
+    def DBLogs(self):
+        r"""<p>DB layer audit log list. Returned when LogType is DB or All. For the field structure, see AuditDBLogItem.</p>
+        :rtype: list of AuditDBLogItem
+        """
+        return self._DBLogs
+
+    @DBLogs.setter
+    def DBLogs(self, DBLogs):
+        self._DBLogs = DBLogs
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._FilteredRecords = params.get("FilteredRecords")
+        if params.get("ProxyLogs") is not None:
+            self._ProxyLogs = []
+            for item in params.get("ProxyLogs"):
+                obj = AuditProxyLogItem()
+                obj._deserialize(item)
+                self._ProxyLogs.append(obj)
+        if params.get("DBLogs") is not None:
+            self._DBLogs = []
+            for item in params.get("DBLogs"):
+                obj = AuditDBLogItem()
+                obj._deserialize(item)
+                self._DBLogs.append(obj)
         self._RequestId = params.get("RequestId")
 
 

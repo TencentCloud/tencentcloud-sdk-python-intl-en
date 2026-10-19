@@ -203,380 +203,6 @@ Note: This field may return `null`, indicating that no valid value was found.
         
 
 
-class AddAcRuleRequest(AbstractModel):
-    r"""AddAcRule request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _OrderIndex: -1: lowest priority; 1: highest priority
-        :type OrderIndex: str
-        :param _RuleAction: The action that Cloud Firewall performs on the traffic. Valid values:
-accept: allow
-drop: deny
-log: observe
-        :type RuleAction: str
-        :param _Direction: The traffic direction for access control rules. Valid values:
-in: incoming traffic access control
-out: outgoing traffic access control
-        :type Direction: str
-        :param _Description: The description of access control rules.
-        :type Description: str
-        :param _SourceType: The type of source address in access control rules. Valid values:
-net: source IP or range (IP or CIDR)
-location: source region
-template: CFW address template
-instance: instance ID
-vendor: Cloud vendor
-        :type SourceType: str
-        :param _SourceContent: The source address in the access control policy. 
-When `SourceType` is `net`, `SourceContent` is the source IP or CIDR block.
-For example: 1.1.1.0/24
-
-When `SourceType` is `template`, `SourceContent` must be the source address template ID.
-
-When `SourceType` is `location`, `SourceContent` is the source region. 
-For example, ["BJ11", "ZB"]
-
-When `SourceType` is `instance`, `SourceContent` is the public IP of the instance.
-For example, ins-xxxxx
-
-When `SourceType` is `vendor`, `SourceContent` is the cloud service provider.
-Values: `aws`, `huawei`, `tencent`, `aliyun`, `azure` and `all`. 
-        :type SourceContent: str
-        :param _DestType: The type of destination address in access control rules. Valid values:
-net: destination IP or range (IP or CIDR)
-location: source region
-template: CFW address template
-instance: instance ID
-vendor: Cloud vendor
-domain: Domain name or IP.
-        :type DestType: str
-        :param _DestContent: The destination address in the access control policy. 
-When `DestType` is `net`, `DestContent` is the destination IP or CIDR block.
-For example: 1.1.1.0/24
-
-When `DestType` is `template`, `DestContent` is the destination address template ID.
-
-When `DestType` is `location`, `DestContent` is the destination region. 
-For example, ["BJ11", "ZB"]
-
-When `DestType` is `instance`, `DestContent` is the public IP of the instance.
-For example, ins-xxxxx
-
-When `DestType` is `domain`, `DestContent` is the domain name associated with the instance.
-For example, *.qq.com
-
-When `DestType`, `DestContent` is the selected cloud service provider.
-Values: `aws`, `huawei`, `tencent`, `aliyun`, `azure` and `all`. 
-        :type DestContent: str
-        :param _Port: The port to apply access control rules. Valid values:
--1/-1: all ports
-80,443: 80 or 443
-        :type Port: str
-        :param _Protocol: The protocol type of traffic in access control rules. Valid value: TCP. Only TCP is supported for edge firewall rules. If this parameter is not specified, it defaults to TCP.
-        :type Protocol: str
-        :param _ApplicationName: The Layer 7 protocol. Valid values:
-HTTP/HTTPS
-TLS/SSL
-        :type ApplicationName: str
-        :param _Enable: Indicates whether to enable the rules. Default: enable. Valid values:
-true: enable; false: disable
-        :type Enable: str
-        """
-        self._OrderIndex = None
-        self._RuleAction = None
-        self._Direction = None
-        self._Description = None
-        self._SourceType = None
-        self._SourceContent = None
-        self._DestType = None
-        self._DestContent = None
-        self._Port = None
-        self._Protocol = None
-        self._ApplicationName = None
-        self._Enable = None
-
-    @property
-    def OrderIndex(self):
-        r"""-1: lowest priority; 1: highest priority
-        :rtype: str
-        """
-        return self._OrderIndex
-
-    @OrderIndex.setter
-    def OrderIndex(self, OrderIndex):
-        self._OrderIndex = OrderIndex
-
-    @property
-    def RuleAction(self):
-        r"""The action that Cloud Firewall performs on the traffic. Valid values:
-accept: allow
-drop: deny
-log: observe
-        :rtype: str
-        """
-        return self._RuleAction
-
-    @RuleAction.setter
-    def RuleAction(self, RuleAction):
-        self._RuleAction = RuleAction
-
-    @property
-    def Direction(self):
-        r"""The traffic direction for access control rules. Valid values:
-in: incoming traffic access control
-out: outgoing traffic access control
-        :rtype: str
-        """
-        return self._Direction
-
-    @Direction.setter
-    def Direction(self, Direction):
-        self._Direction = Direction
-
-    @property
-    def Description(self):
-        r"""The description of access control rules.
-        :rtype: str
-        """
-        return self._Description
-
-    @Description.setter
-    def Description(self, Description):
-        self._Description = Description
-
-    @property
-    def SourceType(self):
-        r"""The type of source address in access control rules. Valid values:
-net: source IP or range (IP or CIDR)
-location: source region
-template: CFW address template
-instance: instance ID
-vendor: Cloud vendor
-        :rtype: str
-        """
-        return self._SourceType
-
-    @SourceType.setter
-    def SourceType(self, SourceType):
-        self._SourceType = SourceType
-
-    @property
-    def SourceContent(self):
-        r"""The source address in the access control policy. 
-When `SourceType` is `net`, `SourceContent` is the source IP or CIDR block.
-For example: 1.1.1.0/24
-
-When `SourceType` is `template`, `SourceContent` must be the source address template ID.
-
-When `SourceType` is `location`, `SourceContent` is the source region. 
-For example, ["BJ11", "ZB"]
-
-When `SourceType` is `instance`, `SourceContent` is the public IP of the instance.
-For example, ins-xxxxx
-
-When `SourceType` is `vendor`, `SourceContent` is the cloud service provider.
-Values: `aws`, `huawei`, `tencent`, `aliyun`, `azure` and `all`. 
-        :rtype: str
-        """
-        return self._SourceContent
-
-    @SourceContent.setter
-    def SourceContent(self, SourceContent):
-        self._SourceContent = SourceContent
-
-    @property
-    def DestType(self):
-        r"""The type of destination address in access control rules. Valid values:
-net: destination IP or range (IP or CIDR)
-location: source region
-template: CFW address template
-instance: instance ID
-vendor: Cloud vendor
-domain: Domain name or IP.
-        :rtype: str
-        """
-        return self._DestType
-
-    @DestType.setter
-    def DestType(self, DestType):
-        self._DestType = DestType
-
-    @property
-    def DestContent(self):
-        r"""The destination address in the access control policy. 
-When `DestType` is `net`, `DestContent` is the destination IP or CIDR block.
-For example: 1.1.1.0/24
-
-When `DestType` is `template`, `DestContent` is the destination address template ID.
-
-When `DestType` is `location`, `DestContent` is the destination region. 
-For example, ["BJ11", "ZB"]
-
-When `DestType` is `instance`, `DestContent` is the public IP of the instance.
-For example, ins-xxxxx
-
-When `DestType` is `domain`, `DestContent` is the domain name associated with the instance.
-For example, *.qq.com
-
-When `DestType`, `DestContent` is the selected cloud service provider.
-Values: `aws`, `huawei`, `tencent`, `aliyun`, `azure` and `all`. 
-        :rtype: str
-        """
-        return self._DestContent
-
-    @DestContent.setter
-    def DestContent(self, DestContent):
-        self._DestContent = DestContent
-
-    @property
-    def Port(self):
-        r"""The port to apply access control rules. Valid values:
--1/-1: all ports
-80,443: 80 or 443
-        :rtype: str
-        """
-        return self._Port
-
-    @Port.setter
-    def Port(self, Port):
-        self._Port = Port
-
-    @property
-    def Protocol(self):
-        r"""The protocol type of traffic in access control rules. Valid value: TCP. Only TCP is supported for edge firewall rules. If this parameter is not specified, it defaults to TCP.
-        :rtype: str
-        """
-        return self._Protocol
-
-    @Protocol.setter
-    def Protocol(self, Protocol):
-        self._Protocol = Protocol
-
-    @property
-    def ApplicationName(self):
-        r"""The Layer 7 protocol. Valid values:
-HTTP/HTTPS
-TLS/SSL
-        :rtype: str
-        """
-        return self._ApplicationName
-
-    @ApplicationName.setter
-    def ApplicationName(self, ApplicationName):
-        self._ApplicationName = ApplicationName
-
-    @property
-    def Enable(self):
-        r"""Indicates whether to enable the rules. Default: enable. Valid values:
-true: enable; false: disable
-        :rtype: str
-        """
-        return self._Enable
-
-    @Enable.setter
-    def Enable(self, Enable):
-        self._Enable = Enable
-
-
-    def _deserialize(self, params):
-        self._OrderIndex = params.get("OrderIndex")
-        self._RuleAction = params.get("RuleAction")
-        self._Direction = params.get("Direction")
-        self._Description = params.get("Description")
-        self._SourceType = params.get("SourceType")
-        self._SourceContent = params.get("SourceContent")
-        self._DestType = params.get("DestType")
-        self._DestContent = params.get("DestContent")
-        self._Port = params.get("Port")
-        self._Protocol = params.get("Protocol")
-        self._ApplicationName = params.get("ApplicationName")
-        self._Enable = params.get("Enable")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class AddAcRuleResponse(AbstractModel):
-    r"""AddAcRule response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RuleUuid: UUID of the new rule
-        :type RuleUuid: int
-        :param _ReturnCode: 0: operation successful; -1: operation failed
-        :type ReturnCode: int
-        :param _ReturnMsg: success: operation successful; failed: operation failed
-        :type ReturnMsg: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RuleUuid = None
-        self._ReturnCode = None
-        self._ReturnMsg = None
-        self._RequestId = None
-
-    @property
-    def RuleUuid(self):
-        r"""UUID of the new rule
-        :rtype: int
-        """
-        return self._RuleUuid
-
-    @RuleUuid.setter
-    def RuleUuid(self, RuleUuid):
-        self._RuleUuid = RuleUuid
-
-    @property
-    def ReturnCode(self):
-        r"""0: operation successful; -1: operation failed
-        :rtype: int
-        """
-        return self._ReturnCode
-
-    @ReturnCode.setter
-    def ReturnCode(self, ReturnCode):
-        self._ReturnCode = ReturnCode
-
-    @property
-    def ReturnMsg(self):
-        r"""success: operation successful; failed: operation failed
-        :rtype: str
-        """
-        return self._ReturnMsg
-
-    @ReturnMsg.setter
-    def ReturnMsg(self, ReturnMsg):
-        self._ReturnMsg = ReturnMsg
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RuleUuid = params.get("RuleUuid")
-        self._ReturnCode = params.get("ReturnCode")
-        self._ReturnMsg = params.get("ReturnMsg")
-        self._RequestId = params.get("RequestId")
-
-
 class AddAclRuleRequest(AbstractModel):
     r"""AddAclRule request structure.
 
@@ -1733,42 +1359,32 @@ class CommonFilter(AbstractModel):
         r"""
         :param _Name: Search key.
         :type Name: str
-        :param _Values: Search values.
-        :type Values: list of str
-        :param _OperatorType: Enum of integers that represent relations between Name and Values.
+        :param _OperatorType: Enumeration type, representing the matching relationship between Name and Values.
 enum FilterOperatorType {
-    // Invalid
-    FILTER_OPERATOR_TYPE_INVALID = 0;
-    // Equal to
+equal
     FILTER_OPERATOR_TYPE_EQUAL = 1;
-    // Greater than
+Above
     FILTER_OPERATOR_TYPE_GREATER = 2;
-    // Less than
+less than
     FILTER_OPERATOR_TYPE_LESS = 3;
-    // Greater than or equal to
+>=
     FILTER_OPERATOR_TYPE_GREATER_EQ = 4;
-    // Less than or equal to
+<=
     FILTER_OPERATOR_TYPE_LESS_EQ = 5;
-    // Not equal to
+neq
     FILTER_OPERATOR_TYPE_NO_EQ = 6;
-    // In (contained in the array)
-    FILTER_OPERATOR_TYPE_IN = 7;
-    // Not in
+    //not in
     FILTER_OPERATOR_TYPE_NOT_IN = 8;
-    // Fuzzily matched
+Fuzzy matching
     FILTER_OPERATOR_TYPE_FUZZINESS = 9;
-    // Existing
-    FILTER_OPERATOR_TYPE_EXIST = 10;
-    // Not existing
-    FILTER_OPERATOR_TYPE_NOT_EXIST = 11;
-    // Regular
-    FILTER_OPERATOR_TYPE_REGULAR = 12;
 }
         :type OperatorType: int
+        :param _Values: Search values, with an OR relationship between each search value.
+        :type Values: list of str
         """
         self._Name = None
-        self._Values = None
         self._OperatorType = None
+        self._Values = None
 
     @property
     def Name(self):
@@ -1782,46 +1398,25 @@ enum FilterOperatorType {
         self._Name = Name
 
     @property
-    def Values(self):
-        r"""Search values.
-        :rtype: list of str
-        """
-        return self._Values
-
-    @Values.setter
-    def Values(self, Values):
-        self._Values = Values
-
-    @property
     def OperatorType(self):
-        r"""Enum of integers that represent relations between Name and Values.
+        r"""Enumeration type, representing the matching relationship between Name and Values.
 enum FilterOperatorType {
-    // Invalid
-    FILTER_OPERATOR_TYPE_INVALID = 0;
-    // Equal to
+equal
     FILTER_OPERATOR_TYPE_EQUAL = 1;
-    // Greater than
+Above
     FILTER_OPERATOR_TYPE_GREATER = 2;
-    // Less than
+less than
     FILTER_OPERATOR_TYPE_LESS = 3;
-    // Greater than or equal to
+>=
     FILTER_OPERATOR_TYPE_GREATER_EQ = 4;
-    // Less than or equal to
+<=
     FILTER_OPERATOR_TYPE_LESS_EQ = 5;
-    // Not equal to
+neq
     FILTER_OPERATOR_TYPE_NO_EQ = 6;
-    // In (contained in the array)
-    FILTER_OPERATOR_TYPE_IN = 7;
-    // Not in
+    //not in
     FILTER_OPERATOR_TYPE_NOT_IN = 8;
-    // Fuzzily matched
+Fuzzy matching
     FILTER_OPERATOR_TYPE_FUZZINESS = 9;
-    // Existing
-    FILTER_OPERATOR_TYPE_EXIST = 10;
-    // Not existing
-    FILTER_OPERATOR_TYPE_NOT_EXIST = 11;
-    // Regular
-    FILTER_OPERATOR_TYPE_REGULAR = 12;
 }
         :rtype: int
         """
@@ -1831,11 +1426,22 @@ enum FilterOperatorType {
     def OperatorType(self, OperatorType):
         self._OperatorType = OperatorType
 
+    @property
+    def Values(self):
+        r"""Search values, with an OR relationship between each search value.
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
-        self._Values = params.get("Values")
         self._OperatorType = params.get("OperatorType")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3222,132 +2828,6 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._RequestId = params.get("RequestId")
 
 
-class DeleteAllAccessControlRuleRequest(AbstractModel):
-    r"""DeleteAllAccessControlRule request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Direction: Direction. 0: outbound; 1: inbound. 0 by default
-        :type Direction: int
-        :param _EdgeId: Deletes all the access control rules for inter-VPC firewall toggles associated with the EdgeId. It is empty by default. Enter either EdgeId or Area.
-        :type EdgeId: str
-        :param _Area: Deletes all the access control rules for NAT firewalls of this region. It is empty by default. Enter either EdgeId or Area.
-        :type Area: str
-        """
-        self._Direction = None
-        self._EdgeId = None
-        self._Area = None
-
-    @property
-    def Direction(self):
-        r"""Direction. 0: outbound; 1: inbound. 0 by default
-        :rtype: int
-        """
-        return self._Direction
-
-    @Direction.setter
-    def Direction(self, Direction):
-        self._Direction = Direction
-
-    @property
-    def EdgeId(self):
-        r"""Deletes all the access control rules for inter-VPC firewall toggles associated with the EdgeId. It is empty by default. Enter either EdgeId or Area.
-        :rtype: str
-        """
-        return self._EdgeId
-
-    @EdgeId.setter
-    def EdgeId(self, EdgeId):
-        self._EdgeId = EdgeId
-
-    @property
-    def Area(self):
-        r"""Deletes all the access control rules for NAT firewalls of this region. It is empty by default. Enter either EdgeId or Area.
-        :rtype: str
-        """
-        return self._Area
-
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
-
-
-    def _deserialize(self, params):
-        self._Direction = params.get("Direction")
-        self._EdgeId = params.get("EdgeId")
-        self._Area = params.get("Area")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteAllAccessControlRuleResponse(AbstractModel):
-    r"""DeleteAllAccessControlRule response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Status: Status of the task. `0`: Modified successfully; Others: Modification failed
-        :type Status: int
-        :param _Info: Number of access control rules deleted.
-Note: This field may return `null`, indicating that no valid value was found.
-        :type Info: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Status = None
-        self._Info = None
-        self._RequestId = None
-
-    @property
-    def Status(self):
-        r"""Status of the task. `0`: Modified successfully; Others: Modification failed
-        :rtype: int
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def Info(self):
-        r"""Number of access control rules deleted.
-Note: This field may return `null`, indicating that no valid value was found.
-        :rtype: int
-        """
-        return self._Info
-
-    @Info.setter
-    def Info(self, Info):
-        self._Info = Info
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Status = params.get("Status")
-        self._Info = params.get("Info")
-        self._RequestId = params.get("RequestId")
-
-
 class DeleteResourceGroupRequest(AbstractModel):
     r"""DeleteResourceGroup request structure.
 
@@ -3550,40 +3030,6 @@ Note: This field may return `null`, indicating that no valid value was found.
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._Info = params.get("Info")
-        self._RequestId = params.get("RequestId")
-
-
-class DeleteVpcInstanceRequest(AbstractModel):
-    r"""DeleteVpcInstance request structure.
-
-    """
-
-
-class DeleteVpcInstanceResponse(AbstractModel):
-    r"""DeleteVpcInstance response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -8637,6 +8083,260 @@ class DescribeVpcAcRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeVpcFwIpStatRequest(AbstractModel):
+    r"""DescribeVpcFwIpStat request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: <p>Entries per page</p>
+        :type Limit: int
+        :param _Offset: <p>Offset value</p>
+        :type Offset: int
+        :param _FwGroupId: <p>Firewall group ID</p>
+        :type FwGroupId: str
+        :param _FwInsId: <p>Instance id of the firewall</p>
+        :type FwInsId: str
+        :param _TimeType: <p>Selected time interval 1: within an hour, 2: 24 hours, 3: 7 days, 4: 1 month</p>
+        :type TimeType: int
+        :param _Filters: <p>Filter condition composite</p>
+        :type Filters: list of CommonFilter
+        :param _StartTime: <p>Start time of retrieval. Can be omitted.</p>
+        :type StartTime: str
+        :param _EndTime: <p>End time of retrieval. Can be omitted.</p>
+        :type EndTime: str
+        :param _Order: <p>desc: descending order; asc: ascending order. Sort by the value of the By field. If any parameters are loaded, by must have a value.</p>
+        :type Order: str
+        :param _By: <p>Fields used for sorting</p>
+        :type By: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._FwGroupId = None
+        self._FwInsId = None
+        self._TimeType = None
+        self._Filters = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def Limit(self):
+        r"""<p>Entries per page</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>Offset value</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def FwGroupId(self):
+        r"""<p>Firewall group ID</p>
+        :rtype: str
+        """
+        return self._FwGroupId
+
+    @FwGroupId.setter
+    def FwGroupId(self, FwGroupId):
+        self._FwGroupId = FwGroupId
+
+    @property
+    def FwInsId(self):
+        r"""<p>Instance id of the firewall</p>
+        :rtype: str
+        """
+        return self._FwInsId
+
+    @FwInsId.setter
+    def FwInsId(self, FwInsId):
+        self._FwInsId = FwInsId
+
+    @property
+    def TimeType(self):
+        r"""<p>Selected time interval 1: within an hour, 2: 24 hours, 3: 7 days, 4: 1 month</p>
+        :rtype: int
+        """
+        return self._TimeType
+
+    @TimeType.setter
+    def TimeType(self, TimeType):
+        self._TimeType = TimeType
+
+    @property
+    def Filters(self):
+        r"""<p>Filter condition composite</p>
+        :rtype: list of CommonFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def StartTime(self):
+        r"""<p>Start time of retrieval. Can be omitted.</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>End time of retrieval. Can be omitted.</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Order(self):
+        r"""<p>desc: descending order; asc: ascending order. Sort by the value of the By field. If any parameters are loaded, by must have a value.</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>Fields used for sorting</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._FwGroupId = params.get("FwGroupId")
+        self._FwInsId = params.get("FwInsId")
+        self._TimeType = params.get("TimeType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = CommonFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVpcFwIpStatResponse(AbstractModel):
+    r"""DescribeVpcFwIpStat response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>Peak bandwidth statistics list for a single cvm</p>
+        :type Data: list of FwGroupIpFlowStat
+        :param _Total: <p>Total number of lines</p>
+        :type Total: int
+        :param _Status: <p>Asynchronously query status. 1 indicates query execution in progress, and 0 indicates query stopped.</p>
+        :type Status: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>Peak bandwidth statistics list for a single cvm</p>
+        :rtype: list of FwGroupIpFlowStat
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""<p>Total number of lines</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Status(self):
+        r"""<p>Asynchronously query status. 1 indicates query execution in progress, and 0 indicates query stopped.</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = FwGroupIpFlowStat()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class DnsVpcSwitch(AbstractModel):
     r"""Sets the VPC DNS toggle of the NAT firewall
 
@@ -8843,6 +8543,177 @@ class FwCidrInfo(AbstractModel):
                 obj._deserialize(item)
                 self._FwCidrLst.append(obj)
         self._ComFwCidr = params.get("ComFwCidr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FwGroupIpFlowStat(AbstractModel):
+    r"""VPC firewall status monitoring diagram
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ip: IP
+        :type Ip: str
+        :param _InstanceId: Instance ID
+        :type InstanceId: str
+        :param _InstanceName: Instance name.
+        :type InstanceName: str
+        :param _VpcId: VPCID
+        :type VpcId: str
+        :param _VpcName: VPC name
+        :type VpcName: str
+        :param _FlowMax: Peak traffic
+        :type FlowMax: int
+        :param _FlowAvg: Average bandwidth
+        :type FlowAvg: float
+        :param _TcRuleStatus: Rate limiting status
+        :type TcRuleStatus: int
+        :param _FwInsId: Firewall ID.
+        :type FwInsId: str
+        :param _IpVersion: 0 IPV4 , 1 IPV6
+        :type IpVersion: int
+        """
+        self._Ip = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._VpcId = None
+        self._VpcName = None
+        self._FlowMax = None
+        self._FlowAvg = None
+        self._TcRuleStatus = None
+        self._FwInsId = None
+        self._IpVersion = None
+
+    @property
+    def Ip(self):
+        r"""IP
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""Instance name.
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def VpcId(self):
+        r"""VPCID
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcName(self):
+        r"""VPC name
+        :rtype: str
+        """
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def FlowMax(self):
+        r"""Peak traffic
+        :rtype: int
+        """
+        return self._FlowMax
+
+    @FlowMax.setter
+    def FlowMax(self, FlowMax):
+        self._FlowMax = FlowMax
+
+    @property
+    def FlowAvg(self):
+        r"""Average bandwidth
+        :rtype: float
+        """
+        return self._FlowAvg
+
+    @FlowAvg.setter
+    def FlowAvg(self, FlowAvg):
+        self._FlowAvg = FlowAvg
+
+    @property
+    def TcRuleStatus(self):
+        r"""Rate limiting status
+        :rtype: int
+        """
+        return self._TcRuleStatus
+
+    @TcRuleStatus.setter
+    def TcRuleStatus(self, TcRuleStatus):
+        self._TcRuleStatus = TcRuleStatus
+
+    @property
+    def FwInsId(self):
+        r"""Firewall ID.
+        :rtype: str
+        """
+        return self._FwInsId
+
+    @FwInsId.setter
+    def FwInsId(self, FwInsId):
+        self._FwInsId = FwInsId
+
+    @property
+    def IpVersion(self):
+        r"""0 IPV4 , 1 IPV6
+        :rtype: int
+        """
+        return self._IpVersion
+
+    @IpVersion.setter
+    def IpVersion(self, IpVersion):
+        self._IpVersion = IpVersion
+
+
+    def _deserialize(self, params):
+        self._Ip = params.get("Ip")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._VpcId = params.get("VpcId")
+        self._VpcName = params.get("VpcName")
+        self._FlowMax = params.get("FlowMax")
+        self._FlowAvg = params.get("FlowAvg")
+        self._TcRuleStatus = params.get("TcRuleStatus")
+        self._FwInsId = params.get("FwInsId")
+        self._IpVersion = params.get("IpVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9996,85 +9867,6 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._RequestId = params.get("RequestId")
 
 
-class ModifyAllVPCSwitchStatusRequest(AbstractModel):
-    r"""ModifyAllVPCSwitchStatus request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Status: Status. 0: off; 1: on
-        :type Status: int
-        :param _FireWallVpcIds: ID of the selected firewall toggle
-        :type FireWallVpcIds: list of str
-        """
-        self._Status = None
-        self._FireWallVpcIds = None
-
-    @property
-    def Status(self):
-        r"""Status. 0: off; 1: on
-        :rtype: int
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def FireWallVpcIds(self):
-        r"""ID of the selected firewall toggle
-        :rtype: list of str
-        """
-        return self._FireWallVpcIds
-
-    @FireWallVpcIds.setter
-    def FireWallVpcIds(self, FireWallVpcIds):
-        self._FireWallVpcIds = FireWallVpcIds
-
-
-    def _deserialize(self, params):
-        self._Status = params.get("Status")
-        self._FireWallVpcIds = params.get("FireWallVpcIds")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyAllVPCSwitchStatusResponse(AbstractModel):
-    r"""ModifyAllVPCSwitchStatus response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class ModifyAssetScanRequest(AbstractModel):
     r"""ModifyAssetScan request structure.
 
@@ -11224,117 +11016,6 @@ class ModifyNatSequenceRulesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
-class ModifyPublicIPSwitchStatusRequest(AbstractModel):
-    r"""ModifyPublicIPSwitchStatus request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _FireWallPublicIP: Public IP
-        :type FireWallPublicIP: str
-        :param _Status: Status value. 0: off; 1: on
-        :type Status: int
-        """
-        self._FireWallPublicIP = None
-        self._Status = None
-
-    @property
-    def FireWallPublicIP(self):
-        r"""Public IP
-        :rtype: str
-        """
-        return self._FireWallPublicIP
-
-    @FireWallPublicIP.setter
-    def FireWallPublicIP(self, FireWallPublicIP):
-        self._FireWallPublicIP = FireWallPublicIP
-
-    @property
-    def Status(self):
-        r"""Status value. 0: off; 1: on
-        :rtype: int
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-
-    def _deserialize(self, params):
-        self._FireWallPublicIP = params.get("FireWallPublicIP")
-        self._Status = params.get("Status")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyPublicIPSwitchStatusResponse(AbstractModel):
-    r"""ModifyPublicIPSwitchStatus response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ReturnMsg: Return message
-Note: This field may return `null`, indicating that no valid value was found.
-        :type ReturnMsg: str
-        :param _ReturnCode: Error code. 0: success; non-0: failed
-        :type ReturnCode: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._ReturnMsg = None
-        self._ReturnCode = None
-        self._RequestId = None
-
-    @property
-    def ReturnMsg(self):
-        r"""Return message
-Note: This field may return `null`, indicating that no valid value was found.
-        :rtype: str
-        """
-        return self._ReturnMsg
-
-    @ReturnMsg.setter
-    def ReturnMsg(self, ReturnMsg):
-        self._ReturnMsg = ReturnMsg
-
-    @property
-    def ReturnCode(self):
-        r"""Error code. 0: success; non-0: failed
-        :rtype: int
-        """
-        return self._ReturnCode
-
-    @ReturnCode.setter
-    def ReturnCode(self, ReturnCode):
-        self._ReturnCode = ReturnCode
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._ReturnMsg = params.get("ReturnMsg")
-        self._ReturnCode = params.get("ReturnCode")
         self._RequestId = params.get("RequestId")
 
 

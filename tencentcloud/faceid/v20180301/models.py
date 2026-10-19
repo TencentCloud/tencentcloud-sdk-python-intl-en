@@ -318,13 +318,12 @@ Default value: 4
         :type CompareImage: str
         :param _NeedVerifyIdCard: Whether ID card authentication is required. If not, only document OCR will be performed. Currently, authentication is available only when the value of `IdCardType` is `HK`.
         :type NeedVerifyIdCard: bool
-        :param _DisableChangeOcrResult: Whether to forbid the modification of the OCR result by users. Default value: `false` (modification allowed). (Currently, this parameter is not applied.)
+        :param _DisableChangeOcrResult: Whether to forbid the modification of the OCR result by users. Default value: `false` (modification allowed). 
         :type DisableChangeOcrResult: bool
         :param _DisableCheckOcrWarnings: Whether to disable the OCR warnings. Default value: `false` (not disable), where OCR warnings are enabled and the OCR result will not be returned if there is a warning.
-This feature applies only to Hong Kong (China) identity cards, Malaysian identity cards, and passports.
         :type DisableCheckOcrWarnings: bool
         :param _SelectedWarningCodes: Customize which alarm codes to block. If left blank, all alarm codes will be blocked by default.
-Optional alarm codes are: -9101 (occlusion or incomplete border), -9102 (photocopying), -9103 (screen capture by camera), -9104 (image editing/PS modification), -9107 (glare/reflection), -9108 (blurriness), -9901 (other alarms).
+Optional alarm codes are: -9101 (occlusion or incomplete border), -9102 (photocopying), -9103 (screen capture by camera), -9104 (image editing/PS modification), -9107 (glare/reflection), -9108 (blurriness), -8101 (information format check),-8102(information consistency check).
         :type SelectedWarningCodes: list of int
         :param _Extra: A passthrough field, which is returned together with the verification result and can contain up to 1,024 bits.
         :type Extra: str
@@ -495,7 +494,7 @@ Default value: 4
 
     @property
     def DisableChangeOcrResult(self):
-        r"""Whether to forbid the modification of the OCR result by users. Default value: `false` (modification allowed). (Currently, this parameter is not applied.)
+        r"""Whether to forbid the modification of the OCR result by users. Default value: `false` (modification allowed). 
         :rtype: bool
         """
         return self._DisableChangeOcrResult
@@ -507,7 +506,6 @@ Default value: 4
     @property
     def DisableCheckOcrWarnings(self):
         r"""Whether to disable the OCR warnings. Default value: `false` (not disable), where OCR warnings are enabled and the OCR result will not be returned if there is a warning.
-This feature applies only to Hong Kong (China) identity cards, Malaysian identity cards, and passports.
         :rtype: bool
         """
         return self._DisableCheckOcrWarnings
@@ -519,7 +517,7 @@ This feature applies only to Hong Kong (China) identity cards, Malaysian identit
     @property
     def SelectedWarningCodes(self):
         r"""Customize which alarm codes to block. If left blank, all alarm codes will be blocked by default.
-Optional alarm codes are: -9101 (occlusion or incomplete border), -9102 (photocopying), -9103 (screen capture by camera), -9104 (image editing/PS modification), -9107 (glare/reflection), -9108 (blurriness), -9901 (other alarms).
+Optional alarm codes are: -9101 (occlusion or incomplete border), -9102 (photocopying), -9103 (screen capture by camera), -9104 (image editing/PS modification), -9107 (glare/reflection), -9108 (blurriness), -8101 (information format check),-8102(information consistency check).
         :rtype: list of int
         """
         return self._SelectedWarningCodes

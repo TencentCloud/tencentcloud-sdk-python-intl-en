@@ -994,6 +994,98 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCosAssetSyncTask(self, request):
+        r"""Creates an asset sync task
+
+        :param request: Request instance for CreateCosAssetSyncTask.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateCosAssetSyncTaskRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateCosAssetSyncTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCosAssetSyncTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCosAssetSyncTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCosObjectScanTask(self, request):
+        r"""This API is used to create cos virus scan and sensitive data identification tasks.
+
+        :param request: Request instance for CreateCosObjectScanTask.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateCosObjectScanTaskRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateCosObjectScanTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCosObjectScanTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCosObjectScanTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCosPolicy(self, request):
+        r"""Add a cos alarm policy
+
+        :param request: Request instance for CreateCosPolicy.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateCosPolicyRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateCosPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCosPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCosPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCosRiskScanTask(self, request):
+        r"""This API is used to create a risk monitor task.
+
+        :param request: Request instance for CreateCosRiskScanTask.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateCosRiskScanTaskRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateCosRiskScanTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCosRiskScanTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCosRiskScanTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDomainAndIp(self, request):
         r"""Create Domain and IP Information
 
@@ -2712,6 +2804,52 @@ class CsipClient(AbstractClient):
             body = self.call("DeleteCluster", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCosAkAsset(self, request):
+        r"""Delete deleted cos ak assets.
+
+        :param request: Request instance for DeleteCosAkAsset.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DeleteCosAkAssetRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DeleteCosAkAssetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCosAkAsset", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCosAkAssetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCosPolicy(self, request):
+        r"""Deleting a Policy
+
+        :param request: Request instance for DeleteCosPolicy.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DeleteCosPolicyRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DeleteCosPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCosPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCosPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4711,6 +4849,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAssumeRole(self, request):
+        r"""Query whether it is bound to a role
+
+        :param request: Request instance for DescribeAssumeRole.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAssumeRoleRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeAssumeRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAssumeRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAssumeRoleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBackendScanEngineRegionList(self, request):
         r"""This API is used to query the region list of the backend scanning engine.
 
@@ -5208,6 +5369,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeBruteAttackRules", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBruteAttackRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBucketInvokeIpList(self, request):
+        r"""This API is used to view the bucket call source ip list.
+
+        :param request: Request instance for DescribeBucketInvokeIpList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeBucketInvokeIpListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeBucketInvokeIpListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBucketInvokeIpList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBucketInvokeIpListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -6473,6 +6657,650 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeConfigCheckRules", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeConfigCheckRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosAccessPermission(self, request):
+        r"""View cos bucket access permission information
+
+        :param request: Request instance for DescribeCosAccessPermission.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosAccessPermissionRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosAccessPermissionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosAccessPermission", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosAccessPermissionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosAccessPermissions(self, request):
+        r"""View the access privilege list of object storage
+
+        :param request: Request instance for DescribeCosAccessPermissions.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosAccessPermissionsRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosAccessPermissionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosAccessPermissions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosAccessPermissionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosActionList(self, request):
+        r"""View the COS API list
+
+        :param request: Request instance for DescribeCosActionList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosActionListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosActionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosActionList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosActionListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosAkAsset(self, request):
+        r"""View the ak asset information list
+
+        :param request: Request instance for DescribeCosAkAsset.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosAkAssetRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosAkAssetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosAkAsset", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosAkAssetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosAkInvokeIpList(self, request):
+        r"""View the source ip list of bucket calls
+
+        :param request: Request instance for DescribeCosAkInvokeIpList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosAkInvokeIpListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosAkInvokeIpListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosAkInvokeIpList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosAkInvokeIpListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosAlarmList(self, request):
+        r"""View alarm list
+
+        :param request: Request instance for DescribeCosAlarmList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosAlarmListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosAlarmListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosAlarmList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosAlarmListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosAlarmTrendData(self, request):
+        r"""Daily alerts newly added data
+
+        :param request: Request instance for DescribeCosAlarmTrendData.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosAlarmTrendDataRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosAlarmTrendDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosAlarmTrendData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosAlarmTrendDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosAsset(self, request):
+        r"""Views the cos asset list
+
+        :param request: Request instance for DescribeCosAsset.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosAssetRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosAssetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosAsset", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosAssetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosAssetSyncTask(self, request):
+        r"""Get the taskid currently being scanned for the corresponding appid.
+
+        :param request: Request instance for DescribeCosAssetSyncTask.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosAssetSyncTaskRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosAssetSyncTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosAssetSyncTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosAssetSyncTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosAuditAppIdList(self, request):
+        r"""View the purchased appid collection under this appid.
+
+        :param request: Request instance for DescribeCosAuditAppIdList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosAuditAppIdListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosAuditAppIdListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosAuditAppIdList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosAuditAppIdListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosAuditDictionaryList(self, request):
+        r"""Query the cos audit dictionary information list.
+
+        :param request: Request instance for DescribeCosAuditDictionaryList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosAuditDictionaryListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosAuditDictionaryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosAuditDictionaryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosAuditDictionaryListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosAuditPayInfo(self, request):
+        r"""This API is used to obtain audit payment information.
+
+        :param request: Request instance for DescribeCosAuditPayInfo.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosAuditPayInfoRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosAuditPayInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosAuditPayInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosAuditPayInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosBucketBillingInfo(self, request):
+        r"""This API is used to obtain the billing information of a bucket.
+
+        :param request: Request instance for DescribeCosBucketBillingInfo.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosBucketBillingInfoRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosBucketBillingInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosBucketBillingInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosBucketBillingInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosBucketList(self, request):
+        r"""This API is used to obtain bucket information.
+
+        :param request: Request instance for DescribeCosBucketList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosBucketListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosBucketListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosBucketList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosBucketListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosBucketRisk(self, request):
+        r"""Views the risk asset perspective
+
+        :param request: Request instance for DescribeCosBucketRisk.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosBucketRiskRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosBucketRiskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosBucketRisk", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosBucketRiskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosIdentifyFileList(self, request):
+        r"""Queries the list of cos file data identification results.
+
+        :param request: Request instance for DescribeCosIdentifyFileList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosIdentifyFileListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosIdentifyFileListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosIdentifyFileList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosIdentifyFileListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosInvokeUa(self, request):
+        r"""View file information associated with call records
+
+        :param request: Request instance for DescribeCosInvokeUa.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosInvokeUaRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosInvokeUaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosInvokeUa", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosInvokeUaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosIpInvokeLog(self, request):
+        r"""Views the cos call log.
+
+        :param request: Request instance for DescribeCosIpInvokeLog.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosIpInvokeLogRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosIpInvokeLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosIpInvokeLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosIpInvokeLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosIpInvokeRecordFile(self, request):
+        r"""View file information associated with the call record
+
+        :param request: Request instance for DescribeCosIpInvokeRecordFile.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosIpInvokeRecordFileRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosIpInvokeRecordFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosIpInvokeRecordFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosIpInvokeRecordFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosObjectScanTask(self, request):
+        r"""Query cos risk file scan tasks
+
+        :param request: Request instance for DescribeCosObjectScanTask.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosObjectScanTaskRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosObjectScanTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosObjectScanTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosObjectScanTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosOverview(self, request):
+        r"""cos overview information
+
+        :param request: Request instance for DescribeCosOverview.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosOverviewRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosPolicy(self, request):
+        r"""Gets policy list information
+
+        :param request: Request instance for DescribeCosPolicy.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosPolicyRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosRiskActionList(self, request):
+        r"""Risk API information list
+
+        :param request: Request instance for DescribeCosRiskActionList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosRiskActionListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosRiskActionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosRiskActionList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosRiskActionListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosRiskEvidence(self, request):
+        r"""View risk evidence and description.
+
+        :param request: Request instance for DescribeCosRiskEvidence.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosRiskEvidenceRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosRiskEvidenceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosRiskEvidence", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosRiskEvidenceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosRiskScanTask(self, request):
+        r"""View bucket scan task details
+
+        :param request: Request instance for DescribeCosRiskScanTask.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosRiskScanTaskRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosRiskScanTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosRiskScanTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosRiskScanTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosRoleAccessPermission(self, request):
+        r"""Views cos bucket access permission information
+
+        :param request: Request instance for DescribeCosRoleAccessPermission.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosRoleAccessPermissionRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosRoleAccessPermissionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosRoleAccessPermission", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosRoleAccessPermissionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosRoleAccessPermissions(self, request):
+        r"""This API is used to obtain the role permission list of a bucket.
+
+        :param request: Request instance for DescribeCosRoleAccessPermissions.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosRoleAccessPermissionsRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosRoleAccessPermissionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosRoleAccessPermissions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosRoleAccessPermissionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCosSourceIp(self, request):
+        r"""Source ip list for calls
+
+        :param request: Request instance for DescribeCosSourceIp.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosSourceIpRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosSourceIpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosSourceIp", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosSourceIpResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -9495,6 +10323,52 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeIpInvokeRecord(self, request):
+        r"""Object Storage Anomaly Detection call record information
+
+        :param request: Request instance for DescribeIpInvokeRecord.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeIpInvokeRecordRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeIpInvokeRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIpInvokeRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIpInvokeRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeIpInvokeRecordDetail(self, request):
+        r"""ip access list details information
+
+        :param request: Request instance for DescribeIpInvokeRecordDetail.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeIpInvokeRecordDetailRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeIpInvokeRecordDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIpInvokeRecordDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIpInvokeRecordDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeKBDetail(self, request):
         r"""Query the details of a single Windows KB patch based on the user's input KB internal ID, and return the basic KB info, release time, whether restart is required, as well as the list of vulnerabilities associated with the KB.
 
@@ -10254,6 +11128,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePolicyHitData(self, request):
+        r"""View policy hit details by date
+
+        :param request: Request instance for DescribePolicyHitData.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribePolicyHitDataRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribePolicyHitDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePolicyHitData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePolicyHitDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePortDetectList(self, request):
         r"""Port detection list
 
@@ -10553,6 +11450,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRiskBucketList(self, request):
+        r"""View risk-associated bucket info
+
+        :param request: Request instance for DescribeRiskBucketList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskBucketListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeRiskBucketListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRiskBucketList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRiskBucketListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRiskCallRecord(self, request):
         r"""This API is used to obtain the risk call record list.
 
@@ -10829,6 +11749,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRiskItemList(self, request):
+        r"""Get Risk Item Perspective List
+
+        :param request: Request instance for DescribeRiskItemList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskItemListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeRiskItemListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRiskItemList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRiskItemListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRiskRuleDetail(self, request):
         r"""Sample code for querying risk rule details
 
@@ -10889,6 +11832,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeRiskScanCronConfig", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRiskScanCronConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRiskTrendData(self, request):
+        r"""View the risk trend chart.
+
+        :param request: Request instance for DescribeRiskTrendData.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskTrendDataRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeRiskTrendDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRiskTrendData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRiskTrendDataResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -12888,6 +13854,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyAlarmRiskStatus(self, request):
+        r"""Modify or change the handling status.
+
+        :param request: Request instance for ModifyAlarmRiskStatus.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyAlarmRiskStatusRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyAlarmRiskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAlarmRiskStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAlarmRiskStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAssetCoreAttribute(self, request):
         r"""Tag an asset as core or not.
 
@@ -13316,6 +14305,98 @@ class CsipClient(AbstractClient):
             body = self.call("ModifyCosAuditBucketMonitorStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCosAuditBucketMonitorStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCosAuditMonitorAccount(self, request):
+        r"""Modify the cos audit monitoring account.
+
+        :param request: Request instance for ModifyCosAuditMonitorAccount.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyCosAuditMonitorAccountRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyCosAuditMonitorAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCosAuditMonitorAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCosAuditMonitorAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCosAuditObjectIdentifyStatus(self, request):
+        r"""Modify the object storage recognition switch
+
+        :param request: Request instance for ModifyCosAuditObjectIdentifyStatus.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyCosAuditObjectIdentifyStatusRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyCosAuditObjectIdentifyStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCosAuditObjectIdentifyStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCosAuditObjectIdentifyStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCosAuditObjectSampleRate(self, request):
+        r"""Set the sampling rate for object storage scan.
+
+        :param request: Request instance for ModifyCosAuditObjectSampleRate.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyCosAuditObjectSampleRateRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyCosAuditObjectSampleRateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCosAuditObjectSampleRate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCosAuditObjectSampleRateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCosMarkInfo(self, request):
+        r"""This API is used to modify the object storage remark.
+
+        :param request: Request instance for ModifyCosMarkInfo.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyCosMarkInfoRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyCosMarkInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCosMarkInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCosMarkInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -14806,6 +15887,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyPolicyStatus(self, request):
+        r"""Modifies policy status
+
+        :param request: Request instance for ModifyPolicyStatus.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyPolicyStatusRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyPolicyStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPolicyStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPolicyStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyProtectionSetting(self, request):
         r"""This API is used to configure protection settings for the major event protection package.
 
@@ -15313,7 +16417,7 @@ class CsipClient(AbstractClient):
 
 
     def ModifyVulWhitelistConfig(self, request):
-        r"""This API is used to modify the vulnerability allowlist configuration.
+        r"""Modifies the vulnerability allowlist configuration.
 
         :param request: Request instance for ModifyVulWhitelistConfig.
         :type request: :class:`tencentcloud.csip.v20221121.models.ModifyVulWhitelistConfigRequest`

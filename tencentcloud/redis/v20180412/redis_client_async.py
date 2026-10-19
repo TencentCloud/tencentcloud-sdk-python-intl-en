@@ -457,6 +457,24 @@ class RedisClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBackupEncryptConfig(
+            self,
+            request: models.DescribeBackupEncryptConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBackupEncryptConfigResponse:
+        """
+        This API is used to query information related to backup encryption for an instance, including the enabled status and encryption keys.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBackupEncryptConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBackupEncryptConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeBackupUrl(
             self,
             request: models.DescribeBackupUrlRequest,
@@ -866,6 +884,24 @@ class RedisClient(AbstractClient):
         kwargs["action"] = "DescribeInstanceParams"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeInstanceParamsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInstancePasswordPolicy(
+            self,
+            request: models.DescribeInstancePasswordPolicyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstancePasswordPolicyResponse:
+        """
+        This API is used to query the current password complexity configuration of a specified instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstancePasswordPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstancePasswordPolicyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1537,6 +1573,24 @@ class RedisClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyBackupEncrypt(
+            self,
+            request: models.ModifyBackupEncryptRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBackupEncryptResponse:
+        """
+        This API is used to turn on or disable backup encryption and modify backup key functionality.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBackupEncrypt"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBackupEncryptResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyConnectionConfig(
             self,
             request: models.ModifyConnectionConfigRequest,
@@ -1730,6 +1784,24 @@ class RedisClient(AbstractClient):
         kwargs["action"] = "ModifyInstancePassword"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyInstancePasswordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyInstancePasswordPolicy(
+            self,
+            request: models.ModifyInstancePasswordPolicyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyInstancePasswordPolicyResponse:
+        """
+        This API is used to modify the password complexity of an instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyInstancePasswordPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyInstancePasswordPolicyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2072,6 +2144,24 @@ class RedisClient(AbstractClient):
         kwargs["action"] = "UpgradeInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpgradeInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpgradeInstanceProductVersion(
+            self,
+            request: models.UpgradeInstanceProductVersionRequest,
+            opts: Dict = None,
+    ) -> models.UpgradeInstanceProductVersionResponse:
+        """
+        This API is used to upgrade the instance type from common I to common II.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpgradeInstanceProductVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpgradeInstanceProductVersionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

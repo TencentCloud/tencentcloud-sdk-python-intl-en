@@ -889,6 +889,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAuditLogs(
+            self,
+            request: models.DescribeAuditLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditLogsResponse:
+        """
+        This API is used to query database audit logs.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditLogsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAuditRuleTemplates(
             self,
             request: models.DescribeAuditRuleTemplatesRequest,
