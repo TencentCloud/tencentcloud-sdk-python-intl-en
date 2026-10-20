@@ -14,7 +14,7 @@
 # limitations under the License.
 
 
-# Authentication failed.
+# Authentication fail.
 AUTHFAILURE_INVALIDAUTHORIZATION = 'AuthFailure.InvalidAuthorization'
 
 # Operation failed.
@@ -26,34 +26,34 @@ FAILEDOPERATION_ACROSSVERSIONSERROR = 'FailedOperation.AcrossVersionsError'
 # Comparison failed.
 FAILEDOPERATION_COMPAREFAIL = 'FailedOperation.CompareFail'
 
-# The operations conflict. Do not operate on the same person simultaneously.
+# Operation conflict. Do not operate the same Person at the same time.
 FAILEDOPERATION_CONFLICTOPERATION = 'FailedOperation.ConflictOperation'
 
 # Faces cannot be added concurrently.
 FAILEDOPERATION_CREATEFACECONCURRENT = 'FailedOperation.CreateFaceConcurrent'
 
-# The custom description field must be unique in the group.
+# Custom description fields in the same person library cannot be repeated.
 FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = 'FailedOperation.DuplicatedGroupDescription'
 
 # The face image quality does not meet the requirement.
 FAILEDOPERATION_FACEQUALITYNOTQUALIFIED = 'FailedOperation.FaceQualityNotQualified'
 
-# The face frame size is smaller than the `MinFaceSize` value, and the face is filtered out.
+# Face frame size is less than the MinFaceSize setting, and the human face is filtered.
 FAILEDOPERATION_FACESIZETOOSMALL = 'FailedOperation.FaceSizeTooSmall'
 
 # The current group is being deleted. Please wait.
 FAILEDOPERATION_GROUPINDELETEDSTATE = 'FailedOperation.GroupInDeletedState'
 
-# The ID of the corresponding person is already in the group.
+# The group already contains the corresponding personnel Id.
 FAILEDOPERATION_GROUPPERSONMAPEXIST = 'FailedOperation.GroupPersonMapExist'
 
-# The ID of the corresponding person is not in the group.
+# The group does not include the corresponding personnel Id.
 FAILEDOPERATION_GROUPPERSONMAPNOTEXIST = 'FailedOperation.GroupPersonMapNotExist'
 
 # Image decoding failed.
 FAILEDOPERATION_IMAGEDECODEFAILED = 'FailedOperation.ImageDecodeFailed'
 
-# An error occurred while downloading the image.
+# Image download error.
 FAILEDOPERATION_IMAGEDOWNLOADERROR = 'FailedOperation.ImageDownloadError'
 
 # Face detection failed.
@@ -62,10 +62,10 @@ FAILEDOPERATION_IMAGEFACEDETECTFAILED = 'FailedOperation.ImageFacedetectFailed'
 # The image resolution is too high.
 FAILEDOPERATION_IMAGERESOLUTIONEXCEED = 'FailedOperation.ImageResolutionExceed'
 
-# The image short edge resolution is smaller than 64.
+# The short edge resolution of the image is lower than 64 pixels.
 FAILEDOPERATION_IMAGERESOLUTIONTOOSMALL = 'FailedOperation.ImageResolutionTooSmall'
 
-# The size of the Base64-encoded image cannot exceed 5 MB.
+# The size of the image after base64 encoding cannot exceed 5 MB.
 FAILEDOPERATION_IMAGESIZEEXCEED = 'FailedOperation.ImageSizeExceed'
 
 # Multiple faces detected.
@@ -80,157 +80,157 @@ FAILEDOPERATION_LIFEPHOTODETECTNOFACES = 'FailedOperation.LifePhotoDetectNoFaces
 # Uploaded image too large or too small.
 FAILEDOPERATION_LIFEPHOTOSIZEERROR = 'FailedOperation.LifePhotoSizeError'
 
-# The request frequency exceeds the limit.
+# Request frequency exceeds the limit.
 FAILEDOPERATION_REQUESTLIMITEXCEEDED = 'FailedOperation.RequestLimitExceeded'
 
 # The backend service timed out.
 FAILEDOPERATION_REQUESTTIMEOUT = 'FailedOperation.RequestTimeout'
 
-# The RPC call failed.
+# Rpc call failed.
 FAILEDOPERATION_RPCFAIL = 'FailedOperation.RpcFail'
 
-# The number of faces searched for exceeds the limit.
+# The number of retrieved human faces exceeds the limit.
 FAILEDOPERATION_SEARCHFACESEXCEED = 'FailedOperation.SearchFacesExceed'
 
-# The algorithm service is exceptional. Please retry.
+# Algorithm service exception. Retry.
 FAILEDOPERATION_SERVERERROR = 'FailedOperation.ServerError'
 
-# An internal error occurred.
+# Internal error.
 FAILEDOPERATION_UNKNOWERROR = 'FailedOperation.UnKnowError'
 
 # Internal error.
 INTERNALERROR = 'InternalError'
 
-# Invalid parameter.
+# Invalid parameters.
 INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
 
-# The number of faces in the account exceeds the limit.
+# Number of faces in the account exceeds the limit.
 INVALIDPARAMETERVALUE_ACCOUNTFACENUMEXCEED = 'InvalidParameterValue.AccountFaceNumExceed'
 
-# The number of faces to be deleted exceeds the limit. Every person must have at least one face image.
+# The number of faces to delete exceeds the limit. Each person must contain at least one face.
 INVALIDPARAMETERVALUE_DELETEFACENUMEXCEED = 'InvalidParameterValue.DeleteFaceNumExceed'
 
 # Invalid `FaceMatchThreshold` parameter.
 INVALIDPARAMETERVALUE_FACEMATCHTHRESHOLDILLEGAL = 'InvalidParameterValue.FaceMatchThresholdIllegal'
 
-# The algorithm model version is invalid.
+# Invalid algorithm model version.
 INVALIDPARAMETERVALUE_FACEMODELVERSIONILLEGAL = 'InvalidParameterValue.FaceModelVersionIllegal'
 
-# The array length of the group's custom description fields exceeds the limit. Up to 5 fields can be created.
+# The person library customized description field array exceeds the length limit. You can create up to 5.
 INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSEXCEED = 'InvalidParameterValue.GroupExDescriptionsExceed'
 
-# The name of the group's custom description field must be unique.
+# The custom description field name in the person library cannot be repeated.
 INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSNAMEIDENTICAL = 'InvalidParameterValue.GroupExDescriptionsNameIdentical'
 
-# The name of the group's custom description field contains invalid characters. It can contain only letters, `-`, `_`, and digits.
+# The custom description field name of the personnel database contains invalid characters. It can only contain Chinese and English characters, -, _, and digits.
 INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSNAMEILLEGAL = 'InvalidParameterValue.GroupExDescriptionsNameIllegal'
 
-# The name of the group's custom description field exceeds the length limit.
+# Personnel library custom description field name length exceeds the limit.
 INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSNAMETOOLONG = 'InvalidParameterValue.GroupExDescriptionsNameTooLong'
 
-# The number of faces in the group exceeds the limit.
+# The number of faces in the person library exceeds the limit.
 INVALIDPARAMETERVALUE_GROUPFACENUMEXCEED = 'InvalidParameterValue.GroupFaceNumExceed'
 
-# The group ID already exists. It must be unique.
+# Personnel database ID already exists. Personnel database ID cannot be repeated.
 INVALIDPARAMETERVALUE_GROUPIDALREADYEXIST = 'InvalidParameterValue.GroupIdAlreadyExist'
 
-# The group ID contains invalid characters. It can contain only letters, digits, and special symbols (-%@#&_).
+# The personnel database ID contains invalid characters. The personnel database ID supports only English, digits, -%@#&_.
 INVALIDPARAMETERVALUE_GROUPIDILLEGAL = 'InvalidParameterValue.GroupIdIllegal'
 
-# The group ID does not exist.
+# Personnel database ID does not exist.
 INVALIDPARAMETERVALUE_GROUPIDNOTEXIST = 'InvalidParameterValue.GroupIdNotExist'
 
 # The corresponding group ID does not exist.
 INVALIDPARAMETERVALUE_GROUPIDNOTEXISTS = 'InvalidParameterValue.GroupIdNotExists'
 
-# The group ID exceeds the length limit.
+# Personnel database ID exceeds the length limit.
 INVALIDPARAMETERVALUE_GROUPIDTOOLONG = 'InvalidParameterValue.GroupIdTooLong'
 
-# The list of groups passed in exceeds the limit.
+# The incoming personnel library list exceeds the limit.
 INVALIDPARAMETERVALUE_GROUPIDSEXCEED = 'InvalidParameterValue.GroupIdsExceed'
 
-# The group name already exists. It must be unique.
+# Person library name already exists. Person library name should be unique.
 INVALIDPARAMETERVALUE_GROUPNAMEALREADYEXIST = 'InvalidParameterValue.GroupNameAlreadyExist'
 
-# The group name contains invalid characters. It can contain only letters, `-`, `_`, and digits.
+# The personnel database name contains invalid characters. It can only contain Chinese and English characters, -, _, and digits.
 INVALIDPARAMETERVALUE_GROUPNAMEILLEGAL = 'InvalidParameterValue.GroupNameIllegal'
 
-# The group name exceeds the length limit.
+# Personnel database name exceeds the length limit.
 INVALIDPARAMETERVALUE_GROUPNAMETOOLONG = 'InvalidParameterValue.GroupNameTooLong'
 
-# The number of groups exceeds the limit. If you need more, please contact us.
+# The number of person libraries exceeds the limit. To add more, contact us.
 INVALIDPARAMETERVALUE_GROUPNUMEXCEED = 'InvalidParameterValue.GroupNumExceed'
 
-# The number of groups exceeds the limit. One person can be added to up to 100 groups.
+# The number of person libraries exceeds the limit. A single person can be added to up to 100 person libraries.
 INVALIDPARAMETERVALUE_GROUPNUMPERPERSONEXCEED = 'InvalidParameterValue.GroupNumPerPersonExceed'
 
-# The group remarks field contains invalid characters. It can contain only letters, `-`, `_`, and digits.
+# Personnel database remarks contain invalid characters. Personnel database remarks only support Chinese, English, -, _, and digits.
 INVALIDPARAMETERVALUE_GROUPTAGILLEGAL = 'InvalidParameterValue.GroupTagIllegal'
 
-# The group remarks field exceeds the length limit.
+# Personnel database remarks exceed the length limit.
 INVALIDPARAMETERVALUE_GROUPTAGTOOLONG = 'InvalidParameterValue.GroupTagTooLong'
 
-# Empty image.
+# No image is input.
 INVALIDPARAMETERVALUE_IMAGEEMPTY = 'InvalidParameterValue.ImageEmpty'
 
 # Empty image.
 INVALIDPARAMETERVALUE_IMAGEEMPTYERROR = 'InvalidParameterValue.ImageEmptyError'
 
-# The number of returned results exceeds the limit.
+# Number of returns exceeds the limit.
 INVALIDPARAMETERVALUE_LIMITEXCEED = 'InvalidParameterValue.LimitExceed'
 
-# There are no faces in the specified group.
+# No human face in the specified group.
 INVALIDPARAMETERVALUE_NOFACEINGROUPS = 'InvalidParameterValue.NoFaceInGroups'
 
-# There are no faces in the image.
+# The image contains no human face.
 INVALIDPARAMETERVALUE_NOFACEINPHOTO = 'InvalidParameterValue.NoFaceInPhoto'
 
-# The starting number is too large. Please check the length of the array to be requested.
+# Starting number is too large. Please check the required length of the array.
 INVALIDPARAMETERVALUE_OFFSETEXCEED = 'InvalidParameterValue.OffsetExceed'
 
-# The array length of the person's custom description fields exceeds the limit. Up to 5 fields are allowed.
+# The customized description field array exceeds the length limit. Up to 5.
 INVALIDPARAMETERVALUE_PERSONEXDESCRIPTIONINFOSEXCEED = 'InvalidParameterValue.PersonExDescriptionInfosExceed'
 
-# The name of the person's custom description field must be unique.
+# The custom description field name of a person cannot be repeated.
 INVALIDPARAMETERVALUE_PERSONEXDESCRIPTIONSNAMEIDENTICAL = 'InvalidParameterValue.PersonExDescriptionsNameIdentical'
 
-# The name of the person's custom description field contains invalid characters. It can contain only letters, `-`, `_`, and digits.
+# The custom description field name contains invalid characters. The custom description field name supports only Chinese, English, -, _, and digits.
 INVALIDPARAMETERVALUE_PERSONEXDESCRIPTIONSNAMEILLEGAL = 'InvalidParameterValue.PersonExDescriptionsNameIllegal'
 
-# The name of the person's custom description field exceeds the length limit.
+# Person custom description field name length exceeds the limit.
 INVALIDPARAMETERVALUE_PERSONEXDESCRIPTIONSNAMETOOLONG = 'InvalidParameterValue.PersonExDescriptionsNameTooLong'
 
-# The ID of the corresponding person is already in the group.
+# The group already contains the corresponding personnel Id.
 INVALIDPARAMETERVALUE_PERSONEXISTINGROUP = 'InvalidParameterValue.PersonExistInGroup'
 
-# The number of face images for the person exceeds the limit. One person can have up to 5 face images.
+# The number of faces for a single person exceeds the limit. A single person can contain up to five faces.
 INVALIDPARAMETERVALUE_PERSONFACENUMEXCEED = 'InvalidParameterValue.PersonFaceNumExceed'
 
-# An error occurred while setting person gender. 0: empty; 1: male; 2: female.
+# Error in gender of personnel settings. 0 represents empty, 1 represents man, 2 represents woman.
 INVALIDPARAMETERVALUE_PERSONGENDERILLEGAL = 'InvalidParameterValue.PersonGenderIllegal'
 
-# The person ID already exists. It must be unique.
+# Person ID already exists. Person ID should be unique.
 INVALIDPARAMETERVALUE_PERSONIDALREADYEXIST = 'InvalidParameterValue.PersonIdAlreadyExist'
 
-# The person ID contains invalid characters. It can contain only letters, digits, and -%@#&_.
+# The person ID contains invalid characters. The person ID supports only English, digits, -%@#&_.
 INVALIDPARAMETERVALUE_PERSONIDILLEGAL = 'InvalidParameterValue.PersonIdIllegal'
 
-# The person ID does not exist.
+# Personnel ID does not exist.
 INVALIDPARAMETERVALUE_PERSONIDNOTEXIST = 'InvalidParameterValue.PersonIdNotExist'
 
-# The person ID field exceeds the length limit.
+# Person ID exceeds the length limit.
 INVALIDPARAMETERVALUE_PERSONIDTOOLONG = 'InvalidParameterValue.PersonIdTooLong'
 
-# The person name contains invalid characters. It can contain only letters, `-`, `_`, and digits.
+# The person name contains invalid characters. It can only contain Chinese and English characters, -, _, and digits.
 INVALIDPARAMETERVALUE_PERSONNAMEILLEGAL = 'InvalidParameterValue.PersonNameIllegal'
 
-# The person name exceeds the length limit.
+# Person name exceeds the length limit.
 INVALIDPARAMETERVALUE_PERSONNAMETOOLONG = 'InvalidParameterValue.PersonNameTooLong'
 
 # Invalid `QualityControl` parameter.
 INVALIDPARAMETERVALUE_QUALITYCONTROLILLEGAL = 'InvalidParameterValue.QualityControlIllegal'
 
-# The number of persons searched for exceeds the limit.
+# The number of personnel found exceeds the limit.
 INVALIDPARAMETERVALUE_SEARCHPERSONSEXCEED = 'InvalidParameterValue.SearchPersonsExceed'
 
 # Invalid `UniquePersonControl` parameter.
@@ -239,25 +239,25 @@ INVALIDPARAMETERVALUE_UNIQUEPERSONCONTROLILLEGAL = 'InvalidParameterValue.Unique
 # This operation is not supported by algorithm model v2.0 or below.
 INVALIDPARAMETERVALUE_UNSUPPORTEDGROUPFACEMODELVERSION = 'InvalidParameterValue.UnsupportedGroupFaceModelVersion'
 
-# Up to four faces can be uploaded at a time.
+# Upload up to four human faces.
 INVALIDPARAMETERVALUE_UPLOADFACENUMEXCEED = 'InvalidParameterValue.UploadFaceNumExceed'
 
-# Invalid URL format.
+# The URL format is invalid.
 INVALIDPARAMETERVALUE_URLILLEGAL = 'InvalidParameterValue.UrlIllegal'
 
 # The quota limit is reached.
 LIMITEXCEEDED = 'LimitExceeded'
 
-# The number of faces exceeds the limit.
+# The number of human faces exceeds the limit.
 LIMITEXCEEDED_ERRORFACENUMEXCEED = 'LimitExceeded.ErrorFaceNumExceed'
 
-# A required parameter is empty.
+# The required parameter is empty.
 MISSINGPARAMETER_ERRORPARAMETEREMPTY = 'MissingParameter.ErrorParameterEmpty'
 
 # The account is in arrears.
 RESOURCEUNAVAILABLE_CHARGESTATUSEXCEPTION = 'ResourceUnavailable.ChargeStatusException'
 
-# The resource is being shipped.
+# The resource is being delivered.
 RESOURCEUNAVAILABLE_DELIVERING = 'ResourceUnavailable.Delivering'
 
 # The account has been frozen.
@@ -272,13 +272,13 @@ RESOURCEUNAVAILABLE_INARREARS = 'ResourceUnavailable.InArrears'
 # Insufficient balance.
 RESOURCEUNAVAILABLE_LOWBALANCE = 'ResourceUnavailable.LowBalance'
 
-# The billing status is unknown. Please check whether the service has been activated in the console.
+# The billing status is unknown. Check whether the service has been activated in the console.
 RESOURCEUNAVAILABLE_NOTEXIST = 'ResourceUnavailable.NotExist'
 
 # The service is not activated.
 RESOURCEUNAVAILABLE_NOTREADY = 'ResourceUnavailable.NotReady'
 
-# The resource has been repossessed.
+# The resource has been possessed.
 RESOURCEUNAVAILABLE_RECOVER = 'ResourceUnavailable.Recover'
 
 # Services for the account has been stopped.
@@ -287,8 +287,8 @@ RESOURCEUNAVAILABLE_STOPUSING = 'ResourceUnavailable.StopUsing'
 # The billing status is unknown.
 RESOURCEUNAVAILABLE_UNKNOWNSTATUS = 'ResourceUnavailable.UnknownStatus'
 
-# The billing status is exceptional.
+# The billing status is abnormal.
 RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = 'ResourcesSoldOut.ChargeStatusException'
 
-# Unknown method name.
+# The method name is unknown.
 UNSUPPORTEDOPERATION_UNKNOWMETHOD = 'UnsupportedOperation.UnknowMethod'
