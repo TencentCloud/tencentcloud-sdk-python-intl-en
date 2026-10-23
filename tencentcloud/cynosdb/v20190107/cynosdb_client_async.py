@@ -31,7 +31,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ActivateInstanceResponse:
         """
-        This interface (ActivateInstance) restores access to isolated instances.
+        This API is used to restore access to isolated instances.
         """
         
         kwargs = {}
@@ -85,7 +85,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AddClusterSlaveZoneResponse:
         """
-        This interface (AddClusterSlaveZone) is used to enable multi-az deployment for a cluster.
+        This API is used to enable multi-AZ deployment for a cluster.
         """
         
         kwargs = {}
@@ -139,7 +139,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AddServerlessRoInstancesResponse:
         """
-        Add a read-only instance to the serverless cluster
+        Add a read-only instance to a serverless cluster
         """
         
         kwargs = {}
@@ -193,13 +193,31 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CalculateBackupSaveSecExpiresResponse:
         """
-        Calculate the backup file list that will expire and be deleted after modifying the backup retention period
+        Calculate the backup file list that will expire and be deleted after the backup retention period is modified.
         """
         
         kwargs = {}
         kwargs["action"] = "CalculateBackupSaveSecExpires"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CalculateBackupSaveSecExpiresResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CancelTask(
+            self,
+            request: models.CancelTaskRequest,
+            opts: Dict = None,
+    ) -> models.CancelTaskResponse:
+        """
+        Cancel to be executed tasks
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CancelTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CancelTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -229,7 +247,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CheckTransferClusterZoneResponse:
         """
-        This API is used to check if it is possible to trigger cross-AZ migration.
+        This API is used to check whether cross-AZ migration can be initiated.
         """
         
         kwargs = {}
@@ -247,7 +265,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CloseAuditServiceResponse:
         """
-        This API is used to close the database audit service for TDSQL-C MySQL instances.
+        This API is used to close the database audit service for a TDSQL-C MySQL instance.
         """
         
         kwargs = {}
@@ -265,7 +283,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CloseClusterPasswordComplexityResponse:
         """
-        This API is used to close cluster password complexity.
+        This API is used to disable password complexity for a cluster.
         """
         
         kwargs = {}
@@ -283,7 +301,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CloseProxyResponse:
         """
-        This API is used to close the database proxy service of a cluster.
+        This API is used to shut down the database proxy service of a cluster.
         """
         
         kwargs = {}
@@ -319,7 +337,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CloseSSLResponse:
         """
-        This API is used to disable SSL encryption.
+        Disable SSL encryption
         """
         
         kwargs = {}
@@ -337,7 +355,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CloseWanResponse:
         """
-        This interface (CloseWan) is used to disable public network.
+        This API is used to disable public network.
         """
         
         kwargs = {}
@@ -355,7 +373,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CopyBackupToVaultResponse:
         """
-        Copy backup files to the designated safe
+        Copy the backup file to the designated backup safe.
         """
         
         kwargs = {}
@@ -409,7 +427,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAuditRuleTemplateResponse:
         """
-        This API is used to create audit rule templates.
+        This API is used to create an audit rule template.
         """
         
         kwargs = {}
@@ -481,7 +499,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateClustersResponse:
         """
-        This API is used to purchase new clusters.
+        This API is used to create a cluster.
         """
         
         kwargs = {}
@@ -499,7 +517,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateIntegrateClusterResponse:
         """
-        This API is used to create a newly purchased cluster.
+        This API is used to purchase a new cluster.
         """
         
         kwargs = {}
@@ -553,7 +571,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateParamTemplateResponse:
         """
-        This API is used to create parameter templates.
+        This API is used to create a parameter template.
         """
         
         kwargs = {}
@@ -571,7 +589,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateProxyResponse:
         """
-        This API is used to enable the database proxy of a cluster.
+        This API is used to enable the database proxy for a cluster.
         """
         
         kwargs = {}
@@ -607,7 +625,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateResourcePackageResponse:
         """
-        This API is used to purchase new resource packets.
+        This API is used to create a resource package.
         """
         
         kwargs = {}
@@ -625,7 +643,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateVaultResponse:
         """
-        Create a backup safe
+        This API is used to create a backup vault.
         """
         
         kwargs = {}
@@ -679,7 +697,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteBackupResponse:
         """
-        This API is used to delete manual backups for a cluster. Automatic backups cannot be deleted.
+        This API is used to delete a manual backup for a cluster. Auto-backups cannot be deleted.
         """
         
         kwargs = {}
@@ -697,7 +715,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteBackupVaultResponse:
         """
-        Delete specified backup files from the safe
+        Delete the specified backup file from the backup safe.
         """
         
         kwargs = {}
@@ -733,7 +751,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteClusterDatabaseResponse:
         """
-        This interface is used to delete a database.
+        This API is used to delete a database.
         """
         
         kwargs = {}
@@ -751,7 +769,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteClusterSaveBackupResponse:
         """
-        This API is used to delete residual backups for cluster deletion.
+        This API is used to delete residual backups for a cluster.
         """
         
         kwargs = {}
@@ -805,7 +823,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteParamTemplateResponse:
         """
-        This API is used to delete a parameter template.
+        This API is used to delete a user-created parameter template.
         """
         
         kwargs = {}
@@ -841,7 +859,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAccountPrivilegesResponse:
         """
-        This API is used to query account privileges.
+        This API is used to query the permissions of an account.
         """
         
         kwargs = {}
@@ -913,7 +931,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAuditRuleTemplatesResponse:
         """
-        This API is used to query audit rule template information.
+        This API is used to query the information of audit rule templates.
         """
         
         kwargs = {}
@@ -931,7 +949,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAuditRuleWithInstanceIdsResponse:
         """
-        This API is used to obtain the audit rules of the instance.
+        This API is used to obtain audit rules of the instance.
         """
         
         kwargs = {}
@@ -949,7 +967,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeBackupConfigResponse:
         """
-        This API is used to obtain the backup configuration information of a specified cluster, including the full backup time period and the backup file retention time.
+        This API is used to obtain the backup configuration information of a specified cluster, including the full backup time period and backup file retention time.
         """
         
         kwargs = {}
@@ -967,7 +985,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeBackupDownloadRestrictionResponse:
         """
-        This API is used to query the download source limit of the default backup configured by the user in the current region.
+        This API is used to query the default backup download access restrictions configured by the user in the current region.
         """
         
         kwargs = {}
@@ -985,7 +1003,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeBackupDownloadUrlResponse:
         """
-        This API is used to query the download link of cluster backup files.
+        This API is used to query the download URL of cluster backup files.
         """
         
         kwargs = {}
@@ -1003,7 +1021,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeBackupDownloadUserRestrictionResponse:
         """
-        This API is used to query the default backup download access restrictions of user-level settings in the current region.
+        This API is used to query the default backup download access restrictions for user-level settings in the current region.
         """
         
         kwargs = {}
@@ -1075,7 +1093,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeBinlogConfigResponse:
         """
-        This API is used to query binlog configurations.
+        This API is used to query the binlog configuration.
         """
         
         kwargs = {}
@@ -1093,7 +1111,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeBinlogDownloadUrlResponse:
         """
-        This API is used to query the download address of Binlog.
+        This API is used to query the download URL of a Binlog.
         """
         
         kwargs = {}
@@ -1111,7 +1129,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeBinlogListByVaultResponse:
         """
-        Query binlog backups in the insurance box
+        Queries binlog backups in a vault
         """
         
         kwargs = {}
@@ -1129,7 +1147,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeBinlogSaveDaysResponse:
         """
-        This API is used to query the binlog retention period of a cluster in days.
+        This API is used to query the Binlog retention days of a cluster.
         """
         
         kwargs = {}
@@ -1147,7 +1165,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeBinlogsResponse:
         """
-        This interface (DescribeBinlogs) queries the cluster binlog list.
+        This API is used to query the Binlog list of a cluster.
         """
         
         kwargs = {}
@@ -1165,7 +1183,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeChangedParamsAfterUpgradeResponse:
         """
-        this interface is used for querying parameter comparison after specification adjustment.
+        This API is used to query the parameter comparison for scaling.
         """
         
         kwargs = {}
@@ -1183,7 +1201,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeClusterDatabaseTablesResponse:
         """
-        This API is used to access the table list.
+        Access the table list.
         """
         
         kwargs = {}
@@ -1201,7 +1219,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeClusterDatabasesResponse:
         """
-        This API is used to obtain cluster database list.
+        This API is used to obtain the cluster database list.
         """
         
         kwargs = {}
@@ -1237,7 +1255,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeClusterDetailDatabasesResponse:
         """
-        This API is used to query database list.
+        This API is used to query the database list.
         """
         
         kwargs = {}
@@ -1255,7 +1273,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeClusterInstanceGroupsResponse:
         """
-        This API is used to query instance group info.
+        This API is used to query instance group information.
         """
         
         kwargs = {}
@@ -1273,7 +1291,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeClusterInstanceGrpsResponse:
         """
-        This API is used to query instance groups.
+        This API is used to query instance group information. This API is deprecated. DescribeClusterInstanceGroups is recommended.
         """
         
         kwargs = {}
@@ -1309,7 +1327,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeClusterPasswordComplexityResponse:
         """
-        This API is used to view the cluster password complexity details.
+        This API is used to view the password complexity details of a cluster.
         """
         
         kwargs = {}
@@ -1363,7 +1381,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeClusterTransparentEncryptInfoResponse:
         """
-        This API is used to query cluster transparent encryption information.
+        Queries cluster transparent encryption information
         """
         
         kwargs = {}
@@ -1525,7 +1543,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeInstanceSpecsResponse:
         """
-        This interface (DescribeInstanceSpecs) is used to query the instance specifications available for purchase on the query purchase page.
+        This API is used to query the instance specifications available for purchase on the purchase page.
         """
         
         kwargs = {}
@@ -1543,7 +1561,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeInstanceSpecsByOperationTypeResponse:
         """
-        Query instance specifications based on operation type
+        Query instance specifications according to the operation type.
         """
         
         kwargs = {}
@@ -1561,7 +1579,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeInstancesResponse:
         """
-        This API is used to query the list of instances.
+        This API is used to query the instance list.
         """
         
         kwargs = {}
@@ -1615,7 +1633,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeIsolatedInstancesResponse:
         """
-        This interface is used for querying the recycle bin instance list.
+        This API is used to query the recycle bin instance list.
         """
         
         kwargs = {}
@@ -1687,7 +1705,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeLibraDBClusterAutoMapRuleResponse:
         """
-        This API is used to view the advanced mapping rule of the analysis cluster.
+        This API is used to view advanced mapping rules for an analysis cluster.
         """
         
         kwargs = {}
@@ -1705,7 +1723,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeLibraDBClusterDetailResponse:
         """
-        Query TDSQL-C analysis cluster information
+        Queries TDSQL-C analysis cluster information
         """
         
         kwargs = {}
@@ -1723,7 +1741,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeLibraDBClusterTableMappingResponse:
         """
-        This API is used to view the database/table mapping relationship of an analysis cluster.
+        This API is used to view the mapping relationship between databases and tables in an analysis cluster.
         """
         
         kwargs = {}
@@ -1741,7 +1759,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeLibraDBClustersResponse:
         """
-        Query the analysis cluster list
+        This API is used to query the list of analysis clusters.
         """
         
         kwargs = {}
@@ -1759,7 +1777,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeLibraDBDataSourceResponse:
         """
-        This API is used to query the source instance information of an analysis cluster.
+        This API is used to query source instance information of the analysis cluster.
         """
         
         kwargs = {}
@@ -1777,7 +1795,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeLibraDBForwardConfigResponse:
         """
-        This API is used to query the analysis engine forwarding parameters.
+        This API is used to query the forwarding parameters of the analysis engine.
         """
         
         kwargs = {}
@@ -1813,7 +1831,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeLibraDBInstanceSpecsResponse:
         """
-        This API is used to query the specification list of the read-only analysis engine supported in the region.
+        This API is used to query the specification information list supported for read-only analysis engines in the region.
         """
         
         kwargs = {}
@@ -1831,7 +1849,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeLibraDBSlowLogsResponse:
         """
-        This API is used to query slow SQL details in the read-only analysis engine.
+        This API is used to query slow SQL details of the read-only analysis engine.
         """
         
         kwargs = {}
@@ -1849,7 +1867,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeLibraDBVersionResponse:
         """
-        Query the list of supported versions for the read-only analysis engine
+        This API is used to query the list of supported versions for the read-only analysis engine.
         """
         
         kwargs = {}
@@ -1867,7 +1885,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMaintainPeriodResponse:
         """
-        This interface (DescribeMaintainPeriod) is used to query the instance maintenance window.
+        This API is used to query instance maintenance window.
         """
         
         kwargs = {}
@@ -1903,7 +1921,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeParamTemplatesResponse:
         """
-        This API is used to query all parameter template information under the user-specified product.
+        This API is used to query all parameter template information under a user-specified product.
         """
         
         kwargs = {}
@@ -1939,7 +1957,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeProxiesResponse:
         """
-        This API is used to query agent list.
+        This API is used to query the database proxy list.
         """
         
         kwargs = {}
@@ -1957,7 +1975,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeProxyNodesResponse:
         """
-        This API is used to query the list of proxy nodes.
+        This API is used to query the proxy node list.
         """
         
         kwargs = {}
@@ -1982,6 +2000,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "DescribeProxySpecs"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeProxySpecsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeProxyZoneStocks(
+            self,
+            request: models.DescribeProxyZoneStocksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeProxyZoneStocksResponse:
+        """
+        This API is used to query regional inventory for database proxy.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeProxyZoneStocks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeProxyZoneStocksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2047,7 +2083,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeResourcePackageListResponse:
         """
-        This API is used to query resource package list.
+        This API is used to query the resource package list.
         """
         
         kwargs = {}
@@ -2083,7 +2119,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeResourcesByDealNameResponse:
         """
-        This interface (DescribeResourcesByDealName) is used to query order-associated instances.
+        This API is used to query order associated instances.
         """
         
         kwargs = {}
@@ -2119,7 +2155,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeSQLExecutionPlanResponse:
         """
-        This API is used to query the execution plan details.
+        This API is used to query the details of a query execution plan.
         """
         
         kwargs = {}
@@ -2155,7 +2191,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeServerlessInstanceSpecsResponse:
         """
-        This API is used to query available specifications of Serverless instances.
+        Query the available specifications of a Serverless instance
         """
         
         kwargs = {}
@@ -2173,7 +2209,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeServerlessStrategyResponse:
         """
-        This API is used to query serverless policies.
+        Queries a serverless policy.
         """
         
         kwargs = {}
@@ -2191,7 +2227,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeSlaveZonesResponse:
         """
-        This API is used to query from availability zones.
+        Query the secondary AZ
         """
         
         kwargs = {}
@@ -2227,7 +2263,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeTasksResponse:
         """
-        This API is used to query task lists.
+        This API is used to query the task list.
         """
         
         kwargs = {}
@@ -2245,7 +2281,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeVaultBackupClusterInfoResponse:
         """
-        Query the cluster information list associated with the backup safe
+        This API is used to query the cluster information list associated with a backup safe.
         """
         
         kwargs = {}
@@ -2263,7 +2299,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeVaultsResponse:
         """
-        Query backup safe list, support page, filter and sort.
+        Queries the backup vault list, supporting pagination, filtering, and sorting.
         """
         
         kwargs = {}
@@ -2281,7 +2317,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeZonesResponse:
         """
-        This API is used to query marketable regional availability zone information.
+        This API is used to query the information of marketable regional availability zones.
         """
         
         kwargs = {}
@@ -2335,7 +2371,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ExportInstanceErrorLogsResponse:
         """
-        This API is used to export the error logs of an instance.
+        This API is used to export instance error logs.
         """
         
         kwargs = {}
@@ -2353,7 +2389,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ExportInstanceSlowQueriesResponse:
         """
-        This API is used to export instance slow logs.
+        This API is used to export slow logs of an instance.
         """
         
         kwargs = {}
@@ -2371,7 +2407,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ExportResourcePackageDeductDetailsResponse:
         """
-        This API is used to export the usage details of a resource package.
+        Export resource package usage details
         """
         
         kwargs = {}
@@ -2389,7 +2425,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.GrantAccountPrivilegesResponse:
         """
-        This API is used to grant permissions to authorized accounts in batch.
+        This API is used to grant account permissions in batches.
         """
         
         kwargs = {}
@@ -2407,7 +2443,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.InquirePriceCreateResponse:
         """
-        This interface (InquirePriceCreate) is used for price inquiry of newly purchased clusters.
+        This API is used to query the price of a newly purchased cluster.
         """
         
         kwargs = {}
@@ -2425,7 +2461,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.InquirePriceModifyResponse:
         """
-        This API is used to query the price for modifying the specifications of a prepaid cluster.
+        Inquires about the price of changing the configuration of a prepaid cluster
         """
         
         kwargs = {}
@@ -2443,7 +2479,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.InquirePriceMultiSpecResponse:
         """
-        This API is used to inquire prices in batch.
+        This API is used to batch inquire prices.
         """
         
         kwargs = {}
@@ -2479,7 +2515,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.IsolateClusterResponse:
         """
-        This interface (IsolateCluster) is used to isolate a cluster.
+        This API is used to isolate a cluster.
         """
         
         kwargs = {}
@@ -2515,7 +2551,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.IsolateLibraDBClusterResponse:
         """
-        Isolating a TDSQL-C Analysis Cluster
+        Isolate a TDSQL-C analysis cluster
         """
         
         kwargs = {}
@@ -2533,7 +2569,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.IsolateLibraDBInstanceResponse:
         """
-        This API is used to isolate read-only analysis engine instances.
+        This API is used to isolate a read-only analysis engine instance.
         """
         
         kwargs = {}
@@ -2551,7 +2587,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyAccountDescriptionResponse:
         """
-        This API is used to modify the descriptions of a database account.
+        This API is used to modify database account description information.
         """
         
         kwargs = {}
@@ -2569,7 +2605,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyAccountHostResponse:
         """
-        This API is used to modify account hosts.
+        This API is used to modify the account host.
         """
         
         kwargs = {}
@@ -2587,7 +2623,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyAccountPrivilegesResponse:
         """
-        This API is used to modify account database and table permissions.
+        This API is used to modify account database/table permissions.
         """
         
         kwargs = {}
@@ -2605,7 +2641,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyAuditRuleTemplatesResponse:
         """
-        This API is used to modify audit rule templates.
+        This API is used to modify an audit rule template.
         """
         
         kwargs = {}
@@ -2623,7 +2659,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyAuditServiceResponse:
         """
-        This API is used to modify the audit configurations of an instance, such as audit log retention period and audit rule.
+        This API is used to modify the audit log retention period, audit rules, and other service settings of CDB.
         """
         
         kwargs = {}
@@ -2659,7 +2695,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyBackupDownloadRestrictionResponse:
         """
-        This API is used to modify the download source limit of the backup file for the user in the current region. It can be configured to allow downloads from both private and public networks, only the private network, or a designated vpc or ip within the private network.
+        This API is used to modify the backup file download access restrictions for users in the current region. It can be set to allow downloads from both private and public networks, only private networks, or designated VPCs and IPs within the private network.
         """
         
         kwargs = {}
@@ -2677,7 +2713,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyBackupDownloadUserRestrictionResponse:
         """
-        This API is used to modify the download source restrictions for backup files in the user's current region. It can be configured to allow downloads from both private and public networks, only from a private network, or from a designated vpc or ip within the private network.
+        This API is used to modify the download source limits for backup files of a user in the current region. It can be set to allow downloads from both private and public networks, only from a private network, or from designated VPCs and IPs within a private network.
         """
         
         kwargs = {}
@@ -2695,7 +2731,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyBackupNameResponse:
         """
-        This API is used to rename a backup file.
+        This API is used to modify the backup file remark name.
         """
         
         kwargs = {}
@@ -2713,7 +2749,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyBinlogConfigResponse:
         """
-        This API is used to modify Binlog configuration.
+        This API is used to modify the Binlog configuration.
         """
         
         kwargs = {}
@@ -2731,7 +2767,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyBinlogSaveDaysResponse:
         """
-        This API is used to modify the binlog retention period in days.
+        This API is used to modify the retention days of cluster binlogs.
         """
         
         kwargs = {}
@@ -2749,7 +2785,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyClusterBinlogRedoLogAutoCopyVaultResponse:
         """
-        This API is used to modify cluster configuration to automatically copy Binlog and RedoLog to safe.
+        Modify the configuration for automatically copying cluster Binlog and RedoLog to the safe.
         """
         
         kwargs = {}
@@ -2767,7 +2803,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyClusterDatabaseResponse:
         """
-        This API is used to modify account authorization of a database.
+        This API is used to modify account authorization for a database.
         """
         
         kwargs = {}
@@ -2785,7 +2821,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyClusterGlobalEncryptionResponse:
         """
-        Enable global encryption
+        Toggle global encryption
         """
         
         kwargs = {}
@@ -2893,7 +2929,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyClusterSlaveZoneResponse:
         """
-        This API is used to modify the slave availability zone of a cluster.
+        This API is used to modify the replica AZ of a cluster.
         """
         
         kwargs = {}
@@ -2947,7 +2983,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyInstanceParamResponse:
         """
-        This API is used to modify the instance parameters.
+        This API is used to modify instance parameters.
         """
         
         kwargs = {}
@@ -2965,7 +3001,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyInstanceUpgradeLimitDaysResponse:
         """
-        This API is used to modify the time limit for upgrading the kernel minor version of an instance.
+        This API is used to modify the upgrade time limit for the kernel minor version of an instance.
         """
         
         kwargs = {}
@@ -2983,7 +3019,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyLibraDBClusterAccountDescriptionResponse:
         """
-        This API is used to modify the description of a cluster account.
+        This API is used to modify the account description of an analysis cluster.
         """
         
         kwargs = {}
@@ -3001,7 +3037,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyLibraDBClusterAccountHostResponse:
         """
-        This API is used to modify the log in to the host information of a cluster account.
+        This API is used to modify the login host info of an analysis cluster account.
         """
         
         kwargs = {}
@@ -3019,7 +3055,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyLibraDBClusterAccountPrivilegeResponse:
         """
-        This API is used to modify the permission of a cluster account for analytics.
+        This API is used to modify account permissions of an analysis cluster.
         """
         
         kwargs = {}
@@ -3037,7 +3073,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyLibraDBClusterDataSourceResponse:
         """
-        This API is used to modify the TDSQL-C analytical cluster data source.
+        This API is used to modify the data source of a TDSQL-C analytical cluster.
         """
         
         kwargs = {}
@@ -3055,7 +3091,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyLibraDBClusterNameResponse:
         """
-        This API is used to modify the name of an analysis cluster.
+        Modify the analytical cluster name
         """
         
         kwargs = {}
@@ -3073,7 +3109,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyLibraDBClusterProjectResponse:
         """
-        This API is used to modify the project ID of an analysis cluster.
+        Modifies the project ID of an analysis cluster
         """
         
         kwargs = {}
@@ -3091,7 +3127,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyLibraDBClusterReplicationObjectResponse:
         """
-        This API is used to modify the sync object of an analysis cluster.
+        This API is used to modify the sync objects of an analysis cluster.
         """
         
         kwargs = {}
@@ -3109,7 +3145,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyLibraDBForwardConfigResponse:
         """
-        This API is used to modify the automatic forwarding parameter of a read-only analysis instance.
+        This API is used to modify the automatic forwarding parameters of a read-only analysis instance.
         """
         
         kwargs = {}
@@ -3127,7 +3163,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyMaintainPeriodConfigResponse:
         """
-        This API is used to modify maintenance time configuration.
+        This API is used to modify the maintenance time configuration.
         """
         
         kwargs = {}
@@ -3145,7 +3181,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyParamTemplateResponse:
         """
-        This API is used to modify a parameter template.
+        This API is used to modify user parameter templates.
         """
         
         kwargs = {}
@@ -3199,7 +3235,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyResourcePackageClustersResponse:
         """
-        This API is used to modify the binding relationship between resource packages and clusters.
+        This API is used to modify the binding relationship between a resource package and clusters.
         """
         
         kwargs = {}
@@ -3235,7 +3271,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyResourcePackagesDeductionPriorityResponse:
         """
-        This API is used to modify the deduction priority of the bound resource package.
+        Modify the deduction priority of bound resource packages.
         """
         
         kwargs = {}
@@ -3253,7 +3289,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyServerlessStrategyResponse:
         """
-        This API is used to modify the serverless policy.
+        Modify a serverless policy
         """
         
         kwargs = {}
@@ -3271,7 +3307,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifySnapBackupCrossRegionConfigResponse:
         """
-        This API is used to modify the snapshot backup cross-region configuration of a specified cluster.
+        This API is used to modify the cross-region configuration for snapshot backup of a specified cluster.
         """
         
         kwargs = {}
@@ -3289,7 +3325,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyVaultResponse:
         """
-        Modify backup safe configuration, including the name, description, retention duration, encryption key, lock time.
+        Modify the configuration of a backup safe, including the name, description, retention duration, encryption key, and lock time.
         """
         
         kwargs = {}
@@ -3325,7 +3361,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.OfflineClusterResponse:
         """
-        This interface (OfflineCluster) is used to terminate clusters.
+        This API is used to terminate clusters.
         """
         
         kwargs = {}
@@ -3343,7 +3379,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.OfflineInstanceResponse:
         """
-        This interface (OfflineInstance) is used to terminate an instance.
+        This API is used to destroy an instance.
         """
         
         kwargs = {}
@@ -3361,7 +3397,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.OfflineLibraDBClusterResponse:
         """
-        Decommission an analysis cluster
+        This API is used to decommission an analysis cluster.
         """
         
         kwargs = {}
@@ -3397,7 +3433,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.OpenAIOptimizerResponse:
         """
-        This API is used to start the optimizer switch of an instance.
+        This API is used to enable the AI optimizer switch for an instance.
         """
         
         kwargs = {}
@@ -3415,7 +3451,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.OpenAuditServiceResponse:
         """
-        This API is used to enable database audit service for an instance.
+        This API is used to enable the database audit service for an instance.
         """
         
         kwargs = {}
@@ -3469,7 +3505,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.OpenClusterTransparentEncryptResponse:
         """
-        Enable transparent data encryption for the cluster.
+        Enable transparent encryption for the cluster.
         """
         
         kwargs = {}
@@ -3487,7 +3523,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.OpenReadOnlyInstanceExclusiveAccessResponse:
         """
-        This interface (OpenReadOnlyInstanceExclusiveAccess) is used to enable the dedicated access access group for a read-only instance.
+        This API is used to enable dedicated access groups for read-only instances.
         """
         
         kwargs = {}
@@ -3505,7 +3541,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.OpenWanResponse:
         """
-        This interface (OpenWan) is used to enable external network.
+        This API is used to enable public network access.
         """
         
         kwargs = {}
@@ -3559,7 +3595,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ReloadBalanceProxyNodeResponse:
         """
-        This API is used to reload the database proxy of Cloud Load Balancer.
+        This API is used to load balance database proxy.
         """
         
         kwargs = {}
@@ -3595,7 +3631,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RenewClustersResponse:
         """
-        This API is used to renew the cluster.
+        Renew a cluster
         """
         
         kwargs = {}
@@ -3613,7 +3649,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RenewLibraDBClustersResponse:
         """
-        Renew an analysis cluster
+        Renews an analysis cluster
         """
         
         kwargs = {}
@@ -3631,7 +3667,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ReplayInstanceAuditLogResponse:
         """
-        This API is used to replay instance audit logs.
+        Replay instance audit logs
         """
         
         kwargs = {}
@@ -3649,7 +3685,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ResetAccountPasswordResponse:
         """
-        This API is used to modify the database account password.
+        This API is used to modify database account passwords.
         """
         
         kwargs = {}
@@ -3667,7 +3703,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ResetLibraDBClusterAccountPasswordResponse:
         """
-        Modify the cluster account password for analytics
+        Modifies the account password of an analysis cluster
         """
         
         kwargs = {}
@@ -3721,7 +3757,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ResumeServerlessResponse:
         """
-        This API is used to restore a serverless cluster.
+        This API is used to resume a serverless cluster.
         """
         
         kwargs = {}
@@ -3739,7 +3775,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RollBackClusterResponse:
         """
-        This API is used to perform cluster rollback.
+        This API is used to roll back a cluster.
         """
         
         kwargs = {}
@@ -3775,7 +3811,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SearchClusterDatabasesResponse:
         """
-        This API is used to search cluster database lists.
+        This API is used to search the cluster database list.
         """
         
         kwargs = {}
@@ -3793,7 +3829,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SearchClusterTablesResponse:
         """
-        This API is used to search cluster data table lists.
+        This API is used to search the cluster data table list.
         """
         
         kwargs = {}
@@ -3811,7 +3847,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SetLibraDBClusterRenewFlagResponse:
         """
-        Set whether to renew the TDSQL-C analysis cluster
+        Set whether to renew a TDSQL-C analysis cluster
         """
         
         kwargs = {}
@@ -3847,7 +3883,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.StartCLSDeliveryResponse:
         """
-        This interface (StartCLSDelivery) is used to enable log delivery functionality.
+        This API is used to enable log delivery.
         """
         
         kwargs = {}
@@ -3865,7 +3901,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.StopCLSDeliveryResponse:
         """
-        This API is used to stop the log delivery feature.
+        This API is used to disable the log delivery feature.
         """
         
         kwargs = {}
@@ -3919,7 +3955,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SwitchProxyVpcResponse:
         """
-        This API is used to replace the vpc of the database proxy.
+        This API is used to replace the vpc of a database proxy.
         """
         
         kwargs = {}
@@ -3937,7 +3973,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.TransferClusterPrepayToPostpayResponse:
         """
-        This API is used to convert a Prepaid Cluster to a postpaid cluster.
+        This API is used to convert a prepaid cluster to a postpaid cluster.
         """
         
         kwargs = {}
@@ -3955,7 +3991,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.TransferClusterZoneResponse:
         """
-        This API is used to trigger cross-AZ migration.
+        This API is used to initiate cross-AZ migration.
         """
         
         kwargs = {}
@@ -4009,7 +4045,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpgradeClusterVersionResponse:
         """
-        This interface (UpgradeClusterVersion) is used to update the kernel minor version.
+        This API is used to update the kernel minor version.
         """
         
         kwargs = {}
@@ -4027,7 +4063,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpgradeInstanceResponse:
         """
-        This interface (UpgradeInstance) is used to upgrade instances.
+        This API is used to upgrade or downgrade the configuration of an instance.
         """
         
         kwargs = {}
@@ -4045,7 +4081,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpgradeProxyResponse:
         """
-        This API is used to upgrade database proxy configuration.
+        This API is used to upgrade the database proxy configuration.
         """
         
         kwargs = {}

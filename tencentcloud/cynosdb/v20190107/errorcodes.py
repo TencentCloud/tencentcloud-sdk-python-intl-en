@@ -20,34 +20,34 @@ AUTHFAILURE = 'AuthFailure'
 # Authentication failure. No permission to operate.
 AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
 
-# Operation failed
+# Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
-# Batch query failed
+# Batch query failed.
 FAILEDOPERATION_BATCHGETINSTANCEERROR = 'FailedOperation.BatchGetInstanceError'
 
-# Failed to bind a resource pack
+# Failed to bind the resource package
 FAILEDOPERATION_BINDSOURCEPACKAGEERROR = 'FailedOperation.BindSourcePackageError'
 
-# Failed to get permissions. Please try again later. If the problem persists, please contact customer service.
+# Failed to obtain permissions. Try again later. If the issue persists, contact customer service.
 FAILEDOPERATION_CAMCHECKRESOURCEERROR = 'FailedOperation.CamCheckResourceError'
 
-# Authentication failed. Please try again later. If the problem persists, please contact customer service.
+# Authentication failed. Try again later. If the issue persists, contact customer service.
 FAILEDOPERATION_CAMSIGANDAUTHERROR = 'FailedOperation.CamSigAndAuthError'
 
 # VPC/subnet verification failure: {{1}}.
 FAILEDOPERATION_CHECKVPCANDSUBNETERROR = 'FailedOperation.CheckVpcAndSubnetError'
 
-# Create audit failure
+# Failed to create audit
 FAILEDOPERATION_CREATEAUDITFAILERROR = 'FailedOperation.CreateAuditFailError'
 
-# Failed to create the order and make a payment.
+# Failed to create and pay the order.
 FAILEDOPERATION_CREATEORDER = 'FailedOperation.CreateOrder'
 
-# Failed to create a resource pack
+# Failed to create the resource pack
 FAILEDOPERATION_CREATESOURCEPACKAGEERROR = 'FailedOperation.CreateSourcePackageError'
 
-# Failed to set the backup policy. Please try again later. If the failure persists, please contact customer service for handling.
+# Failed to set the backup strategy. Try again later. If the issue persists, contact customer service.
 FAILEDOPERATION_CYNOSDBMYSQLSETBACKUPSTRATEGY = 'FailedOperation.CynosdbMysqlSetBackupStrategy'
 
 # Database access failed. Try again later. If the issue persists, contact customer service.
@@ -56,46 +56,49 @@ FAILEDOPERATION_DATABASEACCESSERROR = 'FailedOperation.DatabaseAccessError'
 # Failed to modify account permissions.
 FAILEDOPERATION_DESCRIBEACCOUNTPRIVILEGESERROR = 'FailedOperation.DescribeAccountPrivilegesError'
 
-# Failed to create a task. Try again later. If the problem persists, contact customer service.
+# Failed to create the process. Please retry later. If the issue continues, contact customer service.
 FAILEDOPERATION_FLOWCREATEERROR = 'FailedOperation.FlowCreateError'
 
-# The task flow does not exist.
+# The Flow does not exist.
 FAILEDOPERATION_FLOWNOTFOUNDERROR = 'FailedOperation.FlowNotFoundError'
 
-# Failed to query the backup policy. Please try again later. If the problem persists, please contact customer service.
+# Failed to get the backup policy. Try again later. If the issue persists, contact customer service.
 FAILEDOPERATION_GETBACKUPSTRATEGYERROR = 'FailedOperation.GetBackupStrategyError'
 
-# Failed to query the network information of the access group
+# Failed to query the access group network information.
 FAILEDOPERATION_GETNETSERVICEINFOERROR = 'FailedOperation.GetNetServiceInfoError'
 
-# Failed to query the details of a read-write instance
+# Failed to query the details of the primary instance.
 FAILEDOPERATION_GETOSSINFOERROR = 'FailedOperation.GetOssInfoError'
 
 # Request to query instance information failed
 FAILEDOPERATION_INSTANCEQUERYERROR = 'FailedOperation.InstanceQueryError'
 
-# Insufficient account balance
+# Insufficient account balance.
 FAILEDOPERATION_INSUFFICIENTBALANCE = 'FailedOperation.InsufficientBalance'
 
-# Modification of resource package deduction priority failed. check parameters and try again later.
+# Failed to modify the deduction priority of a resource pack. Check the parameters and try again later.
 FAILEDOPERATION_MODIFYDEDUCTIONPRIORITYERROR = 'FailedOperation.ModifyDeductionPriorityError'
 
-# Operation failed. Try again later. If the problem persists, contact customer service.
+# Operation failed. Try again later. If the issue persists, contact customer service.
 FAILEDOPERATION_OPERATIONFAILEDERROR = 'FailedOperation.OperationFailedError'
 
 # Proxy verification failure: {{1}}.
 FAILEDOPERATION_PROXYCHECKERROR = 'FailedOperation.ProxyCheckError'
 
-# Failed to query the consumption details of a resource pack
+# When the proxy group is set to read-only mode, the cluster must contain at least one read-only instance.
+FAILEDOPERATION_PROXYGROUPRWSPLITNOROINSTANCEERROR = 'FailedOperation.ProxyGroupRwSplitNoRoInstanceError'
+
+# Failed to query resource package consumption details
 FAILEDOPERATION_QUERYSOURCEPACKAGEDETAILERROR = 'FailedOperation.QuerySourcePackageDetailError'
 
-# Failed to query the resource pack
+# Failed to query the resource package
 FAILEDOPERATION_QUERYSOURCEPACKAGEERROR = 'FailedOperation.QuerySourcePackageError'
 
-# Failed to query specifications.
+# Specification information query failed.
 FAILEDOPERATION_QUERYSPECBYSPECCODEERROR = 'FailedOperation.QuerySpecBySpecCodeError'
 
-# Failed to refund the resource pack
+# Resource package refund failure
 FAILEDOPERATION_REFUNDSOURCEPACKAGEERROR = 'FailedOperation.RefundSourcePackageError'
 
 # Policy modification failed.
@@ -104,31 +107,31 @@ FAILEDOPERATION_SERVERLESSSETSTRATEGYERROR = 'FailedOperation.ServerlessSetStrat
 # Log query failed. Narrow down the query range. If the issue persists, contact customer service.
 FAILEDOPERATION_SERVICEACCESSERROR = 'FailedOperation.ServiceAccessError'
 
-# Specification information {{1}} search failure.
+# Specification information {{1}} search failure
 FAILEDOPERATION_SPECNOTFOUNDERROR = 'FailedOperation.SpecNotFoundError'
 
-# Failed to create the order and make a payment. Please try again later. If the problem persists, please contact customer service.
+# Failed to create and pay for the order. Try again later. If the issue persists, contact customer service.
 FAILEDOPERATION_TRADECREATEORDERERROR = 'FailedOperation.TradeCreateOrderError'
 
-# Failed to unbind the resource pack
+# Failed to unbind the resource package
 FAILEDOPERATION_UNBINDSOURCEPACKAGEERROR = 'FailedOperation.UnBindSourcePackageError'
 
 # Internal error.
 INTERNALERROR = 'InternalError'
 
-# Access DB exception
+# DB access exception.
 INTERNALERROR_DBERROR = 'InternalError.DBError'
 
-# Failed to query the database.
+# Query database failed.
 INTERNALERROR_DBOPERATIONFAILED = 'InternalError.DbOperationFailed'
 
-# Unauthorized client.
+# Customer unauthorized.
 INTERNALERROR_GETROLEERROR = 'InternalError.GetRoleError'
 
-# Failed to get the security group information.
+# Failed to obtain the security group information.
 INTERNALERROR_GETSECURITYGROUPDETAILFAILED = 'InternalError.GetSecurityGroupDetailFailed'
 
-# Failed to get the subnet.
+# Failed to obtain the subnet.
 INTERNALERROR_GETSUBNETFAILED = 'InternalError.GetSubnetFailed'
 
 # Failed to get the VPC.
@@ -137,28 +140,28 @@ INTERNALERROR_GETVPCFAILED = 'InternalError.GetVpcFailed'
 # Network error.
 INTERNALERROR_HTTPERROR = 'InternalError.HttpError'
 
-# An exception occurred while executing the HTTP request.
+# http request execution error.
 INTERNALERROR_INTERNALHTTPSERVERERROR = 'InternalError.InternalHttpServerError'
 
-# Internal service error
+# Internal service error.
 INTERNALERROR_INTERNALINNERSERVICEERROR = 'InternalError.InternalInnerServiceError'
 
-# Failed to query instances by security group.
+# Failed to query the instance in the security group.
 INTERNALERROR_LISTINSTANCEFAILED = 'InternalError.ListInstanceFailed'
 
 # Query instance error
 INTERNALERROR_LISTINSTANCESERROR = 'InternalError.ListInstancesError'
 
-# Public network operation failed.
+# Operation on the public network failed.
 INTERNALERROR_OPERATEWANFAIL = 'InternalError.OperateWanFail'
 
-# Unsupported operation.
+# The operation is not supported.
 INTERNALERROR_OPERATIONNOTSUPPORT = 'InternalError.OperationNotSupport'
 
-# Failed to query the database.
+# Query database failed.
 INTERNALERROR_QUERYDATABASEFAILED = 'InternalError.QueryDatabaseFailed'
 
-# Internal service error
+# Internal service error.
 INTERNALERROR_SERVICEERROR = 'InternalError.ServiceError'
 
 # Internal system error.
@@ -170,7 +173,7 @@ INTERNALERROR_UNKNOWNERROR = 'InternalError.UnknownError'
 # Parameter error.
 INVALIDPARAMETER = 'InvalidParameter'
 
-# This API was not found.
+# The API does not exist.
 INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = 'InvalidParameter.ControllerNotFoundError'
 
 # Parameter error.
@@ -179,10 +182,10 @@ INVALIDPARAMETER_EXCEPTIONPARAM = 'InvalidParameter.ExceptionParam'
 # Unknown parameter. Check whether the parameter is valid.
 INVALIDPARAMETER_INVALIDPARAMETERERROR = 'InvalidParameter.InvalidParameterError'
 
-# The current instance cannot be isolated.
+# The current instance is non-isolatable.
 INVALIDPARAMETER_ISOLATENOTALLOWED = 'InvalidParameter.IsolateNotAllowed'
 
-# The parameter value is invalid.
+# Parameter value error.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # The account already exists.
@@ -191,37 +194,37 @@ INVALIDPARAMETERVALUE_ACCOUNTALREADYEXISTERROR = 'InvalidParameterValue.AccountA
 # The account already exists.
 INVALIDPARAMETERVALUE_ACCOUNTEXIST = 'InvalidParameterValue.AccountExist'
 
-# The instance doesn’t have an account.
+# The instance does not have an account.
 INVALIDPARAMETERVALUE_ACCOUNTNOTEXISTERROR = 'InvalidParameterValue.AccountNotExistError'
 
-# No cluster found.
+# Cluster not found.
 INVALIDPARAMETERVALUE_CLUSTERNOTFOUND = 'InvalidParameterValue.ClusterNotFound'
 
 # Unsupported instance type.
 INVALIDPARAMETERVALUE_DBTYPENOTFOUND = 'InvalidParameterValue.DBTypeNotFound'
 
-# The cluster type must be serverless.
+# ClusterType must be serverless.
 INVALIDPARAMETERVALUE_DBMODENOTSERVERLESSERROR = 'InvalidParameterValue.DbModeNotServerlessError'
 
-# No order ID found.
+# Order id not found.
 INVALIDPARAMETERVALUE_DEALNAMENOTFOUND = 'InvalidParameterValue.DealNameNotFound'
 
-# Taskflow ID doesn’t exist.
+# Task flow ID does not exist.
 INVALIDPARAMETERVALUE_FLOWNOTFOUND = 'InvalidParameterValue.FlowNotFound'
 
-# The instance name contains invalid characters.
+# Instance name contains illegal characters.
 INVALIDPARAMETERVALUE_ILLEGALINSTANCENAME = 'InvalidParameterValue.IllegalInstanceName'
 
-# Invalid sort by field.
+# Invalid sorting field.
 INVALIDPARAMETERVALUE_ILLEGALORDERBY = 'InvalidParameterValue.IllegalOrderBy'
 
-# The password does not meet the requirement.
+# The password does not meet requirements.
 INVALIDPARAMETERVALUE_ILLEGALPASSWORD = 'InvalidParameterValue.IllegalPassword'
 
 # The instance does not exist.
 INVALIDPARAMETERVALUE_INSTANCENOTFOUND = 'InvalidParameterValue.InstanceNotFound'
 
-# The operation is not allowed for system account.
+# No operations allowed for built-in accounts.
 INVALIDPARAMETERVALUE_INTERNALACCOUNT = 'InvalidParameterValue.InternalAccount'
 
 # Intranet domain name exists. The retention time of the old IP must be more than {{1}} hours.
@@ -233,7 +236,7 @@ INVALIDPARAMETERVALUE_INVALIDDBVERSION = 'InvalidParameterValue.InvalidDBVersion
 # Parameter value is invalid.
 INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.InvalidParameterValueError'
 
-# The password is invalid.
+# The password is non-compliant.
 INVALIDPARAMETERVALUE_INVALIDPASSWORDVALUEERROR = 'InvalidParameterValue.InvalidPasswordValueError'
 
 # The region is invalid.
@@ -242,103 +245,103 @@ INVALIDPARAMETERVALUE_INVALIDREGIONIDERROR = 'InvalidParameterValue.InvalidRegio
 # Invalid instance specification.
 INVALIDPARAMETERVALUE_INVALIDSPEC = 'InvalidParameterValue.InvalidSpec'
 
-# Invalid AZ
+# Invalid AZ.
 INVALIDPARAMETERVALUE_INVALIDZONEIDERROR = 'InvalidParameterValue.InvalidZoneIdError'
 
-# These two parameters cannot be set at the same time.
+# Both parameters cannot be set simultaneously.
 INVALIDPARAMETERVALUE_PARAMBOTHSETERROR = 'InvalidParameterValue.ParamBothSetError'
 
-# Incorrect parameter.
+# Parameter error.
 INVALIDPARAMETERVALUE_PARAMERROR = 'InvalidParameterValue.ParamError'
 
 # The input parameter {{1}} is invalid. Check parameters and try again.
 INVALIDPARAMETERVALUE_PARAMETERMISMATCHERROR = 'InvalidParameterValue.ParameterMismatchError'
 
-# Invalid parameter value
+# Invalid parameter value. The value exceeds the maximum allowed.
 INVALIDPARAMETERVALUE_PARAMETEROUTRANGEERROR = 'InvalidParameterValue.ParameterOutRangeError'
 
-# This operation is not allowed for yearly/monthly subscribed instances.
+# Operation not allowed for prepaid payment type.
 INVALIDPARAMETERVALUE_PREPAYPAYMODEERROR = 'InvalidParameterValue.PrePayPayModeError'
 
-# The `ProjectId` was not found.
+# ProjectId not found
 INVALIDPARAMETERVALUE_PROJECTIDNOTFOUND = 'InvalidParameterValue.ProjectIdNotFound'
 
-# The selected region and AZ are unavailable.
+# The selected region and availability zone are unavailable.
 INVALIDPARAMETERVALUE_REGIONZONEUNAVAILABLE = 'InvalidParameterValue.RegionZoneUnavailable'
 
-# No related storage pool found.
+# Storage pool not found.
 INVALIDPARAMETERVALUE_STORAGEPOOLNOTFOUND = 'InvalidParameterValue.StoragePoolNotFound'
 
-# The selected subnet could not be found.
+# Subnet not found.
 INVALIDPARAMETERVALUE_SUBNETNOTFOUND = 'InvalidParameterValue.SubnetNotFound'
 
 # The subnet of access group {{1}} matches the target subnet. No replacement is needed.
 INVALIDPARAMETERVALUE_SUBNETUNCHANGEDERROR = 'InvalidParameterValue.SubnetUnchangedError'
 
-# No data found
+# Data not found.
 INVALIDPARAMETERVALUE_VALUENOTFOUND = 'InvalidParameterValue.ValueNotFound'
 
-# The selected VPC could not be found.
+# The selected VPC network is not found.
 INVALIDPARAMETERVALUE_VPCNOTFOUND = 'InvalidParameterValue.VpcNotFound'
 
-# The node count in the cluster exceeds the maximum limit.
+# Number of nodes in the cluster exceeds the maximum limit.
 LIMITEXCEEDED_CLUSTERINSTANCELIMIT = 'LimitExceeded.ClusterInstanceLimit'
 
-# The number of instances exceeds the limit.
+# Number of user instances exceeds the limit.
 LIMITEXCEEDED_USERINSTANCELIMIT = 'LimitExceeded.UserInstanceLimit'
 
 # Insufficient permissions for the cloud account. This operation is not supported.
 OPERATIONDENIED_ACCOUNTOPERATIONDENIED = 'OperationDenied.AccountOperationDenied'
 
-# Audit log is disabled for instance {{1}}. operations cannot be performed.
+# The audit log of instance {{1}} is disabled, so operations cannot be performed.
 OPERATIONDENIED_AUDITLOGCLOSEDERROR = 'OperationDenied.AuditLogClosedError'
 
-# Audit status exception
+# Audit status exception.
 OPERATIONDENIED_AUDITSTATUSERROR = 'OperationDenied.AuditStatusError'
 
 # Backup safe resource {{1}} is in {{2}} and unable to perform {{3}} operation
 OPERATIONDENIED_BACKUPVAULTTASKCONFLICTERROR = 'OperationDenied.BackupVaultTaskConflictError'
 
-# Failed to verify permissions
+# Permission verification failed.
 OPERATIONDENIED_CAMDENIEDERROR = 'OperationDenied.CamDeniedError'
 
-# The current cluster does not allow the operation.
+# Operation forbidden. The current cluster does not allow this operation.
 OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = 'OperationDenied.ClusterOpNotAllowedError'
 
-# For the cluster in this status, the operation is not allowed.
+# Operation not allowed in the current status of the cluster.
 OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = 'OperationDenied.ClusterStatusDeniedError'
 
-# Cluster {{1}} is currently performing {{2}} operation and cannot perform {{3}} operation.
+# Cluster {{1}} is currently performing {{2}} and cannot perform {{3}}
 OPERATIONDENIED_CLUSTERTASKCONFLICTERROR = 'OperationDenied.ClusterTaskConflictError'
 
 # Task creation failed. {{1}}
 OPERATIONDENIED_CREATETASKANDFLOWERROR = 'OperationDenied.CreateTaskAndFlowError'
 
-# Kernel version not supported for the instance
+# Unsupported for instance kernel version {{1}}
 OPERATIONDENIED_CYNOSDBVERSIONNOTSUPPORTERROR = 'OperationDenied.CynosdbVersionNotSupportError'
 
-# Multi-AZ deployment functionality for the new storage architecture is not yet available.
+# Multi-AZ deployment for the new storage architecture is not yet available.
 OPERATIONDENIED_DISABLENEWSTORAGEMULTIZONEDEPLOYMENTERROR = 'OperationDenied.DisableNewStorageMultiZoneDeploymentError'
 
-# Feature {{1}} is not currently supported.
+# Function {{1}} not currently supported
 OPERATIONDENIED_FEATURENOTSUPPORTERROR = 'OperationDenied.FeatureNotSupportError'
 
-# Fail to retrieve the proxy.
+# Failed to get proxy
 OPERATIONDENIED_GETPROXYGROUPFAILEDERROR = 'OperationDenied.GetProxyGroupFailedError'
 
-# You do not have the permission to operate this resource.
+# You do not have permission to operate the resource.
 OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = 'OperationDenied.InstanceAccessDeniedError'
 
-# Instance group {{1}} is currently performing {{2}} operation and cannot perform {{3}} operation
+# Instance group {{1}} is currently performing {{2}} and cannot perform {{3}}.
 OPERATIONDENIED_INSTANCEGRPTASKCONFLICTERROR = 'OperationDenied.InstanceGrpTaskConflictError'
 
-# For the instance in this status, the operation is not allowed.
+# Operation not allowed in the current instance status.
 OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = 'OperationDenied.InstanceStatusDeniedError'
 
-# The instance is not running.
+# Instance is not in a running state
 OPERATIONDENIED_INSTANCESTATUSLIMITERROR = 'OperationDenied.InstanceStatusLimitError'
 
-# Instance {{1}} is currently performing {{2}} operation and cannot perform {{3}} operation
+# Instance {{1}} is currently performing {{2}} and cannot perform {{3}}
 OPERATIONDENIED_INSTANCETASKCONFLICTERROR = 'OperationDenied.InstanceTaskConflictError'
 
 # Insufficient account balance.
@@ -347,52 +350,52 @@ OPERATIONDENIED_INSUFFICIENTBALANCEERROR = 'OperationDenied.InsufficientBalanceE
 # Invalid region input
 OPERATIONDENIED_INVALIDREGIONFORROLLBACKNEWCLUSTER = 'OperationDenied.InvalidRegionForRollbackNewCluster'
 
-# Not a roll back cluster of {{1}}.
+# Not the rollback cluster of {{1}}
 OPERATIONDENIED_ISNOTROLLBACKCLUSTERERROR = 'OperationDenied.IsNotRollbackClusterError'
 
-# Response size exceeds the limit: {{1}}. reduce the query quantity.
+# size exceeds limit: {{1}}. Reduce the number of queries.
 OPERATIONDENIED_LENGTHOVERLIMIT = 'OperationDenied.LengthOverLimit'
 
-# The cloned cluster is not within {{1}} days of {{2}}.
+# The clone cluster is not within {{1}} days {{2}}.
 OPERATIONDENIED_LIMITDAYFORAUDITREPLAYERROR = 'OperationDenied.LimitDayForAuditReplayError'
 
 # Parameter missing, {{1}}
 OPERATIONDENIED_MISSINGPARAMETERERROR = 'OperationDenied.MissingParameterError'
 
-# New storage architecture 2.0 only supports 8.0
+# Storage compression is only supported in storage architecture 2.0 for v8.0.
 OPERATIONDENIED_NEWSTORAGEONLYSUPPORT80ERROR = 'OperationDenied.NewStorageOnlySupport80Error'
 
 # No available resources.
 OPERATIONDENIED_NOAVALIABLERESOUCEERROR = 'OperationDenied.NoAvaliableResouceError'
 
-# Only Storage Architecture 2.0 supports the compression feature
+# Only storage architecture 2.0 supports the storage compression feature.
 OPERATIONDENIED_ONLYNEWSTORAGESUPPORTSTORAGECOMPRESSIONERROR = 'OperationDenied.OnlyNewStorageSupportStorageCompressionError'
 
 # You do not have permission to operate the resource (carry out this operation).
 OPERATIONDENIED_OPERATIONDENIEDERROR = 'OperationDenied.OperationDeniedError'
 
-# Paused-State serverless is not allowed to be modified for multi-availability zone.
+# serverless in paused state is not allowed to be modified for multi-AZ.
 OPERATIONDENIED_PAUSEDSLSNOTALLOWMODIFYSLAVE = 'OperationDenied.PausedSlsNotAllowModifySlave'
 
-# Mismatched number of creatable connections supported by the proxy node. the supported number of create connections is {{1}}, and the current number of connections is {{2}}.
+# The number of creatable connections supported by the proxy node does not match. Supported connections: {{1}}. Current connections: {{2}}.
 OPERATIONDENIED_PROXYCONNECTCOUNTCHECKERROR = 'OperationDenied.ProxyConnectCountCheckError'
 
-# Proxy node quantity check_failed.
+# Proxy node quantity check failed
 OPERATIONDENIED_PROXYNODECOUNTCHECKERROR = 'OperationDenied.ProxyNodeCountCheckError'
 
-# Non-Running proxy.
+# Non-running proxy
 OPERATIONDENIED_PROXYNOTRUNNINGERROR = 'OperationDenied.ProxyNotRunningError'
 
-# Availability zone does not exist.
+# The availability zone does not exist.
 OPERATIONDENIED_PROXYSALEZONECHECKERROR = 'OperationDenied.ProxySaleZoneCheckError'
 
-# Insufficient proxy stock
+# Insufficient proxy inventory
 OPERATIONDENIED_PROXYSTOCKCHECKERROR = 'OperationDenied.ProxyStockCheckError'
 
-# Proxy version check_failed.
+# Proxy version check failed
 OPERATIONDENIED_PROXYVERSIONCHECKERROR = 'OperationDenied.ProxyVersionCheckError'
 
-# Verification failure of proxy availability zone.
+# proxy AZ verification failure
 OPERATIONDENIED_PROXYZONECHECKERROR = 'OperationDenied.ProxyZoneCheckError'
 
 # Instance does not exist
@@ -401,31 +404,31 @@ OPERATIONDENIED_RESOURCENOTFUNDERROR = 'OperationDenied.ResourceNotFundError'
 # Unknown exception. Contact our customer service to handle.
 OPERATIONDENIED_SECONDARYCACHEUNKNOWNERROR = 'OperationDenied.SecondaryCacheUnknownError'
 
-# For the serverless cluster in this status, the operation is not allowed.
+# Operation not allowed in the current status of the serverless cluster.
 OPERATIONDENIED_SERVERLESSCLUSTERSTATUSDENIED = 'OperationDenied.ServerlessClusterStatusDenied'
 
-# For the serverless instance in this status, the operation is not allowed.
+# Operation not allowed in the current status of the serverless instance.
 OPERATIONDENIED_SERVERLESSINSTANCESTATUSDENIED = 'OperationDenied.ServerlessInstanceStatusDenied'
 
-# The task conflict check failed.
+# Task conflict check failed.
 OPERATIONDENIED_TASKCONFLICTERROR = 'OperationDenied.TaskConflictError'
 
-# Business check failed: {{1}}
+# Business inspection failed: {{1}}
 OPERATIONDENIED_TRADEBUSINESSCHECKERROR = 'OperationDenied.TradeBusinessCheckError'
 
-# This type of specification is unavailable.
+# The sale of this type and specification is not supported.
 OPERATIONDENIED_UNSUPPORTSALESPECERROR = 'OperationDenied.UnSupportSaleSpecError'
 
 # Audit enabling is not supported.
 OPERATIONDENIED_UNSUPPORTOPENAUDITERROR = 'OperationDenied.UnsupportOpenAuditError'
 
-# You need to verify your identity to make a purchase.
+# User not verified with real-name authentication. Please proceed with real-name authentication before purchase.
 OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = 'OperationDenied.UserNotAuthenticatedError'
 
-# User resource {{1}} is currently performing {{2}} operation and cannot perform {{3}} operation
+# User resource {{1}} is currently performing {{2}} and cannot perform {{3}}
 OPERATIONDENIED_USERRESOURCETASKCONFLICTERROR = 'OperationDenied.UserResourceTaskConflictError'
 
-# Serverless is not supported on this version.
+# Serverless does not support this version.
 OPERATIONDENIED_VERSIONNOTSUPPORTERROR = 'OperationDenied.VersionNotSupportError'
 
 # The cluster does not exist.
@@ -440,17 +443,17 @@ RESOURCENOTFOUND_RESOURCEERROR = 'ResourceNotFound.ResourceError'
 # User resource is not found
 RESOURCENOTFOUND_RESOURCENOTFOUNDERR = 'ResourceNotFound.ResourceNotFoundErr'
 
-# Failed to lock the instance, so the operation cannot be performed temporarily.
+# Failed to lock the instance. It is temporarily inoperable.
 RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = 'ResourceUnavailable.InstanceLockFail'
 
-# The instance is exceptional, so the operation cannot be performed temporarily.
+# Instance status is abnormal and temporarily not operable.
 RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = 'ResourceUnavailable.InstanceStatusAbnormal'
 
-# Users who haven't completed identity verification can’t make purchases.
+# Non-verified users are prohibited from purchasing.
 UNAUTHORIZEDOPERATION_NOTREALNAMEACCOUNT = 'UnauthorizedOperation.NotRealNameAccount'
 
 # CAM authentication failed.
 UNAUTHORIZEDOPERATION_PERMISSIONDENIED = 'UnauthorizedOperation.PermissionDenied'
 
-# Authorization failure or authorization canceled
+# Authorization failed or authorization canceled.
 UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = 'UnauthorizedOperation.RoleUnauthorized'

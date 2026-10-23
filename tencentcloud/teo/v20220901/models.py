@@ -762,21 +762,15 @@ class AccessURLRedirectParameters(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StatusCode: Status code. valid values: 301, 302, 303, 307, 308.
+        :param _StatusCode: <p>Status code, value is one of 301, 302, 303, 307, 308.</p>
         :type StatusCode: int
-        :param _Protocol: Target request protocol. valid values:.
-<Li>Http: target request protocol http;</li>.
-<Li>Https: target request protocol https;</li>.
-<Li>Follow: follow the request.</li>.
+        :param _Protocol: <p>Target request protocol.</p><p>Enumeration values:</p><ul><li>http: The target request protocol is HTTP.</li><li>https: The target request protocol is HTTPS.</li><li>follow: Follow request.</li></ul>
         :type Protocol: str
-        :param _HostName: Target hostname.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _HostName: <p>Target HostName.</p>
         :type HostName: :class:`tencentcloud.teo.v20220901.models.HostName`
-        :param _URLPath: Target path.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _URLPath: <p>Target path.</p>
         :type URLPath: :class:`tencentcloud.teo.v20220901.models.URLPath`
-        :param _QueryString: Carry query parameters.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _QueryString: <p>Query string.</p>
         :type QueryString: :class:`tencentcloud.teo.v20220901.models.AccessURLRedirectQueryString`
         """
         self._StatusCode = None
@@ -787,7 +781,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def StatusCode(self):
-        r"""Status code. valid values: 301, 302, 303, 307, 308.
+        r"""<p>Status code, value is one of 301, 302, 303, 307, 308.</p>
         :rtype: int
         """
         return self._StatusCode
@@ -798,10 +792,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def Protocol(self):
-        r"""Target request protocol. valid values:.
-<Li>Http: target request protocol http;</li>.
-<Li>Https: target request protocol https;</li>.
-<Li>Follow: follow the request.</li>.
+        r"""<p>Target request protocol.</p><p>Enumeration values:</p><ul><li>http: The target request protocol is HTTP.</li><li>https: The target request protocol is HTTPS.</li><li>follow: Follow request.</li></ul>
         :rtype: str
         """
         return self._Protocol
@@ -812,8 +803,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def HostName(self):
-        r"""Target hostname.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Target HostName.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.HostName`
         """
         return self._HostName
@@ -824,8 +814,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def URLPath(self):
-        r"""Target path.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Target path.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.URLPath`
         """
         return self._URLPath
@@ -836,8 +825,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def QueryString(self):
-        r"""Carry query parameters.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Query string.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.AccessURLRedirectQueryString`
         """
         return self._QueryString
@@ -1742,6 +1730,42 @@ class AdvancedFilter(AbstractModel):
         
 
 
+class AdvancedOriginRoutingParameters(AbstractModel):
+    r"""Advanced origin optimization config.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Direction: <p>Origin optimization direction. Valid values:</p><li>MainlandChinaAndGlobalAdaptive: Self adaptive. The domain name must enable "smart acceleration" simultaneously to take effect. EdgeOne will automatically match the optimal origin-pull optimization direction based on the actual geographic location of the client and origin server, without the need to manually specify. For example, if www.example.com enables "advanced origin optimization" but "smart acceleration" is turned off or only partial match conditions are enabled, "advanced origin optimization" will not be effective.</li>
+        :type Direction: str
+        """
+        self._Direction = None
+
+    @property
+    def Direction(self):
+        r"""<p>Origin optimization direction. Valid values:</p><li>MainlandChinaAndGlobalAdaptive: Self adaptive. The domain name must enable "smart acceleration" simultaneously to take effect. EdgeOne will automatically match the optimal origin-pull optimization direction based on the actual geographic location of the client and origin server, without the need to manually specify. For example, if www.example.com enables "advanced origin optimization" but "smart acceleration" is turned off or only partial match conditions are enabled, "advanced origin optimization" will not be effective.</li>
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+
+    def _deserialize(self, params):
+        self._Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AiRule(AbstractModel):
     r"""AI rule engine
 
@@ -2408,7 +2432,12 @@ class AliasDomain(AbstractModel):
 
 
 class AllowActionParameters(AbstractModel):
-    r"""Additional parameter for Web security Allow.
+    r"""Additional parameter when the safe execution action is Allow.
+
+    This parameter is used to specify the extra handling action taken by the system when a security rule is hit and an Allow action is executed.
+    Different handling actions are configured with different fixed parameter combinations. The system will determine the actually effective handling action type according to the configured parameter combination.
+    During the same release execution, only one handling action can be configured and made effective. Parameter composites for multiple handling actions cannot appear simultaneously; otherwise, it is deemed an invalid configuration. If empty, the default release handling action is used.
+    AllowActionParameters supports the following additional handling actions: <li>Default: When AllowActionParameters is empty, skip the remaining rules of the current security module immediately and continue matching subsequent security modules.</li><li>Delayed pass: Add response delay to the request and continue matching the remaining rules of the current module. Corresponding parameters: MinDelayTime, MaxDelayTime.</li>
 
     """
 
@@ -6640,24 +6669,21 @@ class CacheKeyParameters(AbstractModel):
 .
 <Li>Off: disable.</li> note: at least one of fullurlcache, ignorecase, header, scheme, or cookie must be configured. this field and querystring.switch must be set simultaneously, but cannot both be on.
         :type FullURLCache: str
-        :param _QueryString: Configuration parameter for retaining the query string. this field and fullurlcache must be set simultaneously, but cannot both be on.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _QueryString: Query string retention configuration parameter. This field and FullURLCache must be set both at the same time, but cannot both be on.
         :type QueryString: :class:`tencentcloud.teo.v20220901.models.CacheKeyQueryString`
         :param _IgnoreCase: Switch for ignoring case. values:.
 <Li>`On`: enable;</li>
 .
 <Li>Off: disable.</li> note: at least one of fullurlcache, ignorecase, header, scheme, or cookie must be configured.
         :type IgnoreCase: str
-        :param _Header: HTTP request header configuration parameters. at least one of the following configurations must be set: fullurlcache, ignorecase, header, scheme, cookie.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _Header: HTTP request header configuration parameter. Set at least one configuration among FullURLCache, IgnoreCase, Header, Scheme, and Cookie.
         :type Header: :class:`tencentcloud.teo.v20220901.models.CacheKeyHeader`
         :param _Scheme: Request protocol switch. valid values:.
 <Li>`On`: enable;</li>
 .
 <Li>Off: disable.</li> note: at least one of fullurlcache, ignorecase, header, scheme, or cookie must be configured.
         :type Scheme: str
-        :param _Cookie: Cookie configuration parameters. at least one of the following configurations must be set: fullurlcache, ignorecase, header, scheme, cookie.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _Cookie: Cookie configuration parameters. Set at least one configuration among FullURLCache, IgnoreCase, Header, Scheme, and Cookie.
         :type Cookie: :class:`tencentcloud.teo.v20220901.models.CacheKeyCookie`
         """
         self._FullURLCache = None
@@ -6683,8 +6709,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def QueryString(self):
-        r"""Configuration parameter for retaining the query string. this field and fullurlcache must be set simultaneously, but cannot both be on.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""Query string retention configuration parameter. This field and FullURLCache must be set both at the same time, but cannot both be on.
         :rtype: :class:`tencentcloud.teo.v20220901.models.CacheKeyQueryString`
         """
         return self._QueryString
@@ -6709,8 +6734,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def Header(self):
-        r"""HTTP request header configuration parameters. at least one of the following configurations must be set: fullurlcache, ignorecase, header, scheme, cookie.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""HTTP request header configuration parameter. Set at least one configuration among FullURLCache, IgnoreCase, Header, Scheme, and Cookie.
         :rtype: :class:`tencentcloud.teo.v20220901.models.CacheKeyHeader`
         """
         return self._Header
@@ -6735,8 +6759,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def Cookie(self):
-        r"""Cookie configuration parameters. at least one of the following configurations must be set: fullurlcache, ignorecase, header, scheme, cookie.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""Cookie configuration parameters. Set at least one configuration among FullURLCache, IgnoreCase, Header, Scheme, and Cookie.
         :rtype: :class:`tencentcloud.teo.v20220901.models.CacheKeyCookie`
         """
         return self._Cookie
@@ -6852,14 +6875,11 @@ class CacheParameters(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FollowOrigin: Cache follows origin server. if not specified, this configuration is not set. only one of followorigin, nocache, or customtime can have switch set to on.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _FollowOrigin: Cache follows the origin site. Leave unset means this configuration is not set. FollowOrigin, NoCache, and CustomTime can only be configured with one Switch set to on.
         :type FollowOrigin: :class:`tencentcloud.teo.v20220901.models.FollowOrigin`
-        :param _NoCache: No cache. if not specified, this configuration is not set. only one of followorigin, nocache, or customtime can have switch set to on.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _NoCache: No cache. Leave unset means not setting this configuration. Only one Switch among FollowOrigin, NoCache, and CustomTime can be configured as on.
         :type NoCache: :class:`tencentcloud.teo.v20220901.models.NoCache`
-        :param _CustomTime: Custom cache time. if not specified, this configuration is not set. only one of followorigin, nocache, or customtime can have switch set to on.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _CustomTime: Custom cache time. Leave unset means this configuration is not set. Only one of FollowOrigin, NoCache, and CustomTime can be configured with the Switch set to on.
         :type CustomTime: :class:`tencentcloud.teo.v20220901.models.CustomTime`
         """
         self._FollowOrigin = None
@@ -6868,8 +6888,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def FollowOrigin(self):
-        r"""Cache follows origin server. if not specified, this configuration is not set. only one of followorigin, nocache, or customtime can have switch set to on.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""Cache follows the origin site. Leave unset means this configuration is not set. FollowOrigin, NoCache, and CustomTime can only be configured with one Switch set to on.
         :rtype: :class:`tencentcloud.teo.v20220901.models.FollowOrigin`
         """
         return self._FollowOrigin
@@ -6880,8 +6899,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def NoCache(self):
-        r"""No cache. if not specified, this configuration is not set. only one of followorigin, nocache, or customtime can have switch set to on.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""No cache. Leave unset means not setting this configuration. Only one Switch among FollowOrigin, NoCache, and CustomTime can be configured as on.
         :rtype: :class:`tencentcloud.teo.v20220901.models.NoCache`
         """
         return self._NoCache
@@ -6892,8 +6910,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def CustomTime(self):
-        r"""Custom cache time. if not specified, this configuration is not set. only one of followorigin, nocache, or customtime can have switch set to on.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""Custom cache time. Leave unset means this configuration is not set. Only one of FollowOrigin, NoCache, and CustomTime can be configured with the Switch set to on.
         :rtype: :class:`tencentcloud.teo.v20220901.models.CustomTime`
         """
         return self._CustomTime
@@ -7214,18 +7231,21 @@ u200c<li>`failed`: Application rejected</li>
 
 
 class ChallengeActionParameters(AbstractModel):
-    r"""Web security Challenge additional parameter.
+    r"""Additional parameter for the security executed action when it is a challenge.
+
+    This parameter is used for specifying the extra handling action taken by the system when a security rule is hit and a challenge action is executed.
+    Challenge disposal actions are segmented by ChallengeOption. Different challenge types correspond to different interaction forms and parameter requirements. The system will apply the corresponding parameter configuration according to the selected challenge type.
+    ChallengeActionParameters supports the following challenge disposition types: <li>Interstitial challenge: responds with a new page and runs the authentication mechanism on the new page. Corresponds to the ChallengeOption value InterstitialChallenge.</li><li>Inline challenge: responds with an SDK challenge. Corresponds to the ChallengeOption value InlineChallenge.</li><li>JavaScript challenge: invisible browser verification. The browser automatically performs verification and shows the requested resource. Corresponds to the ChallengeOption value JSChallenge.</li><li>Managed challenge: responds with a redirect page containing a JavaScript program, used for verifying the browser runtime environment. Corresponds to the ChallengeOption value ManagedChallenge.</li>
 
     """
 
     def __init__(self):
         r"""
-        :param _ChallengeOption: Safe execution challenge actions. valid values: <li> InterstitialChallenge: interstitial challenge;</li> <li> InlineChallenge: embedded challenge;</li> <li> JSChallenge: JavaScript challenge;</li> <li> ManagedChallenge: managed challenge.</li>.
+        :param _ChallengeOption: <p>Specific challenge action for safe execution.</p><p>Enumeration values:</p><ul><li>InterstitialChallenge: interstitial challenge;</li><li>InlineChallenge: embedded challenge (SDK challenge);</li><li>ManagedChallenge: managed challenge. Applicable only to HTML web pages directly accessed by users through a browser. Verification cannot be completed in scenarios such as API interfaces, XHR/AJAX async requests within web pages, mobile apps, and command line tools. Do not configure it;</li><li>JSChallenge: JavaScript challenge. Applicable only to HTML web pages directly accessed by users through a browser. Verification cannot be completed in scenarios such as API interfaces, XHR/AJAX async requests within web pages, mobile apps, and command line tools. Do not configure it.</li></ul>
         :type ChallengeOption: str
-        :param _Interval: Specifies the time interval for challenge repetition. this field is required when Name is InterstitialChallenge/InlineChallenge. default value is 300s. supported units: <li>s: second, value ranges from 1 to 60;</li><li>m: minute, value ranges from 1 to 60;</li><li>h: hour, value ranges from 1 to 24.</li>.
-
+        :param _Interval: <p>Time interval for repeating the challenge. This field is required when ChallengeOption is InterstitialChallenge/InlineChallenge. Default value: 300s. Supported units: <li>s: second, value ranges from 1 to 60;</li><li>m: minute, value ranges from 1 to 60;</li><li>h: hour, value ranges from 1 to 24.</li></p>
         :type Interval: str
-        :param _AttesterId: Client authentication method ID. this field is required when Name is InterstitialChallenge/InlineChallenge.
+        :param _AttesterId: <p>Client authentication method ID. This field is required when Name is InterstitialChallenge/InlineChallenge.</p>
         :type AttesterId: str
         """
         self._ChallengeOption = None
@@ -7234,7 +7254,7 @@ class ChallengeActionParameters(AbstractModel):
 
     @property
     def ChallengeOption(self):
-        r"""Safe execution challenge actions. valid values: <li> InterstitialChallenge: interstitial challenge;</li> <li> InlineChallenge: embedded challenge;</li> <li> JSChallenge: JavaScript challenge;</li> <li> ManagedChallenge: managed challenge.</li>.
+        r"""<p>Specific challenge action for safe execution.</p><p>Enumeration values:</p><ul><li>InterstitialChallenge: interstitial challenge;</li><li>InlineChallenge: embedded challenge (SDK challenge);</li><li>ManagedChallenge: managed challenge. Applicable only to HTML web pages directly accessed by users through a browser. Verification cannot be completed in scenarios such as API interfaces, XHR/AJAX async requests within web pages, mobile apps, and command line tools. Do not configure it;</li><li>JSChallenge: JavaScript challenge. Applicable only to HTML web pages directly accessed by users through a browser. Verification cannot be completed in scenarios such as API interfaces, XHR/AJAX async requests within web pages, mobile apps, and command line tools. Do not configure it.</li></ul>
         :rtype: str
         """
         return self._ChallengeOption
@@ -7245,8 +7265,7 @@ class ChallengeActionParameters(AbstractModel):
 
     @property
     def Interval(self):
-        r"""Specifies the time interval for challenge repetition. this field is required when Name is InterstitialChallenge/InlineChallenge. default value is 300s. supported units: <li>s: second, value ranges from 1 to 60;</li><li>m: minute, value ranges from 1 to 60;</li><li>h: hour, value ranges from 1 to 24.</li>.
-
+        r"""<p>Time interval for repeating the challenge. This field is required when ChallengeOption is InterstitialChallenge/InlineChallenge. Default value: 300s. Supported units: <li>s: second, value ranges from 1 to 60;</li><li>m: minute, value ranges from 1 to 60;</li><li>h: hour, value ranges from 1 to 24.</li></p>
         :rtype: str
         """
         return self._Interval
@@ -7257,7 +7276,7 @@ class ChallengeActionParameters(AbstractModel):
 
     @property
     def AttesterId(self):
-        r"""Client authentication method ID. this field is required when Name is InterstitialChallenge/InlineChallenge.
+        r"""<p>Client authentication method ID. This field is required when Name is InterstitialChallenge/InlineChallenge.</p>
         :rtype: str
         """
         return self._AttesterId
@@ -7779,32 +7798,25 @@ class ClientAttester(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: Authentication option ID.
+        :param _Id: <p>Option ID for certification.</p>
         :type Id: str
-        :param _Name: Specifies the authentication option name.
+        :param _Name: <p>Option name for authentication.</p>
         :type Name: str
-        :param _Type: Authentication rule type. only returned in the response. valid values:.
-<li>PRESET: system PRESET rule. only AttesterDuration can be modified.</li>.
-<Li>CUSTOM: user-defined rules.</li>.
+        :param _Type: <p>Authentication rule type. Returned only in the response. Valid values:</p><li>PRESET: System preset rule. Only AttesterDuration can be modified.</li><li>CUSTOM: User-defined rule.</li>
         :type Type: str
-        :param _AttesterSource: Authentication method. Valid values:
-<li>TC-RCE: Authentication with RCE risk identification;</li>
-<li>TC-CAPTCHA: Authentication using Tianyu verification code;</li>
-<li>TC-EO-CAPTCHA: Use EdgeOne CAPTCHA for authentication.</li>
+        :param _AttesterSource: <p>Authentication method. Valid values:</p><li>TC-RCE: Use risk identification RCE for authentication;</li><li>TC-CAPTCHA: Use Tianyu verification code for authentication;</li><li>TC-EO-CAPTCHA: Use EdgeOne human-machine verification for authentication.</li>
         :type AttesterSource: str
-        :param _AttesterDuration: Validity time of the authentication. defaults to 60s. supported measurement units:.
-<Li>S: specifies seconds. value range: 60–43200.</li>.
-<Li>M: specifies minutes. value range: 1–720.</li>.
-<Li>H. specifies the hour. value range: 1–12.</li>.
+        :param _AttesterDuration: <p>Authentication validity time. Default value is 60s. Supported measurement units:</p><li>s: second, value ranges from 60 to 43200.</li><li>m: minute, value ranges from 1 to 720.</li><li>h: hour, value ranges from 1 to 12.</li>
         :type AttesterDuration: str
-        :param _TCRCEOption: TC-RCE authentication configuration message.
-<li>Specifies the required field when the AttesterSource parameter value is TC-RCE.</li>.
+        :param _UsageLimit: <p>Whether to enable the usage limit for attestation results. </p><p>Valid values:</p><ul><li>on: Enabled</li><li>off: Disabled</li></ul><p>Default value: off</p>
+        :type UsageLimit: str
+        :param _MaxUsageCount: <p>Whether to enable the usage limit for attestation results. </p><p>Valid values:</p><ul><li>on: Enabled</li><li>off: Disabled</li></ul><p>Default value: off</p>
+        :type MaxUsageCount: int
+        :param _TCRCEOption: <p>Configuration message for TC-RCE certification.</p><li>This field is required when the AttesterSource parameter value is TC-RCE.</li>
         :type TCRCEOption: :class:`tencentcloud.teo.v20220901.models.TCRCEOption`
-        :param _TCCaptchaOption: Specifies the configuration message for TC-CAPTCHA certification.
-<li>Specifies the required field when the AttesterSource parameter value is TC-CAPTCHA.</li>.
+        :param _TCCaptchaOption: <p>Configuration message for TC-CAPTCHA certification.</p><li>This field is required when the AttesterSource parameter value is TC-CAPTCHA.</li>
         :type TCCaptchaOption: :class:`tencentcloud.teo.v20220901.models.TCCaptchaOption`
-        :param _TCEOCaptchaOption: Configuration message of TC-EO-CAPTCHA authentication.
-<li>This field is required when the AttesterSource parameter value is TC-EO-CAPTCHA.</li>
+        :param _TCEOCaptchaOption: <p>Configuration message for TC-EO-CAPTCHA certification.</p><li>This field is required when the AttesterSource parameter value is TC-EO-CAPTCHA.</li>
         :type TCEOCaptchaOption: :class:`tencentcloud.teo.v20220901.models.TCEOCaptchaOption`
         """
         self._Id = None
@@ -7812,13 +7824,15 @@ class ClientAttester(AbstractModel):
         self._Type = None
         self._AttesterSource = None
         self._AttesterDuration = None
+        self._UsageLimit = None
+        self._MaxUsageCount = None
         self._TCRCEOption = None
         self._TCCaptchaOption = None
         self._TCEOCaptchaOption = None
 
     @property
     def Id(self):
-        r"""Authentication option ID.
+        r"""<p>Option ID for certification.</p>
         :rtype: str
         """
         return self._Id
@@ -7829,7 +7843,7 @@ class ClientAttester(AbstractModel):
 
     @property
     def Name(self):
-        r"""Specifies the authentication option name.
+        r"""<p>Option name for authentication.</p>
         :rtype: str
         """
         return self._Name
@@ -7840,9 +7854,7 @@ class ClientAttester(AbstractModel):
 
     @property
     def Type(self):
-        r"""Authentication rule type. only returned in the response. valid values:.
-<li>PRESET: system PRESET rule. only AttesterDuration can be modified.</li>.
-<Li>CUSTOM: user-defined rules.</li>.
+        r"""<p>Authentication rule type. Returned only in the response. Valid values:</p><li>PRESET: System preset rule. Only AttesterDuration can be modified.</li><li>CUSTOM: User-defined rule.</li>
         :rtype: str
         """
         return self._Type
@@ -7853,10 +7865,7 @@ class ClientAttester(AbstractModel):
 
     @property
     def AttesterSource(self):
-        r"""Authentication method. Valid values:
-<li>TC-RCE: Authentication with RCE risk identification;</li>
-<li>TC-CAPTCHA: Authentication using Tianyu verification code;</li>
-<li>TC-EO-CAPTCHA: Use EdgeOne CAPTCHA for authentication.</li>
+        r"""<p>Authentication method. Valid values:</p><li>TC-RCE: Use risk identification RCE for authentication;</li><li>TC-CAPTCHA: Use Tianyu verification code for authentication;</li><li>TC-EO-CAPTCHA: Use EdgeOne human-machine verification for authentication.</li>
         :rtype: str
         """
         return self._AttesterSource
@@ -7867,10 +7876,7 @@ class ClientAttester(AbstractModel):
 
     @property
     def AttesterDuration(self):
-        r"""Validity time of the authentication. defaults to 60s. supported measurement units:.
-<Li>S: specifies seconds. value range: 60–43200.</li>.
-<Li>M: specifies minutes. value range: 1–720.</li>.
-<Li>H. specifies the hour. value range: 1–12.</li>.
+        r"""<p>Authentication validity time. Default value is 60s. Supported measurement units:</p><li>s: second, value ranges from 60 to 43200.</li><li>m: minute, value ranges from 1 to 720.</li><li>h: hour, value ranges from 1 to 12.</li>
         :rtype: str
         """
         return self._AttesterDuration
@@ -7880,9 +7886,30 @@ class ClientAttester(AbstractModel):
         self._AttesterDuration = AttesterDuration
 
     @property
+    def UsageLimit(self):
+        r"""<p>Whether to enable the usage limit for attestation results. </p><p>Valid values:</p><ul><li>on: Enabled</li><li>off: Disabled</li></ul><p>Default value: off</p>
+        :rtype: str
+        """
+        return self._UsageLimit
+
+    @UsageLimit.setter
+    def UsageLimit(self, UsageLimit):
+        self._UsageLimit = UsageLimit
+
+    @property
+    def MaxUsageCount(self):
+        r"""<p>Whether to enable the usage limit for attestation results. </p><p>Valid values:</p><ul><li>on: Enabled</li><li>off: Disabled</li></ul><p>Default value: off</p>
+        :rtype: int
+        """
+        return self._MaxUsageCount
+
+    @MaxUsageCount.setter
+    def MaxUsageCount(self, MaxUsageCount):
+        self._MaxUsageCount = MaxUsageCount
+
+    @property
     def TCRCEOption(self):
-        r"""TC-RCE authentication configuration message.
-<li>Specifies the required field when the AttesterSource parameter value is TC-RCE.</li>.
+        r"""<p>Configuration message for TC-RCE certification.</p><li>This field is required when the AttesterSource parameter value is TC-RCE.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.TCRCEOption`
         """
         return self._TCRCEOption
@@ -7893,8 +7920,7 @@ class ClientAttester(AbstractModel):
 
     @property
     def TCCaptchaOption(self):
-        r"""Specifies the configuration message for TC-CAPTCHA certification.
-<li>Specifies the required field when the AttesterSource parameter value is TC-CAPTCHA.</li>.
+        r"""<p>Configuration message for TC-CAPTCHA certification.</p><li>This field is required when the AttesterSource parameter value is TC-CAPTCHA.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.TCCaptchaOption`
         """
         return self._TCCaptchaOption
@@ -7905,8 +7931,7 @@ class ClientAttester(AbstractModel):
 
     @property
     def TCEOCaptchaOption(self):
-        r"""Configuration message of TC-EO-CAPTCHA authentication.
-<li>This field is required when the AttesterSource parameter value is TC-EO-CAPTCHA.</li>
+        r"""<p>Configuration message for TC-EO-CAPTCHA certification.</p><li>This field is required when the AttesterSource parameter value is TC-EO-CAPTCHA.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.TCEOCaptchaOption`
         """
         return self._TCEOCaptchaOption
@@ -7922,6 +7947,8 @@ class ClientAttester(AbstractModel):
         self._Type = params.get("Type")
         self._AttesterSource = params.get("AttesterSource")
         self._AttesterDuration = params.get("AttesterDuration")
+        self._UsageLimit = params.get("UsageLimit")
+        self._MaxUsageCount = params.get("MaxUsageCount")
         if params.get("TCRCEOption") is not None:
             self._TCRCEOption = TCRCEOption()
             self._TCRCEOption._deserialize(params.get("TCRCEOption"))
@@ -8743,35 +8770,35 @@ class ConfigGroupVersionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VersionId: Version ID.
+        :param _VersionId: <p>Configuration group version ID, a unique resource ID allocated by EdgeOne when creating a configuration group version.</p><p>Parameter format: ver-2kplomhisdcb</p><p>For reference:</p><ul><li><a href="https://www.tencentcloud.com/document/api/1552/101867?from_cn_redirect=1">CreateConfigGroupVersion</a> return value <code>VersionId</code></li><li><a href="https://www.tencentcloud.com/document/api/1552/101864?from_cn_redirect=1">DescribeConfigGroupVersions</a> return value <code>ConfigGroupVersionInfos</code></li></ul>
         :type VersionId: str
-        :param _VersionNumber: Version No.
+        :param _VersionNumber: <p>Configuration group version number. This parameter only shows the version. Each time a new version of the configuration group is created, the version number increments by one. The initial version number is "0".</p><p>For reference: <a href="https://www.tencentcloud.com/document/api/1552/101864?from_cn_redirect=1">DescribeConfigGroupVersions</a> return value <code>ConfigGroupVersionInfos</code></p>
         :type VersionNumber: str
-        :param _GroupId: Configuraration group ID.
-        :type GroupId: str
-        :param _GroupType: Configuration group type. Optional options are as follows: <li>l7_acceleration: layer-7 acceleration configuration group;</li><li>edge_functions: edge function configuration group;</li><li>web_security: web protection configuration group.</li>
+        :param _SourceVersion: <p>Version ID of the source version on which the configuration group version is based. When creating a configuration group version, designate the source version ID. The new version will be created as a derivative based on the configuration of that source version.</p><p>Parameter format: ver-2kplomhisdcb</p><p>Value for reference:</p><ul><li><a href="https://www.tencentcloud.com/document/api/1552/101867?from_cn_redirect=1">CreateConfigGroupVersion</a> return value <code>VersionId</code></li><li><a href="https://www.tencentcloud.com/document/api/1552/101864?from_cn_redirect=1">DescribeConfigGroupVersions</a> return value <code>ConfigGroupVersionInfos</code></li></ul>
+        :type SourceVersion: str
+        :param _GroupType: <p>Configuration group type to which the version belongs.</p><p>Enumeration value:</p><ul><li>l7_acceleration: Layer-7 acceleration configuration group</li><li>edge_functions: Edge function configuration group</li><li>web_security: Web protection configuration group</li></ul>
         :type GroupType: str
-        :param _Description: Version description.
+        :param _GroupId: <p>Configuration group ID for version ownership.</p><p>Parameter format: cg-2kplomhisdcb</p>
+        :type GroupId: str
+        :param _Description: <p>Version description.</p>
         :type Description: str
-        :param _Status: Version status. Valid values: 
-<li>creating: Being created.</li>
-<li>inactive: Not effective.</li>
-<li>active: Effective. </li>
+        :param _Status: <p>Version effective status.</p><p>Enumeration value:</p><ul><li>creating: Version creation in progress</li><li>inactive: Version not in effect</li><li>active: Version in effect</li></ul>
         :type Status: str
-        :param _CreateTime: Version creation time. The time format follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC).
+        :param _CreateTime: <p>Version creation time, which adopts Coordinated Universal Time (UTC) and follows the date and time format of the ISO 8601 standard.</p>
         :type CreateTime: str
         """
         self._VersionId = None
         self._VersionNumber = None
-        self._GroupId = None
+        self._SourceVersion = None
         self._GroupType = None
+        self._GroupId = None
         self._Description = None
         self._Status = None
         self._CreateTime = None
 
     @property
     def VersionId(self):
-        r"""Version ID.
+        r"""<p>Configuration group version ID, a unique resource ID allocated by EdgeOne when creating a configuration group version.</p><p>Parameter format: ver-2kplomhisdcb</p><p>For reference:</p><ul><li><a href="https://www.tencentcloud.com/document/api/1552/101867?from_cn_redirect=1">CreateConfigGroupVersion</a> return value <code>VersionId</code></li><li><a href="https://www.tencentcloud.com/document/api/1552/101864?from_cn_redirect=1">DescribeConfigGroupVersions</a> return value <code>ConfigGroupVersionInfos</code></li></ul>
         :rtype: str
         """
         return self._VersionId
@@ -8782,7 +8809,7 @@ class ConfigGroupVersionInfo(AbstractModel):
 
     @property
     def VersionNumber(self):
-        r"""Version No.
+        r"""<p>Configuration group version number. This parameter only shows the version. Each time a new version of the configuration group is created, the version number increments by one. The initial version number is "0".</p><p>For reference: <a href="https://www.tencentcloud.com/document/api/1552/101864?from_cn_redirect=1">DescribeConfigGroupVersions</a> return value <code>ConfigGroupVersionInfos</code></p>
         :rtype: str
         """
         return self._VersionNumber
@@ -8792,19 +8819,19 @@ class ConfigGroupVersionInfo(AbstractModel):
         self._VersionNumber = VersionNumber
 
     @property
-    def GroupId(self):
-        r"""Configuraration group ID.
+    def SourceVersion(self):
+        r"""<p>Version ID of the source version on which the configuration group version is based. When creating a configuration group version, designate the source version ID. The new version will be created as a derivative based on the configuration of that source version.</p><p>Parameter format: ver-2kplomhisdcb</p><p>Value for reference:</p><ul><li><a href="https://www.tencentcloud.com/document/api/1552/101867?from_cn_redirect=1">CreateConfigGroupVersion</a> return value <code>VersionId</code></li><li><a href="https://www.tencentcloud.com/document/api/1552/101864?from_cn_redirect=1">DescribeConfigGroupVersions</a> return value <code>ConfigGroupVersionInfos</code></li></ul>
         :rtype: str
         """
-        return self._GroupId
+        return self._SourceVersion
 
-    @GroupId.setter
-    def GroupId(self, GroupId):
-        self._GroupId = GroupId
+    @SourceVersion.setter
+    def SourceVersion(self, SourceVersion):
+        self._SourceVersion = SourceVersion
 
     @property
     def GroupType(self):
-        r"""Configuration group type. Optional options are as follows: <li>l7_acceleration: layer-7 acceleration configuration group;</li><li>edge_functions: edge function configuration group;</li><li>web_security: web protection configuration group.</li>
+        r"""<p>Configuration group type to which the version belongs.</p><p>Enumeration value:</p><ul><li>l7_acceleration: Layer-7 acceleration configuration group</li><li>edge_functions: Edge function configuration group</li><li>web_security: Web protection configuration group</li></ul>
         :rtype: str
         """
         return self._GroupType
@@ -8814,8 +8841,19 @@ class ConfigGroupVersionInfo(AbstractModel):
         self._GroupType = GroupType
 
     @property
+    def GroupId(self):
+        r"""<p>Configuration group ID for version ownership.</p><p>Parameter format: cg-2kplomhisdcb</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
     def Description(self):
-        r"""Version description.
+        r"""<p>Version description.</p>
         :rtype: str
         """
         return self._Description
@@ -8826,10 +8864,7 @@ class ConfigGroupVersionInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""Version status. Valid values: 
-<li>creating: Being created.</li>
-<li>inactive: Not effective.</li>
-<li>active: Effective. </li>
+        r"""<p>Version effective status.</p><p>Enumeration value:</p><ul><li>creating: Version creation in progress</li><li>inactive: Version not in effect</li><li>active: Version in effect</li></ul>
         :rtype: str
         """
         return self._Status
@@ -8840,7 +8875,7 @@ class ConfigGroupVersionInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Version creation time. The time format follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC).
+        r"""<p>Version creation time, which adopts Coordinated Universal Time (UTC) and follows the date and time format of the ISO 8601 standard.</p>
         :rtype: str
         """
         return self._CreateTime
@@ -8853,8 +8888,9 @@ class ConfigGroupVersionInfo(AbstractModel):
     def _deserialize(self, params):
         self._VersionId = params.get("VersionId")
         self._VersionNumber = params.get("VersionNumber")
-        self._GroupId = params.get("GroupId")
+        self._SourceVersion = params.get("SourceVersion")
         self._GroupType = params.get("GroupType")
+        self._GroupId = params.get("GroupId")
         self._Description = params.get("Description")
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
@@ -10216,23 +10252,26 @@ class CreateConfigGroupVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: Zone ID.
+        :param _ZoneId: <p>Site ID.</p>
         :type ZoneId: str
-        :param _GroupId: GroupId of the version to be created.
+        :param _GroupId: <p>Configuration group ID for the new version. You can obtain the complete environment information through the DescribeEnvironments interface. The environment information contains the configuration group ID for each configuration group type.</p><p>For reference: <a href="https://www.tencentcloud.com/document/api/1552/101862?from_cn_redirect=1">DescribeEnvironments</a> return value <code>EnvInfos</code></p>
         :type GroupId: str
-        :param _Content: Configuration content to be imported. It is required to be in JSON format and encoded in UTF-8. Please refer to the example below for the configuration file content.
+        :param _Content: <p>Configuration content to be imported. Use JSON format and encode in UTF-8 mode. Refer to the example below and the <a href="https://www.tencentcloud.com/document/product/1552/125342?from_cn_redirect=1">configuration group syntax explanation</a> for the configuration file content.</p>
         :type Content: str
-        :param _Description: Version description. The maximum length allowed is 50 characters. This field can be used to provide details about the application scenarios of this version.
+        :param _Description: <p>Version description, enter a maximum length of 50 characters, can be used to fill in the usage scenario of this version.</p>
         :type Description: str
+        :param _SourceVersion: <p>Source version ID on which the new version is based. The new version will be created as a derivative based on the configuration of this source version. This field is optional. If not provided, it defaults to the version currently taking effect in the production environment as the source version.</p><p>For reference:</p><ul><li><a href="https://www.tencentcloud.com/document/api/1552/101867?from_cn_redirect=1">CreateConfigGroupVersion</a> return value <code>VersionId</code></li><li><a href="https://www.tencentcloud.com/document/api/1552/101864?from_cn_redirect=1">DescribeConfigGroupVersions</a> return value <code>ConfigGroupVersionInfos</code></li></ul>
+        :type SourceVersion: str
         """
         self._ZoneId = None
         self._GroupId = None
         self._Content = None
         self._Description = None
+        self._SourceVersion = None
 
     @property
     def ZoneId(self):
-        r"""Zone ID.
+        r"""<p>Site ID.</p>
         :rtype: str
         """
         return self._ZoneId
@@ -10243,7 +10282,7 @@ class CreateConfigGroupVersionRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""GroupId of the version to be created.
+        r"""<p>Configuration group ID for the new version. You can obtain the complete environment information through the DescribeEnvironments interface. The environment information contains the configuration group ID for each configuration group type.</p><p>For reference: <a href="https://www.tencentcloud.com/document/api/1552/101862?from_cn_redirect=1">DescribeEnvironments</a> return value <code>EnvInfos</code></p>
         :rtype: str
         """
         return self._GroupId
@@ -10254,7 +10293,7 @@ class CreateConfigGroupVersionRequest(AbstractModel):
 
     @property
     def Content(self):
-        r"""Configuration content to be imported. It is required to be in JSON format and encoded in UTF-8. Please refer to the example below for the configuration file content.
+        r"""<p>Configuration content to be imported. Use JSON format and encode in UTF-8 mode. Refer to the example below and the <a href="https://www.tencentcloud.com/document/product/1552/125342?from_cn_redirect=1">configuration group syntax explanation</a> for the configuration file content.</p>
         :rtype: str
         """
         return self._Content
@@ -10265,7 +10304,7 @@ class CreateConfigGroupVersionRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""Version description. The maximum length allowed is 50 characters. This field can be used to provide details about the application scenarios of this version.
+        r"""<p>Version description, enter a maximum length of 50 characters, can be used to fill in the usage scenario of this version.</p>
         :rtype: str
         """
         return self._Description
@@ -10274,12 +10313,24 @@ class CreateConfigGroupVersionRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def SourceVersion(self):
+        r"""<p>Source version ID on which the new version is based. The new version will be created as a derivative based on the configuration of this source version. This field is optional. If not provided, it defaults to the version currently taking effect in the production environment as the source version.</p><p>For reference:</p><ul><li><a href="https://www.tencentcloud.com/document/api/1552/101867?from_cn_redirect=1">CreateConfigGroupVersion</a> return value <code>VersionId</code></li><li><a href="https://www.tencentcloud.com/document/api/1552/101864?from_cn_redirect=1">DescribeConfigGroupVersions</a> return value <code>ConfigGroupVersionInfos</code></li></ul>
+        :rtype: str
+        """
+        return self._SourceVersion
+
+    @SourceVersion.setter
+    def SourceVersion(self, SourceVersion):
+        self._SourceVersion = SourceVersion
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
         self._GroupId = params.get("GroupId")
         self._Content = params.get("Content")
         self._Description = params.get("Description")
+        self._SourceVersion = params.get("SourceVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10297,7 +10348,7 @@ class CreateConfigGroupVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VersionId: Version ID.
+        :param _VersionId: <p>Version ID.</p>
         :type VersionId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -10307,7 +10358,7 @@ class CreateConfigGroupVersionResponse(AbstractModel):
 
     @property
     def VersionId(self):
-        r"""Version ID.
+        r"""<p>Version ID.</p>
         :rtype: str
         """
         return self._VersionId
@@ -15334,6 +15385,259 @@ Note: This field may return null, which indicates a failure to obtain a valid va
         
 
 
+class CustomAction(AbstractModel):
+    r"""Custom configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionId: <p>ID of the custom configuration item.</p><p>You can obtain it through the returned value CustomActionSet[].ActionId of the DescribeAvailableCustomActionsForRuleEngine API.</p>
+        :type ActionId: str
+        :param _Parameters: <p>Parameter values of each parameter field under this custom configuration.</p><p>You can obtain them through the API return value CustomActionSet[].Parameters of DescribeAvailableCustomActionsForRuleEngine.</p>
+        :type Parameters: list of CustomActionParameter
+        """
+        self._ActionId = None
+        self._Parameters = None
+
+    @property
+    def ActionId(self):
+        r"""<p>ID of the custom configuration item.</p><p>You can obtain it through the returned value CustomActionSet[].ActionId of the DescribeAvailableCustomActionsForRuleEngine API.</p>
+        :rtype: str
+        """
+        return self._ActionId
+
+    @ActionId.setter
+    def ActionId(self, ActionId):
+        self._ActionId = ActionId
+
+    @property
+    def Parameters(self):
+        r"""<p>Parameter values of each parameter field under this custom configuration.</p><p>You can obtain them through the API return value CustomActionSet[].Parameters of DescribeAvailableCustomActionsForRuleEngine.</p>
+        :rtype: list of CustomActionParameter
+        """
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
+
+    def _deserialize(self, params):
+        self._ActionId = params.get("ActionId")
+        if params.get("Parameters") is not None:
+            self._Parameters = []
+            for item in params.get("Parameters"):
+                obj = CustomActionParameter()
+                obj._deserialize(item)
+                self._Parameters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomActionParameter(AbstractModel):
+    r"""Parameter content of a single field in custom configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>Field Name of each parameter under custom configuration.</p><p>You can get it through the API return value CustomActionSet[].Parameters[].Name of DescribeAvailableCustomActionsForRuleEngine, such as "Seconds", "Ports", "StatusCode".</p>
+        :type Name: str
+        :param _ValueType: <p>Data type of each parameter field value under custom configuration.</p><p>Enumeration value:</p><ul><li>String: string type.</li><li>Integer: integer type.</li><li>Float: floating-point type.</li><li>Boolean: boolean type.</li><li>ArrayOfString: string array type.</li><li>ArrayOfInteger: integer array type.</li><li>ArrayOfFloat: floating-point number array type.</li></ul><p>It can be obtained through the API return value CustomActionSet[].Parameters[].Type of DescribeAvailableCustomActionsForRuleEngine.</p>
+        :type ValueType: str
+        :param _StringValue: <p>Parameter value of string type. This parameter is required when ValueType is String.</p><p>You can get the default value, measurement unit, limit and other details of the parameter value through the CustomActionSet[].Parameters in the API return value of DescribeAvailableCustomActionsForRuleEngine.</p>
+        :type StringValue: str
+        :param _IntegerValue: <p>Integer type parameter value. This parameter is required when ValueType is Integer.</p><p>You can get the default value, measurement unit, limit, and other details of the parameter value through the CustomActionSet[].Parameters field in the API return value of DescribeAvailableCustomActionsForRuleEngine.</p>
+        :type IntegerValue: int
+        :param _FloatValue: <p>Floating-point type parameter value. This parameter is required when ValueType is Float.</p><p>You can get the default value, measurement unit, limitation, and other details of the parameter value through the CustomActionSet[].Parameters field in the API return value of DescribeAvailableCustomActionsForRuleEngine.</p>
+        :type FloatValue: float
+        :param _BooleanValue: <p>Boolean type parameter value. This parameter is required when ValueType is Boolean.</p><p>You can get the default value, measurement unit, limitation, and other details of the parameter value through the CustomActionSet[].Parameters in the API return value of DescribeAvailableCustomActionsForRuleEngine.</p>
+        :type BooleanValue: bool
+        :param _StringArrayValue: <p>String array type parameter value. This parameter is required when ValueType is ArrayOfString.</p><p>You can get the default value, measurement unit, and limitation of the parameter value through the API return value CustomActionSet[].Parameters of the DescribeAvailableCustomActionsForRuleEngine API.</p>
+        :type StringArrayValue: list of str
+        :param _IntegerArrayValue: <p>Array type parameter value of integer. This parameter is required when ValueType is ArrayOfInteger.</p><p>You can get the default value, measurement unit, limit, and other details of the parameter value through the API return value CustomActionSet[].Parameters of the DescribeAvailableCustomActionsForRuleEngine API.</p>
+        :type IntegerArrayValue: list of int
+        :param _FloatArrayValue: <p>Floating-point number array type parameter value. This parameter is required when ValueType is ArrayOfFloat.</p><p>You can get the default value, measurement unit, limitation, and other descriptions of the parameter value through the CustomActionSet[].Parameters field in the API return value of DescribeAvailableCustomActionsForRuleEngine.</p>
+        :type FloatArrayValue: list of float
+        """
+        self._Name = None
+        self._ValueType = None
+        self._StringValue = None
+        self._IntegerValue = None
+        self._FloatValue = None
+        self._BooleanValue = None
+        self._StringArrayValue = None
+        self._IntegerArrayValue = None
+        self._FloatArrayValue = None
+
+    @property
+    def Name(self):
+        r"""<p>Field Name of each parameter under custom configuration.</p><p>You can get it through the API return value CustomActionSet[].Parameters[].Name of DescribeAvailableCustomActionsForRuleEngine, such as "Seconds", "Ports", "StatusCode".</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ValueType(self):
+        r"""<p>Data type of each parameter field value under custom configuration.</p><p>Enumeration value:</p><ul><li>String: string type.</li><li>Integer: integer type.</li><li>Float: floating-point type.</li><li>Boolean: boolean type.</li><li>ArrayOfString: string array type.</li><li>ArrayOfInteger: integer array type.</li><li>ArrayOfFloat: floating-point number array type.</li></ul><p>It can be obtained through the API return value CustomActionSet[].Parameters[].Type of DescribeAvailableCustomActionsForRuleEngine.</p>
+        :rtype: str
+        """
+        return self._ValueType
+
+    @ValueType.setter
+    def ValueType(self, ValueType):
+        self._ValueType = ValueType
+
+    @property
+    def StringValue(self):
+        r"""<p>Parameter value of string type. This parameter is required when ValueType is String.</p><p>You can get the default value, measurement unit, limit and other details of the parameter value through the CustomActionSet[].Parameters in the API return value of DescribeAvailableCustomActionsForRuleEngine.</p>
+        :rtype: str
+        """
+        return self._StringValue
+
+    @StringValue.setter
+    def StringValue(self, StringValue):
+        self._StringValue = StringValue
+
+    @property
+    def IntegerValue(self):
+        r"""<p>Integer type parameter value. This parameter is required when ValueType is Integer.</p><p>You can get the default value, measurement unit, limit, and other details of the parameter value through the CustomActionSet[].Parameters field in the API return value of DescribeAvailableCustomActionsForRuleEngine.</p>
+        :rtype: int
+        """
+        return self._IntegerValue
+
+    @IntegerValue.setter
+    def IntegerValue(self, IntegerValue):
+        self._IntegerValue = IntegerValue
+
+    @property
+    def FloatValue(self):
+        r"""<p>Floating-point type parameter value. This parameter is required when ValueType is Float.</p><p>You can get the default value, measurement unit, limitation, and other details of the parameter value through the CustomActionSet[].Parameters field in the API return value of DescribeAvailableCustomActionsForRuleEngine.</p>
+        :rtype: float
+        """
+        return self._FloatValue
+
+    @FloatValue.setter
+    def FloatValue(self, FloatValue):
+        self._FloatValue = FloatValue
+
+    @property
+    def BooleanValue(self):
+        r"""<p>Boolean type parameter value. This parameter is required when ValueType is Boolean.</p><p>You can get the default value, measurement unit, limitation, and other details of the parameter value through the CustomActionSet[].Parameters in the API return value of DescribeAvailableCustomActionsForRuleEngine.</p>
+        :rtype: bool
+        """
+        return self._BooleanValue
+
+    @BooleanValue.setter
+    def BooleanValue(self, BooleanValue):
+        self._BooleanValue = BooleanValue
+
+    @property
+    def StringArrayValue(self):
+        r"""<p>String array type parameter value. This parameter is required when ValueType is ArrayOfString.</p><p>You can get the default value, measurement unit, and limitation of the parameter value through the API return value CustomActionSet[].Parameters of the DescribeAvailableCustomActionsForRuleEngine API.</p>
+        :rtype: list of str
+        """
+        return self._StringArrayValue
+
+    @StringArrayValue.setter
+    def StringArrayValue(self, StringArrayValue):
+        self._StringArrayValue = StringArrayValue
+
+    @property
+    def IntegerArrayValue(self):
+        r"""<p>Array type parameter value of integer. This parameter is required when ValueType is ArrayOfInteger.</p><p>You can get the default value, measurement unit, limit, and other details of the parameter value through the API return value CustomActionSet[].Parameters of the DescribeAvailableCustomActionsForRuleEngine API.</p>
+        :rtype: list of int
+        """
+        return self._IntegerArrayValue
+
+    @IntegerArrayValue.setter
+    def IntegerArrayValue(self, IntegerArrayValue):
+        self._IntegerArrayValue = IntegerArrayValue
+
+    @property
+    def FloatArrayValue(self):
+        r"""<p>Floating-point number array type parameter value. This parameter is required when ValueType is ArrayOfFloat.</p><p>You can get the default value, measurement unit, limitation, and other descriptions of the parameter value through the CustomActionSet[].Parameters field in the API return value of DescribeAvailableCustomActionsForRuleEngine.</p>
+        :rtype: list of float
+        """
+        return self._FloatArrayValue
+
+    @FloatArrayValue.setter
+    def FloatArrayValue(self, FloatArrayValue):
+        self._FloatArrayValue = FloatArrayValue
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ValueType = params.get("ValueType")
+        self._StringValue = params.get("StringValue")
+        self._IntegerValue = params.get("IntegerValue")
+        self._FloatValue = params.get("FloatValue")
+        self._BooleanValue = params.get("BooleanValue")
+        self._StringArrayValue = params.get("StringArrayValue")
+        self._IntegerArrayValue = params.get("IntegerArrayValue")
+        self._FloatArrayValue = params.get("FloatArrayValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomActionParameters(AbstractModel):
+    r"""Custom configuration operation parameter.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CustomActions: <p>Custom configuration list that needs to be configured.</p>
+        :type CustomActions: list of CustomAction
+        """
+        self._CustomActions = None
+
+    @property
+    def CustomActions(self):
+        r"""<p>Custom configuration list that needs to be configured.</p>
+        :rtype: list of CustomAction
+        """
+        return self._CustomActions
+
+    @CustomActions.setter
+    def CustomActions(self, CustomActions):
+        self._CustomActions = CustomActions
+
+
+    def _deserialize(self, params):
+        if params.get("CustomActions") is not None:
+            self._CustomActions = []
+            for item in params.get("CustomActions"):
+                obj = CustomAction()
+                obj._deserialize(item)
+                self._CustomActions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CustomEndpoint(AbstractModel):
     r"""The configuration information of real-time log delivery to a custom HTTP(S) interface
 
@@ -15736,19 +16040,19 @@ class CustomRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: The custom rule name.
+        :param _Name: <p>Custom rule name.</p>
         :type Name: str
-        :param _Condition: The specific content of custom rules must comply with expression grammar. For detailed specifications, please refer to the product document (https://www.tencentcloud.com/document/product/1552/125343?from_cn_redirect=1).
+        :param _Condition: <p>The specific content of a custom rule must comply with the expression syntax. For detailed specifications, refer to the <a href="https://www.tencentcloud.com/document/product/1552/125343?from_cn_redirect=1">product document</a>.</p>
         :type Condition: str
-        :param _Action: The handling action of custom rules. The value range of SecurityAction.Name is as follows:<ul><li>Deny: blocking;</li><li>Monitor: observation;</li><li>ReturnCustomPage: use specified page to block;</li><li>Redirect: redirect to URL;</li><li>BlockIP: IP blocking;</li><li>JSChallenge: JavaScript challenge;</li><li>ManagedChallenge: managed challenge;</li><li>Allow: allowing.</li></ul>
+        :param _Action: <p>Handling action of the custom rule. SecurityAction.Name value range is as follows:</p><ul><li>Allow: allow, where AllowActionParameters supports MinDelayTime and MaxDelayTime configuration;</li><li>Deny: block, where DenyActionParameters supports BlockIp, ReturnCustomPage, and Stall configuration;</li><li>Monitor: observe;</li><li>Challenge: challenge, where ChallengeActionParameters.ChallengeOption supports JSChallenge and ManagedChallenge;</li><li>Redirect: redirect to a URL.</li></ul>
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _Enabled: Whether the custom rule is enabled. Valid values: <ul><li>on: enable</li><li>off: disable</li></ul>
+        :param _Enabled: <p>Whether the custom rule is enabled. Valid values: <ul><li>on: enabled;</li><li>off: disabled.</li></ul></p>
         :type Enabled: str
-        :param _Id: ID of the custom rule. Different rule configuration operations are supported by rule ID:<ul><li>Add a new rule: The ID is empty or the ID parameter is not specified.</li><li>Modify an existing rule: Specify the rule ID that needs to be updated or modified.</li><li>Delete an existing rule: Existing rules not included in the Rules list in the CustomRules parameter will be deleted.</li></ul>
+        :param _Id: <p>ID of the custom rule. The rule ID supports different rule configuration operations: <ul><li>Add a new rule: leave the ID empty or do not specify the ID parameter;</li><li>Modify an existing rule: specify the rule ID that needs to be updated/modified;</li><li>Delete an existing rule: existing rules not included in the Rules list in the CustomRules parameter will be deleted.</li></ul></p>
         :type Id: str
-        :param _RuleType: Type of custom rule. Valid values: <ul><li>BasicAccessRule: basic access control;</li><li>PreciseMatchRule: exact matching rule;</li><li>ManagedAccessRule: expert customized rule, only supported in output parameters.</li></ul>Description: When RuleType is not specified, it defaults to `PreciseMatchRule`.
+        :param _RuleType: <p>Type of the custom rule. Valid values: <ul><li>BasicAccessRule: basic access control;</li><li>PreciseMatchRule: exact matching rule;</li><li>ManagedAccessRule: expert customized rule, supported only for output parameters.</li></ul>Note: If RuleType is not specified, it defaults to <code>PreciseMatchRule</code>.</p>
         :type RuleType: str
-        :param _Priority: Priority of custom rules, ranging from 0 to 100, defaults to 0, and only supports exact matching rules (`PreciseMatchRule`).
+        :param _Priority: <p>Priority of custom rules. Value range: 0-100. Default value: 0. Only exact matching rules (<code>PreciseMatchRule</code>) are supported.</p>
         :type Priority: int
         """
         self._Name = None
@@ -15761,7 +16065,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Name(self):
-        r"""The custom rule name.
+        r"""<p>Custom rule name.</p>
         :rtype: str
         """
         return self._Name
@@ -15772,7 +16076,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Condition(self):
-        r"""The specific content of custom rules must comply with expression grammar. For detailed specifications, please refer to the product document (https://www.tencentcloud.com/document/product/1552/125343?from_cn_redirect=1).
+        r"""<p>The specific content of a custom rule must comply with the expression syntax. For detailed specifications, refer to the <a href="https://www.tencentcloud.com/document/product/1552/125343?from_cn_redirect=1">product document</a>.</p>
         :rtype: str
         """
         return self._Condition
@@ -15783,7 +16087,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Action(self):
-        r"""The handling action of custom rules. The value range of SecurityAction.Name is as follows:<ul><li>Deny: blocking;</li><li>Monitor: observation;</li><li>ReturnCustomPage: use specified page to block;</li><li>Redirect: redirect to URL;</li><li>BlockIP: IP blocking;</li><li>JSChallenge: JavaScript challenge;</li><li>ManagedChallenge: managed challenge;</li><li>Allow: allowing.</li></ul>
+        r"""<p>Handling action of the custom rule. SecurityAction.Name value range is as follows:</p><ul><li>Allow: allow, where AllowActionParameters supports MinDelayTime and MaxDelayTime configuration;</li><li>Deny: block, where DenyActionParameters supports BlockIp, ReturnCustomPage, and Stall configuration;</li><li>Monitor: observe;</li><li>Challenge: challenge, where ChallengeActionParameters.ChallengeOption supports JSChallenge and ManagedChallenge;</li><li>Redirect: redirect to a URL.</li></ul>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._Action
@@ -15794,7 +16098,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""Whether the custom rule is enabled. Valid values: <ul><li>on: enable</li><li>off: disable</li></ul>
+        r"""<p>Whether the custom rule is enabled. Valid values: <ul><li>on: enabled;</li><li>off: disabled.</li></ul></p>
         :rtype: str
         """
         return self._Enabled
@@ -15805,7 +16109,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Id(self):
-        r"""ID of the custom rule. Different rule configuration operations are supported by rule ID:<ul><li>Add a new rule: The ID is empty or the ID parameter is not specified.</li><li>Modify an existing rule: Specify the rule ID that needs to be updated or modified.</li><li>Delete an existing rule: Existing rules not included in the Rules list in the CustomRules parameter will be deleted.</li></ul>
+        r"""<p>ID of the custom rule. The rule ID supports different rule configuration operations: <ul><li>Add a new rule: leave the ID empty or do not specify the ID parameter;</li><li>Modify an existing rule: specify the rule ID that needs to be updated/modified;</li><li>Delete an existing rule: existing rules not included in the Rules list in the CustomRules parameter will be deleted.</li></ul></p>
         :rtype: str
         """
         return self._Id
@@ -15816,7 +16120,7 @@ class CustomRule(AbstractModel):
 
     @property
     def RuleType(self):
-        r"""Type of custom rule. Valid values: <ul><li>BasicAccessRule: basic access control;</li><li>PreciseMatchRule: exact matching rule;</li><li>ManagedAccessRule: expert customized rule, only supported in output parameters.</li></ul>Description: When RuleType is not specified, it defaults to `PreciseMatchRule`.
+        r"""<p>Type of the custom rule. Valid values: <ul><li>BasicAccessRule: basic access control;</li><li>PreciseMatchRule: exact matching rule;</li><li>ManagedAccessRule: expert customized rule, supported only for output parameters.</li></ul>Note: If RuleType is not specified, it defaults to <code>PreciseMatchRule</code>.</p>
         :rtype: str
         """
         return self._RuleType
@@ -15827,7 +16131,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Priority(self):
-        r"""Priority of custom rules, ranging from 0 to 100, defaults to 0, and only supports exact matching rules (`PreciseMatchRule`).
+        r"""<p>Priority of custom rules. Value range: 0-100. Default value: 0. Only exact matching rules (<code>PreciseMatchRule</code>) are supported.</p>
         :rtype: int
         """
         return self._Priority
@@ -15966,6 +16270,313 @@ class CustomTime(AbstractModel):
         self._Switch = params.get("Switch")
         self._IgnoreCacheControl = params.get("IgnoreCacheControl")
         self._CacheTime = params.get("CacheTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomVariable(AbstractModel):
+    r"""Custom Variable details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>Variable name. You need to fill in the complete prefix: user.zone.* refers to a site-level custom variable, and user.rule.* refers to a rule-level custom variable. The custom part after the prefix supports only uppercase and lowercase letters, digits, and underscores. Variable names are case-sensitive and cannot exceed 50 characters in length. Once a variable is created successfully, its name cannot be modified.</p>
+        :type Name: str
+        :param _InitialValue: <p>Initial value of the variable. Supports the use of constant strings, variables, and formulas. Length cannot exceed 255 characters.</p>
+        :type InitialValue: str
+        :param _Description: <p>Variable description. Length limited to no more than 60 characters.</p>
+        :type Description: str
+        """
+        self._Name = None
+        self._InitialValue = None
+        self._Description = None
+
+    @property
+    def Name(self):
+        r"""<p>Variable name. You need to fill in the complete prefix: user.zone.* refers to a site-level custom variable, and user.rule.* refers to a rule-level custom variable. The custom part after the prefix supports only uppercase and lowercase letters, digits, and underscores. Variable names are case-sensitive and cannot exceed 50 characters in length. Once a variable is created successfully, its name cannot be modified.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def InitialValue(self):
+        r"""<p>Initial value of the variable. Supports the use of constant strings, variables, and formulas. Length cannot exceed 255 characters.</p>
+        :rtype: str
+        """
+        return self._InitialValue
+
+    @InitialValue.setter
+    def InitialValue(self, InitialValue):
+        self._InitialValue = InitialValue
+
+    @property
+    def Description(self):
+        r"""<p>Variable description. Length limited to no more than 60 characters.</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._InitialValue = params.get("InitialValue")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomVariableOperation(AbstractModel):
+    r"""Custom Variable operation details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Branches: <p>Sub-rule branch. This list currently only supports filling in one rule; additional entries are invalid.</p>
+        :type Branches: list of CustomVariableOperationRuleBranch
+        :param _Description: <p>Rule note. Multiple notes can be filled.</p>
+        :type Description: list of str
+        """
+        self._Branches = None
+        self._Description = None
+
+    @property
+    def Branches(self):
+        r"""<p>Sub-rule branch. This list currently only supports filling in one rule; additional entries are invalid.</p>
+        :rtype: list of CustomVariableOperationRuleBranch
+        """
+        return self._Branches
+
+    @Branches.setter
+    def Branches(self, Branches):
+        self._Branches = Branches
+
+    @property
+    def Description(self):
+        r"""<p>Rule note. Multiple notes can be filled.</p>
+        :rtype: list of str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        if params.get("Branches") is not None:
+            self._Branches = []
+            for item in params.get("Branches"):
+                obj = CustomVariableOperationRuleBranch()
+                obj._deserialize(item)
+                self._Branches.append(obj)
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomVariableOperationRuleAction(AbstractModel):
+    r"""Custom Variable rule operation.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>Operation name. The name should correspond to the parameter structure. For example, if Name=Set, SetParameters is required. Currently only support filling in Set.</p><li>Set: custom variable settings;</li>
+        :type Name: str
+        :param _SetParameters: <p>Custom Variable parameter settings. If there are multiple operations in this parameter, they are executed in sequence according to the array order. When the value of Name is Set, this parameter is required.</p>
+        :type SetParameters: :class:`tencentcloud.teo.v20220901.models.SetParameters`
+        """
+        self._Name = None
+        self._SetParameters = None
+
+    @property
+    def Name(self):
+        r"""<p>Operation name. The name should correspond to the parameter structure. For example, if Name=Set, SetParameters is required. Currently only support filling in Set.</p><li>Set: custom variable settings;</li>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SetParameters(self):
+        r"""<p>Custom Variable parameter settings. If there are multiple operations in this parameter, they are executed in sequence according to the array order. When the value of Name is Set, this parameter is required.</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SetParameters`
+        """
+        return self._SetParameters
+
+    @SetParameters.setter
+    def SetParameters(self, SetParameters):
+        self._SetParameters = SetParameters
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("SetParameters") is not None:
+            self._SetParameters = SetParameters()
+            self._SetParameters._deserialize(params.get("SetParameters"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomVariableOperationRuleBranch(AbstractModel):
+    r"""Custom Variable operation sub-rule branch.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Condition: <p><a href="https://www.tencentcloud.com/document/product/1552/90438?from_cn_redirect=1#33f65828-c6c6-4b66-a011-25a20b548d5d">Match condition</a>.</p>
+        :type Condition: str
+        :param _Actions: <p><a href="https://www.tencentcloud.com/document/product/1552/90438?from_cn_redirect=1#c7bd7e02-9247-4a72-b0e4-11c27cadb198">Operate</a>.<br>Note: Actions and SubRules cannot be empty at the same time.</p>
+        :type Actions: list of CustomVariableOperationRuleAction
+        :param _SubRules: <p>Sub-rule list. If there are multiple rules in the list, they are executed in order from top to bottom.<br>Note: SubRules and Actions cannot be empty at the same time. Currently only support filling one level of SubRules.</p>
+        :type SubRules: list of CustomVariableOperationSubRule
+        """
+        self._Condition = None
+        self._Actions = None
+        self._SubRules = None
+
+    @property
+    def Condition(self):
+        r"""<p><a href="https://www.tencentcloud.com/document/product/1552/90438?from_cn_redirect=1#33f65828-c6c6-4b66-a011-25a20b548d5d">Match condition</a>.</p>
+        :rtype: str
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def Actions(self):
+        r"""<p><a href="https://www.tencentcloud.com/document/product/1552/90438?from_cn_redirect=1#c7bd7e02-9247-4a72-b0e4-11c27cadb198">Operate</a>.<br>Note: Actions and SubRules cannot be empty at the same time.</p>
+        :rtype: list of CustomVariableOperationRuleAction
+        """
+        return self._Actions
+
+    @Actions.setter
+    def Actions(self, Actions):
+        self._Actions = Actions
+
+    @property
+    def SubRules(self):
+        r"""<p>Sub-rule list. If there are multiple rules in the list, they are executed in order from top to bottom.<br>Note: SubRules and Actions cannot be empty at the same time. Currently only support filling one level of SubRules.</p>
+        :rtype: list of CustomVariableOperationSubRule
+        """
+        return self._SubRules
+
+    @SubRules.setter
+    def SubRules(self, SubRules):
+        self._SubRules = SubRules
+
+
+    def _deserialize(self, params):
+        self._Condition = params.get("Condition")
+        if params.get("Actions") is not None:
+            self._Actions = []
+            for item in params.get("Actions"):
+                obj = CustomVariableOperationRuleAction()
+                obj._deserialize(item)
+                self._Actions.append(obj)
+        if params.get("SubRules") is not None:
+            self._SubRules = []
+            for item in params.get("SubRules"):
+                obj = CustomVariableOperationSubRule()
+                obj._deserialize(item)
+                self._SubRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomVariableOperationSubRule(AbstractModel):
+    r"""Custom Variable operation sub-rule.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Branches: <p>Sub-rule branch</p>
+        :type Branches: list of CustomVariableOperationRuleBranch
+        :param _Description: <p>Rule note.</p>
+        :type Description: list of str
+        """
+        self._Branches = None
+        self._Description = None
+
+    @property
+    def Branches(self):
+        r"""<p>Sub-rule branch</p>
+        :rtype: list of CustomVariableOperationRuleBranch
+        """
+        return self._Branches
+
+    @Branches.setter
+    def Branches(self, Branches):
+        self._Branches = Branches
+
+    @property
+    def Description(self):
+        r"""<p>Rule note.</p>
+        :rtype: list of str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        if params.get("Branches") is not None:
+            self._Branches = []
+            for item in params.get("Branches"):
+                obj = CustomVariableOperationRuleBranch()
+                obj._deserialize(item)
+                self._Branches.append(obj)
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19253,7 +19864,12 @@ class DeliveryCondition(AbstractModel):
 
 
 class DenyActionParameters(AbstractModel):
-    r"""Safe execution action specifies additional parameters for the ban.
+    r"""Additional parameter when the executed action is interception.
+
+    This parameter is used for specifying the extra handling action taken by the system when a security rule is hit and an intercept action is executed.
+    Different disposal actions are configured with different fixed parameter combinations. The system will determine the actually effective disposal action type according to the configured parameter combination.
+    During the same interception execution, only one handling action can be configured and made effective. Parameters for multiple handling actions cannot appear at the same time. Otherwise, it is deemed an invalid configuration. If empty, the default block handling action is used.
+    DenyActionParameters supports the following additional handling actions: <li>Default: When DenyActionParameters is empty or no additional handling action is enabled, the system will perform the default block, responding with an interception page.</li><li>IP block: Continuously block the client source IP that triggers the rule. Corresponding parameters: BlockIp, BlockIpDuration.</li><li>Custom page interception: Use the designated custom page content to respond to requests. Corresponding parameters: ReturnCustomPage, ResponseCode, ErrorPageId.</li><li>Silence: Accept client requests but do not return. Corresponding parameter: Stall.</li>
 
     """
 
@@ -20169,6 +20785,185 @@ class DescribeApplicationProxiesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._ApplicationProxies.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAvailableCustomActionsForRuleEngineRequest(AbstractModel):
+    r"""DescribeAvailableCustomActionsForRuleEngine request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>Zone ID.</p>
+        :type ZoneId: str
+        :param _Filters: <p>Filter criteria. Multiple conditions have an AND relationship. The maximum number of Filters.Values is 20. If this parameter is left empty, return all available rule engine custom configurations under the current site. Detailed filter criteria:</p><li>action-id: Filter by the unique identification ID of the custom configuration.</li><li>name: Filter by the name of the custom configuration.</a></li>Fuzzy query only supports filtering fields named <code>name</code>.<p></p>
+        :type Filters: list of AdvancedFilter
+        :param _Limit: <p>Paginated query limit.</p><p>Value ranges from 0 to 1000.</p><p>Default value: 20.</p>
+        :type Limit: int
+        :param _Offset: <p>Paging offset.</p><p>Default value: 0.</p>
+        :type Offset: int
+        :param _SortBy: <p>Sorting field. Valid values:</p><li>action-id: Sort by custom configuration unique identification ID.</li><li>create-time: Sort by custom configuration creation time.</li>Default value: <code>action-id</code>.<p></p>
+        :type SortBy: str
+        :param _SortOrder: <p>Sorting method. Valid values:</p><li>asc: ascending sort;</li><li>desc: sort in descending order.</li>Default value: desc.<p></p>
+        :type SortOrder: str
+        """
+        self._ZoneId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._SortBy = None
+        self._SortOrder = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>Zone ID.</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Filters(self):
+        r"""<p>Filter criteria. Multiple conditions have an AND relationship. The maximum number of Filters.Values is 20. If this parameter is left empty, return all available rule engine custom configurations under the current site. Detailed filter criteria:</p><li>action-id: Filter by the unique identification ID of the custom configuration.</li><li>name: Filter by the name of the custom configuration.</a></li>Fuzzy query only supports filtering fields named <code>name</code>.<p></p>
+        :rtype: list of AdvancedFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>Paginated query limit.</p><p>Value ranges from 0 to 1000.</p><p>Default value: 20.</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>Paging offset.</p><p>Default value: 0.</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def SortBy(self):
+        r"""<p>Sorting field. Valid values:</p><li>action-id: Sort by custom configuration unique identification ID.</li><li>create-time: Sort by custom configuration creation time.</li>Default value: <code>action-id</code>.<p></p>
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def SortOrder(self):
+        r"""<p>Sorting method. Valid values:</p><li>asc: ascending sort;</li><li>desc: sort in descending order.</li>Default value: desc.<p></p>
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._SortBy = params.get("SortBy")
+        self._SortOrder = params.get("SortOrder")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAvailableCustomActionsForRuleEngineResponse(AbstractModel):
+    r"""DescribeAvailableCustomActionsForRuleEngine response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>Total number of eligible rule engine custom configurations.</p>
+        :type TotalCount: int
+        :param _CustomActionSet: <p>List of eligible rule engine custom configurations.</p>
+        :type CustomActionSet: list of RuleEngineCustomAction
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._CustomActionSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total number of eligible rule engine custom configurations.</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def CustomActionSet(self):
+        r"""<p>List of eligible rule engine custom configurations.</p>
+        :rtype: list of RuleEngineCustomAction
+        """
+        return self._CustomActionSet
+
+    @CustomActionSet.setter
+    def CustomActionSet(self, CustomActionSet):
+        self._CustomActionSet = CustomActionSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("CustomActionSet") is not None:
+            self._CustomActionSet = []
+            for item in params.get("CustomActionSet"):
+                obj = RuleEngineCustomAction()
+                obj._deserialize(item)
+                self._CustomActionSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -25792,6 +26587,404 @@ class DescribeLoadBalancerListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLogAnalysisDetailRequest(AbstractModel):
+    r"""DescribeLogAnalysisDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>Site ID.</p>
+        :type ZoneId: str
+        :param _Area: <p>Data service area. Available values:<ul><li>mainland: within the Chinese mainland;</li><li>overseas: global (excluding Mainland China).</li></ul>Note: If the site service area is "global availability zone", you need to query the data of mainland and overseas separately to obtain all data.</p>
+        :type Area: str
+        :param _StartTime: <p>Start time, example value: 2020-04 29T00:00:00Z. The maximum span supported for query start time to this day varies by package version. For more details, see <a href="https://www.tencentcloud.com/document/product/1552/94165?from_cn_redirect=1#45435466-9103-4ff6-be22-e31717044fb2">Package Selection Comparison</a>.</p>
+        :type StartTime: str
+        :param _EndTime: <p>End time, example value: 2020-04-30T00:00:00Z. The maximum duration from the start time to the end time per request is 31 days.</p>
+        :type EndTime: str
+        :param _LogType: <p>Log type. Available values: <ul><li> l7-access-logs: Layer 7 Access Logs;</li><li>web-attack: Managed Rule Logs.</li></ul>Defaults to l7-access-logs.</p>
+        :type LogType: str
+        :param _Condition: <p><a href="https://www.tencentcloud.com/document/product/1552/124662?from_cn_redirect=1">Log match condition</a>. Maximum length 12KB.</p>
+        :type Condition: str
+        :param _Limit: <p>Paginated query limit. Default value: 20, maximum value: 100.</p>
+        :type Limit: int
+        :param _Offset: <p>Paginated query offset, defaults to 0.</p>
+        :type Offset: int
+        :param _Sort: <p>Whether raw logs are returned in time sequence. Available values: <ul><li>asc: ascending order;</li><li>desc: descending order.</li></ul> Default is desc.</p>
+        :type Sort: str
+        """
+        self._ZoneId = None
+        self._Area = None
+        self._StartTime = None
+        self._EndTime = None
+        self._LogType = None
+        self._Condition = None
+        self._Limit = None
+        self._Offset = None
+        self._Sort = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>Site ID.</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Area(self):
+        r"""<p>Data service area. Available values:<ul><li>mainland: within the Chinese mainland;</li><li>overseas: global (excluding Mainland China).</li></ul>Note: If the site service area is "global availability zone", you need to query the data of mainland and overseas separately to obtain all data.</p>
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def StartTime(self):
+        r"""<p>Start time, example value: 2020-04 29T00:00:00Z. The maximum span supported for query start time to this day varies by package version. For more details, see <a href="https://www.tencentcloud.com/document/product/1552/94165?from_cn_redirect=1#45435466-9103-4ff6-be22-e31717044fb2">Package Selection Comparison</a>.</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>End time, example value: 2020-04-30T00:00:00Z. The maximum duration from the start time to the end time per request is 31 days.</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def LogType(self):
+        r"""<p>Log type. Available values: <ul><li> l7-access-logs: Layer 7 Access Logs;</li><li>web-attack: Managed Rule Logs.</li></ul>Defaults to l7-access-logs.</p>
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Condition(self):
+        r"""<p><a href="https://www.tencentcloud.com/document/product/1552/124662?from_cn_redirect=1">Log match condition</a>. Maximum length 12KB.</p>
+        :rtype: str
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def Limit(self):
+        r"""<p>Paginated query limit. Default value: 20, maximum value: 100.</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>Paginated query offset, defaults to 0.</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Sort(self):
+        r"""<p>Whether raw logs are returned in time sequence. Available values: <ul><li>asc: ascending order;</li><li>desc: descending order.</li></ul> Default is desc.</p>
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Area = params.get("Area")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._LogType = params.get("LogType")
+        self._Condition = params.get("Condition")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Sort = params.get("Sort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogAnalysisDetailResponse(AbstractModel):
+    r"""DescribeLogAnalysisDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogDetail: <p>Log details list that meets the log match condition.</p>
+        :type LogDetail: list of LogItem
+        :param _TotalCount: <p>Total number of logs that meet the match condition.</p>
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._LogDetail = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def LogDetail(self):
+        r"""<p>Log details list that meets the log match condition.</p>
+        :rtype: list of LogItem
+        """
+        return self._LogDetail
+
+    @LogDetail.setter
+    def LogDetail(self, LogDetail):
+        self._LogDetail = LogDetail
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total number of logs that meet the match condition.</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("LogDetail") is not None:
+            self._LogDetail = []
+            for item in params.get("LogDetail"):
+                obj = LogItem()
+                obj._deserialize(item)
+                self._LogDetail.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLogAnalysisDownloadTasksRequest(AbstractModel):
+    r"""DescribeLogAnalysisDownloadTasks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>Site ID.</p>
+        :type ZoneId: str
+        :param _Area: <p>Data service area. Available values:<ul><li>mainland: within the Chinese mainland;</li><li>overseas: global (excluding Mainland China).</li></ul> Note: If the site service area is "global availability zone", you need to query the data of mainland and overseas separately to obtain all data.</p>
+        :type Area: str
+        :param _LogType: <p>Log type. Available values: <ul><li> l7-access-logs: Layer 7 Access Logs;</li><li>web-attack: Managed Rule Logs.</li></ul>Defaults to l7-access-logs.</p>
+        :type LogType: str
+        :param _Filters: <p>Filtering Conditions. The maximum number of Filters.Values is 20. Detailed filter criteria are as follows:<ul><li>task-id: Filter by log download task id. For optional Values, refer to the TaskId returned by the CreateLogAnalysisDownloadTask api.</li></ul></p><p>For reference: CreateLogAnalysisDownloadTask</p>
+        :type Filters: list of AdvancedFilter
+        :param _Limit: <p>Paginated query limit. Default value: 20, maximum value: 100.</p>
+        :type Limit: int
+        :param _Offset: <p>Paginated query offset, defaults to 0.</p>
+        :type Offset: int
+        """
+        self._ZoneId = None
+        self._Area = None
+        self._LogType = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>Site ID.</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Area(self):
+        r"""<p>Data service area. Available values:<ul><li>mainland: within the Chinese mainland;</li><li>overseas: global (excluding Mainland China).</li></ul> Note: If the site service area is "global availability zone", you need to query the data of mainland and overseas separately to obtain all data.</p>
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def LogType(self):
+        r"""<p>Log type. Available values: <ul><li> l7-access-logs: Layer 7 Access Logs;</li><li>web-attack: Managed Rule Logs.</li></ul>Defaults to l7-access-logs.</p>
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Filters(self):
+        r"""<p>Filtering Conditions. The maximum number of Filters.Values is 20. Detailed filter criteria are as follows:<ul><li>task-id: Filter by log download task id. For optional Values, refer to the TaskId returned by the CreateLogAnalysisDownloadTask api.</li></ul></p><p>For reference: CreateLogAnalysisDownloadTask</p>
+        :rtype: list of AdvancedFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>Paginated query limit. Default value: 20, maximum value: 100.</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>Paginated query offset, defaults to 0.</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Area = params.get("Area")
+        self._LogType = params.get("LogType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogAnalysisDownloadTasksResponse(AbstractModel):
+    r"""DescribeLogAnalysisDownloadTasks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>Total number of entries for the log analysis download task that meets the match condition.</p>
+        :type TotalCount: int
+        :param _Tasks: <p>Download task list for log analysis that meets the log match condition.</p>
+        :type Tasks: list of LogAnalysisDownloadTask
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Tasks = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total number of entries for the log analysis download task that meets the match condition.</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Tasks(self):
+        r"""<p>Download task list for log analysis that meets the log match condition.</p>
+        :rtype: list of LogAnalysisDownloadTask
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = LogAnalysisDownloadTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeMultiPathGatewayLineRequest(AbstractModel):
     r"""DescribeMultiPathGatewayLine request structure.
 
@@ -31262,6 +32455,110 @@ class DescribeZoneConfigImportResultResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeZoneCustomVariablesRequest(AbstractModel):
+    r"""DescribeZoneCustomVariables request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>Site ID.</p>
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>Site ID.</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeZoneCustomVariablesResponse(AbstractModel):
+    r"""DescribeZoneCustomVariables response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CustomVariables: <p>List of site-level custom variables.</p>
+        :type CustomVariables: list of CustomVariable
+        :param _CustomVariableOperations: <p>Site-level custom variable calculation rules.</p>
+        :type CustomVariableOperations: list of CustomVariableOperation
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CustomVariables = None
+        self._CustomVariableOperations = None
+        self._RequestId = None
+
+    @property
+    def CustomVariables(self):
+        r"""<p>List of site-level custom variables.</p>
+        :rtype: list of CustomVariable
+        """
+        return self._CustomVariables
+
+    @CustomVariables.setter
+    def CustomVariables(self, CustomVariables):
+        self._CustomVariables = CustomVariables
+
+    @property
+    def CustomVariableOperations(self):
+        r"""<p>Site-level custom variable calculation rules.</p>
+        :rtype: list of CustomVariableOperation
+        """
+        return self._CustomVariableOperations
+
+    @CustomVariableOperations.setter
+    def CustomVariableOperations(self, CustomVariableOperations):
+        self._CustomVariableOperations = CustomVariableOperations
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CustomVariables") is not None:
+            self._CustomVariables = []
+            for item in params.get("CustomVariables"):
+                obj = CustomVariable()
+                obj._deserialize(item)
+                self._CustomVariables.append(obj)
+        if params.get("CustomVariableOperations") is not None:
+            self._CustomVariableOperations = []
+            for item in params.get("CustomVariableOperations"):
+                obj = CustomVariableOperation()
+                obj._deserialize(item)
+                self._CustomVariableOperations.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeZoneSettingRequest(AbstractModel):
     r"""DescribeZoneSetting request structure.
 
@@ -34281,7 +35578,6 @@ class ErrorPageParameters(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorPageParams: Custom error page configuration list.
-Note: this field may return null, which indicates a failure to obtain a valid value.
         :type ErrorPageParams: list of ErrorPage
         """
         self._ErrorPageParams = None
@@ -34289,7 +35585,6 @@ Note: this field may return null, which indicates a failure to obtain a valid va
     @property
     def ErrorPageParams(self):
         r"""Custom error page configuration list.
-Note: this field may return null, which indicates a failure to obtain a valid value.
         :rtype: list of ErrorPage
         """
         return self._ErrorPageParams
@@ -36990,14 +38285,14 @@ class HTTPUpstreamTimeoutParameters(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResponseTimeout: HTTP response timeout in seconds. value range: 5–600.
+        :param _ResponseTimeout: <p>HTTP response timeout.</p><p>Value range: [5, 600]</p><p>Unit: seconds</p><p>Default value: 15</p>
         :type ResponseTimeout: int
         """
         self._ResponseTimeout = None
 
     @property
     def ResponseTimeout(self):
-        r"""HTTP response timeout in seconds. value range: 5–600.
+        r"""<p>HTTP response timeout.</p><p>Value range: [5, 600]</p><p>Unit: seconds</p><p>Default value: 15</p>
         :rtype: int
         """
         return self._ResponseTimeout
@@ -42919,6 +44214,222 @@ class LoadBalancer(AbstractModel):
         
 
 
+class LogAnalysisDownloadTask(AbstractModel):
+    r"""Log analytics log download task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID.</p>
+        :type TaskId: str
+        :param _ZoneId: <p>Site ID.</p>
+        :type ZoneId: str
+        :param _Area: <p>Data ownership region. Valid values:<ul><li>mainland: within the Chinese mainland;</li><li>overseas: global (excluding the Chinese mainland).</li></ul></p>
+        :type Area: str
+        :param _StartTime: <p>Start time, example value: 2020-04-29T00:00:00Z.</p>
+        :type StartTime: str
+        :param _EndTime: <p>End time. Example value: 2020-04-30T00:00:00Z.</p>
+        :type EndTime: str
+        :param _LogType: <p>Log type. Valid values: <ul><li> l7-access-logs: Layer 7 Access Logs;</li><li>web-attack: Managed rule log.</li></ul></p>
+        :type LogType: str
+        :param _Condition: <p><a href="https://www.tencentcloud.com/document/product/1552/124662?from_cn_redirect=1">Log match condition</a>. Maximum length 12KB.</p>
+        :type Condition: str
+        :param _Format: <p>File format, valid values:</p><ul><li>csv.</li></ul>
+        :type Format: str
+        :param _Sort: <p>Whether raw logs are returned in time sequence. Valid values: <ul><li>asc: ascending order;</li><li>desc: descending order.</li></ul></p>
+        :type Sort: str
+        :param _Status: <p>Task status, valid values: <ul><li>loading: being processed, waiting to generate download link;</li><li> failed: processing failure, current task cannot be downloaded;</li><li>completed: packaging completed, ready for download.</li></ul></p>
+        :type Status: str
+        :param _CreateTime: <p>Task creation time. After successful task creation, the retention period is 3 days.</p>
+        :type CreateTime: str
+        :param _Url: <p>Download link, only returned when Status = completed.</p>
+        :type Url: str
+        :param _ExpireTime: <p>Task expiration time. After expiry, the download address will be unavailable. Please obtain a new download address through this API.</p>
+        :type ExpireTime: str
+        """
+        self._TaskId = None
+        self._ZoneId = None
+        self._Area = None
+        self._StartTime = None
+        self._EndTime = None
+        self._LogType = None
+        self._Condition = None
+        self._Format = None
+        self._Sort = None
+        self._Status = None
+        self._CreateTime = None
+        self._Url = None
+        self._ExpireTime = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ZoneId(self):
+        r"""<p>Site ID.</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Area(self):
+        r"""<p>Data ownership region. Valid values:<ul><li>mainland: within the Chinese mainland;</li><li>overseas: global (excluding the Chinese mainland).</li></ul></p>
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def StartTime(self):
+        r"""<p>Start time, example value: 2020-04-29T00:00:00Z.</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>End time. Example value: 2020-04-30T00:00:00Z.</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def LogType(self):
+        r"""<p>Log type. Valid values: <ul><li> l7-access-logs: Layer 7 Access Logs;</li><li>web-attack: Managed rule log.</li></ul></p>
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Condition(self):
+        r"""<p><a href="https://www.tencentcloud.com/document/product/1552/124662?from_cn_redirect=1">Log match condition</a>. Maximum length 12KB.</p>
+        :rtype: str
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def Format(self):
+        r"""<p>File format, valid values:</p><ul><li>csv.</li></ul>
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def Sort(self):
+        r"""<p>Whether raw logs are returned in time sequence. Valid values: <ul><li>asc: ascending order;</li><li>desc: descending order.</li></ul></p>
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Status(self):
+        r"""<p>Task status, valid values: <ul><li>loading: being processed, waiting to generate download link;</li><li> failed: processing failure, current task cannot be downloaded;</li><li>completed: packaging completed, ready for download.</li></ul></p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""<p>Task creation time. After successful task creation, the retention period is 3 days.</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Url(self):
+        r"""<p>Download link, only returned when Status = completed.</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def ExpireTime(self):
+        r"""<p>Task expiration time. After expiry, the download address will be unavailable. Please obtain a new download address through this API.</p>
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._ZoneId = params.get("ZoneId")
+        self._Area = params.get("Area")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._LogType = params.get("LogType")
+        self._Condition = params.get("Condition")
+        self._Format = params.get("Format")
+        self._Sort = params.get("Sort")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._Url = params.get("Url")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LogFormat(AbstractModel):
     r"""Output format for real-time log delivery. You can directly use the specified predefined log output format (JSON Lines / csv) through the FormatType parameter, or define a variant output format through additional parameters based on the predefined log output format. For usage details, see Custom Log Output Format (https://www.tencentcloud.com/document/product/1552/110448?from_cn_redirect=1).
 
@@ -43050,6 +44561,57 @@ class LogFormat(AbstractModel):
         self._RecordDelimiter = params.get("RecordDelimiter")
         self._RecordTemplate = params.get("RecordTemplate")
         self._FieldDelimiter = params.get("FieldDelimiter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogItem(AbstractModel):
+    r"""Log information for log analysis
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: Log generation time point, using unix millisecond-level timestamp.
+        :type Timestamp: int
+        :param _LogJson: Specific contents of the log, using JSON String Format.
+        :type LogJson: str
+        """
+        self._Timestamp = None
+        self._LogJson = None
+
+    @property
+    def Timestamp(self):
+        r"""Log generation time point, using unix millisecond-level timestamp.
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def LogJson(self):
+        r"""Specific contents of the log, using JSON String Format.
+        :rtype: str
+        """
+        return self._LogJson
+
+    @LogJson.setter
+    def LogJson(self, LogJson):
+        self._LogJson = LogJson
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._LogJson = params.get("LogJson")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48082,8 +49644,7 @@ class ModifyOriginParameters(AbstractModel):
 <Li>On: enable private authentication;</li>.
 <li>off: disable private authentication.</li>.
         :type PrivateAccess: str
-        :param _PrivateParameters: Private authentication parameter. this parameter is valid only when origintype = awss3 and privateaccess = on.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _PrivateParameters: Private authentication parameter. This parameter is valid only when OriginType = AWSS3 and PrivateAccess = on.
         :type PrivateParameters: :class:`tencentcloud.teo.v20220901.models.OriginPrivateParameters`
         """
         self._OriginType = None
@@ -48177,8 +49738,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def PrivateParameters(self):
-        r"""Private authentication parameter. this parameter is valid only when origintype = awss3 and privateaccess = on.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""Private authentication parameter. This parameter is valid only when OriginType = AWSS3 and PrivateAccess = on.
         :rtype: :class:`tencentcloud.teo.v20220901.models.OriginPrivateParameters`
         """
         return self._PrivateParameters
@@ -48687,16 +50247,14 @@ class ModifyRequestHeaderParameters(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HeaderActions: List of http header setting rules.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _HeaderActions: HTTP header setting rule list.
         :type HeaderActions: list of HeaderAction
         """
         self._HeaderActions = None
 
     @property
     def HeaderActions(self):
-        r"""List of http header setting rules.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""HTTP header setting rule list.
         :rtype: list of HeaderAction
         """
         return self._HeaderActions
@@ -48730,16 +50288,14 @@ class ModifyResponseHeaderParameters(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HeaderActions: HTTP origin-pull header rules list.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _HeaderActions: HTTP origin header rule list.
         :type HeaderActions: list of HeaderAction
         """
         self._HeaderActions = None
 
     @property
     def HeaderActions(self):
-        r"""HTTP origin-pull header rules list.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""HTTP origin header rule list.
         :rtype: list of HeaderAction
         """
         return self._HeaderActions
@@ -49702,6 +51258,110 @@ Special note: When passing a submodule structure as input, ensure all rule conte
 
 class ModifyWebSecurityTemplateResponse(AbstractModel):
     r"""ModifyWebSecurityTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyZoneCustomVariablesRequest(AbstractModel):
+    r"""ModifyZoneCustomVariables request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>Site ID.</p>
+        :type ZoneId: str
+        :param _CustomVariables: <p>List of site-level custom variables. CustomVariable.Name must use user.zone. as a prefix. Variables are initialized sequentially in array order. InitialValue can only reference variables before the current variable. It does not support referencing the current variable itself or variables after it.</p>
+        :type CustomVariables: list of CustomVariable
+        :param _CustomVariableOperations: <p>Site-level custom variable calculation rules. The calculation supports references to defined site-level custom variables. This list currently only supports filling in one rule; additional entries are invalid.</p>
+        :type CustomVariableOperations: list of CustomVariableOperation
+        """
+        self._ZoneId = None
+        self._CustomVariables = None
+        self._CustomVariableOperations = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>Site ID.</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def CustomVariables(self):
+        r"""<p>List of site-level custom variables. CustomVariable.Name must use user.zone. as a prefix. Variables are initialized sequentially in array order. InitialValue can only reference variables before the current variable. It does not support referencing the current variable itself or variables after it.</p>
+        :rtype: list of CustomVariable
+        """
+        return self._CustomVariables
+
+    @CustomVariables.setter
+    def CustomVariables(self, CustomVariables):
+        self._CustomVariables = CustomVariables
+
+    @property
+    def CustomVariableOperations(self):
+        r"""<p>Site-level custom variable calculation rules. The calculation supports references to defined site-level custom variables. This list currently only supports filling in one rule; additional entries are invalid.</p>
+        :rtype: list of CustomVariableOperation
+        """
+        return self._CustomVariableOperations
+
+    @CustomVariableOperations.setter
+    def CustomVariableOperations(self, CustomVariableOperations):
+        self._CustomVariableOperations = CustomVariableOperations
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("CustomVariables") is not None:
+            self._CustomVariables = []
+            for item in params.get("CustomVariables"):
+                obj = CustomVariable()
+                obj._deserialize(item)
+                self._CustomVariables.append(obj)
+        if params.get("CustomVariableOperations") is not None:
+            self._CustomVariableOperations = []
+            for item in params.get("CustomVariableOperations"):
+                obj = CustomVariableOperation()
+                obj._deserialize(item)
+                self._CustomVariableOperations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyZoneCustomVariablesResponse(AbstractModel):
+    r"""ModifyZoneCustomVariables response structure.
 
     """
 
@@ -56396,7 +58056,12 @@ Note: This field may return null, which indicates a failure to obtain a valid va
 
 
 class RedirectActionParameters(AbstractModel):
-    r"""Additional parameter for SecurityAction `Redirect`.
+    r"""Additional parameter for safe execution when the action is set to redirect.
+
+    This parameter is used to specify the extra handling action taken by the system when a security rule is hit and a redirection action is executed.
+    Different disposal actions are configured with different fixed parameter combinations. The system will determine the actually effective disposal action type according to the configured parameter combination.
+    During the same redirection execution, only one handling action can be configured and made effective. Parameter combinations for multiple disposal actions cannot appear at the same time. Otherwise, it is deemed as an invalid configuration.
+    RedirectActionParameters supports the following extra handling actions: <li>Redirect: redirect client requests to the specified destination URL. Corresponding parameter: URL.</li>
 
     """
 
@@ -57903,166 +59568,92 @@ class RuleEngineAction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Operation name. The name must correspond to the parameter structure. For example, if Name=Cache, CacheParameters is required.
-<li>Cache: Node caching TTL;</li>
-<li>CacheKey: custom Cache Key;</li>
-<li>CachePrefresh: cache pre-refresh;</li>
-<li>AccessURLRedirect: URL redirection;</li>
-<li>UpstreamURLRewrite: origin-pull URL rewrite;</li>
-<li>QUIC:QUIC;</li>
-<li>WebSocket:WebSocket;</li>
-<li>Authentication: Token authentication;</li>
-<li>MaxAge: Browser cache TTL;</li>
-<li>StatusCodeCache: Status code cache TTL;</li>
-<li>OfflineCache: Offline cache;</li>
-<li>SmartRouting: Smart acceleration;</li>
-<li>RangeOriginPull: Range-based origin pull;</li>
-<li>UpstreamHTTP2: HTTP/2 origin pull;</li>
-<li>HostHeader: Host header rewrite;</li>
-<li>ForceRedirectHTTPS: Forced HTTPS redirect configuration for access protocol.</li>
-<li>HTTPS origin pull (OriginPullProtocol);</li>
-<li>Compression: Intelligent compression configuration;</li>
-<li>HSTS:HSTS;</li>
-<li>ClientIPHeader: Header information configuration that stores the client request IP.</li>
-<li>OCSPStapling: OCSP stapling;</li>
-<li>HTTP2: HTTP/2 integration;</li>
-<li>PostMaxSize: Maximum limit for file streaming transmission in POST requests.</li>
-<li>ClientIPCountry: Carry regional information of the client IP during origin pull.</li>
-<li>UpstreamFollowRedirect: Parameter configuration for redirection during origin pull;</li>
-<li>UpstreamRequest: Origin-pull request parameter;</li>
-<li>Shield: Origin server uninstallation.</li>
-<li>TLSConfig: SSL/TLS security;</li>
-<li>ModifyOrigin: Modify origin server;</li>
-<li>SiteFailover: origin server failure failover;</li>
-<li>HTTPUpstreamTimeout: Layer-7 origin-pull timeout configuration.</li>
-<li>HTTP response: HTTP response;</li>
-<li>ErrorPage: Custom error page;</li>
-<li>ModifyResponseHeader: Modify the HTTP node response header;</li>
-<li>ModifyRequestHeader: Modify the request header of an HTTP node;</li>
-<li>ResponseSpeedLimit: Download speed limit for a single connection;</li>
-<li>SetContentIdentifier: Set the content identifier.</li>
-<li>Vary: Vary feature configuration;</li>
-<li>ContentCompression: Content compression configuration;</li>
-<li>OriginAuthentication: Origin authentication configuration.</li>
+        :param _Name: <p>Operation name. The name must correspond to the parameters structure. For example, if Name=Cache, then CacheParameters is required.<li>Cache: Node cache TTL;</li><li>CacheKey: Custom Cache Key;</li><li>CachePrefresh: Cache pre-refresh;</li><li>AccessURLRedirect: Access URL redirection;</li><li>UpstreamURLRewrite: Origin-pull URL rewrite;</li><li>QUIC: QUIC;</li><li>WebSocket: WebSocket;</li><li>Authentication: Token authentication;</li><li>MaxAge: Browser cache TTL;</li><li>StatusCodeCache: Status code cache TTL;</li><li>OfflineCache: Offline cache;</li><li>SmartRouting: Smart acceleration;</li><li>AdvancedOriginRouting: Advanced origin optimization;</li><li>RangeOriginPull: Range-based origin pull;</li><li>UpstreamHTTP2: HTTP2 origin-pull;</li><li>HostHeader: Host header rewrite;</li><li>ForceRedirectHTTPS: Forced HTTPS redirect configuration;</li><li>OriginPullProtocol: Origin-pull HTTPS;</li><li>Compression: Intelligent compression configuration;</li><li>HSTS: HSTS;</li><li>ClientIPHeader: Configuration for storing client IP address in the header;</li><li>OCSPStapling: OCSP stapling;</li><li>HTTP2: HTTP2 integration;</li><li>PostMaxSize: Maximum limit configuration for POST request upload file streaming transmission;</li><li>ClientIPCountry: Carrying regional information of the client IP during origin-pull;</li><li>UpstreamFollowRedirect: Upstream follow redirect parameter configuration;</li><li>UpstreamRequest: Origin-pull request parameters;</li><li>Shield: Origin server uninstallation configuration;</li><li>TLSConfig: SSL/TLS security;</li><li>ModifyOrigin: Modify origin server;</li><li>SiteFailover: Origin server fault migration;</li><li>HTTPUpstreamTimeout: Layer-7 origin-pull timeout configuration;</li><li>HttpResponse: HTTP response;</li><li>ErrorPage: Custom error page;</li><li>ModifyResponseHeader: Modify HTTP node response header;</li><li>ModifyRequestHeader: Modify HTTP node request header;</li><li>ResponseSpeedLimit: Single connection download speed limit;</li><li>SetContentIdentifier: Set content identifier;</li><li>Vary: Vary feature configuration;</li><li>ContentCompression: Content compression configuration;</li><li>OriginAuthentication: Origin-pull authentication configuration;</li><li>CustomAction: Custom configuration.</li></p>
         :type Name: str
-        :param _CacheParameters: Node cache ttl configuration parameter. when name is cache, this parameter is required.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _CacheParameters: <p>Node cache TTL configuration parameter. This parameter is required when the Name value is Cache.</p>
         :type CacheParameters: :class:`tencentcloud.teo.v20220901.models.CacheParameters`
-        :param _CacheKeyParameters: Custom cache key configuration parameter. when name is cachekey, this parameter is required.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _CacheKeyParameters: <p>Custom Cache Key configuration parameter. When Name value is CacheKey, this parameter is required.
         :type CacheKeyParameters: :class:`tencentcloud.teo.v20220901.models.CacheKeyParameters`
-        :param _CachePrefreshParameters: The cache prefresh configuration parameter. this parameter is required when `name` is `cacheprefresh`.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _CachePrefreshParameters: <p>Cache pre-refresh configuration parameter. This parameter is required when the Name value is CachePrefresh.</p>
         :type CachePrefreshParameters: :class:`tencentcloud.teo.v20220901.models.CachePrefreshParameters`
-        :param _AccessURLRedirectParameters: The access url redirection configuration parameter. this parameter is required when `name` is `accessurlredirect`.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _AccessURLRedirectParameters: <p>Access URL redirection configuration parameter. This parameter is required when the Name value is AccessURLRedirect.</p>
         :type AccessURLRedirectParameters: :class:`tencentcloud.teo.v20220901.models.AccessURLRedirectParameters`
-        :param _UpstreamURLRewriteParameters: The origin-pull url rewrite configuration parameter. this parameter is required when `name` is `upstreamurlrewrite`.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _UpstreamURLRewriteParameters: <p>Origin-pull URL rewrite configuration parameter. This parameter is required when the value of Name is UpstreamURLRewrite.</p>
         :type UpstreamURLRewriteParameters: :class:`tencentcloud.teo.v20220901.models.UpstreamURLRewriteParameters`
-        :param _QUICParameters: The quic configuration parameter. this parameter is required when `name` is `quic`.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _QUICParameters: <p>QUIC configuration parameter. This parameter is required when the Name value is QUIC.</p>
         :type QUICParameters: :class:`tencentcloud.teo.v20220901.models.QUICParameters`
-        :param _WebSocketParameters: The websocket configuration parameter. this parameter is required when `name` is `websocket`.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _WebSocketParameters: <p>WebSocket configuration parameter. This parameter is required when the Name value is WebSocket.</p>
         :type WebSocketParameters: :class:`tencentcloud.teo.v20220901.models.WebSocketParameters`
-        :param _AuthenticationParameters: Token authentication configuration parameter. this parameter is required when `name` is `authentication`.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _AuthenticationParameters: <p>Token authentication configuration parameter. This parameter is required when the Name value is Authentication.</p>
         :type AuthenticationParameters: :class:`tencentcloud.teo.v20220901.models.AuthenticationParameters`
-        :param _MaxAgeParameters: Browser cache ttl configuration parameter. this parameter is required when `name` is `maxage`.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _MaxAgeParameters: <p>Browser cache TTL configuration parameter. This parameter is required when the value of Name is MaxAge.</p>
         :type MaxAgeParameters: :class:`tencentcloud.teo.v20220901.models.MaxAgeParameters`
-        :param _StatusCodeCacheParameters: Status code cache ttl configuration parameter. this parameter is required when `name` is `statuscodecache`.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _StatusCodeCacheParameters: <p>Status code cache TTL configuration parameter. This parameter is required when the Name value is StatusCodeCache.</p>
         :type StatusCodeCacheParameters: :class:`tencentcloud.teo.v20220901.models.StatusCodeCacheParameters`
-        :param _OfflineCacheParameters: Offline cache configuration parameter. this parameter is required when `name` is `offlinecache`.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _OfflineCacheParameters: <p>Offline cache configuration parameter. This parameter is required when the Name value is OfflineCache.</p>
         :type OfflineCacheParameters: :class:`tencentcloud.teo.v20220901.models.OfflineCacheParameters`
-        :param _SmartRoutingParameters: Smart acceleration configuration parameter. this parameter is required when `name` is `smartrouting`.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _SmartRoutingParameters: <p>Smart acceleration configuration parameter. This parameter is required when the Name value is SmartRouting.</p>
         :type SmartRoutingParameters: :class:`tencentcloud.teo.v20220901.models.SmartRoutingParameters`
-        :param _RangeOriginPullParameters: Shard source retrieval configuration parameter. this parameter is required when name is set to rangeoriginpull.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _AdvancedOriginRoutingParameters: <p>Advanced origin optimization configuration parameter. This parameter is required when the Name value is AdvancedOriginRouting.</p>
+        :type AdvancedOriginRoutingParameters: :class:`tencentcloud.teo.v20220901.models.AdvancedOriginRoutingParameters`
+        :param _RangeOriginPullParameters: <p>Configuration parameter for range-based origin pull. This parameter is required when the value of Name is RangeOriginPull.</p>
         :type RangeOriginPullParameters: :class:`tencentcloud.teo.v20220901.models.RangeOriginPullParameters`
-        :param _UpstreamHTTP2Parameters: HTTP2 origin-pull configuration parameter. this parameter is required when name is set to upstreamhttp2.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _UpstreamHTTP2Parameters: <p>HTTP2 origin configuration parameter. This parameter is required when the Name value is UpstreamHTTP2.</p>
         :type UpstreamHTTP2Parameters: :class:`tencentcloud.teo.v20220901.models.UpstreamHTTP2Parameters`
-        :param _HostHeaderParameters: Host header rewrite configuration parameter. this parameter is required when name is set to hostheader.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _HostHeaderParameters: <p>Host header rewrite configuration parameter. When the Name value is HostHeader, this parameter is required.</p>
         :type HostHeaderParameters: :class:`tencentcloud.teo.v20220901.models.HostHeaderParameters`
-        :param _ForceRedirectHTTPSParameters: Force https redirect configuration parameter. this parameter is required when the name is set to forceredirecthttps.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _ForceRedirectHTTPSParameters: <p>Forced HTTPS redirect configuration for the access protocol. This parameter is required when the Name value is ForceRedirectHTTPS.</p>
         :type ForceRedirectHTTPSParameters: :class:`tencentcloud.teo.v20220901.models.ForceRedirectHTTPSParameters`
-        :param _OriginPullProtocolParameters: HTTPS configuration for origin-pull. this parameter is required when the Name value is OriginPullProtocol.
-Note: This field may return null, which indicates a failure to obtain a valid value.
+        :param _OriginPullProtocolParameters: <p>Origin HTTPS configuration parameter. This parameter is required when the Name value is OriginPullProtocol.</p>
         :type OriginPullProtocolParameters: :class:`tencentcloud.teo.v20220901.models.OriginPullProtocolParameters`
-        :param _CompressionParameters: Intelligent compression configuration. this parameter is required when name is set to compression.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _CompressionParameters: <p>Intelligent compression configuration. This parameter is required when the Name value is Compression.</p>
         :type CompressionParameters: :class:`tencentcloud.teo.v20220901.models.CompressionParameters`
-        :param _HSTSParameters: HSTS configuration parameter. this parameter is required when name is hsts.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _HSTSParameters: <p>HSTS configuration parameter. When the Name value is HSTS, this parameter is required.</p>
         :type HSTSParameters: :class:`tencentcloud.teo.v20220901.models.HSTSParameters`
-        :param _ClientIPHeaderParameters: Client ip header configuration for storing client request ip information. this parameter is required when name is clientipheader.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _ClientIPHeaderParameters: <p>Configuration header information for storing client request IP. When the Name value is ClientIPHeader, this parameter is required.</p>
         :type ClientIPHeaderParameters: :class:`tencentcloud.teo.v20220901.models.ClientIPHeaderParameters`
-        :param _OCSPStaplingParameters: OCSP stapling configuration parameter. this parameter is required when the name is set to ocspstapling.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _OCSPStaplingParameters: <p>OCSP stapling configuration parameter. This parameter is required when Name value is OCSPStapling.</p>
         :type OCSPStaplingParameters: :class:`tencentcloud.teo.v20220901.models.OCSPStaplingParameters`
-        :param _HTTP2Parameters: HTTP2 access configuration parameter. this parameter is required when name is http2.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _HTTP2Parameters: <p>HTTP2 integration configuration parameter. This parameter is required when the Name value is HTTP2.</p>
         :type HTTP2Parameters: :class:`tencentcloud.teo.v20220901.models.HTTP2Parameters`
-        :param _PostMaxSizeParameters: Maximum size configuration for file streaming upload via a post request. this parameter is required when name is postmaxsize.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _PostMaxSizeParameters: <p>Maximum limit configuration for file streaming transmission in POST request upload. When the Name value is PostMaxSize, this parameter is required.</p>
         :type PostMaxSizeParameters: :class:`tencentcloud.teo.v20220901.models.PostMaxSizeParameters`
-        :param _ClientIPCountryParameters: Configuration parameter for carrying the region information of the client ip during origin-pull. this parameter is required when the name is set to clientipcountry.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _ClientIPCountryParameters: <p>Configuration parameter for carrying client IP regional information during origin pull. When the Name value is ClientIPCountry, this parameter is required.</p>
         :type ClientIPCountryParameters: :class:`tencentcloud.teo.v20220901.models.ClientIPCountryParameters`
-        :param _UpstreamFollowRedirectParameters: Configuration parameter for following redirects during origin-pull. this parameter is required when the name is set to upstreamfollowredirect.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _UpstreamFollowRedirectParameters: <p>Origin-pull follow redirect parameter configuration. This parameter is required when the Name value is UpstreamFollowRedirect.</p>
         :type UpstreamFollowRedirectParameters: :class:`tencentcloud.teo.v20220901.models.UpstreamFollowRedirectParameters`
-        :param _UpstreamRequestParameters: Configuration parameter for origin-pull request. this parameter is required when the name is set to upstreamrequest.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _UpstreamRequestParameters: <p>Origin-pull request parameter configuration parameter. This parameter is required when the Name value is UpstreamRequest.</p>
         :type UpstreamRequestParameters: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestParameters`
-        :param _ShieldParameters: Origin server uninstallation config. When the Name value is Shield, this parameter is required.
-Note: This field may return null, which indicates a failure to obtain a valid value.
+        :param _ShieldParameters: <p>Origin server uninstallation configuration parameter. This parameter is required when the Name value is Shield.</p>
         :type ShieldParameters: :class:`tencentcloud.teo.v20220901.models.ShieldParameters`
-        :param _TLSConfigParameters: SSL/TLS security configuration parameter. this parameter is required when the name is set to tlsconfig.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _TLSConfigParameters: <p>SSL/TLS security configuration parameter. This parameter is required when the Name value is TLSConfig.</p>
         :type TLSConfigParameters: :class:`tencentcloud.teo.v20220901.models.TLSConfigParameters`
-        :param _ModifyOriginParameters: Configuration parameter for modifying the origin server. this parameter is required when the name is set to modifyorigin.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _ModifyOriginParameters: <p>Modify origin server configuration parameter. When the Name value is ModifyOrigin, this parameter is required.</p>
         :type ModifyOriginParameters: :class:`tencentcloud.teo.v20220901.models.ModifyOriginParameters`
-        :param _SiteFailoverParameters: Origin server failure failover configuration parameter. This parameter is required when the Name value is SiteFailover.
-Note: This field may return null, which indicates a failure to obtain a valid value.
+        :param _SiteFailoverParameters: <p>Source site fault migration config. When the Name value is SiteFailover, this parameter is required.</p>
         :type SiteFailoverParameters: :class:`tencentcloud.teo.v20220901.models.SiteFailoverParameters`
-        :param _HTTPUpstreamTimeoutParameters: Configuration of layer 7 origin timeout. this parameter is required when name is httpupstreamtimeout.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _HTTPUpstreamTimeoutParameters: <p>Layer 7 origin pull timeout configuration. This parameter is required when the Name value is HTTPUpstreamTimeout.</p>
         :type HTTPUpstreamTimeoutParameters: :class:`tencentcloud.teo.v20220901.models.HTTPUpstreamTimeoutParameters`
-        :param _HttpResponseParameters: HTTP response configuration parameters. this parameter is required when name is httpresponse.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _HttpResponseParameters: <p>HTTP response configuration parameter. This parameter is required when the Name value is HttpResponse.</p>
         :type HttpResponseParameters: :class:`tencentcloud.teo.v20220901.models.HTTPResponseParameters`
-        :param _ErrorPageParameters: Custom error page configuration parameters. this parameter is required when name is errorpage.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _ErrorPageParameters: <p>Custom error page configuration parameter. This parameter is required when the value of Name is ErrorPage.</p>
         :type ErrorPageParameters: :class:`tencentcloud.teo.v20220901.models.ErrorPageParameters`
-        :param _ModifyResponseHeaderParameters: Modify http node response header configuration parameters. this parameter is required when name is modifyresponseheader.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _ModifyResponseHeaderParameters: <p>Modify the HTTP node response header configuration parameter. This parameter is required when the Name value is ModifyResponseHeader.</p>
         :type ModifyResponseHeaderParameters: :class:`tencentcloud.teo.v20220901.models.ModifyResponseHeaderParameters`
-        :param _ModifyRequestHeaderParameters: Modify http node request header configuration parameters. this parameter is required when name is modifyrequestheader.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _ModifyRequestHeaderParameters: <p>Modify the request header configuration parameter of the HTTP node. This parameter is required when the Name value is ModifyRequestHeader.</p>
         :type ModifyRequestHeaderParameters: :class:`tencentcloud.teo.v20220901.models.ModifyRequestHeaderParameters`
-        :param _ResponseSpeedLimitParameters: Single connection download speed limit configuration parameter. this parameter is required when name is responsespeedlimit.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _ResponseSpeedLimitParameters: <p>Single connection download speed limit configuration parameter. This parameter is required when the Name value is ResponseSpeedLimit.</p>
         :type ResponseSpeedLimitParameters: :class:`tencentcloud.teo.v20220901.models.ResponseSpeedLimitParameters`
-        :param _SetContentIdentifierParameters: Specifies the content identification configuration parameter. this parameter is required when the Name value is SetContentIdentifier.
-
-Note: This field may return null, which indicates a failure to obtain a valid value.
+        :param _SetContentIdentifierParameters: <p>Content identification configuration parameter. This parameter is required when the Name value is SetContentIdentifier.</p>
         :type SetContentIdentifierParameters: :class:`tencentcloud.teo.v20220901.models.SetContentIdentifierParameters`
-        :param _VaryParameters: Vary feature configuration parameter. when Name value is Vary, this parameter is required.
+        :param _VaryParameters: <p>Vary feature configuration parameter. This parameter is required when the Name value is Vary.</p>
         :type VaryParameters: :class:`tencentcloud.teo.v20220901.models.VaryParameters`
-        :param _ContentCompressionParameters: The content compression configuration parameter is required when Name value is ContentCompression. this parameter is an allowlist feature. if needed, contact tencent cloud engineers.
+        :param _ContentCompressionParameters: <p>Content compression configuration parameter. When the Name value is ContentCompression, this parameter is required. This parameter is an allowlist feature. If needed, contact Tencent Cloud Engineers.</p>
         :type ContentCompressionParameters: :class:`tencentcloud.teo.v20220901.models.ContentCompressionParameters`
-        :param _OriginAuthenticationParameters: The origin authentication configuration parameter. this parameter is required when the Name value is OriginAuthentication. this parameter is the allowlist feature. if needed, contact tencent cloud engineers.
+        :param _OriginAuthenticationParameters: <p>Origin authentication configuration parameter. This parameter is required when Name value is OriginAuthentication. This parameter is an allowlist feature. If needed, contact Tencent Cloud Engineers.</p>
         :type OriginAuthenticationParameters: :class:`tencentcloud.teo.v20220901.models.OriginAuthenticationParameters`
+        :param _CustomActionParameters: <p>Custom configuration operation parameter. This parameter is required when the Name value is CustomAction.</p><p>You can obtain the list of currently supported custom configuration items through the CustomActionSet returned value of the DescribeAvailableCustomActionsForRuleEngine API.</p>
+        :type CustomActionParameters: :class:`tencentcloud.teo.v20220901.models.CustomActionParameters`
         """
         self._Name = None
         self._CacheParameters = None
@@ -58077,6 +59668,7 @@ Note: This field may return null, which indicates a failure to obtain a valid va
         self._StatusCodeCacheParameters = None
         self._OfflineCacheParameters = None
         self._SmartRoutingParameters = None
+        self._AdvancedOriginRoutingParameters = None
         self._RangeOriginPullParameters = None
         self._UpstreamHTTP2Parameters = None
         self._HostHeaderParameters = None
@@ -58105,50 +59697,11 @@ Note: This field may return null, which indicates a failure to obtain a valid va
         self._VaryParameters = None
         self._ContentCompressionParameters = None
         self._OriginAuthenticationParameters = None
+        self._CustomActionParameters = None
 
     @property
     def Name(self):
-        r"""Operation name. The name must correspond to the parameter structure. For example, if Name=Cache, CacheParameters is required.
-<li>Cache: Node caching TTL;</li>
-<li>CacheKey: custom Cache Key;</li>
-<li>CachePrefresh: cache pre-refresh;</li>
-<li>AccessURLRedirect: URL redirection;</li>
-<li>UpstreamURLRewrite: origin-pull URL rewrite;</li>
-<li>QUIC:QUIC;</li>
-<li>WebSocket:WebSocket;</li>
-<li>Authentication: Token authentication;</li>
-<li>MaxAge: Browser cache TTL;</li>
-<li>StatusCodeCache: Status code cache TTL;</li>
-<li>OfflineCache: Offline cache;</li>
-<li>SmartRouting: Smart acceleration;</li>
-<li>RangeOriginPull: Range-based origin pull;</li>
-<li>UpstreamHTTP2: HTTP/2 origin pull;</li>
-<li>HostHeader: Host header rewrite;</li>
-<li>ForceRedirectHTTPS: Forced HTTPS redirect configuration for access protocol.</li>
-<li>HTTPS origin pull (OriginPullProtocol);</li>
-<li>Compression: Intelligent compression configuration;</li>
-<li>HSTS:HSTS;</li>
-<li>ClientIPHeader: Header information configuration that stores the client request IP.</li>
-<li>OCSPStapling: OCSP stapling;</li>
-<li>HTTP2: HTTP/2 integration;</li>
-<li>PostMaxSize: Maximum limit for file streaming transmission in POST requests.</li>
-<li>ClientIPCountry: Carry regional information of the client IP during origin pull.</li>
-<li>UpstreamFollowRedirect: Parameter configuration for redirection during origin pull;</li>
-<li>UpstreamRequest: Origin-pull request parameter;</li>
-<li>Shield: Origin server uninstallation.</li>
-<li>TLSConfig: SSL/TLS security;</li>
-<li>ModifyOrigin: Modify origin server;</li>
-<li>SiteFailover: origin server failure failover;</li>
-<li>HTTPUpstreamTimeout: Layer-7 origin-pull timeout configuration.</li>
-<li>HTTP response: HTTP response;</li>
-<li>ErrorPage: Custom error page;</li>
-<li>ModifyResponseHeader: Modify the HTTP node response header;</li>
-<li>ModifyRequestHeader: Modify the request header of an HTTP node;</li>
-<li>ResponseSpeedLimit: Download speed limit for a single connection;</li>
-<li>SetContentIdentifier: Set the content identifier.</li>
-<li>Vary: Vary feature configuration;</li>
-<li>ContentCompression: Content compression configuration;</li>
-<li>OriginAuthentication: Origin authentication configuration.</li>
+        r"""<p>Operation name. The name must correspond to the parameters structure. For example, if Name=Cache, then CacheParameters is required.<li>Cache: Node cache TTL;</li><li>CacheKey: Custom Cache Key;</li><li>CachePrefresh: Cache pre-refresh;</li><li>AccessURLRedirect: Access URL redirection;</li><li>UpstreamURLRewrite: Origin-pull URL rewrite;</li><li>QUIC: QUIC;</li><li>WebSocket: WebSocket;</li><li>Authentication: Token authentication;</li><li>MaxAge: Browser cache TTL;</li><li>StatusCodeCache: Status code cache TTL;</li><li>OfflineCache: Offline cache;</li><li>SmartRouting: Smart acceleration;</li><li>AdvancedOriginRouting: Advanced origin optimization;</li><li>RangeOriginPull: Range-based origin pull;</li><li>UpstreamHTTP2: HTTP2 origin-pull;</li><li>HostHeader: Host header rewrite;</li><li>ForceRedirectHTTPS: Forced HTTPS redirect configuration;</li><li>OriginPullProtocol: Origin-pull HTTPS;</li><li>Compression: Intelligent compression configuration;</li><li>HSTS: HSTS;</li><li>ClientIPHeader: Configuration for storing client IP address in the header;</li><li>OCSPStapling: OCSP stapling;</li><li>HTTP2: HTTP2 integration;</li><li>PostMaxSize: Maximum limit configuration for POST request upload file streaming transmission;</li><li>ClientIPCountry: Carrying regional information of the client IP during origin-pull;</li><li>UpstreamFollowRedirect: Upstream follow redirect parameter configuration;</li><li>UpstreamRequest: Origin-pull request parameters;</li><li>Shield: Origin server uninstallation configuration;</li><li>TLSConfig: SSL/TLS security;</li><li>ModifyOrigin: Modify origin server;</li><li>SiteFailover: Origin server fault migration;</li><li>HTTPUpstreamTimeout: Layer-7 origin-pull timeout configuration;</li><li>HttpResponse: HTTP response;</li><li>ErrorPage: Custom error page;</li><li>ModifyResponseHeader: Modify HTTP node response header;</li><li>ModifyRequestHeader: Modify HTTP node request header;</li><li>ResponseSpeedLimit: Single connection download speed limit;</li><li>SetContentIdentifier: Set content identifier;</li><li>Vary: Vary feature configuration;</li><li>ContentCompression: Content compression configuration;</li><li>OriginAuthentication: Origin-pull authentication configuration;</li><li>CustomAction: Custom configuration.</li></p>
         :rtype: str
         """
         return self._Name
@@ -58159,8 +59712,7 @@ Note: This field may return null, which indicates a failure to obtain a valid va
 
     @property
     def CacheParameters(self):
-        r"""Node cache ttl configuration parameter. when name is cache, this parameter is required.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Node cache TTL configuration parameter. This parameter is required when the Name value is Cache.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.CacheParameters`
         """
         return self._CacheParameters
@@ -58171,8 +59723,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def CacheKeyParameters(self):
-        r"""Custom cache key configuration parameter. when name is cachekey, this parameter is required.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Custom Cache Key configuration parameter. When Name value is CacheKey, this parameter is required.
         :rtype: :class:`tencentcloud.teo.v20220901.models.CacheKeyParameters`
         """
         return self._CacheKeyParameters
@@ -58183,8 +59734,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def CachePrefreshParameters(self):
-        r"""The cache prefresh configuration parameter. this parameter is required when `name` is `cacheprefresh`.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Cache pre-refresh configuration parameter. This parameter is required when the Name value is CachePrefresh.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.CachePrefreshParameters`
         """
         return self._CachePrefreshParameters
@@ -58195,8 +59745,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def AccessURLRedirectParameters(self):
-        r"""The access url redirection configuration parameter. this parameter is required when `name` is `accessurlredirect`.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Access URL redirection configuration parameter. This parameter is required when the Name value is AccessURLRedirect.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.AccessURLRedirectParameters`
         """
         return self._AccessURLRedirectParameters
@@ -58207,8 +59756,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def UpstreamURLRewriteParameters(self):
-        r"""The origin-pull url rewrite configuration parameter. this parameter is required when `name` is `upstreamurlrewrite`.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Origin-pull URL rewrite configuration parameter. This parameter is required when the value of Name is UpstreamURLRewrite.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamURLRewriteParameters`
         """
         return self._UpstreamURLRewriteParameters
@@ -58219,8 +59767,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def QUICParameters(self):
-        r"""The quic configuration parameter. this parameter is required when `name` is `quic`.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>QUIC configuration parameter. This parameter is required when the Name value is QUIC.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.QUICParameters`
         """
         return self._QUICParameters
@@ -58231,8 +59778,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def WebSocketParameters(self):
-        r"""The websocket configuration parameter. this parameter is required when `name` is `websocket`.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>WebSocket configuration parameter. This parameter is required when the Name value is WebSocket.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.WebSocketParameters`
         """
         return self._WebSocketParameters
@@ -58243,8 +59789,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def AuthenticationParameters(self):
-        r"""Token authentication configuration parameter. this parameter is required when `name` is `authentication`.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Token authentication configuration parameter. This parameter is required when the Name value is Authentication.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.AuthenticationParameters`
         """
         return self._AuthenticationParameters
@@ -58255,8 +59800,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def MaxAgeParameters(self):
-        r"""Browser cache ttl configuration parameter. this parameter is required when `name` is `maxage`.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Browser cache TTL configuration parameter. This parameter is required when the value of Name is MaxAge.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.MaxAgeParameters`
         """
         return self._MaxAgeParameters
@@ -58267,8 +59811,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def StatusCodeCacheParameters(self):
-        r"""Status code cache ttl configuration parameter. this parameter is required when `name` is `statuscodecache`.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Status code cache TTL configuration parameter. This parameter is required when the Name value is StatusCodeCache.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.StatusCodeCacheParameters`
         """
         return self._StatusCodeCacheParameters
@@ -58279,8 +59822,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def OfflineCacheParameters(self):
-        r"""Offline cache configuration parameter. this parameter is required when `name` is `offlinecache`.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Offline cache configuration parameter. This parameter is required when the Name value is OfflineCache.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.OfflineCacheParameters`
         """
         return self._OfflineCacheParameters
@@ -58291,8 +59833,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def SmartRoutingParameters(self):
-        r"""Smart acceleration configuration parameter. this parameter is required when `name` is `smartrouting`.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Smart acceleration configuration parameter. This parameter is required when the Name value is SmartRouting.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SmartRoutingParameters`
         """
         return self._SmartRoutingParameters
@@ -58302,9 +59843,19 @@ Note: this field may return null, which indicates a failure to obtain a valid va
         self._SmartRoutingParameters = SmartRoutingParameters
 
     @property
+    def AdvancedOriginRoutingParameters(self):
+        r"""<p>Advanced origin optimization configuration parameter. This parameter is required when the Name value is AdvancedOriginRouting.</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AdvancedOriginRoutingParameters`
+        """
+        return self._AdvancedOriginRoutingParameters
+
+    @AdvancedOriginRoutingParameters.setter
+    def AdvancedOriginRoutingParameters(self, AdvancedOriginRoutingParameters):
+        self._AdvancedOriginRoutingParameters = AdvancedOriginRoutingParameters
+
+    @property
     def RangeOriginPullParameters(self):
-        r"""Shard source retrieval configuration parameter. this parameter is required when name is set to rangeoriginpull.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Configuration parameter for range-based origin pull. This parameter is required when the value of Name is RangeOriginPull.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.RangeOriginPullParameters`
         """
         return self._RangeOriginPullParameters
@@ -58315,8 +59866,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def UpstreamHTTP2Parameters(self):
-        r"""HTTP2 origin-pull configuration parameter. this parameter is required when name is set to upstreamhttp2.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>HTTP2 origin configuration parameter. This parameter is required when the Name value is UpstreamHTTP2.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamHTTP2Parameters`
         """
         return self._UpstreamHTTP2Parameters
@@ -58327,8 +59877,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def HostHeaderParameters(self):
-        r"""Host header rewrite configuration parameter. this parameter is required when name is set to hostheader.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Host header rewrite configuration parameter. When the Name value is HostHeader, this parameter is required.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.HostHeaderParameters`
         """
         return self._HostHeaderParameters
@@ -58339,8 +59888,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def ForceRedirectHTTPSParameters(self):
-        r"""Force https redirect configuration parameter. this parameter is required when the name is set to forceredirecthttps.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Forced HTTPS redirect configuration for the access protocol. This parameter is required when the Name value is ForceRedirectHTTPS.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.ForceRedirectHTTPSParameters`
         """
         return self._ForceRedirectHTTPSParameters
@@ -58351,8 +59899,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def OriginPullProtocolParameters(self):
-        r"""HTTPS configuration for origin-pull. this parameter is required when the Name value is OriginPullProtocol.
-Note: This field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Origin HTTPS configuration parameter. This parameter is required when the Name value is OriginPullProtocol.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.OriginPullProtocolParameters`
         """
         return self._OriginPullProtocolParameters
@@ -58363,8 +59910,7 @@ Note: This field may return null, which indicates a failure to obtain a valid va
 
     @property
     def CompressionParameters(self):
-        r"""Intelligent compression configuration. this parameter is required when name is set to compression.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Intelligent compression configuration. This parameter is required when the Name value is Compression.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.CompressionParameters`
         """
         return self._CompressionParameters
@@ -58375,8 +59921,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def HSTSParameters(self):
-        r"""HSTS configuration parameter. this parameter is required when name is hsts.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>HSTS configuration parameter. When the Name value is HSTS, this parameter is required.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.HSTSParameters`
         """
         return self._HSTSParameters
@@ -58387,8 +59932,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def ClientIPHeaderParameters(self):
-        r"""Client ip header configuration for storing client request ip information. this parameter is required when name is clientipheader.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Configuration header information for storing client request IP. When the Name value is ClientIPHeader, this parameter is required.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.ClientIPHeaderParameters`
         """
         return self._ClientIPHeaderParameters
@@ -58399,8 +59943,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def OCSPStaplingParameters(self):
-        r"""OCSP stapling configuration parameter. this parameter is required when the name is set to ocspstapling.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>OCSP stapling configuration parameter. This parameter is required when Name value is OCSPStapling.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.OCSPStaplingParameters`
         """
         return self._OCSPStaplingParameters
@@ -58411,8 +59954,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def HTTP2Parameters(self):
-        r"""HTTP2 access configuration parameter. this parameter is required when name is http2.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>HTTP2 integration configuration parameter. This parameter is required when the Name value is HTTP2.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.HTTP2Parameters`
         """
         return self._HTTP2Parameters
@@ -58423,8 +59965,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def PostMaxSizeParameters(self):
-        r"""Maximum size configuration for file streaming upload via a post request. this parameter is required when name is postmaxsize.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Maximum limit configuration for file streaming transmission in POST request upload. When the Name value is PostMaxSize, this parameter is required.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.PostMaxSizeParameters`
         """
         return self._PostMaxSizeParameters
@@ -58435,8 +59976,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def ClientIPCountryParameters(self):
-        r"""Configuration parameter for carrying the region information of the client ip during origin-pull. this parameter is required when the name is set to clientipcountry.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Configuration parameter for carrying client IP regional information during origin pull. When the Name value is ClientIPCountry, this parameter is required.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.ClientIPCountryParameters`
         """
         return self._ClientIPCountryParameters
@@ -58447,8 +59987,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def UpstreamFollowRedirectParameters(self):
-        r"""Configuration parameter for following redirects during origin-pull. this parameter is required when the name is set to upstreamfollowredirect.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Origin-pull follow redirect parameter configuration. This parameter is required when the Name value is UpstreamFollowRedirect.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamFollowRedirectParameters`
         """
         return self._UpstreamFollowRedirectParameters
@@ -58459,8 +59998,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def UpstreamRequestParameters(self):
-        r"""Configuration parameter for origin-pull request. this parameter is required when the name is set to upstreamrequest.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Origin-pull request parameter configuration parameter. This parameter is required when the Name value is UpstreamRequest.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestParameters`
         """
         return self._UpstreamRequestParameters
@@ -58471,8 +60009,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def ShieldParameters(self):
-        r"""Origin server uninstallation config. When the Name value is Shield, this parameter is required.
-Note: This field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Origin server uninstallation configuration parameter. This parameter is required when the Name value is Shield.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.ShieldParameters`
         """
         return self._ShieldParameters
@@ -58483,8 +60020,7 @@ Note: This field may return null, which indicates a failure to obtain a valid va
 
     @property
     def TLSConfigParameters(self):
-        r"""SSL/TLS security configuration parameter. this parameter is required when the name is set to tlsconfig.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>SSL/TLS security configuration parameter. This parameter is required when the Name value is TLSConfig.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.TLSConfigParameters`
         """
         return self._TLSConfigParameters
@@ -58495,8 +60031,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def ModifyOriginParameters(self):
-        r"""Configuration parameter for modifying the origin server. this parameter is required when the name is set to modifyorigin.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Modify origin server configuration parameter. When the Name value is ModifyOrigin, this parameter is required.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyOriginParameters`
         """
         return self._ModifyOriginParameters
@@ -58507,8 +60042,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def SiteFailoverParameters(self):
-        r"""Origin server failure failover configuration parameter. This parameter is required when the Name value is SiteFailover.
-Note: This field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Source site fault migration config. When the Name value is SiteFailover, this parameter is required.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SiteFailoverParameters`
         """
         return self._SiteFailoverParameters
@@ -58519,8 +60053,7 @@ Note: This field may return null, which indicates a failure to obtain a valid va
 
     @property
     def HTTPUpstreamTimeoutParameters(self):
-        r"""Configuration of layer 7 origin timeout. this parameter is required when name is httpupstreamtimeout.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Layer 7 origin pull timeout configuration. This parameter is required when the Name value is HTTPUpstreamTimeout.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.HTTPUpstreamTimeoutParameters`
         """
         return self._HTTPUpstreamTimeoutParameters
@@ -58531,8 +60064,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def HttpResponseParameters(self):
-        r"""HTTP response configuration parameters. this parameter is required when name is httpresponse.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>HTTP response configuration parameter. This parameter is required when the Name value is HttpResponse.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.HTTPResponseParameters`
         """
         return self._HttpResponseParameters
@@ -58543,8 +60075,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def ErrorPageParameters(self):
-        r"""Custom error page configuration parameters. this parameter is required when name is errorpage.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Custom error page configuration parameter. This parameter is required when the value of Name is ErrorPage.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.ErrorPageParameters`
         """
         return self._ErrorPageParameters
@@ -58555,8 +60086,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def ModifyResponseHeaderParameters(self):
-        r"""Modify http node response header configuration parameters. this parameter is required when name is modifyresponseheader.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Modify the HTTP node response header configuration parameter. This parameter is required when the Name value is ModifyResponseHeader.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyResponseHeaderParameters`
         """
         return self._ModifyResponseHeaderParameters
@@ -58567,8 +60097,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def ModifyRequestHeaderParameters(self):
-        r"""Modify http node request header configuration parameters. this parameter is required when name is modifyrequestheader.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Modify the request header configuration parameter of the HTTP node. This parameter is required when the Name value is ModifyRequestHeader.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyRequestHeaderParameters`
         """
         return self._ModifyRequestHeaderParameters
@@ -58579,8 +60108,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def ResponseSpeedLimitParameters(self):
-        r"""Single connection download speed limit configuration parameter. this parameter is required when name is responsespeedlimit.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Single connection download speed limit configuration parameter. This parameter is required when the Name value is ResponseSpeedLimit.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.ResponseSpeedLimitParameters`
         """
         return self._ResponseSpeedLimitParameters
@@ -58591,9 +60119,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def SetContentIdentifierParameters(self):
-        r"""Specifies the content identification configuration parameter. this parameter is required when the Name value is SetContentIdentifier.
-
-Note: This field may return null, which indicates a failure to obtain a valid value.
+        r"""<p>Content identification configuration parameter. This parameter is required when the Name value is SetContentIdentifier.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SetContentIdentifierParameters`
         """
         return self._SetContentIdentifierParameters
@@ -58604,7 +60130,7 @@ Note: This field may return null, which indicates a failure to obtain a valid va
 
     @property
     def VaryParameters(self):
-        r"""Vary feature configuration parameter. when Name value is Vary, this parameter is required.
+        r"""<p>Vary feature configuration parameter. This parameter is required when the Name value is Vary.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.VaryParameters`
         """
         return self._VaryParameters
@@ -58615,7 +60141,7 @@ Note: This field may return null, which indicates a failure to obtain a valid va
 
     @property
     def ContentCompressionParameters(self):
-        r"""The content compression configuration parameter is required when Name value is ContentCompression. this parameter is an allowlist feature. if needed, contact tencent cloud engineers.
+        r"""<p>Content compression configuration parameter. When the Name value is ContentCompression, this parameter is required. This parameter is an allowlist feature. If needed, contact Tencent Cloud Engineers.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.ContentCompressionParameters`
         """
         return self._ContentCompressionParameters
@@ -58626,7 +60152,7 @@ Note: This field may return null, which indicates a failure to obtain a valid va
 
     @property
     def OriginAuthenticationParameters(self):
-        r"""The origin authentication configuration parameter. this parameter is required when the Name value is OriginAuthentication. this parameter is the allowlist feature. if needed, contact tencent cloud engineers.
+        r"""<p>Origin authentication configuration parameter. This parameter is required when Name value is OriginAuthentication. This parameter is an allowlist feature. If needed, contact Tencent Cloud Engineers.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.OriginAuthenticationParameters`
         """
         return self._OriginAuthenticationParameters
@@ -58634,6 +60160,17 @@ Note: This field may return null, which indicates a failure to obtain a valid va
     @OriginAuthenticationParameters.setter
     def OriginAuthenticationParameters(self, OriginAuthenticationParameters):
         self._OriginAuthenticationParameters = OriginAuthenticationParameters
+
+    @property
+    def CustomActionParameters(self):
+        r"""<p>Custom configuration operation parameter. This parameter is required when the Name value is CustomAction.</p><p>You can obtain the list of currently supported custom configuration items through the CustomActionSet returned value of the DescribeAvailableCustomActionsForRuleEngine API.</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CustomActionParameters`
+        """
+        return self._CustomActionParameters
+
+    @CustomActionParameters.setter
+    def CustomActionParameters(self, CustomActionParameters):
+        self._CustomActionParameters = CustomActionParameters
 
 
     def _deserialize(self, params):
@@ -58674,6 +60211,9 @@ Note: This field may return null, which indicates a failure to obtain a valid va
         if params.get("SmartRoutingParameters") is not None:
             self._SmartRoutingParameters = SmartRoutingParameters()
             self._SmartRoutingParameters._deserialize(params.get("SmartRoutingParameters"))
+        if params.get("AdvancedOriginRoutingParameters") is not None:
+            self._AdvancedOriginRoutingParameters = AdvancedOriginRoutingParameters()
+            self._AdvancedOriginRoutingParameters._deserialize(params.get("AdvancedOriginRoutingParameters"))
         if params.get("RangeOriginPullParameters") is not None:
             self._RangeOriginPullParameters = RangeOriginPullParameters()
             self._RangeOriginPullParameters._deserialize(params.get("RangeOriginPullParameters"))
@@ -58758,6 +60298,371 @@ Note: This field may return null, which indicates a failure to obtain a valid va
         if params.get("OriginAuthenticationParameters") is not None:
             self._OriginAuthenticationParameters = OriginAuthenticationParameters()
             self._OriginAuthenticationParameters._deserialize(params.get("OriginAuthenticationParameters"))
+        if params.get("CustomActionParameters") is not None:
+            self._CustomActionParameters = CustomActionParameters()
+            self._CustomActionParameters._deserialize(params.get("CustomActionParameters"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleEngineCustomAction(AbstractModel):
+    r"""Rule engine manipulates custom configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionId: <p>Unique ID of the custom configuration.</p>
+        :type ActionId: str
+        :param _Name: <p>Custom configuration name.</p>
+        :type Name: str
+        :param _Description: <p>Custom configuration description.</p>
+        :type Description: str
+        :param _Parameters: <p>Custom configuration parameter definition list.</p>
+        :type Parameters: list of RuleEngineCustomActionParameterSchema
+        :param _SupportedConditions: <p>Match conditions supported by custom configuration.</p><p>For supported match conditions, refer to the official documentation <a href="https://www.tencentcloud.com/document/product/1552/125344?from_cn_redirect=1">General Reference - Configuration Syntax - Variables</a>.</p>
+        :type SupportedConditions: list of str
+        """
+        self._ActionId = None
+        self._Name = None
+        self._Description = None
+        self._Parameters = None
+        self._SupportedConditions = None
+
+    @property
+    def ActionId(self):
+        r"""<p>Unique ID of the custom configuration.</p>
+        :rtype: str
+        """
+        return self._ActionId
+
+    @ActionId.setter
+    def ActionId(self, ActionId):
+        self._ActionId = ActionId
+
+    @property
+    def Name(self):
+        r"""<p>Custom configuration name.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>Custom configuration description.</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Parameters(self):
+        r"""<p>Custom configuration parameter definition list.</p>
+        :rtype: list of RuleEngineCustomActionParameterSchema
+        """
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
+    @property
+    def SupportedConditions(self):
+        r"""<p>Match conditions supported by custom configuration.</p><p>For supported match conditions, refer to the official documentation <a href="https://www.tencentcloud.com/document/product/1552/125344?from_cn_redirect=1">General Reference - Configuration Syntax - Variables</a>.</p>
+        :rtype: list of str
+        """
+        return self._SupportedConditions
+
+    @SupportedConditions.setter
+    def SupportedConditions(self, SupportedConditions):
+        self._SupportedConditions = SupportedConditions
+
+
+    def _deserialize(self, params):
+        self._ActionId = params.get("ActionId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        if params.get("Parameters") is not None:
+            self._Parameters = []
+            for item in params.get("Parameters"):
+                obj = RuleEngineCustomActionParameterSchema()
+                obj._deserialize(item)
+                self._Parameters.append(obj)
+        self._SupportedConditions = params.get("SupportedConditions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleEngineCustomActionParameterSchema(AbstractModel):
+    r"""Rule engine operation custom configuration parameter structure definition.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>Parameter field name.</p>
+        :type Name: str
+        :param _ValueType: <p>Parameter field data type. Valid values: <li>Boolean: boolean;</li><li>Integer: integer;</li><li>Float: floating-point;</li><li>String: string;</li><li>ArrayOfInteger: integer array;</li><li>ArrayOfFloat: floating-point array;</li><li>ArrayOfString: array of strings.</li></p>
+        :type ValueType: str
+        :param _Description: <p>Parameter field description.</p>
+        :type Description: str
+        :param _Default: <p>Field default value of the parameter.</p>
+        :type Default: str
+        :param _Unit: <p>Parameter field unit.</p>
+        :type Unit: str
+        :param _Required: <p>Whether the parameter field is required or not.</p><p>Default value: false</p><p>If filled, it is applicable to ALL parameter field type verification; if left blank, no verification.</p>
+        :type Required: bool
+        :param _MinValue: <p>Minimum value of the parameter field.</p><p>If filled, it is used to validate the value for integer, floating-point number, integer array, and floating-point number array type parameters; if left blank, there is no verification.</p>
+        :type MinValue: float
+        :param _MaxValue: <p>Maximum value of the parameter field.</p><p>If filled, it is used for value verification of type parameters for integers, floating-point numbers, integer arrays, and floating-point number arrays. If left blank, there is no verification.</p>
+        :type MaxValue: float
+        :param _MinLength: <p>Minimum length of the parameter field.</p><p>If filled, it is used for value verification of string and string array type parameters. If not filled, there is no verification.</p>
+        :type MinLength: int
+        :param _MaxLength: <p>Maximum length of the parameter field.</p><p>If filled, it is used for value verification for strings and array of strings type parameters; if left blank, no verification.</p>
+        :type MaxLength: int
+        :param _MinItems: <p>Minimum item count of the parameter field.</p><p>If filled, it is applicable to value verification for various array type parameters; if left blank, there is no verification.</p>
+        :type MinItems: int
+        :param _MaxItems: <p>Maximum item count of the parameter field.</p><p>If filled, it is applicable to value verification for various array type parameters. If left blank, there is no verification.</p>
+        :type MaxItems: int
+        :param _UniqueItems: <p>Whether the parameter field item is unique.</p><p>Default value: false</p><p>If filled, it is applicable to various array type parameter value verification; if left blank, no verification.</p>
+        :type UniqueItems: bool
+        :param _AllowedPattern: <p>Allowed format of the parameter field.</p><p>If filled, verification of string or string array content is required. If not filled, there is no verification.</p>
+        :type AllowedPattern: str
+        :param _AllowedValues: <p>Allowed values of the parameter field. If empty, there is no verification.</p><p>If this parameter is filled, it indicates that the corresponding parameter is an enum and only allows values from this parameter array; if left blank, there is no verification.</p>
+        :type AllowedValues: list of str
+        :param _MultipleOf: <p>Minimum step size of the parameter field.</p><p>If filled, it is suitable for value verification of floating-point and floating-point array type parameters. If not filled, there is no verification.</p>
+        :type MultipleOf: str
+        """
+        self._Name = None
+        self._ValueType = None
+        self._Description = None
+        self._Default = None
+        self._Unit = None
+        self._Required = None
+        self._MinValue = None
+        self._MaxValue = None
+        self._MinLength = None
+        self._MaxLength = None
+        self._MinItems = None
+        self._MaxItems = None
+        self._UniqueItems = None
+        self._AllowedPattern = None
+        self._AllowedValues = None
+        self._MultipleOf = None
+
+    @property
+    def Name(self):
+        r"""<p>Parameter field name.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ValueType(self):
+        r"""<p>Parameter field data type. Valid values: <li>Boolean: boolean;</li><li>Integer: integer;</li><li>Float: floating-point;</li><li>String: string;</li><li>ArrayOfInteger: integer array;</li><li>ArrayOfFloat: floating-point array;</li><li>ArrayOfString: array of strings.</li></p>
+        :rtype: str
+        """
+        return self._ValueType
+
+    @ValueType.setter
+    def ValueType(self, ValueType):
+        self._ValueType = ValueType
+
+    @property
+    def Description(self):
+        r"""<p>Parameter field description.</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Default(self):
+        r"""<p>Field default value of the parameter.</p>
+        :rtype: str
+        """
+        return self._Default
+
+    @Default.setter
+    def Default(self, Default):
+        self._Default = Default
+
+    @property
+    def Unit(self):
+        r"""<p>Parameter field unit.</p>
+        :rtype: str
+        """
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+    @property
+    def Required(self):
+        r"""<p>Whether the parameter field is required or not.</p><p>Default value: false</p><p>If filled, it is applicable to ALL parameter field type verification; if left blank, no verification.</p>
+        :rtype: bool
+        """
+        return self._Required
+
+    @Required.setter
+    def Required(self, Required):
+        self._Required = Required
+
+    @property
+    def MinValue(self):
+        r"""<p>Minimum value of the parameter field.</p><p>If filled, it is used to validate the value for integer, floating-point number, integer array, and floating-point number array type parameters; if left blank, there is no verification.</p>
+        :rtype: float
+        """
+        return self._MinValue
+
+    @MinValue.setter
+    def MinValue(self, MinValue):
+        self._MinValue = MinValue
+
+    @property
+    def MaxValue(self):
+        r"""<p>Maximum value of the parameter field.</p><p>If filled, it is used for value verification of type parameters for integers, floating-point numbers, integer arrays, and floating-point number arrays. If left blank, there is no verification.</p>
+        :rtype: float
+        """
+        return self._MaxValue
+
+    @MaxValue.setter
+    def MaxValue(self, MaxValue):
+        self._MaxValue = MaxValue
+
+    @property
+    def MinLength(self):
+        r"""<p>Minimum length of the parameter field.</p><p>If filled, it is used for value verification of string and string array type parameters. If not filled, there is no verification.</p>
+        :rtype: int
+        """
+        return self._MinLength
+
+    @MinLength.setter
+    def MinLength(self, MinLength):
+        self._MinLength = MinLength
+
+    @property
+    def MaxLength(self):
+        r"""<p>Maximum length of the parameter field.</p><p>If filled, it is used for value verification for strings and array of strings type parameters; if left blank, no verification.</p>
+        :rtype: int
+        """
+        return self._MaxLength
+
+    @MaxLength.setter
+    def MaxLength(self, MaxLength):
+        self._MaxLength = MaxLength
+
+    @property
+    def MinItems(self):
+        r"""<p>Minimum item count of the parameter field.</p><p>If filled, it is applicable to value verification for various array type parameters; if left blank, there is no verification.</p>
+        :rtype: int
+        """
+        return self._MinItems
+
+    @MinItems.setter
+    def MinItems(self, MinItems):
+        self._MinItems = MinItems
+
+    @property
+    def MaxItems(self):
+        r"""<p>Maximum item count of the parameter field.</p><p>If filled, it is applicable to value verification for various array type parameters. If left blank, there is no verification.</p>
+        :rtype: int
+        """
+        return self._MaxItems
+
+    @MaxItems.setter
+    def MaxItems(self, MaxItems):
+        self._MaxItems = MaxItems
+
+    @property
+    def UniqueItems(self):
+        r"""<p>Whether the parameter field item is unique.</p><p>Default value: false</p><p>If filled, it is applicable to various array type parameter value verification; if left blank, no verification.</p>
+        :rtype: bool
+        """
+        return self._UniqueItems
+
+    @UniqueItems.setter
+    def UniqueItems(self, UniqueItems):
+        self._UniqueItems = UniqueItems
+
+    @property
+    def AllowedPattern(self):
+        r"""<p>Allowed format of the parameter field.</p><p>If filled, verification of string or string array content is required. If not filled, there is no verification.</p>
+        :rtype: str
+        """
+        return self._AllowedPattern
+
+    @AllowedPattern.setter
+    def AllowedPattern(self, AllowedPattern):
+        self._AllowedPattern = AllowedPattern
+
+    @property
+    def AllowedValues(self):
+        r"""<p>Allowed values of the parameter field. If empty, there is no verification.</p><p>If this parameter is filled, it indicates that the corresponding parameter is an enum and only allows values from this parameter array; if left blank, there is no verification.</p>
+        :rtype: list of str
+        """
+        return self._AllowedValues
+
+    @AllowedValues.setter
+    def AllowedValues(self, AllowedValues):
+        self._AllowedValues = AllowedValues
+
+    @property
+    def MultipleOf(self):
+        r"""<p>Minimum step size of the parameter field.</p><p>If filled, it is suitable for value verification of floating-point and floating-point array type parameters. If not filled, there is no verification.</p>
+        :rtype: str
+        """
+        return self._MultipleOf
+
+    @MultipleOf.setter
+    def MultipleOf(self, MultipleOf):
+        self._MultipleOf = MultipleOf
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ValueType = params.get("ValueType")
+        self._Description = params.get("Description")
+        self._Default = params.get("Default")
+        self._Unit = params.get("Unit")
+        self._Required = params.get("Required")
+        self._MinValue = params.get("MinValue")
+        self._MaxValue = params.get("MaxValue")
+        self._MinLength = params.get("MinLength")
+        self._MaxLength = params.get("MaxLength")
+        self._MinItems = params.get("MinItems")
+        self._MaxItems = params.get("MaxItems")
+        self._UniqueItems = params.get("UniqueItems")
+        self._AllowedPattern = params.get("AllowedPattern")
+        self._AllowedValues = params.get("AllowedValues")
+        self._MultipleOf = params.get("MultipleOf")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -59887,30 +61792,19 @@ class SecurityAction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Specifies the specific actions for safe execution. valid values:.
-<Li>Deny. specifies to block requests from accessing site resources.</li>.
-<Li>Monitor: observation, only record logs.</li>.
-<li>Redirect: Redirect to URL.</li>.
-<Li>Disabled: specifies that the rule is not enabled.</li>.
-<Li>Allow: specifies whether to allow access with delayed processing of requests.</li>.
-<Li>Challenge: specifies the challenge content to respond to.</li>.
-<Li>Trans: pass and allow requests to directly access site resources.</li>.
-<Li>BlockIP: to be deprecated. ip block.</li>.
-<Li>ReturnCustomPage: to be deprecated. use specified page for interception.</li>.
-<li>JSChallenge: to be deprecated, JavaScript challenge;</li>.
-<Li>ManagedChallenge: to be deprecated. managed challenge.</li>.
+        :param _Name: <p>Specific actions for safe execution. Valid values:</p><ul><li>Deny: block, prevent requests from accessing site resources;</li><li>Monitor: observe, only record logs;</li><li>Redirect: redirect to URL;</li><li>Disabled: not enabled, do not enable the specified rule;</li><li>Allow: pass, skip the remaining rules of the current security module. Delay response when the AllowActionParameters parameter is configured;</li><li>Challenge: challenge, respond with challenge content;</li><li>BlockIP: to be deprecated, IP blocking;</li><li>ReturnCustomPage: to be deprecated, use a specified page for interception;</li><li>JSChallenge: to be deprecated, JavaScript challenge;</li><li>ManagedChallenge: to be deprecated, managed challenge.</li></ul>
         :type Name: str
-        :param _DenyActionParameters: Additional parameters when Name is Deny.
+        :param _DenyActionParameters: <p>Additional parameter when Name is Deny.</p>
         :type DenyActionParameters: :class:`tencentcloud.teo.v20220901.models.DenyActionParameters`
-        :param _RedirectActionParameters: Additional parameter when Name is Redirect.
+        :param _RedirectActionParameters: <p>Additional parameter when Name is Redirect.</p>
         :type RedirectActionParameters: :class:`tencentcloud.teo.v20220901.models.RedirectActionParameters`
-        :param _AllowActionParameters: Additional parameters when Name is Allow.
+        :param _AllowActionParameters: <p>Additional parameter when Name is Allow.</p>
         :type AllowActionParameters: :class:`tencentcloud.teo.v20220901.models.AllowActionParameters`
-        :param _ChallengeActionParameters: Additional parameter when Name is Challenge.
+        :param _ChallengeActionParameters: <p>Additional parameter when Name is Challenge.</p>
         :type ChallengeActionParameters: :class:`tencentcloud.teo.v20220901.models.ChallengeActionParameters`
-        :param _BlockIPActionParameters: To be deprecated, additional parameter when Name is BlockIP.
+        :param _BlockIPActionParameters: <p>To be deprecated. Additional parameter when Name is BlockIP.</p>
         :type BlockIPActionParameters: :class:`tencentcloud.teo.v20220901.models.BlockIPActionParameters`
-        :param _ReturnCustomPageActionParameters: To be deprecated, additional parameter when Name is ReturnCustomPage.
+        :param _ReturnCustomPageActionParameters: <p>To be deprecated. An additional parameter when Name is ReturnCustomPage.</p>
         :type ReturnCustomPageActionParameters: :class:`tencentcloud.teo.v20220901.models.ReturnCustomPageActionParameters`
         """
         self._Name = None
@@ -59923,18 +61817,7 @@ class SecurityAction(AbstractModel):
 
     @property
     def Name(self):
-        r"""Specifies the specific actions for safe execution. valid values:.
-<Li>Deny. specifies to block requests from accessing site resources.</li>.
-<Li>Monitor: observation, only record logs.</li>.
-<li>Redirect: Redirect to URL.</li>.
-<Li>Disabled: specifies that the rule is not enabled.</li>.
-<Li>Allow: specifies whether to allow access with delayed processing of requests.</li>.
-<Li>Challenge: specifies the challenge content to respond to.</li>.
-<Li>Trans: pass and allow requests to directly access site resources.</li>.
-<Li>BlockIP: to be deprecated. ip block.</li>.
-<Li>ReturnCustomPage: to be deprecated. use specified page for interception.</li>.
-<li>JSChallenge: to be deprecated, JavaScript challenge;</li>.
-<Li>ManagedChallenge: to be deprecated. managed challenge.</li>.
+        r"""<p>Specific actions for safe execution. Valid values:</p><ul><li>Deny: block, prevent requests from accessing site resources;</li><li>Monitor: observe, only record logs;</li><li>Redirect: redirect to URL;</li><li>Disabled: not enabled, do not enable the specified rule;</li><li>Allow: pass, skip the remaining rules of the current security module. Delay response when the AllowActionParameters parameter is configured;</li><li>Challenge: challenge, respond with challenge content;</li><li>BlockIP: to be deprecated, IP blocking;</li><li>ReturnCustomPage: to be deprecated, use a specified page for interception;</li><li>JSChallenge: to be deprecated, JavaScript challenge;</li><li>ManagedChallenge: to be deprecated, managed challenge.</li></ul>
         :rtype: str
         """
         return self._Name
@@ -59945,7 +61828,7 @@ class SecurityAction(AbstractModel):
 
     @property
     def DenyActionParameters(self):
-        r"""Additional parameters when Name is Deny.
+        r"""<p>Additional parameter when Name is Deny.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.DenyActionParameters`
         """
         return self._DenyActionParameters
@@ -59956,7 +61839,7 @@ class SecurityAction(AbstractModel):
 
     @property
     def RedirectActionParameters(self):
-        r"""Additional parameter when Name is Redirect.
+        r"""<p>Additional parameter when Name is Redirect.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.RedirectActionParameters`
         """
         return self._RedirectActionParameters
@@ -59967,7 +61850,7 @@ class SecurityAction(AbstractModel):
 
     @property
     def AllowActionParameters(self):
-        r"""Additional parameters when Name is Allow.
+        r"""<p>Additional parameter when Name is Allow.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.AllowActionParameters`
         """
         return self._AllowActionParameters
@@ -59978,7 +61861,7 @@ class SecurityAction(AbstractModel):
 
     @property
     def ChallengeActionParameters(self):
-        r"""Additional parameter when Name is Challenge.
+        r"""<p>Additional parameter when Name is Challenge.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.ChallengeActionParameters`
         """
         return self._ChallengeActionParameters
@@ -59989,7 +61872,7 @@ class SecurityAction(AbstractModel):
 
     @property
     def BlockIPActionParameters(self):
-        r"""To be deprecated, additional parameter when Name is BlockIP.
+        r"""<p>To be deprecated. Additional parameter when Name is BlockIP.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.BlockIPActionParameters`
         """
         return self._BlockIPActionParameters
@@ -60000,7 +61883,7 @@ class SecurityAction(AbstractModel):
 
     @property
     def ReturnCustomPageActionParameters(self):
-        r"""To be deprecated, additional parameter when Name is ReturnCustomPage.
+        r"""<p>To be deprecated. An additional parameter when Name is ReturnCustomPage.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.ReturnCustomPageActionParameters`
         """
         return self._ReturnCustomPageActionParameters
@@ -60891,6 +62774,57 @@ class SetContentIdentifierParameters(AbstractModel):
 
     def _deserialize(self, params):
         self._ContentIdentifier = params.get("ContentIdentifier")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetParameters(AbstractModel):
+    r"""Custom Variable parameter settings.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>Specify the custom variable name. A custom variable must be defined before it can be used in operations.</p>
+        :type Name: str
+        :param _Value: <p>Assign value to a Custom Variable. Supports the use of constant strings, variables, and formulas. Chinese characters are not allowed. Length cannot exceed 1000 characters.</p>
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""<p>Specify the custom variable name. A custom variable must be defined before it can be used in operations.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""<p>Assign value to a Custom Variable. Supports the use of constant strings, variables, and formulas. Chinese characters are not allowed. Length cannot exceed 1000 characters.</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62151,16 +64085,14 @@ class StatusCodeCacheParameters(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StatusCodeCacheParams: Status code cache ttl.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _StatusCodeCacheParams: Status code cache TTL.
         :type StatusCodeCacheParams: list of StatusCodeCacheParam
         """
         self._StatusCodeCacheParams = None
 
     @property
     def StatusCodeCacheParams(self):
-        r"""Status code cache ttl.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""Status code cache TTL.
         :rtype: list of StatusCodeCacheParam
         """
         return self._StatusCodeCacheParams
@@ -62516,14 +64448,17 @@ class TCEOCaptchaOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CaptchaMode: EdgeOne human-machine verification mode. Valid values:<li>Invisible: invisible verification;</li><li>Adaptive: self adaptive interactive verification.</li>
+        :param _CaptchaMode: <p>Browser-side WebView human-machine verification interaction mode.</p><p>Enumeration values:</p><ul><li>Invisible: invisible verification</li><li>Adaptive: self adaptive interactive verification</li></ul><p>Default value: Invisible</p>
         :type CaptchaMode: str
+        :param _MobileCaptchaMode: <p>Human-machine verification interaction mode for native apps on mobile terminals.</p><p>Enumeration values:</p><ul><li>Invisible: Invisible verification</li><li>Visible: interactive verification</li></ul><p>Default value: Invisible</p>
+        :type MobileCaptchaMode: str
         """
         self._CaptchaMode = None
+        self._MobileCaptchaMode = None
 
     @property
     def CaptchaMode(self):
-        r"""EdgeOne human-machine verification mode. Valid values:<li>Invisible: invisible verification;</li><li>Adaptive: self adaptive interactive verification.</li>
+        r"""<p>Browser-side WebView human-machine verification interaction mode.</p><p>Enumeration values:</p><ul><li>Invisible: invisible verification</li><li>Adaptive: self adaptive interactive verification</li></ul><p>Default value: Invisible</p>
         :rtype: str
         """
         return self._CaptchaMode
@@ -62532,9 +64467,21 @@ class TCEOCaptchaOption(AbstractModel):
     def CaptchaMode(self, CaptchaMode):
         self._CaptchaMode = CaptchaMode
 
+    @property
+    def MobileCaptchaMode(self):
+        r"""<p>Human-machine verification interaction mode for native apps on mobile terminals.</p><p>Enumeration values:</p><ul><li>Invisible: Invisible verification</li><li>Visible: interactive verification</li></ul><p>Default value: Invisible</p>
+        :rtype: str
+        """
+        return self._MobileCaptchaMode
+
+    @MobileCaptchaMode.setter
+    def MobileCaptchaMode(self, MobileCaptchaMode):
+        self._MobileCaptchaMode = MobileCaptchaMode
+
 
     def _deserialize(self, params):
         self._CaptchaMode = params.get("CaptchaMode")
+        self._MobileCaptchaMode = params.get("MobileCaptchaMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -63901,11 +65848,9 @@ class UpstreamRequestParameters(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _QueryString: Query string configuration. optional. if not provided, it will not be configured.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _QueryString: Query string configuration. Optional configuration, leave blank for no configuration.
         :type QueryString: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestQueryString`
-        :param _Cookie: Cookie configuration. optional. if not provided, it will not be configured.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        :param _Cookie: Cookie configuration. Optional configuration. Leave it blank for no configuration.
         :type Cookie: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestCookie`
         """
         self._QueryString = None
@@ -63913,8 +65858,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def QueryString(self):
-        r"""Query string configuration. optional. if not provided, it will not be configured.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""Query string configuration. Optional configuration, leave blank for no configuration.
         :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestQueryString`
         """
         return self._QueryString
@@ -63925,8 +65869,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def Cookie(self):
-        r"""Cookie configuration. optional. if not provided, it will not be configured.
-Note: this field may return null, which indicates a failure to obtain a valid value.
+        r"""Cookie configuration. Optional configuration. Leave it blank for no configuration.
         :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestCookie`
         """
         return self._Cookie

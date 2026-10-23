@@ -280,7 +280,7 @@ class TeoClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateConfigGroupVersionResponse:
         """
-        This API is used to create a new version for the specified configuration group in version management mode. The version management feature is currently undergoing beta testing and is accessible only to users on the whitelist.
+        In version management mode, this API is used to create a new version of the specified configuration group.
         """
         
         kwargs = {}
@@ -1518,6 +1518,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAvailableCustomActionsForRuleEngine(
+            self,
+            request: models.DescribeAvailableCustomActionsForRuleEngineRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAvailableCustomActionsForRuleEngineResponse:
+        """
+        This API is used to query the list of available custom configurations for rule engine operations on a site.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAvailableCustomActionsForRuleEngine"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAvailableCustomActionsForRuleEngineResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAvailablePlans(
             self,
             request: models.DescribeAvailablePlansRequest,
@@ -2179,6 +2197,42 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "DescribeLoadBalancerList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeLoadBalancerListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLogAnalysisDetail(
+            self,
+            request: models.DescribeLogAnalysisDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLogAnalysisDetailResponse:
+        """
+        This API is used to query the log analysis details. The data comes from the log data of the real-time log push task with the destination "log_analysis" under the site.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLogAnalysisDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLogAnalysisDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLogAnalysisDownloadTasks(
+            self,
+            request: models.DescribeLogAnalysisDownloadTasksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLogAnalysisDownloadTasksResponse:
+        """
+        This API is used to query the log download task list for log analysis. Note: Only download task records from the last three days are retained.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLogAnalysisDownloadTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLogAnalysisDownloadTasksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2858,6 +2912,26 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "DescribeZoneConfigImportResult"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeZoneConfigImportResultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeZoneCustomVariables(
+            self,
+            request: models.DescribeZoneCustomVariablesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeZoneCustomVariablesResponse:
+        """
+        This API is used to query site-level custom variable configurations, including variable definitions and variable operations. If not configured, both variable definitions and variable operations return empty lists.
+
+        If needed, call the DescribeL7AccRules API to query rule-level custom variables.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeZoneCustomVariables"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeZoneCustomVariablesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4030,6 +4104,26 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "ModifyZone"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyZoneResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyZoneCustomVariables(
+            self,
+            request: models.ModifyZoneCustomVariablesRequest,
+            opts: Dict = None,
+    ) -> models.ModifyZoneCustomVariablesResponse:
+        """
+        This API is used to manage site-level custom variables, supporting the creation, modification, and deletion of variable definitions and variable operations. The submitted list will override the corresponding existing configuration. To clear the configuration, pass in an empty list. Configuration items not passed in remain unchanged. The default values for variable definitions and variable operations are both empty.
+
+        For operations related to rule-level custom variables, call the CreateL7AccRules or ModifyL7AccRule API.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyZoneCustomVariables"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyZoneCustomVariablesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -341,7 +341,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateConfigGroupVersion(self, request):
-        r"""This API is used to create a new version for the specified configuration group in version management mode. The version management feature is currently undergoing beta testing and is accessible only to users on the whitelist.
+        r"""In version management mode, this API is used to create a new version of the specified configuration group.
 
         :param request: Request instance for CreateConfigGroupVersion.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateConfigGroupVersionRequest`
@@ -1924,6 +1924,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAvailableCustomActionsForRuleEngine(self, request):
+        r"""This API is used to query the list of available custom configurations for rule engine operations on a site.
+
+        :param request: Request instance for DescribeAvailableCustomActionsForRuleEngine.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeAvailableCustomActionsForRuleEngineRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeAvailableCustomActionsForRuleEngineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAvailableCustomActionsForRuleEngine", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAvailableCustomActionsForRuleEngineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAvailablePlans(self, request):
         r"""This API is used to query plan options available for purchase.
 
@@ -2766,6 +2789,52 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeLoadBalancerList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLoadBalancerListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLogAnalysisDetail(self, request):
+        r"""This API is used to query the log analysis details. The data comes from the log data of the real-time log push task with the destination "log_analysis" under the site.
+
+        :param request: Request instance for DescribeLogAnalysisDetail.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeLogAnalysisDetailRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeLogAnalysisDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogAnalysisDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogAnalysisDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLogAnalysisDownloadTasks(self, request):
+        r"""This API is used to query the log download task list for log analysis. Note: Only download task records from the last three days are retained.
+
+        :param request: Request instance for DescribeLogAnalysisDownloadTasks.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeLogAnalysisDownloadTasksRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeLogAnalysisDownloadTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogAnalysisDownloadTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogAnalysisDownloadTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3630,6 +3699,31 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeZoneConfigImportResult", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeZoneConfigImportResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeZoneCustomVariables(self, request):
+        r"""This API is used to query site-level custom variable configurations, including variable definitions and variable operations. If not configured, both variable definitions and variable operations return empty lists.
+
+        If needed, call the DescribeL7AccRules API to query rule-level custom variables.
+
+        :param request: Request instance for DescribeZoneCustomVariables.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeZoneCustomVariablesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeZoneCustomVariablesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeZoneCustomVariables", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeZoneCustomVariablesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5122,6 +5216,31 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyZone", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyZoneResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyZoneCustomVariables(self, request):
+        r"""This API is used to manage site-level custom variables, supporting the creation, modification, and deletion of variable definitions and variable operations. The submitted list will override the corresponding existing configuration. To clear the configuration, pass in an empty list. Configuration items not passed in remain unchanged. The default values for variable definitions and variable operations are both empty.
+
+        For operations related to rule-level custom variables, call the CreateL7AccRules or ModifyL7AccRule API.
+
+        :param request: Request instance for ModifyZoneCustomVariables.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyZoneCustomVariablesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyZoneCustomVariablesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyZoneCustomVariables", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyZoneCustomVariablesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
