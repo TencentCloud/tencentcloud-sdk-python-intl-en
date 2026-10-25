@@ -902,14 +902,24 @@ class TeoClient(AbstractClient):
 
 
     def CreateRealtimeLogDeliveryTask(self, request):
-        r"""This API is used to create a real-time log delivery task. The following limits apply:
-        -When the data delivery type (LogType) is Layer 7 Access Logs, four-layer proxy logs, or edge function logs, an entity (layer-7 domain name, L4 proxy instance, or edge function instance) can only be added to the following combination of real-time log delivery task types (TaskType) under the same combination of data delivery type (LogType) and data delivery area (Area):
-        -A task that pushes to Tencent Cloud CLS, add an additional task that pushes to a custom HTTP(S) address.
-        -A task to push to Tencent Cloud CLS, add another task to push to AWS S3-compatible object storage;
-        -When the data delivery type (LogType) is rate limit and CC attack defense log, managed rule log, custom rule log, or Bot Management Log, an entity can only be added to one real-time log delivery task under the combination of the same data delivery type (LogType) and data delivery Area.
-        -When the real-time log delivery task type (TaskType) is EdgeOne log analysis (log_analysis), it supports only data delivery types (LogType) of Layer 7 Access Logs (l7-access-logs) or managed rule logs (web-attack). Under the combination of the same site (ZoneId), same data delivery area (Area), and data, each data delivery type (LogType) can only add one real-time log delivery task pushed to EdgeOne log analysis.
+        r"""This API is used to create a real-time log delivery task.
 
-        It is advisable to first query the real-time log delivery task list based on the physical entity using the DescribeRealtimeLogDeliveryTasks API (https://www.tencentcloud.com/document/product/1552/104110?from_cn_redirect=1) to check whether the entity has been added to another real-time log delivery task.
+        **Restrictions**
+
+        An entity (a Layer 7 domain name, a Layer 4 proxy instance, or an Edge Function instance) under the same combination of `LogType` and `Area` can only have one task created for each `TaskType`. The mutual exclusion rules for different `LogType` values are as follows:
+
+        | LogType | Conflicting TaskType |
+        |---|---|
+        | Layer 4 proxy logs, Edge Function execution logs | Choose one of `custom_endpoint`, `s3`, and `aws_s3` |
+
+        When `TaskType` is `log_analysis`:
+
+        <ul>
+        <li>Only `LogType` = `l7-access-logs` or `web-attack` is supported.</li>
+        <li>Under the same combination of `ZoneId` and `Area`, only one task can be created for each `LogType`.</li>
+        </ul>
+
+        **Recommendation**: Before creating a task, call the [DescribeRealtimeLogDeliveryTasks](https://www.tencentcloud.com/document/product/1145/59503) API to query existing tasks and avoid duplicate additions.
 
         :param request: Request instance for CreateRealtimeLogDeliveryTask.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateRealtimeLogDeliveryTaskRequest`
@@ -4972,7 +4982,13 @@ class TeoClient(AbstractClient):
 
 
     def ModifyRealtimeLogDeliveryTask(self, request):
-        r"""This API is used to modify the real-time log delivery task configuration. This API has the following restrictions:<li>Does not support modifying the destination type of the real-time log delivery task (TaskType);</li><li>Does not support modifying the data delivery type (LogType);</li><li>Does not support modifying the data delivery area (Area);</li><li>Does not support modifying the detailed destination configuration, such as log set and log topic, when the destination of the original real-time log delivery task is Tencent Cloud CLS.</li>
+        r"""This API is used to modify the configuration of a real-time log delivery task. It has the following limits:
+        <ul>
+        <li>The destination type (`TaskType`) of a real-time log delivery task cannot be modified;</li>
+        <li>The data delivery type (`LogType`) cannot be modified;</li>
+        <li>The data delivery region (`Area`) cannot be modified;</li>
+        <li>When the destination of the original real-time log delivery task is Tencent Cloud CLS, the destination details such as the log set and log topic cannot be modified.</li>
+        </ul>
 
         :param request: Request instance for ModifyRealtimeLogDeliveryTask.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyRealtimeLogDeliveryTaskRequest`

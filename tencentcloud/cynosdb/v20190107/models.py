@@ -1149,7 +1149,7 @@ class AddInstancesResponse(AbstractModel):
         r"""
         :param _TranId: <p>Freeze transaction. One frozen flow is activated at a time.</p>
         :type TranId: str
-        :param _DealNames: <p>Order number of the payment. Description: We recommend you use the <a href="https://www.tencentcloud.com/document/product/1003/52131?from_cn_redirect=1">DescribeResourcesByDealName</a> API to query order associated instances.</p>
+        :param _DealNames: <p>Order number of the payment. Description: We recommend you use the <a href="https://www.tencentcloud.com/document/product/1003/52131?from_cn_redirect=1">DescribeResourcesByDealName</a> API to query the instances associated with the order.</p>
         :type DealNames: list of str
         :param _ResourceIds: <p>Delivery resource id list.</p>
         :type ResourceIds: list of str
@@ -1177,7 +1177,7 @@ class AddInstancesResponse(AbstractModel):
 
     @property
     def DealNames(self):
-        r"""<p>Order number of the payment. Description: We recommend you use the <a href="https://www.tencentcloud.com/document/product/1003/52131?from_cn_redirect=1">DescribeResourcesByDealName</a> API to query order associated instances.</p>
+        r"""<p>Order number of the payment. Description: We recommend you use the <a href="https://www.tencentcloud.com/document/product/1003/52131?from_cn_redirect=1">DescribeResourcesByDealName</a> API to query the instances associated with the order.</p>
         :rtype: list of str
         """
         return self._DealNames
@@ -2055,8 +2055,8 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: Array of instance group IDs, starting with the cynosdbmysql-grp- prefix or the TKE cluster ID.
-Description: To get the instance group ID of a cluster, perform [Query cluster instance group](https://www.tencentcloud.com/document/product/1003/103934?from_cn_redirect=1).
+        :param _InstanceIds: Array of instance group IDs, starting with the cynosdbmysql-grp- prefix or cluster ID.
+Description: To get the instance group ID of a cluster, call [Query cluster instance group](https://www.tencentcloud.com/document/product/1003/103934?from_cn_redirect=1).
         :type InstanceIds: list of str
         :param _SecurityGroupIds: Security group ID list to modify, which is an array of one or more security group IDs.
         :type SecurityGroupIds: list of str
@@ -2069,8 +2069,8 @@ Description: To get the instance group ID of a cluster, perform [Query cluster i
 
     @property
     def InstanceIds(self):
-        r"""Array of instance group IDs, starting with the cynosdbmysql-grp- prefix or the TKE cluster ID.
-Description: To get the instance group ID of a cluster, perform [Query cluster instance group](https://www.tencentcloud.com/document/product/1003/103934?from_cn_redirect=1).
+        r"""Array of instance group IDs, starting with the cynosdbmysql-grp- prefix or cluster ID.
+Description: To get the instance group ID of a cluster, call [Query cluster instance group](https://www.tencentcloud.com/document/product/1003/103934?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._InstanceIds
@@ -31260,7 +31260,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceIds: Array of instance group IDs, starting with the cynosdbmysql-grp- prefix or cluster ID.
-Description: To get the instance group ID of a cluster, perform [Query Cluster Instance Group](https://www.tencentcloud.com/document/product/1003/103934?from_cn_redirect=1).
+Description: To get the instance group ID of a cluster, perform [Query cluster instance group](https://www.tencentcloud.com/document/product/1003/103934?from_cn_redirect=1).
         :type InstanceIds: list of str
         :param _SecurityGroupIds: Security group ID list to modify, which is an array of one or more security group IDs.
         :type SecurityGroupIds: list of str
@@ -31275,7 +31275,7 @@ Description: Please enter correctly the primary AZ of the cluster location. If t
     @property
     def InstanceIds(self):
         r"""Array of instance group IDs, starting with the cynosdbmysql-grp- prefix or cluster ID.
-Description: To get the instance group ID of a cluster, perform [Query Cluster Instance Group](https://www.tencentcloud.com/document/product/1003/103934?from_cn_redirect=1).
+Description: To get the instance group ID of a cluster, perform [Query cluster instance group](https://www.tencentcloud.com/document/product/1003/103934?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._InstanceIds
@@ -43885,7 +43885,7 @@ class ModifyProxyRwSplitRequest(AbstractModel):
         :type ProxyGroupId: str
         :param _ConsistencyType: <p>Consistency type; "eventual"-final consistency, "session"-session consistency, "global"-global consistency</p>
         :type ConsistencyType: str
-        :param _ConsistencyTimeOut: <p>Consistency timeout.<br>Value range: 0–1000000 (µs). Setting it to 0 means that if a read-only instance has a delay, causing the consistency policy to fail, the request will wait indefinitely.</p>
+        :param _ConsistencyTimeOut: <p>Consistency timeout. Value range: 0–1000000 (ms). If set to 0, requests will wait indefinitely when a read-only instance has a delay that causes the consistency policy to fail.</p>
         :type ConsistencyTimeOut: str
         :param _WeightMode: <p>Read-write weight allocation mode; system auto-assignment: "system", custom: "custom"</p>
         :type WeightMode: str
@@ -43973,7 +43973,7 @@ class ModifyProxyRwSplitRequest(AbstractModel):
 
     @property
     def ConsistencyTimeOut(self):
-        r"""<p>Consistency timeout.<br>Value range: 0–1000000 (µs). Setting it to 0 means that if a read-only instance has a delay, causing the consistency policy to fail, the request will wait indefinitely.</p>
+        r"""<p>Consistency timeout. Value range: 0–1000000 (ms). If set to 0, requests will wait indefinitely when a read-only instance has a delay that causes the consistency policy to fail.</p>
         :rtype: str
         """
         return self._ConsistencyTimeOut
@@ -46932,13 +46932,13 @@ class OpenReadOnlyInstanceExclusiveAccessRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: Please use [cluster information description](https://www.tencentcloud.com/document/api/1003/48086?from_cn_redirect=1) to get the clusterId.
+        :param _ClusterId: Please use [Cluster information description](https://www.tencentcloud.com/document/api/1003/48086?from_cn_redirect=1) to get the clusterId.
         :type ClusterId: str
         :param _InstanceId: Please use [Cluster information description](https://www.tencentcloud.com/document/api/1003/48086?from_cn_redirect=1) to get the instanceId.
         :type InstanceId: str
-        :param _VpcId: Specified vpc ID. Please use [query the vpc list](https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1) to get the vpc ID.
+        :param _VpcId: Designated vpc ID. Please use [query the vpc list](https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1) to get the vpc ID.
         :type VpcId: str
-        :param _SubnetId: Designated subnet ID. If vpc ID is set up, SubnetId is required. Please use [query subnet list](https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1) to get SubnetId.
+        :param _SubnetId: Designated subnet ID. If vpc ID is set up, SubnetId is required. Please use query subnet list (https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1) to get SubnetId.
         :type SubnetId: str
         :param _Port: User-defined port.
         :type Port: int
@@ -46954,7 +46954,7 @@ class OpenReadOnlyInstanceExclusiveAccessRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""Please use [cluster information description](https://www.tencentcloud.com/document/api/1003/48086?from_cn_redirect=1) to get the clusterId.
+        r"""Please use [Cluster information description](https://www.tencentcloud.com/document/api/1003/48086?from_cn_redirect=1) to get the clusterId.
         :rtype: str
         """
         return self._ClusterId
@@ -46976,7 +46976,7 @@ class OpenReadOnlyInstanceExclusiveAccessRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""Specified vpc ID. Please use [query the vpc list](https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1) to get the vpc ID.
+        r"""Designated vpc ID. Please use [query the vpc list](https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1) to get the vpc ID.
         :rtype: str
         """
         return self._VpcId
@@ -46987,7 +46987,7 @@ class OpenReadOnlyInstanceExclusiveAccessRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""Designated subnet ID. If vpc ID is set up, SubnetId is required. Please use [query subnet list](https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1) to get SubnetId.
+        r"""Designated subnet ID. If vpc ID is set up, SubnetId is required. Please use query subnet list (https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1) to get SubnetId.
         :rtype: str
         """
         return self._SubnetId
