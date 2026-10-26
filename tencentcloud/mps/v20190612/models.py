@@ -13657,8 +13657,11 @@ class AigcAudioExtraParam(AbstractModel):
         r"""
         :param _ResourceId: 
         :type ResourceId: str
+        :param _OutputAudioFormat: 
+        :type OutputAudioFormat: str
         """
         self._ResourceId = None
+        self._OutputAudioFormat = None
 
     @property
     def ResourceId(self):
@@ -13671,9 +13674,21 @@ class AigcAudioExtraParam(AbstractModel):
     def ResourceId(self, ResourceId):
         self._ResourceId = ResourceId
 
+    @property
+    def OutputAudioFormat(self):
+        r"""
+        :rtype: str
+        """
+        return self._OutputAudioFormat
+
+    @OutputAudioFormat.setter
+    def OutputAudioFormat(self, OutputAudioFormat):
+        self._OutputAudioFormat = OutputAudioFormat
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
+        self._OutputAudioFormat = params.get("OutputAudioFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15696,7 +15711,7 @@ class AudioEnhanceConfig(AbstractModel):
         :type Separate: :class:`tencentcloud.mps.v20190612.models.AudioSeparateConfig`
         :param _VolumeBalance: <p>Volume equalization configuration.</p>
         :type VolumeBalance: :class:`tencentcloud.mps.v20190612.models.VolumeBalanceConfig`
-        :param _Beautify: <p>Audio beautification configurations.</p>
+        :param _Beautify: <p>Audio improvement configuration.</p>
         :type Beautify: :class:`tencentcloud.mps.v20190612.models.AudioBeautifyConfig`
         :param _AudioEnhanceEdit: <p>Audio enhancement edit.</p>
         :type AudioEnhanceEdit: :class:`tencentcloud.mps.v20190612.models.AudioEnhanceEditConfig`
@@ -15742,7 +15757,7 @@ class AudioEnhanceConfig(AbstractModel):
 
     @property
     def Beautify(self):
-        r"""<p>Audio beautification configurations.</p>
+        r"""<p>Audio improvement configuration.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioBeautifyConfig`
         """
         return self._Beautify
@@ -15796,9 +15811,9 @@ class AudioEnhanceEditConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: <p>Capability configuration switch</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p>
+        :param _Switch: <p>Capability configuration switch</p><p>Enumeration values:</p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p>
         :type Switch: str
-        :param _Type: <p>Audio editing type</p><p>Enumeration values:</p><ul><li>restore: Repair</li></ul><p>When enabled, you must explicitly specify the enumeration value</p>
+        :param _Type: <p>Types of audio editing</p><p>Enumeration values:</p><ul><li>restore: Repair</li></ul><p>When enabled, you must explicitly specify an enumeration value</p>
         :type Type: str
         """
         self._Switch = None
@@ -15806,7 +15821,7 @@ class AudioEnhanceEditConfig(AbstractModel):
 
     @property
     def Switch(self):
-        r"""<p>Capability configuration switch</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p>
+        r"""<p>Capability configuration switch</p><p>Enumeration values:</p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p>
         :rtype: str
         """
         return self._Switch
@@ -15817,7 +15832,7 @@ class AudioEnhanceEditConfig(AbstractModel):
 
     @property
     def Type(self):
-        r"""<p>Audio editing type</p><p>Enumeration values:</p><ul><li>restore: Repair</li></ul><p>When enabled, you must explicitly specify the enumeration value</p>
+        r"""<p>Types of audio editing</p><p>Enumeration values:</p><ul><li>restore: Repair</li></ul><p>When enabled, you must explicitly specify an enumeration value</p>
         :rtype: str
         """
         return self._Type
@@ -16257,7 +16272,8 @@ class AwsS3FileUploadTrigger(AbstractModel):
         r"""
         :param _S3Bucket: The AWS S3 bucket bound to the scheme.
         :type S3Bucket: str
-        :param _S3Region: The region of the AWS S3 bucket.
+        :param _S3Region: The region of the AWS S3 bucket.  us-east-1  
+eu-west-3
         :type S3Region: str
         :param _Dir: The bucket directory bound. It must be an absolute path that starts and ends with `/`, such as `/movie/201907/`. If you do not specify this, the root directory will be bound.	
         :type Dir: str
@@ -16292,7 +16308,8 @@ Note: The queue and bucket need to be in the same region.
 
     @property
     def S3Region(self):
-        r"""The region of the AWS S3 bucket.
+        r"""The region of the AWS S3 bucket.  us-east-1  
+eu-west-3
         :rtype: str
         """
         return self._S3Region
@@ -20526,22 +20543,24 @@ class CosFileUploadTrigger(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Bucket: Name of the COS bucket bound to a workflow, such as `TopRankVideo-125xxx88`.
+        :param _Bucket: Name of the COS Bucket bound to the workflow, for example, TopRankVideo-125xxx88.
         :type Bucket: str
         :param _Region: Region of the COS bucket bound to a workflow, such as `ap-chongiqng`.
         :type Region: str
-        :param _Dir: Input path directory bound to a workflow, such as `/movie/201907/`. If this parameter is left empty, the `/` root directory will be used.
+        :param _Dir: The bucket directory bound to a workflow. It must be an absolute path that starts and ends with `/`, such as `/movie/201907/`. If you do not specify this, the root directory will be bound.
         :type Dir: str
         :param _Formats: All supported formats are as follows:
+
 - Video file extension. The following 15 options are supported:
-`.mp4`, `.avi`, `.mov`, `.wmv`, `.flv`, `.mkv`, `.mpg`, `.mpeg`, `.rm`, `.rmvb`, `.asf`, `.3gp`, `.webm`, `.ts`, and `.m4v`.
+`.mp4`, `.avi`, `.mov`, `.wmv`, `.flv`, `.mkv`, `.mpg`, `.mpeg`, `.rm`, `.rmvb`, `.asf`, `.3gp`, `.webm`, `.ts`, `.m4v`
+
 - Audio file extension. The following 7 options are supported:
-`.mp3`, `.wav`, `.aac`, `.flac`, `.ogg`, `.m4a`, and `.amr`.
+`.mp3`, `.wav`, `.aac`, `.flac`, `.ogg`, `.m4a`, `.amr`
+
 - Subtitle file extension. The following 2 options are supported:
-`.vtt` and `.srt`.
-- `*`: any file format is supported.
-- Unspecified or input an empty list: the system supports the following preset file formats: video (`.mp4`, `.ts`, `.flv`, `.wmv`, `.asf`, `.rm`, `.rmvb`, `.mpg`, `.mpeg`, `.3gp`, `.mov`, `.webm`, `.mkv`, `.avi`, and `.m4v`); audio (`.mp3`, `.m4a`, `.flac`, `.ogg`, `.wav`, `.amr`, and `.aac`); subtitle (`.vtt` and `.srt`).
-**Note**:
+`.vtt`, `.srt`
+
+- `*`: any file format is supported.- Unspecified or input an empty list: the system supports the following preset file formats: video (`.mp4`, `.ts`, `.flv`, `.wmv`, `.asf`, `.rm`, `.rmvb`, `.mpg`, `.mpeg`, `.3gp`, `.mov`, `.webm`, `.mkv`, `.avi`, and `.m4v`); audio (`.mp3`, `.m4a`, `.flac`, `.ogg`, `.wav`, `.amr`, and `.aac`); subtitle (`.vtt` and `.srt`).**Note**:
 1. If the input format list includes `*`, it indicates that any file format is supported.
 2. File extensions can be provided with or without `.`, such as `.mp4` or `mp4`, both are supported.
 3. Custom file extensions should consist of digits, letters, and characters, and have a length between 1 and 64 characters.
@@ -20554,7 +20573,7 @@ class CosFileUploadTrigger(AbstractModel):
 
     @property
     def Bucket(self):
-        r"""Name of the COS bucket bound to a workflow, such as `TopRankVideo-125xxx88`.
+        r"""Name of the COS Bucket bound to the workflow, for example, TopRankVideo-125xxx88.
         :rtype: str
         """
         return self._Bucket
@@ -20576,7 +20595,7 @@ class CosFileUploadTrigger(AbstractModel):
 
     @property
     def Dir(self):
-        r"""Input path directory bound to a workflow, such as `/movie/201907/`. If this parameter is left empty, the `/` root directory will be used.
+        r"""The bucket directory bound to a workflow. It must be an absolute path that starts and ends with `/`, such as `/movie/201907/`. If you do not specify this, the root directory will be bound.
         :rtype: str
         """
         return self._Dir
@@ -20588,15 +20607,17 @@ class CosFileUploadTrigger(AbstractModel):
     @property
     def Formats(self):
         r"""All supported formats are as follows:
+
 - Video file extension. The following 15 options are supported:
-`.mp4`, `.avi`, `.mov`, `.wmv`, `.flv`, `.mkv`, `.mpg`, `.mpeg`, `.rm`, `.rmvb`, `.asf`, `.3gp`, `.webm`, `.ts`, and `.m4v`.
+`.mp4`, `.avi`, `.mov`, `.wmv`, `.flv`, `.mkv`, `.mpg`, `.mpeg`, `.rm`, `.rmvb`, `.asf`, `.3gp`, `.webm`, `.ts`, `.m4v`
+
 - Audio file extension. The following 7 options are supported:
-`.mp3`, `.wav`, `.aac`, `.flac`, `.ogg`, `.m4a`, and `.amr`.
+`.mp3`, `.wav`, `.aac`, `.flac`, `.ogg`, `.m4a`, `.amr`
+
 - Subtitle file extension. The following 2 options are supported:
-`.vtt` and `.srt`.
-- `*`: any file format is supported.
-- Unspecified or input an empty list: the system supports the following preset file formats: video (`.mp4`, `.ts`, `.flv`, `.wmv`, `.asf`, `.rm`, `.rmvb`, `.mpg`, `.mpeg`, `.3gp`, `.mov`, `.webm`, `.mkv`, `.avi`, and `.m4v`); audio (`.mp3`, `.m4a`, `.flac`, `.ogg`, `.wav`, `.amr`, and `.aac`); subtitle (`.vtt` and `.srt`).
-**Note**:
+`.vtt`, `.srt`
+
+- `*`: any file format is supported.- Unspecified or input an empty list: the system supports the following preset file formats: video (`.mp4`, `.ts`, `.flv`, `.wmv`, `.asf`, `.rm`, `.rmvb`, `.mpg`, `.mpeg`, `.3gp`, `.mov`, `.webm`, `.mkv`, `.avi`, and `.m4v`); audio (`.mp3`, `.m4a`, `.flac`, `.ogg`, `.wav`, `.amr`, and `.aac`); subtitle (`.vtt` and `.srt`).**Note**:
 1. If the input format list includes `*`, it indicates that any file format is supported.
 2. File extensions can be provided with or without `.`, such as `.mp4` or `mp4`, both are supported.
 3. Custom file extensions should consist of digits, letters, and characters, and have a length between 1 and 64 characters.
@@ -21630,7 +21651,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
         r"""
         :param _ModelName: <p>Model name. Supported models for music generation: GL, MiniMaxMusic, EL, and Mureka.</p>
         :type ModelName: str
-        :param _ModelVersion: <p>Specifies the model version. By default, the system uses the supported stable version of the model. Supported versions for GL: 3.0-clip and 3.0-pro. Supported versions for MiniMaxMusic: 2.0, 2.5, 2.6, and 3.0. Supported versions for EL: compose_v2 and sound_t2s_v2. Supported versions for Mureka: song_8, song_9, song_9.5, instrumental_8, instrumental_9, and instrumental_9.5.</p>
+        :param _ModelVersion: <p>Specifies the model version. By default, the system uses the supported stable version of the model.<br>Supported versions for GL: 3.0-clip and 3.0-pro.<br>Supported versions for MiniMaxMusic: 2.0, 2.5, 2.6, and 3.0.<br>Supported versions for EL: compose_v2 and sound_t2s_v2.<br>Supported versions for Mureka: song_8, song_9, song_9.5, instrumental_8, instrumental_9, and instrumental_9.5.</p>
         :type ModelVersion: str
         :param _SceneType: 
         :type SceneType: str
@@ -21644,7 +21665,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
         :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
         :param _ExtraParameters: 
         :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcAudioExtraParam`
-        :param _AdditionalParameters: <p>Used to pass in some special scene parameters required by the model, serialized into strings in Json format. <br>Example MinimaxMusic model When lyrics are passed in:<br> {"lyric":{"ponies are running happily, flowers are blooming"}}</p><ol><li>MiniMaxMusic raw pure music parameters use example:&quot; AdditionalParameters&quot;:&quot; {"is_instrumental":true}&quot;. <br>Supported transparent transmission parameters are: lyrics, is_instrumental, aigc_watermark, sample_rate, bitrate. </li><li>EL Health Music supports transparent transmission parameters:<br> PromptInfluence, WithTimestamps, CompositionPlan, ForceInstrumental and other parameters. </li></ol>
+        :param _AdditionalParameters: <p>This is used to specify special scenario parameters required by the model, in the format of a serialized JSON string.<br>Example to specify lyrics for the MinimaxMusic model:<br>{"lyric":{"The pony is running with joy. The flowers are blooming."}}</p><ol><li>Example for MiniMaxMusic instrumental music: &quot;AdditionalParameters&quot;:&quot;{"is_instrumental":true}&quot;。<br>Supported pass-through parameters: lyrics, is_instrumental, aigc_watermark, sample_rate, bitrate.</li><li>Pass-through parameters supported for EL music generation:<br>PromptInfluence, WithTimestamps, CompositionPlan, ForceInstrumental and other parameters.</li><li>Pass-through parameters supported by the Mureka model:<br>n: Specifies the number of output audio files.<br>Non-instrumental version supports: lyrics, gender, reference_id, melody_id.<br>Instrumental version supports: instrumental_id.</li></ol>
         :type AdditionalParameters: str
         :param _Operator: 
         :type Operator: str
@@ -21673,7 +21694,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""<p>Specifies the model version. By default, the system uses the supported stable version of the model. Supported versions for GL: 3.0-clip and 3.0-pro. Supported versions for MiniMaxMusic: 2.0, 2.5, 2.6, and 3.0. Supported versions for EL: compose_v2 and sound_t2s_v2. Supported versions for Mureka: song_8, song_9, song_9.5, instrumental_8, instrumental_9, and instrumental_9.5.</p>
+        r"""<p>Specifies the model version. By default, the system uses the supported stable version of the model.<br>Supported versions for GL: 3.0-clip and 3.0-pro.<br>Supported versions for MiniMaxMusic: 2.0, 2.5, 2.6, and 3.0.<br>Supported versions for EL: compose_v2 and sound_t2s_v2.<br>Supported versions for Mureka: song_8, song_9, song_9.5, instrumental_8, instrumental_9, and instrumental_9.5.</p>
         :rtype: str
         """
         return self._ModelVersion
@@ -21750,7 +21771,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def AdditionalParameters(self):
-        r"""<p>Used to pass in some special scene parameters required by the model, serialized into strings in Json format. <br>Example MinimaxMusic model When lyrics are passed in:<br> {"lyric":{"ponies are running happily, flowers are blooming"}}</p><ol><li>MiniMaxMusic raw pure music parameters use example:&quot; AdditionalParameters&quot;:&quot; {"is_instrumental":true}&quot;. <br>Supported transparent transmission parameters are: lyrics, is_instrumental, aigc_watermark, sample_rate, bitrate. </li><li>EL Health Music supports transparent transmission parameters:<br> PromptInfluence, WithTimestamps, CompositionPlan, ForceInstrumental and other parameters. </li></ol>
+        r"""<p>This is used to specify special scenario parameters required by the model, in the format of a serialized JSON string.<br>Example to specify lyrics for the MinimaxMusic model:<br>{"lyric":{"The pony is running with joy. The flowers are blooming."}}</p><ol><li>Example for MiniMaxMusic instrumental music: &quot;AdditionalParameters&quot;:&quot;{"is_instrumental":true}&quot;。<br>Supported pass-through parameters: lyrics, is_instrumental, aigc_watermark, sample_rate, bitrate.</li><li>Pass-through parameters supported for EL music generation:<br>PromptInfluence, WithTimestamps, CompositionPlan, ForceInstrumental and other parameters.</li><li>Pass-through parameters supported by the Mureka model:<br>n: Specifies the number of output audio files.<br>Non-instrumental version supports: lyrics, gender, reference_id, melody_id.<br>Instrumental version supports: instrumental_id.</li></ol>
         :rtype: str
         """
         return self._AdditionalParameters
@@ -27845,14 +27866,14 @@ class DeleteWordSamplesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Keywords: Keyword, array length limit: 100 words.
+        :param _Keywords: <p>Keyword. Array length limit: 100 words.</p>
         :type Keywords: list of str
         """
         self._Keywords = None
 
     @property
     def Keywords(self):
-        r"""Keyword, array length limit: 100 words.
+        r"""<p>Keyword. Array length limit: 100 words.</p>
         :rtype: list of str
         """
         return self._Keywords
@@ -34529,6 +34550,10 @@ class DescribeVoicesRequest(AbstractModel):
         :type Labels: list of str
         :param _Scenes: <p>Scenario.</p>
         :type Scenes: list of str
+        :param _PageNum: <p>Pagination query page number. Value range: starts from 1. Default value: 1.</p>
+        :type PageNum: int
+        :param _PageSize: <p>Page size. If left blank, all data meeting conditions will be returned by default.</p>
+        :type PageSize: int
         :param _ExtParam: <p>Extended parameters in the format of a JSON string. </p><p>Other filter criteria:
 voiceName (String): Voice name, fuzzy matching. labels (Array of String): Tags. Matches voices that contain these tags.</p>
         :type ExtParam: str
@@ -34542,6 +34567,8 @@ voiceName (String): Voice name, fuzzy matching. labels (Array of String): Tags. 
         self._Languages = None
         self._Labels = None
         self._Scenes = None
+        self._PageNum = None
+        self._PageSize = None
         self._ExtParam = None
 
     @property
@@ -34644,6 +34671,28 @@ voiceName (String): Voice name, fuzzy matching. labels (Array of String): Tags. 
         self._Scenes = Scenes
 
     @property
+    def PageNum(self):
+        r"""<p>Pagination query page number. Value range: starts from 1. Default value: 1.</p>
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        r"""<p>Page size. If left blank, all data meeting conditions will be returned by default.</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
     def ExtParam(self):
         r"""<p>Extended parameters in the format of a JSON string. </p><p>Other filter criteria:
 voiceName (String): Voice name, fuzzy matching. labels (Array of String): Tags. Matches voices that contain these tags.</p>
@@ -34666,6 +34715,8 @@ voiceName (String): Voice name, fuzzy matching. labels (Array of String): Tags. 
         self._Languages = params.get("Languages")
         self._Labels = params.get("Labels")
         self._Scenes = params.get("Scenes")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
         self._ExtParam = params.get("ExtParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -35121,16 +35172,13 @@ class DescribeWorkflowsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WorkflowIds: Workflow ID filter. Array length limit: 100.
+        :param _WorkflowIds: <p>Workflow ID filter condition, with an array length limit of 100.</p>
         :type WorkflowIds: list of int
-        :param _Status: Workflow status. Valid values:
-<li>Enabled: Enabled,</li>
-<li>Disabled: Disabled.</li>
-If this parameter is left empty, the workflow status will not be distinguished.
+        :param _Status: <p>Workflow status. Value range:</p><li>Enabled: on,</li><li>Disabled: off.</li>If this parameter is not specified, workflow status is not distinguished.
         :type Status: str
-        :param _Offset: Paging offset. Default value: 0.
+        :param _Offset: <p>Paging offset. Default value: 0.</p>
         :type Offset: int
-        :param _Limit: Number of returned entries. Default value: 10. Maximum value: 100.
+        :param _Limit: <p>Number of returned entries. Default value: 10. Maximum value: 100.</p>
         :type Limit: int
         """
         self._WorkflowIds = None
@@ -35140,7 +35188,7 @@ If this parameter is left empty, the workflow status will not be distinguished.
 
     @property
     def WorkflowIds(self):
-        r"""Workflow ID filter. Array length limit: 100.
+        r"""<p>Workflow ID filter condition, with an array length limit of 100.</p>
         :rtype: list of int
         """
         return self._WorkflowIds
@@ -35151,10 +35199,7 @@ If this parameter is left empty, the workflow status will not be distinguished.
 
     @property
     def Status(self):
-        r"""Workflow status. Valid values:
-<li>Enabled: Enabled,</li>
-<li>Disabled: Disabled.</li>
-If this parameter is left empty, the workflow status will not be distinguished.
+        r"""<p>Workflow status. Value range:</p><li>Enabled: on,</li><li>Disabled: off.</li>If this parameter is not specified, workflow status is not distinguished.
         :rtype: str
         """
         return self._Status
@@ -35165,7 +35210,7 @@ If this parameter is left empty, the workflow status will not be distinguished.
 
     @property
     def Offset(self):
-        r"""Paging offset. Default value: 0.
+        r"""<p>Paging offset. Default value: 0.</p>
         :rtype: int
         """
         return self._Offset
@@ -35176,7 +35221,7 @@ If this parameter is left empty, the workflow status will not be distinguished.
 
     @property
     def Limit(self):
-        r"""Number of returned entries. Default value: 10. Maximum value: 100.
+        r"""<p>Number of returned entries. Default value: 10. Maximum value: 100.</p>
         :rtype: int
         """
         return self._Limit
@@ -35208,9 +35253,9 @@ class DescribeWorkflowsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Number of eligible entries.
+        :param _TotalCount: <p>Total number of records that meet filter conditions.</p>
         :type TotalCount: int
-        :param _WorkflowInfoSet: Workflow information array.
+        :param _WorkflowInfoSet: <p>Workflow information array.</p>
         :type WorkflowInfoSet: list of WorkflowInfo
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -35221,7 +35266,7 @@ class DescribeWorkflowsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Number of eligible entries.
+        r"""<p>Total number of records that meet filter conditions.</p>
         :rtype: int
         """
         return self._TotalCount
@@ -35232,7 +35277,7 @@ class DescribeWorkflowsResponse(AbstractModel):
 
     @property
     def WorkflowInfoSet(self):
-        r"""Workflow information array.
+        r"""<p>Workflow information array.</p>
         :rtype: list of WorkflowInfo
         """
         return self._WorkflowInfoSet
@@ -35993,15 +36038,15 @@ Default value: normal.
 
 
 class DiffusionEnhanceV2Config(AbstractModel):
-    r"""LLM enhancement - Professional Edition
+    r"""LLM enhancement - Professional edition
 
     """
 
     def __init__(self):
         r"""
-        :param _Switch: <p>Capability configuration switch</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p>
+        :param _Switch: <p>Capability configuration switch</p><p>Enumeration values:</p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p>
         :type Switch: str
-        :param _Type: <p>Strength type</p><p>Enumeration values: </p><ul><li>weak: Weak</li><li>normal: Medium</li><li>strong: Strong</li></ul>
+        :param _Type: <p>Strength type</p><p>Enumeration values:</p><ul><li>weak: Weak</li><li>normal: Medium</li><li>strong: Strong</li></ul>
         :type Type: str
         """
         self._Switch = None
@@ -36009,7 +36054,7 @@ class DiffusionEnhanceV2Config(AbstractModel):
 
     @property
     def Switch(self):
-        r"""<p>Capability configuration switch</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p>
+        r"""<p>Capability configuration switch</p><p>Enumeration values:</p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p>
         :rtype: str
         """
         return self._Switch
@@ -36020,7 +36065,7 @@ class DiffusionEnhanceV2Config(AbstractModel):
 
     @property
     def Type(self):
-        r"""<p>Strength type</p><p>Enumeration values: </p><ul><li>weak: Weak</li><li>normal: Medium</li><li>strong: Strong</li></ul>
+        r"""<p>Strength type</p><p>Enumeration values:</p><ul><li>weak: Weak</li><li>normal: Medium</li><li>strong: Strong</li></ul>
         :rtype: str
         """
         return self._Type
@@ -36284,10 +36329,10 @@ class DocToVideoInput(AbstractModel):
         :type FileUrl: list of str
         :param _Prompt: <p>Prompt information for video generation.</p><p>Prompt length limit: 2,000 characters.</p>
         :type Prompt: str
-        :param _ModelName: <p>Document-to-video model name</p><p>Default value: Wand</p>
-        :type ModelName: str
-        :param _ModelVersion: <p>Document-to-video model version number</p><p>Default value: 1.0</p>
+        :param _ModelVersion: <p>Document-to-video model version number</p><p>Enumeration values:</p><ul><li>1.0: 1.0</li><li>1.0-lite: 1.0-lite</li></ul><p>Default value: 1.0</p>
         :type ModelVersion: str
+        :param _ModelName: <p>Documentation generation video model name</p><p>Enumeration values:</p><ul><li>WAND: WAND</li></ul><p>Default value: WAND</p>
+        :type ModelName: str
         :param _Ratio: <p>Aspect ratio of the generated video.</p><p>Enumeration values: </p><ul><li>16:9: 16:9</li><li>9:16: 9:16</li><li>1:1: 1:1</li></ul><p>Default value: 16:9</p>
         :type Ratio: str
         :param _Language: <p>Language of the generated video.</p><p>Enumeration values: </p><ul><li>zh: Chinese</li><li>en: English</li><li>ja: Japanese</li><li>ko: Korean</li><li>ru: Russian</li><li>fr: French</li><li>es: Spanish</li><li>de: German</li></ul><p>Default value: zh</p>
@@ -36311,8 +36356,8 @@ class DocToVideoInput(AbstractModel):
         """
         self._FileUrl = None
         self._Prompt = None
-        self._ModelName = None
         self._ModelVersion = None
+        self._ModelName = None
         self._Ratio = None
         self._Language = None
         self._ReferenceDuration = None
@@ -36347,19 +36392,8 @@ class DocToVideoInput(AbstractModel):
         self._Prompt = Prompt
 
     @property
-    def ModelName(self):
-        r"""<p>Document-to-video model name</p><p>Default value: Wand</p>
-        :rtype: str
-        """
-        return self._ModelName
-
-    @ModelName.setter
-    def ModelName(self, ModelName):
-        self._ModelName = ModelName
-
-    @property
     def ModelVersion(self):
-        r"""<p>Document-to-video model version number</p><p>Default value: 1.0</p>
+        r"""<p>Document-to-video model version number</p><p>Enumeration values:</p><ul><li>1.0: 1.0</li><li>1.0-lite: 1.0-lite</li></ul><p>Default value: 1.0</p>
         :rtype: str
         """
         return self._ModelVersion
@@ -36367,6 +36401,17 @@ class DocToVideoInput(AbstractModel):
     @ModelVersion.setter
     def ModelVersion(self, ModelVersion):
         self._ModelVersion = ModelVersion
+
+    @property
+    def ModelName(self):
+        r"""<p>Documentation generation video model name</p><p>Enumeration values:</p><ul><li>WAND: WAND</li></ul><p>Default value: WAND</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
 
     @property
     def Ratio(self):
@@ -36482,8 +36527,8 @@ class DocToVideoInput(AbstractModel):
     def _deserialize(self, params):
         self._FileUrl = params.get("FileUrl")
         self._Prompt = params.get("Prompt")
-        self._ModelName = params.get("ModelName")
         self._ModelVersion = params.get("ModelVersion")
+        self._ModelName = params.get("ModelName")
         self._Ratio = params.get("Ratio")
         self._Language = params.get("Language")
         self._ReferenceDuration = params.get("ReferenceDuration")
@@ -59064,6 +59109,26 @@ class QueryHunyuan3DTaskResponse(AbstractModel):
         :type ErrorMessage: str
         :param _ResultFile3Ds: <p>Only has a value when Status=DONE. List of output files</p>
         :type ResultFile3Ds: list of File3D
+        :param _TaskId: <p>Task ID</p>
+        :type TaskId: str
+        :param _TaskType: <p>Task type</p><p>Enumeration values:</p><ul><li>text_to_3d: Text to 3D</li><li>image_to_3d: Image to 3D</li><li>multiview_to_3d: Multi-view to 3D</li><li>mesh_to_texture: Mesh to texture</li><li>mesh_to_geometry: Mesh to geometry</li></ul>
+        :type TaskType: str
+        :param _Prompt: <p>Input prompt</p>
+        :type Prompt: str
+        :param _RefImage: <p>Image URL input in image-to-3D scenarios</p>
+        :type RefImage: str
+        :param _MultiViewImages: <p>Image information input in multi-image to 3D scenarios</p>
+        :type MultiViewImages: list of ViewImage
+        :param _CreateTime: <p>Task creation time</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>Task update time</p>
+        :type UpdateTime: str
+        :param _FaceCount: <p>The target face count for the submitted task</p>
+        :type FaceCount: int
+        :param _GenerateType: <p>Generation type</p><p>Enumeration values:</p><ul><li>Normal: Generate a complete 3D asset (geometry + texture)</li><li>Geometry: Generate only geometry (no texture, faster output speed)</li><li>Texture: Generate only texture (MeshUrl is required)</li></ul><p>Default value: Normal</p>
+        :type GenerateType: str
+        :param _QueuePosition: <p>Task position in the queue; the smaller the value, the higher the priority.</p>
+        :type QueuePosition: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -59072,6 +59137,16 @@ class QueryHunyuan3DTaskResponse(AbstractModel):
         self._ErrorCode = None
         self._ErrorMessage = None
         self._ResultFile3Ds = None
+        self._TaskId = None
+        self._TaskType = None
+        self._Prompt = None
+        self._RefImage = None
+        self._MultiViewImages = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._FaceCount = None
+        self._GenerateType = None
+        self._QueuePosition = None
         self._RequestId = None
 
     @property
@@ -59130,6 +59205,116 @@ class QueryHunyuan3DTaskResponse(AbstractModel):
         self._ResultFile3Ds = ResultFile3Ds
 
     @property
+    def TaskId(self):
+        r"""<p>Task ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskType(self):
+        r"""<p>Task type</p><p>Enumeration values:</p><ul><li>text_to_3d: Text to 3D</li><li>image_to_3d: Image to 3D</li><li>multiview_to_3d: Multi-view to 3D</li><li>mesh_to_texture: Mesh to texture</li><li>mesh_to_geometry: Mesh to geometry</li></ul>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Prompt(self):
+        r"""<p>Input prompt</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def RefImage(self):
+        r"""<p>Image URL input in image-to-3D scenarios</p>
+        :rtype: str
+        """
+        return self._RefImage
+
+    @RefImage.setter
+    def RefImage(self, RefImage):
+        self._RefImage = RefImage
+
+    @property
+    def MultiViewImages(self):
+        r"""<p>Image information input in multi-image to 3D scenarios</p>
+        :rtype: list of ViewImage
+        """
+        return self._MultiViewImages
+
+    @MultiViewImages.setter
+    def MultiViewImages(self, MultiViewImages):
+        self._MultiViewImages = MultiViewImages
+
+    @property
+    def CreateTime(self):
+        r"""<p>Task creation time</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>Task update time</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def FaceCount(self):
+        r"""<p>The target face count for the submitted task</p>
+        :rtype: int
+        """
+        return self._FaceCount
+
+    @FaceCount.setter
+    def FaceCount(self, FaceCount):
+        self._FaceCount = FaceCount
+
+    @property
+    def GenerateType(self):
+        r"""<p>Generation type</p><p>Enumeration values:</p><ul><li>Normal: Generate a complete 3D asset (geometry + texture)</li><li>Geometry: Generate only geometry (no texture, faster output speed)</li><li>Texture: Generate only texture (MeshUrl is required)</li></ul><p>Default value: Normal</p>
+        :rtype: str
+        """
+        return self._GenerateType
+
+    @GenerateType.setter
+    def GenerateType(self, GenerateType):
+        self._GenerateType = GenerateType
+
+    @property
+    def QueuePosition(self):
+        r"""<p>Task position in the queue; the smaller the value, the higher the priority.</p>
+        :rtype: int
+        """
+        return self._QueuePosition
+
+    @QueuePosition.setter
+    def QueuePosition(self, QueuePosition):
+        self._QueuePosition = QueuePosition
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -59152,6 +59337,21 @@ class QueryHunyuan3DTaskResponse(AbstractModel):
                 obj = File3D()
                 obj._deserialize(item)
                 self._ResultFile3Ds.append(obj)
+        self._TaskId = params.get("TaskId")
+        self._TaskType = params.get("TaskType")
+        self._Prompt = params.get("Prompt")
+        self._RefImage = params.get("RefImage")
+        if params.get("MultiViewImages") is not None:
+            self._MultiViewImages = []
+            for item in params.get("MultiViewImages"):
+                obj = ViewImage()
+                obj._deserialize(item)
+                self._MultiViewImages.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._FaceCount = params.get("FaceCount")
+        self._GenerateType = params.get("GenerateType")
+        self._QueuePosition = params.get("QueuePosition")
         self._RequestId = params.get("RequestId")
 
 
@@ -66904,6 +67104,8 @@ class SubmitHunyuan3DTaskRequest(AbstractModel):
         :type Seed: int
         :param _Style: <p>Style control words</p>
         :type Style: str
+        :param _StoreCosParam: <p>COS bucket that the customer applies to create</p>
+        :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
         """
         self._Prompt = None
         self._ImageUrl = None
@@ -66916,6 +67118,7 @@ class SubmitHunyuan3DTaskRequest(AbstractModel):
         self._ResultFormat = None
         self._Seed = None
         self._Style = None
+        self._StoreCosParam = None
 
     @property
     def Prompt(self):
@@ -67038,6 +67241,17 @@ class SubmitHunyuan3DTaskRequest(AbstractModel):
     def Style(self, Style):
         self._Style = Style
 
+    @property
+    def StoreCosParam(self):
+        r"""<p>COS bucket that the customer applies to create</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
+        """
+        return self._StoreCosParam
+
+    @StoreCosParam.setter
+    def StoreCosParam(self, StoreCosParam):
+        self._StoreCosParam = StoreCosParam
+
 
     def _deserialize(self, params):
         self._Prompt = params.get("Prompt")
@@ -67056,6 +67270,9 @@ class SubmitHunyuan3DTaskRequest(AbstractModel):
         self._ResultFormat = params.get("ResultFormat")
         self._Seed = params.get("Seed")
         self._Style = params.get("Style")
+        if params.get("StoreCosParam") is not None:
+            self._StoreCosParam = AigcStoreCosParam()
+            self._StoreCosParam._deserialize(params.get("StoreCosParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -74636,7 +74853,7 @@ class VideoEnhanceConfig(AbstractModel):
         :type FrameRateWithDen: :class:`tencentcloud.mps.v20190612.models.FrameRateWithDenConfig`
         :param _AiRestoration: <p>Large model repair configuration. Note that at most one of large model, comprehensive enhancement, and jitter removal can be configured. It cannot be enabled simultaneously with super resolution or noise reduction.</p>
         :type AiRestoration: :class:`tencentcloud.mps.v20190612.models.AiRestorationConfig`
-        :param _DiffusionEnhanceV2: <p>Configuration of the large model enhancement pro edition. Note that at most one of the large model, comprehensive enhancement, and artifacts removal can be configured. It cannot intersect with super resolution and noise reduction.</p>
+        :param _DiffusionEnhanceV2: <p>LLM enhancement professional edition configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.</p>
         :type DiffusionEnhanceV2: :class:`tencentcloud.mps.v20190612.models.DiffusionEnhanceV2Config`
         """
         self._FrameRate = None
@@ -74799,7 +75016,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def DiffusionEnhanceV2(self):
-        r"""<p>Configuration of the large model enhancement pro edition. Note that at most one of the large model, comprehensive enhancement, and artifacts removal can be configured. It cannot intersect with super resolution and noise reduction.</p>
+        r"""<p>LLM enhancement professional edition configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.DiffusionEnhanceV2Config`
         """
         return self._DiffusionEnhanceV2
@@ -77266,7 +77483,7 @@ class WordResult(AbstractModel):
 
 
 class WorkflowInfo(AbstractModel):
-    r"""Workflow information details.
+    r"""Workflow information description.
 
     """
 
@@ -77277,35 +77494,30 @@ class WorkflowInfo(AbstractModel):
         :param _WorkflowName: Workflow name.
         :type WorkflowName: str
         :param _Status: Workflow status. Valid values:
-<li>Enabled: Enabled,</li>
+<li>Enabled: on</li>
 <li>Disabled: Disabled.</li>
         :type Status: str
-        :param _Trigger: Input rule bound to a workflow. If an uploaded video hits the rule for the object, the workflow will be triggered.
+        :param _Trigger: The input rule bound to the workflow triggers the workflow when an uploaded video hits the rule for the object.
         :type Trigger: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
-        :param _OutputStorage: The location to save the media processing output file.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _OutputStorage: 
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _MediaProcessTask: The media processing parameters to use.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _MediaProcessTask: 
         :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
-        :param _AiContentReviewTask: Type parameter of a video content audit task.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AiContentReviewTask: 
         :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
-        :param _AiAnalysisTask: Video content analysis task parameter.
+        :param _AiAnalysisTask: 
         :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
-        :param _AiRecognitionTask: Type parameter of a video content recognition task.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AiRecognitionTask: 
         :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
-        :param _TaskNotifyConfig: Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TaskNotifyConfig: 
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
-        :param _TaskPriority: Task flow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.
+        :param _TaskPriority: Priority of the task flow. The higher the value, the higher the priority. The value range is from -10 to 10. If left blank, the default value is 0.
         :type TaskPriority: int
-        :param _OutputDir: The directory to save the media processing output file, such as `/movie/201907/`.
+        :param _OutputDir: Storage directory for the output file, such as `/movie/201907/`.
         :type OutputDir: str
-        :param _CreateTime: Creation time of a workflow in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param _CreateTime: Workflow creation time, using the ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type CreateTime: str
-        :param _UpdateTime: Last modified time of a workflow in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param _UpdateTime: Last modification time of the workflow, using the ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :type UpdateTime: str
         """
         self._WorkflowId = None
@@ -77348,7 +77560,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Status(self):
         r"""Workflow status. Valid values:
-<li>Enabled: Enabled,</li>
+<li>Enabled: on</li>
 <li>Disabled: Disabled.</li>
         :rtype: str
         """
@@ -77360,7 +77572,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Trigger(self):
-        r"""Input rule bound to a workflow. If an uploaded video hits the rule for the object, the workflow will be triggered.
+        r"""The input rule bound to the workflow triggers the workflow when an uploaded video hits the rule for the object.
         :rtype: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
         """
         return self._Trigger
@@ -77371,8 +77583,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputStorage(self):
-        r"""The location to save the media processing output file.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -77383,8 +77594,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def MediaProcessTask(self):
-        r"""The media processing parameters to use.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
         """
         return self._MediaProcessTask
@@ -77395,8 +77605,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def AiContentReviewTask(self):
-        r"""Type parameter of a video content audit task.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
         """
         return self._AiContentReviewTask
@@ -77407,7 +77616,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AiAnalysisTask(self):
-        r"""Video content analysis task parameter.
+        r"""
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
         """
         return self._AiAnalysisTask
@@ -77418,8 +77627,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AiRecognitionTask(self):
-        r"""Type parameter of a video content recognition task.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
         """
         return self._AiRecognitionTask
@@ -77430,8 +77638,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskNotifyConfig(self):
-        r"""Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         """
         return self._TaskNotifyConfig
@@ -77442,7 +77649,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskPriority(self):
-        r"""Task flow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.
+        r"""Priority of the task flow. The higher the value, the higher the priority. The value range is from -10 to 10. If left blank, the default value is 0.
         :rtype: int
         """
         return self._TaskPriority
@@ -77453,7 +77660,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputDir(self):
-        r"""The directory to save the media processing output file, such as `/movie/201907/`.
+        r"""Storage directory for the output file, such as `/movie/201907/`.
         :rtype: str
         """
         return self._OutputDir
@@ -77464,7 +77671,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        r"""Creation time of a workflow in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        r"""Workflow creation time, using the ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._CreateTime
@@ -77475,7 +77682,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        r"""Last modified time of a workflow in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        r"""Last modification time of the workflow, using the ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._UpdateTime

@@ -2291,7 +2291,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeWorkflows(self, request):
-        r"""This API is used to get the list of workflow details by workflow ID.
+        r"""Based on the workflow ID, get the workflow details list.
 
         :param request: Request instance for DescribeWorkflows.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeWorkflowsRequest`

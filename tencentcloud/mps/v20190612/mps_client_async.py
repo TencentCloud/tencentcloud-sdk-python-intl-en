@@ -1810,7 +1810,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeWorkflowsResponse:
         """
-        This API is used to get the list of workflow details by workflow ID.
+        Based on the workflow ID, get the workflow details list.
         """
         
         kwargs = {}

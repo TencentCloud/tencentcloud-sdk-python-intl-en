@@ -414,6 +414,11 @@ def test_import_ip_v20210409():
     from tencentcloud.ip.v20210409 import models
 
 
+def test_import_iss_v20230517():
+    from tencentcloud.iss.v20230517 import iss_client
+    from tencentcloud.iss.v20230517 import models
+
+
 def test_import_kms_v20190118():
     from tencentcloud.kms.v20190118 import kms_client
     from tencentcloud.kms.v20190118 import models
