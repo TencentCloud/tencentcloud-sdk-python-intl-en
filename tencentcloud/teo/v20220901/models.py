@@ -64809,41 +64809,41 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Task(AbstractModel):
-    r"""Content management task result
+    r"""Content management task result.
 
     """
 
     def __init__(self):
         r"""
-        :param _JobId: ID of the task.
+        :param _JobId: Task ID.
         :type JobId: str
         :param _Target: Resource.
         :type Target: str
-        :param _Type: Type of the task.
+        :param _Type: Task type.
         :type Type: str
-        :param _Method: Node cache purge method. valid values:.
-<li>invalidate: marks as expired. a back-to-origin validation is triggered upon user request, sending an HTTP conditional request with If-None-Match and If-Modified-Since headers. If the origin server responds with 200, the node will fetch new resources from the origin and update the cache; If the origin server responds with 304, the cache will not be updated;</li>.
-<Li>Delete: directly deletes the node's cache, triggering a resource fetch from the origin upon user request.</li>.
+        :param _Method: Node cache purge method, with values:
+<li>invalidate: Marks as expired. A back-to-origin validation is triggered upon user request, sending an HTTP conditional request with If-None-Match and If-Modified-Since headers. If the origin server responds with 200, the node will fetch new resources from the origin and update the cache; if the origin server responds with 304, the cache will not be updated;</li>
+<li>delete: Directly deletes the node's cache, triggering a resource fetch from the origin upon user request.</li>
         :type Method: str
-        :param _Status: Status. valid values:.
-<li>processing: indicates the operation is in progress.</li>.
-<Li>Success: specifies the success status.</li>.
-<li>failed: indicates a failure.</li>.
-<Li>Timeout: specifies the timeout period.</li>.
-<Li>Canceled: canceled.</li>.
+        :param _Status: Status. Valid values:
+<li>processing: Processing;</li>
+<li>success: Succeeded;</li>
+<li>failed: Failed;</li>
+<li>timeout: Timed out;</li>
+<li>canceled: Canceled.</li>
         :type Status: str
-        :param _CreateTime: Creation time of the task.
+        :param _CreateTime: Task creation time.
         :type CreateTime: str
-        :param _UpdateTime: Completion time of the task.
+        :param _UpdateTime: Task completion time.
         :type UpdateTime: str
-        :param _FailType: Refresh and preheat failure type. valid values:.
-<li>taskFailed: specifies the task failure.</li>.
-<li>quotaExceeded: specifies the quota exceeded status.</li>.
-<li>downloadManifestFailed: specifies the file failed to download.</li>.
-<li>accessDenied: specifies access denied.</li>.
-<li>originPullFailed: specifies the origin-pull failure.</li>.
+        :param _FailType: Failure type of update and preheating. Valid values:
+<li>taskFailed: Task failure;</li>
+<li>quotaExceeded: quota exceeded;</li>
+<li>downloadManifestFailed: Failed to download the description file;</li>
+<li>accessDenied: access denied.</li>
+<li>originPullFailed: origin-pull failure.</li>
         :type FailType: str
-        :param _FailMessage: Description of the reason for cache purge or warm cache failure.
+        :param _FailMessage: Failure reason description for cache purge and cache pre-warming.
         :type FailMessage: str
         """
         self._JobId = None
@@ -64858,7 +64858,7 @@ class Task(AbstractModel):
 
     @property
     def JobId(self):
-        r"""ID of the task.
+        r"""Task ID.
         :rtype: str
         """
         return self._JobId
@@ -64880,7 +64880,7 @@ class Task(AbstractModel):
 
     @property
     def Type(self):
-        r"""Type of the task.
+        r"""Task type.
         :rtype: str
         """
         return self._Type
@@ -64891,9 +64891,9 @@ class Task(AbstractModel):
 
     @property
     def Method(self):
-        r"""Node cache purge method. valid values:.
-<li>invalidate: marks as expired. a back-to-origin validation is triggered upon user request, sending an HTTP conditional request with If-None-Match and If-Modified-Since headers. If the origin server responds with 200, the node will fetch new resources from the origin and update the cache; If the origin server responds with 304, the cache will not be updated;</li>.
-<Li>Delete: directly deletes the node's cache, triggering a resource fetch from the origin upon user request.</li>.
+        r"""Node cache purge method, with values:
+<li>invalidate: Marks as expired. A back-to-origin validation is triggered upon user request, sending an HTTP conditional request with If-None-Match and If-Modified-Since headers. If the origin server responds with 200, the node will fetch new resources from the origin and update the cache; if the origin server responds with 304, the cache will not be updated;</li>
+<li>delete: Directly deletes the node's cache, triggering a resource fetch from the origin upon user request.</li>
         :rtype: str
         """
         return self._Method
@@ -64904,12 +64904,12 @@ class Task(AbstractModel):
 
     @property
     def Status(self):
-        r"""Status. valid values:.
-<li>processing: indicates the operation is in progress.</li>.
-<Li>Success: specifies the success status.</li>.
-<li>failed: indicates a failure.</li>.
-<Li>Timeout: specifies the timeout period.</li>.
-<Li>Canceled: canceled.</li>.
+        r"""Status. Valid values:
+<li>processing: Processing;</li>
+<li>success: Succeeded;</li>
+<li>failed: Failed;</li>
+<li>timeout: Timed out;</li>
+<li>canceled: Canceled.</li>
         :rtype: str
         """
         return self._Status
@@ -64920,7 +64920,7 @@ class Task(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Creation time of the task.
+        r"""Task creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -64931,7 +64931,7 @@ class Task(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Completion time of the task.
+        r"""Task completion time.
         :rtype: str
         """
         return self._UpdateTime
@@ -64942,12 +64942,12 @@ class Task(AbstractModel):
 
     @property
     def FailType(self):
-        r"""Refresh and preheat failure type. valid values:.
-<li>taskFailed: specifies the task failure.</li>.
-<li>quotaExceeded: specifies the quota exceeded status.</li>.
-<li>downloadManifestFailed: specifies the file failed to download.</li>.
-<li>accessDenied: specifies access denied.</li>.
-<li>originPullFailed: specifies the origin-pull failure.</li>.
+        r"""Failure type of update and preheating. Valid values:
+<li>taskFailed: Task failure;</li>
+<li>quotaExceeded: quota exceeded;</li>
+<li>downloadManifestFailed: Failed to download the description file;</li>
+<li>accessDenied: access denied.</li>
+<li>originPullFailed: origin-pull failure.</li>
         :rtype: str
         """
         return self._FailType
@@ -64958,7 +64958,7 @@ class Task(AbstractModel):
 
     @property
     def FailMessage(self):
-        r"""Description of the reason for cache purge or warm cache failure.
+        r"""Failure reason description for cache purge and cache pre-warming.
         :rtype: str
         """
         return self._FailMessage

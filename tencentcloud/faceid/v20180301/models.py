@@ -14656,7 +14656,7 @@ class WebVerificationConfigIntl(AbstractModel):
         :type AutoSkip: bool
         :param _CheckMode: <p>Detection mode. Parameter values are as follows:<br>1: OCR+liveness detection+face comparison;<br>2: liveness detection+face comparison;<br>3: liveness detection;<br>4: OCR;<br>Default value is 2.</p>
         :type CheckMode: int
-        :param _IDCardType: <p>Identity document type used for authentication. Currently supported:<br>1.HKIDCard: Hong Kong (China) identity card<br>2.MLIDCard: Malaysian identity card<br>3.IndonesiaIDCard: Indonesian Identity Card<br>4.PhilippinesVoteID: Philippines voter card<br>5.PhilippinesDrivingLicense: Philippines driving license<br>6.PhilippinesTinID: Philippines TinID<br>7.PhilippinesSSSID: Philippines SSSID<br>8.PhilippinesUMID: Philippines UMID<br>9.InternationalIDPassport: Passport for Hong Kong (China), Macao (China), and Taiwan (China) as well as overseas passport<br>10.ThailandIDCard: Thai Identity Card<br>11.SingaporeIDCard: Singapore ID card<br>12.MainlandIDCard: Mainland ID card</p>
+        :param _IDCardType: <p>Identity document type used for authentication. Currently supported:<br>1.HKIDCard: Hong Kong (China) identity card<br>2.MLIDCard: Malaysian identity card<br>3.IndonesiaIDCard: Indonesian Identity Card<br>4.PhilippinesVoteID: Philippines voter card<br>5.PhilippinesDrivingLicense: Philippines driving license<br>6.PhilippinesTinID: Philippines TinID<br>7.PhilippinesSSSID: Philippines SSSID<br>8.PhilippinesUMID: Philippines UMID<br>9.InternationalIDPassport: Passport for Hong Kong (China), Macao (China), and Taiwan (China) as well as overseas passport<br>10.ThailandIDCard: Thai Identity Card<br>11.SingaporeIDCard: Singapore ID card<br>12.MainlandIDCard: Mainland ID card</p>13.VietnamIDCard: Vietnam ID card</p>
         :type IDCardType: str
         :param _DisableCheckOcrWarnings: <p>Want to close document alarm, false by default (enable alarm detection). When enabled, the identity verification process will intercept based on the document alarm status. If you need to use document anti-counterfeiting functionality, <a href="https://www.tencentcloud.com/zh/contact-us">contact us</a>.</p>
         :type DisableCheckOcrWarnings: bool
@@ -14684,6 +14684,14 @@ class WebVerificationConfigIntl(AbstractModel):
         :type AllowExpiredDocument: bool
         :param _Version: <p>Service version, including basic version (BASIC) and PLUS version (PLUS).</p><p>Enumeration value:</p><ul><li>BASIC: Basic version</li><li>PLUS: PLUS version</li></ul><p>Default value: BASIC.</p>
         :type Version: str
+        :param _OcrWaitPolicy: When CheckMode = 1, this defines the waiting policy for OCR recognition results.
+Enumeration values:
+required: Wait for OCR result after document capture.
+skip: Wait for OCR result confirmation before entering liveness check.
+Default value: required.
+        :type OcrWaitPolicy: str
+        :param _WebhookUrl: When CheckMode = 1, verification status callback URL. If configured, the service will actively push notifications to this address upon process completion. Leave it blank to disable callbacks. As callbacks cannot guarantee 100% delivery, it is recommended to use a polling mechanism to retrieve the final status.
+        :type WebhookUrl: str
         """
         self._AutoSkipStartPage = None
         self._AutoSkip = None
@@ -14702,6 +14710,8 @@ class WebVerificationConfigIntl(AbstractModel):
         self._SelectedWarningCodes = None
         self._AllowExpiredDocument = None
         self._Version = None
+        self._OcrWaitPolicy = None
+        self._WebhookUrl = None
 
     @property
     def AutoSkipStartPage(self):
@@ -14738,7 +14748,7 @@ class WebVerificationConfigIntl(AbstractModel):
 
     @property
     def IDCardType(self):
-        r"""<p>Identity document type used for authentication. Currently supported:<br>1.HKIDCard: Hong Kong (China) identity card<br>2.MLIDCard: Malaysian identity card<br>3.IndonesiaIDCard: Indonesian Identity Card<br>4.PhilippinesVoteID: Philippines voter card<br>5.PhilippinesDrivingLicense: Philippines driving license<br>6.PhilippinesTinID: Philippines TinID<br>7.PhilippinesSSSID: Philippines SSSID<br>8.PhilippinesUMID: Philippines UMID<br>9.InternationalIDPassport: Passport for Hong Kong (China), Macao (China), and Taiwan (China) as well as overseas passport<br>10.ThailandIDCard: Thai Identity Card<br>11.SingaporeIDCard: Singapore ID card<br>12.MainlandIDCard: Mainland ID card</p>
+        r"""<p>Identity document type used for authentication. Currently supported:<br>1.HKIDCard: Hong Kong (China) identity card<br>2.MLIDCard: Malaysian identity card<br>3.IndonesiaIDCard: Indonesian Identity Card<br>4.PhilippinesVoteID: Philippines voter card<br>5.PhilippinesDrivingLicense: Philippines driving license<br>6.PhilippinesTinID: Philippines TinID<br>7.PhilippinesSSSID: Philippines SSSID<br>8.PhilippinesUMID: Philippines UMID<br>9.InternationalIDPassport: Passport for Hong Kong (China), Macao (China), and Taiwan (China) as well as overseas passport<br>10.ThailandIDCard: Thai Identity Card<br>11.SingaporeIDCard: Singapore ID card<br>12.MainlandIDCard: Mainland ID card</p>13.VietnamIDCard: Vietnam ID card</p>
         :rtype: str
         """
         return self._IDCardType
@@ -14890,6 +14900,32 @@ class WebVerificationConfigIntl(AbstractModel):
     def Version(self, Version):
         self._Version = Version
 
+    @property
+    def OcrWaitPolicy(self):
+        r"""When CheckMode = 1, this defines the waiting policy for OCR recognition results.
+Enumeration values:
+required: Wait for OCR result after document capture.
+skip: Wait for OCR result confirmation before entering liveness check.
+Default value: required.
+        :rtype: str
+        """
+        return self._OcrWaitPolicy
+
+    @OcrWaitPolicy.setter
+    def OcrWaitPolicy(self, OcrWaitPolicy):
+        self._OcrWaitPolicy = OcrWaitPolicy
+
+    @property
+    def WebhookUrl(self):
+        r"""When CheckMode = 1, verification status callback URL. If configured, the service will actively push notifications to this address upon process completion. Leave it blank to disable callbacks. As callbacks cannot guarantee 100% delivery, it is recommended to use a polling mechanism to retrieve the final status.
+        :rtype: str
+        """
+        return self._WebhookUrl
+
+    @WebhookUrl.setter
+    def WebhookUrl(self, WebhookUrl):
+        self._WebhookUrl = WebhookUrl
+
 
     def _deserialize(self, params):
         self._AutoSkipStartPage = params.get("AutoSkipStartPage")
@@ -14909,6 +14945,8 @@ class WebVerificationConfigIntl(AbstractModel):
         self._SelectedWarningCodes = params.get("SelectedWarningCodes")
         self._AllowExpiredDocument = params.get("AllowExpiredDocument")
         self._Version = params.get("Version")
+        self._OcrWaitPolicy = params.get("OcrWaitPolicy")
+        self._WebhookUrl = params.get("WebhookUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
