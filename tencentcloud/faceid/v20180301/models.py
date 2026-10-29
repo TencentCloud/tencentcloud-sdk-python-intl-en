@@ -11568,6 +11568,11 @@ class OCRResult(AbstractModel):
         :type HeadImageBase64: str
         :param _CardBackImageBase64: <p>Base64 of the back image of the identity document</p>
         :type CardBackImageBase64: str
+        :param _CardResultStatus: Card verification status:
+PROCESSING: Verification is in progress.
+COMPLETED: Verification completed with no alerts.
+ABNORMAL: Verification completed with alerts raised.
+        :type CardResultStatus: str
         """
         self._IsPass = None
         self._CardImageBase64 = None
@@ -11580,6 +11585,7 @@ class OCRResult(AbstractModel):
         self._OriginalCardInfo = None
         self._HeadImageBase64 = None
         self._CardBackImageBase64 = None
+        self._CardResultStatus = None
 
     @property
     def IsPass(self):
@@ -11706,6 +11712,20 @@ class OCRResult(AbstractModel):
     def CardBackImageBase64(self, CardBackImageBase64):
         self._CardBackImageBase64 = CardBackImageBase64
 
+    @property
+    def CardResultStatus(self):
+        r"""Card verification status:
+PROCESSING: Verification is in progress.
+COMPLETED: Verification completed with no alerts.
+ABNORMAL: Verification completed with alerts raised.
+        :rtype: str
+        """
+        return self._CardResultStatus
+
+    @CardResultStatus.setter
+    def CardResultStatus(self, CardResultStatus):
+        self._CardResultStatus = CardResultStatus
+
 
     def _deserialize(self, params):
         self._IsPass = params.get("IsPass")
@@ -11723,6 +11743,7 @@ class OCRResult(AbstractModel):
         self._OriginalCardInfo = params.get("OriginalCardInfo")
         self._HeadImageBase64 = params.get("HeadImageBase64")
         self._CardBackImageBase64 = params.get("CardBackImageBase64")
+        self._CardResultStatus = params.get("CardResultStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

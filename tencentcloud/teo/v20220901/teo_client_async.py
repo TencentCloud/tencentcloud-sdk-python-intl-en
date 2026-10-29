@@ -1546,6 +1546,40 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAvailableOriginACLFamily(
+            self,
+            request: models.DescribeAvailableOriginACLFamilyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAvailableOriginACLFamilyResponse:
+        """
+        This API is used to query detailed information about the origin protection IP range control domain, including the version number and specific IP range information.
+        The main difference between standard control domain and streamlined control domain is the number of IP ranges provided. The latter has fewer IP ranges, but has some usage restrictions. For specific restrictions, consult the product. The format description is as follows:
+        Standard control domain:
+        <li>gaz: standard global control domain;</li>
+        <li>mlc: Standard China control domain;</li>
+        <li>emc: standard overseas (worldwide excluding China) control domain;</li>
+        Streamline the control domain.
+        <li>plat-gaz: simplified global control domain;</li>
+        <li>plat-mlc: Simplified China control domain;</li>
+        <li>plat-emc: Simplified overseas (global excluding China) control domain;</li>
+        <li>plat-specific-gaz: custom edition global availability zone control domain;</li>
+        <li>plat-specific-mlc: custom edition for controlling the Chinese mainland availability zone control domain;</li>
+        <li>plat-specific-emc: custom edition control domain for availability zones worldwide (excluding Chinese mainland);</li>
+        Abbreviation description:
+        <li>gaz:Global AZ Availability Zone;</li>
+        <li>mlc:mainlandChina;</li>
+        <li>emc:Exclude mainlandChina.</li>
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAvailableOriginACLFamily"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAvailableOriginACLFamilyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAvailablePlans(
             self,
             request: models.DescribeAvailablePlansRequest,

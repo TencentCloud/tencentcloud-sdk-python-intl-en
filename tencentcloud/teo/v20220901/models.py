@@ -1714,9 +1714,9 @@ class Addresses(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IPv4: IPv4 subnet.
+        :param _IPv4: IPv4 IP range list.
         :type IPv4: list of str
-        :param _IPv6: IPv6 subnet.
+        :param _IPv6: IPv6 IP range list.
         :type IPv6: list of str
         """
         self._IPv4 = None
@@ -1724,7 +1724,7 @@ class Addresses(AbstractModel):
 
     @property
     def IPv4(self):
-        r"""IPv4 subnet.
+        r"""IPv4 IP range list.
         :rtype: list of str
         """
         return self._IPv4
@@ -1735,7 +1735,7 @@ class Addresses(AbstractModel):
 
     @property
     def IPv6(self):
-        r"""IPv6 subnet.
+        r"""IPv6 IP range list.
         :rtype: list of str
         """
         return self._IPv6
@@ -21072,6 +21072,155 @@ class DescribeAvailableCustomActionsForRuleEngineResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAvailableOriginACLFamilyRequest(AbstractModel):
+    r"""DescribeAvailableOriginACLFamily request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>Site ID.</p>
+        :type ZoneId: str
+        :param _Filters: <p>Filter criteria. The maximum number of Filters.Values is 20. If this parameter is left empty, all available versions under the current site are returned. The IP range control domain of origin protection includes the standard control domain and the streamlined control domain. The main difference between the standard control domain and the streamlined control domain is the quantity difference of origin IP ranges provided. The latter has fewer IP ranges, however it is limited in use. Contact technical support if needed. Specific values are as follows:<br>Detailed filter criteria are as follows:<br>OriginACLFamily: filter by control domain;</p><li>gaz: standard global availability zone control domain;</li><li>mlc: standard Chinese mainland availability zone control domain;</li><li>emc: standard global (excluding Chinese mainland) availability zone control domain;</li><li>plat-gaz: streamlined global availability zone control domain;</li><li>plat-mlc: streamlined Chinese mainland availability zone control domain;</li><li>plat-emc: streamlined global (excluding Chinese mainland) availability zone control domain;</li><li>plat-specific-gaz: custom edition global availability zone control domain;</li><li>plat-specific-mlc: custom edition Chinese mainland availability zone control domain;</li><li>plat-specific-emc: custom edition global (excluding Chinese mainland) availability zone control domain.</li>
+        :type Filters: list of Filter
+        :param _Offset: <p>The offset of paginated query. Default value: 0.</p>
+        :type Offset: int
+        :param _Limit: <p>Number limit of paginated query. Default value: 20. Maximum value: 100.</p>
+        :type Limit: int
+        """
+        self._ZoneId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>Site ID.</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Filters(self):
+        r"""<p>Filter criteria. The maximum number of Filters.Values is 20. If this parameter is left empty, all available versions under the current site are returned. The IP range control domain of origin protection includes the standard control domain and the streamlined control domain. The main difference between the standard control domain and the streamlined control domain is the quantity difference of origin IP ranges provided. The latter has fewer IP ranges, however it is limited in use. Contact technical support if needed. Specific values are as follows:<br>Detailed filter criteria are as follows:<br>OriginACLFamily: filter by control domain;</p><li>gaz: standard global availability zone control domain;</li><li>mlc: standard Chinese mainland availability zone control domain;</li><li>emc: standard global (excluding Chinese mainland) availability zone control domain;</li><li>plat-gaz: streamlined global availability zone control domain;</li><li>plat-mlc: streamlined Chinese mainland availability zone control domain;</li><li>plat-emc: streamlined global (excluding Chinese mainland) availability zone control domain;</li><li>plat-specific-gaz: custom edition global availability zone control domain;</li><li>plat-specific-mlc: custom edition Chinese mainland availability zone control domain;</li><li>plat-specific-emc: custom edition global (excluding Chinese mainland) availability zone control domain.</li>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>The offset of paginated query. Default value: 0.</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>Number limit of paginated query. Default value: 20. Maximum value: 100.</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAvailableOriginACLFamilyResponse(AbstractModel):
+    r"""DescribeAvailableOriginACLFamily response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>Total number of detailed information entries for origin protection IP ranges.</p>
+        :type TotalCount: int
+        :param _OriginACLFamilyInfos: <p>Detailed information list of origin-pull IP ranges.</p>
+        :type OriginACLFamilyInfos: list of OriginACLFamilyInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._OriginACLFamilyInfos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total number of detailed information entries for origin protection IP ranges.</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def OriginACLFamilyInfos(self):
+        r"""<p>Detailed information list of origin-pull IP ranges.</p>
+        :rtype: list of OriginACLFamilyInfo
+        """
+        return self._OriginACLFamilyInfos
+
+    @OriginACLFamilyInfos.setter
+    def OriginACLFamilyInfos(self, OriginACLFamilyInfos):
+        self._OriginACLFamilyInfos = OriginACLFamilyInfos
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("OriginACLFamilyInfos") is not None:
+            self._OriginACLFamilyInfos = []
+            for item in params.get("OriginACLFamilyInfos"):
+                obj = OriginACLFamilyInfo()
+                obj._deserialize(item)
+                self._OriginACLFamilyInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAvailablePlansRequest(AbstractModel):
     r"""DescribeAvailablePlans request structure.
 
@@ -36685,9 +36834,9 @@ class FileVerification(AbstractModel):
 
 
 class Filter(AbstractModel):
-    r"""Key-value pair filters for conditional filtering queries, such as filtering ID, name, and status.
-    If more than one filter exists, the logical relationship between these filters is `AND`.
-    If multiple values exist in one filter, the logical relationship between these values under the same filter is `OR`.
+    r"""Description key-value pair filter, which is used for conditional filtering queries. For example, filter by ID, name, and status.
+    If there are multiple Filters, the logical relationship between them is AND.
+    If there are multiple Values in the same Filter, the logical relationship between the Values under the same Filter is OR.
 
     """
 
@@ -36695,7 +36844,7 @@ class Filter(AbstractModel):
         r"""
         :param _Name: Fields to be filtered.
         :type Name: str
-        :param _Values: Value of the filtered field.
+        :param _Values: Filter value of the field.
         :type Values: list of str
         """
         self._Name = None
@@ -36714,7 +36863,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        r"""Value of the filtered field.
+        r"""Filter value of the field.
         :rtype: list of str
         """
         return self._Values
@@ -53741,6 +53890,127 @@ class OriginACLEntity(AbstractModel):
         self._Type = params.get("Type")
         self._Instances = params.get("Instances")
         self._OperationMode = params.get("OperationMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginACLFamilyInfo(AbstractModel):
+    r"""Version information of origin-pull IP ranges.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: Origin protection version number.
+Format description:
+Standard version.
+<li>gaz-xxxxx: global;</li>
+<li>mlc-xxxxx: China;</li>
+<li>emc-xxxxx: overseas (worldwide excluding China);</li>
+Simplified edition (platform-level version)
+<li>plat-gaz-xxxxxx: Simplified global edition;</li>
+<li>plat-mlc-xxxxxx: Simplified China version;</li>
+<li>plat-emc-xxxxxx: Simplified overseas (global excluding China) edition;</li>
+Abbreviation description:
+<li>gaz:Global AZ Availability Zone;</li>
+<li>mlc:mainlandChina;</li>
+<li>emc:Exclude mainlandChina.</li>
+        :type Version: str
+        :param _ActiveTime: Version effective time, which adopts Beijing time (UTC+8) and follows the date and time format of the ISO 8601 standard.
+        :type ActiveTime: str
+        :param _EntireAddresses: Origin-pull IP range details.	
+        :type EntireAddresses: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        :param _OriginACLFamily: Origin protection origin-pull ACL control domain. Parameter values are as follows:
+<li>gaz: standard global availability zone control domain;</li>
+<li>mlc: standard Chinese mainland availability zone control domain;</li>
+<li>emc: standard worldwide (excluding Chinese mainland) availability zone control domain;</li>
+<li>plat-gaz: simplified global availability zone control domain;</li>
+<li>plat-mlc: Simplified Chinese mainland availability zone control domain;</li>
+<li>plat-emc: Simplified global (excluding Chinese mainland) availability zone control domain;</li>
+        :type OriginACLFamily: str
+        """
+        self._Version = None
+        self._ActiveTime = None
+        self._EntireAddresses = None
+        self._OriginACLFamily = None
+
+    @property
+    def Version(self):
+        r"""Origin protection version number.
+Format description:
+Standard version.
+<li>gaz-xxxxx: global;</li>
+<li>mlc-xxxxx: China;</li>
+<li>emc-xxxxx: overseas (worldwide excluding China);</li>
+Simplified edition (platform-level version)
+<li>plat-gaz-xxxxxx: Simplified global edition;</li>
+<li>plat-mlc-xxxxxx: Simplified China version;</li>
+<li>plat-emc-xxxxxx: Simplified overseas (global excluding China) edition;</li>
+Abbreviation description:
+<li>gaz:Global AZ Availability Zone;</li>
+<li>mlc:mainlandChina;</li>
+<li>emc:Exclude mainlandChina.</li>
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def ActiveTime(self):
+        r"""Version effective time, which adopts Beijing time (UTC+8) and follows the date and time format of the ISO 8601 standard.
+        :rtype: str
+        """
+        return self._ActiveTime
+
+    @ActiveTime.setter
+    def ActiveTime(self, ActiveTime):
+        self._ActiveTime = ActiveTime
+
+    @property
+    def EntireAddresses(self):
+        r"""Origin-pull IP range details.	
+        :rtype: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        """
+        return self._EntireAddresses
+
+    @EntireAddresses.setter
+    def EntireAddresses(self, EntireAddresses):
+        self._EntireAddresses = EntireAddresses
+
+    @property
+    def OriginACLFamily(self):
+        r"""Origin protection origin-pull ACL control domain. Parameter values are as follows:
+<li>gaz: standard global availability zone control domain;</li>
+<li>mlc: standard Chinese mainland availability zone control domain;</li>
+<li>emc: standard worldwide (excluding Chinese mainland) availability zone control domain;</li>
+<li>plat-gaz: simplified global availability zone control domain;</li>
+<li>plat-mlc: Simplified Chinese mainland availability zone control domain;</li>
+<li>plat-emc: Simplified global (excluding Chinese mainland) availability zone control domain;</li>
+        :rtype: str
+        """
+        return self._OriginACLFamily
+
+    @OriginACLFamily.setter
+    def OriginACLFamily(self, OriginACLFamily):
+        self._OriginACLFamily = OriginACLFamily
+
+
+    def _deserialize(self, params):
+        self._Version = params.get("Version")
+        self._ActiveTime = params.get("ActiveTime")
+        if params.get("EntireAddresses") is not None:
+            self._EntireAddresses = Addresses()
+            self._EntireAddresses._deserialize(params.get("EntireAddresses"))
+        self._OriginACLFamily = params.get("OriginACLFamily")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
