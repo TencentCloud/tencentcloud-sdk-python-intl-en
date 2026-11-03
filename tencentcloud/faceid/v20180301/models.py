@@ -14707,8 +14707,8 @@ class WebVerificationConfigIntl(AbstractModel):
         :type Version: str
         :param _OcrWaitPolicy: When CheckMode = 1, this defines the waiting policy for OCR recognition results.
 Enumeration values:
-required: Wait for OCR result after document capture.
-skip: Wait for OCR result confirmation before entering liveness check.
+required: Proceed to liveness check only after OCR result confirmation.
+skip: Enter liveness check immediately after card photo submission.
 Default value: required.
         :type OcrWaitPolicy: str
         :param _WebhookUrl: When CheckMode = 1, verification status callback URL. If configured, the service will actively push notifications to this address upon process completion. Leave it blank to disable callbacks. As callbacks cannot guarantee 100% delivery, it is recommended to use a polling mechanism to retrieve the final status.
@@ -14925,8 +14925,8 @@ Default value: required.
     def OcrWaitPolicy(self):
         r"""When CheckMode = 1, this defines the waiting policy for OCR recognition results.
 Enumeration values:
-required: Wait for OCR result after document capture.
-skip: Wait for OCR result confirmation before entering liveness check.
+required: Proceed to liveness check only after OCR result confirmation.
+skip: Enter liveness check immediately after card photo submission.
 Default value: required.
         :rtype: str
         """

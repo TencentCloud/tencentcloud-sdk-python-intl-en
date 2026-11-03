@@ -211,6 +211,52 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateInstanceRole(self, request):
+        r"""Create a database role
+
+        :param request: Request instance for CreateInstanceRole.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.CreateInstanceRoleRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.CreateInstanceRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInstanceRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateInstanceRoleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateInstanceUser(self, request):
+        r"""Create a database account
+
+        :param request: Request instance for CreateInstanceUser.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.CreateInstanceUserRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.CreateInstanceUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInstanceUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateInstanceUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateLogDownloadTask(self, request):
         r"""This API is used to create a log download task.
 
@@ -271,6 +317,52 @@ class MongodbClient(AbstractClient):
             body = self.call("DeleteDBBackups", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDBBackupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteInstanceRole(self, request):
+        r"""Delete role
+
+        :param request: Request instance for DeleteInstanceRole.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DeleteInstanceRoleRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DeleteInstanceRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteInstanceRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteInstanceRoleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteInstanceUser(self, request):
+        r"""This API is used to delete a database account.
+
+        :param request: Request instance for DeleteInstanceUser.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DeleteInstanceUserRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DeleteInstanceUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteInstanceUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteInstanceUserResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -719,6 +811,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstanceRoles(self, request):
+        r"""Obtains the list of roles
+
+        :param request: Request instance for DescribeInstanceRoles.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeInstanceRolesRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeInstanceRolesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceRoles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceRolesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceSSL(self, request):
         r"""This API is used to view the enabling status of Secure Sockets Layer (SSL) for an instance.
 
@@ -733,6 +848,29 @@ class MongodbClient(AbstractClient):
             body = self.call("DescribeInstanceSSL", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstanceSSLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceUsers(self, request):
+        r"""This API is used to obtain the list of accounts.
+
+        :param request: Request instance for DescribeInstanceUsers.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeInstanceUsersRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeInstanceUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceUsers", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceUsersResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1561,6 +1699,52 @@ class MongodbClient(AbstractClient):
             body = self.call("TerminateDBInstances", params, headers=headers)
             response = json.loads(body)
             model = models.TerminateDBInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateInstanceRole(self, request):
+        r"""This API is used to update a database role.
+
+        :param request: Request instance for UpdateInstanceRole.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.UpdateInstanceRoleRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.UpdateInstanceRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateInstanceRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateInstanceRoleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateInstanceUser(self, request):
+        r"""Update database account
+
+        :param request: Request instance for UpdateInstanceUser.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.UpdateInstanceUserRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.UpdateInstanceUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateInstanceUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateInstanceUserResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

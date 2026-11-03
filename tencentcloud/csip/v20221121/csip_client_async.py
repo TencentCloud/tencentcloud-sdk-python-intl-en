@@ -6635,7 +6635,7 @@ class CsipClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeDspmIdentifyRuleTestResultResponse:
         """
-        This API is used to query verification results of dspm data identification data items.
+        Queries the verification result of a dspm data identification data item
         """
         
         kwargs = {}

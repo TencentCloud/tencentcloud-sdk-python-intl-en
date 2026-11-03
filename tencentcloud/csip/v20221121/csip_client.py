@@ -8461,7 +8461,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeDspmIdentifyRuleTestResult(self, request):
-        r"""This API is used to query verification results of dspm data identification data items.
+        r"""Queries the verification result of a dspm data identification data item
 
         :param request: Request instance for DescribeDspmIdentifyRuleTestResult.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDspmIdentifyRuleTestResultRequest`

@@ -170,6 +170,42 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateInstanceRole(
+            self,
+            request: models.CreateInstanceRoleRequest,
+            opts: Dict = None,
+    ) -> models.CreateInstanceRoleResponse:
+        """
+        Create a database role
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateInstanceRole"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateInstanceRoleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateInstanceUser(
+            self,
+            request: models.CreateInstanceUserRequest,
+            opts: Dict = None,
+    ) -> models.CreateInstanceUserResponse:
+        """
+        Create a database account
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateInstanceUser"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateInstanceUserResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateLogDownloadTask(
             self,
             request: models.CreateLogDownloadTaskRequest,
@@ -219,6 +255,42 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "DeleteDBBackups"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteDBBackupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteInstanceRole(
+            self,
+            request: models.DeleteInstanceRoleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteInstanceRoleResponse:
+        """
+        Delete role
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteInstanceRole"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteInstanceRoleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteInstanceUser(
+            self,
+            request: models.DeleteInstanceUserRequest,
+            opts: Dict = None,
+    ) -> models.DeleteInstanceUserResponse:
+        """
+        This API is used to delete a database account.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteInstanceUser"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteInstanceUserResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -568,6 +640,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeInstanceRoles(
+            self,
+            request: models.DescribeInstanceRolesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstanceRolesResponse:
+        """
+        Obtains the list of roles
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstanceRoles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstanceRolesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeInstanceSSL(
             self,
             request: models.DescribeInstanceSSLRequest,
@@ -581,6 +671,24 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "DescribeInstanceSSL"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeInstanceSSLResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInstanceUsers(
+            self,
+            request: models.DescribeInstanceUsersRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstanceUsersResponse:
+        """
+        This API is used to obtain the list of accounts.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstanceUsers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstanceUsersResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1229,6 +1337,42 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "TerminateDBInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.TerminateDBInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateInstanceRole(
+            self,
+            request: models.UpdateInstanceRoleRequest,
+            opts: Dict = None,
+    ) -> models.UpdateInstanceRoleResponse:
+        """
+        This API is used to update a database role.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateInstanceRole"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateInstanceRoleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateInstanceUser(
+            self,
+            request: models.UpdateInstanceUserRequest,
+            opts: Dict = None,
+    ) -> models.UpdateInstanceUserResponse:
+        """
+        Update database account
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateInstanceUser"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateInstanceUserResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
