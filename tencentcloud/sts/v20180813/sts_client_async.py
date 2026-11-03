@@ -141,3 +141,21 @@ class StsClient(AbstractClient):
         kwargs["opts"] = opts or {}
         
         return await self.call_and_deserialize(**kwargs)
+        
+    async def GetSessionToken(
+            self,
+            request: models.GetSessionTokenRequest,
+            opts: Dict = None,
+    ) -> models.GetSessionTokenResponse:
+        """
+        Obtain the MFA temporary certificate.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetSessionToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetSessionTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)

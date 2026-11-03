@@ -2986,7 +2986,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeMultiPathGatewaySecretKey(self, request):
-        r"""This API is used to query keys for integrating multi-channel security acceleration gateways. Customers access multi-channel security acceleration gateways based on key signature.
+        r"""This API is used to query the key for integrating a multi-channel security acceleration gateway. Customers sign with the integration key to access the multi-channel security acceleration gateway.
 
         :param request: Request instance for DescribeMultiPathGatewaySecretKey.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewaySecretKeyRequest`

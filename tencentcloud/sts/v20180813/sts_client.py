@@ -166,3 +166,26 @@ class StsClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetSessionToken(self, request):
+        r"""Obtain the MFA temporary certificate.
+
+        :param request: Request instance for GetSessionToken.
+        :type request: :class:`tencentcloud.sts.v20180813.models.GetSessionTokenRequest`
+        :rtype: :class:`tencentcloud.sts.v20180813.models.GetSessionTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetSessionToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetSessionTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

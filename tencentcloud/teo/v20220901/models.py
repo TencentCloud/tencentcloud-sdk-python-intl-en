@@ -33,7 +33,7 @@ class AICrawlerDetection(AbstractModel):
         :param _Action: Execution action of AI crawler detection. Required if Enabled is on. Name of SecurityAction only supports:
 <li>Deny: block;</li>
 <li>Monitor: observation;</li>
-<li>Allow: allow;</li>
+<li>Allow: Allow access;</li>
 <li>Challenge: Among them, ChallengeOption in ChallengeActionParameters only supports JSChallenge and ManagedChallenge.</li>
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
@@ -59,7 +59,7 @@ class AICrawlerDetection(AbstractModel):
         r"""Execution action of AI crawler detection. Required if Enabled is on. Name of SecurityAction only supports:
 <li>Deny: block;</li>
 <li>Monitor: observation;</li>
-<li>Allow: allow;</li>
+<li>Allow: Allow access;</li>
 <li>Challenge: Among them, ChallengeOption in ChallengeActionParameters only supports JSChallenge and ManagedChallenge.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
@@ -993,6 +993,89 @@ class AccessURLRedirectQueryString(AbstractModel):
         
 
 
+class AccountProtectionSettings(AbstractModel):
+    r"""Account protection configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>Account protection feature switch.</p><p>Enumeration values: </p><ul><li>on: Enable;</li><li>off: Disable.</li></ul><p>Default value: off.</p>
+        :type Enabled: str
+        :param _RequestPurpose: <p>Request target. Used to identify the business operation scenario the request belongs to.</p> <p>Enumeration values:</p> <ul> <li>ACCOUNT.CHANGE_PASSWORD: request to change the password when the original password is known;</li> <li>ACCOUNT.CHANGE_SECURITY_QUESTION: request to modify the account security question;</li> <li>ACCOUNT.CHECK_EXISTENCE: request to verify whether the account exists, commonly used for pre-verification after entering an email or phone number on the login or registration page;</li> <li>ACCOUNT.LOGIN: request to log in to an account;</li> <li>ACCOUNT.REGISTER: request to sign up for a new account;</li> <li>ACCOUNT.RESET_PASSWORD: request to reset the password, usually by verifying identity through email or SMS and then setting a new password;</li> <li>ACCOUNT.UPDATE: request to modify account association information, such as phone number, email, payment card number, shipping address, etc.;</li> <li>ASSET.CHECK_GIFTCARD_BALANCE: request to query the gift card balance by card number and other information;</li> <li>ASSET.CHECK_LOYALTY_POINTS: request to query the account point balance;</li> <li>ASSET.REDEEM_CODE: request to exchange rights and interests using a redemption code;</li> <li>BROWSE.QUERY: request for in-site search of products or services;</li> <li>PAYMENT.ADD_TO_CART: request to add merchandise to the shopping cart;</li> <li>PAYMENT.GET_METHODS: request to obtain the list of payment methods bound to the account;</li> <li>PAYMENT.MAKE_PAYMENT: request to submit a payment, settlement, or fund transfer.</li> </ul>
+        :type RequestPurpose: str
+        :param _UserIDSource: <p>The location of the user identity in the request source, where key is replaced with the actual parameter name.</p><p>Valid values:</p><ul><li>http.request.cookies["key"]: Obtain the Cookie value named key from the Cookie;</li><li>http.request.headers["key"]: Obtain the header value named key from the request header;</li><li>http.request.uri.args["key"]: Obtain the parameter value named key from the URL query parameter.</li></ul>
+        :type UserIDSource: str
+        :param _UserRiskProfile: <p>User Risk Level configuration.</p>
+        :type UserRiskProfile: :class:`tencentcloud.teo.v20220901.models.UserRiskProfile`
+        """
+        self._Enabled = None
+        self._RequestPurpose = None
+        self._UserIDSource = None
+        self._UserRiskProfile = None
+
+    @property
+    def Enabled(self):
+        r"""<p>Account protection feature switch.</p><p>Enumeration values: </p><ul><li>on: Enable;</li><li>off: Disable.</li></ul><p>Default value: off.</p>
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def RequestPurpose(self):
+        r"""<p>Request target. Used to identify the business operation scenario the request belongs to.</p> <p>Enumeration values:</p> <ul> <li>ACCOUNT.CHANGE_PASSWORD: request to change the password when the original password is known;</li> <li>ACCOUNT.CHANGE_SECURITY_QUESTION: request to modify the account security question;</li> <li>ACCOUNT.CHECK_EXISTENCE: request to verify whether the account exists, commonly used for pre-verification after entering an email or phone number on the login or registration page;</li> <li>ACCOUNT.LOGIN: request to log in to an account;</li> <li>ACCOUNT.REGISTER: request to sign up for a new account;</li> <li>ACCOUNT.RESET_PASSWORD: request to reset the password, usually by verifying identity through email or SMS and then setting a new password;</li> <li>ACCOUNT.UPDATE: request to modify account association information, such as phone number, email, payment card number, shipping address, etc.;</li> <li>ASSET.CHECK_GIFTCARD_BALANCE: request to query the gift card balance by card number and other information;</li> <li>ASSET.CHECK_LOYALTY_POINTS: request to query the account point balance;</li> <li>ASSET.REDEEM_CODE: request to exchange rights and interests using a redemption code;</li> <li>BROWSE.QUERY: request for in-site search of products or services;</li> <li>PAYMENT.ADD_TO_CART: request to add merchandise to the shopping cart;</li> <li>PAYMENT.GET_METHODS: request to obtain the list of payment methods bound to the account;</li> <li>PAYMENT.MAKE_PAYMENT: request to submit a payment, settlement, or fund transfer.</li> </ul>
+        :rtype: str
+        """
+        return self._RequestPurpose
+
+    @RequestPurpose.setter
+    def RequestPurpose(self, RequestPurpose):
+        self._RequestPurpose = RequestPurpose
+
+    @property
+    def UserIDSource(self):
+        r"""<p>The location of the user identity in the request source, where key is replaced with the actual parameter name.</p><p>Valid values:</p><ul><li>http.request.cookies["key"]: Obtain the Cookie value named key from the Cookie;</li><li>http.request.headers["key"]: Obtain the header value named key from the request header;</li><li>http.request.uri.args["key"]: Obtain the parameter value named key from the URL query parameter.</li></ul>
+        :rtype: str
+        """
+        return self._UserIDSource
+
+    @UserIDSource.setter
+    def UserIDSource(self, UserIDSource):
+        self._UserIDSource = UserIDSource
+
+    @property
+    def UserRiskProfile(self):
+        r"""<p>User Risk Level configuration.</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UserRiskProfile`
+        """
+        return self._UserRiskProfile
+
+    @UserRiskProfile.setter
+    def UserRiskProfile(self, UserRiskProfile):
+        self._UserRiskProfile = UserRiskProfile
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._RequestPurpose = params.get("RequestPurpose")
+        self._UserIDSource = params.get("UserIDSource")
+        if params.get("UserRiskProfile") is not None:
+            self._UserRiskProfile = UserRiskProfile()
+            self._UserRiskProfile._deserialize(params.get("UserRiskProfile"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AclCondition(AbstractModel):
     r"""The condition that makes up an access control rule
 
@@ -1625,19 +1708,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class AdaptiveFrequencyControl(AbstractModel):
-    r"""Adaptive frequency control.
+    r"""Adaptive frequency control
 
     """
 
     def __init__(self):
         r"""
-        :param _Enabled: Whether adaptive frequency control is enabled. valid values: <li>on: enable;</li> <li>off: disable.</li>.
+        :param _Enabled: Whether adaptive frequency control is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li>
         :type Enabled: str
-        :param _Id: Rule ID of adaptive frequency control, returned as an output parameter.
+        :param _Id: Rule ID of adaptive frequency control, returned only as an output parameter.
         :type Id: str
-        :param _Sensitivity: The restriction level of adaptive frequency control. required when Enabled is on. valid values: <li>Loose: Loose</li><li>Moderate: Moderate</li><li>Strict: Strict</li>.
+        :param _Sensitivity: The limitation level of adaptive frequency control. This field is required when Enabled is on. Valid values: <li>Loose: loose;</li><li>Moderate: moderate;</li><li>Strict: strict.</li>
         :type Sensitivity: str
-        :param _Action: The handling method of adaptive frequency control. this field is required when Enabled is on. valid values for SecurityAction Name: <li>Monitor: observation;</li> <li>Deny: block;</li> <li>Challenge: Challenge, where ChallengeActionParameters.Name only supports JSChallenge.</li>.
+        :param _Action: Handling method of adaptive frequency control. This field is required when Enabled is on. Supported values for SecurityAction Name: <li>Monitor: monitor;</li><li>Deny: block;</li><li>Challenge: challenge. ChallengeActionParameters.Name only supports JSChallenge.</li>
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         self._Enabled = None
@@ -1647,7 +1730,7 @@ class AdaptiveFrequencyControl(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""Whether adaptive frequency control is enabled. valid values: <li>on: enable;</li> <li>off: disable.</li>.
+        r"""Whether adaptive frequency control is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li>
         :rtype: str
         """
         return self._Enabled
@@ -1658,7 +1741,7 @@ class AdaptiveFrequencyControl(AbstractModel):
 
     @property
     def Id(self):
-        r"""Rule ID of adaptive frequency control, returned as an output parameter.
+        r"""Rule ID of adaptive frequency control, returned only as an output parameter.
         :rtype: str
         """
         return self._Id
@@ -1669,7 +1752,7 @@ class AdaptiveFrequencyControl(AbstractModel):
 
     @property
     def Sensitivity(self):
-        r"""The restriction level of adaptive frequency control. required when Enabled is on. valid values: <li>Loose: Loose</li><li>Moderate: Moderate</li><li>Strict: Strict</li>.
+        r"""The limitation level of adaptive frequency control. This field is required when Enabled is on. Valid values: <li>Loose: loose;</li><li>Moderate: moderate;</li><li>Strict: strict.</li>
         :rtype: str
         """
         return self._Sensitivity
@@ -1680,7 +1763,7 @@ class AdaptiveFrequencyControl(AbstractModel):
 
     @property
     def Action(self):
-        r"""The handling method of adaptive frequency control. this field is required when Enabled is on. valid values for SecurityAction Name: <li>Monitor: observation;</li> <li>Deny: block;</li> <li>Challenge: Challenge, where ChallengeActionParameters.Name only supports JSChallenge.</li>.
+        r"""Handling method of adaptive frequency control. This field is required when Enabled is on. Supported values for SecurityAction Name: <li>Monitor: monitor;</li><li>Deny: block;</li><li>Challenge: challenge. ChallengeActionParameters.Name only supports JSChallenge.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._Action
@@ -2528,20 +2611,20 @@ class AliasDomain(AbstractModel):
 
 
 class AllowActionParameters(AbstractModel):
-    r"""Additional parameter when the safe execution action is Allow.
+    r"""Additional parameter when the executed action is allow.
 
-    This parameter is used to specify the extra handling action taken by the system when a security rule is hit and an Allow action is executed.
+    This parameter is used to specify the extra handling action taken by the system when a security rule is hit and the Allow action is executed.
     Different handling actions are configured with different fixed parameter combinations. The system will determine the actually effective handling action type according to the configured parameter combination.
-    During the same release execution, only one handling action can be configured and made effective. Parameter composites for multiple handling actions cannot appear simultaneously; otherwise, it is deemed an invalid configuration. If empty, the default release handling action is used.
-    AllowActionParameters supports the following additional handling actions: <li>Default: When AllowActionParameters is empty, skip the remaining rules of the current security module immediately and continue matching subsequent security modules.</li><li>Delayed pass: Add response delay to the request and continue matching the remaining rules of the current module. Corresponding parameters: MinDelayTime, MaxDelayTime.</li>
+    During the same release execution, only one handling action can be configured and made effective. Parameters for multiple handling actions cannot appear at the same time. Otherwise, it is deemed as an invalid configuration. If empty, the default release action is used.
+    AllowActionParameters supports the following additional handling actions: <li>Default: When AllowActionParameters is empty, immediately skip the remaining rules of the current security module and continue matching subsequent security modules.</li><li>Delayed release: Add response delay to the request and continue matching the remaining rules of the current module. Corresponding parameters: MinDelayTime, MaxDelayTime.</li>
 
     """
 
     def __init__(self):
         r"""
-        :param _MinDelayTime: Minimum latency response time. when configured as 0s, it means no delay for direct response. supported units: <li>s: seconds, value ranges from 0 to 5.</li>.
+        :param _MinDelayTime: Minimum delayed response time. When configured as 0s, it means no delay and direct response. Supported units: <li>s: second, value ranges from 0 to 5.</li>
         :type MinDelayTime: str
-        :param _MaxDelayTime: Maximum delayed response time. supported units: <li>s: seconds, value ranges from 5 to 10.</li>.
+        :param _MaxDelayTime: Maximum delayed response time. Supported units: <li>s: seconds, value range: 5–10.</li>
         :type MaxDelayTime: str
         """
         self._MinDelayTime = None
@@ -2549,7 +2632,7 @@ class AllowActionParameters(AbstractModel):
 
     @property
     def MinDelayTime(self):
-        r"""Minimum latency response time. when configured as 0s, it means no delay for direct response. supported units: <li>s: seconds, value ranges from 0 to 5.</li>.
+        r"""Minimum delayed response time. When configured as 0s, it means no delay and direct response. Supported units: <li>s: second, value ranges from 0 to 5.</li>
         :rtype: str
         """
         return self._MinDelayTime
@@ -2560,7 +2643,7 @@ class AllowActionParameters(AbstractModel):
 
     @property
     def MaxDelayTime(self):
-        r"""Maximum delayed response time. supported units: <li>s: seconds, value ranges from 5 to 10.</li>.
+        r"""Maximum delayed response time. Supported units: <li>s: seconds, value range: 5–10.</li>
         :rtype: str
         """
         return self._MaxDelayTime
@@ -3563,17 +3646,17 @@ class AuthenticationParameters(AbstractModel):
 
 
 class BandwidthAbuseDefense(AbstractModel):
-    r"""Bandwidth abuse protection configuration (chinese mainland only).
+    r"""Bandwidth abuse protection configuration (only applicable to the Chinese mainland).
 
     """
 
     def __init__(self):
         r"""
-        :param _Enabled: Whether bandwidth abuse protection (applicable to chinese mainland only) is enabled. valid values: <li>on: enabled;</li> <li>off: disabled.</li>.
+        :param _Enabled: Whether bandwidth abuse protection (only applicable to the Chinese mainland) is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li>
         :type Enabled: str
-        :param _Id: Rule ID of traffic anti-fraud, returned as an output parameter.
+        :param _Id: Rule ID for bandwidth abuse protection. Returned as an output parameter only.
         :type Id: str
-        :param _Action: Bandwidth abuse protection (applicable to chinese mainland) handling method. required when Enabled is on. valid values for SecurityAction Name: <li>Monitor: observe;</li> <li>Deny: block;</li> <li>Challenge: Challenge, where ChallengeActionParameters.Name only supports JSChallenge.</li>.
+        :param _Action: Handling method for bandwidth abuse protection (applicable to Chinese mainland only). This field is required when Enabled is on. Supported values for SecurityAction Name: <li>Monitor: monitor;</li><li>Deny: block;</li><li>Challenge: challenge. ChallengeActionParameters.Name only supports JSChallenge.</li>
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         self._Enabled = None
@@ -3582,7 +3665,7 @@ class BandwidthAbuseDefense(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""Whether bandwidth abuse protection (applicable to chinese mainland only) is enabled. valid values: <li>on: enabled;</li> <li>off: disabled.</li>.
+        r"""Whether bandwidth abuse protection (only applicable to the Chinese mainland) is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li>
         :rtype: str
         """
         return self._Enabled
@@ -3593,7 +3676,7 @@ class BandwidthAbuseDefense(AbstractModel):
 
     @property
     def Id(self):
-        r"""Rule ID of traffic anti-fraud, returned as an output parameter.
+        r"""Rule ID for bandwidth abuse protection. Returned as an output parameter only.
         :rtype: str
         """
         return self._Id
@@ -3604,7 +3687,7 @@ class BandwidthAbuseDefense(AbstractModel):
 
     @property
     def Action(self):
-        r"""Bandwidth abuse protection (applicable to chinese mainland) handling method. required when Enabled is on. valid values for SecurityAction Name: <li>Monitor: observe;</li> <li>Deny: block;</li> <li>Challenge: Challenge, where ChallengeActionParameters.Name only supports JSChallenge.</li>.
+        r"""Handling method for bandwidth abuse protection (applicable to Chinese mainland only). This field is required when Enabled is on. Supported values for SecurityAction Name: <li>Monitor: monitor;</li><li>Deny: block;</li><li>Challenge: challenge. ChallengeActionParameters.Name only supports JSChallenge.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._Action
@@ -3631,21 +3714,21 @@ class BandwidthAbuseDefense(AbstractModel):
 
 
 class BasicBotSettings(AbstractModel):
-    r"""Bot management basic configuration takes effect for all domains with policy association. CustomRules can be used to customize.
+    r"""Basic configuration of Bot management, which takes effect for all domain names associated with the policy. Fine-grained customization can be done through CustomRules.
 
     """
 
     def __init__(self):
         r"""
-        :param _SourceIDC: Client IP source IDC configuration, used for handling access requests from client ips in idcs (data centers). such source requests are not directly accessed by mobile terminals or browser-side.
+        :param _SourceIDC: Source IDC configuration of the client IP, used for handling access requests from client IPs in IDCs (data centers). This type of source request is not directly accessed from a mobile terminal or browser side.
         :type SourceIDC: :class:`tencentcloud.teo.v20220901.models.SourceIDC`
-        :param _SearchEngineBots: Search engine crawler configuration, used to handle requests from search engine crawlers. the IP, User-Agent, or rDNS results of such requests match known search engine crawlers.
+        :param _SearchEngineBots: Search engine crawler configuration, used for handling requests from search engine crawlers. The IP, User-Agent, or rDNS results of such requests match known search engine crawlers.
         :type SearchEngineBots: :class:`tencentcloud.teo.v20220901.models.SearchEngineBots`
-        :param _KnownBotCategories: Commercial or open-source tool UA feature configuration (original UA feature rule), used to handle access requests from known commercial or open-source tools. the User-Agent header of such requests complies with known commercial or open-source tool features.
+        :param _KnownBotCategories: UA feature configuration for commercial or open-source tools (formerly UA feature rules), used for handling access requests from known commercial or open-source tools. The User-Agent header of such requests matches the features of known commercial or open-source tools.
         :type KnownBotCategories: :class:`tencentcloud.teo.v20220901.models.KnownBotCategories`
-        :param _IPReputation: Threat intelligence database (originally client profile analysis) configuration, used for handling client ips with specific risk characteristics in recent access behavior.
+        :param _IPReputation: IP threat intelligence database (formerly client profile analysis) configuration, used for handling client IP addresses with specific risk characteristics in recent access behavior.
         :type IPReputation: :class:`tencentcloud.teo.v20220901.models.IPReputation`
-        :param _BotIntelligence: Specifies the configuration for Bot intelligent analysis.
+        :param _BotIntelligence: Specific configuration for Bot intelligent analysis.
         :type BotIntelligence: :class:`tencentcloud.teo.v20220901.models.BotIntelligence`
         """
         self._SourceIDC = None
@@ -3656,7 +3739,7 @@ class BasicBotSettings(AbstractModel):
 
     @property
     def SourceIDC(self):
-        r"""Client IP source IDC configuration, used for handling access requests from client ips in idcs (data centers). such source requests are not directly accessed by mobile terminals or browser-side.
+        r"""Source IDC configuration of the client IP, used for handling access requests from client IPs in IDCs (data centers). This type of source request is not directly accessed from a mobile terminal or browser side.
         :rtype: :class:`tencentcloud.teo.v20220901.models.SourceIDC`
         """
         return self._SourceIDC
@@ -3667,7 +3750,7 @@ class BasicBotSettings(AbstractModel):
 
     @property
     def SearchEngineBots(self):
-        r"""Search engine crawler configuration, used to handle requests from search engine crawlers. the IP, User-Agent, or rDNS results of such requests match known search engine crawlers.
+        r"""Search engine crawler configuration, used for handling requests from search engine crawlers. The IP, User-Agent, or rDNS results of such requests match known search engine crawlers.
         :rtype: :class:`tencentcloud.teo.v20220901.models.SearchEngineBots`
         """
         return self._SearchEngineBots
@@ -3678,7 +3761,7 @@ class BasicBotSettings(AbstractModel):
 
     @property
     def KnownBotCategories(self):
-        r"""Commercial or open-source tool UA feature configuration (original UA feature rule), used to handle access requests from known commercial or open-source tools. the User-Agent header of such requests complies with known commercial or open-source tool features.
+        r"""UA feature configuration for commercial or open-source tools (formerly UA feature rules), used for handling access requests from known commercial or open-source tools. The User-Agent header of such requests matches the features of known commercial or open-source tools.
         :rtype: :class:`tencentcloud.teo.v20220901.models.KnownBotCategories`
         """
         return self._KnownBotCategories
@@ -3689,7 +3772,7 @@ class BasicBotSettings(AbstractModel):
 
     @property
     def IPReputation(self):
-        r"""Threat intelligence database (originally client profile analysis) configuration, used for handling client ips with specific risk characteristics in recent access behavior.
+        r"""IP threat intelligence database (formerly client profile analysis) configuration, used for handling client IP addresses with specific risk characteristics in recent access behavior.
         :rtype: :class:`tencentcloud.teo.v20220901.models.IPReputation`
         """
         return self._IPReputation
@@ -3700,7 +3783,7 @@ class BasicBotSettings(AbstractModel):
 
     @property
     def BotIntelligence(self):
-        r"""Specifies the configuration for Bot intelligent analysis.
+        r"""Specific configuration for Bot intelligent analysis.
         :rtype: :class:`tencentcloud.teo.v20220901.models.BotIntelligence`
         """
         return self._BotIntelligence
@@ -4342,20 +4425,20 @@ class BindZoneToPlanResponse(AbstractModel):
 
 
 class BlockIPActionParameters(AbstractModel):
-    r"""Additional parameter for SecurityAction `BlockIP`.
+    r"""Additional parameter for IP blocking in Web Security
 
     """
 
     def __init__(self):
         r"""
-        :param _Duration: Penalty duration for `BlockIP`. Units: <li>`s`: second, value range 1-120;</li> <li>`m`: minute, value range 1-120;</li> <li>`h`: hour, value range 1-48.</li>.
+        :param _Duration: Penalty duration for blocked IPs. Supported units: <li>s: second, value ranges from 1 to 120;</li><li>m: minute, value ranges from 1 to 120;</li><li>h: hour, value ranges from 1 to 48.</li>
         :type Duration: str
         """
         self._Duration = None
 
     @property
     def Duration(self):
-        r"""Penalty duration for `BlockIP`. Units: <li>`s`: second, value range 1-120;</li> <li>`m`: minute, value range 1-120;</li> <li>`h`: hour, value range 1-48.</li>.
+        r"""Penalty duration for blocked IPs. Supported units: <li>s: second, value ranges from 1 to 120;</li><li>m: minute, value ranges from 1 to 120;</li><li>h: hour, value ranges from 1 to 48.</li>
         :rtype: str
         """
         return self._Duration
@@ -4594,20 +4677,20 @@ class BotExtendAction(AbstractModel):
 
 
 class BotIntelligence(AbstractModel):
-    r"""Bot intelligent analysis configuration.
+    r"""Specific configuration for Bot intelligent analysis.
 
     """
 
     def __init__(self):
         r"""
-        :param _Enabled: Specifies the switch for Bot intelligent analysis configuration. valid values:.
+        :param _Enabled: Specific configuration switch for Bot intelligent analysis. Valid values:
 
-on: enabled.
-off: disabled.
+on: enable;
+off: Disable.
         :type Enabled: str
-        :param _Id: Rule ID of Bot intelligent analysis, returned as an output parameter.
+        :param _Id: Rule ID of Bot intelligent analysis, returned only as an output parameter.
         :type Id: str
-        :param _BotRatings: Based on client and request features, divides request sources into human requests, legitimate Bot requests, suspected Bot requests, and high-risk Bot requests, and provides request handling options.
+        :param _BotRatings: Based on the client and request features, divide the request source into human requests, valid Bot requests, suspected Bot requests, and high-risk Bot requests, and provide request handling options.
         :type BotRatings: :class:`tencentcloud.teo.v20220901.models.BotRatings`
         """
         self._Enabled = None
@@ -4616,10 +4699,10 @@ off: disabled.
 
     @property
     def Enabled(self):
-        r"""Specifies the switch for Bot intelligent analysis configuration. valid values:.
+        r"""Specific configuration switch for Bot intelligent analysis. Valid values:
 
-on: enabled.
-off: disabled.
+on: enable;
+off: Disable.
         :rtype: str
         """
         return self._Enabled
@@ -4630,7 +4713,7 @@ off: disabled.
 
     @property
     def Id(self):
-        r"""Rule ID of Bot intelligent analysis, returned as an output parameter.
+        r"""Rule ID of Bot intelligent analysis, returned only as an output parameter.
         :rtype: str
         """
         return self._Id
@@ -4641,7 +4724,7 @@ off: disabled.
 
     @property
     def BotRatings(self):
-        r"""Based on client and request features, divides request sources into human requests, legitimate Bot requests, suspected Bot requests, and high-risk Bot requests, and provides request handling options.
+        r"""Based on the client and request features, divide the request source into human requests, valid Bot requests, suspected Bot requests, and high-risk Bot requests, and provide request handling options.
         :rtype: :class:`tencentcloud.teo.v20220901.models.BotRatings`
         """
         return self._BotRatings
@@ -4802,21 +4885,21 @@ class BotManagedRule(AbstractModel):
 
 
 class BotManagement(AbstractModel):
-    r"""Web security BOT managed rules architecture.
+    r"""BOT rule structure for Web security.
 
     """
 
     def __init__(self):
         r"""
-        :param _Enabled: Whether Bot management is enabled. valid values: <li>on: enabled;</li><li>off: disabled.</li>.
+        :param _Enabled: Whether Bot management is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li>
         :type Enabled: str
-        :param _CustomRules: Bot management custom rule combines various crawlers and request behavior characteristics to accurately define bots and configure customized handling methods.
+        :param _CustomRules: Custom rule for Bot management combines various types of crawlers and request behavior characteristics to precisely define bots and configure customized handling methods.
         :type CustomRules: :class:`tencentcloud.teo.v20220901.models.BotManagementCustomRules`
-        :param _BasicBotSettings: Bot management basic configuration. takes effect on all domains associated with the policy. can be customized through CustomRules.
+        :param _BasicBotSettings: Basic configuration of Bot management, which takes effect on all domains associated with the policy. It can be customized through CustomRules.
         :type BasicBotSettings: :class:`tencentcloud.teo.v20220901.models.BasicBotSettings`
-        :param _ClientAttestationRules: Definition list of client authentication rules. this feature is in beta test. submit a ticket if you need to use it.
+        :param _ClientAttestationRules: Definition list of client authentication rules. This feature is in beta test. If needed, submit a ticket.
         :type ClientAttestationRules: :class:`tencentcloud.teo.v20220901.models.ClientAttestationRules`
-        :param _BrowserImpersonationDetection: Configures browser spoofing identification rules (formerly active feature detection rule). sets the response page range for JavaScript injection, browser check options, and handling method for non-browser clients.
+        :param _BrowserImpersonationDetection: Configure browser spoofing identification rules (formerly active feature detection rules). Set the response page range for JavaScript injection, browser check options, and handling method for non-browser clients.
         :type BrowserImpersonationDetection: :class:`tencentcloud.teo.v20220901.models.BrowserImpersonationDetection`
         """
         self._Enabled = None
@@ -4827,7 +4910,7 @@ class BotManagement(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""Whether Bot management is enabled. valid values: <li>on: enabled;</li><li>off: disabled.</li>.
+        r"""Whether Bot management is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li>
         :rtype: str
         """
         return self._Enabled
@@ -4838,7 +4921,7 @@ class BotManagement(AbstractModel):
 
     @property
     def CustomRules(self):
-        r"""Bot management custom rule combines various crawlers and request behavior characteristics to accurately define bots and configure customized handling methods.
+        r"""Custom rule for Bot management combines various types of crawlers and request behavior characteristics to precisely define bots and configure customized handling methods.
         :rtype: :class:`tencentcloud.teo.v20220901.models.BotManagementCustomRules`
         """
         return self._CustomRules
@@ -4849,7 +4932,7 @@ class BotManagement(AbstractModel):
 
     @property
     def BasicBotSettings(self):
-        r"""Bot management basic configuration. takes effect on all domains associated with the policy. can be customized through CustomRules.
+        r"""Basic configuration of Bot management, which takes effect on all domains associated with the policy. It can be customized through CustomRules.
         :rtype: :class:`tencentcloud.teo.v20220901.models.BasicBotSettings`
         """
         return self._BasicBotSettings
@@ -4860,7 +4943,7 @@ class BotManagement(AbstractModel):
 
     @property
     def ClientAttestationRules(self):
-        r"""Definition list of client authentication rules. this feature is in beta test. submit a ticket if you need to use it.
+        r"""Definition list of client authentication rules. This feature is in beta test. If needed, submit a ticket.
         :rtype: :class:`tencentcloud.teo.v20220901.models.ClientAttestationRules`
         """
         return self._ClientAttestationRules
@@ -4871,7 +4954,7 @@ class BotManagement(AbstractModel):
 
     @property
     def BrowserImpersonationDetection(self):
-        r"""Configures browser spoofing identification rules (formerly active feature detection rule). sets the response page range for JavaScript injection, browser check options, and handling method for non-browser clients.
+        r"""Configure browser spoofing identification rules (formerly active feature detection rules). Set the response page range for JavaScript injection, browser check options, and handling method for non-browser clients.
         :rtype: :class:`tencentcloud.teo.v20220901.models.BrowserImpersonationDetection`
         """
         return self._BrowserImpersonationDetection
@@ -4906,15 +4989,15 @@ class BotManagement(AbstractModel):
 
 
 class BotManagementActionOverrides(AbstractModel):
-    r"""Bot rules specific configuration, used to override the upper layer default configuration.
+    r"""Configuration of a Bot rule item, used to overwrite the upper-layer default configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _Ids: Specific item under Bot rules used to rewrite the configuration content of this single rule. refer to the returned message from the DescribeBotManagedRules API for detailed information corresponding to Ids.
+        :param _Ids: Specific item under the Bot rule group, used to rewrite the configuration content of this individual rule item. For detailed information corresponding to the Ids, see the returned message of the DescribeBotManagedRules API.
         :type Ids: list of str
-        :param _Action: Specifies the handling action for Bot rule items in Ids. valid values for the Name parameter in SecurityAction: <li>Deny: block;</li><li>Monitor: observe;</li><li>Disabled: Disabled, disable the specified rule;</li><li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li><li>Allow: pass (only for Bot basic feature management).</li>.
+        :param _Action: Handling action for the Bot rule item specified in Ids. Supported values for SecurityAction Name: <li>Deny: block;</li><li>Monitor: observe;</li><li>Disabled: not enabled, disable the specified rule;</li><li>Challenge: challenge. ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li><li>Allow: allow (only for basic feature management of Bot).</li>
 
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
@@ -4923,7 +5006,7 @@ class BotManagementActionOverrides(AbstractModel):
 
     @property
     def Ids(self):
-        r"""Specific item under Bot rules used to rewrite the configuration content of this single rule. refer to the returned message from the DescribeBotManagedRules API for detailed information corresponding to Ids.
+        r"""Specific item under the Bot rule group, used to rewrite the configuration content of this individual rule item. For detailed information corresponding to the Ids, see the returned message of the DescribeBotManagedRules API.
         :rtype: list of str
         """
         return self._Ids
@@ -4934,7 +5017,7 @@ class BotManagementActionOverrides(AbstractModel):
 
     @property
     def Action(self):
-        r"""Specifies the handling action for Bot rule items in Ids. valid values for the Name parameter in SecurityAction: <li>Deny: block;</li><li>Monitor: observe;</li><li>Disabled: Disabled, disable the specified rule;</li><li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li><li>Allow: pass (only for Bot basic feature management).</li>.
+        r"""Handling action for the Bot rule item specified in Ids. Supported values for SecurityAction Name: <li>Deny: block;</li><li>Monitor: observe;</li><li>Disabled: not enabled, disable the specified rule;</li><li>Challenge: challenge. ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li><li>Allow: allow (only for basic feature management of Bot).</li>
 
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
@@ -4961,23 +5044,23 @@ class BotManagementActionOverrides(AbstractModel):
 
 
 class BotManagementCustomRule(AbstractModel):
-    r"""Web security Bot custom rule.
+    r"""Custom Bot rules for Web security.
 
     """
 
     def __init__(self):
         r"""
-        :param _Id: The ID of a Bot custom rule. different rule configuration operations are supported by rule ID: <li><b>add</b> a new rule: leave the ID empty or do not specify the ID parameter.</li> <li><b>modify</b> an existing rule: specify the rule ID that needs to be updated/modified.</li> <li><b>delete</b> an existing rule: existing Rules not included in the Rules list under the BotManagementCustomRules parameter will be deleted.</li>.
+        :param _Id: <p>ID of the bot custom rule.<br>Different rule configuration operations are supported via the rule ID:<br> <li> <b>Add</b> a new rule: leave the ID empty or do not specify the ID parameter;</li><li><b>Modify</b> an existing rule: specify the rule ID that needs to be updated/modified;</li><li><b>Delete</b> an existing rule: existing rules not included in the Rules list in the BotManagementCustomRules parameter will be deleted.</li></p>
         :type Id: str
-        :param _Name: Specifies the name of the Bot custom rule.
+        :param _Name: <p>Name of the Bot custom rule.</p>
         :type Name: str
-        :param _Enabled: Whether the custom Bot rule is enabled. valid values: <li>on: enabled;</li><li>off: disabled.</li>.
+        :param _Enabled: <p>Whether the custom Bot rule is enabled. Valid values: <li>on: enable;</li><li>off: disable.</li></p>
         :type Enabled: str
-        :param _Priority: Priority of custom Bot rules. value range: 1–100. default value is 50.
+        :param _Priority: <p>Priority of Bot custom rules, ranging from 1 to 100, with a default value of 50.</p>
         :type Priority: int
-        :param _Condition: Specifies the specific content of the Bot custom rule, which must comply with expression grammar. for detailed specifications, refer to the product document.
+        :param _Condition: <p>For specific content of the Bot custom rule, it must comply with the expression grammar. For detailed specifications, see the product document.</p>
         :type Condition: str
-        :param _Action: The handling method for Bot custom rules. valid values: <li>Monitor: observation;</li><li>Deny: block, where DenyActionParameters.Name supports Deny and ReturnCustomPage;</li><li>Challenge: Challenge, where ChallengeActionParameters.Name supports JSChallenge and ManagedChallenge;</li><li>Redirect: Redirect to URL.</li>.
+        :param _Action: <p>List of safe execution actions by weight assignment.</p>
         :type Action: list of SecurityWeightedAction
         """
         self._Id = None
@@ -4989,7 +5072,7 @@ class BotManagementCustomRule(AbstractModel):
 
     @property
     def Id(self):
-        r"""The ID of a Bot custom rule. different rule configuration operations are supported by rule ID: <li><b>add</b> a new rule: leave the ID empty or do not specify the ID parameter.</li> <li><b>modify</b> an existing rule: specify the rule ID that needs to be updated/modified.</li> <li><b>delete</b> an existing rule: existing Rules not included in the Rules list under the BotManagementCustomRules parameter will be deleted.</li>.
+        r"""<p>ID of the bot custom rule.<br>Different rule configuration operations are supported via the rule ID:<br> <li> <b>Add</b> a new rule: leave the ID empty or do not specify the ID parameter;</li><li><b>Modify</b> an existing rule: specify the rule ID that needs to be updated/modified;</li><li><b>Delete</b> an existing rule: existing rules not included in the Rules list in the BotManagementCustomRules parameter will be deleted.</li></p>
         :rtype: str
         """
         return self._Id
@@ -5000,7 +5083,7 @@ class BotManagementCustomRule(AbstractModel):
 
     @property
     def Name(self):
-        r"""Specifies the name of the Bot custom rule.
+        r"""<p>Name of the Bot custom rule.</p>
         :rtype: str
         """
         return self._Name
@@ -5011,7 +5094,7 @@ class BotManagementCustomRule(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""Whether the custom Bot rule is enabled. valid values: <li>on: enabled;</li><li>off: disabled.</li>.
+        r"""<p>Whether the custom Bot rule is enabled. Valid values: <li>on: enable;</li><li>off: disable.</li></p>
         :rtype: str
         """
         return self._Enabled
@@ -5022,7 +5105,7 @@ class BotManagementCustomRule(AbstractModel):
 
     @property
     def Priority(self):
-        r"""Priority of custom Bot rules. value range: 1–100. default value is 50.
+        r"""<p>Priority of Bot custom rules, ranging from 1 to 100, with a default value of 50.</p>
         :rtype: int
         """
         return self._Priority
@@ -5033,7 +5116,7 @@ class BotManagementCustomRule(AbstractModel):
 
     @property
     def Condition(self):
-        r"""Specifies the specific content of the Bot custom rule, which must comply with expression grammar. for detailed specifications, refer to the product document.
+        r"""<p>For specific content of the Bot custom rule, it must comply with the expression grammar. For detailed specifications, see the product document.</p>
         :rtype: str
         """
         return self._Condition
@@ -5044,7 +5127,7 @@ class BotManagementCustomRule(AbstractModel):
 
     @property
     def Action(self):
-        r"""The handling method for Bot custom rules. valid values: <li>Monitor: observation;</li><li>Deny: block, where DenyActionParameters.Name supports Deny and ReturnCustomPage;</li><li>Challenge: Challenge, where ChallengeActionParameters.Name supports JSChallenge and ManagedChallenge;</li><li>Redirect: Redirect to URL.</li>.
+        r"""<p>List of safe execution actions by weight assignment.</p>
         :rtype: list of SecurityWeightedAction
         """
         return self._Action
@@ -5077,20 +5160,20 @@ class BotManagementCustomRule(AbstractModel):
 
 
 class BotManagementCustomRules(AbstractModel):
-    r"""Configuration of Bot custom rule.
+    r"""Configuration of the Bot custom rule.
 
     """
 
     def __init__(self):
         r"""
-        :param _Rules: List of Bot custom Rules. when using ModifySecurityPolicy to modify Web protection configuration: <br> <li> if Rules in SecurityPolicy.BotManagement.CustomRules is not specified or parameter length of Rules is zero: clear all Bot custom rule configurations.</li> <li> if CustomRules in SecurityPolicy.BotManagement parameters is unspecified: keep existing Bot custom rule configurations and do not modify them.</li>.
+        :param _Rules: List of Bot custom Rules. When using ModifySecurityPolicy to modify the Web protection configuration: <br> <li> If the Rules parameter in SecurityPolicy.BotManagement.CustomRules is not specified, or the Rules parameter length is zero: clear all Bot custom rule configurations.</li> <li> If the CustomRules parameter value is not specified in the SecurityPolicy.BotManagement parameters: keep the existing Bot custom rule configuration without modification.</li>
         :type Rules: list of BotManagementCustomRule
         """
         self._Rules = None
 
     @property
     def Rules(self):
-        r"""List of Bot custom Rules. when using ModifySecurityPolicy to modify Web protection configuration: <br> <li> if Rules in SecurityPolicy.BotManagement.CustomRules is not specified or parameter length of Rules is zero: clear all Bot custom rule configurations.</li> <li> if CustomRules in SecurityPolicy.BotManagement parameters is unspecified: keep existing Bot custom rule configurations and do not modify them.</li>.
+        r"""List of Bot custom Rules. When using ModifySecurityPolicy to modify the Web protection configuration: <br> <li> If the Rules parameter in SecurityPolicy.BotManagement.CustomRules is not specified, or the Rules parameter length is zero: clear all Bot custom rule configurations.</li> <li> If the CustomRules parameter value is not specified in the SecurityPolicy.BotManagement parameters: keep the existing Bot custom rule configuration without modification.</li>
         :rtype: list of BotManagementCustomRule
         """
         return self._Rules
@@ -5118,15 +5201,15 @@ class BotManagementCustomRules(AbstractModel):
 
 
 class BotManagementLite(AbstractModel):
-    r"""Foundation of Web security BOT rule architecture.
+    r"""Structure of BOT rules for Web security.
 
     """
 
     def __init__(self):
         r"""
-        :param _CAPTCHAPageChallenge: Configuration of the human-machine verification page.
+        :param _CAPTCHAPageChallenge: Configuration of the CAPTCHA page.
         :type CAPTCHAPageChallenge: :class:`tencentcloud.teo.v20220901.models.CAPTCHAPageChallenge`
-        :param _AICrawlerDetection: AI crawler detection configuration.
+        :param _AICrawlerDetection: Specific configuration for AI crawler detection.
         :type AICrawlerDetection: :class:`tencentcloud.teo.v20220901.models.AICrawlerDetection`
         """
         self._CAPTCHAPageChallenge = None
@@ -5134,7 +5217,7 @@ class BotManagementLite(AbstractModel):
 
     @property
     def CAPTCHAPageChallenge(self):
-        r"""Configuration of the human-machine verification page.
+        r"""Configuration of the CAPTCHA page.
         :rtype: :class:`tencentcloud.teo.v20220901.models.CAPTCHAPageChallenge`
         """
         return self._CAPTCHAPageChallenge
@@ -5145,7 +5228,7 @@ class BotManagementLite(AbstractModel):
 
     @property
     def AICrawlerDetection(self):
-        r"""AI crawler detection configuration.
+        r"""Specific configuration for AI crawler detection.
         :rtype: :class:`tencentcloud.teo.v20220901.models.AICrawlerDetection`
         """
         return self._AICrawlerDetection
@@ -5288,19 +5371,19 @@ class BotPortraitRule(AbstractModel):
 
 
 class BotRatings(AbstractModel):
-    r"""Based on client and request features, the request source is divided into human request, valid Bot request, suspected Bot request, and high-risk Bot request, with request handling options provided.
+    r"""Based on client and request features, request sources are divided into human requests, legal Bot requests, suspected Bot requests, and high-risk Bot requests, with request handling options provided.
 
     """
 
     def __init__(self):
         r"""
-        :param _HighRiskBotRequestsAction: Execution action for malicious Bot requests. valid values for the Name parameter in SecurityAction: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Allow: pass;</li> <li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>.
+        :param _HighRiskBotRequestsAction: Execution action for malicious Bot requests. Supported values for the Name parameter of SecurityAction: <li>Deny: Block;</li><li>Monitor: Observe;</li><li>Allow: Allow;</li><li>Challenge: Challenge. Among them, ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>
         :type HighRiskBotRequestsAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _LikelyBotRequestsAction: The execution action for suspected Bot requests. valid values for the Name parameter in SecurityAction: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Allow: pass;</li> <li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>.
+        :param _LikelyBotRequestsAction: Execution action for suspected Bot requests. Supported values for the Name parameter of SecurityAction: <li>Deny: Block;</li><li>Monitor: Observe;</li><li>Allow: Allow;</li><li>Challenge: Challenge. The ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>
         :type LikelyBotRequestsAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _VerifiedBotRequestsAction: Execution action for friendly Bot request. SecurityAction Name parameter supports: <li>Deny: block;</li><li>Monitor: observe;</li><li>Allow: pass;</li><li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>.
+        :param _VerifiedBotRequestsAction: Execution action of friendly Bot requests. The Name parameter of SecurityAction supports the following values: <li>Deny: block;</li><li>Monitor: observe;</li><li>Allow: Allow;</li><li>Challenge: Challenge. The ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>
         :type VerifiedBotRequestsAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _HumanRequestsAction: Execution action for a normal Bot request. valid values for the Name parameter in SecurityAction: <li>Allow: pass.</li>.
+        :param _HumanRequestsAction: Execution action for normal Bot requests. Valid values of SecurityAction Name: <li>Allow: Allow.</li>
         :type HumanRequestsAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         self._HighRiskBotRequestsAction = None
@@ -5310,7 +5393,7 @@ class BotRatings(AbstractModel):
 
     @property
     def HighRiskBotRequestsAction(self):
-        r"""Execution action for malicious Bot requests. valid values for the Name parameter in SecurityAction: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Allow: pass;</li> <li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>.
+        r"""Execution action for malicious Bot requests. Supported values for the Name parameter of SecurityAction: <li>Deny: Block;</li><li>Monitor: Observe;</li><li>Allow: Allow;</li><li>Challenge: Challenge. Among them, ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._HighRiskBotRequestsAction
@@ -5321,7 +5404,7 @@ class BotRatings(AbstractModel):
 
     @property
     def LikelyBotRequestsAction(self):
-        r"""The execution action for suspected Bot requests. valid values for the Name parameter in SecurityAction: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Allow: pass;</li> <li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>.
+        r"""Execution action for suspected Bot requests. Supported values for the Name parameter of SecurityAction: <li>Deny: Block;</li><li>Monitor: Observe;</li><li>Allow: Allow;</li><li>Challenge: Challenge. The ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._LikelyBotRequestsAction
@@ -5332,7 +5415,7 @@ class BotRatings(AbstractModel):
 
     @property
     def VerifiedBotRequestsAction(self):
-        r"""Execution action for friendly Bot request. SecurityAction Name parameter supports: <li>Deny: block;</li><li>Monitor: observe;</li><li>Allow: pass;</li><li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>.
+        r"""Execution action of friendly Bot requests. The Name parameter of SecurityAction supports the following values: <li>Deny: block;</li><li>Monitor: observe;</li><li>Allow: Allow;</li><li>Challenge: Challenge. The ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._VerifiedBotRequestsAction
@@ -5343,7 +5426,7 @@ class BotRatings(AbstractModel):
 
     @property
     def HumanRequestsAction(self):
-        r"""Execution action for a normal Bot request. valid values for the Name parameter in SecurityAction: <li>Allow: pass.</li>.
+        r"""Execution action for normal Bot requests. Valid values of SecurityAction Name: <li>Allow: Allow.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._HumanRequestsAction
@@ -5377,21 +5460,21 @@ class BotRatings(AbstractModel):
 
 
 class BotSessionValidation(AbstractModel):
-    r"""Specifies the configuration for Cookie verification and session tracking behavior.
+    r"""Cookie verification and session tracking behavior configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _IssueNewBotSessionCookie: Whether to update Cookie and validate. valid values: <li>on: update Cookie and validate;</li> <li>off: verify only.</li>.
+        :param _IssueNewBotSessionCookie: Whether to update the Cookie and verify. Valid values: <li>on: update the Cookie and verify;</li><li>off: verify only.</li>
         :type IssueNewBotSessionCookie: str
-        :param _MaxNewSessionTriggerConfig: Specifies the trigger threshold for updating and validating cookies. valid only when IssueNewBotSessionCookie is set to on.
+        :param _MaxNewSessionTriggerConfig: Update threshold for cookie update and validation. Valid only when IssueNewBotSessionCookie is on.
         :type MaxNewSessionTriggerConfig: :class:`tencentcloud.teo.v20220901.models.MaxNewSessionTriggerConfig`
-        :param _SessionExpiredAction: Execution action when no Cookie is carried or the Cookie expired. valid values for the Name parameter in SecurityAction: <li>Deny: block, where Stall can be configured in DenyActionParameters;</li><li>Monitor: observe;</li><li>Allow: respond after wait, where MinDelayTime and MaxDelayTime must be configured in AllowActionParameters.</li>.
+        :param _SessionExpiredAction: Execution action without a Cookie or with an expired Cookie. Supported Name values for SecurityAction: <li>Deny: block. DenyActionParameters supports Stall configuration.</li><li>Monitor: observe.</li><li>Allow: respond after waiting. AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>
         :type SessionExpiredAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _SessionInvalidAction: Execution action for invalid Cookie. valid values for the Name parameter in SecurityAction: <li>Deny: block, where the DenyActionParameters supports Stall configuration;</li><li>Monitor: observe;</li><li>Allow: respond after wait, where AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>.
+        :param _SessionInvalidAction: Execution action for invalid Cookie. The Name parameter of SecurityAction supports the following values: <li>Deny: block. DenyActionParameters supports the Stall configuration.</li><li>Monitor: observe.</li><li>Allow: respond after waiting. AllowActionParameters requires the MinDelayTime and MaxDelayTime configurations.</li>
         :type SessionInvalidAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _SessionRateControl: Specifies the session rate and periodic feature verification configuration.
+        :param _SessionRateControl: Specific configuration for session rate and periodic feature verification.
         :type SessionRateControl: :class:`tencentcloud.teo.v20220901.models.SessionRateControl`
         """
         self._IssueNewBotSessionCookie = None
@@ -5402,7 +5485,7 @@ class BotSessionValidation(AbstractModel):
 
     @property
     def IssueNewBotSessionCookie(self):
-        r"""Whether to update Cookie and validate. valid values: <li>on: update Cookie and validate;</li> <li>off: verify only.</li>.
+        r"""Whether to update the Cookie and verify. Valid values: <li>on: update the Cookie and verify;</li><li>off: verify only.</li>
         :rtype: str
         """
         return self._IssueNewBotSessionCookie
@@ -5413,7 +5496,7 @@ class BotSessionValidation(AbstractModel):
 
     @property
     def MaxNewSessionTriggerConfig(self):
-        r"""Specifies the trigger threshold for updating and validating cookies. valid only when IssueNewBotSessionCookie is set to on.
+        r"""Update threshold for cookie update and validation. Valid only when IssueNewBotSessionCookie is on.
         :rtype: :class:`tencentcloud.teo.v20220901.models.MaxNewSessionTriggerConfig`
         """
         return self._MaxNewSessionTriggerConfig
@@ -5424,7 +5507,7 @@ class BotSessionValidation(AbstractModel):
 
     @property
     def SessionExpiredAction(self):
-        r"""Execution action when no Cookie is carried or the Cookie expired. valid values for the Name parameter in SecurityAction: <li>Deny: block, where Stall can be configured in DenyActionParameters;</li><li>Monitor: observe;</li><li>Allow: respond after wait, where MinDelayTime and MaxDelayTime must be configured in AllowActionParameters.</li>.
+        r"""Execution action without a Cookie or with an expired Cookie. Supported Name values for SecurityAction: <li>Deny: block. DenyActionParameters supports Stall configuration.</li><li>Monitor: observe.</li><li>Allow: respond after waiting. AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._SessionExpiredAction
@@ -5435,7 +5518,7 @@ class BotSessionValidation(AbstractModel):
 
     @property
     def SessionInvalidAction(self):
-        r"""Execution action for invalid Cookie. valid values for the Name parameter in SecurityAction: <li>Deny: block, where the DenyActionParameters supports Stall configuration;</li><li>Monitor: observe;</li><li>Allow: respond after wait, where AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>.
+        r"""Execution action for invalid Cookie. The Name parameter of SecurityAction supports the following values: <li>Deny: block. DenyActionParameters supports the Stall configuration.</li><li>Monitor: observe.</li><li>Allow: respond after waiting. AllowActionParameters requires the MinDelayTime and MaxDelayTime configurations.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._SessionInvalidAction
@@ -5446,7 +5529,7 @@ class BotSessionValidation(AbstractModel):
 
     @property
     def SessionRateControl(self):
-        r"""Specifies the session rate and periodic feature verification configuration.
+        r"""Specific configuration for session rate and periodic feature verification.
         :rtype: :class:`tencentcloud.teo.v20220901.models.SessionRateControl`
         """
         return self._SessionRateControl
@@ -5758,20 +5841,20 @@ Default: `source_to_eo`.
 
 
 class BrowserImpersonationDetection(AbstractModel):
-    r"""Browser spoofing identification rule (formerly active feature detection rule) configuration.
+    r"""Configuration of browser spoofing identification rules (formerly active feature detection rules).
 
     """
 
     def __init__(self):
         r"""
-        :param _Rules: List of browser spoofing identification Rules. when using ModifySecurityPolicy to modify Web protection configuration: <br> <li>if Rules parameter in SecurityPolicy.BotManagement.BrowserImpersonationDetection is not specified or parameter length is zero: clear all browser spoofing identification rule configurations.</li> <li>if BrowserImpersonationDetection parameter value is unspecified in SecurityPolicy.BotManagement parameters: keep existing browser spoofing identification rule configurations without modification.</li>.
+        :param _Rules: List of browser spoofing identification rules. When using ModifySecurityPolicy to modify Web protection configuration: <br> <li> If the Rules parameter in SecurityPolicy.BotManagement.BrowserImpersonationDetection is not specified, or the parameter length is zero: clear all browser spoofing identification rule configurations.</li> <li> If the BrowserImpersonationDetection parameter value is not specified in the SecurityPolicy.BotManagement parameter: keep the existing browser spoofing identification rule configuration without modification.</li>
         :type Rules: list of BrowserImpersonationDetectionRule
         """
         self._Rules = None
 
     @property
     def Rules(self):
-        r"""List of browser spoofing identification Rules. when using ModifySecurityPolicy to modify Web protection configuration: <br> <li>if Rules parameter in SecurityPolicy.BotManagement.BrowserImpersonationDetection is not specified or parameter length is zero: clear all browser spoofing identification rule configurations.</li> <li>if BrowserImpersonationDetection parameter value is unspecified in SecurityPolicy.BotManagement parameters: keep existing browser spoofing identification rule configurations without modification.</li>.
+        r"""List of browser spoofing identification rules. When using ModifySecurityPolicy to modify Web protection configuration: <br> <li> If the Rules parameter in SecurityPolicy.BotManagement.BrowserImpersonationDetection is not specified, or the parameter length is zero: clear all browser spoofing identification rule configurations.</li> <li> If the BrowserImpersonationDetection parameter value is not specified in the SecurityPolicy.BotManagement parameter: keep the existing browser spoofing identification rule configuration without modification.</li>
         :rtype: list of BrowserImpersonationDetectionRule
         """
         return self._Rules
@@ -5799,15 +5882,15 @@ class BrowserImpersonationDetection(AbstractModel):
 
 
 class BrowserImpersonationDetectionAction(AbstractModel):
-    r"""Specifies the Action of the Bot browser verification rule (formerly active feature detection rule).
+    r"""Action of the Bot browser verification rule (formerly active feature detection rule).
 
     """
 
     def __init__(self):
         r"""
-        :param _BotSessionValidation: Configures Cookie verification and session tracking.
+        :param _BotSessionValidation: Cookie verification and session tracking configuration.
         :type BotSessionValidation: :class:`tencentcloud.teo.v20220901.models.BotSessionValidation`
-        :param _ClientBehaviorDetection: Configures client behavior validation.
+        :param _ClientBehaviorDetection: Client behavior validation configuration.
         :type ClientBehaviorDetection: :class:`tencentcloud.teo.v20220901.models.ClientBehaviorDetection`
         """
         self._BotSessionValidation = None
@@ -5815,7 +5898,7 @@ class BrowserImpersonationDetectionAction(AbstractModel):
 
     @property
     def BotSessionValidation(self):
-        r"""Configures Cookie verification and session tracking.
+        r"""Cookie verification and session tracking configuration.
         :rtype: :class:`tencentcloud.teo.v20220901.models.BotSessionValidation`
         """
         return self._BotSessionValidation
@@ -5826,7 +5909,7 @@ class BrowserImpersonationDetectionAction(AbstractModel):
 
     @property
     def ClientBehaviorDetection(self):
-        r"""Configures client behavior validation.
+        r"""Client behavior validation configuration.
         :rtype: :class:`tencentcloud.teo.v20220901.models.ClientBehaviorDetection`
         """
         return self._ClientBehaviorDetection
@@ -5860,15 +5943,15 @@ class BrowserImpersonationDetectionRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: Browser spoofing identification rule ID. rule ID supports different rule configuration operations: <li> <b>add</b> a new rule: ID is empty or without specifying the ID parameter;</li> <li> <b>modify</b> an existing rule: specify the rule ID that needs to be updated/modified;</li> <li> <b>delete</b> an existing rule: existing Rules not included in the Rules list of the BrowserImpersonationDetection parameter will be deleted.</li>.
+        :param _Id: ID of the browser spoofing identification rule.<br>You can perform different rule configuration operations by rule ID:<br> <li> <b>Add</b> a new rule: leave the ID empty or unspecified;</li><li><b>Modify</b> an existing rule: specify the rule ID that needs to be updated/modified;</li><li><b>Delete</b> an existing rule: existing rules not included in the Rules list in the BrowserImpersonationDetection parameter will be deleted.</li>
         :type Id: str
-        :param _Name: Specifies the name of the browser spoofing identification rule.
+        :param _Name: Name of the browser spoofing identification rule.
         :type Name: str
-        :param _Enabled: Whether browser spoofing detection is enabled. valid values: <li>on: enabled;</li><li>off: disabled.</li>.
+        :param _Enabled: Whether to enable the browser forgery identification rule. Valid values: <li>on: enable;</li><li>off: disable.</li>
         :type Enabled: str
-        :param _Condition: Specifies the specific content of browser spoofing identification rules, which only support configuration of request Method (Method), request Path (Path), and request URL, and must comply with expression grammar. for detailed specifications, please refer to the product document.
+        :param _Condition: Specific content of the browser spoofing identification rule. It only supports the configuration of request Method, request Path, and request URL, which must comply with expression syntax. For detailed specifications, see the product document.
         :type Condition: str
-        :param _Action: Describes the handling method for browser spoofing identification rules, including Cookie verification, session tracking configuration, and client behavior validation configuration.
+        :param _Action: Handling method for browser spoofing identification rules, including Cookie verification, session tracking configuration, and client behavior validation configuration.
         :type Action: :class:`tencentcloud.teo.v20220901.models.BrowserImpersonationDetectionAction`
         """
         self._Id = None
@@ -5879,7 +5962,7 @@ class BrowserImpersonationDetectionRule(AbstractModel):
 
     @property
     def Id(self):
-        r"""Browser spoofing identification rule ID. rule ID supports different rule configuration operations: <li> <b>add</b> a new rule: ID is empty or without specifying the ID parameter;</li> <li> <b>modify</b> an existing rule: specify the rule ID that needs to be updated/modified;</li> <li> <b>delete</b> an existing rule: existing Rules not included in the Rules list of the BrowserImpersonationDetection parameter will be deleted.</li>.
+        r"""ID of the browser spoofing identification rule.<br>You can perform different rule configuration operations by rule ID:<br> <li> <b>Add</b> a new rule: leave the ID empty or unspecified;</li><li><b>Modify</b> an existing rule: specify the rule ID that needs to be updated/modified;</li><li><b>Delete</b> an existing rule: existing rules not included in the Rules list in the BrowserImpersonationDetection parameter will be deleted.</li>
         :rtype: str
         """
         return self._Id
@@ -5890,7 +5973,7 @@ class BrowserImpersonationDetectionRule(AbstractModel):
 
     @property
     def Name(self):
-        r"""Specifies the name of the browser spoofing identification rule.
+        r"""Name of the browser spoofing identification rule.
         :rtype: str
         """
         return self._Name
@@ -5901,7 +5984,7 @@ class BrowserImpersonationDetectionRule(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""Whether browser spoofing detection is enabled. valid values: <li>on: enabled;</li><li>off: disabled.</li>.
+        r"""Whether to enable the browser forgery identification rule. Valid values: <li>on: enable;</li><li>off: disable.</li>
         :rtype: str
         """
         return self._Enabled
@@ -5912,7 +5995,7 @@ class BrowserImpersonationDetectionRule(AbstractModel):
 
     @property
     def Condition(self):
-        r"""Specifies the specific content of browser spoofing identification rules, which only support configuration of request Method (Method), request Path (Path), and request URL, and must comply with expression grammar. for detailed specifications, please refer to the product document.
+        r"""Specific content of the browser spoofing identification rule. It only supports the configuration of request Method, request Path, and request URL, which must comply with expression syntax. For detailed specifications, see the product document.
         :rtype: str
         """
         return self._Condition
@@ -5923,7 +6006,7 @@ class BrowserImpersonationDetectionRule(AbstractModel):
 
     @property
     def Action(self):
-        r"""Describes the handling method for browser spoofing identification rules, including Cookie verification, session tracking configuration, and client behavior validation configuration.
+        r"""Handling method for browser spoofing identification rules, including Cookie verification, session tracking configuration, and client behavior validation configuration.
         :rtype: :class:`tencentcloud.teo.v20220901.models.BrowserImpersonationDetectionAction`
         """
         return self._Action
@@ -5952,20 +6035,20 @@ class BrowserImpersonationDetectionRule(AbstractModel):
 
 
 class CAPTCHAPageChallenge(AbstractModel):
-    r"""Human-Machine verification page configuration.
+    r"""Specific configuration of the CAPTCHA page.
 
     """
 
     def __init__(self):
         r"""
-        :param _Enabled: Whether the human-machine verification page is enabled. valid values: <li>on: enabled;</li> <li>off: disabled.</li>.
+        :param _Enabled: Whether human-machine verification is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li>
         :type Enabled: str
         """
         self._Enabled = None
 
     @property
     def Enabled(self):
-        r"""Whether the human-machine verification page is enabled. valid values: <li>on: enabled;</li> <li>off: disabled.</li>.
+        r"""Whether human-machine verification is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li>
         :rtype: str
         """
         return self._Enabled
@@ -7327,17 +7410,17 @@ u200c<li>`failed`: Application rejected</li>
 
 
 class ChallengeActionParameters(AbstractModel):
-    r"""Additional parameter for the security executed action when it is a challenge.
+    r"""Additional parameter for the safe execution action when it is a challenge.
 
-    This parameter is used for specifying the extra handling action taken by the system when a security rule is hit and a challenge action is executed.
-    Challenge disposal actions are segmented by ChallengeOption. Different challenge types correspond to different interaction forms and parameter requirements. The system will apply the corresponding parameter configuration according to the selected challenge type.
-    ChallengeActionParameters supports the following challenge disposition types: <li>Interstitial challenge: responds with a new page and runs the authentication mechanism on the new page. Corresponds to the ChallengeOption value InterstitialChallenge.</li><li>Inline challenge: responds with an SDK challenge. Corresponds to the ChallengeOption value InlineChallenge.</li><li>JavaScript challenge: invisible browser verification. The browser automatically performs verification and shows the requested resource. Corresponds to the ChallengeOption value JSChallenge.</li><li>Managed challenge: responds with a redirect page containing a JavaScript program, used for verifying the browser runtime environment. Corresponds to the ChallengeOption value ManagedChallenge.</li>
+    This parameter is used to specify the extra handling action taken by the system when a security rule is hit and a challenge action is executed.
+    Challenge disposal actions are segmented through ChallengeOption. Different challenge types correspond to different interaction forms and parameter requirements. The system will bring the corresponding parameter configuration into effect according to the selected challenge type.
+    ChallengeActionParameters supports the following challenge disposition types: <li>Interstitial challenge: responds with a new page and runs the authentication mechanism within the new page. The corresponding ChallengeOption value is InterstitialChallenge.</li><li>Inline challenge: responds with an SDK challenge. The corresponding ChallengeOption value is InlineChallenge.</li><li>JavaScript challenge: invisible verification in the browser. The browser automatically performs verification and shows the requested resource. The corresponding ChallengeOption value is JSChallenge.</li><li>Managed challenge: responds with a redirect page containing a JavaScript program, used for verification of the browser runtime environment. The corresponding ChallengeOption value is ManagedChallenge.</li>
 
     """
 
     def __init__(self):
         r"""
-        :param _ChallengeOption: <p>Specific challenge action for safe execution.</p><p>Enumeration values:</p><ul><li>InterstitialChallenge: interstitial challenge;</li><li>InlineChallenge: embedded challenge (SDK challenge);</li><li>ManagedChallenge: managed challenge. Applicable only to HTML web pages directly accessed by users through a browser. Verification cannot be completed in scenarios such as API interfaces, XHR/AJAX async requests within web pages, mobile apps, and command line tools. Do not configure it;</li><li>JSChallenge: JavaScript challenge. Applicable only to HTML web pages directly accessed by users through a browser. Verification cannot be completed in scenarios such as API interfaces, XHR/AJAX async requests within web pages, mobile apps, and command line tools. Do not configure it.</li></ul>
+        :param _ChallengeOption: <p>Specific challenge action for safe execution.</p><p>Enumeration values:</p><ul><li>InterstitialChallenge: Interstitial challenge;</li><li>InlineChallenge: Embedded challenge (SDK challenge);</li><li>ManagedChallenge: Managed challenge. Applicable only to HTML web pages directly accessed by users through a browser. API interfaces, XHR/AJAX asynchronous requests within web pages, mobile apps, command line tools, and other scenarios cannot complete the verification. Do not configure;</li><li>JSChallenge: JavaScript challenge. Applicable only to HTML web pages directly accessed by users through a browser. API interfaces, XHR/AJAX asynchronous requests within web pages, mobile apps, command line tools, and other scenarios cannot complete the verification. Do not configure.</li></ul>
         :type ChallengeOption: str
         :param _Interval: <p>Time interval for repeating the challenge. This field is required when ChallengeOption is InterstitialChallenge/InlineChallenge. Default value: 300s. Supported units: <li>s: second, value ranges from 1 to 60;</li><li>m: minute, value ranges from 1 to 60;</li><li>h: hour, value ranges from 1 to 24.</li></p>
         :type Interval: str
@@ -7350,7 +7433,7 @@ class ChallengeActionParameters(AbstractModel):
 
     @property
     def ChallengeOption(self):
-        r"""<p>Specific challenge action for safe execution.</p><p>Enumeration values:</p><ul><li>InterstitialChallenge: interstitial challenge;</li><li>InlineChallenge: embedded challenge (SDK challenge);</li><li>ManagedChallenge: managed challenge. Applicable only to HTML web pages directly accessed by users through a browser. Verification cannot be completed in scenarios such as API interfaces, XHR/AJAX async requests within web pages, mobile apps, and command line tools. Do not configure it;</li><li>JSChallenge: JavaScript challenge. Applicable only to HTML web pages directly accessed by users through a browser. Verification cannot be completed in scenarios such as API interfaces, XHR/AJAX async requests within web pages, mobile apps, and command line tools. Do not configure it.</li></ul>
+        r"""<p>Specific challenge action for safe execution.</p><p>Enumeration values:</p><ul><li>InterstitialChallenge: Interstitial challenge;</li><li>InlineChallenge: Embedded challenge (SDK challenge);</li><li>ManagedChallenge: Managed challenge. Applicable only to HTML web pages directly accessed by users through a browser. API interfaces, XHR/AJAX asynchronous requests within web pages, mobile apps, command line tools, and other scenarios cannot complete the verification. Do not configure;</li><li>JSChallenge: JavaScript challenge. Applicable only to HTML web pages directly accessed by users through a browser. API interfaces, XHR/AJAX asynchronous requests within web pages, mobile apps, command line tools, and other scenarios cannot complete the verification. Do not configure.</li></ul>
         :rtype: str
         """
         return self._ChallengeOption
@@ -7699,28 +7782,30 @@ class CheckRegionHealthStatus(AbstractModel):
 
 
 class ClientAttestationRule(AbstractModel):
-    r"""Client authentication rule.
+    r"""Client authentication rules
 
     """
 
     def __init__(self):
         r"""
-        :param _Id: Client authentication rule ID. supported rule configuration operations by rule ID: <li> <b>add</b> a new rule: leave the ID empty or do not specify the ID parameter.</li> <li> <b>modify</b> an existing rule: specify the rule ID that needs to be updated/modified.</li> <li> <b>delete</b> an existing rule: existing rules not included in the ClientAttestationRule list under BotManagement parameters will be deleted.</li>.
+        :param _Id: <p>ID of the client authentication rule.<br>Different rule configuration operations are supported by rule ID:<br> <li> <b>Add</b> a new rule: leave ID empty or do not specify the ID parameter;</li><li> <b>Modify</b> an existing rule: specify the rule ID to be updated/modified;</li><li> <b>Delete</b> an existing rule: existing rules not included in the ClientAttestationRule list in the BotManagement parameter will be deleted.</li></p>
         :type Id: str
-        :param _Name: Specifies the name of the client authentication rule.
+        :param _Name: <p>Name of the client authentication rule.</p>
         :type Name: str
-        :param _Enabled: Whether the rule is enabled. valid values: <li>`on`: enable</li> <li>`off`: disable</li>.
+        :param _Enabled: <p>Whether the rule is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li></p>
         :type Enabled: str
-        :param _Priority: Priority of rules. a smaller value indicates higher priority execution. value range: 0-100. default value: 0.
+        :param _Priority: <p>Priority of rules. A smaller value indicates higher priority. Value range: 0-100. Default value: 0.</p>
         :type Priority: int
-        :param _Condition: The rule content must comply with expression grammar. for details, see the product document.
+        :param _Condition: <p>The specific content of the rule must comply with the expression syntax. For detailed specifications, see the product document.</p>
         :type Condition: str
-        :param _AttesterId: Specifies the client authentication option ID.
+        :param _AttesterId: <p>Client authentication option ID.</p>
         :type AttesterId: str
-        :param _DeviceProfiles: Client device configuration. if the DeviceProfiles parameter value is not specified in the ClientAttestationRules parameter, keep the existing client device configuration and do not modify it.
-        :type DeviceProfiles: list of DeviceProfile
-        :param _InvalidAttestationAction: Handling method for failed client authentication. valid values for SecurityAction Name: <li>Deny: block;</li> <li>Monitor: observation;</li> <li>Redirect: redirection;</li> <li>Challenge: Challenge.</li> default value: Monitor.
+        :param _InvalidAttestationAction: <p>Handling method when client authentication fails. SecurityAction.Name values are as follows:</p><ul><li>Allow: allow, where AllowActionParameters supports MinDelayTime and MaxDelayTime configuration;</li><li>Deny: block, where DenyActionParameters supports BlockIp, ReturnCustomPage, and Stall configuration;</li><li>Monitor: observe;</li><li>Challenge: challenge, where ChallengeActionParameters.ChallengeOption supports JSChallenge, ManagedChallenge, InterstitialChallenge, and InlineChallenge;</li><li>Redirect: redirect to a URL.</li></ul>
         :type InvalidAttestationAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        :param _DeviceProfiles: <p>Client device configuration. If the DeviceProfiles parameter value is not specified in the ClientAttestationRules parameter: keep the existing client device configuration without modification.</p>
+        :type DeviceProfiles: list of DeviceProfile
+        :param _AccountProtectionSettings: <p>Account protection configuration.</p>
+        :type AccountProtectionSettings: :class:`tencentcloud.teo.v20220901.models.AccountProtectionSettings`
         """
         self._Id = None
         self._Name = None
@@ -7728,12 +7813,13 @@ class ClientAttestationRule(AbstractModel):
         self._Priority = None
         self._Condition = None
         self._AttesterId = None
-        self._DeviceProfiles = None
         self._InvalidAttestationAction = None
+        self._DeviceProfiles = None
+        self._AccountProtectionSettings = None
 
     @property
     def Id(self):
-        r"""Client authentication rule ID. supported rule configuration operations by rule ID: <li> <b>add</b> a new rule: leave the ID empty or do not specify the ID parameter.</li> <li> <b>modify</b> an existing rule: specify the rule ID that needs to be updated/modified.</li> <li> <b>delete</b> an existing rule: existing rules not included in the ClientAttestationRule list under BotManagement parameters will be deleted.</li>.
+        r"""<p>ID of the client authentication rule.<br>Different rule configuration operations are supported by rule ID:<br> <li> <b>Add</b> a new rule: leave ID empty or do not specify the ID parameter;</li><li> <b>Modify</b> an existing rule: specify the rule ID to be updated/modified;</li><li> <b>Delete</b> an existing rule: existing rules not included in the ClientAttestationRule list in the BotManagement parameter will be deleted.</li></p>
         :rtype: str
         """
         return self._Id
@@ -7744,7 +7830,7 @@ class ClientAttestationRule(AbstractModel):
 
     @property
     def Name(self):
-        r"""Specifies the name of the client authentication rule.
+        r"""<p>Name of the client authentication rule.</p>
         :rtype: str
         """
         return self._Name
@@ -7755,7 +7841,7 @@ class ClientAttestationRule(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""Whether the rule is enabled. valid values: <li>`on`: enable</li> <li>`off`: disable</li>.
+        r"""<p>Whether the rule is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li></p>
         :rtype: str
         """
         return self._Enabled
@@ -7766,7 +7852,7 @@ class ClientAttestationRule(AbstractModel):
 
     @property
     def Priority(self):
-        r"""Priority of rules. a smaller value indicates higher priority execution. value range: 0-100. default value: 0.
+        r"""<p>Priority of rules. A smaller value indicates higher priority. Value range: 0-100. Default value: 0.</p>
         :rtype: int
         """
         return self._Priority
@@ -7777,7 +7863,7 @@ class ClientAttestationRule(AbstractModel):
 
     @property
     def Condition(self):
-        r"""The rule content must comply with expression grammar. for details, see the product document.
+        r"""<p>The specific content of the rule must comply with the expression syntax. For detailed specifications, see the product document.</p>
         :rtype: str
         """
         return self._Condition
@@ -7788,7 +7874,7 @@ class ClientAttestationRule(AbstractModel):
 
     @property
     def AttesterId(self):
-        r"""Specifies the client authentication option ID.
+        r"""<p>Client authentication option ID.</p>
         :rtype: str
         """
         return self._AttesterId
@@ -7798,8 +7884,19 @@ class ClientAttestationRule(AbstractModel):
         self._AttesterId = AttesterId
 
     @property
+    def InvalidAttestationAction(self):
+        r"""<p>Handling method when client authentication fails. SecurityAction.Name values are as follows:</p><ul><li>Allow: allow, where AllowActionParameters supports MinDelayTime and MaxDelayTime configuration;</li><li>Deny: block, where DenyActionParameters supports BlockIp, ReturnCustomPage, and Stall configuration;</li><li>Monitor: observe;</li><li>Challenge: challenge, where ChallengeActionParameters.ChallengeOption supports JSChallenge, ManagedChallenge, InterstitialChallenge, and InlineChallenge;</li><li>Redirect: redirect to a URL.</li></ul>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._InvalidAttestationAction
+
+    @InvalidAttestationAction.setter
+    def InvalidAttestationAction(self, InvalidAttestationAction):
+        self._InvalidAttestationAction = InvalidAttestationAction
+
+    @property
     def DeviceProfiles(self):
-        r"""Client device configuration. if the DeviceProfiles parameter value is not specified in the ClientAttestationRules parameter, keep the existing client device configuration and do not modify it.
+        r"""<p>Client device configuration. If the DeviceProfiles parameter value is not specified in the ClientAttestationRules parameter: keep the existing client device configuration without modification.</p>
         :rtype: list of DeviceProfile
         """
         return self._DeviceProfiles
@@ -7809,15 +7906,15 @@ class ClientAttestationRule(AbstractModel):
         self._DeviceProfiles = DeviceProfiles
 
     @property
-    def InvalidAttestationAction(self):
-        r"""Handling method for failed client authentication. valid values for SecurityAction Name: <li>Deny: block;</li> <li>Monitor: observation;</li> <li>Redirect: redirection;</li> <li>Challenge: Challenge.</li> default value: Monitor.
-        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+    def AccountProtectionSettings(self):
+        r"""<p>Account protection configuration.</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AccountProtectionSettings`
         """
-        return self._InvalidAttestationAction
+        return self._AccountProtectionSettings
 
-    @InvalidAttestationAction.setter
-    def InvalidAttestationAction(self, InvalidAttestationAction):
-        self._InvalidAttestationAction = InvalidAttestationAction
+    @AccountProtectionSettings.setter
+    def AccountProtectionSettings(self, AccountProtectionSettings):
+        self._AccountProtectionSettings = AccountProtectionSettings
 
 
     def _deserialize(self, params):
@@ -7827,15 +7924,18 @@ class ClientAttestationRule(AbstractModel):
         self._Priority = params.get("Priority")
         self._Condition = params.get("Condition")
         self._AttesterId = params.get("AttesterId")
+        if params.get("InvalidAttestationAction") is not None:
+            self._InvalidAttestationAction = SecurityAction()
+            self._InvalidAttestationAction._deserialize(params.get("InvalidAttestationAction"))
         if params.get("DeviceProfiles") is not None:
             self._DeviceProfiles = []
             for item in params.get("DeviceProfiles"):
                 obj = DeviceProfile()
                 obj._deserialize(item)
                 self._DeviceProfiles.append(obj)
-        if params.get("InvalidAttestationAction") is not None:
-            self._InvalidAttestationAction = SecurityAction()
-            self._InvalidAttestationAction._deserialize(params.get("InvalidAttestationAction"))
+        if params.get("AccountProtectionSettings") is not None:
+            self._AccountProtectionSettings = AccountProtectionSettings()
+            self._AccountProtectionSettings._deserialize(params.get("AccountProtectionSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7847,20 +7947,20 @@ class ClientAttestationRule(AbstractModel):
 
 
 class ClientAttestationRules(AbstractModel):
-    r"""Describes the client authentication configuration.
+    r"""Client authentication configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _Rules: List of client authentication. when using ModifySecurityPolicy to modify Web protection configuration: <li> if Rules in SecurityPolicy.BotManagement.ClientAttestationRules is not specified or the parameter length of Rules is zero: clear all client authentication rule configuration. </li> <li> if ClientAttestationRules in SecurityPolicy.BotManagement parameters is unspecified: keep existing client authentication rule configuration and do not modify. </li>.
+        :param _Rules: List of client authentication. When using ModifySecurityPolicy to modify Web protection configuration: <li> If the Rules parameter in SecurityPolicy.BotManagement.ClientAttestationRules is not specified, or the Rules parameter length is zero: clear all client authentication rule configurations.</li> <li> If the ClientAttestationRules parameter value is not specified in the SecurityPolicy.BotManagement parameter: keep the existing client authentication rule configuration without modification.</li>
         :type Rules: list of ClientAttestationRule
         """
         self._Rules = None
 
     @property
     def Rules(self):
-        r"""List of client authentication. when using ModifySecurityPolicy to modify Web protection configuration: <li> if Rules in SecurityPolicy.BotManagement.ClientAttestationRules is not specified or the parameter length of Rules is zero: clear all client authentication rule configuration. </li> <li> if ClientAttestationRules in SecurityPolicy.BotManagement parameters is unspecified: keep existing client authentication rule configuration and do not modify. </li>.
+        r"""List of client authentication. When using ModifySecurityPolicy to modify Web protection configuration: <li> If the Rules parameter in SecurityPolicy.BotManagement.ClientAttestationRules is not specified, or the Rules parameter length is zero: clear all client authentication rule configurations.</li> <li> If the ClientAttestationRules parameter value is not specified in the SecurityPolicy.BotManagement parameter: keep the existing client authentication rule configuration without modification.</li>
         :rtype: list of ClientAttestationRule
         """
         return self._Rules
@@ -8065,25 +8165,25 @@ class ClientAttester(AbstractModel):
 
 
 class ClientBehaviorDetection(AbstractModel):
-    r"""Client behavior validation.
+    r"""Client behavior validation
 
     """
 
     def __init__(self):
         r"""
-        :param _CryptoChallengeIntensity: Specifies the proof-of-work strength. valid values: <li>low: low;</li><li>medium: medium;</li><li>high: high.</li>.
+        :param _CryptoChallengeIntensity: Proof-of-work strength. Valid values: <li>low: Low;</li><li>medium: Medium;</li><li>high: High.</li>
         :type CryptoChallengeIntensity: str
-        :param _CryptoChallengeDelayBefore: Specifies the execution mode for client behavior verification. valid values: <li>0ms: immediate execution;</li> <li>100ms: delay 100ms execution;</li> <li>200ms: delay 200ms execution;</li> <li>300ms: delay 300ms execution;</li> <li>400ms: delay 400ms execution;</li> <li>500ms: delay 500ms execution;</li> <li>600ms: delay 600ms execution;</li> <li>700ms: delay 700ms execution;</li> <li>800ms: delay 800ms execution;</li> <li>900ms: delay 900ms execution;</li> <li>1000ms: delay 1000ms execution.</li>.
+        :param _CryptoChallengeDelayBefore: Execution mode of client behavior validation. Valid values: <li>0ms: immediately execute;</li><li>100ms: execute after a 100ms delay;</li><li>200ms: execute after a 200ms delay;</li><li>300ms: execute after a 300ms delay;</li><li>400ms: execute after a 400ms delay;</li><li>500ms: execute after a 500ms delay;</li><li>600ms: execute after a 600ms delay;</li><li>700ms: execute after a 700ms delay;</li><li>800ms: execute after an 800ms delay;</li><li>900ms: execute after a 900ms delay;</li><li>1000ms: execute after a 1000ms delay.</li>
         :type CryptoChallengeDelayBefore: str
-        :param _MaxChallengeCountInterval: Time window for trigger threshold statistics. valid values: <li>5s: within 5 seconds;</li><li>10s: within 10 seconds;</li><li>15s: within 15 seconds;</li><li>30s: within 30 seconds;</li><li>60s: within 60 seconds;</li><li>5m: within 5 minutes;</li><li>10m: within 10 minutes;</li><li>30m: within 30 minutes;</li><li>60m: within 60 minutes.</li>.
+        :param _MaxChallengeCountInterval: Time window for trigger threshold statistics. Valid values: <li>5s: within 5 seconds;</li><li>10s: within 10 seconds;</li><li>15s: within 15 seconds;</li><li>30s: within 30 seconds;</li><li>60s: within 60 seconds;</li><li>5m: within 5 minutes;</li><li>10m: within 10 minutes;</li><li>30m: within 30 minutes;</li><li>60m: within 60 minutes.</li>
         :type MaxChallengeCountInterval: str
-        :param _MaxChallengeCountThreshold: Trigger threshold cumulative count. value range: 1-100000000.
+        :param _MaxChallengeCountThreshold: Cumulative count of trigger threshold statistics. Value range: 1-100000000.
         :type MaxChallengeCountThreshold: int
-        :param _ChallengeNotFinishedAction: Execution action when client-side javascript is not enabled (test not completed). valid values for SecurityAction Name: <li>Deny: block, where Stall configuration is supported in DenyActionParameters;</li><li>Monitor: observe;</li><li>Allow: respond after waiting, where MinDelayTime and MaxDelayTime configuration is required in AllowActionParameters.</li>.
+        :param _ChallengeNotFinishedAction: Execution action when client-side JavaScript is not enabled (test not completed). Supported values for SecurityAction Name: <li>Deny: block. DenyActionParameters supports Stall configuration;</li><li>Monitor: observe;</li><li>Allow: respond after waiting. AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>
         :type ChallengeNotFinishedAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _ChallengeTimeoutAction: The execution action for client-side detection timeout. valid values for the Name parameter in SecurityAction: <li>Deny: block, where Stall can be configured in DenyActionParameters;</li> <li>Monitor: observe;</li> <li>Allow: respond after wait, where MinDelayTime and MaxDelayTime must be configured in AllowActionParameters.</li>.
+        :param _ChallengeTimeoutAction: Execution action for client-side detection timeout. Supported values of SecurityAction Name: <li>Deny: block, where DenyActionParameters supports Stall configuration;</li><li>Monitor: observe;</li><li>Allow: respond after waiting, where AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>
         :type ChallengeTimeoutAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _BotClientAction: The execution action of the Bot client. valid values for the Name parameter in SecurityAction: <li>Deny: block, where the Stall configuration is supported in DenyActionParameters;</li><li>Monitor: observation;</li><li>Allow: respond after wait, where MinDelayTime and MaxDelayTime configurations are required in AllowActionParameters.</li>.
+        :param _BotClientAction: Execution action of the Bot client. Supported values of Name in SecurityAction: <li>Deny: block, where Stall configuration is supported in DenyActionParameters;</li><li>Monitor: observe;</li><li>Allow: respond after waiting, where MinDelayTime and MaxDelayTime configuration is required in AllowActionParameters.</li>
         :type BotClientAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         self._CryptoChallengeIntensity = None
@@ -8096,7 +8196,7 @@ class ClientBehaviorDetection(AbstractModel):
 
     @property
     def CryptoChallengeIntensity(self):
-        r"""Specifies the proof-of-work strength. valid values: <li>low: low;</li><li>medium: medium;</li><li>high: high.</li>.
+        r"""Proof-of-work strength. Valid values: <li>low: Low;</li><li>medium: Medium;</li><li>high: High.</li>
         :rtype: str
         """
         return self._CryptoChallengeIntensity
@@ -8107,7 +8207,7 @@ class ClientBehaviorDetection(AbstractModel):
 
     @property
     def CryptoChallengeDelayBefore(self):
-        r"""Specifies the execution mode for client behavior verification. valid values: <li>0ms: immediate execution;</li> <li>100ms: delay 100ms execution;</li> <li>200ms: delay 200ms execution;</li> <li>300ms: delay 300ms execution;</li> <li>400ms: delay 400ms execution;</li> <li>500ms: delay 500ms execution;</li> <li>600ms: delay 600ms execution;</li> <li>700ms: delay 700ms execution;</li> <li>800ms: delay 800ms execution;</li> <li>900ms: delay 900ms execution;</li> <li>1000ms: delay 1000ms execution.</li>.
+        r"""Execution mode of client behavior validation. Valid values: <li>0ms: immediately execute;</li><li>100ms: execute after a 100ms delay;</li><li>200ms: execute after a 200ms delay;</li><li>300ms: execute after a 300ms delay;</li><li>400ms: execute after a 400ms delay;</li><li>500ms: execute after a 500ms delay;</li><li>600ms: execute after a 600ms delay;</li><li>700ms: execute after a 700ms delay;</li><li>800ms: execute after an 800ms delay;</li><li>900ms: execute after a 900ms delay;</li><li>1000ms: execute after a 1000ms delay.</li>
         :rtype: str
         """
         return self._CryptoChallengeDelayBefore
@@ -8118,7 +8218,7 @@ class ClientBehaviorDetection(AbstractModel):
 
     @property
     def MaxChallengeCountInterval(self):
-        r"""Time window for trigger threshold statistics. valid values: <li>5s: within 5 seconds;</li><li>10s: within 10 seconds;</li><li>15s: within 15 seconds;</li><li>30s: within 30 seconds;</li><li>60s: within 60 seconds;</li><li>5m: within 5 minutes;</li><li>10m: within 10 minutes;</li><li>30m: within 30 minutes;</li><li>60m: within 60 minutes.</li>.
+        r"""Time window for trigger threshold statistics. Valid values: <li>5s: within 5 seconds;</li><li>10s: within 10 seconds;</li><li>15s: within 15 seconds;</li><li>30s: within 30 seconds;</li><li>60s: within 60 seconds;</li><li>5m: within 5 minutes;</li><li>10m: within 10 minutes;</li><li>30m: within 30 minutes;</li><li>60m: within 60 minutes.</li>
         :rtype: str
         """
         return self._MaxChallengeCountInterval
@@ -8129,7 +8229,7 @@ class ClientBehaviorDetection(AbstractModel):
 
     @property
     def MaxChallengeCountThreshold(self):
-        r"""Trigger threshold cumulative count. value range: 1-100000000.
+        r"""Cumulative count of trigger threshold statistics. Value range: 1-100000000.
         :rtype: int
         """
         return self._MaxChallengeCountThreshold
@@ -8140,7 +8240,7 @@ class ClientBehaviorDetection(AbstractModel):
 
     @property
     def ChallengeNotFinishedAction(self):
-        r"""Execution action when client-side javascript is not enabled (test not completed). valid values for SecurityAction Name: <li>Deny: block, where Stall configuration is supported in DenyActionParameters;</li><li>Monitor: observe;</li><li>Allow: respond after waiting, where MinDelayTime and MaxDelayTime configuration is required in AllowActionParameters.</li>.
+        r"""Execution action when client-side JavaScript is not enabled (test not completed). Supported values for SecurityAction Name: <li>Deny: block. DenyActionParameters supports Stall configuration;</li><li>Monitor: observe;</li><li>Allow: respond after waiting. AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._ChallengeNotFinishedAction
@@ -8151,7 +8251,7 @@ class ClientBehaviorDetection(AbstractModel):
 
     @property
     def ChallengeTimeoutAction(self):
-        r"""The execution action for client-side detection timeout. valid values for the Name parameter in SecurityAction: <li>Deny: block, where Stall can be configured in DenyActionParameters;</li> <li>Monitor: observe;</li> <li>Allow: respond after wait, where MinDelayTime and MaxDelayTime must be configured in AllowActionParameters.</li>.
+        r"""Execution action for client-side detection timeout. Supported values of SecurityAction Name: <li>Deny: block, where DenyActionParameters supports Stall configuration;</li><li>Monitor: observe;</li><li>Allow: respond after waiting, where AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._ChallengeTimeoutAction
@@ -8162,7 +8262,7 @@ class ClientBehaviorDetection(AbstractModel):
 
     @property
     def BotClientAction(self):
-        r"""The execution action of the Bot client. valid values for the Name parameter in SecurityAction: <li>Deny: block, where the Stall configuration is supported in DenyActionParameters;</li><li>Monitor: observation;</li><li>Allow: respond after wait, where MinDelayTime and MaxDelayTime configurations are required in AllowActionParameters.</li>.
+        r"""Execution action of the Bot client. Supported values of Name in SecurityAction: <li>Deny: block, where Stall configuration is supported in DenyActionParameters;</li><li>Monitor: observe;</li><li>Allow: respond after waiting, where MinDelayTime and MaxDelayTime configuration is required in AllowActionParameters.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._BotClientAction
@@ -8197,17 +8297,17 @@ class ClientBehaviorDetection(AbstractModel):
 
 
 class ClientFiltering(AbstractModel):
-    r"""Intelligent client filtering.
+    r"""Intelligent client filtering
 
     """
 
     def __init__(self):
         r"""
-        :param _Enabled: Whether intelligent client filtering is enabled. valid values: <li>on: enable;</li> <li>off: disable.</li>.
+        :param _Enabled: Whether intelligent client filtering is enabled. Valid values: <li>on: Enable;</li><li>off: Disable.</li>
         :type Enabled: str
-        :param _Id: Rule ID of intelligent client filtering, returned as an output parameter.
+        :param _Id: Rule ID of intelligent client filtering. Output only.
         :type Id: str
-        :param _Action: The handling method of intelligent client filtering. when Enabled is on, this field is required. the Name parameter of SecurityAction supports: <li>Monitor: observation;</li> <li>Deny: block;</li> <li>Challenge: Challenge, where ChallengeActionParameters.Name only supports JSChallenge.</li>.
+        :param _Action: Handling method for intelligent client filtering. This field is required when Enabled is on. Supported values for SecurityAction Name: <li>Monitor: observe;</li><li>Deny: block;</li><li>Challenge: challenge, where ChallengeActionParameters.Name only supports JSChallenge.</li>
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         self._Enabled = None
@@ -8216,7 +8316,7 @@ class ClientFiltering(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""Whether intelligent client filtering is enabled. valid values: <li>on: enable;</li> <li>off: disable.</li>.
+        r"""Whether intelligent client filtering is enabled. Valid values: <li>on: Enable;</li><li>off: Disable.</li>
         :rtype: str
         """
         return self._Enabled
@@ -8227,7 +8327,7 @@ class ClientFiltering(AbstractModel):
 
     @property
     def Id(self):
-        r"""Rule ID of intelligent client filtering, returned as an output parameter.
+        r"""Rule ID of intelligent client filtering. Output only.
         :rtype: str
         """
         return self._Id
@@ -8238,7 +8338,7 @@ class ClientFiltering(AbstractModel):
 
     @property
     def Action(self):
-        r"""The handling method of intelligent client filtering. when Enabled is on, this field is required. the Name parameter of SecurityAction supports: <li>Monitor: observation;</li> <li>Deny: block;</li> <li>Challenge: Challenge, where ChallengeActionParameters.Name only supports JSChallenge.</li>.
+        r"""Handling method for intelligent client filtering. This field is required when Enabled is on. Supported values for SecurityAction Name: <li>Monitor: observe;</li><li>Deny: block;</li><li>Challenge: challenge, where ChallengeActionParameters.Name only supports JSChallenge.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._Action
@@ -16147,25 +16247,25 @@ class CustomField(AbstractModel):
 
 
 class CustomRule(AbstractModel):
-    r"""Custom rule under Web protection feature.
+    r"""Custom rule under the Web protection feature.
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: <p>Custom rule name.</p>
+        :param _Name: <p>Name of the custom rule.</p>
         :type Name: str
-        :param _Condition: <p>The specific content of a custom rule must comply with the expression syntax. For detailed specifications, refer to the <a href="https://www.tencentcloud.com/document/product/1552/125343?from_cn_redirect=1">product document</a>.</p>
+        :param _Condition: <p>The specific content of the custom rule must comply with the expression grammar. For detailed specifications, see the <a href="https://www.tencentcloud.com/document/product/1552/125343?from_cn_redirect=1">product document</a>.</p>
         :type Condition: str
-        :param _Action: <p>Handling action of the custom rule. SecurityAction.Name value range is as follows:</p><ul><li>Allow: allow, where AllowActionParameters supports MinDelayTime and MaxDelayTime configuration;</li><li>Deny: block, where DenyActionParameters supports BlockIp, ReturnCustomPage, and Stall configuration;</li><li>Monitor: observe;</li><li>Challenge: challenge, where ChallengeActionParameters.ChallengeOption supports JSChallenge and ManagedChallenge;</li><li>Redirect: redirect to a URL.</li></ul>
+        :param _Action: <p>Handling action of the custom rule. SecurityAction.Name values are as follows:</p><ul><li>Allow: allow, where AllowActionParameters supports MinDelayTime and MaxDelayTime configuration;</li><li>Deny: block, where DenyActionParameters supports BlockIp, ReturnCustomPage, and Stall configuration;</li><li>Monitor: observe;</li><li>Challenge: challenge, where ChallengeActionParameters.ChallengeOption supports JSChallenge and ManagedChallenge;</li><li>Redirect: redirect to a URL.</li></ul>
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _Enabled: <p>Whether the custom rule is enabled. Valid values: <ul><li>on: enabled;</li><li>off: disabled.</li></ul></p>
+        :param _Enabled: <p>Whether the custom rule is enabled. Valid values: <ul><li>on: Enable;</li><li>off: Disable.</li></ul></p>
         :type Enabled: str
-        :param _Id: <p>ID of the custom rule. The rule ID supports different rule configuration operations: <ul><li>Add a new rule: leave the ID empty or do not specify the ID parameter;</li><li>Modify an existing rule: specify the rule ID that needs to be updated/modified;</li><li>Delete an existing rule: existing rules not included in the Rules list in the CustomRules parameter will be deleted.</li></ul></p>
+        :param _Id: <p>ID of the custom rule. You can perform different rule configuration operations by rule ID: <ul><li>Add a new rule: leave the ID empty or do not specify the ID parameter;</li><li>Modify an existing rule: specify the rule ID that needs to be updated/modified;</li><li>Delete an existing rule: existing rules not included in the Rules list in the CustomRules parameter will be deleted.</li></ul></p>
         :type Id: str
         :param _RuleType: <p>Type of the custom rule. Valid values: <ul><li>BasicAccessRule: basic access control;</li><li>PreciseMatchRule: exact matching rule;</li><li>ManagedAccessRule: expert customized rule, supported only for output parameters.</li></ul>Note: If RuleType is not specified, it defaults to <code>PreciseMatchRule</code>.</p>
         :type RuleType: str
-        :param _Priority: <p>Priority of custom rules. Value range: 0-100. Default value: 0. Only exact matching rules (<code>PreciseMatchRule</code>) are supported.</p>
+        :param _Priority: <p>Priority of custom rules, ranging from 0 to 100, with a default value of 0. Only exact matching rules (<code>PreciseMatchRule</code>) are supported.</p>
         :type Priority: int
         """
         self._Name = None
@@ -16178,7 +16278,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>Custom rule name.</p>
+        r"""<p>Name of the custom rule.</p>
         :rtype: str
         """
         return self._Name
@@ -16189,7 +16289,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Condition(self):
-        r"""<p>The specific content of a custom rule must comply with the expression syntax. For detailed specifications, refer to the <a href="https://www.tencentcloud.com/document/product/1552/125343?from_cn_redirect=1">product document</a>.</p>
+        r"""<p>The specific content of the custom rule must comply with the expression grammar. For detailed specifications, see the <a href="https://www.tencentcloud.com/document/product/1552/125343?from_cn_redirect=1">product document</a>.</p>
         :rtype: str
         """
         return self._Condition
@@ -16200,7 +16300,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Action(self):
-        r"""<p>Handling action of the custom rule. SecurityAction.Name value range is as follows:</p><ul><li>Allow: allow, where AllowActionParameters supports MinDelayTime and MaxDelayTime configuration;</li><li>Deny: block, where DenyActionParameters supports BlockIp, ReturnCustomPage, and Stall configuration;</li><li>Monitor: observe;</li><li>Challenge: challenge, where ChallengeActionParameters.ChallengeOption supports JSChallenge and ManagedChallenge;</li><li>Redirect: redirect to a URL.</li></ul>
+        r"""<p>Handling action of the custom rule. SecurityAction.Name values are as follows:</p><ul><li>Allow: allow, where AllowActionParameters supports MinDelayTime and MaxDelayTime configuration;</li><li>Deny: block, where DenyActionParameters supports BlockIp, ReturnCustomPage, and Stall configuration;</li><li>Monitor: observe;</li><li>Challenge: challenge, where ChallengeActionParameters.ChallengeOption supports JSChallenge and ManagedChallenge;</li><li>Redirect: redirect to a URL.</li></ul>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._Action
@@ -16211,7 +16311,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""<p>Whether the custom rule is enabled. Valid values: <ul><li>on: enabled;</li><li>off: disabled.</li></ul></p>
+        r"""<p>Whether the custom rule is enabled. Valid values: <ul><li>on: Enable;</li><li>off: Disable.</li></ul></p>
         :rtype: str
         """
         return self._Enabled
@@ -16222,7 +16322,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Id(self):
-        r"""<p>ID of the custom rule. The rule ID supports different rule configuration operations: <ul><li>Add a new rule: leave the ID empty or do not specify the ID parameter;</li><li>Modify an existing rule: specify the rule ID that needs to be updated/modified;</li><li>Delete an existing rule: existing rules not included in the Rules list in the CustomRules parameter will be deleted.</li></ul></p>
+        r"""<p>ID of the custom rule. You can perform different rule configuration operations by rule ID: <ul><li>Add a new rule: leave the ID empty or do not specify the ID parameter;</li><li>Modify an existing rule: specify the rule ID that needs to be updated/modified;</li><li>Delete an existing rule: existing rules not included in the Rules list in the CustomRules parameter will be deleted.</li></ul></p>
         :rtype: str
         """
         return self._Id
@@ -16244,7 +16344,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Priority(self):
-        r"""<p>Priority of custom rules. Value range: 0-100. Default value: 0. Only exact matching rules (<code>PreciseMatchRule</code>) are supported.</p>
+        r"""<p>Priority of custom rules, ranging from 0 to 100, with a default value of 0. Only exact matching rules (<code>PreciseMatchRule</code>) are supported.</p>
         :rtype: int
         """
         return self._Priority
@@ -16275,20 +16375,20 @@ class CustomRule(AbstractModel):
 
 
 class CustomRules(AbstractModel):
-    r"""Custom rules configuration.
+    r"""Custom rule structure for Web security
 
     """
 
     def __init__(self):
         r"""
-        :param _Rules: The custom rule. <br>when modifying the Web protection configuration using ModifySecurityPolicy: <br> - if the Rules parameter is not specified or the parameter length of Rules is zero: clear all custom rule configurations. <br> - if the Rules parameter is not specified: keep the existing custom rule configuration without modification.
+        :param _Rules: Definition list of custom rules.<br>When using ModifySecurityPolicy to modify Web protection configuration: <br> - If the Rules parameter is not specified, or the parameter length of Rules is zero: clear ALL custom rule configurations.<br> - If the CustomRules parameter value is not specified in the SecurityPolicy parameter: keep the existing custom rule configuration and do not modify it.
         :type Rules: list of CustomRule
         """
         self._Rules = None
 
     @property
     def Rules(self):
-        r"""The custom rule. <br>when modifying the Web protection configuration using ModifySecurityPolicy: <br> - if the Rules parameter is not specified or the parameter length of Rules is zero: clear all custom rule configurations. <br> - if the Rules parameter is not specified: keep the existing custom rule configuration without modification.
+        r"""Definition list of custom rules.<br>When using ModifySecurityPolicy to modify Web protection configuration: <br> - If the Rules parameter is not specified, or the parameter length of Rules is zero: clear ALL custom rule configurations.<br> - If the CustomRules parameter value is not specified in the SecurityPolicy parameter: keep the existing custom rule configuration and do not modify it.
         :rtype: list of CustomRule
         """
         return self._Rules
@@ -17265,17 +17365,17 @@ class DNSPodDetail(AbstractModel):
 
 
 class DefaultDenySecurityActionParameters(AbstractModel):
-    r"""Default interception action configuration. When security rules are hit and trigger intercept handling actions, if SecurityAction only specifies Name as Deny and DenyActionParameters is not specified, match by feature module dimension and use the default parameter configuration defined here:
-    <li>Default disposition action configuration for managed rules in ManagedRules.</li>
-    <li>OtherModules Security protection rules (custom rule, rate limit, and Bot management function) except managed rules have default block disposition action configuration.</li>
+    r"""Default block action configuration. When a security rule is hit and triggers a block action, if SecurityAction specifies only Name as Deny and DenyActionParameters is not specified, the default parameter configuration defined here is matched by feature module dimension and used:
+    <li>Default interception disposition action configuration for ManagedRules.</li>
+    <li>OtherModules: default block disposition action configuration for security protection rules other than managed rules (custom rules, rate limit, and Bot management function).</li>
 
     """
 
     def __init__(self):
         r"""
-        :param _ManagedRules: The managed rule uses the default disposition action configuration. DenyActionParameters supported configuration parameters: <li>ReturnCustomPage: Whether to use a custom page.</li><li>ResponseCode: Status code of the custom page.</li><li>ErrorPageId: PageId of the custom page.</li>
+        :param _ManagedRules: Default interception disposition action configuration for managed rules. Supported configuration parameters of DenyActionParameters: <li>ReturnCustomPage: whether to use a custom page.</li><li>ResponseCode: status code of the custom page.</li><li>ErrorPageId: PageId of the custom page.</li>
         :type ManagedRules: :class:`tencentcloud.teo.v20220901.models.DenyActionParameters`
-        :param _OtherModules: Security protection rules other than managed rules (custom rule, rate limit, and Bot management function) default to disposition action configuration. DenyActionParameters supported configuration parameters: <li>ReturnCustomPage: Whether to use custom page.</li> <li>ResponseCode: Status code of custom pages.</li> <li>ErrorPageId: PageId of custom pages.</li>
+        :param _OtherModules: Security protection rules other than managed rules (custom rules, rate limit, and Bot management function) default interception disposition action configuration. Configuration parameters supported by DenyActionParameters: <li>ReturnCustomPage: whether to use a custom page.</li><li>ResponseCode: status code of the custom page.</li><li>ErrorPageId: PageId of the custom page.</li>
         :type OtherModules: :class:`tencentcloud.teo.v20220901.models.DenyActionParameters`
         """
         self._ManagedRules = None
@@ -17283,7 +17383,7 @@ class DefaultDenySecurityActionParameters(AbstractModel):
 
     @property
     def ManagedRules(self):
-        r"""The managed rule uses the default disposition action configuration. DenyActionParameters supported configuration parameters: <li>ReturnCustomPage: Whether to use a custom page.</li><li>ResponseCode: Status code of the custom page.</li><li>ErrorPageId: PageId of the custom page.</li>
+        r"""Default interception disposition action configuration for managed rules. Supported configuration parameters of DenyActionParameters: <li>ReturnCustomPage: whether to use a custom page.</li><li>ResponseCode: status code of the custom page.</li><li>ErrorPageId: PageId of the custom page.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.DenyActionParameters`
         """
         return self._ManagedRules
@@ -17294,7 +17394,7 @@ class DefaultDenySecurityActionParameters(AbstractModel):
 
     @property
     def OtherModules(self):
-        r"""Security protection rules other than managed rules (custom rule, rate limit, and Bot management function) default to disposition action configuration. DenyActionParameters supported configuration parameters: <li>ReturnCustomPage: Whether to use custom page.</li> <li>ResponseCode: Status code of custom pages.</li> <li>ErrorPageId: PageId of custom pages.</li>
+        r"""Security protection rules other than managed rules (custom rules, rate limit, and Bot management function) default interception disposition action configuration. Configuration parameters supported by DenyActionParameters: <li>ReturnCustomPage: whether to use a custom page.</li><li>ResponseCode: status code of the custom page.</li><li>ErrorPageId: PageId of the custom page.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.DenyActionParameters`
         """
         return self._OtherModules
@@ -19969,47 +20069,41 @@ class DeliveryCondition(AbstractModel):
 
 
 class DenyActionParameters(AbstractModel):
-    r"""Additional parameter when the executed action is interception.
+    r"""Additional parameter for the safe execution action when it is interception.
 
-    This parameter is used for specifying the extra handling action taken by the system when a security rule is hit and an intercept action is executed.
-    Different disposal actions are configured with different fixed parameter combinations. The system will determine the actually effective disposal action type according to the configured parameter combination.
-    During the same interception execution, only one handling action can be configured and made effective. Parameters for multiple handling actions cannot appear at the same time. Otherwise, it is deemed an invalid configuration. If empty, the default block handling action is used.
-    DenyActionParameters supports the following additional handling actions: <li>Default: When DenyActionParameters is empty or no additional handling action is enabled, the system will perform the default block, responding with an interception page.</li><li>IP block: Continuously block the client source IP that triggers the rule. Corresponding parameters: BlockIp, BlockIpDuration.</li><li>Custom page interception: Use the designated custom page content to respond to requests. Corresponding parameters: ReturnCustomPage, ResponseCode, ErrorPageId.</li><li>Silence: Accept client requests but do not return. Corresponding parameter: Stall.</li>
+    This parameter is used to specify the extra handling action taken by the system when a security rule is hit and an intercept action is executed.
+    Different handling actions are configured with different fixed parameter combinations. The system will determine the actually effective handling action type according to the configured parameter combination.
+    Only one handling action can be configured and made effective during the same block execution. Parameters corresponding to multiple handling actions cannot appear simultaneously, otherwise the configuration is deemed invalid. If empty, the default block handling action is used.
+    DenyActionParameters supports the following extra handling actions: <li>Default: When DenyActionParameters is empty or no extra handling action is enabled, the system will perform the default block, responding with an interception page.</li><li>IP blocking: Continuously block the client source IP that triggers the rule. Corresponding parameters: BlockIp, BlockIpDuration.</li><li>Custom page interception: Use the specified custom page content to respond to requests. Corresponding parameters: ReturnCustomPage, ResponseCode, ErrorPageId.</li><li>Silence: Accept client requests but do not return. Corresponding parameter: Stall.</li>
 
     """
 
     def __init__(self):
         r"""
-        :param _BlockIp: Specifies whether to extend the ban on the source IP. valid values.
+        :param _BlockIp: Whether to extend the block on the source IP. Valid values:
 <li>`on`: Enable;</li>
-
 <li>off: Disable.</li>
-
-After enabled, continuously blocks client ips that trigger the rule. when this option is enabled, the BlockIpDuration parameter must be simultaneously designated.
-Note: this option cannot intersect with ReturnCustomPage or Stall.
+After enabled, the client IP that triggers the rule will be continuously blocked. When this option is enabled, the BlockIpDuration parameter must be specified simultaneously.
+Note: This option cannot intersect with ReturnCustomPage or Stall.
         :type BlockIp: str
-        :param _BlockIpDuration: The ban duration when BlockIP is on.
+        :param _BlockIpDuration: IP ban duration when BlockIP is on.
         :type BlockIpDuration: str
-        :param _ReturnCustomPage: Specifies whether to use a custom page. valid values:.
+        :param _ReturnCustomPage: Whether to use custom pages. Valid values:
 <li>`on`: Enable;</li>
-
 <li>off: Disable.</li>
-
-Enabled, use custom page content to intercept requests. when this option is enabled, ResponseCode and ErrorPageId parameters must be specified simultaneously.
-Note: this option cannot intersect with the BlockIp or Stall option.
+Enabled. Use custom page content to intercept (respond to) requests. When this option is enabled, you must specify the ResponseCode and ErrorPageId parameters simultaneously.
+Note: This option cannot intersect with BlockIp or Stall.
 
         :type ReturnCustomPage: str
         :param _ResponseCode: Status code of the custom page.
         :type ResponseCode: str
-        :param _ErrorPageId: Specifies the page id of the custom page.
+        :param _ErrorPageId: PageId of the custom page.
         :type ErrorPageId: str
-        :param _Stall: Specifies whether to suspend the request source without processing. valid values:.
+        :param _Stall: Whether to suspend requests from the request source without processing. Valid values:
 <li>`on`: Enable;</li>
-
 <li>off: Disable.</li>
-
-Enabled, no longer responds to requests in the current connection session and does not actively disconnect. used for crawler combat to consume client connection resources.
-Note: this option cannot intersect with BlockIp or ReturnCustomPage options.
+Enabled. It no longer responds to requests in the current connection session and does not actively disconnect. When used for crawler counteraction, it consumes client connection resources.
+Note: This option cannot intersect with BlockIp or ReturnCustomPage.
         :type Stall: str
         """
         self._BlockIp = None
@@ -20021,13 +20115,11 @@ Note: this option cannot intersect with BlockIp or ReturnCustomPage options.
 
     @property
     def BlockIp(self):
-        r"""Specifies whether to extend the ban on the source IP. valid values.
+        r"""Whether to extend the block on the source IP. Valid values:
 <li>`on`: Enable;</li>
-
 <li>off: Disable.</li>
-
-After enabled, continuously blocks client ips that trigger the rule. when this option is enabled, the BlockIpDuration parameter must be simultaneously designated.
-Note: this option cannot intersect with ReturnCustomPage or Stall.
+After enabled, the client IP that triggers the rule will be continuously blocked. When this option is enabled, the BlockIpDuration parameter must be specified simultaneously.
+Note: This option cannot intersect with ReturnCustomPage or Stall.
         :rtype: str
         """
         return self._BlockIp
@@ -20038,7 +20130,7 @@ Note: this option cannot intersect with ReturnCustomPage or Stall.
 
     @property
     def BlockIpDuration(self):
-        r"""The ban duration when BlockIP is on.
+        r"""IP ban duration when BlockIP is on.
         :rtype: str
         """
         return self._BlockIpDuration
@@ -20049,13 +20141,11 @@ Note: this option cannot intersect with ReturnCustomPage or Stall.
 
     @property
     def ReturnCustomPage(self):
-        r"""Specifies whether to use a custom page. valid values:.
+        r"""Whether to use custom pages. Valid values:
 <li>`on`: Enable;</li>
-
 <li>off: Disable.</li>
-
-Enabled, use custom page content to intercept requests. when this option is enabled, ResponseCode and ErrorPageId parameters must be specified simultaneously.
-Note: this option cannot intersect with the BlockIp or Stall option.
+Enabled. Use custom page content to intercept (respond to) requests. When this option is enabled, you must specify the ResponseCode and ErrorPageId parameters simultaneously.
+Note: This option cannot intersect with BlockIp or Stall.
 
         :rtype: str
         """
@@ -20078,7 +20168,7 @@ Note: this option cannot intersect with the BlockIp or Stall option.
 
     @property
     def ErrorPageId(self):
-        r"""Specifies the page id of the custom page.
+        r"""PageId of the custom page.
         :rtype: str
         """
         return self._ErrorPageId
@@ -20089,13 +20179,11 @@ Note: this option cannot intersect with the BlockIp or Stall option.
 
     @property
     def Stall(self):
-        r"""Specifies whether to suspend the request source without processing. valid values:.
+        r"""Whether to suspend requests from the request source without processing. Valid values:
 <li>`on`: Enable;</li>
-
 <li>off: Disable.</li>
-
-Enabled, no longer responds to requests in the current connection session and does not actively disconnect. used for crawler combat to consume client connection resources.
-Note: this option cannot intersect with BlockIp or ReturnCustomPage options.
+Enabled. It no longer responds to requests in the current connection session and does not actively disconnect. When used for crawler counteraction, it consumes client connection resources.
+Note: This option cannot intersect with BlockIp or ReturnCustomPage.
         :rtype: str
         """
         return self._Stall
@@ -27633,14 +27721,14 @@ class DescribeMultiPathGatewaySecretKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: Zone ID.
+        :param _ZoneId: <p>Site ID.</p>
         :type ZoneId: str
         """
         self._ZoneId = None
 
     @property
     def ZoneId(self):
-        r"""Zone ID.
+        r"""<p>Site ID.</p>
         :rtype: str
         """
         return self._ZoneId
@@ -27669,7 +27757,7 @@ class DescribeMultiPathGatewaySecretKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretKey: Access key.
+        :param _SecretKey: <p>Access key.</p>
         :type SecretKey: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -27679,7 +27767,7 @@ class DescribeMultiPathGatewaySecretKeyResponse(AbstractModel):
 
     @property
     def SecretKey(self):
-        r"""Access key.
+        r"""<p>Access key.</p>
         :rtype: str
         """
         return self._SecretKey
@@ -33778,21 +33866,21 @@ class DetectLengthLimitRule(AbstractModel):
 
 
 class DeviceProfile(AbstractModel):
-    r"""Describes the client device configuration.
+    r"""Client device configuration
 
     """
 
     def __init__(self):
         r"""
-        :param _ClientType: Client device type. Valid values: <li>iOS;</li> <li>Android;</li> <li>WebView;</li> <li>WeChatMiniProgram.</li>
+        :param _ClientType: <p>Client device type. Valid values: <li>iOS;</li><li>Android;</li><li>WebView;</li><li>WeChatMiniProgram.</li></p>
         :type ClientType: str
-        :param _HighRiskMinScore: The minimum value to determine a request as high-risk ranges from 1–99. the larger the value, the higher the request risk, and the closer it resembles a request initiated by a Bot client. the default value is 50, corresponding to high-risk for values 51–100.
+        :param _HighRiskMinScore: <p>Minimum risk score for high-risk requests. A request is considered high-risk when its score is equal to or greater than this value.</p><p>Value range: [2, 99]</p><p>Default value: 50</p>
         :type HighRiskMinScore: int
-        :param _HighRiskRequestAction: Handling method for high-risk requests. valid values for SecurityAction Name: <li>Deny: block;</li> <li>Monitor: observation;</li> <li>Redirect: redirection;</li> <li>Challenge: Challenge.</li> default value: Monitor.
+        :param _HighRiskRequestAction: <p>Handling method for high-risk requests. Supported values for the Name parameter of SecurityAction: <li>Deny: Block;</li><li>Monitor: Observe;</li><li>Redirect: Redirection;</li><li>Challenge: Challenge.</li>Default value: Monitor.</p>
         :type HighRiskRequestAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _MediumRiskMinScore: Specifies the minimum value to determine a request as medium-risk. value range: 1–99. the larger the value, the higher the request risk, resembling requests initiated by a Bot client. default value: 15, corresponding to medium-risk for values 16–50.
+        :param _MediumRiskMinScore: <p>The minimum risk score for a medium-risk request. When the score is equal to or greater than this value and less than HighRiskMinScore, it is determined as medium-risk. When it is below this value, it is determined as low risk.</p><p>Value range: [1, 98]</p><p>Default value: 15</p>
         :type MediumRiskMinScore: int
-        :param _MediumRiskRequestAction: Handling method for medium-risk requests. SecurityAction Name parameter supports: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Redirect: Redirect;</li> <li>Challenge: Challenge.</li> default value is Monitor.
+        :param _MediumRiskRequestAction: <p>Handling method for medium risk requests. Supported values for the Name of SecurityAction: <li>Deny: block;</li><li>Monitor: monitor;</li><li>Redirect: redirect;</li><li>Challenge: challenge.</li>Default value: Monitor.</p>
         :type MediumRiskRequestAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         self._ClientType = None
@@ -33803,7 +33891,7 @@ class DeviceProfile(AbstractModel):
 
     @property
     def ClientType(self):
-        r"""Client device type. Valid values: <li>iOS;</li> <li>Android;</li> <li>WebView;</li> <li>WeChatMiniProgram.</li>
+        r"""<p>Client device type. Valid values: <li>iOS;</li><li>Android;</li><li>WebView;</li><li>WeChatMiniProgram.</li></p>
         :rtype: str
         """
         return self._ClientType
@@ -33814,7 +33902,7 @@ class DeviceProfile(AbstractModel):
 
     @property
     def HighRiskMinScore(self):
-        r"""The minimum value to determine a request as high-risk ranges from 1–99. the larger the value, the higher the request risk, and the closer it resembles a request initiated by a Bot client. the default value is 50, corresponding to high-risk for values 51–100.
+        r"""<p>Minimum risk score for high-risk requests. A request is considered high-risk when its score is equal to or greater than this value.</p><p>Value range: [2, 99]</p><p>Default value: 50</p>
         :rtype: int
         """
         return self._HighRiskMinScore
@@ -33825,7 +33913,7 @@ class DeviceProfile(AbstractModel):
 
     @property
     def HighRiskRequestAction(self):
-        r"""Handling method for high-risk requests. valid values for SecurityAction Name: <li>Deny: block;</li> <li>Monitor: observation;</li> <li>Redirect: redirection;</li> <li>Challenge: Challenge.</li> default value: Monitor.
+        r"""<p>Handling method for high-risk requests. Supported values for the Name parameter of SecurityAction: <li>Deny: Block;</li><li>Monitor: Observe;</li><li>Redirect: Redirection;</li><li>Challenge: Challenge.</li>Default value: Monitor.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._HighRiskRequestAction
@@ -33836,7 +33924,7 @@ class DeviceProfile(AbstractModel):
 
     @property
     def MediumRiskMinScore(self):
-        r"""Specifies the minimum value to determine a request as medium-risk. value range: 1–99. the larger the value, the higher the request risk, resembling requests initiated by a Bot client. default value: 15, corresponding to medium-risk for values 16–50.
+        r"""<p>The minimum risk score for a medium-risk request. When the score is equal to or greater than this value and less than HighRiskMinScore, it is determined as medium-risk. When it is below this value, it is determined as low risk.</p><p>Value range: [1, 98]</p><p>Default value: 15</p>
         :rtype: int
         """
         return self._MediumRiskMinScore
@@ -33847,7 +33935,7 @@ class DeviceProfile(AbstractModel):
 
     @property
     def MediumRiskRequestAction(self):
-        r"""Handling method for medium-risk requests. SecurityAction Name parameter supports: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Redirect: Redirect;</li> <li>Challenge: Challenge.</li> default value is Monitor.
+        r"""<p>Handling method for medium risk requests. Supported values for the Name of SecurityAction: <li>Deny: block;</li><li>Monitor: monitor;</li><li>Redirect: redirect;</li><li>Challenge: challenge.</li>Default value: Monitor.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._MediumRiskRequestAction
@@ -36354,31 +36442,33 @@ class ExceptUserRuleScope(AbstractModel):
 
 
 class ExceptionRule(AbstractModel):
-    r"""Web security exception rule.
+    r"""Exception rule for Web security
 
     """
 
     def __init__(self):
         r"""
-        :param _Id: The ID of the exception rule. different rule configuration operations are supported by rule ID: <li> <b>add</b> a new rule: leave the ID empty or do not specify the ID parameter.</li> <li> <b>modify</b> an existing rule: specify the rule ID that needs to be updated/modified.</li> <li> <b>delete</b> an existing rule: existing Rules not included in the Rules list under the ExceptionRules parameter will be deleted.</li>.
+        :param _Id: ID of the exception rule.<br>Different rule configuration operations can be performed by rule ID:<br> <li> <b>Add</b> a new rule: leave the ID empty or do not specify the ID parameter;</li><li> <b>Modify</b> an existing rule: specify the rule ID to be updated/modified;</li><li> <b>Delete</b> an existing rule: existing rules not included in the Rules list in the ExceptionRules parameter will be deleted.</li>
         :type Id: str
-        :param _Name: The name of the exception rule.
+        :param _Name: Name of the exception rule.
         :type Name: str
-        :param _Condition: Describes the specific content of the exception rule, which must comply with the expression grammar. for details, please refer to the product document.
+        :param _Condition: Specific content of the exception rule must comply with the expression grammar. For detailed specifications, please refer to the product document.
         :type Condition: str
-        :param _SkipScope: Exception rule execution options, valid values: <li>WebSecurityModules: designate the security protection module for the exception rule.</li> <li>ManagedRules: designate the managed rule.</li>.
+        :param _SkipScope: Exception rule execution options. Valid values: <li>WebSecurityModules: assigns the security protection module for the exception rule. Use in conjunction with WebSecurityModulesForException.</li><li>WebSecuritySubmodules: assigns the security protection submodule for the exception rule. Use in conjunction with WebSecuritySubmodulesForException.</li><li>ManagedRules: assigns the specific managed rule for the exception rule. Use in conjunction with ManagedRulesForException.</li><li>ManagedRuleGroups: assigns the managed rule group for the exception rule. Use in conjunction with ManagedRuleGroupsForException.</li>
         :type SkipScope: str
-        :param _SkipOption: Skip the specific type of request. valid values: <li>SkipOnAllRequestFields: skip all requests;</li> <li>SkipOnSpecifiedRequestFields: skip specified request fields.</li> valid only when SkipScope is ManagedRules.
+        :param _SkipOption: Skip the specific type of request. Valid values: <li>SkipOnAllRequestFields: skip all requests;</li><li>SkipOnSpecifiedRequestFields: skip specified request fields.</li>Valid only when SkipScope is ManagedRules or ManagedRuleGroups.
         :type SkipOption: str
-        :param _WebSecurityModulesForException: Specifies the security protection module for exception rules. valid only when SkipScope is WebSecurityModules. valid values: <li>websec-mod-managed-rules: managed rule.</li><li>websec-mod-rate-limiting: rate limit.</li><li>websec-mod-custom-rules: custom rule.</li><li>websec-mod-adaptive-control: adaptive frequency control, intelligent client filtering, slow attack protection, traffic theft protection.</li><li>websec-mod-bot: bot management.</li>.
+        :param _WebSecurityModulesForException: Security protection module for the exception rule. Valid only when SkipScope is WebSecurityModules. Valid values: <li>websec-mod-managed-rules: managed rule</li><li>websec-mod-rate-limiting: rate limit</li><li>websec-mod-custom-rules: custom rule</li><li>websec-mod-adaptive-control: adaptive frequency control, intelligent client filtering, slow attack protection, traffic theft protection</li><li>websec-mod-bot: bot management</li>
         :type WebSecurityModulesForException: list of str
-        :param _ManagedRulesForException: Specifies the managed rule for the exception rule. valid only when SkipScope is ManagedRules. cannot specify ManagedRuleGroupsForException at this time.
+        :param _WebSecuritySubmodulesForException: Specifies the security protection submodule for the exception rule. Valid only when SkipScope is WebSecuritySubmodules. Valid values: <ul><li>ManagedRules module features: <ul><li>websec-mod-managed-rules/managed-rule-groups: rule set;</li><li>websec-mod-managed-rules/frequent-scanning-protection: high frequency scan protection;</li></ul></li><li>RateLimitingRules module features: <ul><li>websec-mod-rate-limiting-rules: rate limiting rule;</li></ul></li><li>CustomRules module features: <ul><li>websec-mod-custom-rules: custom rule;</li></ul></li><li>HttpDDoSProtection module features: <ul><li>websec-mod-HTTP-DDoS-protection/adaptive-frequency-control: adaptive frequency control;</li><li>websec-mod-HTTP-DDoS-protection/client-filtering: intelligent client filtering;</li><li>websec-mod-HTTP-DDoS-protection/bandwidth-abuse-defense: traffic fraud protection;</li></ul></li><li>BotManagement module features: <ul><li>websec-mod-Bot-management/basic-feature: basic feature management;</li><li>websec-mod-Bot-management/ip-reputation: client profile analysis;</li><li>websec-mod-Bot-management/Bot-intelligence: intelligent Bot analysis;</li><li>websec-mod-Bot-management/custom-rules: custom rule;</li><li>websec-mod-Bot-management/browser-impersonation-detection: proactive feature recognition;</li><li>websec-mod-Bot-management/client-attestation-rules: client authentication;</li></ul></li><li>BotManagementLite module features: <ul><li>websec-mod-Bot-management-lite/ai-crawler-detection: ai crawler disposal;</li><li>websec-mod-Bot-management-lite/captcha-page-challenge: captcha page challenge.</li></ul></li></ul>
+        :type WebSecuritySubmodulesForException: list of str
+        :param _ManagedRulesForException: Specify the specific managed rule for the exception rule. This parameter is valid only when SkipScope is ManagedRules.
         :type ManagedRulesForException: list of str
-        :param _ManagedRuleGroupsForException: A managed rule group with designated exception rules is valid only when SkipScope is ManagedRules, and at this point you cannot specify ManagedRulesForException.
+        :param _ManagedRuleGroupsForException: Managed rule group with specified exception rules. This parameter is valid only when SkipScope is ManagedRuleGroups.
         :type ManagedRuleGroupsForException: list of str
-        :param _RequestFieldsForException: Specify exception rules to skip request fields. valid only when SkipScope is ManagedRules and SkipOption is SkipOnSpecifiedRequestFields.
+        :param _RequestFieldsForException: Configuration for specifying exception rules to skip specified request fields. This is valid only when SkipScope is ManagedRules or ManagedRuleGroups and SkipOption is SkipOnSpecifiedRequestFields.
         :type RequestFieldsForException: list of RequestFieldsForException
-        :param _Enabled: Whether the exception rule is enabled. valid values: <li>`on`: enable</li> <li>`off`: disable</li>.
+        :param _Enabled: Whether the exception rule is enabled. Valid values: <li>on: enabled</li><li>off: disabled</li>
         :type Enabled: str
         """
         self._Id = None
@@ -36387,6 +36477,7 @@ class ExceptionRule(AbstractModel):
         self._SkipScope = None
         self._SkipOption = None
         self._WebSecurityModulesForException = None
+        self._WebSecuritySubmodulesForException = None
         self._ManagedRulesForException = None
         self._ManagedRuleGroupsForException = None
         self._RequestFieldsForException = None
@@ -36394,7 +36485,7 @@ class ExceptionRule(AbstractModel):
 
     @property
     def Id(self):
-        r"""The ID of the exception rule. different rule configuration operations are supported by rule ID: <li> <b>add</b> a new rule: leave the ID empty or do not specify the ID parameter.</li> <li> <b>modify</b> an existing rule: specify the rule ID that needs to be updated/modified.</li> <li> <b>delete</b> an existing rule: existing Rules not included in the Rules list under the ExceptionRules parameter will be deleted.</li>.
+        r"""ID of the exception rule.<br>Different rule configuration operations can be performed by rule ID:<br> <li> <b>Add</b> a new rule: leave the ID empty or do not specify the ID parameter;</li><li> <b>Modify</b> an existing rule: specify the rule ID to be updated/modified;</li><li> <b>Delete</b> an existing rule: existing rules not included in the Rules list in the ExceptionRules parameter will be deleted.</li>
         :rtype: str
         """
         return self._Id
@@ -36405,7 +36496,7 @@ class ExceptionRule(AbstractModel):
 
     @property
     def Name(self):
-        r"""The name of the exception rule.
+        r"""Name of the exception rule.
         :rtype: str
         """
         return self._Name
@@ -36416,7 +36507,7 @@ class ExceptionRule(AbstractModel):
 
     @property
     def Condition(self):
-        r"""Describes the specific content of the exception rule, which must comply with the expression grammar. for details, please refer to the product document.
+        r"""Specific content of the exception rule must comply with the expression grammar. For detailed specifications, please refer to the product document.
         :rtype: str
         """
         return self._Condition
@@ -36427,7 +36518,7 @@ class ExceptionRule(AbstractModel):
 
     @property
     def SkipScope(self):
-        r"""Exception rule execution options, valid values: <li>WebSecurityModules: designate the security protection module for the exception rule.</li> <li>ManagedRules: designate the managed rule.</li>.
+        r"""Exception rule execution options. Valid values: <li>WebSecurityModules: assigns the security protection module for the exception rule. Use in conjunction with WebSecurityModulesForException.</li><li>WebSecuritySubmodules: assigns the security protection submodule for the exception rule. Use in conjunction with WebSecuritySubmodulesForException.</li><li>ManagedRules: assigns the specific managed rule for the exception rule. Use in conjunction with ManagedRulesForException.</li><li>ManagedRuleGroups: assigns the managed rule group for the exception rule. Use in conjunction with ManagedRuleGroupsForException.</li>
         :rtype: str
         """
         return self._SkipScope
@@ -36438,7 +36529,7 @@ class ExceptionRule(AbstractModel):
 
     @property
     def SkipOption(self):
-        r"""Skip the specific type of request. valid values: <li>SkipOnAllRequestFields: skip all requests;</li> <li>SkipOnSpecifiedRequestFields: skip specified request fields.</li> valid only when SkipScope is ManagedRules.
+        r"""Skip the specific type of request. Valid values: <li>SkipOnAllRequestFields: skip all requests;</li><li>SkipOnSpecifiedRequestFields: skip specified request fields.</li>Valid only when SkipScope is ManagedRules or ManagedRuleGroups.
         :rtype: str
         """
         return self._SkipOption
@@ -36449,7 +36540,7 @@ class ExceptionRule(AbstractModel):
 
     @property
     def WebSecurityModulesForException(self):
-        r"""Specifies the security protection module for exception rules. valid only when SkipScope is WebSecurityModules. valid values: <li>websec-mod-managed-rules: managed rule.</li><li>websec-mod-rate-limiting: rate limit.</li><li>websec-mod-custom-rules: custom rule.</li><li>websec-mod-adaptive-control: adaptive frequency control, intelligent client filtering, slow attack protection, traffic theft protection.</li><li>websec-mod-bot: bot management.</li>.
+        r"""Security protection module for the exception rule. Valid only when SkipScope is WebSecurityModules. Valid values: <li>websec-mod-managed-rules: managed rule</li><li>websec-mod-rate-limiting: rate limit</li><li>websec-mod-custom-rules: custom rule</li><li>websec-mod-adaptive-control: adaptive frequency control, intelligent client filtering, slow attack protection, traffic theft protection</li><li>websec-mod-bot: bot management</li>
         :rtype: list of str
         """
         return self._WebSecurityModulesForException
@@ -36459,8 +36550,19 @@ class ExceptionRule(AbstractModel):
         self._WebSecurityModulesForException = WebSecurityModulesForException
 
     @property
+    def WebSecuritySubmodulesForException(self):
+        r"""Specifies the security protection submodule for the exception rule. Valid only when SkipScope is WebSecuritySubmodules. Valid values: <ul><li>ManagedRules module features: <ul><li>websec-mod-managed-rules/managed-rule-groups: rule set;</li><li>websec-mod-managed-rules/frequent-scanning-protection: high frequency scan protection;</li></ul></li><li>RateLimitingRules module features: <ul><li>websec-mod-rate-limiting-rules: rate limiting rule;</li></ul></li><li>CustomRules module features: <ul><li>websec-mod-custom-rules: custom rule;</li></ul></li><li>HttpDDoSProtection module features: <ul><li>websec-mod-HTTP-DDoS-protection/adaptive-frequency-control: adaptive frequency control;</li><li>websec-mod-HTTP-DDoS-protection/client-filtering: intelligent client filtering;</li><li>websec-mod-HTTP-DDoS-protection/bandwidth-abuse-defense: traffic fraud protection;</li></ul></li><li>BotManagement module features: <ul><li>websec-mod-Bot-management/basic-feature: basic feature management;</li><li>websec-mod-Bot-management/ip-reputation: client profile analysis;</li><li>websec-mod-Bot-management/Bot-intelligence: intelligent Bot analysis;</li><li>websec-mod-Bot-management/custom-rules: custom rule;</li><li>websec-mod-Bot-management/browser-impersonation-detection: proactive feature recognition;</li><li>websec-mod-Bot-management/client-attestation-rules: client authentication;</li></ul></li><li>BotManagementLite module features: <ul><li>websec-mod-Bot-management-lite/ai-crawler-detection: ai crawler disposal;</li><li>websec-mod-Bot-management-lite/captcha-page-challenge: captcha page challenge.</li></ul></li></ul>
+        :rtype: list of str
+        """
+        return self._WebSecuritySubmodulesForException
+
+    @WebSecuritySubmodulesForException.setter
+    def WebSecuritySubmodulesForException(self, WebSecuritySubmodulesForException):
+        self._WebSecuritySubmodulesForException = WebSecuritySubmodulesForException
+
+    @property
     def ManagedRulesForException(self):
-        r"""Specifies the managed rule for the exception rule. valid only when SkipScope is ManagedRules. cannot specify ManagedRuleGroupsForException at this time.
+        r"""Specify the specific managed rule for the exception rule. This parameter is valid only when SkipScope is ManagedRules.
         :rtype: list of str
         """
         return self._ManagedRulesForException
@@ -36471,7 +36573,7 @@ class ExceptionRule(AbstractModel):
 
     @property
     def ManagedRuleGroupsForException(self):
-        r"""A managed rule group with designated exception rules is valid only when SkipScope is ManagedRules, and at this point you cannot specify ManagedRulesForException.
+        r"""Managed rule group with specified exception rules. This parameter is valid only when SkipScope is ManagedRuleGroups.
         :rtype: list of str
         """
         return self._ManagedRuleGroupsForException
@@ -36482,7 +36584,7 @@ class ExceptionRule(AbstractModel):
 
     @property
     def RequestFieldsForException(self):
-        r"""Specify exception rules to skip request fields. valid only when SkipScope is ManagedRules and SkipOption is SkipOnSpecifiedRequestFields.
+        r"""Configuration for specifying exception rules to skip specified request fields. This is valid only when SkipScope is ManagedRules or ManagedRuleGroups and SkipOption is SkipOnSpecifiedRequestFields.
         :rtype: list of RequestFieldsForException
         """
         return self._RequestFieldsForException
@@ -36493,7 +36595,7 @@ class ExceptionRule(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""Whether the exception rule is enabled. valid values: <li>`on`: enable</li> <li>`off`: disable</li>.
+        r"""Whether the exception rule is enabled. Valid values: <li>on: enabled</li><li>off: disabled</li>
         :rtype: str
         """
         return self._Enabled
@@ -36510,6 +36612,7 @@ class ExceptionRule(AbstractModel):
         self._SkipScope = params.get("SkipScope")
         self._SkipOption = params.get("SkipOption")
         self._WebSecurityModulesForException = params.get("WebSecurityModulesForException")
+        self._WebSecuritySubmodulesForException = params.get("WebSecuritySubmodulesForException")
         self._ManagedRulesForException = params.get("ManagedRulesForException")
         self._ManagedRuleGroupsForException = params.get("ManagedRuleGroupsForException")
         if params.get("RequestFieldsForException") is not None:
@@ -36530,20 +36633,20 @@ class ExceptionRule(AbstractModel):
 
 
 class ExceptionRules(AbstractModel):
-    r"""Web security exception rules.
+    r"""Exception rule for Web security
 
     """
 
     def __init__(self):
         r"""
-        :param _Rules: Definition list of exception Rules. when using ModifySecurityPolicy to modify Web protection configuration: <li>if the Rules parameter is not specified or the parameter length is zero: clear all exception rule configurations.</li><li>if the ExceptionRules parameter value is not specified in SecurityPolicy: keep existing exception rule configurations without modification.</li>.
+        :param _Rules: Definition list of exception Rules. When using ModifySecurityPolicy to modify Web protection configuration: <li>If the Rules parameter is not specified or its length is zero: clear all exception rule configurations.</li><li>If the ExceptionRules parameter value is not specified in the SecurityPolicy parameter: keep existing exception rule configurations without modification.</li>
         :type Rules: list of ExceptionRule
         """
         self._Rules = None
 
     @property
     def Rules(self):
-        r"""Definition list of exception Rules. when using ModifySecurityPolicy to modify Web protection configuration: <li>if the Rules parameter is not specified or the parameter length is zero: clear all exception rule configurations.</li><li>if the ExceptionRules parameter value is not specified in SecurityPolicy: keep existing exception rule configurations without modification.</li>.
+        r"""Definition list of exception Rules. When using ModifySecurityPolicy to modify Web protection configuration: <li>If the Rules parameter is not specified or its length is zero: clear all exception rule configurations.</li><li>If the ExceptionRules parameter value is not specified in the SecurityPolicy parameter: keep existing exception rule configurations without modification.</li>
         :rtype: list of ExceptionRule
         """
         return self._Rules
@@ -37309,25 +37412,25 @@ class ForceRedirectHTTPSParameters(AbstractModel):
 
 
 class FrequentScanningProtection(AbstractModel):
-    r"""High frequency scan protection configuration option. when a visitor's frequent requests hit the managed rule configured as block, ban all requests from that visitor within a period of time.
+    r"""High frequency scan protection configuration options. When a visitor's requests frequently hit managed rules configured as block, all requests from the visitor are blocked within a period of time.
 
     """
 
     def __init__(self):
         r"""
-        :param _Enabled: Whether the high-frequency scan protection rule is enabled. valid values: <li>on: enable. the high-frequency scan protection rule takes effect.</li><li>off: disable. the high-frequency scan protection rule does not take effect.</li>.	
+        :param _Enabled: Whether high-frequency scan protection is enabled. Valid values: <li>on: enabled, the high-frequency scan protection rule takes effect;</li><li>off: disabled, the high-frequency scan protection rule does not take effect.</li>	
         :type Enabled: str
-        :param _Id: Rule ID of high frequency scan protection, returned as an output parameter.
+        :param _Id: Rule ID of high-frequency scan protection, returned only as an output parameter.
         :type Id: str
-        :param _Action: The handling action for high-frequency scan protection. required when Enabled is on. valid values for SecurityAction Name: <li>Deny: block and respond with an interception page;</li> <li>Monitor: observe without processing requests, log security events in logs;</li> <li>JSChallenge: respond with a JavaScript challenge page.</li>.
+        :param _Action: Handling action for high frequency scan protection. When Enabled is on, this field is required. The Name parameter of SecurityAction supports: <li>Deny: block and respond with an Interception page;</li><li>Monitor: observe, do not process request records, and log security events;</li><li>JSChallenge: javascript challenge and respond with a JavaScript challenge page.</li>
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _CountBy: The match mode for request statistics. required when Enabled is on. valid values: <li>http.request.xff_header_ip: client ip (priority match xff header);</li><li>http.request.ip: client ip.</li>.
+        :param _CountBy: Match mode for request statistics. This field is required when Enabled is on. Valid values: <li>http.request.xff_header_ip: client ip (priority match xff header);</li><li>http.request.ip: client ip.</li>
         :type CountBy: str
-        :param _BlockThreshold: This parameter specifies the threshold for high-frequency scan protection, which is the intercept count of managed rules set to interception within the time range set by CountingPeriod. value range: 1 to 4294967294, for example 100. when exceeding this statistical value, subsequent requests will trigger the handling Action set by Action. required when Enabled is on.
+        :param _BlockThreshold: This parameter specifies the threshold for high-frequency scan protection, which is the total interception count when managed rules configured for interception are hit within the time range set by CountingPeriod. The value ranges from 1 to 4294967294, for example, 100. When this statistical value is exceeded, subsequent requests trigger the handling action set by Action. This field is required when Enabled is on.
         :type BlockThreshold: int
-        :param _CountingPeriod: This parameter specifies the statistical time window for high-frequency scan protection, which is the time window for counting requests that hit managed rules configured as block. valid values: 5-1800. measurement unit: seconds (s) only, such as 5s. this field is required when Enabled is on.
+        :param _CountingPeriod: This parameter specifies the time window for high-frequency scan protection statistics, that is, the statistical time window for requests that hit managed rules configured for interception. Value range: 5-1800. The unit only supports seconds (s), for example, 5s. Required when Enabled is on.
         :type CountingPeriod: str
-        :param _ActionDuration: This parameter specifies the duration of the handling Action set by the high frequency scan protection Action parameter. value range: 60 to 86400. measurement unit: seconds (s) only, for example 60s. this field is required when Enabled is on.
+        :param _ActionDuration: This parameter specifies the duration of the handling Action set by the high frequency scan protection Action parameter. The value ranges from 60 to 86400. The unit only supports seconds (s), for example, 60s. This field is required when Enabled is on.
         :type ActionDuration: str
         """
         self._Enabled = None
@@ -37340,7 +37443,7 @@ class FrequentScanningProtection(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""Whether the high-frequency scan protection rule is enabled. valid values: <li>on: enable. the high-frequency scan protection rule takes effect.</li><li>off: disable. the high-frequency scan protection rule does not take effect.</li>.	
+        r"""Whether high-frequency scan protection is enabled. Valid values: <li>on: enabled, the high-frequency scan protection rule takes effect;</li><li>off: disabled, the high-frequency scan protection rule does not take effect.</li>	
         :rtype: str
         """
         return self._Enabled
@@ -37351,7 +37454,7 @@ class FrequentScanningProtection(AbstractModel):
 
     @property
     def Id(self):
-        r"""Rule ID of high frequency scan protection, returned as an output parameter.
+        r"""Rule ID of high-frequency scan protection, returned only as an output parameter.
         :rtype: str
         """
         return self._Id
@@ -37362,7 +37465,7 @@ class FrequentScanningProtection(AbstractModel):
 
     @property
     def Action(self):
-        r"""The handling action for high-frequency scan protection. required when Enabled is on. valid values for SecurityAction Name: <li>Deny: block and respond with an interception page;</li> <li>Monitor: observe without processing requests, log security events in logs;</li> <li>JSChallenge: respond with a JavaScript challenge page.</li>.
+        r"""Handling action for high frequency scan protection. When Enabled is on, this field is required. The Name parameter of SecurityAction supports: <li>Deny: block and respond with an Interception page;</li><li>Monitor: observe, do not process request records, and log security events;</li><li>JSChallenge: javascript challenge and respond with a JavaScript challenge page.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._Action
@@ -37373,7 +37476,7 @@ class FrequentScanningProtection(AbstractModel):
 
     @property
     def CountBy(self):
-        r"""The match mode for request statistics. required when Enabled is on. valid values: <li>http.request.xff_header_ip: client ip (priority match xff header);</li><li>http.request.ip: client ip.</li>.
+        r"""Match mode for request statistics. This field is required when Enabled is on. Valid values: <li>http.request.xff_header_ip: client ip (priority match xff header);</li><li>http.request.ip: client ip.</li>
         :rtype: str
         """
         return self._CountBy
@@ -37384,7 +37487,7 @@ class FrequentScanningProtection(AbstractModel):
 
     @property
     def BlockThreshold(self):
-        r"""This parameter specifies the threshold for high-frequency scan protection, which is the intercept count of managed rules set to interception within the time range set by CountingPeriod. value range: 1 to 4294967294, for example 100. when exceeding this statistical value, subsequent requests will trigger the handling Action set by Action. required when Enabled is on.
+        r"""This parameter specifies the threshold for high-frequency scan protection, which is the total interception count when managed rules configured for interception are hit within the time range set by CountingPeriod. The value ranges from 1 to 4294967294, for example, 100. When this statistical value is exceeded, subsequent requests trigger the handling action set by Action. This field is required when Enabled is on.
         :rtype: int
         """
         return self._BlockThreshold
@@ -37395,7 +37498,7 @@ class FrequentScanningProtection(AbstractModel):
 
     @property
     def CountingPeriod(self):
-        r"""This parameter specifies the statistical time window for high-frequency scan protection, which is the time window for counting requests that hit managed rules configured as block. valid values: 5-1800. measurement unit: seconds (s) only, such as 5s. this field is required when Enabled is on.
+        r"""This parameter specifies the time window for high-frequency scan protection statistics, that is, the statistical time window for requests that hit managed rules configured for interception. Value range: 5-1800. The unit only supports seconds (s), for example, 5s. Required when Enabled is on.
         :rtype: str
         """
         return self._CountingPeriod
@@ -37406,7 +37509,7 @@ class FrequentScanningProtection(AbstractModel):
 
     @property
     def ActionDuration(self):
-        r"""This parameter specifies the duration of the handling Action set by the high frequency scan protection Action parameter. value range: 60 to 86400. measurement unit: seconds (s) only, for example 60s. this field is required when Enabled is on.
+        r"""This parameter specifies the duration of the handling Action set by the high frequency scan protection Action parameter. The value ranges from 60 to 86400. The unit only supports seconds (s), for example, 60s. This field is required when Enabled is on.
         :rtype: str
         """
         return self._ActionDuration
@@ -39268,13 +39371,13 @@ class HttpDDoSProtection(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AdaptiveFrequencyControl: Specifies the specific configuration of adaptive frequency control.
+        :param _AdaptiveFrequencyControl: Specific configuration of adaptive frequency control.
         :type AdaptiveFrequencyControl: :class:`tencentcloud.teo.v20220901.models.AdaptiveFrequencyControl`
-        :param _ClientFiltering: Specifies the intelligent client filter configuration.
+        :param _ClientFiltering: Specific configuration for intelligent client filtering.
         :type ClientFiltering: :class:`tencentcloud.teo.v20220901.models.ClientFiltering`
-        :param _BandwidthAbuseDefense: Specifies the specific configuration for bandwidth abuse protection.
+        :param _BandwidthAbuseDefense: Bandwidth abuse protection configuration.
         :type BandwidthAbuseDefense: :class:`tencentcloud.teo.v20220901.models.BandwidthAbuseDefense`
-        :param _SlowAttackDefense: Specifies the configuration of slow attack protection.
+        :param _SlowAttackDefense: Specific configuration of slow attack protection.
         :type SlowAttackDefense: :class:`tencentcloud.teo.v20220901.models.SlowAttackDefense`
         """
         self._AdaptiveFrequencyControl = None
@@ -39284,7 +39387,7 @@ class HttpDDoSProtection(AbstractModel):
 
     @property
     def AdaptiveFrequencyControl(self):
-        r"""Specifies the specific configuration of adaptive frequency control.
+        r"""Specific configuration of adaptive frequency control.
         :rtype: :class:`tencentcloud.teo.v20220901.models.AdaptiveFrequencyControl`
         """
         return self._AdaptiveFrequencyControl
@@ -39295,7 +39398,7 @@ class HttpDDoSProtection(AbstractModel):
 
     @property
     def ClientFiltering(self):
-        r"""Specifies the intelligent client filter configuration.
+        r"""Specific configuration for intelligent client filtering.
         :rtype: :class:`tencentcloud.teo.v20220901.models.ClientFiltering`
         """
         return self._ClientFiltering
@@ -39306,7 +39409,7 @@ class HttpDDoSProtection(AbstractModel):
 
     @property
     def BandwidthAbuseDefense(self):
-        r"""Specifies the specific configuration for bandwidth abuse protection.
+        r"""Bandwidth abuse protection configuration.
         :rtype: :class:`tencentcloud.teo.v20220901.models.BandwidthAbuseDefense`
         """
         return self._BandwidthAbuseDefense
@@ -39317,7 +39420,7 @@ class HttpDDoSProtection(AbstractModel):
 
     @property
     def SlowAttackDefense(self):
-        r"""Specifies the configuration of slow attack protection.
+        r"""Specific configuration of slow attack protection.
         :rtype: :class:`tencentcloud.teo.v20220901.models.SlowAttackDefense`
         """
         return self._SlowAttackDefense
@@ -39866,15 +39969,15 @@ class IPRegionInfo(AbstractModel):
 
 
 class IPReputation(AbstractModel):
-    r"""IP intelligence library (formerly client profile analysis) configuration.
+    r"""IP Intelligence Library (formerly client profile analysis) configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _Enabled: IP intelligence library (formerly client profile analysis). valid values: <li>on: enable;</li> <li>off: disable.</li>.
+        :param _Enabled: IP Intelligence Library (formerly client profile analysis). Valid values: <li>on: enable;</li><li>off: disable.</li>
         :type Enabled: str
-        :param _IPReputationGroup: IP intelligence library (formerly client profile analysis) configuration content.
+        :param _IPReputationGroup: Specific configuration content of the IP Intelligence Library (formerly client profile analysis).
         :type IPReputationGroup: :class:`tencentcloud.teo.v20220901.models.IPReputationGroup`
         """
         self._Enabled = None
@@ -39882,7 +39985,7 @@ class IPReputation(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""IP intelligence library (formerly client profile analysis). valid values: <li>on: enable;</li> <li>off: disable.</li>.
+        r"""IP Intelligence Library (formerly client profile analysis). Valid values: <li>on: enable;</li><li>off: disable.</li>
         :rtype: str
         """
         return self._Enabled
@@ -39893,7 +39996,7 @@ class IPReputation(AbstractModel):
 
     @property
     def IPReputationGroup(self):
-        r"""IP intelligence library (formerly client profile analysis) configuration content.
+        r"""Specific configuration content of the IP Intelligence Library (formerly client profile analysis).
         :rtype: :class:`tencentcloud.teo.v20220901.models.IPReputationGroup`
         """
         return self._IPReputationGroup
@@ -39919,15 +40022,15 @@ class IPReputation(AbstractModel):
 
 
 class IPReputationGroup(AbstractModel):
-    r"""IP intelligence library (formerly client profile analysis) specific configuration.
+    r"""Specific configuration of IP Intelligence Library (formerly client profile analysis).
 
     """
 
     def __init__(self):
         r"""
-        :param _BaseAction: Execution action of the IP intelligence library (formerly client profile analysis). SecurityAction Name parameter supports: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Disabled: not enabled, disable specified rule;</li> <li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>.
+        :param _BaseAction: Execution action of the IP Intelligence Library (formerly client profile analysis). Supported values for SecurityAction Name: <li>Deny: block;</li><li>Monitor: observe;</li><li>Disabled: not enabled, disable the specified rule;</li><li>Challenge: challenge. ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>
         :type BaseAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _BotManagementActionOverrides: The specific configuration of the IP intelligence library (originally client profile analysis), used to override the default configuration in BaseAction. among them, the Ids in BotManagementActionOverrides can be filled with: <li>IPREP_WEB_AND_DDOS_ATTACKERS_LOW: network attack - general confidence;</li> <li>IPREP_WEB_AND_DDOS_ATTACKERS_MID: network attack - medium confidence;</li> <li>IPREP_WEB_AND_DDOS_ATTACKERS_HIGH: network attack - HIGH confidence;</li> <li>IPREP_PROXIES_AND_ANONYMIZERS_LOW: network proxy - general confidence;</li> <li>IPREP_PROXIES_AND_ANONYMIZERS_MID: network proxy - medium confidence;</li> <li>IPREP_PROXIES_AND_ANONYMIZERS_HIGH: network proxy - HIGH confidence;</li> <li>IPREP_SCANNING_TOOLS_LOW: scanner - general confidence;</li> <li>IPREP_SCANNING_TOOLS_MID: scanner - medium confidence;</li> <li>IPREP_SCANNING_TOOLS_HIGH: scanner - HIGH confidence;</li> <li>IPREP_ATO_ATTACKERS_LOW: account takeover attack - general confidence;</li> <li>IPREP_ATO_ATTACKERS_MID: account takeover attack - medium confidence;</li> <li>IPREP_ATO_ATTACKERS_HIGH: account takeover attack - HIGH confidence;</li> <li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_LOW: malicious BOT - general confidence;</li> <li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_MID: malicious BOT - medium confidence;</li> <li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_HIGH: malicious BOT - HIGH confidence.</li>.
+        :param _BotManagementActionOverrides: Specific configuration of the IP Intelligence Library (formerly client profile analysis), used to override the default configuration in BaseAction. The Ids of BotManagementActionOverrides can be filled with: <li>IPREP_WEB_AND_DDOS_ATTACKERS_LOW: network attack - general confidence;</li><li>IPREP_WEB_AND_DDOS_ATTACKERS_MID: network attack - medium confidence;</li><li>IPREP_WEB_AND_DDOS_ATTACKERS_HIGH: network attack - high confidence;</li><li>IPREP_PROXIES_AND_ANONYMIZERS_LOW: network proxy - general confidence;</li><li>IPREP_PROXIES_AND_ANONYMIZERS_MID: network proxy - medium confidence;</li><li>IPREP_PROXIES_AND_ANONYMIZERS_HIGH: network proxy - high confidence;</li><li>IPREP_SCANNING_TOOLS_LOW: scanner - general confidence;</li><li>IPREP_SCANNING_TOOLS_MID: scanner - medium confidence;</li><li>IPREP_SCANNING_TOOLS_HIGH: scanner - high confidence;</li><li>IPREP_ATO_ATTACKERS_LOW: account takeover attack - general confidence;</li><li>IPREP_ATO_ATTACKERS_MID: account takeover attack - medium confidence;</li><li>IPREP_ATO_ATTACKERS_HIGH: account takeover attack - high confidence;</li><li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_LOW: malicious bot - general confidence;</li><li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_MID: malicious bot - medium confidence;</li><li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_HIGH: malicious bot - high confidence.</li>
         :type BotManagementActionOverrides: list of BotManagementActionOverrides
         """
         self._BaseAction = None
@@ -39935,7 +40038,7 @@ class IPReputationGroup(AbstractModel):
 
     @property
     def BaseAction(self):
-        r"""Execution action of the IP intelligence library (formerly client profile analysis). SecurityAction Name parameter supports: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Disabled: not enabled, disable specified rule;</li> <li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>.
+        r"""Execution action of the IP Intelligence Library (formerly client profile analysis). Supported values for SecurityAction Name: <li>Deny: block;</li><li>Monitor: observe;</li><li>Disabled: not enabled, disable the specified rule;</li><li>Challenge: challenge. ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._BaseAction
@@ -39946,7 +40049,7 @@ class IPReputationGroup(AbstractModel):
 
     @property
     def BotManagementActionOverrides(self):
-        r"""The specific configuration of the IP intelligence library (originally client profile analysis), used to override the default configuration in BaseAction. among them, the Ids in BotManagementActionOverrides can be filled with: <li>IPREP_WEB_AND_DDOS_ATTACKERS_LOW: network attack - general confidence;</li> <li>IPREP_WEB_AND_DDOS_ATTACKERS_MID: network attack - medium confidence;</li> <li>IPREP_WEB_AND_DDOS_ATTACKERS_HIGH: network attack - HIGH confidence;</li> <li>IPREP_PROXIES_AND_ANONYMIZERS_LOW: network proxy - general confidence;</li> <li>IPREP_PROXIES_AND_ANONYMIZERS_MID: network proxy - medium confidence;</li> <li>IPREP_PROXIES_AND_ANONYMIZERS_HIGH: network proxy - HIGH confidence;</li> <li>IPREP_SCANNING_TOOLS_LOW: scanner - general confidence;</li> <li>IPREP_SCANNING_TOOLS_MID: scanner - medium confidence;</li> <li>IPREP_SCANNING_TOOLS_HIGH: scanner - HIGH confidence;</li> <li>IPREP_ATO_ATTACKERS_LOW: account takeover attack - general confidence;</li> <li>IPREP_ATO_ATTACKERS_MID: account takeover attack - medium confidence;</li> <li>IPREP_ATO_ATTACKERS_HIGH: account takeover attack - HIGH confidence;</li> <li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_LOW: malicious BOT - general confidence;</li> <li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_MID: malicious BOT - medium confidence;</li> <li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_HIGH: malicious BOT - HIGH confidence.</li>.
+        r"""Specific configuration of the IP Intelligence Library (formerly client profile analysis), used to override the default configuration in BaseAction. The Ids of BotManagementActionOverrides can be filled with: <li>IPREP_WEB_AND_DDOS_ATTACKERS_LOW: network attack - general confidence;</li><li>IPREP_WEB_AND_DDOS_ATTACKERS_MID: network attack - medium confidence;</li><li>IPREP_WEB_AND_DDOS_ATTACKERS_HIGH: network attack - high confidence;</li><li>IPREP_PROXIES_AND_ANONYMIZERS_LOW: network proxy - general confidence;</li><li>IPREP_PROXIES_AND_ANONYMIZERS_MID: network proxy - medium confidence;</li><li>IPREP_PROXIES_AND_ANONYMIZERS_HIGH: network proxy - high confidence;</li><li>IPREP_SCANNING_TOOLS_LOW: scanner - general confidence;</li><li>IPREP_SCANNING_TOOLS_MID: scanner - medium confidence;</li><li>IPREP_SCANNING_TOOLS_HIGH: scanner - high confidence;</li><li>IPREP_ATO_ATTACKERS_LOW: account takeover attack - general confidence;</li><li>IPREP_ATO_ATTACKERS_MID: account takeover attack - medium confidence;</li><li>IPREP_ATO_ATTACKERS_HIGH: account takeover attack - high confidence;</li><li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_LOW: malicious bot - general confidence;</li><li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_MID: malicious bot - medium confidence;</li><li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_HIGH: malicious bot - high confidence.</li>
         :rtype: list of BotManagementActionOverrides
         """
         return self._BotManagementActionOverrides
@@ -43309,15 +43412,15 @@ class KeyValuePair(AbstractModel):
 
 
 class KnownBotCategories(AbstractModel):
-    r"""Commercial or open-source tool UA feature configuration (formerly UA feature rule).
+    r"""UA feature configuration for commercial or open-source tools (formerly UA feature rule).
 
     """
 
     def __init__(self):
         r"""
-        :param _BaseAction: Handling method for access requests from known commercial tools or open-source tools. specifies the Name parameter value of SecurityAction: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Disabled: not enabled, disable specified rule;</li> <li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li> <li>Allow: pass (to be deprecated).</li>.
+        :param _BaseAction: Handling method for access requests from known commercial or open-source tools. Supported values of SecurityAction Name: <li>Deny: Block;</li><li>Monitor: Observe;</li><li>Disabled: Not enabled, disable the specified rule;</li><li>Challenge: Challenge. Among them, ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li><li>Allow: Release (to be deprecated).</li>
         :type BaseAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _BotManagementActionOverrides: Specifies the handling method for access requests from known commercial tools or open-source tools.
+        :param _BotManagementActionOverrides: Specify the handling method for access requests from known commercial or open-source tools.
         :type BotManagementActionOverrides: list of BotManagementActionOverrides
         """
         self._BaseAction = None
@@ -43325,7 +43428,7 @@ class KnownBotCategories(AbstractModel):
 
     @property
     def BaseAction(self):
-        r"""Handling method for access requests from known commercial tools or open-source tools. specifies the Name parameter value of SecurityAction: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Disabled: not enabled, disable specified rule;</li> <li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li> <li>Allow: pass (to be deprecated).</li>.
+        r"""Handling method for access requests from known commercial or open-source tools. Supported values of SecurityAction Name: <li>Deny: Block;</li><li>Monitor: Observe;</li><li>Disabled: Not enabled, disable the specified rule;</li><li>Challenge: Challenge. Among them, ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li><li>Allow: Release (to be deprecated).</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._BaseAction
@@ -43336,7 +43439,7 @@ class KnownBotCategories(AbstractModel):
 
     @property
     def BotManagementActionOverrides(self):
-        r"""Specifies the handling method for access requests from known commercial tools or open-source tools.
+        r"""Specify the handling method for access requests from known commercial or open-source tools.
         :rtype: list of BotManagementActionOverrides
         """
         return self._BotManagementActionOverrides
@@ -44877,15 +44980,15 @@ class LogItem(AbstractModel):
 
 
 class ManagedRuleAction(AbstractModel):
-    r"""Action for specific RuleId.
+    r"""Item configuration of a managed rule
 
     """
 
     def __init__(self):
         r"""
-        :param _RuleId: Specific items under ManagedRuleGroup, used to rewrite the configuration of this individual rule item, refer to product documentation for details.	
+        :param _RuleId: Specific item under the managed rule group, used for rewriting the configuration content of this individual rule. For details, refer to the product documentation.	
         :type RuleId: str
-        :param _Action: Action for the managed rule item specified by RuleId, the SecurityAction Name parameter supports: <li>`Deny`: block and respond with an block page;</li> <li>`Monitor`: observe, do not process the request and record the security event in logs;</li> <li>`Disabled`: disabled, do not scan the request and skip this rule.</li>.
+        :param _Action: Specifies the handling action for the managed rule item in RuleId. Supported values for SecurityAction Name: <li>Deny: Block. Responds with an interception page.</li><li>Monitor: Observe. Does not process the request but records security events in logs.</li><li>Disabled: Not enabled. Skips the rule without scanning requests.</li>
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         self._RuleId = None
@@ -44893,7 +44996,7 @@ class ManagedRuleAction(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""Specific items under ManagedRuleGroup, used to rewrite the configuration of this individual rule item, refer to product documentation for details.	
+        r"""Specific item under the managed rule group, used for rewriting the configuration content of this individual rule. For details, refer to the product documentation.	
         :rtype: str
         """
         return self._RuleId
@@ -44904,7 +45007,7 @@ class ManagedRuleAction(AbstractModel):
 
     @property
     def Action(self):
-        r"""Action for the managed rule item specified by RuleId, the SecurityAction Name parameter supports: <li>`Deny`: block and respond with an block page;</li> <li>`Monitor`: observe, do not process the request and record the security event in logs;</li> <li>`Disabled`: disabled, do not scan the request and skip this rule.</li>.
+        r"""Specifies the handling action for the managed rule item in RuleId. Supported values for SecurityAction Name: <li>Deny: Block. Responds with an interception page.</li><li>Monitor: Observe. Does not process the request but records security events in logs.</li><li>Disabled: Not enabled. Skips the rule without scanning requests.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._Action
@@ -44930,15 +45033,15 @@ class ManagedRuleAction(AbstractModel):
 
 
 class ManagedRuleAutoUpdate(AbstractModel):
-    r"""Managed rule automatic update option.
+    r"""Automatic update options for managed rules
 
     """
 
     def __init__(self):
         r"""
-        :param _AutoUpdateToLatestVersion: Enable automatic update to the latest version or not. Values: <li>`on`: enabled</li> <li>`off`: disabled</li>.
+        :param _AutoUpdateToLatestVersion: Whether automatic update to the latest version is enabled. Valid values: <li>on: enabled</li><li>off: disabled</li>
         :type AutoUpdateToLatestVersion: str
-        :param _RulesetVersion: Current version, compliant with ISO 8601 standard format, such as 2023-12-21T12:00:32Z, empty by default, output parameter only.
+        :param _RulesetVersion: Currently used version in ISO 8601 format, for example, 2023-12-21T12:00:32Z. Empty by default. Output only.
         :type RulesetVersion: str
         """
         self._AutoUpdateToLatestVersion = None
@@ -44946,7 +45049,7 @@ class ManagedRuleAutoUpdate(AbstractModel):
 
     @property
     def AutoUpdateToLatestVersion(self):
-        r"""Enable automatic update to the latest version or not. Values: <li>`on`: enabled</li> <li>`off`: disabled</li>.
+        r"""Whether automatic update to the latest version is enabled. Valid values: <li>on: enabled</li><li>off: disabled</li>
         :rtype: str
         """
         return self._AutoUpdateToLatestVersion
@@ -44957,7 +45060,7 @@ class ManagedRuleAutoUpdate(AbstractModel):
 
     @property
     def RulesetVersion(self):
-        r"""Current version, compliant with ISO 8601 standard format, such as 2023-12-21T12:00:32Z, empty by default, output parameter only.
+        r"""Currently used version in ISO 8601 format, for example, 2023-12-21T12:00:32Z. Empty by default. Output only.
         :rtype: str
         """
         return self._RulesetVersion
@@ -44981,7 +45084,7 @@ class ManagedRuleAutoUpdate(AbstractModel):
 
 
 class ManagedRuleDetail(AbstractModel):
-    r"""Managed rule detail.
+    r"""Details of managed rules
 
     """
 
@@ -44989,7 +45092,7 @@ class ManagedRuleDetail(AbstractModel):
         r"""
         :param _RuleId: Managed rule Id.
         :type RuleId: str
-        :param _RiskLevel: Protection level of managed rules. Values: <li>`low`: low risk, this rule has a relatively low risk and is applicable to very strict access scenarios, this level of rule may generate considerable false alarms.</li> <li>`medium`: medium risk, this means the risk of this rule is normal and is suitable for protection scenarios with stricter requirements.</li> <li>`high`: high risk, this indicates that the risk of this rule is relatively high and will not generate false alarms in most scenarios.</li> <li>`extreme`: ultra-high risk. this represents that the risk of this rule is extremely high and will not generate false alarms basically.</li>.
+        :param _RiskLevel: Protection level of the managed rule. Valid values: <li>low: low risk. This rule has lower risk and is suitable for access scenarios in very strict control environments. Rules at this level may cause considerable false alarms;</li><li>medium: medium-risk. This rule has normal risk and is suitable for strict protection scenarios;</li><li>high: high-risk. This rule has relatively high risk and will not generate false alarms in most scenarios;</li><li>extreme: ultra-high risk. This rule has extremely high risk and basically will not generate false alarms;</li>
         :type RiskLevel: str
         :param _Description: Rule description.
         :type Description: str
@@ -45017,7 +45120,7 @@ class ManagedRuleDetail(AbstractModel):
 
     @property
     def RiskLevel(self):
-        r"""Protection level of managed rules. Values: <li>`low`: low risk, this rule has a relatively low risk and is applicable to very strict access scenarios, this level of rule may generate considerable false alarms.</li> <li>`medium`: medium risk, this means the risk of this rule is normal and is suitable for protection scenarios with stricter requirements.</li> <li>`high`: high risk, this indicates that the risk of this rule is relatively high and will not generate false alarms in most scenarios.</li> <li>`extreme`: ultra-high risk. this represents that the risk of this rule is extremely high and will not generate false alarms basically.</li>.
+        r"""Protection level of the managed rule. Valid values: <li>low: low risk. This rule has lower risk and is suitable for access scenarios in very strict control environments. Rules at this level may cause considerable false alarms;</li><li>medium: medium-risk. This rule has normal risk and is suitable for strict protection scenarios;</li><li>high: high-risk. This rule has relatively high risk and will not generate false alarms in most scenarios;</li><li>extreme: ultra-high risk. This rule has extremely high risk and basically will not generate false alarms;</li>
         :rtype: str
         """
         return self._RiskLevel
@@ -45083,15 +45186,15 @@ class ManagedRuleGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: Name of the managed rule group, if the configuration for the rule group is not specified, it will be processed by default, refer to product documentation for the specific value of GroupId.
+        :param _GroupId: Group name of the managed rule. If no rule group is specified, the default configuration is used. For the specific value of GroupId, refer to the product documentation.
         :type GroupId: str
-        :param _SensitivityLevel: Protection level of the managed rule group. Values: <li>`loose`: lenient, only contain ultra-high risk rules, at this point, Action parameter needs configured instead of RuleActions parameter;</li> <li>`normal`: normal, contain ultra-high risk and high-risk rules, at this point,Action parameter needs configured instead of RuleActions parameter;</li> <li>`strict`: strict, contains ultra-high risk, high-risk and medium-risk rules, at this point, Action parameter needs configured instead of RuleActions parameter;</li> <li>`extreme`: super strict, contains ultra-high risk, high-risk, medium-risk and low-risk rules, at this point, Action parameter needs configured instead of RuleActions parameter;</li> <li>`custom`: custom, refined strategy, configure the RuleActions parameter for each individual rule, at this point, the Action field is invalid, use RuleActions to configure the refined strategy for each individual rule.</li>.
+        :param _SensitivityLevel: Protection level of the managed rule group. Valid values: <li>loose: Loose. It only contains ultra-high risk rules. At this point, Action is required and RuleActions is invalid.</li><li>normal: Normal. It contains ultra-high risk and high-risk rules. At this point, Action is required and RuleActions is invalid.</li><li>strict: Strict. It contains ultra-high risk, high-risk, and medium-risk rules. At this point, Action is required and RuleActions is invalid.</li><li>extreme: Ultra-strict. It contains ultra-high risk, high-risk, medium-risk, and low-risk rules. At this point, Action is required and RuleActions is invalid.</li><li>custom: Custom. Refined strategy. Configure the disposal method for each individual rule. At this point, the Action field is invalid. Use RuleActions to configure the refined strategy for individual rules.</li>	
         :type SensitivityLevel: str
-        :param _Action: Action for ManagedRuleGroup. the Name parameter value of SecurityAction supports: <li>`Deny`: block and respond with a block page;</li> <li>`Monitor`: observe, do not process requests and record security events in logs;</li> <li>`Disabled`: not enabled, do not scan requests and skip this rule.</li>.
+        :param _Action: Handling action of the managed rule group. Supported values for SecurityAction Name: <li>Deny: Block. Respond with an interception page;</li><li>Monitor: Observe. Do not process requests, log security events in logs;</li><li>Disabled: Not activated. Do not scan requests, skip this rule.</li>
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _RuleActions: Specific configuration of rule items under the managed rule group, valid only when SensitivityLevel is custom.
+        :param _RuleActions: Specific configuration of rule items in the managed rule group. This configuration is effective only when SensitivityLevel is custom.
         :type RuleActions: list of ManagedRuleAction
-        :param _MetaData: ManagedRuleGroup detailed information, output parameter only.
+        :param _MetaData: Managed rule group information. This is an output-only parameter.	
         :type MetaData: :class:`tencentcloud.teo.v20220901.models.ManagedRuleGroupMeta`
         """
         self._GroupId = None
@@ -45102,7 +45205,7 @@ class ManagedRuleGroup(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""Name of the managed rule group, if the configuration for the rule group is not specified, it will be processed by default, refer to product documentation for the specific value of GroupId.
+        r"""Group name of the managed rule. If no rule group is specified, the default configuration is used. For the specific value of GroupId, refer to the product documentation.
         :rtype: str
         """
         return self._GroupId
@@ -45113,7 +45216,7 @@ class ManagedRuleGroup(AbstractModel):
 
     @property
     def SensitivityLevel(self):
-        r"""Protection level of the managed rule group. Values: <li>`loose`: lenient, only contain ultra-high risk rules, at this point, Action parameter needs configured instead of RuleActions parameter;</li> <li>`normal`: normal, contain ultra-high risk and high-risk rules, at this point,Action parameter needs configured instead of RuleActions parameter;</li> <li>`strict`: strict, contains ultra-high risk, high-risk and medium-risk rules, at this point, Action parameter needs configured instead of RuleActions parameter;</li> <li>`extreme`: super strict, contains ultra-high risk, high-risk, medium-risk and low-risk rules, at this point, Action parameter needs configured instead of RuleActions parameter;</li> <li>`custom`: custom, refined strategy, configure the RuleActions parameter for each individual rule, at this point, the Action field is invalid, use RuleActions to configure the refined strategy for each individual rule.</li>.
+        r"""Protection level of the managed rule group. Valid values: <li>loose: Loose. It only contains ultra-high risk rules. At this point, Action is required and RuleActions is invalid.</li><li>normal: Normal. It contains ultra-high risk and high-risk rules. At this point, Action is required and RuleActions is invalid.</li><li>strict: Strict. It contains ultra-high risk, high-risk, and medium-risk rules. At this point, Action is required and RuleActions is invalid.</li><li>extreme: Ultra-strict. It contains ultra-high risk, high-risk, medium-risk, and low-risk rules. At this point, Action is required and RuleActions is invalid.</li><li>custom: Custom. Refined strategy. Configure the disposal method for each individual rule. At this point, the Action field is invalid. Use RuleActions to configure the refined strategy for individual rules.</li>	
         :rtype: str
         """
         return self._SensitivityLevel
@@ -45124,7 +45227,7 @@ class ManagedRuleGroup(AbstractModel):
 
     @property
     def Action(self):
-        r"""Action for ManagedRuleGroup. the Name parameter value of SecurityAction supports: <li>`Deny`: block and respond with a block page;</li> <li>`Monitor`: observe, do not process requests and record security events in logs;</li> <li>`Disabled`: not enabled, do not scan requests and skip this rule.</li>.
+        r"""Handling action of the managed rule group. Supported values for SecurityAction Name: <li>Deny: Block. Respond with an interception page;</li><li>Monitor: Observe. Do not process requests, log security events in logs;</li><li>Disabled: Not activated. Do not scan requests, skip this rule.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._Action
@@ -45135,7 +45238,7 @@ class ManagedRuleGroup(AbstractModel):
 
     @property
     def RuleActions(self):
-        r"""Specific configuration of rule items under the managed rule group, valid only when SensitivityLevel is custom.
+        r"""Specific configuration of rule items in the managed rule group. This configuration is effective only when SensitivityLevel is custom.
         :rtype: list of ManagedRuleAction
         """
         return self._RuleActions
@@ -45146,7 +45249,7 @@ class ManagedRuleGroup(AbstractModel):
 
     @property
     def MetaData(self):
-        r"""ManagedRuleGroup detailed information, output parameter only.
+        r"""Managed rule group information. This is an output-only parameter.	
         :rtype: :class:`tencentcloud.teo.v20220901.models.ManagedRuleGroupMeta`
         """
         return self._MetaData
@@ -45182,17 +45285,17 @@ class ManagedRuleGroup(AbstractModel):
 
 
 class ManagedRuleGroupMeta(AbstractModel):
-    r"""Managed rule group meta information.
+    r"""Managed rule group information
 
     """
 
     def __init__(self):
         r"""
-        :param _GroupDetail: ManagedRuleGroup detailed information, output parameter only.
+        :param _GroupDetail: Managed rule group description. For output usage only.
         :type GroupDetail: str
-        :param _GroupName: ManagedRuleGroup name, output parameter only.
+        :param _GroupName: Managed rule group name. Output parameter only.
         :type GroupName: str
-        :param _RuleDetails: All sub-rules information under current ManagedRuleGroup, output parameter only.
+        :param _RuleDetails: Rule information of all sub-rules in the current managed rule group. Output parameter only.
         :type RuleDetails: list of ManagedRuleDetail
         """
         self._GroupDetail = None
@@ -45201,7 +45304,7 @@ class ManagedRuleGroupMeta(AbstractModel):
 
     @property
     def GroupDetail(self):
-        r"""ManagedRuleGroup detailed information, output parameter only.
+        r"""Managed rule group description. For output usage only.
         :rtype: str
         """
         return self._GroupDetail
@@ -45212,7 +45315,7 @@ class ManagedRuleGroupMeta(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""ManagedRuleGroup name, output parameter only.
+        r"""Managed rule group name. Output parameter only.
         :rtype: str
         """
         return self._GroupName
@@ -45223,7 +45326,7 @@ class ManagedRuleGroupMeta(AbstractModel):
 
     @property
     def RuleDetails(self):
-        r"""All sub-rules information under current ManagedRuleGroup, output parameter only.
+        r"""Rule information of all sub-rules in the current managed rule group. Output parameter only.
         :rtype: list of ManagedRuleDetail
         """
         return self._RuleDetails
@@ -45253,35 +45356,38 @@ class ManagedRuleGroupMeta(AbstractModel):
 
 
 class ManagedRules(AbstractModel):
-    r"""Managed rules configuration.
+    r"""Managed rules for Web security
 
     """
 
     def __init__(self):
         r"""
-        :param _Enabled: The managed rule status. Values: <li>`on`: enabled, all managed rules take effect as configured;</li> <li>`off`: disabled, all managed rules do not take effect.</li>.
+        :param _Enabled: <p>Whether managed rules are enabled. Valid values: <li>on: enabled. All managed rules take effect as configured.</li><li>off: disabled. No managed rules take effect.</li></p>
         :type Enabled: str
-        :param _DetectionOnly: Evaluation mode is enabled or not, it is valid only when the `Enabled` parameter is set to `on`. Values: <li>`on`: enabled, all managed rules take effect in `observe` mode.</li> <li>off: disabled, all managed rules take effect according to the specified configuration.</li>.
+        :param _DetectionOnly: <p>Whether evaluation mode is enabled. This parameter is valid only when the `Enabled` parameter is set to `on`. Valid values: <li>on: enabled. All managed rules take effect in observation mode.</li><li>off: disabled. All managed rules take effect as configured.</li></p>
         :type DetectionOnly: str
-        :param _SemanticAnalysis: Managed rule semantic analysis is enabled or not, it is valid only when the `Enabled` parameter is `on`. Values: <li>`on`: enabled, perform semantic analysis  before processing requests;</li> <li>`off`: disabled, process requests directly without semantic analysis.</li> <br/>The default value is `off`.
+        :param _SemanticAnalysis: <p>Whether the deep analysis option for managed rules is enabled. This parameter is valid only when the `Enabled` parameter is set to `on`. Valid values: <li>on: enabled. Requests are processed after deep analysis.</li><li>off: disabled. Requests are processed directly without deep analysis.</li> <br>This parameter is to be deprecated. The switch for deep analysis rules is migrated to the `SemanticAnalysisRules.Enabled` parameter.</p>
         :type SemanticAnalysis: str
-        :param _AutoUpdate: Managed rule automatic update option.
+        :param _SemanticAnalysisRules: <p>Deep analysis configuration option. Identifies malicious behaviors in requests (such as SQL injection and XSS attacks), and logs and blocks malicious requests.</p>
+        :type SemanticAnalysisRules: :class:`tencentcloud.teo.v20220901.models.SemanticAnalysisRules`
+        :param _AutoUpdate: <p>Auto-update option for managed rules.</p>
         :type AutoUpdate: :class:`tencentcloud.teo.v20220901.models.ManagedRuleAutoUpdate`
-        :param _ManagedRuleGroups: Configuration of the managed rule group. If this structure is passed as an empty array or the GroupId is not included in the array, it will be processed based by default.
+        :param _ManagedRuleGroups: <p>Configuration of managed rule groups. If an empty array is passed for this structure or `GroupId` is not included in the list, the default processing method is used.</p>
         :type ManagedRuleGroups: list of ManagedRuleGroup
-        :param _FrequentScanningProtection: High-Frequency scan protection configuration option. when a visitor's frequent requests hit the managed rule configured as block within a period of time, all requests from that visitor are blocked.
+        :param _FrequentScanningProtection: <p>High-frequency scan protection configuration option. When a visitor's requests frequently trigger managed rules configured as block, all requests from this visitor are blocked for a period of time.</p>
         :type FrequentScanningProtection: :class:`tencentcloud.teo.v20220901.models.FrequentScanningProtection`
         """
         self._Enabled = None
         self._DetectionOnly = None
         self._SemanticAnalysis = None
+        self._SemanticAnalysisRules = None
         self._AutoUpdate = None
         self._ManagedRuleGroups = None
         self._FrequentScanningProtection = None
 
     @property
     def Enabled(self):
-        r"""The managed rule status. Values: <li>`on`: enabled, all managed rules take effect as configured;</li> <li>`off`: disabled, all managed rules do not take effect.</li>.
+        r"""<p>Whether managed rules are enabled. Valid values: <li>on: enabled. All managed rules take effect as configured.</li><li>off: disabled. No managed rules take effect.</li></p>
         :rtype: str
         """
         return self._Enabled
@@ -45292,7 +45398,7 @@ class ManagedRules(AbstractModel):
 
     @property
     def DetectionOnly(self):
-        r"""Evaluation mode is enabled or not, it is valid only when the `Enabled` parameter is set to `on`. Values: <li>`on`: enabled, all managed rules take effect in `observe` mode.</li> <li>off: disabled, all managed rules take effect according to the specified configuration.</li>.
+        r"""<p>Whether evaluation mode is enabled. This parameter is valid only when the `Enabled` parameter is set to `on`. Valid values: <li>on: enabled. All managed rules take effect in observation mode.</li><li>off: disabled. All managed rules take effect as configured.</li></p>
         :rtype: str
         """
         return self._DetectionOnly
@@ -45303,7 +45409,7 @@ class ManagedRules(AbstractModel):
 
     @property
     def SemanticAnalysis(self):
-        r"""Managed rule semantic analysis is enabled or not, it is valid only when the `Enabled` parameter is `on`. Values: <li>`on`: enabled, perform semantic analysis  before processing requests;</li> <li>`off`: disabled, process requests directly without semantic analysis.</li> <br/>The default value is `off`.
+        r"""<p>Whether the deep analysis option for managed rules is enabled. This parameter is valid only when the `Enabled` parameter is set to `on`. Valid values: <li>on: enabled. Requests are processed after deep analysis.</li><li>off: disabled. Requests are processed directly without deep analysis.</li> <br>This parameter is to be deprecated. The switch for deep analysis rules is migrated to the `SemanticAnalysisRules.Enabled` parameter.</p>
         :rtype: str
         """
         return self._SemanticAnalysis
@@ -45313,8 +45419,19 @@ class ManagedRules(AbstractModel):
         self._SemanticAnalysis = SemanticAnalysis
 
     @property
+    def SemanticAnalysisRules(self):
+        r"""<p>Deep analysis configuration option. Identifies malicious behaviors in requests (such as SQL injection and XSS attacks), and logs and blocks malicious requests.</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SemanticAnalysisRules`
+        """
+        return self._SemanticAnalysisRules
+
+    @SemanticAnalysisRules.setter
+    def SemanticAnalysisRules(self, SemanticAnalysisRules):
+        self._SemanticAnalysisRules = SemanticAnalysisRules
+
+    @property
     def AutoUpdate(self):
-        r"""Managed rule automatic update option.
+        r"""<p>Auto-update option for managed rules.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.ManagedRuleAutoUpdate`
         """
         return self._AutoUpdate
@@ -45325,7 +45442,7 @@ class ManagedRules(AbstractModel):
 
     @property
     def ManagedRuleGroups(self):
-        r"""Configuration of the managed rule group. If this structure is passed as an empty array or the GroupId is not included in the array, it will be processed based by default.
+        r"""<p>Configuration of managed rule groups. If an empty array is passed for this structure or `GroupId` is not included in the list, the default processing method is used.</p>
         :rtype: list of ManagedRuleGroup
         """
         return self._ManagedRuleGroups
@@ -45336,7 +45453,7 @@ class ManagedRules(AbstractModel):
 
     @property
     def FrequentScanningProtection(self):
-        r"""High-Frequency scan protection configuration option. when a visitor's frequent requests hit the managed rule configured as block within a period of time, all requests from that visitor are blocked.
+        r"""<p>High-frequency scan protection configuration option. When a visitor's requests frequently trigger managed rules configured as block, all requests from this visitor are blocked for a period of time.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.FrequentScanningProtection`
         """
         return self._FrequentScanningProtection
@@ -45350,6 +45467,9 @@ class ManagedRules(AbstractModel):
         self._Enabled = params.get("Enabled")
         self._DetectionOnly = params.get("DetectionOnly")
         self._SemanticAnalysis = params.get("SemanticAnalysis")
+        if params.get("SemanticAnalysisRules") is not None:
+            self._SemanticAnalysisRules = SemanticAnalysisRules()
+            self._SemanticAnalysisRules._deserialize(params.get("SemanticAnalysisRules"))
         if params.get("AutoUpdate") is not None:
             self._AutoUpdate = ManagedRuleAutoUpdate()
             self._AutoUpdate._deserialize(params.get("AutoUpdate"))
@@ -45485,15 +45605,15 @@ class MaxAgeParameters(AbstractModel):
 
 
 class MaxNewSessionTriggerConfig(AbstractModel):
-    r"""Trigger threshold for verification in Bot management.
+    r"""Trigger threshold of verification in Bot management.
 
     """
 
     def __init__(self):
         r"""
-        :param _MaxNewSessionCountInterval: Time window for trigger threshold statistics. valid values: <li>5s: within 5 seconds;</li><li>10s: within 10 seconds;</li><li>15s: within 15 seconds;</li><li>30s: within 30 seconds;</li><li>60s: within 60 seconds;</li><li>5m: within 5 minutes;</li><li>10m: within 10 minutes;</li><li>30m: within 30 minutes;</li><li>60m: within 60 minutes.</li>.
+        :param _MaxNewSessionCountInterval: Time window for trigger threshold statistics. Valid values: <li>5s: within 5 seconds;</li><li>10s: within 10 seconds;</li><li>15s: within 15 seconds;</li><li>30s: within 30 seconds;</li><li>60s: within 60 seconds;</li><li>5m: within 5 minutes;</li><li>10m: within 10 minutes;</li><li>30m: within 30 minutes;</li><li>60m: within 60 minutes.</li>
         :type MaxNewSessionCountInterval: str
-        :param _MaxNewSessionCountThreshold: Trigger threshold cumulative count. value range: 1-100000000.
+        :param _MaxNewSessionCountThreshold: Cumulative count of trigger threshold statistics. Value range: 1-100000000.
         :type MaxNewSessionCountThreshold: int
         """
         self._MaxNewSessionCountInterval = None
@@ -45501,7 +45621,7 @@ class MaxNewSessionTriggerConfig(AbstractModel):
 
     @property
     def MaxNewSessionCountInterval(self):
-        r"""Time window for trigger threshold statistics. valid values: <li>5s: within 5 seconds;</li><li>10s: within 10 seconds;</li><li>15s: within 15 seconds;</li><li>30s: within 30 seconds;</li><li>60s: within 60 seconds;</li><li>5m: within 5 minutes;</li><li>10m: within 10 minutes;</li><li>30m: within 30 minutes;</li><li>60m: within 60 minutes.</li>.
+        r"""Time window for trigger threshold statistics. Valid values: <li>5s: within 5 seconds;</li><li>10s: within 10 seconds;</li><li>15s: within 15 seconds;</li><li>30s: within 30 seconds;</li><li>60s: within 60 seconds;</li><li>5m: within 5 minutes;</li><li>10m: within 10 minutes;</li><li>30m: within 30 minutes;</li><li>60m: within 60 minutes.</li>
         :rtype: str
         """
         return self._MaxNewSessionCountInterval
@@ -45512,7 +45632,7 @@ class MaxNewSessionTriggerConfig(AbstractModel):
 
     @property
     def MaxNewSessionCountThreshold(self):
-        r"""Trigger threshold cumulative count. value range: 1-100000000.
+        r"""Cumulative count of trigger threshold statistics. Value range: 1-100000000.
         :rtype: int
         """
         return self._MaxNewSessionCountThreshold
@@ -45536,17 +45656,17 @@ class MaxNewSessionTriggerConfig(AbstractModel):
 
 
 class MinimalRequestBodyTransferRate(AbstractModel):
-    r"""Minimum minimum body transfer rate threshold configuration.
+    r"""Configuration of the minimum body transfer rate threshold.
 
     """
 
     def __init__(self):
         r"""
-        :param _MinimalAvgTransferRateThreshold: Minimum body transfer rate threshold, the measurement unit is only supported in bps.
+        :param _MinimalAvgTransferRateThreshold: Minimum body transfer rate threshold. The measurement unit only supports bps.
         :type MinimalAvgTransferRateThreshold: str
-        :param _CountingPeriod: Minimum body transfer rate statistical time range, valid values: <li>10s: 10 seconds;</li> <li>30s: 30 seconds;</li> <li>60s: 60 seconds;</li> <li>120s: 120 seconds.</li>.
+        :param _CountingPeriod: Statistical time range for minimum body transfer rate. Valid values: <li>10s: 10 seconds;</li><li>30s: 30 seconds;</li><li>60s: 60 seconds;</li><li>120s: 120 seconds.</li>
         :type CountingPeriod: str
-        :param _Enabled: Specifies whether the minimum body transfer rate threshold is enabled. valid values: <li>on: enable;</li> <li>off: disable.</li>.
+        :param _Enabled: Whether the minimum body transfer rate threshold is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li>
         :type Enabled: str
         """
         self._MinimalAvgTransferRateThreshold = None
@@ -45555,7 +45675,7 @@ class MinimalRequestBodyTransferRate(AbstractModel):
 
     @property
     def MinimalAvgTransferRateThreshold(self):
-        r"""Minimum body transfer rate threshold, the measurement unit is only supported in bps.
+        r"""Minimum body transfer rate threshold. The measurement unit only supports bps.
         :rtype: str
         """
         return self._MinimalAvgTransferRateThreshold
@@ -45566,7 +45686,7 @@ class MinimalRequestBodyTransferRate(AbstractModel):
 
     @property
     def CountingPeriod(self):
-        r"""Minimum body transfer rate statistical time range, valid values: <li>10s: 10 seconds;</li> <li>30s: 30 seconds;</li> <li>60s: 60 seconds;</li> <li>120s: 120 seconds.</li>.
+        r"""Statistical time range for minimum body transfer rate. Valid values: <li>10s: 10 seconds;</li><li>30s: 30 seconds;</li><li>60s: 60 seconds;</li><li>120s: 120 seconds.</li>
         :rtype: str
         """
         return self._CountingPeriod
@@ -45577,7 +45697,7 @@ class MinimalRequestBodyTransferRate(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""Specifies whether the minimum body transfer rate threshold is enabled. valid values: <li>on: enable;</li> <li>off: disable.</li>.
+        r"""Whether the minimum body transfer rate threshold is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li>
         :rtype: str
         """
         return self._Enabled
@@ -57925,33 +58045,33 @@ Default: `source_to_eo`.
 
 
 class RateLimitingRule(AbstractModel):
-    r"""Specifies the rate limit configuration.
+    r"""Specific configuration of the rate limit.
 
     """
 
     def __init__(self):
         r"""
-        :param _Id: The ID of precise rate limiting. rule ID supports different rule configuration operations: <li><b>add</b> a new rule: leave the ID empty or do not specify the ID parameter.</li> <li><b>modify</b> an existing rule: specify the rule ID that needs to be updated/modified.</li> <li><b>delete</b> an existing rule: existing Rules not included in the Rules list under the RateLimitingRules parameter will be deleted.</li>.
+        :param _Id: <p>ID of the precise rate limiting rule.<br>Different rule configuration operations can be performed by rule ID:<br> <li> <b>Add</b> a new rule: leave ID empty or unspecified;</li><li><b>Modify</b> an existing rule: specify the rule ID that needs to be updated/modified;</li><li><b>Delete</b> an existing rule: existing rules not included in the Rules list in the RateLimitingRules parameter will be deleted.</li></p>
         :type Id: str
-        :param _Name: Specifies the name of the precise rate limit.
+        :param _Name: <p>Name of the precise rate limit.</p>
         :type Name: str
-        :param _Condition: The specific content of precise rate limiting must comply with expression grammar. for detailed requirements, please refer to [the product document](https://www.tencentcloud.com/document/product/1552/125343?from_cn_redirect=1) .
+        :param _Condition: <p>The specific content of precise rate limiting must comply with expression syntax. For detailed specifications, see <a href="https://www.tencentcloud.com/document/product/1552/125343?from_cn_redirect=1">product document</a>.</p>
         :type Condition: str
-        :param _Mode: Speed limit mode. Within the statistical time window CountingPeriod, the following speed limit modes can be configured for requests that meet the feature CountBy:<li>Block: Block access source. When the count exceeds the threshold MaxRequestThreshold, execute Action disposal for ALL subsequent requests that meet the feature within the ActionDuration. </li><li>Throttle: Only dispose excess requests. When the count exceeds the threshold MaxRequestThreshold, only execute Action disposal for requests that exceed the threshold, and stop disposal when the window ends. At this point, the ActionDuration parameter will be ignored.</li><br />Default value is Block.
+        :param _Mode: <p>Bandwidth limit mode. Within the statistical time window CountingPeriod, for requests that meet the CountBy feature, the following bandwidth limit modes can be configured: <li>Block: Block the access source. When the count exceeds the MaxRequestThreshold, execute the Action on all subsequent requests that meet the feature within the ActionDuration;</li><li>Throttle: Only handle excess requests. When the count exceeds the MaxRequestThreshold, execute the Action only on requests that exceed the threshold, and stop when the window ends. At this point, the ActionDuration parameter will be ignored.</li><br>Default value: Block.</p>
         :type Mode: str
-        :param _CountBy: The match mode of the rate threshold request feature. this field is required when Enabled is on.<br /><br />when there are multiple conditions, composite conditions are used to collect statistics. the maximum number of conditions cannot exceed 5. valid values:<br/><li><b>http.request.ip</b>: client ip;</li><li><b>http.request.xff_header_ip</b>: client ip (priority match xff header);</li><li><b>http.request.uri.path</b>: access path of the request;</li><li><b>http.request.cookies['session']</b>: Cookie named session, where session can be replaced with your own parameter;</li><li><b>http.request.headers['user-agent']</b>: http header named user-agent, where user-agent can be replaced with your own parameter;</li><li><b>http.request.ja3</b>: ja3 fingerprint of the request;</li><li><b>http.request.ja4</b>: ja4 fingerprint of the request;</li><li><b>http.request.uri.query['test']</b>: URL query parameter named test, where test can be replaced with your own parameter.</li>.
+        :param _CountBy: <p>Match mode of the rate threshold request feature. Required when Enabled is on.<br><br>When there are multiple conditions, they will be combined for statistics and calculation. A maximum of 5 conditions is allowed. Valid values:<br><li><b>http.request.ip</b>: client IP;</li><li><b>http.request.xff_header_ip</b>: client IP (priority match XFF header);</li><li><b>http.request.uri.path</b>: access path of the request;</li><li><b>http.request.cookies[&#39;session&#39;]</b>: Cookie named session, where session can be replaced with your own parameter;</li><li><b>http.request.headers[&#39;user-agent&#39;]</b>: HTTP header named user-agent, where user-agent can be replaced with your own parameter;</li><li><b>http.request.ja3</b>: JA3 fingerprint of the request;</li><li><b>http.request.ja4</b>: JA4 fingerprint of the request;</li><li><b>http.request.uri.query[&#39;test&#39;]</b>: URL query parameter named test, where test can be replaced with your own parameter.</li></p>
         :type CountBy: list of str
-        :param _MaxRequestThreshold: Precision rate limiting specifies the cumulative number of interceptions within the time range. value ranges from 1 to 100000.
+        :param _MaxRequestThreshold: <p>Cumulative number of interceptions by precise rate limiting within the time range, with a value range of 1 to 100000.</p>
         :type MaxRequestThreshold: int
-        :param _CountingPeriod: Specifies the time window for statistics. valid values: <li>1s: 1 second;</li><li>5s: 5 seconds;</li><li>10s: 10 seconds;</li><li>20s: 20 seconds;</li><li>30s: 30 seconds;</li><li>40s: 40 seconds;</li><li>50s: 50 seconds;</li><li>1m: 1 minute;</li><li>2m: 2 minutes;</li><li>5m: 5 minutes;</li><li>10m: 10 minutes;</li><li>1h: 1 hour.</li>.
+        :param _CountingPeriod: <p>Time window for statistics. Valid values: <li>1s: 1 second;</li><li>5s: 5 seconds;</li><li>10s: 10 seconds;</li><li>20s: 20 seconds;</li><li>30s: 30 seconds;</li><li>40s: 40 seconds;</li><li>50s: 50 seconds;</li><li>1m: 1 minute;</li><li>2m: 2 minutes;</li><li>5m: 5 minutes;</li><li>10m: 10 minutes;</li><li>1h: 1 hour.</li></p>
         :type CountingPeriod: str
-        :param _ActionDuration: Duration of the Action. Only the following units are supported: <li>s: second, value range 1-120;</li><li>m: minute, value range 1-120;</li><li>h: hour, value range 1-48;</li><li>d: day, value range 1-30.</li><br />This parameter will be ignored and will not take effect when Mode is Throttle.
+        :param _ActionDuration: <p>Duration of the Action. Supported units: <li>s: seconds, value range: 1-120;</li><li>m: minutes, value range: 1-120;</li><li>h: hours, value range: 1-48;</li><li>d: days, value range: 1-30.</li><br>When Mode is Throttle, this parameter will be ignored and will not take effect.</p>
         :type ActionDuration: str
-        :param _Action: Precision rate limiting handling methods. valid values: <li>Monitor: Monitor;</li> <li>Deny: block, where DenyActionParameters.Name supports Deny and ReturnCustomPage;</li> <li>Challenge: Challenge, where ChallengeActionParameters.Name supports JSChallenge and ManagedChallenge;</li> <li>Redirect: Redirect to URL;</li>.
+        :param _Action: <p>Handling method for precise rate limiting. SecurityAction.Name value range is as follows:</p><ul><li>Allow: allow, where AllowActionParameters supports MinDelayTime and MaxDelayTime configuration;</li><li>Deny: block, where DenyActionParameters supports ReturnCustomPage and Stall configuration;</li><li>Monitor: observe;</li><li>Challenge: challenge, where ChallengeActionParameters.ChallengeOption supports JSChallenge and ManagedChallenge;</li><li>Redirect: redirect to a URL.</li></ul>
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _Priority: Precision rate limiting specifies the priority. value range is 0 to 100. default is 0.
+        :param _Priority: <p>Priority of precise rate limiting, ranging from 0 to 100, with a default value of 0.</p>
         :type Priority: int
-        :param _Enabled: Whether the precise rate limiting rule is enabled. valid values: <li>on: enabled;</li> <li>off: disabled.</li>.
+        :param _Enabled: <p>Whether the precise rate limiting rule is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li></p>
         :type Enabled: str
         """
         self._Id = None
@@ -57968,7 +58088,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def Id(self):
-        r"""The ID of precise rate limiting. rule ID supports different rule configuration operations: <li><b>add</b> a new rule: leave the ID empty or do not specify the ID parameter.</li> <li><b>modify</b> an existing rule: specify the rule ID that needs to be updated/modified.</li> <li><b>delete</b> an existing rule: existing Rules not included in the Rules list under the RateLimitingRules parameter will be deleted.</li>.
+        r"""<p>ID of the precise rate limiting rule.<br>Different rule configuration operations can be performed by rule ID:<br> <li> <b>Add</b> a new rule: leave ID empty or unspecified;</li><li><b>Modify</b> an existing rule: specify the rule ID that needs to be updated/modified;</li><li><b>Delete</b> an existing rule: existing rules not included in the Rules list in the RateLimitingRules parameter will be deleted.</li></p>
         :rtype: str
         """
         return self._Id
@@ -57979,7 +58099,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def Name(self):
-        r"""Specifies the name of the precise rate limit.
+        r"""<p>Name of the precise rate limit.</p>
         :rtype: str
         """
         return self._Name
@@ -57990,7 +58110,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def Condition(self):
-        r"""The specific content of precise rate limiting must comply with expression grammar. for detailed requirements, please refer to [the product document](https://www.tencentcloud.com/document/product/1552/125343?from_cn_redirect=1) .
+        r"""<p>The specific content of precise rate limiting must comply with expression syntax. For detailed specifications, see <a href="https://www.tencentcloud.com/document/product/1552/125343?from_cn_redirect=1">product document</a>.</p>
         :rtype: str
         """
         return self._Condition
@@ -58001,7 +58121,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def Mode(self):
-        r"""Speed limit mode. Within the statistical time window CountingPeriod, the following speed limit modes can be configured for requests that meet the feature CountBy:<li>Block: Block access source. When the count exceeds the threshold MaxRequestThreshold, execute Action disposal for ALL subsequent requests that meet the feature within the ActionDuration. </li><li>Throttle: Only dispose excess requests. When the count exceeds the threshold MaxRequestThreshold, only execute Action disposal for requests that exceed the threshold, and stop disposal when the window ends. At this point, the ActionDuration parameter will be ignored.</li><br />Default value is Block.
+        r"""<p>Bandwidth limit mode. Within the statistical time window CountingPeriod, for requests that meet the CountBy feature, the following bandwidth limit modes can be configured: <li>Block: Block the access source. When the count exceeds the MaxRequestThreshold, execute the Action on all subsequent requests that meet the feature within the ActionDuration;</li><li>Throttle: Only handle excess requests. When the count exceeds the MaxRequestThreshold, execute the Action only on requests that exceed the threshold, and stop when the window ends. At this point, the ActionDuration parameter will be ignored.</li><br>Default value: Block.</p>
         :rtype: str
         """
         return self._Mode
@@ -58012,7 +58132,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def CountBy(self):
-        r"""The match mode of the rate threshold request feature. this field is required when Enabled is on.<br /><br />when there are multiple conditions, composite conditions are used to collect statistics. the maximum number of conditions cannot exceed 5. valid values:<br/><li><b>http.request.ip</b>: client ip;</li><li><b>http.request.xff_header_ip</b>: client ip (priority match xff header);</li><li><b>http.request.uri.path</b>: access path of the request;</li><li><b>http.request.cookies['session']</b>: Cookie named session, where session can be replaced with your own parameter;</li><li><b>http.request.headers['user-agent']</b>: http header named user-agent, where user-agent can be replaced with your own parameter;</li><li><b>http.request.ja3</b>: ja3 fingerprint of the request;</li><li><b>http.request.ja4</b>: ja4 fingerprint of the request;</li><li><b>http.request.uri.query['test']</b>: URL query parameter named test, where test can be replaced with your own parameter.</li>.
+        r"""<p>Match mode of the rate threshold request feature. Required when Enabled is on.<br><br>When there are multiple conditions, they will be combined for statistics and calculation. A maximum of 5 conditions is allowed. Valid values:<br><li><b>http.request.ip</b>: client IP;</li><li><b>http.request.xff_header_ip</b>: client IP (priority match XFF header);</li><li><b>http.request.uri.path</b>: access path of the request;</li><li><b>http.request.cookies[&#39;session&#39;]</b>: Cookie named session, where session can be replaced with your own parameter;</li><li><b>http.request.headers[&#39;user-agent&#39;]</b>: HTTP header named user-agent, where user-agent can be replaced with your own parameter;</li><li><b>http.request.ja3</b>: JA3 fingerprint of the request;</li><li><b>http.request.ja4</b>: JA4 fingerprint of the request;</li><li><b>http.request.uri.query[&#39;test&#39;]</b>: URL query parameter named test, where test can be replaced with your own parameter.</li></p>
         :rtype: list of str
         """
         return self._CountBy
@@ -58023,7 +58143,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def MaxRequestThreshold(self):
-        r"""Precision rate limiting specifies the cumulative number of interceptions within the time range. value ranges from 1 to 100000.
+        r"""<p>Cumulative number of interceptions by precise rate limiting within the time range, with a value range of 1 to 100000.</p>
         :rtype: int
         """
         return self._MaxRequestThreshold
@@ -58034,7 +58154,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def CountingPeriod(self):
-        r"""Specifies the time window for statistics. valid values: <li>1s: 1 second;</li><li>5s: 5 seconds;</li><li>10s: 10 seconds;</li><li>20s: 20 seconds;</li><li>30s: 30 seconds;</li><li>40s: 40 seconds;</li><li>50s: 50 seconds;</li><li>1m: 1 minute;</li><li>2m: 2 minutes;</li><li>5m: 5 minutes;</li><li>10m: 10 minutes;</li><li>1h: 1 hour.</li>.
+        r"""<p>Time window for statistics. Valid values: <li>1s: 1 second;</li><li>5s: 5 seconds;</li><li>10s: 10 seconds;</li><li>20s: 20 seconds;</li><li>30s: 30 seconds;</li><li>40s: 40 seconds;</li><li>50s: 50 seconds;</li><li>1m: 1 minute;</li><li>2m: 2 minutes;</li><li>5m: 5 minutes;</li><li>10m: 10 minutes;</li><li>1h: 1 hour.</li></p>
         :rtype: str
         """
         return self._CountingPeriod
@@ -58045,7 +58165,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def ActionDuration(self):
-        r"""Duration of the Action. Only the following units are supported: <li>s: second, value range 1-120;</li><li>m: minute, value range 1-120;</li><li>h: hour, value range 1-48;</li><li>d: day, value range 1-30.</li><br />This parameter will be ignored and will not take effect when Mode is Throttle.
+        r"""<p>Duration of the Action. Supported units: <li>s: seconds, value range: 1-120;</li><li>m: minutes, value range: 1-120;</li><li>h: hours, value range: 1-48;</li><li>d: days, value range: 1-30.</li><br>When Mode is Throttle, this parameter will be ignored and will not take effect.</p>
         :rtype: str
         """
         return self._ActionDuration
@@ -58056,7 +58176,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def Action(self):
-        r"""Precision rate limiting handling methods. valid values: <li>Monitor: Monitor;</li> <li>Deny: block, where DenyActionParameters.Name supports Deny and ReturnCustomPage;</li> <li>Challenge: Challenge, where ChallengeActionParameters.Name supports JSChallenge and ManagedChallenge;</li> <li>Redirect: Redirect to URL;</li>.
+        r"""<p>Handling method for precise rate limiting. SecurityAction.Name value range is as follows:</p><ul><li>Allow: allow, where AllowActionParameters supports MinDelayTime and MaxDelayTime configuration;</li><li>Deny: block, where DenyActionParameters supports ReturnCustomPage and Stall configuration;</li><li>Monitor: observe;</li><li>Challenge: challenge, where ChallengeActionParameters.ChallengeOption supports JSChallenge and ManagedChallenge;</li><li>Redirect: redirect to a URL.</li></ul>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._Action
@@ -58067,7 +58187,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def Priority(self):
-        r"""Precision rate limiting specifies the priority. value range is 0 to 100. default is 0.
+        r"""<p>Priority of precise rate limiting, ranging from 0 to 100, with a default value of 0.</p>
         :rtype: int
         """
         return self._Priority
@@ -58078,7 +58198,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""Whether the precise rate limiting rule is enabled. valid values: <li>on: enabled;</li> <li>off: disabled.</li>.
+        r"""<p>Whether the precise rate limiting rule is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li></p>
         :rtype: str
         """
         return self._Enabled
@@ -58113,20 +58233,20 @@ class RateLimitingRule(AbstractModel):
 
 
 class RateLimitingRules(AbstractModel):
-    r"""Precision rate limiting configuration.
+    r"""Configuration of precise rate limiting
 
     """
 
     def __init__(self):
         r"""
-        :param _Rules: Definition list of precise rate limiting. when using ModifySecurityPolicy to modify the Web protection configuration: <br> <li> if the Rules parameter is not specified or its length is zero: clear all precision rate limiting configurations.</li> <li> if the RateLimitingRules parameter value is unspecified in the SecurityPolicy parameter: retain the existing custom rule configuration without modification.</li>.
+        :param _Rules: Definition list of precise rate limiting. When using ModifySecurityPolicy to modify Web protection configuration: <br> <li> If the Rules parameter is not specified or its length is zero: clear all precise rate limiting configurations.</li> <li> If the RateLimitingRules parameter value is not specified in the SecurityPolicy parameter: keep the existing custom rule configuration without modification.</li>
         :type Rules: list of RateLimitingRule
         """
         self._Rules = None
 
     @property
     def Rules(self):
-        r"""Definition list of precise rate limiting. when using ModifySecurityPolicy to modify the Web protection configuration: <br> <li> if the Rules parameter is not specified or its length is zero: clear all precision rate limiting configurations.</li> <li> if the RateLimitingRules parameter value is unspecified in the SecurityPolicy parameter: retain the existing custom rule configuration without modification.</li>.
+        r"""Definition list of precise rate limiting. When using ModifySecurityPolicy to modify Web protection configuration: <br> <li> If the Rules parameter is not specified or its length is zero: clear all precise rate limiting configurations.</li> <li> If the RateLimitingRules parameter value is not specified in the SecurityPolicy parameter: keep the existing custom rule configuration without modification.</li>
         :rtype: list of RateLimitingRule
         """
         return self._Rules
@@ -58488,8 +58608,8 @@ class RedirectActionParameters(AbstractModel):
     r"""Additional parameter for safe execution when the action is set to redirect.
 
     This parameter is used to specify the extra handling action taken by the system when a security rule is hit and a redirection action is executed.
-    Different disposal actions are configured with different fixed parameter combinations. The system will determine the actually effective disposal action type according to the configured parameter combination.
-    During the same redirection execution, only one handling action can be configured and made effective. Parameter combinations for multiple disposal actions cannot appear at the same time. Otherwise, it is deemed as an invalid configuration.
+    Different handling actions are configured with different fixed parameter combinations. The system will determine the effective handling action type according to the configured parameter combination.
+    Only one handling action can be configured and made effective during the same redirection. Parameter composites corresponding to multiple handling actions cannot appear at the same time. Otherwise, it is deemed as an invalid configuration.
     RedirectActionParameters supports the following extra handling actions: <li>Redirect: redirect client requests to the specified destination URL. Corresponding parameter: URL.</li>
 
     """
@@ -58822,15 +58942,15 @@ class RenewPlanResponse(AbstractModel):
 
 
 class RequestBodyTransferTimeout(AbstractModel):
-    r"""Body transfer timeout duration configuration.
+    r"""Specific configuration of the body transfer timeout duration.
 
     """
 
     def __init__(self):
         r"""
-        :param _IdleTimeout: Body transfer timeout duration. valid values: 5-120. measurement unit: seconds (s) only.
+        :param _IdleTimeout: Body transfer timeout duration. Value range: 5–120. Unit: seconds (s) only.
         :type IdleTimeout: str
-        :param _Enabled: Whether body transfer timeout is enabled. valid values: <li>`on`: enable</li> <li>`off`: disable</li>.
+        :param _Enabled: Whether body transfer timeout duration is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li>
         :type Enabled: str
         """
         self._IdleTimeout = None
@@ -58838,7 +58958,7 @@ class RequestBodyTransferTimeout(AbstractModel):
 
     @property
     def IdleTimeout(self):
-        r"""Body transfer timeout duration. valid values: 5-120. measurement unit: seconds (s) only.
+        r"""Body transfer timeout duration. Value range: 5–120. Unit: seconds (s) only.
         :rtype: str
         """
         return self._IdleTimeout
@@ -58849,7 +58969,7 @@ class RequestBodyTransferTimeout(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""Whether body transfer timeout is enabled. valid values: <li>`on`: enable</li> <li>`off`: disable</li>.
+        r"""Whether body transfer timeout duration is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li>
         :rtype: str
         """
         return self._Enabled
@@ -58873,31 +58993,31 @@ class RequestBodyTransferTimeout(AbstractModel):
 
 
 class RequestFieldsForException(AbstractModel):
-    r"""Skipped fields configuration in exception rules.
+    r"""Skipped field configuration in the exception rule
 
     """
 
     def __init__(self):
         r"""
-        :param _Scope: Skip specific field. supported values:.
-<li>body.json: parameter content in json requests. at this point, Condition supports key and value, TargetField supports key and value, for example { "Scope": "body.json", "Condition": "", "TargetField": "key" }, which means all parameters in json requests skip WAF scan.</li>.
-<li style="margin-top:5px">cookie: cookie; at this point Condition supports key, value, TargetField supports key, value, for example { "Scope": "cookie", "Condition": "${key} in ['account-id'] and ${value} like ['prefix-*']", "TargetField": "value" }, which means the cookie parameter name equals account-id and the parameter value wildcard matches prefix-* to skip WAF scan;</li>.
-<li style="margin-top:5px">header: HTTP header parameters. at this point, Condition supports key and value, TargetField supports key and value, for example { "Scope": "header", "Condition": "${key} like ['x-auth-*']", "TargetField": "value" }, which means header parameter name wildcard match x-auth-* skips WAF scan.</li>.
-<li style="margin-top:5px">uri.query: URL encoding content/query parameter. at this point, Condition supports key and value, TargetField supports key and value. example: { "Scope": "uri.query", "Condition": "${key} in ['action'] and ${value} in ['upload', 'delete']", "TargetField": "value" }. indicates URL encoding content/query parameter name equal to action and parameter value equal to upload or delete skips WAF scan.</li>.
-<li style="margin-top:5px">uri: specifies the request path uri. at this point, Condition must be empty. TargetField supports query, path, fullpath, such as {"Scope": "uri", "Condition": "", "TargetField": "query"}, indicates the request path uri skips WAF scan for query parameters.</li>.
-<li style="margin-top:5px">body: request body content. at this point Condition must be empty, TargetField supports fullbody, multipart, such as { "Scope": "body", "Condition": "", "TargetField": "fullbody" }, which means the request body content skips WAF scan as a full request.</li>.
+        :param _Scope: Specific fields to skip. Supported values: <br/>
+<li>body.json: parameter content in JSON requests. At this point, Condition supports key and value, and TargetField supports key and value. For example, { "Scope": "body.json", "Condition": "", "TargetField": "key" } means ALL parameters in the JSON request content skip WAF scan.</li>
+<li style="margin-top:5px">cookie: Cookie; at this point, Condition supports key and value, and TargetField supports key and value, for example { "Scope": "cookie", "Condition": "${key} in ['account-id'] and ${value} like ['prefix-*']", "TargetField": "value" }, which means the cookie parameter name equals account-id and the parameter value wildcard matches prefix-* to skip WAF scan;</li>
+<li style="margin-top:5px">header: HTTP header parameters. At this point, Condition supports key and value, and TargetField supports key and value. For example, { "Scope": "header", "Condition": "${key} like ['x-auth-*']", "TargetField": "value" } means the header parameter name wildcard match x-auth-* skips WAF scan.</li>
+<li style="margin-top:5px">uri.query: URL-encoded content/query parameters. At this point, Condition supports key and value, and TargetField supports key and value. For example, { "Scope": "uri.query", "Condition": "${key} in ['action'] and ${value} in ['upload', 'delete']", "TargetField": "value" } means the parameter name of the URL-encoded content/query parameters is equal to action and the parameter value is equal to upload or delete, skip WAF scan;</li>
+<li style="margin-top:5px">uri: request path URI. At this point, Condition must be empty, and TargetField supports query, path, and fullpath. For example, { "Scope": "uri", "Condition": "", "TargetField": "query" } means only query parameters in the request path URI skip WAF scan.</li>
+<li style="margin-top:5px">body: request body content. At this point, Condition must be empty, and TargetField supports fullbody and multipart, for example { "Scope": "body",  "Condition": "", "TargetField": "fullbody" }, which means the request body content is the complete request body and skips WAF scan;</li>
         :type Scope: str
-        :param _Condition: Skip specific field expression must comply with expression grammar.
-Condition supports expression configuration syntax: <li> write according to the matching conditional expression syntax of rules, with support for referencing key and value.</li> <li> supports in, like operators, and logical combination with and.</li>.
-For example: <li>${key} in ['x-trace-id']: the parameter name equals x-trace-id.</li> <li>${key} in ['x-trace-id'] and ${value} like ['Bearer *']: the parameter name equals x-trace-id and the parameter value wildcard matches Bearer *.</li>.
+        :param _Condition: Expression of the specific field to skip, which must comply with the expression grammar.<br />
+Condition supports expression configuration syntax: <li> Write the filter condition expression syntax based on the rule, with support for referencing key and value.</li><li> Support in and like operators, and logical combination with and.</li>
+For example: <li>${key} in ['x-trace-id']: The parameter name is equal to x-trace-id.</li><li>${key} in ['x-trace-id'] and ${value} like ['Bearer *']: The parameter name is equal to x-trace-id and the parameter value wildcard matches Bearer *.</li>
         :type Condition: str
-        :param _TargetField: The Scope parameter takes different values. the TargetField expression supports the following values:.
-<Li> body.json: supports key, value.</li>.
-<li>cookie: supports key and value.</li>.
-<li>header: supports key, value</li>.
-<Li> uri.query: supports key and value</li>.
-<li>uri. specifies path, query, or fullpath.</li>.
-<Li>Body: supports fullbody and multipart.</li>.
+        :param _TargetField: When the Scope parameter takes different values, the supported values in the TargetField expression are as follows:
+<li> body.json: supports key and value</li>
+<li> cookie: supports key and value</li>
+<li> header: supports key and value</li>
+<li> uri.query: supports key and value</li>
+<li> uri: supports path, query, and fullpath</li>
+<li> body: supports fullbody and multipart</li>
         :type TargetField: str
         """
         self._Scope = None
@@ -58906,13 +59026,13 @@ For example: <li>${key} in ['x-trace-id']: the parameter name equals x-trace-id.
 
     @property
     def Scope(self):
-        r"""Skip specific field. supported values:.
-<li>body.json: parameter content in json requests. at this point, Condition supports key and value, TargetField supports key and value, for example { "Scope": "body.json", "Condition": "", "TargetField": "key" }, which means all parameters in json requests skip WAF scan.</li>.
-<li style="margin-top:5px">cookie: cookie; at this point Condition supports key, value, TargetField supports key, value, for example { "Scope": "cookie", "Condition": "${key} in ['account-id'] and ${value} like ['prefix-*']", "TargetField": "value" }, which means the cookie parameter name equals account-id and the parameter value wildcard matches prefix-* to skip WAF scan;</li>.
-<li style="margin-top:5px">header: HTTP header parameters. at this point, Condition supports key and value, TargetField supports key and value, for example { "Scope": "header", "Condition": "${key} like ['x-auth-*']", "TargetField": "value" }, which means header parameter name wildcard match x-auth-* skips WAF scan.</li>.
-<li style="margin-top:5px">uri.query: URL encoding content/query parameter. at this point, Condition supports key and value, TargetField supports key and value. example: { "Scope": "uri.query", "Condition": "${key} in ['action'] and ${value} in ['upload', 'delete']", "TargetField": "value" }. indicates URL encoding content/query parameter name equal to action and parameter value equal to upload or delete skips WAF scan.</li>.
-<li style="margin-top:5px">uri: specifies the request path uri. at this point, Condition must be empty. TargetField supports query, path, fullpath, such as {"Scope": "uri", "Condition": "", "TargetField": "query"}, indicates the request path uri skips WAF scan for query parameters.</li>.
-<li style="margin-top:5px">body: request body content. at this point Condition must be empty, TargetField supports fullbody, multipart, such as { "Scope": "body", "Condition": "", "TargetField": "fullbody" }, which means the request body content skips WAF scan as a full request.</li>.
+        r"""Specific fields to skip. Supported values: <br/>
+<li>body.json: parameter content in JSON requests. At this point, Condition supports key and value, and TargetField supports key and value. For example, { "Scope": "body.json", "Condition": "", "TargetField": "key" } means ALL parameters in the JSON request content skip WAF scan.</li>
+<li style="margin-top:5px">cookie: Cookie; at this point, Condition supports key and value, and TargetField supports key and value, for example { "Scope": "cookie", "Condition": "${key} in ['account-id'] and ${value} like ['prefix-*']", "TargetField": "value" }, which means the cookie parameter name equals account-id and the parameter value wildcard matches prefix-* to skip WAF scan;</li>
+<li style="margin-top:5px">header: HTTP header parameters. At this point, Condition supports key and value, and TargetField supports key and value. For example, { "Scope": "header", "Condition": "${key} like ['x-auth-*']", "TargetField": "value" } means the header parameter name wildcard match x-auth-* skips WAF scan.</li>
+<li style="margin-top:5px">uri.query: URL-encoded content/query parameters. At this point, Condition supports key and value, and TargetField supports key and value. For example, { "Scope": "uri.query", "Condition": "${key} in ['action'] and ${value} in ['upload', 'delete']", "TargetField": "value" } means the parameter name of the URL-encoded content/query parameters is equal to action and the parameter value is equal to upload or delete, skip WAF scan;</li>
+<li style="margin-top:5px">uri: request path URI. At this point, Condition must be empty, and TargetField supports query, path, and fullpath. For example, { "Scope": "uri", "Condition": "", "TargetField": "query" } means only query parameters in the request path URI skip WAF scan.</li>
+<li style="margin-top:5px">body: request body content. At this point, Condition must be empty, and TargetField supports fullbody and multipart, for example { "Scope": "body",  "Condition": "", "TargetField": "fullbody" }, which means the request body content is the complete request body and skips WAF scan;</li>
         :rtype: str
         """
         return self._Scope
@@ -58923,9 +59043,9 @@ For example: <li>${key} in ['x-trace-id']: the parameter name equals x-trace-id.
 
     @property
     def Condition(self):
-        r"""Skip specific field expression must comply with expression grammar.
-Condition supports expression configuration syntax: <li> write according to the matching conditional expression syntax of rules, with support for referencing key and value.</li> <li> supports in, like operators, and logical combination with and.</li>.
-For example: <li>${key} in ['x-trace-id']: the parameter name equals x-trace-id.</li> <li>${key} in ['x-trace-id'] and ${value} like ['Bearer *']: the parameter name equals x-trace-id and the parameter value wildcard matches Bearer *.</li>.
+        r"""Expression of the specific field to skip, which must comply with the expression grammar.<br />
+Condition supports expression configuration syntax: <li> Write the filter condition expression syntax based on the rule, with support for referencing key and value.</li><li> Support in and like operators, and logical combination with and.</li>
+For example: <li>${key} in ['x-trace-id']: The parameter name is equal to x-trace-id.</li><li>${key} in ['x-trace-id'] and ${value} like ['Bearer *']: The parameter name is equal to x-trace-id and the parameter value wildcard matches Bearer *.</li>
         :rtype: str
         """
         return self._Condition
@@ -58936,13 +59056,13 @@ For example: <li>${key} in ['x-trace-id']: the parameter name equals x-trace-id.
 
     @property
     def TargetField(self):
-        r"""The Scope parameter takes different values. the TargetField expression supports the following values:.
-<Li> body.json: supports key, value.</li>.
-<li>cookie: supports key and value.</li>.
-<li>header: supports key, value</li>.
-<Li> uri.query: supports key and value</li>.
-<li>uri. specifies path, query, or fullpath.</li>.
-<Li>Body: supports fullbody and multipart.</li>.
+        r"""When the Scope parameter takes different values, the supported values in the TargetField expression are as follows:
+<li> body.json: supports key and value</li>
+<li> cookie: supports key and value</li>
+<li> header: supports key and value</li>
+<li> uri.query: supports key and value</li>
+<li> uri: supports path, query, and fullpath</li>
+<li> body: supports fullbody and multipart</li>
         :rtype: str
         """
         return self._TargetField
@@ -59302,15 +59422,15 @@ class ResponseSpeedLimitParameters(AbstractModel):
 
 
 class ReturnCustomPageActionParameters(AbstractModel):
-    r"""Additional parameter for SecurityAction `ReturnCustomPage`.
+    r"""Additional parameter of the custom page for Web security
 
     """
 
     def __init__(self):
         r"""
-        :param _ResponseCode: Response custom status code.
+        :param _ResponseCode: status code.
         :type ResponseCode: str
-        :param _ErrorPageId: Response custom page ID.
+        :param _ErrorPageId: ID of the custom page in the response.
         :type ErrorPageId: str
         """
         self._ResponseCode = None
@@ -59318,7 +59438,7 @@ class ReturnCustomPageActionParameters(AbstractModel):
 
     @property
     def ResponseCode(self):
-        r"""Response custom status code.
+        r"""status code.
         :rtype: str
         """
         return self._ResponseCode
@@ -59329,7 +59449,7 @@ class ReturnCustomPageActionParameters(AbstractModel):
 
     @property
     def ErrorPageId(self):
-        r"""Response custom page ID.
+        r"""ID of the custom page in the response.
         :rtype: str
         """
         return self._ErrorPageId
@@ -62000,15 +62120,15 @@ class S3(AbstractModel):
 
 
 class SearchEngineBots(AbstractModel):
-    r"""Configures rules for the search engine.
+    r"""Search engine rule configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _BaseAction: Specifies the action for requests from search engine crawlers. valid values for SecurityAction Name: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Disabled: not enabled, disable specified rule;</li> <li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li> <li>Allow: pass (to be deprecated).</li>.
+        :param _BaseAction: Execution action for requests from search engine crawlers. Supported values of SecurityAction Name: <li>Deny: block;</li><li>Monitor: observe;</li><li>Disabled: not enabled, disable the specified rule;</li><li>Challenge: challenge. ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li><li>Allow: allow (to be deprecated).</li>
         :type BaseAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _BotManagementActionOverrides: Specifies the handling method for search engine crawler requests.
+        :param _BotManagementActionOverrides: Specify the handling method for search engine crawler requests.
         :type BotManagementActionOverrides: list of BotManagementActionOverrides
         """
         self._BaseAction = None
@@ -62016,7 +62136,7 @@ class SearchEngineBots(AbstractModel):
 
     @property
     def BaseAction(self):
-        r"""Specifies the action for requests from search engine crawlers. valid values for SecurityAction Name: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Disabled: not enabled, disable specified rule;</li> <li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li> <li>Allow: pass (to be deprecated).</li>.
+        r"""Execution action for requests from search engine crawlers. Supported values of SecurityAction Name: <li>Deny: block;</li><li>Monitor: observe;</li><li>Disabled: not enabled, disable the specified rule;</li><li>Challenge: challenge. ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li><li>Allow: allow (to be deprecated).</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._BaseAction
@@ -62027,7 +62147,7 @@ class SearchEngineBots(AbstractModel):
 
     @property
     def BotManagementActionOverrides(self):
-        r"""Specifies the handling method for search engine crawler requests.
+        r"""Specify the handling method for search engine crawler requests.
         :rtype: list of BotManagementActionOverrides
         """
         return self._BotManagementActionOverrides
@@ -62215,13 +62335,13 @@ class SecEntryValue(AbstractModel):
 
 
 class SecurityAction(AbstractModel):
-    r"""Action for security operation.
+    r"""Safe execution action
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: <p>Specific actions for safe execution. Valid values:</p><ul><li>Deny: block, prevent requests from accessing site resources;</li><li>Monitor: observe, only record logs;</li><li>Redirect: redirect to URL;</li><li>Disabled: not enabled, do not enable the specified rule;</li><li>Allow: pass, skip the remaining rules of the current security module. Delay response when the AllowActionParameters parameter is configured;</li><li>Challenge: challenge, respond with challenge content;</li><li>BlockIP: to be deprecated, IP blocking;</li><li>ReturnCustomPage: to be deprecated, use a specified page for interception;</li><li>JSChallenge: to be deprecated, JavaScript challenge;</li><li>ManagedChallenge: to be deprecated, managed challenge.</li></ul>
+        :param _Name: <p>Specific actions for safe execution. Valid values:</p><ul><li>Deny: block, prevent requests from accessing site resources;</li><li>Monitor: observe, only record logs;</li><li>Redirect: redirect to URL;</li><li>Disabled: not enabled, disable the specified rule;</li><li>Allow: allow, skip the remaining rules of the current security module. Delay response when the AllowActionParameters parameter is configured;</li><li>Challenge: challenge, respond with challenge content;</li><li>BlockIP: to be deprecated, IP block;</li><li>ReturnCustomPage: to be deprecated, use a specified page for interception;</li><li>JSChallenge: to be deprecated, JavaScript challenge;</li><li>ManagedChallenge: to be deprecated, managed challenge.</li></ul>
         :type Name: str
         :param _DenyActionParameters: <p>Additional parameter when Name is Deny.</p>
         :type DenyActionParameters: :class:`tencentcloud.teo.v20220901.models.DenyActionParameters`
@@ -62231,7 +62351,7 @@ class SecurityAction(AbstractModel):
         :type AllowActionParameters: :class:`tencentcloud.teo.v20220901.models.AllowActionParameters`
         :param _ChallengeActionParameters: <p>Additional parameter when Name is Challenge.</p>
         :type ChallengeActionParameters: :class:`tencentcloud.teo.v20220901.models.ChallengeActionParameters`
-        :param _BlockIPActionParameters: <p>To be deprecated. Additional parameter when Name is BlockIP.</p>
+        :param _BlockIPActionParameters: <p>To be deprecated. An additional parameter when Name is BlockIP.</p>
         :type BlockIPActionParameters: :class:`tencentcloud.teo.v20220901.models.BlockIPActionParameters`
         :param _ReturnCustomPageActionParameters: <p>To be deprecated. An additional parameter when Name is ReturnCustomPage.</p>
         :type ReturnCustomPageActionParameters: :class:`tencentcloud.teo.v20220901.models.ReturnCustomPageActionParameters`
@@ -62246,7 +62366,7 @@ class SecurityAction(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>Specific actions for safe execution. Valid values:</p><ul><li>Deny: block, prevent requests from accessing site resources;</li><li>Monitor: observe, only record logs;</li><li>Redirect: redirect to URL;</li><li>Disabled: not enabled, do not enable the specified rule;</li><li>Allow: pass, skip the remaining rules of the current security module. Delay response when the AllowActionParameters parameter is configured;</li><li>Challenge: challenge, respond with challenge content;</li><li>BlockIP: to be deprecated, IP blocking;</li><li>ReturnCustomPage: to be deprecated, use a specified page for interception;</li><li>JSChallenge: to be deprecated, JavaScript challenge;</li><li>ManagedChallenge: to be deprecated, managed challenge.</li></ul>
+        r"""<p>Specific actions for safe execution. Valid values:</p><ul><li>Deny: block, prevent requests from accessing site resources;</li><li>Monitor: observe, only record logs;</li><li>Redirect: redirect to URL;</li><li>Disabled: not enabled, disable the specified rule;</li><li>Allow: allow, skip the remaining rules of the current security module. Delay response when the AllowActionParameters parameter is configured;</li><li>Challenge: challenge, respond with challenge content;</li><li>BlockIP: to be deprecated, IP block;</li><li>ReturnCustomPage: to be deprecated, use a specified page for interception;</li><li>JSChallenge: to be deprecated, JavaScript challenge;</li><li>ManagedChallenge: to be deprecated, managed challenge.</li></ul>
         :rtype: str
         """
         return self._Name
@@ -62301,7 +62421,7 @@ class SecurityAction(AbstractModel):
 
     @property
     def BlockIPActionParameters(self):
-        r"""<p>To be deprecated. Additional parameter when Name is BlockIP.</p>
+        r"""<p>To be deprecated. An additional parameter when Name is BlockIP.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.BlockIPActionParameters`
         """
         return self._BlockIPActionParameters
@@ -62560,31 +62680,97 @@ class SecurityConfig(AbstractModel):
         
 
 
-class SecurityPolicy(AbstractModel):
-    r"""Web security policy.
+class SecurityHeadersToOrigin(AbstractModel):
+    r"""Security headers to include in requests to the origin. After the configuration takes effect, request headers with the corresponding `keyname` will be sent to the origin.
 
     """
 
     def __init__(self):
         r"""
-        :param _CustomRules: Custom rules. If the parameter is null or not filled, the configuration last set will be used by default.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _BotIdentificationHeaders: <p>Configuration of origin request headers for Bot identification information. Valid values:<ul><li>`EO-Bot-Botnet-ID`: Identifier generated based on Bot request characteristics.</li></ul></p>
+        :type BotIdentificationHeaders: list of str
+        :param _BotManagementHeaders: <p>Configuration of origin request headers for identification results from the Advanced Bot Management module. Valid values:<ul><li>`EO-Bot-Client-Attestation`: Advanced Bot Management - Authentication ticket verification result from the Client Attestation module;</li><li>`EO-Bot-Client-Risk`: Advanced Bot Management - Device risk assessment result from the Client Attestation module;</li><li>`EO-Bot-Intelligence`: Advanced Bot Management - Identification result from the Bot Intelligence Analysis module;</li><li>`EO-Bot-IP-Reputation`: Advanced Bot Management - Identification result from Client Reputation module;</li><li>`EO-Bot-Known-Tool`: Advanced Bot Management - Basic Feature Management - Identification result from the UA Feature Rule module;</li><li>`EO-Bot-Search-Engine`: Advanced Bot Management - Basic Feature Management - Identification result from the Search Engine Rule module;</li><li>`EO-Bot-Source-IDC`: Advanced Bot Management - Basic Feature Management - Identification result from the IDC Rule module;</li><li>`EO-Bot-User-Risk`: Advanced Bot Management - Account risk assessment result from the Client Attestation module.</li></ul></p>
+        :type BotManagementHeaders: list of str
+        :param _ClientFingerprintHeaders: <p>Configuration of origin request headers for client fingerprint information. Valid values:<ul><li>`EO-Bot-Fingerprint`: Client fingerprint information.</li></ul></p>
+        :type ClientFingerprintHeaders: list of str
+        """
+        self._BotIdentificationHeaders = None
+        self._BotManagementHeaders = None
+        self._ClientFingerprintHeaders = None
+
+    @property
+    def BotIdentificationHeaders(self):
+        r"""<p>Configuration of origin request headers for Bot identification information. Valid values:<ul><li>`EO-Bot-Botnet-ID`: Identifier generated based on Bot request characteristics.</li></ul></p>
+        :rtype: list of str
+        """
+        return self._BotIdentificationHeaders
+
+    @BotIdentificationHeaders.setter
+    def BotIdentificationHeaders(self, BotIdentificationHeaders):
+        self._BotIdentificationHeaders = BotIdentificationHeaders
+
+    @property
+    def BotManagementHeaders(self):
+        r"""<p>Configuration of origin request headers for identification results from the Advanced Bot Management module. Valid values:<ul><li>`EO-Bot-Client-Attestation`: Advanced Bot Management - Authentication ticket verification result from the Client Attestation module;</li><li>`EO-Bot-Client-Risk`: Advanced Bot Management - Device risk assessment result from the Client Attestation module;</li><li>`EO-Bot-Intelligence`: Advanced Bot Management - Identification result from the Bot Intelligence Analysis module;</li><li>`EO-Bot-IP-Reputation`: Advanced Bot Management - Identification result from Client Reputation module;</li><li>`EO-Bot-Known-Tool`: Advanced Bot Management - Basic Feature Management - Identification result from the UA Feature Rule module;</li><li>`EO-Bot-Search-Engine`: Advanced Bot Management - Basic Feature Management - Identification result from the Search Engine Rule module;</li><li>`EO-Bot-Source-IDC`: Advanced Bot Management - Basic Feature Management - Identification result from the IDC Rule module;</li><li>`EO-Bot-User-Risk`: Advanced Bot Management - Account risk assessment result from the Client Attestation module.</li></ul></p>
+        :rtype: list of str
+        """
+        return self._BotManagementHeaders
+
+    @BotManagementHeaders.setter
+    def BotManagementHeaders(self, BotManagementHeaders):
+        self._BotManagementHeaders = BotManagementHeaders
+
+    @property
+    def ClientFingerprintHeaders(self):
+        r"""<p>Configuration of origin request headers for client fingerprint information. Valid values:<ul><li>`EO-Bot-Fingerprint`: Client fingerprint information.</li></ul></p>
+        :rtype: list of str
+        """
+        return self._ClientFingerprintHeaders
+
+    @ClientFingerprintHeaders.setter
+    def ClientFingerprintHeaders(self, ClientFingerprintHeaders):
+        self._ClientFingerprintHeaders = ClientFingerprintHeaders
+
+
+    def _deserialize(self, params):
+        self._BotIdentificationHeaders = params.get("BotIdentificationHeaders")
+        self._BotManagementHeaders = params.get("BotManagementHeaders")
+        self._ClientFingerprintHeaders = params.get("ClientFingerprintHeaders")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecurityPolicy(AbstractModel):
+    r"""Security policy configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CustomRules: <p>Custom rule configuration.</p>
         :type CustomRules: :class:`tencentcloud.teo.v20220901.models.CustomRules`
-        :param _ManagedRules: Managed. If the parameter is null or not filled, the configuration last set will be used by default.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _ManagedRules: <p>Managed rule configuration.</p>
         :type ManagedRules: :class:`tencentcloud.teo.v20220901.models.ManagedRules`
-        :param _HttpDDoSProtection: HTTP DDOS protection configuration.
+        :param _HttpDDoSProtection: <p>HTTP DDoS protection configuration.</p>
         :type HttpDDoSProtection: :class:`tencentcloud.teo.v20220901.models.HttpDDoSProtection`
-        :param _RateLimitingRules: Configures the rate limiting rule.
+        :param _RateLimitingRules: <p>Rate limiting rule configuration.</p>
         :type RateLimitingRules: :class:`tencentcloud.teo.v20220901.models.RateLimitingRules`
-        :param _ExceptionRules: Exception rule configuration.
+        :param _ExceptionRules: <p>Exception rule configuration.</p>
         :type ExceptionRules: :class:`tencentcloud.teo.v20220901.models.ExceptionRules`
-        :param _BotManagement: Bot management configuration.
+        :param _BotManagement: <p>Bot management configuration.</p>
         :type BotManagement: :class:`tencentcloud.teo.v20220901.models.BotManagement`
-        :param _BotManagementLite: Basic Bot management configuration.
+        :param _BotManagementLite: <p>Basic Bot management configuration.</p>
         :type BotManagementLite: :class:`tencentcloud.teo.v20220901.models.BotManagementLite`
-        :param _DefaultDenySecurityActionParameters: Default intercept action configuration.
+        :param _DefaultDenySecurityActionParameters: <p>Default block action configuration.</p>
         :type DefaultDenySecurityActionParameters: :class:`tencentcloud.teo.v20220901.models.DefaultDenySecurityActionParameters`
+        :param _SecurityHeadersToOrigin: <p>Security headers to include in requests to the origin. After the configuration takes effect, request headers with the corresponding `keyname` will be sent to the origin.</p>
+        :type SecurityHeadersToOrigin: :class:`tencentcloud.teo.v20220901.models.SecurityHeadersToOrigin`
         """
         self._CustomRules = None
         self._ManagedRules = None
@@ -62594,11 +62780,11 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._BotManagement = None
         self._BotManagementLite = None
         self._DefaultDenySecurityActionParameters = None
+        self._SecurityHeadersToOrigin = None
 
     @property
     def CustomRules(self):
-        r"""Custom rules. If the parameter is null or not filled, the configuration last set will be used by default.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Custom rule configuration.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.CustomRules`
         """
         return self._CustomRules
@@ -62609,8 +62795,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ManagedRules(self):
-        r"""Managed. If the parameter is null or not filled, the configuration last set will be used by default.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Managed rule configuration.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.ManagedRules`
         """
         return self._ManagedRules
@@ -62621,7 +62806,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def HttpDDoSProtection(self):
-        r"""HTTP DDOS protection configuration.
+        r"""<p>HTTP DDoS protection configuration.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.HttpDDoSProtection`
         """
         return self._HttpDDoSProtection
@@ -62632,7 +62817,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RateLimitingRules(self):
-        r"""Configures the rate limiting rule.
+        r"""<p>Rate limiting rule configuration.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.RateLimitingRules`
         """
         return self._RateLimitingRules
@@ -62643,7 +62828,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ExceptionRules(self):
-        r"""Exception rule configuration.
+        r"""<p>Exception rule configuration.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.ExceptionRules`
         """
         return self._ExceptionRules
@@ -62654,7 +62839,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def BotManagement(self):
-        r"""Bot management configuration.
+        r"""<p>Bot management configuration.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.BotManagement`
         """
         return self._BotManagement
@@ -62665,7 +62850,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def BotManagementLite(self):
-        r"""Basic Bot management configuration.
+        r"""<p>Basic Bot management configuration.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.BotManagementLite`
         """
         return self._BotManagementLite
@@ -62676,7 +62861,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DefaultDenySecurityActionParameters(self):
-        r"""Default intercept action configuration.
+        r"""<p>Default block action configuration.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.DefaultDenySecurityActionParameters`
         """
         return self._DefaultDenySecurityActionParameters
@@ -62684,6 +62869,17 @@ Note: This field may return null, indicating that no valid value can be obtained
     @DefaultDenySecurityActionParameters.setter
     def DefaultDenySecurityActionParameters(self, DefaultDenySecurityActionParameters):
         self._DefaultDenySecurityActionParameters = DefaultDenySecurityActionParameters
+
+    @property
+    def SecurityHeadersToOrigin(self):
+        r"""<p>Security headers to include in requests to the origin. After the configuration takes effect, request headers with the corresponding `keyname` will be sent to the origin.</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityHeadersToOrigin`
+        """
+        return self._SecurityHeadersToOrigin
+
+    @SecurityHeadersToOrigin.setter
+    def SecurityHeadersToOrigin(self, SecurityHeadersToOrigin):
+        self._SecurityHeadersToOrigin = SecurityHeadersToOrigin
 
 
     def _deserialize(self, params):
@@ -62711,6 +62907,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("DefaultDenySecurityActionParameters") is not None:
             self._DefaultDenySecurityActionParameters = DefaultDenySecurityActionParameters()
             self._DefaultDenySecurityActionParameters._deserialize(params.get("DefaultDenySecurityActionParameters"))
+        if params.get("SecurityHeadersToOrigin") is not None:
+            self._SecurityHeadersToOrigin = SecurityHeadersToOrigin()
+            self._SecurityHeadersToOrigin._deserialize(params.get("SecurityHeadersToOrigin"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62904,15 +63103,15 @@ class SecurityType(AbstractModel):
 
 
 class SecurityWeightedAction(AbstractModel):
-    r"""Specifies the SecurityAction with weight allocation.
+    r"""SecurityAction with weight assignment.
 
     """
 
     def __init__(self):
         r"""
-        :param _SecurityAction: The handling method of the Bot custom rule. valid values: <li>Allow: pass, where AllowActionParameters supports MinDelayTime and MaxDelayTime configuration;</li> <li>Deny: block, where DenyActionParameters supports BlockIp, ReturnCustomPage, and Stall configuration;</li> <li>Monitor: observation;</li> <li>Challenge: Challenge, where ChallengeActionParameters.ChallengeOption supports JSChallenge and ManagedChallenge;</li> <li>Redirect: Redirect to URL.</li>.
+        :param _SecurityAction: Handling method of the Bot custom rule. Valid values: <li>Allow: Allow, where AllowActionParameters supports MinDelayTime and MaxDelayTime configuration;</li><li>Deny: block, where DenyActionParameters supports BlockIp, ReturnCustomPage, and Stall configuration;</li><li>Monitor: Monitor;</li><li>Challenge: Challenge, where ChallengeActionParameters.ChallengeOption supports JSChallenge and ManagedChallenge;</li><li>Redirect: Redirect to a URL.</li>
         :type SecurityAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _Weight: The Weight of the current SecurityAction, only supported between 10 and 100 and must be a multiple of 10. the total of all Weight parameters must equal 100.
+        :param _Weight: Weight of the current SecurityAction. Only multiples of 10 from 10 to 100 are supported. The sum of all Weight parameters must equal 100.
         :type Weight: int
         """
         self._SecurityAction = None
@@ -62920,7 +63119,7 @@ class SecurityWeightedAction(AbstractModel):
 
     @property
     def SecurityAction(self):
-        r"""The handling method of the Bot custom rule. valid values: <li>Allow: pass, where AllowActionParameters supports MinDelayTime and MaxDelayTime configuration;</li> <li>Deny: block, where DenyActionParameters supports BlockIp, ReturnCustomPage, and Stall configuration;</li> <li>Monitor: observation;</li> <li>Challenge: Challenge, where ChallengeActionParameters.ChallengeOption supports JSChallenge and ManagedChallenge;</li> <li>Redirect: Redirect to URL.</li>.
+        r"""Handling method of the Bot custom rule. Valid values: <li>Allow: Allow, where AllowActionParameters supports MinDelayTime and MaxDelayTime configuration;</li><li>Deny: block, where DenyActionParameters supports BlockIp, ReturnCustomPage, and Stall configuration;</li><li>Monitor: Monitor;</li><li>Challenge: Challenge, where ChallengeActionParameters.ChallengeOption supports JSChallenge and ManagedChallenge;</li><li>Redirect: Redirect to a URL.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._SecurityAction
@@ -62931,7 +63130,7 @@ class SecurityWeightedAction(AbstractModel):
 
     @property
     def Weight(self):
-        r"""The Weight of the current SecurityAction, only supported between 10 and 100 and must be a multiple of 10. the total of all Weight parameters must equal 100.
+        r"""Weight of the current SecurityAction. Only multiples of 10 from 10 to 100 are supported. The sum of all Weight parameters must equal 100.
         :rtype: int
         """
         return self._Weight
@@ -62946,6 +63145,79 @@ class SecurityWeightedAction(AbstractModel):
             self._SecurityAction = SecurityAction()
             self._SecurityAction._deserialize(params.get("SecurityAction"))
         self._Weight = params.get("Weight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SemanticAnalysisRules(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 
+        :type Enabled: str
+        :param _RuleActions: 
+        :type RuleActions: list of ManagedRuleAction
+        :param _MetaData: 
+        :type MetaData: :class:`tencentcloud.teo.v20220901.models.ManagedRuleGroupMeta`
+        """
+        self._Enabled = None
+        self._RuleActions = None
+        self._MetaData = None
+
+    @property
+    def Enabled(self):
+        r"""
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def RuleActions(self):
+        r"""
+        :rtype: list of ManagedRuleAction
+        """
+        return self._RuleActions
+
+    @RuleActions.setter
+    def RuleActions(self, RuleActions):
+        self._RuleActions = RuleActions
+
+    @property
+    def MetaData(self):
+        r"""
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ManagedRuleGroupMeta`
+        """
+        return self._MetaData
+
+    @MetaData.setter
+    def MetaData(self, MetaData):
+        self._MetaData = MetaData
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        if params.get("RuleActions") is not None:
+            self._RuleActions = []
+            for item in params.get("RuleActions"):
+                obj = ManagedRuleAction()
+                obj._deserialize(item)
+                self._RuleActions.append(obj)
+        if params.get("MetaData") is not None:
+            self._MetaData = ManagedRuleGroupMeta()
+            self._MetaData._deserialize(params.get("MetaData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -63097,13 +63369,13 @@ class SessionRateControl(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enabled: Specifies whether session rate and periodic feature verification are enabled. valid values: <li>on: enable</li><li>off: disable</li>.
+        :param _Enabled: Whether session rate and periodic feature verification are enabled. Valid values: <li>on: enable</li><li>off: disable</li>
         :type Enabled: str
-        :param _HighRateSessionAction: Session rate and periodic feature verification high-risk execution actions. SecurityAction Name valid values: <li>Deny: block, where Stall configuration is supported in DenyActionParameters;</li> <li>Monitor: observation;</li> <li>Allow: respond after wait, where MinDelayTime and MaxDelayTime configuration is required in AllowActionParameters.</li>.
+        :param _HighRateSessionAction: Session rate and periodic feature verification for high-risk executed actions. The Name parameter of SecurityAction supports the following values: <li>Deny: block, with Stall configuration supported in DenyActionParameters;</li><li>Monitor: observe;</li><li>Allow: respond after waiting, where AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>
         :type HighRateSessionAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _MidRateSessionAction: Session rate and periodic feature verification medium-risk execution action. SecurityAction Name parameter supports: <li>Deny: block, where DenyActionParameters supports Stall configuration;</li><li>Monitor: observe;</li><li>Allow: respond after wait, where AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>.
+        :param _MidRateSessionAction: Execution action for medium-risk session rate and periodic feature verification. Supported values of SecurityAction Name: <li>Deny: block, where DenyActionParameters supports Stall configuration;</li><li>Monitor: observe;</li><li>Allow: respond after waiting, where AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>
         :type MidRateSessionAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _LowRateSessionAction: Session rate and periodic feature verification low risk execution action. SecurityAction Name parameter supports: <li>Deny: block, where DenyActionParameters supports Stall configuration;</li><li>Monitor: observe;</li><li>Allow: respond after wait, where AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>.
+        :param _LowRateSessionAction: Session rate and periodic feature verification are low-risk execution actions. The Name parameter of SecurityAction supports: <li>Deny: block, where DenyActionParameters supports Stall configuration;</li><li>Monitor: observe;</li><li>Allow: wait then respond, where AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>
         :type LowRateSessionAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         self._Enabled = None
@@ -63113,7 +63385,7 @@ class SessionRateControl(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""Specifies whether session rate and periodic feature verification are enabled. valid values: <li>on: enable</li><li>off: disable</li>.
+        r"""Whether session rate and periodic feature verification are enabled. Valid values: <li>on: enable</li><li>off: disable</li>
         :rtype: str
         """
         return self._Enabled
@@ -63124,7 +63396,7 @@ class SessionRateControl(AbstractModel):
 
     @property
     def HighRateSessionAction(self):
-        r"""Session rate and periodic feature verification high-risk execution actions. SecurityAction Name valid values: <li>Deny: block, where Stall configuration is supported in DenyActionParameters;</li> <li>Monitor: observation;</li> <li>Allow: respond after wait, where MinDelayTime and MaxDelayTime configuration is required in AllowActionParameters.</li>.
+        r"""Session rate and periodic feature verification for high-risk executed actions. The Name parameter of SecurityAction supports the following values: <li>Deny: block, with Stall configuration supported in DenyActionParameters;</li><li>Monitor: observe;</li><li>Allow: respond after waiting, where AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._HighRateSessionAction
@@ -63135,7 +63407,7 @@ class SessionRateControl(AbstractModel):
 
     @property
     def MidRateSessionAction(self):
-        r"""Session rate and periodic feature verification medium-risk execution action. SecurityAction Name parameter supports: <li>Deny: block, where DenyActionParameters supports Stall configuration;</li><li>Monitor: observe;</li><li>Allow: respond after wait, where AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>.
+        r"""Execution action for medium-risk session rate and periodic feature verification. Supported values of SecurityAction Name: <li>Deny: block, where DenyActionParameters supports Stall configuration;</li><li>Monitor: observe;</li><li>Allow: respond after waiting, where AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._MidRateSessionAction
@@ -63146,7 +63418,7 @@ class SessionRateControl(AbstractModel):
 
     @property
     def LowRateSessionAction(self):
-        r"""Session rate and periodic feature verification low risk execution action. SecurityAction Name parameter supports: <li>Deny: block, where DenyActionParameters supports Stall configuration;</li><li>Monitor: observe;</li><li>Allow: respond after wait, where AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>.
+        r"""Session rate and periodic feature verification are low-risk execution actions. The Name parameter of SecurityAction supports: <li>Deny: block, where DenyActionParameters supports Stall configuration;</li><li>Monitor: observe;</li><li>Allow: wait then respond, where AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._LowRateSessionAction
@@ -63895,21 +64167,21 @@ class SkipCondition(AbstractModel):
 
 
 class SlowAttackDefense(AbstractModel):
-    r"""Slow attack protection configuration.
+    r"""Specific configuration for slow attack protection.
 
     """
 
     def __init__(self):
         r"""
-        :param _Enabled: Whether slow attack protection is enabled. valid values: <li>on: enabled;</li> <li>off: disabled.</li>.
+        :param _Enabled: Whether slow attack protection is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li>
         :type Enabled: str
-        :param _Id: Rule ID of slow attack protection, returned as an output parameter.
+        :param _Id: Rule ID of slow attack protection, returned only as an output parameter.
         :type Id: str
-        :param _Action: Slow attack protection handling method. required when Enabled is on. valid values for SecurityAction Name: <li>Monitor: observation;</li> <li>Deny: block;</li>.
+        :param _Action: Handling method for slow attack protection. This field is required when Enabled is on. Supported values for SecurityAction Name: <li>Monitor: observe;</li><li>Deny: block;</li>
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _MinimalRequestBodyTransferRate: The specific configuration of the minimum body transfer rate threshold is required when Enabled is on.
+        :param _MinimalRequestBodyTransferRate: Specific configuration of the minimum body transfer rate threshold. Required when Enabled is on.
         :type MinimalRequestBodyTransferRate: :class:`tencentcloud.teo.v20220901.models.MinimalRequestBodyTransferRate`
-        :param _RequestBodyTransferTimeout: Specifies the specific configuration of body transfer timeout duration. required when Enabled is on.
+        :param _RequestBodyTransferTimeout: Specific configuration of the body transfer timeout duration. Required if Enabled is on.
         :type RequestBodyTransferTimeout: :class:`tencentcloud.teo.v20220901.models.RequestBodyTransferTimeout`
         """
         self._Enabled = None
@@ -63920,7 +64192,7 @@ class SlowAttackDefense(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""Whether slow attack protection is enabled. valid values: <li>on: enabled;</li> <li>off: disabled.</li>.
+        r"""Whether slow attack protection is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li>
         :rtype: str
         """
         return self._Enabled
@@ -63931,7 +64203,7 @@ class SlowAttackDefense(AbstractModel):
 
     @property
     def Id(self):
-        r"""Rule ID of slow attack protection, returned as an output parameter.
+        r"""Rule ID of slow attack protection, returned only as an output parameter.
         :rtype: str
         """
         return self._Id
@@ -63942,7 +64214,7 @@ class SlowAttackDefense(AbstractModel):
 
     @property
     def Action(self):
-        r"""Slow attack protection handling method. required when Enabled is on. valid values for SecurityAction Name: <li>Monitor: observation;</li> <li>Deny: block;</li>.
+        r"""Handling method for slow attack protection. This field is required when Enabled is on. Supported values for SecurityAction Name: <li>Monitor: observe;</li><li>Deny: block;</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._Action
@@ -63953,7 +64225,7 @@ class SlowAttackDefense(AbstractModel):
 
     @property
     def MinimalRequestBodyTransferRate(self):
-        r"""The specific configuration of the minimum body transfer rate threshold is required when Enabled is on.
+        r"""Specific configuration of the minimum body transfer rate threshold. Required when Enabled is on.
         :rtype: :class:`tencentcloud.teo.v20220901.models.MinimalRequestBodyTransferRate`
         """
         return self._MinimalRequestBodyTransferRate
@@ -63964,7 +64236,7 @@ class SlowAttackDefense(AbstractModel):
 
     @property
     def RequestBodyTransferTimeout(self):
-        r"""Specifies the specific configuration of body transfer timeout duration. required when Enabled is on.
+        r"""Specific configuration of the body transfer timeout duration. Required if Enabled is on.
         :rtype: :class:`tencentcloud.teo.v20220901.models.RequestBodyTransferTimeout`
         """
         return self._RequestBodyTransferTimeout
@@ -64257,15 +64529,15 @@ class SmartRoutingParameters(AbstractModel):
 
 
 class SourceIDC(AbstractModel):
-    r"""Specifies the specific content of IDC rule configuration.
+    r"""Specific content of the IDC rule configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _BaseAction: Handling method for requests from the specified IDC. valid values for SecurityAction Name: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Disabled: not enabled, disable specified rule;</li> <li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li> <li>Allow: pass (to be deprecated).</li>.
+        :param _BaseAction: Handling method for requests from a specified IDC. Supported values of the Name parameter of SecurityAction: <li>Deny: block;</li><li>Monitor: observe;</li><li>Disabled: not enabled, which disables the specified rule;</li><li>Challenge: challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li><li>Allow: allow (to be deprecated).</li>
         :type BaseAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _BotManagementActionOverrides: Specifies the handling method for the specified id request.
+        :param _BotManagementActionOverrides: Handling method for the request from the specified IDC.
         :type BotManagementActionOverrides: list of BotManagementActionOverrides
         """
         self._BaseAction = None
@@ -64273,7 +64545,7 @@ class SourceIDC(AbstractModel):
 
     @property
     def BaseAction(self):
-        r"""Handling method for requests from the specified IDC. valid values for SecurityAction Name: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Disabled: not enabled, disable specified rule;</li> <li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li> <li>Allow: pass (to be deprecated).</li>.
+        r"""Handling method for requests from a specified IDC. Supported values of the Name parameter of SecurityAction: <li>Deny: block;</li><li>Monitor: observe;</li><li>Disabled: not enabled, which disables the specified rule;</li><li>Challenge: challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li><li>Allow: allow (to be deprecated).</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._BaseAction
@@ -64284,7 +64556,7 @@ class SourceIDC(AbstractModel):
 
     @property
     def BotManagementActionOverrides(self):
-        r"""Specifies the handling method for the specified id request.
+        r"""Handling method for the request from the specified IDC.
         :rtype: list of BotManagementActionOverrides
         """
         return self._BotManagementActionOverrides
@@ -66492,6 +66764,91 @@ class UpstreamURLRewriteParameters(AbstractModel):
         self._Action = params.get("Action")
         self._Value = params.get("Value")
         self._Regex = params.get("Regex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserRiskProfile(AbstractModel):
+    r"""User Risk Level configuration. The risk score range is 0–100. The higher the score, the higher the risk.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighRiskMinScore: <p>Minimum risk score for high-risk requests. A request is considered high-risk when its score is equal to or greater than this value.</p><p>Value range: [2, 99]</p><p>Default value: 50</p>
+        :type HighRiskMinScore: int
+        :param _HighRiskRequestAction: <p>Handling method for high-risk requests. Supported values for SecurityAction Name: <li>Deny: block;</li><li>Monitor: observe;</li><li>Redirect: redirect;</li><li>Challenge: challenge.</li>Default value: Monitor</p>
+        :type HighRiskRequestAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        :param _MediumRiskMinScore: <p>Minimum risk score for a medium-risk request. A score equal to or greater than this value and less than HighRiskMinScore is considered medium-risk; a score lower than this value is considered low risk.</p><p>Value range: [1, 98]</p><p>Default value: 15</p>
+        :type MediumRiskMinScore: int
+        :param _MediumRiskRequestAction: <p>Handling method for medium-risk requests. Supported values for the Name parameter of SecurityAction: <li>Deny: block;</li><li>Monitor: observe;</li><li>Redirect: redirect;</li><li>Challenge: challenge.</li>Default value: Monitor</p>
+        :type MediumRiskRequestAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        self._HighRiskMinScore = None
+        self._HighRiskRequestAction = None
+        self._MediumRiskMinScore = None
+        self._MediumRiskRequestAction = None
+
+    @property
+    def HighRiskMinScore(self):
+        r"""<p>Minimum risk score for high-risk requests. A request is considered high-risk when its score is equal to or greater than this value.</p><p>Value range: [2, 99]</p><p>Default value: 50</p>
+        :rtype: int
+        """
+        return self._HighRiskMinScore
+
+    @HighRiskMinScore.setter
+    def HighRiskMinScore(self, HighRiskMinScore):
+        self._HighRiskMinScore = HighRiskMinScore
+
+    @property
+    def HighRiskRequestAction(self):
+        r"""<p>Handling method for high-risk requests. Supported values for SecurityAction Name: <li>Deny: block;</li><li>Monitor: observe;</li><li>Redirect: redirect;</li><li>Challenge: challenge.</li>Default value: Monitor</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._HighRiskRequestAction
+
+    @HighRiskRequestAction.setter
+    def HighRiskRequestAction(self, HighRiskRequestAction):
+        self._HighRiskRequestAction = HighRiskRequestAction
+
+    @property
+    def MediumRiskMinScore(self):
+        r"""<p>Minimum risk score for a medium-risk request. A score equal to or greater than this value and less than HighRiskMinScore is considered medium-risk; a score lower than this value is considered low risk.</p><p>Value range: [1, 98]</p><p>Default value: 15</p>
+        :rtype: int
+        """
+        return self._MediumRiskMinScore
+
+    @MediumRiskMinScore.setter
+    def MediumRiskMinScore(self, MediumRiskMinScore):
+        self._MediumRiskMinScore = MediumRiskMinScore
+
+    @property
+    def MediumRiskRequestAction(self):
+        r"""<p>Handling method for medium-risk requests. Supported values for the Name parameter of SecurityAction: <li>Deny: block;</li><li>Monitor: observe;</li><li>Redirect: redirect;</li><li>Challenge: challenge.</li>Default value: Monitor</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._MediumRiskRequestAction
+
+    @MediumRiskRequestAction.setter
+    def MediumRiskRequestAction(self, MediumRiskRequestAction):
+        self._MediumRiskRequestAction = MediumRiskRequestAction
+
+
+    def _deserialize(self, params):
+        self._HighRiskMinScore = params.get("HighRiskMinScore")
+        if params.get("HighRiskRequestAction") is not None:
+            self._HighRiskRequestAction = SecurityAction()
+            self._HighRiskRequestAction._deserialize(params.get("HighRiskRequestAction"))
+        self._MediumRiskMinScore = params.get("MediumRiskMinScore")
+        if params.get("MediumRiskRequestAction") is not None:
+            self._MediumRiskRequestAction = SecurityAction()
+            self._MediumRiskRequestAction._deserialize(params.get("MediumRiskRequestAction"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
