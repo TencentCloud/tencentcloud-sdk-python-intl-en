@@ -944,6 +944,24 @@ class CamClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListAccounts(
+            self,
+            request: models.ListAccountsRequest,
+            opts: Dict = None,
+    ) -> models.ListAccountsResponse:
+        """
+        Query all account lists.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListAccounts"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListAccountsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListAttachedGroupPolicies(
             self,
             request: models.ListAttachedGroupPoliciesRequest,

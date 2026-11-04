@@ -25,6 +25,1808 @@ class AdpClient(AbstractClient):
     _endpoint = 'adp.intl.tencentcloudapi.com'
     _service = 'adp'
 
+    async def CallMCPTool(
+            self,
+            request: models.CallMCPToolRequest,
+            opts: Dict = None,
+    ) -> models.CallMCPToolResponse:
+        """
+        Tool call triggered by a user in the MCP App iframe.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CallMCPTool"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CallMCPToolResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CheckLabel(
+            self,
+            request: models.CheckLabelRequest,
+            opts: Dict = None,
+    ) -> models.CheckLabelResponse:
+        """
+        Validate tags
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CheckLabel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CheckLabelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CopyAgentFromApp(
+            self,
+            request: models.CopyAgentFromAppRequest,
+            opts: Dict = None,
+    ) -> models.CopyAgentFromAppResponse:
+        """
+        This API is used to replicate an Agent. Currently only support claw mode.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CopyAgentFromApp"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CopyAgentFromAppResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CopyApp(
+            self,
+            request: models.CopyAppRequest,
+            opts: Dict = None,
+    ) -> models.CopyAppResponse:
+        """
+        Copy an application
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CopyApp"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CopyAppResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateAgent(
+            self,
+            request: models.CreateAgentRequest,
+            opts: Dict = None,
+    ) -> models.CreateAgentResponse:
+        """
+        This API is used to create an Agent. Currently only support claw mode.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAgent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAgentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateApp(
+            self,
+            request: models.CreateAppRequest,
+            opts: Dict = None,
+    ) -> models.CreateAppResponse:
+        """
+        This API is used to create an application.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateApp"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAppResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateAppTrigger(
+            self,
+            request: models.CreateAppTriggerRequest,
+            opts: Dict = None,
+    ) -> models.CreateAppTriggerResponse:
+        """
+        CreateAppTrigger
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAppTrigger"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAppTriggerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateCategory(
+            self,
+            request: models.CreateCategoryRequest,
+            opts: Dict = None,
+    ) -> models.CreateCategoryResponse:
+        """
+        Create a category
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCategory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCategoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateChannel(
+            self,
+            request: models.CreateChannelRequest,
+            opts: Dict = None,
+    ) -> models.CreateChannelResponse:
+        """
+        Create a channel (distinguish B-end application release channels from C-end IM channels by scene)
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateChannel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateChannelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateConversation(
+            self,
+            request: models.CreateConversationRequest,
+            opts: Dict = None,
+    ) -> models.CreateConversationResponse:
+        """
+        Create session
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateConversation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateConversationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateKB(
+            self,
+            request: models.CreateKBRequest,
+            opts: Dict = None,
+    ) -> models.CreateKBResponse:
+        """
+        This API is used to create a knowledge base.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateKB"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateKBResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateLabel(
+            self,
+            request: models.CreateLabelRequest,
+            opts: Dict = None,
+    ) -> models.CreateLabelResponse:
+        """
+        Create a tag
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateLabel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateLabelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateMsgRecordCategory(
+            self,
+            request: models.CreateMsgRecordCategoryRequest,
+            opts: Dict = None,
+    ) -> models.CreateMsgRecordCategoryResponse:
+        """
+        This API is used to create a message record category, with support for specifying the category name and parent category. A ParentId of 0 indicates a level-1 category.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMsgRecordCategory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMsgRecordCategoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreatePlugin(
+            self,
+            request: models.CreatePluginRequest,
+            opts: Dict = None,
+    ) -> models.CreatePluginResponse:
+        """
+        This API is used to query plugin details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreatePlugin"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreatePluginResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateQAGenerationTask(
+            self,
+            request: models.CreateQAGenerationTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateQAGenerationTaskResponse:
+        """
+        Create a QA generation task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateQAGenerationTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateQAGenerationTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateQAList(
+            self,
+            request: models.CreateQAListRequest,
+            opts: Dict = None,
+    ) -> models.CreateQAListResponse:
+        """
+        Batch create QA
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateQAList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateQAListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateRelease(
+            self,
+            request: models.CreateReleaseRequest,
+            opts: Dict = None,
+    ) -> models.CreateReleaseResponse:
+        """
+        Add new release task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRelease"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateReleaseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateSimilarQuestion(
+            self,
+            request: models.CreateSimilarQuestionRequest,
+            opts: Dict = None,
+    ) -> models.CreateSimilarQuestionResponse:
+        """
+        This API is used to create a similar question generation task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSimilarQuestion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSimilarQuestionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateSkill(
+            self,
+            request: models.CreateSkillRequest,
+            opts: Dict = None,
+    ) -> models.CreateSkillResponse:
+        """
+        Creates a skill
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSkill"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSkillResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateSkillShare(
+            self,
+            request: models.CreateSkillShareRequest,
+            opts: Dict = None,
+    ) -> models.CreateSkillShareResponse:
+        """
+        Submit a custom Skill for enterprise-level shared approval (two-segment: submit, approve, callback to create a shared task)
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSkillShare"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSkillShareResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateSpace(
+            self,
+            request: models.CreateSpaceRequest,
+            opts: Dict = None,
+    ) -> models.CreateSpaceResponse:
+        """
+        Create a space
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSpace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSpaceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateVariable(
+            self,
+            request: models.CreateVariableRequest,
+            opts: Dict = None,
+    ) -> models.CreateVariableResponse:
+        """
+        This API is used to create parameter variables.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVariable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVariableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateWebSocketToken(
+            self,
+            request: models.CreateWebSocketTokenRequest,
+            opts: Dict = None,
+    ) -> models.CreateWebSocketTokenResponse:
+        """
+        This API is used to create a WebSocket Token.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateWebSocketToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateWebSocketTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateWorkflowRun(
+            self,
+            request: models.CreateWorkflowRunRequest,
+            opts: Dict = None,
+    ) -> models.CreateWorkflowRunResponse:
+        """
+        This API is used to create an asynchronous running instance of a workflow. After successful creation, the workflow runs asynchronously in the backend. The API returns the workflow running instance ID (WorkflowRunId) and other information. You can call the DescribeWorkflowRun API to query the workflow running details.
+        Note: Asynchronous execution of a workflow is application-based. The corresponding application configuration must be set to "Single Workflow Mode" before it can be successfully created.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateWorkflowRun"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateWorkflowRunResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateWorkspaceCredential(
+            self,
+            request: models.CreateWorkspaceCredentialRequest,
+            opts: Dict = None,
+    ) -> models.CreateWorkspaceCredentialResponse:
+        """
+        Create a workspace credential
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateWorkspaceCredential"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateWorkspaceCredentialResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteAgent(
+            self,
+            request: models.DeleteAgentRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAgentResponse:
+        """
+        This API is used to delete an Agent.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAgent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAgentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteApp(
+            self,
+            request: models.DeleteAppRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAppResponse:
+        """
+        This API is used to delete applications
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteApp"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAppResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteAppTrigger(
+            self,
+            request: models.DeleteAppTriggerRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAppTriggerResponse:
+        """
+        DeleteAppTrigger
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAppTrigger"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAppTriggerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteCategory(
+            self,
+            request: models.DeleteCategoryRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCategoryResponse:
+        """
+        Delete a category
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCategory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCategoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteChannel(
+            self,
+            request: models.DeleteChannelRequest,
+            opts: Dict = None,
+    ) -> models.DeleteChannelResponse:
+        """
+        Delete a channel (scenarios are distinguished by scene)
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteChannel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteChannelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteConversation(
+            self,
+            request: models.DeleteConversationRequest,
+            opts: Dict = None,
+    ) -> models.DeleteConversationResponse:
+        """
+        Delete conversation
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteConversation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteConversationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDocList(
+            self,
+            request: models.DeleteDocListRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDocListResponse:
+        """
+        Delete documents in batches
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDocList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDocListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteKB(
+            self,
+            request: models.DeleteKBRequest,
+            opts: Dict = None,
+    ) -> models.DeleteKBResponse:
+        """
+        This API is used to delete the knowledge base.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteKB"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteKBResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteLabelList(
+            self,
+            request: models.DeleteLabelListRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLabelListResponse:
+        """
+        Batch deletes tags
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLabelList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLabelListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteMsgRecordCategory(
+            self,
+            request: models.DeleteMsgRecordCategoryRequest,
+            opts: Dict = None,
+    ) -> models.DeleteMsgRecordCategoryResponse:
+        """
+        Deletes a specified message record category
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteMsgRecordCategory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteMsgRecordCategoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeletePlugin(
+            self,
+            request: models.DeletePluginRequest,
+            opts: Dict = None,
+    ) -> models.DeletePluginResponse:
+        """
+        Modify a plug-in
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeletePlugin"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeletePluginResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteQAList(
+            self,
+            request: models.DeleteQAListRequest,
+            opts: Dict = None,
+    ) -> models.DeleteQAListResponse:
+        """
+        Delete QAs in batches
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteQAList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteQAListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteSkill(
+            self,
+            request: models.DeleteSkillRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSkillResponse:
+        """
+        Delete a Custom Skill Authorization: creator ∨ (edit permission ∧ delete permission) Denied scenarios: non-Custom type / shared / in security detection / pending listing approval / pending delisting approval
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSkill"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSkillResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteSkillShare(
+            self,
+            request: models.DeleteSkillShareRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSkillShareResponse:
+        """
+        Submit a shared Skill delisting approval (v2, two-segment: submit → approve → callback to delist the shared Skill) Authorization: right to erasure Denied scenarios: not shared / pending listing approval / pending delisting approval
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSkillShare"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSkillShareResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteSpace(
+            self,
+            request: models.DeleteSpaceRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSpaceResponse:
+        """
+        Delete a space
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSpace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSpaceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteVariable(
+            self,
+            request: models.DeleteVariableRequest,
+            opts: Dict = None,
+    ) -> models.DeleteVariableResponse:
+        """
+        Delete a parameter variable
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteVariable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteVariableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAccountList(
+            self,
+            request: models.DescribeAccountListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAccountListResponse:
+        """
+        View the employee list of a business
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAccountList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAccountListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAgentDetail(
+            self,
+            request: models.DescribeAgentDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAgentDetailResponse:
+        """
+        Query Agent details
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAgentDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAgentDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAgentReleasePreviewList(
+            self,
+            request: models.DescribeAgentReleasePreviewListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAgentReleasePreviewListResponse:
+        """
+        Get the release preview list of agents under an application
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAgentReleasePreviewList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAgentReleasePreviewListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAgentSummaryList(
+            self,
+            request: models.DescribeAgentSummaryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAgentSummaryListResponse:
+        """
+        Queries the abstract information list of an Agent.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAgentSummaryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAgentSummaryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeApp(
+            self,
+            request: models.DescribeAppRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAppResponse:
+        """
+        This API is used to obtain application information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeApp"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAppResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAppStatisticsOverview(
+            self,
+            request: models.DescribeAppStatisticsOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAppStatisticsOverviewResponse:
+        """
+        This API is used to query the invocation statistics overview under an application view, including the total number of calls, call success rate, avg duration of total tokens, and avg duration of first tokens. For RAG applications, it also returns the count and proportion of calls for each response method for drawing a pie chart.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAppStatisticsOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAppStatisticsOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAppSummaryList(
+            self,
+            request: models.DescribeAppSummaryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAppSummaryListResponse:
+        """
+        Retrieve the abstract list of applications.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAppSummaryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAppSummaryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAppTrigger(
+            self,
+            request: models.DescribeAppTriggerRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAppTriggerResponse:
+        """
+        DescribeAppTrigger
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAppTrigger"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAppTriggerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAppTriggerInstance(
+            self,
+            request: models.DescribeAppTriggerInstanceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAppTriggerInstanceResponse:
+        """
+        DescribeAppTriggerInstance
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAppTriggerInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAppTriggerInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAppTriggerRunLogList(
+            self,
+            request: models.DescribeAppTriggerRunLogListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAppTriggerRunLogListResponse:
+        """
+        DescribeAppTriggerRunLogList
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAppTriggerRunLogList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAppTriggerRunLogListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAppTriggerSummaryList(
+            self,
+            request: models.DescribeAppTriggerSummaryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAppTriggerSummaryListResponse:
+        """
+        DescribeAppTriggerSummaryList
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAppTriggerSummaryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAppTriggerSummaryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditLogList(
+            self,
+            request: models.DescribeAuditLogListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditLogListResponse:
+        """
+        View operation log list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditLogList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditLogListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCategoryList(
+            self,
+            request: models.DescribeCategoryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCategoryListResponse:
+        """
+        Query the classification list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCategoryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCategoryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConcurrencyLimitDetailList(
+            self,
+            request: models.DescribeConcurrencyLimitDetailListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConcurrencyLimitDetailListResponse:
+        """
+        Query concurrency overrun details, including QPM/TPM overruns and exclusive concurrency overruns. Return the overrun time, space, app, model, and request content.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConcurrencyLimitDetailList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConcurrencyLimitDetailListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConflictQA(
+            self,
+            request: models.DescribeConflictQARequest,
+            opts: Dict = None,
+    ) -> models.DescribeConflictQAResponse:
+        """
+        Queries the conflict query details
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConflictQA"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConflictQAResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConflictQASummaryList(
+            self,
+            request: models.DescribeConflictQASummaryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConflictQASummaryListResponse:
+        """
+        Query the conflict list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConflictQASummaryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConflictQASummaryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConversation(
+            self,
+            request: models.DescribeConversationRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConversationResponse:
+        """
+        View session information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConversation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConversationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConversationList(
+            self,
+            request: models.DescribeConversationListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConversationListResponse:
+        """
+        Get session list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConversationList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConversationListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConversationMessageList(
+            self,
+            request: models.DescribeConversationMessageListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConversationMessageListResponse:
+        """
+        Get historical messages of a conversation.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConversationMessageList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConversationMessageListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLabel(
+            self,
+            request: models.DescribeLabelRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLabelResponse:
+        """
+        Queries tag details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLabel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLabelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLabelSummaryList(
+            self,
+            request: models.DescribeLabelSummaryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLabelSummaryListResponse:
+        """
+        Querying the Tag List
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLabelSummaryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLabelSummaryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLatestRelease(
+            self,
+            request: models.DescribeLatestReleaseRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLatestReleaseResponse:
+        """
+        Pull the latest release info (including release time, status, and channel).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLatestRelease"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLatestReleaseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeModelList(
+            self,
+            request: models.DescribeModelListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeModelListResponse:
+        """
+        Query the model list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeModelList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeModelListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMsgRecordCategoryList(
+            self,
+            request: models.DescribeMsgRecordCategoryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMsgRecordCategoryListResponse:
+        """
+        Query the message record category tree of an app, return categories and subcategories, number of records under each category, and operation permissions.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMsgRecordCategoryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMsgRecordCategoryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeNodeBatchRun(
+            self,
+            request: models.DescribeNodeBatchRunRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNodeBatchRunResponse:
+        """
+        DescribeNodeBatchRun
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNodeBatchRun"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNodeBatchRunResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeNodeRunDetail(
+            self,
+            request: models.DescribeNodeRunDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNodeRunDetailResponse:
+        """
+        View workflow node running details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNodeRunDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNodeRunDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePlugin(
+            self,
+            request: models.DescribePluginRequest,
+            opts: Dict = None,
+    ) -> models.DescribePluginResponse:
+        """
+        This API is used to query plugin details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePlugin"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePluginResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePluginSummaryList(
+            self,
+            request: models.DescribePluginSummaryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribePluginSummaryListResponse:
+        """
+        Querying the List of Plugins
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePluginSummaryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePluginSummaryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeQA(
+            self,
+            request: models.DescribeQARequest,
+            opts: Dict = None,
+    ) -> models.DescribeQAResponse:
+        """
+        Query QA details
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeQA"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeQAResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeQASummaryList(
+            self,
+            request: models.DescribeQASummaryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeQASummaryListResponse:
+        """
+        Queries the QA list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeQASummaryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeQASummaryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeReleaseList(
+            self,
+            request: models.DescribeReleaseListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeReleaseListResponse:
+        """
+        Release record list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeReleaseList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeReleaseListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeReleaseSummary(
+            self,
+            request: models.DescribeReleaseSummaryRequest,
+            opts: Dict = None,
+    ) -> models.DescribeReleaseSummaryResponse:
+        """
+        Queries a publication task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeReleaseSummary"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeReleaseSummaryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSkillCategoryList(
+            self,
+            request: models.DescribeSkillCategoryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSkillCategoryListResponse:
+        """
+        Query the Skill classification list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSkillCategoryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSkillCategoryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSkillReferenceList(
+            self,
+            request: models.DescribeSkillReferenceListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSkillReferenceListResponse:
+        """
+        This API is used to query the list of details where a certain Skill is referenced, grouped by SkillRefType: OpenClaw, cloud agent, or business assistant agent. Authentication: same as DescribeSkillDetail.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSkillReferenceList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSkillReferenceListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSkillSummaryList(
+            self,
+            request: models.DescribeSkillSummaryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSkillSummaryListResponse:
+        """
+        Query the Skill list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSkillSummaryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSkillSummaryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSpaceList(
+            self,
+            request: models.DescribeSpaceListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSpaceListResponse:
+        """
+        This API is used to obtain the space list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSpaceList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSpaceListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSystemVariableList(
+            self,
+            request: models.DescribeSystemVariableListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSystemVariableListResponse:
+        """
+        Obtain system variables
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSystemVariableList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSystemVariableListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeUsageSummaryList(
+            self,
+            request: models.DescribeUsageSummaryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUsageSummaryListResponse:
+        """
+        This API is used to query aggregated details of resource usage, including three types of resources: models, plug-ins, and platforms. It displays indicators such as call count and Token consumption, aggregated by space or application dimension.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUsageSummaryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUsageSummaryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVariable(
+            self,
+            request: models.DescribeVariableRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVariableResponse:
+        """
+        Get parameter variables
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVariable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVariableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVariableList(
+            self,
+            request: models.DescribeVariableListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVariableListResponse:
+        """
+        Gets the parameter variable list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVariableList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVariableListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeWorkflowRun(
+            self,
+            request: models.DescribeWorkflowRunRequest,
+            opts: Dict = None,
+    ) -> models.DescribeWorkflowRunResponse:
+        """
+        Queries workflow running details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeWorkflowRun"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeWorkflowRunResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ExportQA(
+            self,
+            request: models.ExportQARequest,
+            opts: Dict = None,
+    ) -> models.ExportQAResponse:
+        """
+        Asynchronously export QAs.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExportQA"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExportQAResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAgent(
+            self,
+            request: models.ModifyAgentRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAgentResponse:
+        """
+        Modify Agent configuration information
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAgent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAgentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyApp(
+            self,
+            request: models.ModifyAppRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAppResponse:
+        """
+        Modifies applications
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyApp"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAppResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAppTrigger(
+            self,
+            request: models.ModifyAppTriggerRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAppTriggerResponse:
+        """
+        ModifyAppTrigger
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAppTrigger"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAppTriggerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyConversation(
+            self,
+            request: models.ModifyConversationRequest,
+            opts: Dict = None,
+    ) -> models.ModifyConversationResponse:
+        """
+        Modify session information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyConversation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyConversationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDocList(
+            self,
+            request: models.ModifyDocListRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDocListResponse:
+        """
+        Batch modify documents.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDocList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDocListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyKB(
+            self,
+            request: models.ModifyKBRequest,
+            opts: Dict = None,
+    ) -> models.ModifyKBResponse:
+        """
+        This API is used to modify the knowledge base.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyKB"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyKBResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLabel(
+            self,
+            request: models.ModifyLabelRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLabelResponse:
+        """
+        Modify a tag
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLabel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLabelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyQA(
+            self,
+            request: models.ModifyQARequest,
+            opts: Dict = None,
+    ) -> models.ModifyQAResponse:
+        """
+        Modify single QA
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyQA"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyQAResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyQAList(
+            self,
+            request: models.ModifyQAListRequest,
+            opts: Dict = None,
+    ) -> models.ModifyQAListResponse:
+        """
+        Batch modify QAs
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyQAList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyQAListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySpace(
+            self,
+            request: models.ModifySpaceRequest,
+            opts: Dict = None,
+    ) -> models.ModifySpaceResponse:
+        """
+        Edit a space
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySpace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySpaceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyVariable(
+            self,
+            request: models.ModifyVariableRequest,
+            opts: Dict = None,
+    ) -> models.ModifyVariableResponse:
+        """
+        Update parameter variables
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyVariable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyVariableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def PauseAppTrigger(
+            self,
+            request: models.PauseAppTriggerRequest,
+            opts: Dict = None,
+    ) -> models.PauseAppTriggerResponse:
+        """
+        PauseAppTrigger
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "PauseAppTrigger"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.PauseAppTriggerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ReleaseSkill(
+            self,
+            request: models.ReleaseSkillRequest,
+            opts: Dict = None,
+    ) -> models.ReleaseSkillResponse:
+        """
+        This API is used to list a skill.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ReleaseSkill"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ReleaseSkillResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ResetConversation(
+            self,
+            request: models.ResetConversationRequest,
+            opts: Dict = None,
+    ) -> models.ResetConversationResponse:
+        """
+        Reset a session
+        Note: Resetting is not supported for the current Claw mode application session.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ResetConversation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ResetConversationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RetryRelease(
+            self,
+            request: models.RetryReleaseRequest,
+            opts: Dict = None,
+    ) -> models.RetryReleaseResponse:
+        """
+        Retry publishing (republish after suspension)
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RetryRelease"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RetryReleaseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RollbackRelease(
+            self,
+            request: models.RollbackReleaseRequest,
+            opts: Dict = None,
+    ) -> models.RollbackReleaseResponse:
+        """
+        Roll back a release
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RollbackRelease"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RollbackReleaseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RunAppTriggerNow(
+            self,
+            request: models.RunAppTriggerNowRequest,
+            opts: Dict = None,
+    ) -> models.RunAppTriggerNowResponse:
+        """
+        RunAppTriggerNow
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RunAppTriggerNow"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RunAppTriggerNowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SearchKnowledge(
             self,
             request: models.SearchKnowledgeRequest,

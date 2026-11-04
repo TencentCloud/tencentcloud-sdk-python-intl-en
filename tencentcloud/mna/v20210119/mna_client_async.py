@@ -697,7 +697,7 @@ class MnaClient(AbstractClient):
             opts: Dict = None,
     ) -> models.GetStatisticDataByNameResponse:
         """
-        Download traffic data on the usage statistics page
+        Download traffic data on the usage statistics page.
         """
         
         kwargs = {}

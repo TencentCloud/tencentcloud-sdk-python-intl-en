@@ -6381,25 +6381,23 @@ class GetStatisticDataByNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeviceName: Device name. If not specified, pass "-1".
+        :param _DeviceName: <p>Device name. If no device is specified, you can pass "-1"</p>
         :type DeviceName: str
-        :param _BeginTime: Start time of statistics (seconds).
+        :param _BeginTime: <p>Start time of statistics, unit: s</p>
         :type BeginTime: int
-        :param _EndTime: Statistics end time (s).
+        :param _EndTime: <p>Statistics end time, unit: s</p>
         :type EndTime: int
-        :param _TimeGranularity: Aggregation granularity:
-Hourly statistics
-2: Daily statistics
+        :param _TimeGranularity: <p>Time granularity</p><p>Enumeration values:</p><ul><li>1: hourly statistics</li><li>2: daily statistics</li><li>3: per minute</li><li>4: every 5 minutes</li></ul>
         :type TimeGranularity: int
-        :param _AccessRegion: Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.
+        :param _AccessRegion: <p>Access region. Value range: ['MC','AP','EU','AM'] MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. If not specified, it represents all regions.</p>
         :type AccessRegion: str
-        :param _GatewayType: Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        :param _GatewayType: <p>Gateway type. 0: public cloud gateway; 1: private gateway. Defaults to 0 if not passed.</p>
         :type GatewayType: int
-        :param _DeviceList: Device name list. Up to 10 devices. Used when downloading traffic volume of multiple devices. At this point, DeviceName can be "-1".
+        :param _DeviceList: <p>Device name list, up to 10 devices. Used when downloading traffic for multiple devices. At this point, DeviceName can be set to "-1"</p>
         :type DeviceList: list of str
-        :param _GroupId: Device group ID. If not specified, do not pass it. Used when downloading data by grouping.
+        :param _GroupId: <p>Device group ID. Do not pass it if no group is specified. Used when downloading data by group</p>
         :type GroupId: str
-        :param _MpApplicationId: Application ID. Leave blank if no designated application is specified. Used when downloading data by app.
+        :param _MpApplicationId: <p>Application ID. If not specified, leave it blank. Used when downloading data by application</p>
         :type MpApplicationId: str
         """
         self._DeviceName = None
@@ -6414,7 +6412,7 @@ Hourly statistics
 
     @property
     def DeviceName(self):
-        r"""Device name. If not specified, pass "-1".
+        r"""<p>Device name. If no device is specified, you can pass "-1"</p>
         :rtype: str
         """
         return self._DeviceName
@@ -6425,7 +6423,7 @@ Hourly statistics
 
     @property
     def BeginTime(self):
-        r"""Start time of statistics (seconds).
+        r"""<p>Start time of statistics, unit: s</p>
         :rtype: int
         """
         return self._BeginTime
@@ -6436,7 +6434,7 @@ Hourly statistics
 
     @property
     def EndTime(self):
-        r"""Statistics end time (s).
+        r"""<p>Statistics end time, unit: s</p>
         :rtype: int
         """
         return self._EndTime
@@ -6447,9 +6445,7 @@ Hourly statistics
 
     @property
     def TimeGranularity(self):
-        r"""Aggregation granularity:
-Hourly statistics
-2: Daily statistics
+        r"""<p>Time granularity</p><p>Enumeration values:</p><ul><li>1: hourly statistics</li><li>2: daily statistics</li><li>3: per minute</li><li>4: every 5 minutes</li></ul>
         :rtype: int
         """
         return self._TimeGranularity
@@ -6460,7 +6456,7 @@ Hourly statistics
 
     @property
     def AccessRegion(self):
-        r"""Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.
+        r"""<p>Access region. Value range: ['MC','AP','EU','AM'] MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. If not specified, it represents all regions.</p>
         :rtype: str
         """
         return self._AccessRegion
@@ -6471,7 +6467,7 @@ Hourly statistics
 
     @property
     def GatewayType(self):
-        r"""Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.
+        r"""<p>Gateway type. 0: public cloud gateway; 1: private gateway. Defaults to 0 if not passed.</p>
         :rtype: int
         """
         return self._GatewayType
@@ -6482,7 +6478,7 @@ Hourly statistics
 
     @property
     def DeviceList(self):
-        r"""Device name list. Up to 10 devices. Used when downloading traffic volume of multiple devices. At this point, DeviceName can be "-1".
+        r"""<p>Device name list, up to 10 devices. Used when downloading traffic for multiple devices. At this point, DeviceName can be set to "-1"</p>
         :rtype: list of str
         """
         return self._DeviceList
@@ -6493,7 +6489,7 @@ Hourly statistics
 
     @property
     def GroupId(self):
-        r"""Device group ID. If not specified, do not pass it. Used when downloading data by grouping.
+        r"""<p>Device group ID. Do not pass it if no group is specified. Used when downloading data by group</p>
         :rtype: str
         """
         return self._GroupId
@@ -6504,7 +6500,7 @@ Hourly statistics
 
     @property
     def MpApplicationId(self):
-        r"""Application ID. Leave blank if no designated application is specified. Used when downloading data by app.
+        r"""<p>Application ID. If not specified, leave it blank. Used when downloading data by application</p>
         :rtype: str
         """
         return self._MpApplicationId
@@ -6541,7 +6537,7 @@ class GetStatisticDataByNameResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FilePath: File address url
+        :param _FilePath: <p>File address url</p>
         :type FilePath: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -6551,7 +6547,7 @@ class GetStatisticDataByNameResponse(AbstractModel):
 
     @property
     def FilePath(self):
-        r"""File address url
+        r"""<p>File address url</p>
         :rtype: str
         """
         return self._FilePath

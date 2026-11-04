@@ -13,3 +13,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
+# Operation failed.
+FAILEDOPERATION = 'FailedOperation'
+
+# Internal error.
+INTERNALERROR = 'InternalError'
+
+# Parameter error.
+INVALIDPARAMETER = 'InvalidParameter'
+
+# Parameters are missing.
+MISSINGPARAMETER = 'MissingParameter'
+
+# The resource does not exist.
+RESOURCENOTFOUND = 'ResourceNotFound'

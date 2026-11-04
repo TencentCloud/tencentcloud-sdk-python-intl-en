@@ -878,7 +878,7 @@ class MnaClient(AbstractClient):
 
 
     def GetStatisticDataByName(self, request):
-        r"""Download traffic data on the usage statistics page
+        r"""Download traffic data on the usage statistics page.
 
         :param request: Request instance for GetStatisticDataByName.
         :type request: :class:`tencentcloud.mna.v20210119.models.GetStatisticDataByNameRequest`
