@@ -93,10 +93,10 @@ class IaiClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateFaceResponse:
         """
-        This API is used to add a set of face images to a person. One person can have up to 5 images. If a person exists in multiple groups, the images will be added to all those groups for the person.
+        Add a group of human face images to a person. A person allows up to 5 images. If the person exists across multiple person libraries, the images will be added to the person in ALL libraries.
 
         >
-        - Please use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the `SignatureMethod` parameter to `TC3-HMAC-SHA256`.
+        - For the signature method in public parameters, please use the V3 version. In other words, set the SignatureMethod parameter to TC3-HMAC-SHA256.
         """
         
         kwargs = {}
@@ -137,10 +137,10 @@ class IaiClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreatePersonResponse:
         """
-        This API is used to create a person and add face, name, gender, and other related information.
+        Create a person and add a human face, name, sex, and other information related to the person.
 
         >
-        - Please use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the `SignatureMethod` parameter to `TC3-HMAC-SHA256`.
+        - Please use the V3 version of the signature method in public parameters. In other words, set the SignatureMethod parameter to TC3-HMAC-SHA256.
         """
         
         kwargs = {}
@@ -488,22 +488,24 @@ class IaiClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SearchFacesResponse:
         """
-        This API is used to recognize top K persons in one or more groups who are similar to the person in a given image and rank the similarity in descending order.
+        This API is used to recognize the top K most similar persons in one or more person libraries for a face image to be recognized, and sort the recognition results by similarity in descending order.
 
-        Up to 10 faces in an image can be recognized at a time, and up to 100 groups can be searched in at a time.
+        This API is used to recognize up to 10 human faces in an image at a time and search across 100 person libraries at a time.
 
-        The maximum number of faces in groups that can be searched for at a time is subject to the algorithm model version (`FaceModelVersion`) of groups, which is 1 million for v2.0 or 3 million for v3.0.
+        The total number of human faces in a person library for a single search is related to the algorithm model version of the person library. For a person library with algorithm model version 2.0, the total number of human faces in a single search should not exceed 1 million. For a person library with algorithm model version 3.0, the total number of human faces in a single search should not exceed 3 million.
 
-        This API recognizes each face image of a person as an independent one. By contrast, the [SearchPersons](https://intl.cloud.tencent.com/document/product/867/44992?from_cn_redirect=1) and [SearchPersonsReturnsByGroup](https://intl.cloud.tencent.com/document/product/867/44991?from_cn_redirect=1) APIs fuse the features of all face images of a person; for example, if a person has 4 face images, they will fuse the features of the 4 face images and generate the summarized facial features of the person to make the search more accurate.
+        Unlike the [Person search](https://www.tencentcloud.com/document/product/867/44992?from_cn_redirect=1) and [Person search by database return](https://www.tencentcloud.com/document/product/867/44991?from_cn_redirect=1) APIs, this API verifies each Face under a Person as a separate individual. The Person search and Person search by database return APIs perform fusion feature processing on all faces under a Person. For example, if a Person has 4 faces, the [Person search](https://www.tencentcloud.com/document/product/867/44992?from_cn_redirect=1) and [Person search by database return](https://www.tencentcloud.com/document/product/867/44991?from_cn_redirect=1) APIs will fuse the features of the 4 faces to generate the characteristics of this Person, making the search more accurate.
 
 
-        This API should be used together with [Group Management APIs](https://intl.cloud.tencent.com/document/product/867/45015?from_cn_redirect=1).
+        This interface should be used in conjunction with the personnel database management API (https://www.tencentcloud.com/document/product/867/45015?from_cn_redirect=1).
+
+        **Note:** If a person library has not been called for over 1 year, the platform will delete its resources to ensure user information security.
 
         >
-        - Please use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the parameter `SignatureMethod` to `TC3-HMAC-SHA256`.
+        - Use the V3 signature method in public parameters. In other words, set the SignatureMethod parameter to TC3-HMAC-SHA256.
 
         >
-        - You cannot search for groups using different algorithm model versions (`FaceModelVersion`) at a time.
+        -Cannot search person libraries of different algorithm model versions (FaceModelVersion) at the same time.
         """
         
         kwargs = {}
@@ -553,17 +555,17 @@ class IaiClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SearchPersonsResponse:
         """
-        This API is used to recognize top K persons in one or more groups who are similar to the person in a given image and rank the similarity in a descending order.
+        This API is used to recognize the top K most similar persons in one or more person libraries for a face image to be recognized, and sort them by similarity in descending order.
 
-        Up to 10 faces in an image can be recognized at a time, and up to 100 groups can be searched in at a time.
+        This API is used to recognize up to 10 human faces in an image at a time and search across 100 person libraries at a time.
 
-        The maximum number of faces in groups that can be searched for at a time is subject to the group's algorithm model version (`FaceModelVersion`), which is 1 million for v2.0 or 3 million for v3.0.
+        The total number of faces in a person library for a single search is related to the algorithm model version of the person library. For a person library with algorithm model version 2.0, the total number of faces in a single search should not exceed 1 million. For a person library with algorithm model version 3.0, the total number of faces in a single search should not exceed 3 million.
 
-        This API fuses the features of all face images of a person; for example, if a person has 4 face images, it will fuse the features of the 4 face images and generate the summarized facial features of the person to make the person search (i.e., judging whether the face image to be recognized is of a specified person) more accurate. By contrast, the [SearchFaces](https://intl.cloud.tencent.com/document/product/867/44994?from_cn_redirect=1) and [SearchFacesReturnsByGroup](https://intl.cloud.tencent.com/document/product/867/44993?from_cn_redirect=1) APIs recognize each face image of a person as an independent one for search.
-
+        This API is used to perform fusion feature processing on all faces under a Person. For example, if a Person has 4 faces, this API will fuse the features of the 4 faces to generate the corresponding features of this Person, making Person search (confirming that the Face image to be identified belongs to a certain Person) more accurate. In contrast, [Face search](https://www.tencentcloud.com/document/product/867/44994?from_cn_redirect=1) and [Face search by group return API](https://www.tencentcloud.com/document/product/867/44993?from_cn_redirect=1) search for each Face under the Person as a separate individual.
+        **Note:** If a person library has no calls for more than 1 year, the platform will delete its resources to ensure User Information Security.
         >
-        - Please use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the `SignatureMethod` parameter to `TC3-HMAC-SHA256`.
-        - This feature is available only to groups whose algorithm model version (`FaceModelVersion`) is 3.0.
+        - Use the V3 signature method in public parameters. In other words, set the SignatureMethod parameter to TC3-HMAC-SHA256.
+        -Only person libraries with algorithm model version (FaceModelVersion) 3.0 are supported.
         """
         
         kwargs = {}

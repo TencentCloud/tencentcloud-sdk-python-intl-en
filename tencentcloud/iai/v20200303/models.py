@@ -289,32 +289,29 @@ class AttributeItem(AbstractModel):
 
 
 class Candidate(AbstractModel):
-    r"""Most matching candidate recognized
+    r"""The most similar candidate identified
 
     """
 
     def __init__(self):
         r"""
-        :param _PersonId: Person ID
+        :param _PersonId: Person ID.
         :type PersonId: str
-        :param _FaceId: Face ID, which is valid only when returned by the `SearchFaces` or `SearchFacesReturnsByGroup` API. User search APIs use facial feature fusion to search for users, for which this field is meaningless.
+        :param _FaceId: Face ID.
+-Valid only in the API response of SearchFaces/SearchFacesReturnsByGroup.
+-Person search class interfaces use the fusion feature method for retrieval. This field is meaningless.
         :type FaceId: str
-        :param _Score: Match score of candidate. 
-
-In a face base library containing 10,000 faces, the 1%, 0.1%, and 0.01% FARs correspond to scores of 70, 80, and 90, respectively;
-In a face base library containing 100,000 faces, the 1%, 0.1%, and 0.01% FARs correspond to scores of 80, 90, and 100, respectively;
-In a face base library containing 300,000 faces, the 1% and 0.1% FARs correspond to scores of 85 and 95, respectively.
-
-Generally, the score of 80 is suitable for most scenarios. We recommend choosing an appropriate score based on the actual situation, preferably no more than 90.
+        :param _Score: Match score of the candidate. 
+-In a face base library of 10,000 faces, a false acceptance rate of 1% corresponds to a score of 70 points, 0.1% corresponds to 80 points, and 0.01% corresponds to 90 points.
+-For a face base library of 100,000, a false acceptance rate of 1% corresponds to a score of 80 points, 0.1% corresponds to 90 points, and 0.01% corresponds to 100 points.
+-With a face base library of 300,000, a false acceptance rate of 1% corresponds to a score of 85, and a false acceptance rate of 0.1% corresponds to a score of 95.
+-Generally, a score of around 80 applies to most scenarios. It is advisable not to exceed 90. You can choose a suitable score according to the actual situation.
         :type Score: float
-        :param _PersonName: Person name
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _PersonName: Person name.
         :type PersonName: str
-        :param _Gender: Person gender
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Gender: Gender of personnel.
         :type Gender: int
-        :param _PersonGroupInfos: List of groups containing this person and their description fields
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _PersonGroupInfos: List of person libraries containing this person and the content of the description field.
         :type PersonGroupInfos: list of PersonGroupInfo
         """
         self._PersonId = None
@@ -326,7 +323,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PersonId(self):
-        r"""Person ID
+        r"""Person ID.
         :rtype: str
         """
         return self._PersonId
@@ -337,7 +334,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FaceId(self):
-        r"""Face ID, which is valid only when returned by the `SearchFaces` or `SearchFacesReturnsByGroup` API. User search APIs use facial feature fusion to search for users, for which this field is meaningless.
+        r"""Face ID.
+-Valid only in the API response of SearchFaces/SearchFacesReturnsByGroup.
+-Person search class interfaces use the fusion feature method for retrieval. This field is meaningless.
         :rtype: str
         """
         return self._FaceId
@@ -348,13 +347,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Score(self):
-        r"""Match score of candidate. 
-
-In a face base library containing 10,000 faces, the 1%, 0.1%, and 0.01% FARs correspond to scores of 70, 80, and 90, respectively;
-In a face base library containing 100,000 faces, the 1%, 0.1%, and 0.01% FARs correspond to scores of 80, 90, and 100, respectively;
-In a face base library containing 300,000 faces, the 1% and 0.1% FARs correspond to scores of 85 and 95, respectively.
-
-Generally, the score of 80 is suitable for most scenarios. We recommend choosing an appropriate score based on the actual situation, preferably no more than 90.
+        r"""Match score of the candidate. 
+-In a face base library of 10,000 faces, a false acceptance rate of 1% corresponds to a score of 70 points, 0.1% corresponds to 80 points, and 0.01% corresponds to 90 points.
+-For a face base library of 100,000, a false acceptance rate of 1% corresponds to a score of 80 points, 0.1% corresponds to 90 points, and 0.01% corresponds to 100 points.
+-With a face base library of 300,000, a false acceptance rate of 1% corresponds to a score of 85, and a false acceptance rate of 0.1% corresponds to a score of 95.
+-Generally, a score of around 80 applies to most scenarios. It is advisable not to exceed 90. You can choose a suitable score according to the actual situation.
         :rtype: float
         """
         return self._Score
@@ -365,8 +362,7 @@ Generally, the score of 80 is suitable for most scenarios. We recommend choosing
 
     @property
     def PersonName(self):
-        r"""Person name
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Person name.
         :rtype: str
         """
         return self._PersonName
@@ -377,8 +373,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Gender(self):
-        r"""Person gender
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Gender of personnel.
         :rtype: int
         """
         return self._Gender
@@ -389,8 +384,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PersonGroupInfos(self):
-        r"""List of groups containing this person and their description fields
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""List of person libraries containing this person and the content of the description field.
         :rtype: list of PersonGroupInfo
         """
         return self._PersonGroupInfos
@@ -796,37 +790,22 @@ class CreateFaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.
+        :param _PersonId: <p>Person ID, which is the PersonId in the person creation API.</p>
         :type PersonId: str
-        :param _Images: Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-A person can have up to 5 face images.
-If there are multiple faces in the image, only the face with the largest size will be selected.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :param _Images: <p>base64 data of the image.</p><ul><li>base64 encoded size must not exceed 5M.</li><li>For jpg format, the long side pixel must not exceed 4000. For other formats, the image long edge must not exceed 2000. The short side pixel of images in all formats must be not less than 64.</li><li>The total number of faces must not exceed 5.</li><li>If the image contains several faces, only the face with the maximum area is selected.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li></ul>
         :type Images: list of str
-        :param _Urls: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
-We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
-The download speed and stability of non-Tencent Cloud URLs may be low.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
-A person can have up to 5 face images.
-If there are multiple faces in the image, only the face with the largest size will be selected.
+        :param _Urls: <p>Image Url.</p><ul><li>The size of the corresponding Image after base64 encoding must not exceed 5M.</li><li>For jpg format, the long side pixel must not exceed 4000. For other Image formats, the long side pixel must not exceed 2000. The short side pixel of images in all formats must be not less than 64.</li><li>Either Url or Image must be provided. If both are provided, only Url is used.</li><li>Images stored in Tencent Cloud URLs can guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud.</li><li>The speed and stability of non-Tencent Cloud Storage URLs may be affected to a certain extent.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li><li>The total number of human faces must not exceed 5.</li><li>If the Image contains several faces, only the face with the maximum area is selected.</li></ul>
         :type Urls: list of str
-        :param _FaceMatchThreshold: Only faces whose similarity to an existing face of the person is above the value of `FaceMatchThreshold` can be added successfully. 
-Default value: 60. Value range: [0,100].
+        :param _FaceMatchThreshold: <p>Only faces with a similarity to the person's existing faces exceeding the FaceMatchThreshold can be added successfully. </p><ul><li>Default value: 60. </li><li>Value range: [0,100]. </li></ul>
         :type FaceMatchThreshold: float
-        :param _QualityControl: Image quality control. 
-0: no control. 
-1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
-2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
-Default value: 0. 
-If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
+        :param _QualityControl: <p>Image quality control. </p><ul><li>Value range: <br>0: no control; <br>1: low quality requirement, where the image is super blurry, or at least one or more of the following exist: eye occlusion, nose occlusion, or mouth occlusion; <br>2: normal quality requirement, where the image is bright, dark, blurry or generally blurry, or at least three of the following exist: eyebrow obstruction, cheek obstruction, or chin obstruction; <br>3: high quality requirement, where the image is bright, dark, generally blurry, or one to two of the following exist: eyebrow obstruction, cheek obstruction, or chin obstruction; <br>4: super high quality requirement, where each dimension is at its best or at most one dimension has a minor problem; </li><li>Default: 0. </li><li>If the image quality fails to satisfy the requirement, the returned result will prompt that the image quality detection does not meet the requirement.</li></ul>
         :type QualityControl: int
-        :param _NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        :param _NeedRotateDetection: <p>Whether to enable image rotation recognition support.</p><ul><li>Value range: 0 means not enabled, 1 means enabled.</li><li>Default value: 0.</li><li>This parameter is used when the human face in the image is rotated and the image has no exif information. If image rotation recognition support is not enabled, the human face in the image cannot be correctly detected or recognized.</li><li>If you confirm that the image contains exif information or that the human face in the input image will not be rotated, do not enable this parameter. Once enabled, the overall duration may increase by several hundred milliseconds.</li></ul>
         :type NeedRotateDetection: int
+        :param _Encryption: <p>Whether full-body encryption is required for the request information. Supported encryption algorithm: AES-256-CBC. Users with encryption requirements can use this parameter.</p>
+        :type Encryption: :class:`tencentcloud.iai.v20200303.models.Encryption`
+        :param _EncryptedBody: <p>Encrypted ciphertext. The data format before encryption is as follows: {&quot;Url&quot;:&quot;<strong>&quot;,&quot;Image&quot;:&quot;</strong>&quot;}。</p>
+        :type EncryptedBody: str
         """
         self._PersonId = None
         self._Images = None
@@ -834,10 +813,12 @@ If the image quality does not meet the requirement, the returned result will pro
         self._FaceMatchThreshold = None
         self._QualityControl = None
         self._NeedRotateDetection = None
+        self._Encryption = None
+        self._EncryptedBody = None
 
     @property
     def PersonId(self):
-        r"""Person ID, which is the `PersonId` in the `CreatePerson` API.
+        r"""<p>Person ID, which is the PersonId in the person creation API.</p>
         :rtype: str
         """
         return self._PersonId
@@ -848,11 +829,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def Images(self):
-        r"""Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-A person can have up to 5 face images.
-If there are multiple faces in the image, only the face with the largest size will be selected.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        r"""<p>base64 data of the image.</p><ul><li>base64 encoded size must not exceed 5M.</li><li>For jpg format, the long side pixel must not exceed 4000. For other formats, the image long edge must not exceed 2000. The short side pixel of images in all formats must be not less than 64.</li><li>The total number of faces must not exceed 5.</li><li>If the image contains several faces, only the face with the maximum area is selected.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li></ul>
         :rtype: list of str
         """
         return self._Images
@@ -863,14 +840,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def Urls(self):
-        r"""Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
-We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
-The download speed and stability of non-Tencent Cloud URLs may be low.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
-A person can have up to 5 face images.
-If there are multiple faces in the image, only the face with the largest size will be selected.
+        r"""<p>Image Url.</p><ul><li>The size of the corresponding Image after base64 encoding must not exceed 5M.</li><li>For jpg format, the long side pixel must not exceed 4000. For other Image formats, the long side pixel must not exceed 2000. The short side pixel of images in all formats must be not less than 64.</li><li>Either Url or Image must be provided. If both are provided, only Url is used.</li><li>Images stored in Tencent Cloud URLs can guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud.</li><li>The speed and stability of non-Tencent Cloud Storage URLs may be affected to a certain extent.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li><li>The total number of human faces must not exceed 5.</li><li>If the Image contains several faces, only the face with the maximum area is selected.</li></ul>
         :rtype: list of str
         """
         return self._Urls
@@ -881,8 +851,7 @@ If there are multiple faces in the image, only the face with the largest size wi
 
     @property
     def FaceMatchThreshold(self):
-        r"""Only faces whose similarity to an existing face of the person is above the value of `FaceMatchThreshold` can be added successfully. 
-Default value: 60. Value range: [0,100].
+        r"""<p>Only faces with a similarity to the person's existing faces exceeding the FaceMatchThreshold can be added successfully. </p><ul><li>Default value: 60. </li><li>Value range: [0,100]. </li></ul>
         :rtype: float
         """
         return self._FaceMatchThreshold
@@ -893,14 +862,7 @@ Default value: 60. Value range: [0,100].
 
     @property
     def QualityControl(self):
-        r"""Image quality control. 
-0: no control. 
-1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
-2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
-Default value: 0. 
-If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
+        r"""<p>Image quality control. </p><ul><li>Value range: <br>0: no control; <br>1: low quality requirement, where the image is super blurry, or at least one or more of the following exist: eye occlusion, nose occlusion, or mouth occlusion; <br>2: normal quality requirement, where the image is bright, dark, blurry or generally blurry, or at least three of the following exist: eyebrow obstruction, cheek obstruction, or chin obstruction; <br>3: high quality requirement, where the image is bright, dark, generally blurry, or one to two of the following exist: eyebrow obstruction, cheek obstruction, or chin obstruction; <br>4: super high quality requirement, where each dimension is at its best or at most one dimension has a minor problem; </li><li>Default: 0. </li><li>If the image quality fails to satisfy the requirement, the returned result will prompt that the image quality detection does not meet the requirement.</li></ul>
         :rtype: int
         """
         return self._QualityControl
@@ -911,7 +873,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def NeedRotateDetection(self):
-        r"""Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        r"""<p>Whether to enable image rotation recognition support.</p><ul><li>Value range: 0 means not enabled, 1 means enabled.</li><li>Default value: 0.</li><li>This parameter is used when the human face in the image is rotated and the image has no exif information. If image rotation recognition support is not enabled, the human face in the image cannot be correctly detected or recognized.</li><li>If you confirm that the image contains exif information or that the human face in the input image will not be rotated, do not enable this parameter. Once enabled, the overall duration may increase by several hundred milliseconds.</li></ul>
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -919,6 +881,28 @@ If the image quality does not meet the requirement, the returned result will pro
     @NeedRotateDetection.setter
     def NeedRotateDetection(self, NeedRotateDetection):
         self._NeedRotateDetection = NeedRotateDetection
+
+    @property
+    def Encryption(self):
+        r"""<p>Whether full-body encryption is required for the request information. Supported encryption algorithm: AES-256-CBC. Users with encryption requirements can use this parameter.</p>
+        :rtype: :class:`tencentcloud.iai.v20200303.models.Encryption`
+        """
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+    @property
+    def EncryptedBody(self):
+        r"""<p>Encrypted ciphertext. The data format before encryption is as follows: {&quot;Url&quot;:&quot;<strong>&quot;,&quot;Image&quot;:&quot;</strong>&quot;}。</p>
+        :rtype: str
+        """
+        return self._EncryptedBody
+
+    @EncryptedBody.setter
+    def EncryptedBody(self, EncryptedBody):
+        self._EncryptedBody = EncryptedBody
 
 
     def _deserialize(self, params):
@@ -928,6 +912,10 @@ If the image quality does not meet the requirement, the returned result will pro
         self._FaceMatchThreshold = params.get("FaceMatchThreshold")
         self._QualityControl = params.get("QualityControl")
         self._NeedRotateDetection = params.get("NeedRotateDetection")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        self._EncryptedBody = params.get("EncryptedBody")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -945,23 +933,19 @@ class CreateFaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SucFaceNum: Number of successfully added faces
+        :param _SucFaceNum: <p>Number of faces that joined successfully.</p>
         :type SucFaceNum: int
-        :param _SucFaceIds: List of IDs of successfully added faces
+        :param _SucFaceIds: <p>List of face IDs that joined successfully.</p>
         :type SucFaceIds: list of str
-        :param _RetCode: Adding result for each face image. -1101: no face detected; -1102: image decoding failed; 
--1601: the image quality control requirement is not met; -1604: the face similarity is not above `FaceMatchThreshold`. 
-Other non-zero values: algorithm service exception. 
-The order of `RetCode` values is the same as the order of `Images` or `Urls` in the input parameter.
+        :param _RetCode: <p>Addition result of each face image.</p><ul><li>Other non-zero values represent algorithm service exceptions, with the following value ranges:<br>-1101 represents no face detected.<br>-1102 represents image decoding failure.<br>-1109 represents image size too large or too small.<br>-1601 represents the image quality control requirement is not met.<br>-1604 represents face similarity does not exceed FaceMatchThreshold. </li><li>The order of RetCode is consistent with the sequence of Images or Urls in the input parameters.</li></ul>
         :type RetCode: list of int
-        :param _SucIndexes: Indexes of successfully added faces. The order of indexes is the same as the order of `Images` or `Urls` in the input parameter. 
-For example, if there are 3 URLs in `Urls`, and the second URL fails, then the value of `SucIndexes` will be [0,2].
+        :param _SucIndexes: <p>Index of successfully added faces.</p><ul><li>The index order is consistent with the sequence of Images or Urls in the input parameter.</li><li>For example, if there are 3 Urls in Urls and the second url fails, the value of SucIndexes is [0,2].</li></ul>
         :type SucIndexes: list of int non-negative
-        :param _SucFaceRects: Frame positions of successfully added faces. The order is the same as the order of `Images` or `Urls` in the input parameter.
+        :param _SucFaceRects: <p>Face bounding box position of successfully joined faces. The sequence is consistent with the sequence of Images or Urls in the input parameter.</p>
         :type SucFaceRects: list of FaceRect
-        :param _FaceModelVersion: Algorithm model version used for face recognition.
+        :param _FaceModelVersion: <p>Algorithm model version used for face recognition.</p>
         :type FaceModelVersion: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._SucFaceNum = None
@@ -974,7 +958,7 @@ For example, if there are 3 URLs in `Urls`, and the second URL fails, then the v
 
     @property
     def SucFaceNum(self):
-        r"""Number of successfully added faces
+        r"""<p>Number of faces that joined successfully.</p>
         :rtype: int
         """
         return self._SucFaceNum
@@ -985,7 +969,7 @@ For example, if there are 3 URLs in `Urls`, and the second URL fails, then the v
 
     @property
     def SucFaceIds(self):
-        r"""List of IDs of successfully added faces
+        r"""<p>List of face IDs that joined successfully.</p>
         :rtype: list of str
         """
         return self._SucFaceIds
@@ -996,10 +980,7 @@ For example, if there are 3 URLs in `Urls`, and the second URL fails, then the v
 
     @property
     def RetCode(self):
-        r"""Adding result for each face image. -1101: no face detected; -1102: image decoding failed; 
--1601: the image quality control requirement is not met; -1604: the face similarity is not above `FaceMatchThreshold`. 
-Other non-zero values: algorithm service exception. 
-The order of `RetCode` values is the same as the order of `Images` or `Urls` in the input parameter.
+        r"""<p>Addition result of each face image.</p><ul><li>Other non-zero values represent algorithm service exceptions, with the following value ranges:<br>-1101 represents no face detected.<br>-1102 represents image decoding failure.<br>-1109 represents image size too large or too small.<br>-1601 represents the image quality control requirement is not met.<br>-1604 represents face similarity does not exceed FaceMatchThreshold. </li><li>The order of RetCode is consistent with the sequence of Images or Urls in the input parameters.</li></ul>
         :rtype: list of int
         """
         return self._RetCode
@@ -1010,8 +991,7 @@ The order of `RetCode` values is the same as the order of `Images` or `Urls` in 
 
     @property
     def SucIndexes(self):
-        r"""Indexes of successfully added faces. The order of indexes is the same as the order of `Images` or `Urls` in the input parameter. 
-For example, if there are 3 URLs in `Urls`, and the second URL fails, then the value of `SucIndexes` will be [0,2].
+        r"""<p>Index of successfully added faces.</p><ul><li>The index order is consistent with the sequence of Images or Urls in the input parameter.</li><li>For example, if there are 3 Urls in Urls and the second url fails, the value of SucIndexes is [0,2].</li></ul>
         :rtype: list of int non-negative
         """
         return self._SucIndexes
@@ -1022,7 +1002,7 @@ For example, if there are 3 URLs in `Urls`, and the second URL fails, then the v
 
     @property
     def SucFaceRects(self):
-        r"""Frame positions of successfully added faces. The order is the same as the order of `Images` or `Urls` in the input parameter.
+        r"""<p>Face bounding box position of successfully joined faces. The sequence is consistent with the sequence of Images or Urls in the input parameter.</p>
         :rtype: list of FaceRect
         """
         return self._SucFaceRects
@@ -1033,7 +1013,7 @@ For example, if there are 3 URLs in `Urls`, and the second URL fails, then the v
 
     @property
     def FaceModelVersion(self):
-        r"""Algorithm model version used for face recognition.
+        r"""<p>Algorithm model version used for face recognition.</p>
         :rtype: str
         """
         return self._FaceModelVersion
@@ -1044,7 +1024,7 @@ For example, if there are 3 URLs in `Urls`, and the second URL fails, then the v
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1243,49 +1223,30 @@ class CreatePersonRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: ID of the group to join, which is the `GroupId` in the `CreateGroup` API.
+        :param _GroupId: <p>ID of the personnel database to be added, which is the GroupId in the API for creating a personnel database.</p>
         :type GroupId: str
-        :param _PersonName: Person name, which can contain 1 to 60 characters and is modifiable and repeatable.
+        :param _PersonName: <p>Person name. [1, 60] characters, modifiable, repeatable.</p>
         :type PersonName: str
-        :param _PersonId: Person ID, which is unmodifiable, must be unique under a Tencent Cloud account, and can contain letters, digits, and special symbols (-%@#&_) of up to 64 B.
+        :param _PersonId: <p>Person ID.</p><ul><li>Cannot be modified or repeated under a single Tencent Cloud account.</li><li>Supports English letters, digits, -%@#&amp;_, length limited to 64B.</li></ul>
         :type PersonId: str
-        :param _Gender: 0: empty; 1: male; 2: female.
+        :param _Gender: <p>Gender.</p><ul><li>Value range: 0 represents empty, 1 represents man, 2 represents woman.</li></ul>
         :type Gender: int
-        :param _PersonExDescriptionInfos: Content of person description field, which is a `key-value` pair, can contain 0 to 60 characters, and is modifiable and repeatable.
+        :param _PersonExDescriptionInfos: <p>Person description field content, key-value. [0, 60] characters, modifiable, repeatable.</p>
         :type PersonExDescriptionInfos: list of PersonExDescriptionInfo
-        :param _Image: Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :param _Image: <p>base64 image data.</p><ul><li>base64-encoded data must not exceed 5 MB.</li><li>For jpg images, the long edge must not exceed 4000 pixels. For other formats, the long edge must not exceed 2000 pixels. The short edge of images in all formats must be at least 64 pixels.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li></ul>
         :type Image: str
-        :param _Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
-We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
-The download speed and stability of non-Tencent Cloud URLs may be low.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :param _Url: <p>Image Url.</p><ul><li>The corresponding Image size after base64 encoding must not exceed 5M.</li><li>For jpg format, the long side pixel cannot exceed 4000. For other formats, the long side pixel cannot exceed 2000. The short side pixel of images in all formats must not be less than 64.</li><li>Either Url or Image must be provided. If both are provided, only Url is used.</li><li>Images stored in Tencent Cloud's Url can guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud.</li><li>The speed and stability of URLs not stored in Tencent Cloud may be affected to a certain extent.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li></ul>
         :type Url: str
-        :param _UniquePersonControl: This parameter is used to control the judgment whether the face contained in the image in `Image` or `Url` corresponds to an existing person in the group. 
-If it is judged that a duplicate person exists in the group, no new person will be created, and information of the suspected duplicate person will be returned. 
-Otherwise, the new person will be created. 
-0: do not judge, i.e., the person will be created no matter whether a duplicate person exists in the group. 
-1: low duplicate person judgment requirement (1% FAR); 
-2: average duplicate person judgment requirement (0.1% FAR); 
-3: high duplicate person judgment requirement (0.01% FAR); 
-4: very high duplicate person judgment requirement (0.001% FAR). 
-Default value: 0.  
-Note: the higher the requirement, the lower the probability of duplicate person. The FARs corresponding to different requirements are for reference only and can be adjusted as needed.
+        :param _UniquePersonControl: <p>This parameter is used to control whether the human face contained in the image specified by Image or Url is determined to be a suspected duplicate person already existing in the person library. </p><ul><li>If determined to be the same person already in the person library, no new person will be created, and the personnel information of the suspected duplicate person will be returned. </li><li>If not, the person will be created. </li><li>Value range:<br>0: No judgment is performed, and the person will be stored regardless of whether there is a suspected duplicate person in the library;<br>1: Low duplicate person judgment requirement (1% false recognition rate);<br>2: Normal duplicate person judgment requirement (0.1% false recognition rate);<br>3: High duplicate person judgment requirement (0.01% false recognition rate);<br>4: Very high duplicate person judgment requirement (0.001% false recognition rate). </li><li>Default value: 0. </li><li>Note: The higher the requirement, the lower the probability of suspected duplicate persons. The false recognition rates for different requirements are for reference only and can be adjusted according to the actual situation.</li></ul>
         :type UniquePersonControl: int
-        :param _QualityControl: Image quality control. 
-0: no control. 
-1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
-2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
-Default value: 0. 
-If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
+        :param _QualityControl: <p>Image quality control. </p><ul><li>Value range: <br>0: no control; <br>1: low quality requirement, where the image is very blurry, or at least one or more of the eyes, nose, or mouth are occluded; <br>2: general quality requirement, where the image is bright, dark, blurry or generally blurry, with at least three of the following: eyebrow occlusion, cheek occlusion, or chin occlusion; <br>3: high quality requirement, where the image is bright, dark, generally blurry, with one or two of the following: eyebrow occlusion, cheek occlusion, or chin occlusion; <br>4: very high quality requirement, where each dimension is optimal or at most one dimension has a minor problem; </li><li>Default: 0. </li><li>If the image quality fails to satisfy the requirement, the returned result will prompt that the image quality detection does not meet the requirement.</li></ul>
         :type QualityControl: int
-        :param _NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        :param _NeedRotateDetection: <p>Whether to enable image rotation recognition support.</p><ul><li>Value range: 0 for disabled, 1 for enabled.</li><li>Default value: 0.</li><li>This parameter is used to correctly detect and recognize human faces in an image when the faces are rotated and the image has no exif information. If image rotation recognition support is not enabled in this case, the faces cannot be detected or recognized.</li><li>If you confirm that the image contains exif information or that the human faces in the input image will not be rotated, do not enable this parameter. Once enabled, the overall duration may increase by several hundred milliseconds.</li></ul>
         :type NeedRotateDetection: int
+        :param _Encryption: <p>Whether to encrypt the entire request body. Supported encryption algorithm: AES-256-CBC. Users with encryption requirements can use this parameter.</p>
+        :type Encryption: :class:`tencentcloud.iai.v20200303.models.Encryption`
+        :param _EncryptedBody: <p>Encrypted ciphertext. The data format before encryption is as follows: {&quot;Url&quot;:&quot;<strong>&quot;,&quot;Image&quot;:&quot;</strong>&quot;}.</p>
+        :type EncryptedBody: str
         """
         self._GroupId = None
         self._PersonName = None
@@ -1297,10 +1258,12 @@ If the image quality does not meet the requirement, the returned result will pro
         self._UniquePersonControl = None
         self._QualityControl = None
         self._NeedRotateDetection = None
+        self._Encryption = None
+        self._EncryptedBody = None
 
     @property
     def GroupId(self):
-        r"""ID of the group to join, which is the `GroupId` in the `CreateGroup` API.
+        r"""<p>ID of the personnel database to be added, which is the GroupId in the API for creating a personnel database.</p>
         :rtype: str
         """
         return self._GroupId
@@ -1311,7 +1274,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def PersonName(self):
-        r"""Person name, which can contain 1 to 60 characters and is modifiable and repeatable.
+        r"""<p>Person name. [1, 60] characters, modifiable, repeatable.</p>
         :rtype: str
         """
         return self._PersonName
@@ -1322,7 +1285,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def PersonId(self):
-        r"""Person ID, which is unmodifiable, must be unique under a Tencent Cloud account, and can contain letters, digits, and special symbols (-%@#&_) of up to 64 B.
+        r"""<p>Person ID.</p><ul><li>Cannot be modified or repeated under a single Tencent Cloud account.</li><li>Supports English letters, digits, -%@#&amp;_, length limited to 64B.</li></ul>
         :rtype: str
         """
         return self._PersonId
@@ -1333,7 +1296,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def Gender(self):
-        r"""0: empty; 1: male; 2: female.
+        r"""<p>Gender.</p><ul><li>Value range: 0 represents empty, 1 represents man, 2 represents woman.</li></ul>
         :rtype: int
         """
         return self._Gender
@@ -1344,7 +1307,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def PersonExDescriptionInfos(self):
-        r"""Content of person description field, which is a `key-value` pair, can contain 0 to 60 characters, and is modifiable and repeatable.
+        r"""<p>Person description field content, key-value. [0, 60] characters, modifiable, repeatable.</p>
         :rtype: list of PersonExDescriptionInfo
         """
         return self._PersonExDescriptionInfos
@@ -1355,9 +1318,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def Image(self):
-        r"""Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        r"""<p>base64 image data.</p><ul><li>base64-encoded data must not exceed 5 MB.</li><li>For jpg images, the long edge must not exceed 4000 pixels. For other formats, the long edge must not exceed 2000 pixels. The short edge of images in all formats must be at least 64 pixels.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li></ul>
         :rtype: str
         """
         return self._Image
@@ -1368,12 +1329,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def Url(self):
-        r"""Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
-We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
-The download speed and stability of non-Tencent Cloud URLs may be low.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        r"""<p>Image Url.</p><ul><li>The corresponding Image size after base64 encoding must not exceed 5M.</li><li>For jpg format, the long side pixel cannot exceed 4000. For other formats, the long side pixel cannot exceed 2000. The short side pixel of images in all formats must not be less than 64.</li><li>Either Url or Image must be provided. If both are provided, only Url is used.</li><li>Images stored in Tencent Cloud's Url can guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud.</li><li>The speed and stability of URLs not stored in Tencent Cloud may be affected to a certain extent.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li></ul>
         :rtype: str
         """
         return self._Url
@@ -1384,16 +1340,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def UniquePersonControl(self):
-        r"""This parameter is used to control the judgment whether the face contained in the image in `Image` or `Url` corresponds to an existing person in the group. 
-If it is judged that a duplicate person exists in the group, no new person will be created, and information of the suspected duplicate person will be returned. 
-Otherwise, the new person will be created. 
-0: do not judge, i.e., the person will be created no matter whether a duplicate person exists in the group. 
-1: low duplicate person judgment requirement (1% FAR); 
-2: average duplicate person judgment requirement (0.1% FAR); 
-3: high duplicate person judgment requirement (0.01% FAR); 
-4: very high duplicate person judgment requirement (0.001% FAR). 
-Default value: 0.  
-Note: the higher the requirement, the lower the probability of duplicate person. The FARs corresponding to different requirements are for reference only and can be adjusted as needed.
+        r"""<p>This parameter is used to control whether the human face contained in the image specified by Image or Url is determined to be a suspected duplicate person already existing in the person library. </p><ul><li>If determined to be the same person already in the person library, no new person will be created, and the personnel information of the suspected duplicate person will be returned. </li><li>If not, the person will be created. </li><li>Value range:<br>0: No judgment is performed, and the person will be stored regardless of whether there is a suspected duplicate person in the library;<br>1: Low duplicate person judgment requirement (1% false recognition rate);<br>2: Normal duplicate person judgment requirement (0.1% false recognition rate);<br>3: High duplicate person judgment requirement (0.01% false recognition rate);<br>4: Very high duplicate person judgment requirement (0.001% false recognition rate). </li><li>Default value: 0. </li><li>Note: The higher the requirement, the lower the probability of suspected duplicate persons. The false recognition rates for different requirements are for reference only and can be adjusted according to the actual situation.</li></ul>
         :rtype: int
         """
         return self._UniquePersonControl
@@ -1404,14 +1351,7 @@ Note: the higher the requirement, the lower the probability of duplicate person.
 
     @property
     def QualityControl(self):
-        r"""Image quality control. 
-0: no control. 
-1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
-2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
-Default value: 0. 
-If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
+        r"""<p>Image quality control. </p><ul><li>Value range: <br>0: no control; <br>1: low quality requirement, where the image is very blurry, or at least one or more of the eyes, nose, or mouth are occluded; <br>2: general quality requirement, where the image is bright, dark, blurry or generally blurry, with at least three of the following: eyebrow occlusion, cheek occlusion, or chin occlusion; <br>3: high quality requirement, where the image is bright, dark, generally blurry, with one or two of the following: eyebrow occlusion, cheek occlusion, or chin occlusion; <br>4: very high quality requirement, where each dimension is optimal or at most one dimension has a minor problem; </li><li>Default: 0. </li><li>If the image quality fails to satisfy the requirement, the returned result will prompt that the image quality detection does not meet the requirement.</li></ul>
         :rtype: int
         """
         return self._QualityControl
@@ -1422,7 +1362,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def NeedRotateDetection(self):
-        r"""Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        r"""<p>Whether to enable image rotation recognition support.</p><ul><li>Value range: 0 for disabled, 1 for enabled.</li><li>Default value: 0.</li><li>This parameter is used to correctly detect and recognize human faces in an image when the faces are rotated and the image has no exif information. If image rotation recognition support is not enabled in this case, the faces cannot be detected or recognized.</li><li>If you confirm that the image contains exif information or that the human faces in the input image will not be rotated, do not enable this parameter. Once enabled, the overall duration may increase by several hundred milliseconds.</li></ul>
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -1430,6 +1370,28 @@ If the image quality does not meet the requirement, the returned result will pro
     @NeedRotateDetection.setter
     def NeedRotateDetection(self, NeedRotateDetection):
         self._NeedRotateDetection = NeedRotateDetection
+
+    @property
+    def Encryption(self):
+        r"""<p>Whether to encrypt the entire request body. Supported encryption algorithm: AES-256-CBC. Users with encryption requirements can use this parameter.</p>
+        :rtype: :class:`tencentcloud.iai.v20200303.models.Encryption`
+        """
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+    @property
+    def EncryptedBody(self):
+        r"""<p>Encrypted ciphertext. The data format before encryption is as follows: {&quot;Url&quot;:&quot;<strong>&quot;,&quot;Image&quot;:&quot;</strong>&quot;}.</p>
+        :rtype: str
+        """
+        return self._EncryptedBody
+
+    @EncryptedBody.setter
+    def EncryptedBody(self, EncryptedBody):
+        self._EncryptedBody = EncryptedBody
 
 
     def _deserialize(self, params):
@@ -1448,6 +1410,10 @@ If the image quality does not meet the requirement, the returned result will pro
         self._UniquePersonControl = params.get("UniquePersonControl")
         self._QualityControl = params.get("QualityControl")
         self._NeedRotateDetection = params.get("NeedRotateDetection")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        self._EncryptedBody = params.get("EncryptedBody")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1465,17 +1431,15 @@ class CreatePersonResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FaceId: Unique ID of face image.
+        :param _FaceId: <p>Unique ID of the face image.</p>
         :type FaceId: str
-        :param _FaceRect: Position of detected face frame.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _FaceRect: <p>Position of the detected face frame.</p>
         :type FaceRect: :class:`tencentcloud.iai.v20200303.models.FaceRect`
-        :param _SimilarPersonId: `PersonId` of suspected duplicate person. 
-This parameter is meaningful only if the `UniquePersonControl` parameter is not 0 and there is a suspected duplicate person in the group.
+        :param _SimilarPersonId: <p>PersonId of the suspected duplicate person. </p><ul><li>This parameter is meaningful only when the UniquePersonControl parameter is not 0 and there is a suspected duplicate person in the person library.</li></ul>
         :type SimilarPersonId: str
-        :param _FaceModelVersion: Algorithm model version used for face recognition.
+        :param _FaceModelVersion: <p>Algorithm model version used for face recognition.</p>
         :type FaceModelVersion: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._FaceId = None
@@ -1486,7 +1450,7 @@ This parameter is meaningful only if the `UniquePersonControl` parameter is not 
 
     @property
     def FaceId(self):
-        r"""Unique ID of face image.
+        r"""<p>Unique ID of the face image.</p>
         :rtype: str
         """
         return self._FaceId
@@ -1497,8 +1461,7 @@ This parameter is meaningful only if the `UniquePersonControl` parameter is not 
 
     @property
     def FaceRect(self):
-        r"""Position of detected face frame.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Position of the detected face frame.</p>
         :rtype: :class:`tencentcloud.iai.v20200303.models.FaceRect`
         """
         return self._FaceRect
@@ -1509,8 +1472,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SimilarPersonId(self):
-        r"""`PersonId` of suspected duplicate person. 
-This parameter is meaningful only if the `UniquePersonControl` parameter is not 0 and there is a suspected duplicate person in the group.
+        r"""<p>PersonId of the suspected duplicate person. </p><ul><li>This parameter is meaningful only when the UniquePersonControl parameter is not 0 and there is a suspected duplicate person in the person library.</li></ul>
         :rtype: str
         """
         return self._SimilarPersonId
@@ -1521,7 +1483,7 @@ This parameter is meaningful only if the `UniquePersonControl` parameter is not 
 
     @property
     def FaceModelVersion(self):
-        r"""Algorithm model version used for face recognition.
+        r"""<p>Algorithm model version used for face recognition.</p>
         :rtype: str
         """
         return self._FaceModelVersion
@@ -1532,7 +1494,7 @@ This parameter is meaningful only if the `UniquePersonControl` parameter is not 
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2647,6 +2609,102 @@ class DetectLiveFaceAccurateResponse(AbstractModel):
         self._Score = params.get("Score")
         self._FaceModelVersion = params.get("FaceModelVersion")
         self._RequestId = params.get("RequestId")
+
+
+class Encryption(AbstractModel):
+    r"""Sensitive data encryption
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EncryptList: <p>When using the encryption service, fill in the field to be encrypted. In this API, you can fill in one or more encrypted fields.</p>
+        :type EncryptList: list of str
+        :param _CiphertextBlob: <p>Encrypted symmetric key. For key generation and use, see the <a href="https://www.tencentcloud.com/document/product/1007/47180?from_cn_redirect=1">data encryption</a> document.</p>
+        :type CiphertextBlob: str
+        :param _Iv: <p>For users with encryption requirements, import the initial vector for CBC encryption (a custom string of 16 characters).</p>
+        :type Iv: str
+        :param _Algorithm: <p>Encryption algorithm (supports 'AES-256-CBC'). If not specified, it defaults to 'AES-256-CBC'</p>
+        :type Algorithm: str
+        :param _TagList: <p>Message digest generated by the SM4-GCM algorithm (used when validating message integrity), not supported.</p>
+        :type TagList: list of str
+        """
+        self._EncryptList = None
+        self._CiphertextBlob = None
+        self._Iv = None
+        self._Algorithm = None
+        self._TagList = None
+
+    @property
+    def EncryptList(self):
+        r"""<p>When using the encryption service, fill in the field to be encrypted. In this API, you can fill in one or more encrypted fields.</p>
+        :rtype: list of str
+        """
+        return self._EncryptList
+
+    @EncryptList.setter
+    def EncryptList(self, EncryptList):
+        self._EncryptList = EncryptList
+
+    @property
+    def CiphertextBlob(self):
+        r"""<p>Encrypted symmetric key. For key generation and use, see the <a href="https://www.tencentcloud.com/document/product/1007/47180?from_cn_redirect=1">data encryption</a> document.</p>
+        :rtype: str
+        """
+        return self._CiphertextBlob
+
+    @CiphertextBlob.setter
+    def CiphertextBlob(self, CiphertextBlob):
+        self._CiphertextBlob = CiphertextBlob
+
+    @property
+    def Iv(self):
+        r"""<p>For users with encryption requirements, import the initial vector for CBC encryption (a custom string of 16 characters).</p>
+        :rtype: str
+        """
+        return self._Iv
+
+    @Iv.setter
+    def Iv(self, Iv):
+        self._Iv = Iv
+
+    @property
+    def Algorithm(self):
+        r"""<p>Encryption algorithm (supports 'AES-256-CBC'). If not specified, it defaults to 'AES-256-CBC'</p>
+        :rtype: str
+        """
+        return self._Algorithm
+
+    @Algorithm.setter
+    def Algorithm(self, Algorithm):
+        self._Algorithm = Algorithm
+
+    @property
+    def TagList(self):
+        r"""<p>Message digest generated by the SM4-GCM algorithm (used when validating message integrity), not supported.</p>
+        :rtype: list of str
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+
+    def _deserialize(self, params):
+        self._EncryptList = params.get("EncryptList")
+        self._CiphertextBlob = params.get("CiphertextBlob")
+        self._Iv = params.get("Iv")
+        self._Algorithm = params.get("Algorithm")
+        self._TagList = params.get("TagList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Eye(AbstractModel):
@@ -3882,23 +3940,23 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class FaceRect(AbstractModel):
-    r"""Position of detected face frame
+    r"""Location of the detected face frame
 
     """
 
     def __init__(self):
         r"""
-        :param _X: Horizontal coordinate of the top-left vertex of face frame. 
-The face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. 
-If you want to capture a complete face, you can set the negative coordinates to 0 if the completeness score meets the requirement.
+        :param _X: Top-left X-axis coordinate of the face box 
+-The face frame contains the facial feature locations and is expanded on this basis. If the face frame exceeds the image range, it can cause negative coordinate values. 
+-If you need to capture a complete face, you can set negative coordinates to 0 when the completeness meets the requirements.
         :type X: int
-        :param _Y: Vertical coordinate of the top-left vertex of face frame. 
-The face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. 
-If you want to capture a complete face, you can set the negative coordinates to 0 if the completeness score meets the requirement.
+        :param _Y: Top-left Y-axis coordinate of the face box 
+-The face frame contains the facial feature locations and is expanded on this basis. If the face frame exceeds the image range, it can cause negative coordinate values. 
+-If you need to capture a complete face, you can set negative coordinates to 0 when the completeness meets the requirements.
         :type Y: int
-        :param _Width: Face width
+        :param _Width: Face width.
         :type Width: int
-        :param _Height: Face height
+        :param _Height: Face height.
         :type Height: int
         """
         self._X = None
@@ -3908,9 +3966,9 @@ If you want to capture a complete face, you can set the negative coordinates to 
 
     @property
     def X(self):
-        r"""Horizontal coordinate of the top-left vertex of face frame. 
-The face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. 
-If you want to capture a complete face, you can set the negative coordinates to 0 if the completeness score meets the requirement.
+        r"""Top-left X-axis coordinate of the face box 
+-The face frame contains the facial feature locations and is expanded on this basis. If the face frame exceeds the image range, it can cause negative coordinate values. 
+-If you need to capture a complete face, you can set negative coordinates to 0 when the completeness meets the requirements.
         :rtype: int
         """
         return self._X
@@ -3921,9 +3979,9 @@ If you want to capture a complete face, you can set the negative coordinates to 
 
     @property
     def Y(self):
-        r"""Vertical coordinate of the top-left vertex of face frame. 
-The face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. 
-If you want to capture a complete face, you can set the negative coordinates to 0 if the completeness score meets the requirement.
+        r"""Top-left Y-axis coordinate of the face box 
+-The face frame contains the facial feature locations and is expanded on this basis. If the face frame exceeds the image range, it can cause negative coordinate values. 
+-If you need to capture a complete face, you can set negative coordinates to 0 when the completeness meets the requirements.
         :rtype: int
         """
         return self._Y
@@ -3934,7 +3992,7 @@ If you want to capture a complete face, you can set the negative coordinates to 
 
     @property
     def Width(self):
-        r"""Face width
+        r"""Face width.
         :rtype: int
         """
         return self._Width
@@ -3945,7 +4003,7 @@ If you want to capture a complete face, you can set the negative coordinates to 
 
     @property
     def Height(self):
-        r"""Face height
+        r"""Face height.
         :rtype: int
         """
         return self._Height
@@ -5644,16 +5702,15 @@ The `Type` values of the `AttributeItem` include: 0: closed; 1: open.
 
 
 class PersonExDescriptionInfo(AbstractModel):
-    r"""Custom description field of the person to be modified, which is a `key-value` pair.
+    r"""Content of the person description field to be modified, key-value
 
     """
 
     def __init__(self):
         r"""
-        :param _PersonExDescriptionIndex: Person description field index, whose value starts from 0.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _PersonExDescriptionIndex: Person description field Index, starts from 0.
         :type PersonExDescriptionIndex: int
-        :param _PersonExDescription: Content of the person description field to be updated
+        :param _PersonExDescription: Person description field content that needs to be updated.
         :type PersonExDescription: str
         """
         self._PersonExDescriptionIndex = None
@@ -5661,8 +5718,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PersonExDescriptionIndex(self):
-        r"""Person description field index, whose value starts from 0.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Person description field Index, starts from 0.
         :rtype: int
         """
         return self._PersonExDescriptionIndex
@@ -5673,7 +5729,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PersonExDescription(self):
-        r"""Content of the person description field to be updated
+        r"""Person description field content that needs to be updated.
         :rtype: str
         """
         return self._PersonExDescription
@@ -5697,15 +5753,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class PersonGroupInfo(AbstractModel):
-    r"""List of groups containing this person and their description fields
+    r"""List of person libraries containing this person and description field content
 
     """
 
     def __init__(self):
         r"""
-        :param _GroupId: ID of the group that contains this person
+        :param _GroupId: Personnel database ID that contains this person.
         :type GroupId: str
-        :param _PersonExDescriptions: Content of person description field
+        :param _PersonExDescriptions: Person description field content.
         :type PersonExDescriptions: list of str
         """
         self._GroupId = None
@@ -5713,7 +5769,7 @@ class PersonGroupInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""ID of the group that contains this person
+        r"""Personnel database ID that contains this person.
         :rtype: str
         """
         return self._GroupId
@@ -5724,7 +5780,7 @@ class PersonGroupInfo(AbstractModel):
 
     @property
     def PersonExDescriptions(self):
-        r"""Content of person description field
+        r"""Person description field content.
         :rtype: list of str
         """
         return self._PersonExDescriptions
@@ -5912,17 +5968,19 @@ class Point(AbstractModel):
 
 
 class Result(AbstractModel):
-    r"""Face recognition result
+    r"""Recognition result of the human face
 
     """
 
     def __init__(self):
         r"""
-        :param _Candidates: Most matching candidate recognized
+        :param _Candidates: The most similar candidate identified.
         :type Candidates: list of Candidate
-        :param _FaceRect: Position of detected face frame
+        :param _FaceRect: Face bounding box position detected.
         :type FaceRect: :class:`tencentcloud.iai.v20200303.models.FaceRect`
-        :param _RetCode: The status return code for the face image detected. Valid values: `0` - normal; `-1601` - the image does not meet the quality requirements, in which case `Candidate` is empty; `-1604` - the face similarity is not higher than `FaceMatchThreshold`.
+        :param _RetCode: Status return code of the detected face image.
+- 0 indicates normal. 
+-1601 indicates the image quality control requirement is not met. At this point, the Candidate content is empty.
         :type RetCode: int
         """
         self._Candidates = None
@@ -5931,7 +5989,7 @@ class Result(AbstractModel):
 
     @property
     def Candidates(self):
-        r"""Most matching candidate recognized
+        r"""The most similar candidate identified.
         :rtype: list of Candidate
         """
         return self._Candidates
@@ -5942,7 +6000,7 @@ class Result(AbstractModel):
 
     @property
     def FaceRect(self):
-        r"""Position of detected face frame
+        r"""Face bounding box position detected.
         :rtype: :class:`tencentcloud.iai.v20200303.models.FaceRect`
         """
         return self._FaceRect
@@ -5953,7 +6011,9 @@ class Result(AbstractModel):
 
     @property
     def RetCode(self):
-        r"""The status return code for the face image detected. Valid values: `0` - normal; `-1601` - the image does not meet the quality requirements, in which case `Candidate` is empty; `-1604` - the face similarity is not higher than `FaceMatchThreshold`.
+        r"""Status return code of the detected face image.
+- 0 indicates normal. 
+-1601 indicates the image quality control requirement is not met. At this point, the Candidate content is empty.
         :rtype: int
         """
         return self._RetCode
@@ -6066,45 +6126,30 @@ class SearchFacesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupIds: List of groups to be searched in (up to 100). The array element value is the `GroupId` in the `CreateGroup` API.
-You cannot search for groups using different algorithm model versions (`FaceModelVersion`) at a time.
+        :param _GroupIds: <p>List of person libraries to search, with a maximum of 100.</p><ul><li>The array element value is the GroupId in the person library creation API.</li><li>You cannot search person libraries with different algorithm model versions (FaceModelVersion) at the same time.</li></ul>
         :type GroupIds: list of str
-        :param _Image: Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :param _Image: <p>base64 data of the image.</p><ul><li>base64-encoded data must not exceed 5 MB.</li><li>For jpg images, the long side pixel cannot exceed 4000. For other formats, the long side pixel cannot exceed 2000.</li><li>The short side pixel of images in all formats must be at least 64.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li></ul>
         :type Image: str
-        :param _Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
-We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
-The download speed and stability of non-Tencent Cloud URLs may be low.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :param _Url: <p>The Url of the Image.</p><ul><li>The size of the corresponding Image after base64 encoding must not exceed 5M.</li><li>The long side pixel of a jpg Image cannot exceed 4000, and that of other formats cannot exceed 2000.</li><li>The short side pixel of images in all formats must be not less than 64.</li><li>Either Url or Image must be provided. If both are provided, only Url is used.</li><li>An Image stored in Tencent Cloud via Url can guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud.</li><li>The speed and stability of URLs not stored in Tencent Cloud may be affected to a certain extent.</li><li>PNG, jpg, JPEG, and BMP are supported, while GIF images are not supported.</li></ul>
         :type Url: str
-        :param _MaxFaceNum: Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10. 
-`MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized. 
-For example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.
+        :param _MaxFaceNum: <p>Maximum number of faces to be recognized.</p><ul><li>Default value: 1 (only the face with the maximum area in the image is detected). Maximum value: 10. </li><li>MaxFaceNum is used to set the number of faces to search when the input image to be recognized contains several faces. </li><li>For example, if the image in the input Image or Url contains several faces and MaxFaceNum is set to 5, the 5 faces with the maximum area in the image will be recognized.</li></ul>
         :type MaxFaceNum: int
-        :param _MinFaceSize: Minimum height and width of face in px. Default value: 34. Face images whose value is below 34 cannot be recognized. We recommend setting this parameter to 80.
+        :param _MinFaceSize: <p>Minimum size of the face length and width, unit: pixel.</p><ul><li>Default value: 34.</li><li>Face images smaller than 34 cannot be recognized.</li><li>It is recommended to set it to 80.</li></ul>
         :type MinFaceSize: int
-        :param _MaxPersonNum: Number of the most similar persons returned for one single recognized face image. Default value: 5. Maximum value: 100. 
-For example, if `MaxFaceNum` is 1 and `MaxPersonNum` is 8, information of the top 8 most similar persons will be returned.
-The greater the value, the longer the processing time. We recommend setting a value below 10.
+        :param _MaxPersonNum: <p>Number of most similar persons returned for a single recognized human face.</p><ul><li>Default value: 5. Maximum value: 100. </li><li>For example, if MaxFaceNum is 1 and MaxPersonNum is 8, the Top 8 similar personnel information is returned.</li><li>A larger value means a longer time to process.</li><li>It is recommended not to exceed 10.</li></ul>
         :type MaxPersonNum: int
-        :param _NeedPersonInfo: Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.
+        :param _NeedPersonInfo: <p>Whether to return detailed personnel information.</p><ul><li>Value range: 0 to disable, 1 to enable.</li><li>Default value: 0.</li><li>Other values other than 0 and 1 default to 0.</li></ul>
         :type NeedPersonInfo: int
-        :param _QualityControl: Image quality control. 
-0: no control. 
-1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
-2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
-Default value: 0. 
-If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
+        :param _QualityControl: <p>Image quality control. </p><ul><li>Value range: <br>0: No control. <br>1: Low quality requirement. The image is super blurry, with at least one or more of the following: eye, nose, or mouth occlusion. <br>2: General quality requirement. The image is bright, dark, blurry or generally blurry, with at least three of the following: eyebrow occlusion, cheek occlusion, or chin occlusion. <br>3: High quality requirement. The image is bright, dark, generally blurry, with one or two of the following: eyebrow occlusion, cheek occlusion, or chin occlusion. <br>4: Very high quality requirement. Each dimension is optimal or at most one dimension has a minor problem.</li><li>Default: 0. </li><li>If the image quality fails to satisfy the requirement, the returned result will prompt that the image quality detection does not meet the requirement.</li></ul>
         :type QualityControl: int
-        :param _FaceMatchThreshold: In the output parameter `Score`, the result will be returned only if the result value is above the `FaceMatchThreshold` value. Default value: 0.
+        :param _FaceMatchThreshold: <p>In the output parameter Score, only results exceeding the FaceMatchThreshold value will be returned. The default is 0.</p>
         :type FaceMatchThreshold: float
-        :param _NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        :param _NeedRotateDetection: <p>Whether to enable image rotation recognition support.</p><ul><li>Value range: 0 for not enabled, 1 for enabled.</li><li>Default value: 0.</li><li>This parameter is used to correctly detect and recognize human faces in the input image when the faces are rotated and the image has no exif information. If image rotation recognition support is not enabled, the faces cannot be detected or recognized correctly.</li><li>If you confirm that the image contains exif information or that the human faces in the input image will not be rotated, do not enable this parameter. Once enabled, the overall duration may increase by several hundred milliseconds.</li></ul>
         :type NeedRotateDetection: int
+        :param _Encryption: <p>Whether to encrypt the entire request body. Supported encryption algorithms: AES-256-CBC. Users with encryption requirements can use this parameter.</p>
+        :type Encryption: :class:`tencentcloud.iai.v20200303.models.Encryption`
+        :param _EncryptedBody: <p>Encrypted ciphertext. The data format before encryption is as follows: {&quot;Url&quot;:&quot;<strong>&quot;,&quot;Image&quot;:&quot;</strong>&quot;}.</p>
+        :type EncryptedBody: str
         """
         self._GroupIds = None
         self._Image = None
@@ -6116,11 +6161,12 @@ If the image quality does not meet the requirement, the returned result will pro
         self._QualityControl = None
         self._FaceMatchThreshold = None
         self._NeedRotateDetection = None
+        self._Encryption = None
+        self._EncryptedBody = None
 
     @property
     def GroupIds(self):
-        r"""List of groups to be searched in (up to 100). The array element value is the `GroupId` in the `CreateGroup` API.
-You cannot search for groups using different algorithm model versions (`FaceModelVersion`) at a time.
+        r"""<p>List of person libraries to search, with a maximum of 100.</p><ul><li>The array element value is the GroupId in the person library creation API.</li><li>You cannot search person libraries with different algorithm model versions (FaceModelVersion) at the same time.</li></ul>
         :rtype: list of str
         """
         return self._GroupIds
@@ -6131,9 +6177,7 @@ You cannot search for groups using different algorithm model versions (`FaceMode
 
     @property
     def Image(self):
-        r"""Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        r"""<p>base64 data of the image.</p><ul><li>base64-encoded data must not exceed 5 MB.</li><li>For jpg images, the long side pixel cannot exceed 4000. For other formats, the long side pixel cannot exceed 2000.</li><li>The short side pixel of images in all formats must be at least 64.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li></ul>
         :rtype: str
         """
         return self._Image
@@ -6144,12 +6188,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def Url(self):
-        r"""Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
-We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
-The download speed and stability of non-Tencent Cloud URLs may be low.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        r"""<p>The Url of the Image.</p><ul><li>The size of the corresponding Image after base64 encoding must not exceed 5M.</li><li>The long side pixel of a jpg Image cannot exceed 4000, and that of other formats cannot exceed 2000.</li><li>The short side pixel of images in all formats must be not less than 64.</li><li>Either Url or Image must be provided. If both are provided, only Url is used.</li><li>An Image stored in Tencent Cloud via Url can guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud.</li><li>The speed and stability of URLs not stored in Tencent Cloud may be affected to a certain extent.</li><li>PNG, jpg, JPEG, and BMP are supported, while GIF images are not supported.</li></ul>
         :rtype: str
         """
         return self._Url
@@ -6160,9 +6199,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def MaxFaceNum(self):
-        r"""Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10. 
-`MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized. 
-For example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.
+        r"""<p>Maximum number of faces to be recognized.</p><ul><li>Default value: 1 (only the face with the maximum area in the image is detected). Maximum value: 10. </li><li>MaxFaceNum is used to set the number of faces to search when the input image to be recognized contains several faces. </li><li>For example, if the image in the input Image or Url contains several faces and MaxFaceNum is set to 5, the 5 faces with the maximum area in the image will be recognized.</li></ul>
         :rtype: int
         """
         return self._MaxFaceNum
@@ -6173,7 +6210,7 @@ For example, if the input image in `Image` or `Url` contains multiple faces and 
 
     @property
     def MinFaceSize(self):
-        r"""Minimum height and width of face in px. Default value: 34. Face images whose value is below 34 cannot be recognized. We recommend setting this parameter to 80.
+        r"""<p>Minimum size of the face length and width, unit: pixel.</p><ul><li>Default value: 34.</li><li>Face images smaller than 34 cannot be recognized.</li><li>It is recommended to set it to 80.</li></ul>
         :rtype: int
         """
         return self._MinFaceSize
@@ -6184,9 +6221,7 @@ For example, if the input image in `Image` or `Url` contains multiple faces and 
 
     @property
     def MaxPersonNum(self):
-        r"""Number of the most similar persons returned for one single recognized face image. Default value: 5. Maximum value: 100. 
-For example, if `MaxFaceNum` is 1 and `MaxPersonNum` is 8, information of the top 8 most similar persons will be returned.
-The greater the value, the longer the processing time. We recommend setting a value below 10.
+        r"""<p>Number of most similar persons returned for a single recognized human face.</p><ul><li>Default value: 5. Maximum value: 100. </li><li>For example, if MaxFaceNum is 1 and MaxPersonNum is 8, the Top 8 similar personnel information is returned.</li><li>A larger value means a longer time to process.</li><li>It is recommended not to exceed 10.</li></ul>
         :rtype: int
         """
         return self._MaxPersonNum
@@ -6197,7 +6232,7 @@ The greater the value, the longer the processing time. We recommend setting a va
 
     @property
     def NeedPersonInfo(self):
-        r"""Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.
+        r"""<p>Whether to return detailed personnel information.</p><ul><li>Value range: 0 to disable, 1 to enable.</li><li>Default value: 0.</li><li>Other values other than 0 and 1 default to 0.</li></ul>
         :rtype: int
         """
         return self._NeedPersonInfo
@@ -6208,14 +6243,7 @@ The greater the value, the longer the processing time. We recommend setting a va
 
     @property
     def QualityControl(self):
-        r"""Image quality control. 
-0: no control. 
-1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
-2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
-Default value: 0. 
-If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
+        r"""<p>Image quality control. </p><ul><li>Value range: <br>0: No control. <br>1: Low quality requirement. The image is super blurry, with at least one or more of the following: eye, nose, or mouth occlusion. <br>2: General quality requirement. The image is bright, dark, blurry or generally blurry, with at least three of the following: eyebrow occlusion, cheek occlusion, or chin occlusion. <br>3: High quality requirement. The image is bright, dark, generally blurry, with one or two of the following: eyebrow occlusion, cheek occlusion, or chin occlusion. <br>4: Very high quality requirement. Each dimension is optimal or at most one dimension has a minor problem.</li><li>Default: 0. </li><li>If the image quality fails to satisfy the requirement, the returned result will prompt that the image quality detection does not meet the requirement.</li></ul>
         :rtype: int
         """
         return self._QualityControl
@@ -6226,7 +6254,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def FaceMatchThreshold(self):
-        r"""In the output parameter `Score`, the result will be returned only if the result value is above the `FaceMatchThreshold` value. Default value: 0.
+        r"""<p>In the output parameter Score, only results exceeding the FaceMatchThreshold value will be returned. The default is 0.</p>
         :rtype: float
         """
         return self._FaceMatchThreshold
@@ -6237,7 +6265,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def NeedRotateDetection(self):
-        r"""Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        r"""<p>Whether to enable image rotation recognition support.</p><ul><li>Value range: 0 for not enabled, 1 for enabled.</li><li>Default value: 0.</li><li>This parameter is used to correctly detect and recognize human faces in the input image when the faces are rotated and the image has no exif information. If image rotation recognition support is not enabled, the faces cannot be detected or recognized correctly.</li><li>If you confirm that the image contains exif information or that the human faces in the input image will not be rotated, do not enable this parameter. Once enabled, the overall duration may increase by several hundred milliseconds.</li></ul>
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -6245,6 +6273,28 @@ If the image quality does not meet the requirement, the returned result will pro
     @NeedRotateDetection.setter
     def NeedRotateDetection(self, NeedRotateDetection):
         self._NeedRotateDetection = NeedRotateDetection
+
+    @property
+    def Encryption(self):
+        r"""<p>Whether to encrypt the entire request body. Supported encryption algorithms: AES-256-CBC. Users with encryption requirements can use this parameter.</p>
+        :rtype: :class:`tencentcloud.iai.v20200303.models.Encryption`
+        """
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+    @property
+    def EncryptedBody(self):
+        r"""<p>Encrypted ciphertext. The data format before encryption is as follows: {&quot;Url&quot;:&quot;<strong>&quot;,&quot;Image&quot;:&quot;</strong>&quot;}.</p>
+        :rtype: str
+        """
+        return self._EncryptedBody
+
+    @EncryptedBody.setter
+    def EncryptedBody(self, EncryptedBody):
+        self._EncryptedBody = EncryptedBody
 
 
     def _deserialize(self, params):
@@ -6258,6 +6308,10 @@ If the image quality does not meet the requirement, the returned result will pro
         self._QualityControl = params.get("QualityControl")
         self._FaceMatchThreshold = params.get("FaceMatchThreshold")
         self._NeedRotateDetection = params.get("NeedRotateDetection")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        self._EncryptedBody = params.get("EncryptedBody")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6275,13 +6329,13 @@ class SearchFacesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Results: Recognition result.
+        :param _Results: <p>Recognition result.</p>
         :type Results: list of Result
-        :param _FaceNum: Number of faces included in searched groups.
+        :param _FaceNum: <p>Number of faces in the searched group.</p>
         :type FaceNum: int
-        :param _FaceModelVersion: Algorithm model version used for face recognition.
+        :param _FaceModelVersion: <p>Algorithm model version used for face recognition.</p>
         :type FaceModelVersion: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Results = None
@@ -6291,7 +6345,7 @@ class SearchFacesResponse(AbstractModel):
 
     @property
     def Results(self):
-        r"""Recognition result.
+        r"""<p>Recognition result.</p>
         :rtype: list of Result
         """
         return self._Results
@@ -6302,7 +6356,7 @@ class SearchFacesResponse(AbstractModel):
 
     @property
     def FaceNum(self):
-        r"""Number of faces included in searched groups.
+        r"""<p>Number of faces in the searched group.</p>
         :rtype: int
         """
         return self._FaceNum
@@ -6313,7 +6367,7 @@ class SearchFacesResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        r"""Algorithm model version used for face recognition.
+        r"""<p>Algorithm model version used for face recognition.</p>
         :rtype: str
         """
         return self._FaceModelVersion
@@ -6324,7 +6378,7 @@ class SearchFacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6642,45 +6696,30 @@ class SearchPersonsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupIds: List of groups to be searched in (up to 100). The array element value is the `GroupId` in the `CreateGroup` API.
+        :param _GroupIds: <p>List of person libraries to query, with a capacity limit of 100. The value of an array element is the GroupId in the person library creation API.</p>
         :type GroupIds: list of str
-        :param _Image: Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-If there are multiple faces in the image, only the face with the largest size will be selected.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :param _Image: <p>Image base64 data.</p><ul><li>Size after base64 encoding must not exceed 5M.</li><li>Long side pixel of jpg images cannot exceed 4000, and that of other formats cannot exceed 2000.</li><li>Short side pixel of images in all formats must not be less than 64.</li><li>If an image contains several faces, only the face with the maximum area is selected.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li></ul>
         :type Image: str
-        :param _Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.
-We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
-The download speed and stability of non-Tencent Cloud URLs may be low.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :param _Url: <p>Image Url.</p><ul><li>The size of the corresponding Image after base64 encoding must not exceed 5M.</li><li>For jpg format, the long side pixel cannot exceed 4000. For other formats, the long side pixel cannot exceed 2000.</li><li>The short side pixel of images in all formats must be not less than 64.</li><li>Either Url or Image must be provided. If both are provided, only Url is used.</li><li>Urls of images stored in Tencent Cloud can guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud.</li><li>The speed and stability of Urls not stored in Tencent Cloud may be affected to a certain extent.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li></ul>
         :type Url: str
-        :param _MaxFaceNum: Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10.
-`MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized.
-For example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.
+        :param _MaxFaceNum: <p>Maximum number of human faces to be recognized.</p><ul><li>Default value: 1 (only the face with the maximum area in the image is detected). Maximum value: 10.</li><li>MaxFaceNum is used to set the number of faces to search when the input image to be recognized contains several faces.</li><li>For example, if the image in the input Image or Url contains several faces and MaxFaceNum is set to 5, the 5 faces with the maximum area in the image will be recognized.</li></ul>
         :type MaxFaceNum: int
-        :param _MinFaceSize: Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.
+        :param _MinFaceSize: <p>Minimum length and width of a human face, unit: pixel.</p><ul><li>Default value: 34.</li><li>Less than 34 will affect search accuracy.</li><li>Set it to 80.</li></ul>
         :type MinFaceSize: int
-        :param _MaxPersonNum: Number of the most similar persons returned for one single recognized face image. Default value: 5. Maximum value: 100.
-For example, if `MaxFaceNum` is 1 and `MaxPersonNum` is 8, information of the top 8 most similar persons will be returned.
-The greater the value, the longer the processing time. We recommend setting a value below 10.
+        :param _MaxPersonNum: <p>Number of most similar persons returned for a single recognized human face.</p><ul><li>Default value: 5. Maximum value: 100.</li><li>For example, if MaxFaceNum is 1 and MaxPersonNum is 8, the information of the Top 8 similar persons is returned.</li><li>A larger value means a longer time to process. It is advisable not to exceed 10.</li></ul>
         :type MaxPersonNum: int
-        :param _QualityControl: Image quality control. 
-0: no control. 
-1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
-2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
-Default value: 0. 
-If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
+        :param _QualityControl: <p>Image quality control. </p><ul><li>Value range:<br>0: No control.<br>1: Low quality requirement. The image is super blurry, with at least one of the following: eye, nose, or mouth occlusion.<br>2: Normal quality requirement. The image is bright, dark, blurry or generally blurry, with at least three of the following: eyebrow occlusion, cheek occlusion, or chin occlusion.<br>3: High quality requirement. The image is bright, dark, generally blurry, with one or two of the following: eyebrow occlusion, cheek occlusion, or chin occlusion.<br>4: Very high quality requirement. Each dimension is optimal or at most one dimension has a minor problem.</li><li>Default: 0. </li><li>If the image quality fails to satisfy the requirement, the returned result will prompt that the image quality detection does not meet the requirement.</li></ul>
         :type QualityControl: int
-        :param _FaceMatchThreshold: In the output parameter `Score`, the result will be returned only if the result value is greater than or equal to the `FaceMatchThreshold` value. Default value: 0. Value range: [0.0,100.0).
+        :param _FaceMatchThreshold: <p>In the output parameter Score, only results equal to or greater than the FaceMatchThreshold value will be returned.</p><ul><li>Default value: 0.</li><li>Value range: [0.0,100.0).</li></ul>
         :type FaceMatchThreshold: float
-        :param _NeedPersonInfo: Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.
+        :param _NeedPersonInfo: <p>Whether to return specific personnel information.</p><ul><li>Value range: 0 to disable, 1 to enable.</li><li>Default value: 0.</li><li>Other values other than 0 and 1 default to 0.</li></ul>
         :type NeedPersonInfo: int
-        :param _NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        :param _NeedRotateDetection: <p>Whether to enable image rotation recognition support.</p><ul><li>Value range: 0 for not enabled, 1 for enabled.</li><li>Default value: 0.</li><li>This parameter is used when the human face in the image is rotated and the image has no exif information. If image rotation recognition support is not enabled, the human face in the image cannot be correctly detected and recognized.</li><li>If you confirm that the image contains exif information or that the human face in the input image will not be rotated, do not enable this parameter. Once enabled, the overall duration may increase by several hundred milliseconds.</li></ul>
         :type NeedRotateDetection: int
+        :param _Encryption: <p>Whether full request body encryption is required. Supported encryption algorithm: AES-256-CBC. Users with encryption requirements can use this parameter.</p>
+        :type Encryption: :class:`tencentcloud.iai.v20200303.models.Encryption`
+        :param _EncryptedBody: <p>Encrypted ciphertext. The data format before encryption is as follows: {&quot;Url&quot;:&quot;<strong>&quot;,&quot;Image&quot;:&quot;</strong>&quot;}.</p>
+        :type EncryptedBody: str
         """
         self._GroupIds = None
         self._Image = None
@@ -6692,10 +6731,12 @@ If the image quality does not meet the requirement, the returned result will pro
         self._FaceMatchThreshold = None
         self._NeedPersonInfo = None
         self._NeedRotateDetection = None
+        self._Encryption = None
+        self._EncryptedBody = None
 
     @property
     def GroupIds(self):
-        r"""List of groups to be searched in (up to 100). The array element value is the `GroupId` in the `CreateGroup` API.
+        r"""<p>List of person libraries to query, with a capacity limit of 100. The value of an array element is the GroupId in the person library creation API.</p>
         :rtype: list of str
         """
         return self._GroupIds
@@ -6706,10 +6747,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def Image(self):
-        r"""Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-If there are multiple faces in the image, only the face with the largest size will be selected.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        r"""<p>Image base64 data.</p><ul><li>Size after base64 encoding must not exceed 5M.</li><li>Long side pixel of jpg images cannot exceed 4000, and that of other formats cannot exceed 2000.</li><li>Short side pixel of images in all formats must not be less than 64.</li><li>If an image contains several faces, only the face with the maximum area is selected.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li></ul>
         :rtype: str
         """
         return self._Image
@@ -6720,12 +6758,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def Url(self):
-        r"""Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.
-We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
-The download speed and stability of non-Tencent Cloud URLs may be low.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        r"""<p>Image Url.</p><ul><li>The size of the corresponding Image after base64 encoding must not exceed 5M.</li><li>For jpg format, the long side pixel cannot exceed 4000. For other formats, the long side pixel cannot exceed 2000.</li><li>The short side pixel of images in all formats must be not less than 64.</li><li>Either Url or Image must be provided. If both are provided, only Url is used.</li><li>Urls of images stored in Tencent Cloud can guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud.</li><li>The speed and stability of Urls not stored in Tencent Cloud may be affected to a certain extent.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li></ul>
         :rtype: str
         """
         return self._Url
@@ -6736,9 +6769,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def MaxFaceNum(self):
-        r"""Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10.
-`MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized.
-For example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.
+        r"""<p>Maximum number of human faces to be recognized.</p><ul><li>Default value: 1 (only the face with the maximum area in the image is detected). Maximum value: 10.</li><li>MaxFaceNum is used to set the number of faces to search when the input image to be recognized contains several faces.</li><li>For example, if the image in the input Image or Url contains several faces and MaxFaceNum is set to 5, the 5 faces with the maximum area in the image will be recognized.</li></ul>
         :rtype: int
         """
         return self._MaxFaceNum
@@ -6749,7 +6780,7 @@ For example, if the input image in `Image` or `Url` contains multiple faces and 
 
     @property
     def MinFaceSize(self):
-        r"""Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.
+        r"""<p>Minimum length and width of a human face, unit: pixel.</p><ul><li>Default value: 34.</li><li>Less than 34 will affect search accuracy.</li><li>Set it to 80.</li></ul>
         :rtype: int
         """
         return self._MinFaceSize
@@ -6760,9 +6791,7 @@ For example, if the input image in `Image` or `Url` contains multiple faces and 
 
     @property
     def MaxPersonNum(self):
-        r"""Number of the most similar persons returned for one single recognized face image. Default value: 5. Maximum value: 100.
-For example, if `MaxFaceNum` is 1 and `MaxPersonNum` is 8, information of the top 8 most similar persons will be returned.
-The greater the value, the longer the processing time. We recommend setting a value below 10.
+        r"""<p>Number of most similar persons returned for a single recognized human face.</p><ul><li>Default value: 5. Maximum value: 100.</li><li>For example, if MaxFaceNum is 1 and MaxPersonNum is 8, the information of the Top 8 similar persons is returned.</li><li>A larger value means a longer time to process. It is advisable not to exceed 10.</li></ul>
         :rtype: int
         """
         return self._MaxPersonNum
@@ -6773,14 +6802,7 @@ The greater the value, the longer the processing time. We recommend setting a va
 
     @property
     def QualityControl(self):
-        r"""Image quality control. 
-0: no control. 
-1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
-2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
-Default value: 0. 
-If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
+        r"""<p>Image quality control. </p><ul><li>Value range:<br>0: No control.<br>1: Low quality requirement. The image is super blurry, with at least one of the following: eye, nose, or mouth occlusion.<br>2: Normal quality requirement. The image is bright, dark, blurry or generally blurry, with at least three of the following: eyebrow occlusion, cheek occlusion, or chin occlusion.<br>3: High quality requirement. The image is bright, dark, generally blurry, with one or two of the following: eyebrow occlusion, cheek occlusion, or chin occlusion.<br>4: Very high quality requirement. Each dimension is optimal or at most one dimension has a minor problem.</li><li>Default: 0. </li><li>If the image quality fails to satisfy the requirement, the returned result will prompt that the image quality detection does not meet the requirement.</li></ul>
         :rtype: int
         """
         return self._QualityControl
@@ -6791,7 +6813,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def FaceMatchThreshold(self):
-        r"""In the output parameter `Score`, the result will be returned only if the result value is greater than or equal to the `FaceMatchThreshold` value. Default value: 0. Value range: [0.0,100.0).
+        r"""<p>In the output parameter Score, only results equal to or greater than the FaceMatchThreshold value will be returned.</p><ul><li>Default value: 0.</li><li>Value range: [0.0,100.0).</li></ul>
         :rtype: float
         """
         return self._FaceMatchThreshold
@@ -6802,7 +6824,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def NeedPersonInfo(self):
-        r"""Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.
+        r"""<p>Whether to return specific personnel information.</p><ul><li>Value range: 0 to disable, 1 to enable.</li><li>Default value: 0.</li><li>Other values other than 0 and 1 default to 0.</li></ul>
         :rtype: int
         """
         return self._NeedPersonInfo
@@ -6813,7 +6835,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def NeedRotateDetection(self):
-        r"""Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        r"""<p>Whether to enable image rotation recognition support.</p><ul><li>Value range: 0 for not enabled, 1 for enabled.</li><li>Default value: 0.</li><li>This parameter is used when the human face in the image is rotated and the image has no exif information. If image rotation recognition support is not enabled, the human face in the image cannot be correctly detected and recognized.</li><li>If you confirm that the image contains exif information or that the human face in the input image will not be rotated, do not enable this parameter. Once enabled, the overall duration may increase by several hundred milliseconds.</li></ul>
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -6821,6 +6843,28 @@ If the image quality does not meet the requirement, the returned result will pro
     @NeedRotateDetection.setter
     def NeedRotateDetection(self, NeedRotateDetection):
         self._NeedRotateDetection = NeedRotateDetection
+
+    @property
+    def Encryption(self):
+        r"""<p>Whether full request body encryption is required. Supported encryption algorithm: AES-256-CBC. Users with encryption requirements can use this parameter.</p>
+        :rtype: :class:`tencentcloud.iai.v20200303.models.Encryption`
+        """
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+    @property
+    def EncryptedBody(self):
+        r"""<p>Encrypted ciphertext. The data format before encryption is as follows: {&quot;Url&quot;:&quot;<strong>&quot;,&quot;Image&quot;:&quot;</strong>&quot;}.</p>
+        :rtype: str
+        """
+        return self._EncryptedBody
+
+    @EncryptedBody.setter
+    def EncryptedBody(self, EncryptedBody):
+        self._EncryptedBody = EncryptedBody
 
 
     def _deserialize(self, params):
@@ -6834,6 +6878,10 @@ If the image quality does not meet the requirement, the returned result will pro
         self._FaceMatchThreshold = params.get("FaceMatchThreshold")
         self._NeedPersonInfo = params.get("NeedPersonInfo")
         self._NeedRotateDetection = params.get("NeedRotateDetection")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        self._EncryptedBody = params.get("EncryptedBody")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6851,14 +6899,13 @@ class SearchPersonsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Results: Recognition result.
+        :param _Results: <p>Recognition result.</p>
         :type Results: list of Result
-        :param _PersonNum: Number of the persons included in searched groups. If the quality of all faces in the input image does not meet the requirement, 0 will be returned.
+        :param _PersonNum: <p>Number of personnel included in the searched group. If all faces in the input image fail to meet the quality requirement, 0 is returned.</p>
         :type PersonNum: int
-        :param _FaceModelVersion: Algorithm model version used for face recognition.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _FaceModelVersion: <p>Algorithm model version used for face recognition.</p>
         :type FaceModelVersion: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Results = None
@@ -6868,7 +6915,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Results(self):
-        r"""Recognition result.
+        r"""<p>Recognition result.</p>
         :rtype: list of Result
         """
         return self._Results
@@ -6879,7 +6926,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PersonNum(self):
-        r"""Number of the persons included in searched groups. If the quality of all faces in the input image does not meet the requirement, 0 will be returned.
+        r"""<p>Number of personnel included in the searched group. If all faces in the input image fail to meet the quality requirement, 0 is returned.</p>
         :rtype: int
         """
         return self._PersonNum
@@ -6890,8 +6937,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FaceModelVersion(self):
-        r"""Algorithm model version used for face recognition.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Algorithm model version used for face recognition.</p>
         :rtype: str
         """
         return self._FaceModelVersion
@@ -6902,7 +6948,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId

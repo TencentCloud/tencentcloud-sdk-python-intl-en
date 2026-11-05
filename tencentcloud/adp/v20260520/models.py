@@ -412,6 +412,162 @@ class AccountInfo(AbstractModel):
         
 
 
+class AddOnPackageInfo(AbstractModel):
+    r"""Billing value-added package usage information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddOnTotal: <p>Total value-added packages</p>
+        :type AddOnTotal: float
+        :param _AddOnUsage: <p>Value-added package amount</p>
+        :type AddOnUsage: float
+        :param _ExclusiveConcurrency: <p>Total number of exclusive concurrencies</p>
+        :type ExclusiveConcurrency: int
+        :param _ResourceStatus: <p>Resource pack status</p><p>Enumeration values:</p><ul><li>1: Available</li><li>2: Exhausted</li><li>3: Expired</li></ul>
+        :type ResourceStatus: int
+        :param _ConcurrencyStatus: <p>Exclusive concurrency status</p><p>Enumeration values:</p><ul><li>1: Available</li><li>3: Expired</li></ul>
+        :type ConcurrencyStatus: int
+        :param _ExclusiveTpm: <p>Exclusive tpm</p>
+        :type ExclusiveTpm: int
+        :param _ExclusiveTpmStatus: <p>Exclusive tpm status</p><p>Enumeration values:</p><ul><li>1: Available</li><li>3: Expired</li></ul>
+        :type ExclusiveTpmStatus: int
+        :param _ExclusiveComputeUnit: <p>Exclusive computing unit</p>
+        :type ExclusiveComputeUnit: int
+        :param _ExclusiveComputeUnitStatus: <p>Exclusive computing unit status</p><p>Enumeration values:</p><ul><li>1: Available</li><li>3: Expired</li><li>4: Terminated</li><li>5: Isolated</li><li>6: Not effective</li><li>7: Unavailable (when the package expires)</li></ul>
+        :type ExclusiveComputeUnitStatus: int
+        """
+        self._AddOnTotal = None
+        self._AddOnUsage = None
+        self._ExclusiveConcurrency = None
+        self._ResourceStatus = None
+        self._ConcurrencyStatus = None
+        self._ExclusiveTpm = None
+        self._ExclusiveTpmStatus = None
+        self._ExclusiveComputeUnit = None
+        self._ExclusiveComputeUnitStatus = None
+
+    @property
+    def AddOnTotal(self):
+        r"""<p>Total value-added packages</p>
+        :rtype: float
+        """
+        return self._AddOnTotal
+
+    @AddOnTotal.setter
+    def AddOnTotal(self, AddOnTotal):
+        self._AddOnTotal = AddOnTotal
+
+    @property
+    def AddOnUsage(self):
+        r"""<p>Value-added package amount</p>
+        :rtype: float
+        """
+        return self._AddOnUsage
+
+    @AddOnUsage.setter
+    def AddOnUsage(self, AddOnUsage):
+        self._AddOnUsage = AddOnUsage
+
+    @property
+    def ExclusiveConcurrency(self):
+        r"""<p>Total number of exclusive concurrencies</p>
+        :rtype: int
+        """
+        return self._ExclusiveConcurrency
+
+    @ExclusiveConcurrency.setter
+    def ExclusiveConcurrency(self, ExclusiveConcurrency):
+        self._ExclusiveConcurrency = ExclusiveConcurrency
+
+    @property
+    def ResourceStatus(self):
+        r"""<p>Resource pack status</p><p>Enumeration values:</p><ul><li>1: Available</li><li>2: Exhausted</li><li>3: Expired</li></ul>
+        :rtype: int
+        """
+        return self._ResourceStatus
+
+    @ResourceStatus.setter
+    def ResourceStatus(self, ResourceStatus):
+        self._ResourceStatus = ResourceStatus
+
+    @property
+    def ConcurrencyStatus(self):
+        r"""<p>Exclusive concurrency status</p><p>Enumeration values:</p><ul><li>1: Available</li><li>3: Expired</li></ul>
+        :rtype: int
+        """
+        return self._ConcurrencyStatus
+
+    @ConcurrencyStatus.setter
+    def ConcurrencyStatus(self, ConcurrencyStatus):
+        self._ConcurrencyStatus = ConcurrencyStatus
+
+    @property
+    def ExclusiveTpm(self):
+        r"""<p>Exclusive tpm</p>
+        :rtype: int
+        """
+        return self._ExclusiveTpm
+
+    @ExclusiveTpm.setter
+    def ExclusiveTpm(self, ExclusiveTpm):
+        self._ExclusiveTpm = ExclusiveTpm
+
+    @property
+    def ExclusiveTpmStatus(self):
+        r"""<p>Exclusive tpm status</p><p>Enumeration values:</p><ul><li>1: Available</li><li>3: Expired</li></ul>
+        :rtype: int
+        """
+        return self._ExclusiveTpmStatus
+
+    @ExclusiveTpmStatus.setter
+    def ExclusiveTpmStatus(self, ExclusiveTpmStatus):
+        self._ExclusiveTpmStatus = ExclusiveTpmStatus
+
+    @property
+    def ExclusiveComputeUnit(self):
+        r"""<p>Exclusive computing unit</p>
+        :rtype: int
+        """
+        return self._ExclusiveComputeUnit
+
+    @ExclusiveComputeUnit.setter
+    def ExclusiveComputeUnit(self, ExclusiveComputeUnit):
+        self._ExclusiveComputeUnit = ExclusiveComputeUnit
+
+    @property
+    def ExclusiveComputeUnitStatus(self):
+        r"""<p>Exclusive computing unit status</p><p>Enumeration values:</p><ul><li>1: Available</li><li>3: Expired</li><li>4: Terminated</li><li>5: Isolated</li><li>6: Not effective</li><li>7: Unavailable (when the package expires)</li></ul>
+        :rtype: int
+        """
+        return self._ExclusiveComputeUnitStatus
+
+    @ExclusiveComputeUnitStatus.setter
+    def ExclusiveComputeUnitStatus(self, ExclusiveComputeUnitStatus):
+        self._ExclusiveComputeUnitStatus = ExclusiveComputeUnitStatus
+
+
+    def _deserialize(self, params):
+        self._AddOnTotal = params.get("AddOnTotal")
+        self._AddOnUsage = params.get("AddOnUsage")
+        self._ExclusiveConcurrency = params.get("ExclusiveConcurrency")
+        self._ResourceStatus = params.get("ResourceStatus")
+        self._ConcurrencyStatus = params.get("ConcurrencyStatus")
+        self._ExclusiveTpm = params.get("ExclusiveTpm")
+        self._ExclusiveTpmStatus = params.get("ExclusiveTpmStatus")
+        self._ExclusiveComputeUnit = params.get("ExclusiveComputeUnit")
+        self._ExclusiveComputeUnitStatus = params.get("ExclusiveComputeUnitStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AgentAdvancedConfig(AbstractModel):
     r"""Agent advanced setting
 
@@ -6853,6 +7009,57 @@ class AppTriggerWorkflowExecuteConfig(AbstractModel):
         
 
 
+class AppVariableValue(AbstractModel):
+    r"""AppVariableValue
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VariableId: <p>Variable ID</p>
+        :type VariableId: str
+        :param _VariableValue: <p>Variable value</p>
+        :type VariableValue: str
+        """
+        self._VariableId = None
+        self._VariableValue = None
+
+    @property
+    def VariableId(self):
+        r"""<p>Variable ID</p>
+        :rtype: str
+        """
+        return self._VariableId
+
+    @VariableId.setter
+    def VariableId(self, VariableId):
+        self._VariableId = VariableId
+
+    @property
+    def VariableValue(self):
+        r"""<p>Variable value</p>
+        :rtype: str
+        """
+        return self._VariableValue
+
+    @VariableValue.setter
+    def VariableValue(self, VariableValue):
+        self._VariableValue = VariableValue
+
+
+    def _deserialize(self, params):
+        self._VariableId = params.get("VariableId")
+        self._VariableValue = params.get("VariableValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AppWebSearchConfig(AbstractModel):
     r"""Online search configuration (for international edition)
 
@@ -7199,6 +7406,57 @@ class AuditLog(AbstractModel):
         self._Biz = params.get("Biz")
         self._Content = params.get("Content")
         self._UniqueId = params.get("UniqueId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditLogMetaField(AbstractModel):
+    r"""Log metadata for operations
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>Operation log metadata key.</p>
+        :type Key: str
+        :param _Name: <p>Name of the operation log metadata</p>
+        :type Name: str
+        """
+        self._Key = None
+        self._Name = None
+
+    @property
+    def Key(self):
+        r"""<p>Operation log metadata key.</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Name(self):
+        r"""<p>Name of the operation log metadata</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7948,6 +8206,42 @@ class CamAuthConfig(AbstractModel):
                 obj._deserialize(item)
                 self._ParamList.append(obj)
         self._SupportRoleAuth = params.get("SupportRoleAuth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CategoryModifyFields(AbstractModel):
+    r"""Categorize modifiable field collection (use together with update_mask)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>Category name</p>
+        :type Name: str
+        """
+        self._Name = None
+
+    @property
+    def Name(self):
+        r"""<p>Category name</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8960,6 +9254,349 @@ class ConflictQASummary(AbstractModel):
         
 
 
+class ConsumptionClassification(AbstractModel):
+    r"""Consumption category
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsumptionScene: <p>Consumption scenario (such as reasoning/training/evaluation)</p>
+        :type ConsumptionScene: str
+        :param _ConsumptionTarget: <p>Consumption target (for example, specific model name/plug-in name/platform feature name)</p>
+        :type ConsumptionTarget: str
+        :param _ConsumptionType: <p>Consumption type. The set of values is defined by the business side (for example, model/plugin/platform)</p>
+        :type ConsumptionType: str
+        :param _PackageName: <p>Package name</p>
+        :type PackageName: str
+        """
+        self._ConsumptionScene = None
+        self._ConsumptionTarget = None
+        self._ConsumptionType = None
+        self._PackageName = None
+
+    @property
+    def ConsumptionScene(self):
+        r"""<p>Consumption scenario (such as reasoning/training/evaluation)</p>
+        :rtype: str
+        """
+        return self._ConsumptionScene
+
+    @ConsumptionScene.setter
+    def ConsumptionScene(self, ConsumptionScene):
+        self._ConsumptionScene = ConsumptionScene
+
+    @property
+    def ConsumptionTarget(self):
+        r"""<p>Consumption target (for example, specific model name/plug-in name/platform feature name)</p>
+        :rtype: str
+        """
+        return self._ConsumptionTarget
+
+    @ConsumptionTarget.setter
+    def ConsumptionTarget(self, ConsumptionTarget):
+        self._ConsumptionTarget = ConsumptionTarget
+
+    @property
+    def ConsumptionType(self):
+        r"""<p>Consumption type. The set of values is defined by the business side (for example, model/plugin/platform)</p>
+        :rtype: str
+        """
+        return self._ConsumptionType
+
+    @ConsumptionType.setter
+    def ConsumptionType(self, ConsumptionType):
+        self._ConsumptionType = ConsumptionType
+
+    @property
+    def PackageName(self):
+        r"""<p>Package name</p>
+        :rtype: str
+        """
+        return self._PackageName
+
+    @PackageName.setter
+    def PackageName(self, PackageName):
+        self._PackageName = PackageName
+
+
+    def _deserialize(self, params):
+        self._ConsumptionScene = params.get("ConsumptionScene")
+        self._ConsumptionTarget = params.get("ConsumptionTarget")
+        self._ConsumptionType = params.get("ConsumptionType")
+        self._PackageName = params.get("PackageName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumptionDetail(AbstractModel):
+    r"""Resource consumption details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Classification: <p>Consumption category (Type/Target/Scenario/Package)</p>
+        :type Classification: :class:`tencentcloud.adp.v20260520.models.ConsumptionClassification`
+        :param _EventTime: <p>Consumption time, Unix seconds.</p>
+        :type EventTime: str
+        :param _MetricSourceType: <p>Amount source type</p><table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>METRIC_SOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>METRIC_SOURCE_TYPE_APP</td><td>1</td><td>Application development</td></tr><tr><td>METRIC_SOURCE_TYPE_KB</td><td>2</td><td>Knowledge base</td></tr><tr><td>METRIC_SOURCE_TYPE_WIDGET</td><td>3</td><td>Widget</td></tr><tr><td>METRIC_SOURCE_TYPE_OPEN_CLAW</td><td>4</td><td>ClawPro</td></tr><tr><td>METRIC_SOURCE_TYPE_KB_RECALL_TEST</td><td>5</td><td>Knowledge base recall test</td></tr><tr><td>METRIC_SOURCE_TYPE_WORKBENCH</td><td>6</td><td>Intelligent workbench</td></tr><tr><td>METRIC_SOURCE_TYPE_MODEL_API</td><td>7</td><td>Model API calls</td></tr></tbody></table>
+        :type MetricSourceType: int
+        :param _Name: <p>Name.</p>
+        :type Name: str
+        :param _SpaceName: <p>Space name</p>
+        :type SpaceName: str
+        :param _Usage: <p>Consumed usage (numeric value/unit/PU consumption)</p>
+        :type Usage: :class:`tencentcloud.adp.v20260520.models.ConsumptionUsage`
+        :param _UserName: <p>Username</p>
+        :type UserName: str
+        """
+        self._Classification = None
+        self._EventTime = None
+        self._MetricSourceType = None
+        self._Name = None
+        self._SpaceName = None
+        self._Usage = None
+        self._UserName = None
+
+    @property
+    def Classification(self):
+        r"""<p>Consumption category (Type/Target/Scenario/Package)</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ConsumptionClassification`
+        """
+        return self._Classification
+
+    @Classification.setter
+    def Classification(self, Classification):
+        self._Classification = Classification
+
+    @property
+    def EventTime(self):
+        r"""<p>Consumption time, Unix seconds.</p>
+        :rtype: str
+        """
+        return self._EventTime
+
+    @EventTime.setter
+    def EventTime(self, EventTime):
+        self._EventTime = EventTime
+
+    @property
+    def MetricSourceType(self):
+        r"""<p>Amount source type</p><table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>METRIC_SOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>METRIC_SOURCE_TYPE_APP</td><td>1</td><td>Application development</td></tr><tr><td>METRIC_SOURCE_TYPE_KB</td><td>2</td><td>Knowledge base</td></tr><tr><td>METRIC_SOURCE_TYPE_WIDGET</td><td>3</td><td>Widget</td></tr><tr><td>METRIC_SOURCE_TYPE_OPEN_CLAW</td><td>4</td><td>ClawPro</td></tr><tr><td>METRIC_SOURCE_TYPE_KB_RECALL_TEST</td><td>5</td><td>Knowledge base recall test</td></tr><tr><td>METRIC_SOURCE_TYPE_WORKBENCH</td><td>6</td><td>Intelligent workbench</td></tr><tr><td>METRIC_SOURCE_TYPE_MODEL_API</td><td>7</td><td>Model API calls</td></tr></tbody></table>
+        :rtype: int
+        """
+        return self._MetricSourceType
+
+    @MetricSourceType.setter
+    def MetricSourceType(self, MetricSourceType):
+        self._MetricSourceType = MetricSourceType
+
+    @property
+    def Name(self):
+        r"""<p>Name.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SpaceName(self):
+        r"""<p>Space name</p>
+        :rtype: str
+        """
+        return self._SpaceName
+
+    @SpaceName.setter
+    def SpaceName(self, SpaceName):
+        self._SpaceName = SpaceName
+
+    @property
+    def Usage(self):
+        r"""<p>Consumed usage (numeric value/unit/PU consumption)</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ConsumptionUsage`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def UserName(self):
+        r"""<p>Username</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+
+    def _deserialize(self, params):
+        if params.get("Classification") is not None:
+            self._Classification = ConsumptionClassification()
+            self._Classification._deserialize(params.get("Classification"))
+        self._EventTime = params.get("EventTime")
+        self._MetricSourceType = params.get("MetricSourceType")
+        self._Name = params.get("Name")
+        self._SpaceName = params.get("SpaceName")
+        if params.get("Usage") is not None:
+            self._Usage = ConsumptionUsage()
+            self._Usage._deserialize(params.get("Usage"))
+        self._UserName = params.get("UserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumptionUsage(AbstractModel):
+    r"""Consumed usage
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsumptionPU: <p>Consume PU</p>
+        :type ConsumptionPU: float
+        :param _Usage: <p>Amount value.</p>
+        :type Usage: float
+        :param _UsageUnit: <p>Usage unit. Enumeration value: DosageUnit</p><table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>DOSAGE_UNIT_TOKEN</td><td>0</td><td>token (default)</td></tr><tr><td>DOSAGE_UNIT_PAGE_COUNT</td><td>1</td><td>page_count (page number)</td></tr><tr><td>DOSAGE_UNIT_TIMES</td><td>2</td><td>times (frequency)</td></tr><tr><td>DOSAGE_UNIT_SECOND</td><td>3</td><td>second</td></tr><tr><td>DOSAGE_UNIT_ITEM</td><td>4</td><td>item</td></tr><tr><td>DOSAGE_UNIT_SHEET</td><td>5</td><td>sheet</td></tr><tr><td>DOSAGE_UNIT_CHARACTER</td><td>6</td><td>character</td></tr><tr><td>DOSAGE_UNIT_GB</td><td>7</td><td>GB</td></tr><tr><td>DOSAGE_UNIT_NUMBER</td><td>8</td><td>number (count)</td></tr><tr><td>DOSAGE_UNIT_MILL_SECOND</td><td>9</td><td>mill_second (ms)</td></tr></tbody></table>
+        :type UsageUnit: int
+        """
+        self._ConsumptionPU = None
+        self._Usage = None
+        self._UsageUnit = None
+
+    @property
+    def ConsumptionPU(self):
+        r"""<p>Consume PU</p>
+        :rtype: float
+        """
+        return self._ConsumptionPU
+
+    @ConsumptionPU.setter
+    def ConsumptionPU(self, ConsumptionPU):
+        self._ConsumptionPU = ConsumptionPU
+
+    @property
+    def Usage(self):
+        r"""<p>Amount value.</p>
+        :rtype: float
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def UsageUnit(self):
+        r"""<p>Usage unit. Enumeration value: DosageUnit</p><table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>DOSAGE_UNIT_TOKEN</td><td>0</td><td>token (default)</td></tr><tr><td>DOSAGE_UNIT_PAGE_COUNT</td><td>1</td><td>page_count (page number)</td></tr><tr><td>DOSAGE_UNIT_TIMES</td><td>2</td><td>times (frequency)</td></tr><tr><td>DOSAGE_UNIT_SECOND</td><td>3</td><td>second</td></tr><tr><td>DOSAGE_UNIT_ITEM</td><td>4</td><td>item</td></tr><tr><td>DOSAGE_UNIT_SHEET</td><td>5</td><td>sheet</td></tr><tr><td>DOSAGE_UNIT_CHARACTER</td><td>6</td><td>character</td></tr><tr><td>DOSAGE_UNIT_GB</td><td>7</td><td>GB</td></tr><tr><td>DOSAGE_UNIT_NUMBER</td><td>8</td><td>number (count)</td></tr><tr><td>DOSAGE_UNIT_MILL_SECOND</td><td>9</td><td>mill_second (ms)</td></tr></tbody></table>
+        :rtype: int
+        """
+        return self._UsageUnit
+
+    @UsageUnit.setter
+    def UsageUnit(self, UsageUnit):
+        self._UsageUnit = UsageUnit
+
+
+    def _deserialize(self, params):
+        self._ConsumptionPU = params.get("ConsumptionPU")
+        self._Usage = params.get("Usage")
+        self._UsageUnit = params.get("UsageUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContentFilter(AbstractModel):
+    r"""Content filtering configuration (image name regular/minimum width and height). By default, filtering is not enabled.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageMinHeight: <p>Minimum image height (pixel). Images with a height less than this value will be filtered; &lt;=0 means not enabled</p>
+        :type ImageMinHeight: int
+        :param _ImageMinWidth: <p>Minimum image width (pixel). Images with a smaller width will be filtered; &lt;=0 means not enabled</p>
+        :type ImageMinWidth: int
+        :param _ImageNamePatterns: <p>Image name filter rule (multiple regular expressions separated by semicolons &#39;;&#39;, for example &#39;icon;notice;warning;info.*&#39;)</p>
+        :type ImageNamePatterns: str
+        """
+        self._ImageMinHeight = None
+        self._ImageMinWidth = None
+        self._ImageNamePatterns = None
+
+    @property
+    def ImageMinHeight(self):
+        r"""<p>Minimum image height (pixel). Images with a height less than this value will be filtered; &lt;=0 means not enabled</p>
+        :rtype: int
+        """
+        return self._ImageMinHeight
+
+    @ImageMinHeight.setter
+    def ImageMinHeight(self, ImageMinHeight):
+        self._ImageMinHeight = ImageMinHeight
+
+    @property
+    def ImageMinWidth(self):
+        r"""<p>Minimum image width (pixel). Images with a smaller width will be filtered; &lt;=0 means not enabled</p>
+        :rtype: int
+        """
+        return self._ImageMinWidth
+
+    @ImageMinWidth.setter
+    def ImageMinWidth(self, ImageMinWidth):
+        self._ImageMinWidth = ImageMinWidth
+
+    @property
+    def ImageNamePatterns(self):
+        r"""<p>Image name filter rule (multiple regular expressions separated by semicolons &#39;;&#39;, for example &#39;icon;notice;warning;info.*&#39;)</p>
+        :rtype: str
+        """
+        return self._ImageNamePatterns
+
+    @ImageNamePatterns.setter
+    def ImageNamePatterns(self, ImageNamePatterns):
+        self._ImageNamePatterns = ImageNamePatterns
+
+
+    def _deserialize(self, params):
+        self._ImageMinHeight = params.get("ImageMinHeight")
+        self._ImageMinWidth = params.get("ImageMinWidth")
+        self._ImageNamePatterns = params.get("ImageNamePatterns")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Conversation(AbstractModel):
     r"""Conversation session information
 
@@ -9708,6 +10345,147 @@ class ConversationFileCollection(AbstractModel):
         self._MaxFileCount = params.get("MaxFileCount")
         self._SupportedFileTypeList = params.get("SupportedFileTypeList")
         self._SupportedFileTypes = params.get("SupportedFileTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConversationFileInfo(AbstractModel):
+    r"""File information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CreateTime: <p>File creation time.</p>
+        :type CreateTime: str
+        :param _DocId: <p>Document business ID</p>
+        :type DocId: str
+        :param _FileName: <p>File name.</p>
+        :type FileName: str
+        :param _FileSize: <p>File size</p>
+        :type FileSize: str
+        :param _FileType: <p>File type</p>
+        :type FileType: str
+        :param _FileUrl: <p>File download link.</p>
+        :type FileUrl: str
+        :param _LocalPath: <p>Original path of the file in the sandbox</p>
+        :type LocalPath: str
+        :param _AuditStatus: <p>File moderation status</p><p>Enumeration values:</p><ul><li>1: under review</li><li>2: pass review</li><li>3: fail review</li></ul>
+        :type AuditStatus: int
+        """
+        self._CreateTime = None
+        self._DocId = None
+        self._FileName = None
+        self._FileSize = None
+        self._FileType = None
+        self._FileUrl = None
+        self._LocalPath = None
+        self._AuditStatus = None
+
+    @property
+    def CreateTime(self):
+        r"""<p>File creation time.</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def DocId(self):
+        r"""<p>Document business ID</p>
+        :rtype: str
+        """
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+    @property
+    def FileName(self):
+        r"""<p>File name.</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileSize(self):
+        r"""<p>File size</p>
+        :rtype: str
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def FileType(self):
+        r"""<p>File type</p>
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def FileUrl(self):
+        r"""<p>File download link.</p>
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def LocalPath(self):
+        r"""<p>Original path of the file in the sandbox</p>
+        :rtype: str
+        """
+        return self._LocalPath
+
+    @LocalPath.setter
+    def LocalPath(self, LocalPath):
+        self._LocalPath = LocalPath
+
+    @property
+    def AuditStatus(self):
+        r"""<p>File moderation status</p><p>Enumeration values:</p><ul><li>1: under review</li><li>2: pass review</li><li>3: fail review</li></ul>
+        :rtype: int
+        """
+        return self._AuditStatus
+
+    @AuditStatus.setter
+    def AuditStatus(self, AuditStatus):
+        self._AuditStatus = AuditStatus
+
+
+    def _deserialize(self, params):
+        self._CreateTime = params.get("CreateTime")
+        self._DocId = params.get("DocId")
+        self._FileName = params.get("FileName")
+        self._FileSize = params.get("FileSize")
+        self._FileType = params.get("FileType")
+        self._FileUrl = params.get("FileUrl")
+        self._LocalPath = params.get("LocalPath")
+        self._AuditStatus = params.get("AuditStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14076,6 +14854,57 @@ class DailySchedule(AbstractModel):
         
 
 
+class DeDuplicateStrategy(AbstractModel):
+    r"""Rules regarding repeated files
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CheckType: <p>Verification method: 1=determine whether they are identical based on document content<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>DUPLICATE_FILE_CHECK_TYPE_UNKNOWN</td><td>0</td><td>Unknown</td></tr><tr><td>DUPLICATE_FILE_CHECK_TYPE_COS_HASH</td><td>1</td><td>Determine whether they are identical based on document content (cos_hash)</td></tr></tbody></table></p>
+        :type CheckType: int
+        :param _HandleType: <p>Processing method: 1=return an error, 2=skip and return the duplicate document ID<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>DUPLICATE_FILE_HANDLE_TYPE_UNKNOWN</td><td>0</td><td>Unknown</td></tr><tr><td>DUPLICATE_FILE_HANDLE_TYPE_RETURN_ERR</td><td>1</td><td>Return an error</td></tr><tr><td>DUPLICATE_FILE_HANDLE_TYPE_SKIP</td><td>2</td><td>Skip and return the duplicate document ID</td></tr></tbody></table></p>
+        :type HandleType: int
+        """
+        self._CheckType = None
+        self._HandleType = None
+
+    @property
+    def CheckType(self):
+        r"""<p>Verification method: 1=determine whether they are identical based on document content<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>DUPLICATE_FILE_CHECK_TYPE_UNKNOWN</td><td>0</td><td>Unknown</td></tr><tr><td>DUPLICATE_FILE_CHECK_TYPE_COS_HASH</td><td>1</td><td>Determine whether they are identical based on document content (cos_hash)</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._CheckType
+
+    @CheckType.setter
+    def CheckType(self, CheckType):
+        self._CheckType = CheckType
+
+    @property
+    def HandleType(self):
+        r"""<p>Processing method: 1=return an error, 2=skip and return the duplicate document ID<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>DUPLICATE_FILE_HANDLE_TYPE_UNKNOWN</td><td>0</td><td>Unknown</td></tr><tr><td>DUPLICATE_FILE_HANDLE_TYPE_RETURN_ERR</td><td>1</td><td>Return an error</td></tr><tr><td>DUPLICATE_FILE_HANDLE_TYPE_SKIP</td><td>2</td><td>Skip and return the duplicate document ID</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._HandleType
+
+    @HandleType.setter
+    def HandleType(self, HandleType):
+        self._HandleType = HandleType
+
+
+    def _deserialize(self, params):
+        self._CheckType = params.get("CheckType")
+        self._HandleType = params.get("HandleType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteAgentRequest(AbstractModel):
     r"""DeleteAgent request structure.
 
@@ -17402,6 +18231,80 @@ class DescribeAuditLogListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAuditLogMetaRequest(AbstractModel):
+    r"""DescribeAuditLogMeta request structure.
+
+    """
+
+
+class DescribeAuditLogMetaResponse(AbstractModel):
+    r"""DescribeAuditLogMeta response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Actions: <p>Operation type list</p>
+        :type Actions: list of AuditLogMetaField
+        :param _BizObjects: <p>List of operation objects.</p>
+        :type BizObjects: list of AuditLogMetaField
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Actions = None
+        self._BizObjects = None
+        self._RequestId = None
+
+    @property
+    def Actions(self):
+        r"""<p>Operation type list</p>
+        :rtype: list of AuditLogMetaField
+        """
+        return self._Actions
+
+    @Actions.setter
+    def Actions(self, Actions):
+        self._Actions = Actions
+
+    @property
+    def BizObjects(self):
+        r"""<p>List of operation objects.</p>
+        :rtype: list of AuditLogMetaField
+        """
+        return self._BizObjects
+
+    @BizObjects.setter
+    def BizObjects(self, BizObjects):
+        self._BizObjects = BizObjects
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Actions") is not None:
+            self._Actions = []
+            for item in params.get("Actions"):
+                obj = AuditLogMetaField()
+                obj._deserialize(item)
+                self._Actions.append(obj)
+        if params.get("BizObjects") is not None:
+            self._BizObjects = []
+            for item in params.get("BizObjects"):
+                obj = AuditLogMetaField()
+                obj._deserialize(item)
+                self._BizObjects.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCategoryListRequest(AbstractModel):
     r"""DescribeCategoryList request structure.
 
@@ -17580,6 +18483,74 @@ class DescribeCategoryListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._CategoryList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeChannelListRequest(AbstractModel):
+    r"""DescribeChannelList request structure.
+
+    """
+
+
+class DescribeChannelListResponse(AbstractModel):
+    r"""DescribeChannelList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeChannelRequest(AbstractModel):
+    r"""DescribeChannel request structure.
+
+    """
+
+
+class DescribeChannelResponse(AbstractModel):
+    r"""DescribeChannel response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -17995,6 +18966,174 @@ class DescribeConflictQASummaryListResponse(AbstractModel):
                 obj = ConflictQASummary()
                 obj._deserialize(item)
                 self._ConflictQaList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConsumptionDetailListRequest(AbstractModel):
+    r"""DescribeConsumptionDetailList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeRange: <p>Query time range (Unix seconds)</p>
+        :type TimeRange: :class:`tencentcloud.adp.v20260520.models.TimeRange`
+        :param _ViewScope: <p>View scope: business view / space view</p>
+        :type ViewScope: :class:`tencentcloud.adp.v20260520.models.ViewScope`
+        :param _FilterList: <p>Extended filtering. Filter combination rule: multiple conditions use AND, values within the same condition use OR. Supported Name: metric_source_type (metric_source_type_* OR integer), source_ids (multi-option source ID), resource_ID/source_ID (select one source ID, this parameter is valid only when source_ids is not passed), space_ID, user_ID</p>
+        :type FilterList: list of Filter
+        :param _PageNumber: <p>Page number, starting from 0</p>
+        :type PageNumber: int
+        :param _PageSize: <p>Number of items per page. Maximum: 100.</p>
+        :type PageSize: int
+        """
+        self._TimeRange = None
+        self._ViewScope = None
+        self._FilterList = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def TimeRange(self):
+        r"""<p>Query time range (Unix seconds)</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TimeRange`
+        """
+        return self._TimeRange
+
+    @TimeRange.setter
+    def TimeRange(self, TimeRange):
+        self._TimeRange = TimeRange
+
+    @property
+    def ViewScope(self):
+        r"""<p>View scope: business view / space view</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ViewScope`
+        """
+        return self._ViewScope
+
+    @ViewScope.setter
+    def ViewScope(self, ViewScope):
+        self._ViewScope = ViewScope
+
+    @property
+    def FilterList(self):
+        r"""<p>Extended filtering. Filter combination rule: multiple conditions use AND, values within the same condition use OR. Supported Name: metric_source_type (metric_source_type_* OR integer), source_ids (multi-option source ID), resource_ID/source_ID (select one source ID, this parameter is valid only when source_ids is not passed), space_ID, user_ID</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+    @property
+    def PageNumber(self):
+        r"""<p>Page number, starting from 0</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>Number of items per page. Maximum: 100.</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        if params.get("TimeRange") is not None:
+            self._TimeRange = TimeRange()
+            self._TimeRange._deserialize(params.get("TimeRange"))
+        if params.get("ViewScope") is not None:
+            self._ViewScope = ViewScope()
+            self._ViewScope._deserialize(params.get("ViewScope"))
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConsumptionDetailListResponse(AbstractModel):
+    r"""DescribeConsumptionDetailList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsumptionDetailList: <p>Resource consumption details list</p>
+        :type ConsumptionDetailList: list of ConsumptionDetail
+        :param _TotalCount: <p>Total record count for frontend pagination</p>
+        :type TotalCount: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ConsumptionDetailList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ConsumptionDetailList(self):
+        r"""<p>Resource consumption details list</p>
+        :rtype: list of ConsumptionDetail
+        """
+        return self._ConsumptionDetailList
+
+    @ConsumptionDetailList.setter
+    def ConsumptionDetailList(self, ConsumptionDetailList):
+        self._ConsumptionDetailList = ConsumptionDetailList
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total record count for frontend pagination</p>
+        :rtype: str
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ConsumptionDetailList") is not None:
+            self._ConsumptionDetailList = []
+            for item in params.get("ConsumptionDetailList"):
+                obj = ConsumptionDetail()
+                obj._deserialize(item)
+                self._ConsumptionDetailList.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
@@ -18884,6 +20023,730 @@ class DescribeConversationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDocRequest(AbstractModel):
+    r"""DescribeDoc request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocId: <p>Document ID</p>
+        :type DocId: str
+        :param _KbId: <p>ID of the knowledge base it belongs to</p>
+        :type KbId: str
+        :param _ReadMask: <p>Field mask: Currently supported Path: DocLink.CosUrl. Other unlisted fields are returned by default.</p>
+        :type ReadMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        self._DocId = None
+        self._KbId = None
+        self._ReadMask = None
+
+    @property
+    def DocId(self):
+        r"""<p>Document ID</p>
+        :rtype: str
+        """
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+    @property
+    def KbId(self):
+        r"""<p>ID of the knowledge base it belongs to</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def ReadMask(self):
+        r"""<p>Field mask: Currently supported Path: DocLink.CosUrl. Other unlisted fields are returned by default.</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        return self._ReadMask
+
+    @ReadMask.setter
+    def ReadMask(self, ReadMask):
+        self._ReadMask = ReadMask
+
+
+    def _deserialize(self, params):
+        self._DocId = params.get("DocId")
+        self._KbId = params.get("KbId")
+        if params.get("ReadMask") is not None:
+            self._ReadMask = FieldMask()
+            self._ReadMask._deserialize(params.get("ReadMask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDocResponse(AbstractModel):
+    r"""DescribeDoc response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocLink: <p>Documentation link (external URL + COS link)</p>
+        :type DocLink: :class:`tencentcloud.adp.v20260520.models.DocLink`
+        :param _ParseConfig: <p>Parsing configuration (split rule, content filtering, etc.)</p>
+        :type ParseConfig: :class:`tencentcloud.adp.v20260520.models.DocParseConfig`
+        :param _Summary: <p>Basic document information</p>
+        :type Summary: :class:`tencentcloud.adp.v20260520.models.DocSummary`
+        :param _Switch: <p>Switch configuration</p>
+        :type Switch: :class:`tencentcloud.adp.v20260520.models.DocSwitch`
+        :param _UpdatePeriod: <p>Update cycle configuration</p>
+        :type UpdatePeriod: :class:`tencentcloud.adp.v20260520.models.DocUpdatePeriod`
+        :param _UserAccessConfig: <p>User access configuration</p>
+        :type UserAccessConfig: :class:`tencentcloud.adp.v20260520.models.UserAccessConfig`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DocLink = None
+        self._ParseConfig = None
+        self._Summary = None
+        self._Switch = None
+        self._UpdatePeriod = None
+        self._UserAccessConfig = None
+        self._RequestId = None
+
+    @property
+    def DocLink(self):
+        r"""<p>Documentation link (external URL + COS link)</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocLink`
+        """
+        return self._DocLink
+
+    @DocLink.setter
+    def DocLink(self, DocLink):
+        self._DocLink = DocLink
+
+    @property
+    def ParseConfig(self):
+        r"""<p>Parsing configuration (split rule, content filtering, etc.)</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocParseConfig`
+        """
+        return self._ParseConfig
+
+    @ParseConfig.setter
+    def ParseConfig(self, ParseConfig):
+        self._ParseConfig = ParseConfig
+
+    @property
+    def Summary(self):
+        r"""<p>Basic document information</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocSummary`
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def Switch(self):
+        r"""<p>Switch configuration</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocSwitch`
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def UpdatePeriod(self):
+        r"""<p>Update cycle configuration</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocUpdatePeriod`
+        """
+        return self._UpdatePeriod
+
+    @UpdatePeriod.setter
+    def UpdatePeriod(self, UpdatePeriod):
+        self._UpdatePeriod = UpdatePeriod
+
+    @property
+    def UserAccessConfig(self):
+        r"""<p>User access configuration</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.UserAccessConfig`
+        """
+        return self._UserAccessConfig
+
+    @UserAccessConfig.setter
+    def UserAccessConfig(self, UserAccessConfig):
+        self._UserAccessConfig = UserAccessConfig
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DocLink") is not None:
+            self._DocLink = DocLink()
+            self._DocLink._deserialize(params.get("DocLink"))
+        if params.get("ParseConfig") is not None:
+            self._ParseConfig = DocParseConfig()
+            self._ParseConfig._deserialize(params.get("ParseConfig"))
+        if params.get("Summary") is not None:
+            self._Summary = DocSummary()
+            self._Summary._deserialize(params.get("Summary"))
+        if params.get("Switch") is not None:
+            self._Switch = DocSwitch()
+            self._Switch._deserialize(params.get("Switch"))
+        if params.get("UpdatePeriod") is not None:
+            self._UpdatePeriod = DocUpdatePeriod()
+            self._UpdatePeriod._deserialize(params.get("UpdatePeriod"))
+        if params.get("UserAccessConfig") is not None:
+            self._UserAccessConfig = UserAccessConfig()
+            self._UserAccessConfig._deserialize(params.get("UserAccessConfig"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDocSummaryListRequest(AbstractModel):
+    r"""DescribeDocSummaryList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>ID of the knowledge base it belongs to</p>
+        :type KbId: str
+        :param _FilterList: <p>Filter criteria (multiple Filters are in an AND relationship, and multiple Values of the same Filter are in an OR relationship): Status - document status, enumeration value, exact match; CategoryId - category ID, exact match; SourceType - document source type, enumeration value, exact match; EffectiveDomain - application scope, exact match; CreateTime - creation time, Unix seconds, BETWEEN with [start second, end second]; UpdateTime - update time, Unix seconds, BETWEEN with [start second, end second]</p>
+        :type FilterList: list of Filter
+        :param _PageNumber: <p>Page number, starting from 0.</p>
+        :type PageNumber: int
+        :param _PageSize: <p>Number of items per page. Default: 10. Maximum: 100</p>
+        :type PageSize: int
+        :param _Query: <p>Query condition (keyword + query scope)</p>
+        :type Query: :class:`tencentcloud.adp.v20260520.models.DocQuery`
+        :param _SummaryListSwitch: <p>Switch configuration</p>
+        :type SummaryListSwitch: :class:`tencentcloud.adp.v20260520.models.SummaryListSwitch`
+        """
+        self._KbId = None
+        self._FilterList = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Query = None
+        self._SummaryListSwitch = None
+
+    @property
+    def KbId(self):
+        r"""<p>ID of the knowledge base it belongs to</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def FilterList(self):
+        r"""<p>Filter criteria (multiple Filters are in an AND relationship, and multiple Values of the same Filter are in an OR relationship): Status - document status, enumeration value, exact match; CategoryId - category ID, exact match; SourceType - document source type, enumeration value, exact match; EffectiveDomain - application scope, exact match; CreateTime - creation time, Unix seconds, BETWEEN with [start second, end second]; UpdateTime - update time, Unix seconds, BETWEEN with [start second, end second]</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+    @property
+    def PageNumber(self):
+        r"""<p>Page number, starting from 0.</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>Number of items per page. Default: 10. Maximum: 100</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Query(self):
+        r"""<p>Query condition (keyword + query scope)</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocQuery`
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def SummaryListSwitch(self):
+        r"""<p>Switch configuration</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SummaryListSwitch`
+        """
+        return self._SummaryListSwitch
+
+    @SummaryListSwitch.setter
+    def SummaryListSwitch(self, SummaryListSwitch):
+        self._SummaryListSwitch = SummaryListSwitch
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Query") is not None:
+            self._Query = DocQuery()
+            self._Query._deserialize(params.get("Query"))
+        if params.get("SummaryListSwitch") is not None:
+            self._SummaryListSwitch = SummaryListSwitch()
+            self._SummaryListSwitch._deserialize(params.get("SummaryListSwitch"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDocSummaryListResponse(AbstractModel):
+    r"""DescribeDocSummaryList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocList: <p>Document list</p>
+        :type DocList: list of DocSummary
+        :param _TotalCount: <p>Total.</p>
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DocList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def DocList(self):
+        r"""<p>Document list</p>
+        :rtype: list of DocSummary
+        """
+        return self._DocList
+
+    @DocList.setter
+    def DocList(self, DocList):
+        self._DocList = DocList
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total.</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DocList") is not None:
+            self._DocList = []
+            for item in params.get("DocList"):
+                obj = DocSummary()
+                obj._deserialize(item)
+                self._DocList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeKBRequest(AbstractModel):
+    r"""DescribeKB request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>Knowledge base ID</p>
+        :type KbId: str
+        :param _SpaceId: <p>Workspace ID</p>
+        :type SpaceId: str
+        """
+        self._KbId = None
+        self._SpaceId = None
+
+    @property
+    def KbId(self):
+        r"""<p>Knowledge base ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def SpaceId(self):
+        r"""<p>Workspace ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        self._SpaceId = params.get("SpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKBResponse(AbstractModel):
+    r"""DescribeKB response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppIdList: <p>Associated application ID list</p>
+        :type AppIdList: list of str
+        :param _CapacityInfo: <p>Capacity information.</p>
+        :type CapacityInfo: :class:`tencentcloud.adp.v20260520.models.KBCapacity`
+        :param _EsConfig: <p>ES configuration</p>
+        :type EsConfig: :class:`tencentcloud.adp.v20260520.models.ESConfig`
+        :param _ModelConfig: <p>Model configuration</p>
+        :type ModelConfig: :class:`tencentcloud.adp.v20260520.models.KBModelConfig`
+        :param _Owner: <p>Owner information</p>
+        :type Owner: :class:`tencentcloud.adp.v20260520.models.Operator`
+        :param _Summary: <p>Knowledge base digest information</p>
+        :type Summary: :class:`tencentcloud.adp.v20260520.models.KBSummary`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AppIdList = None
+        self._CapacityInfo = None
+        self._EsConfig = None
+        self._ModelConfig = None
+        self._Owner = None
+        self._Summary = None
+        self._RequestId = None
+
+    @property
+    def AppIdList(self):
+        r"""<p>Associated application ID list</p>
+        :rtype: list of str
+        """
+        return self._AppIdList
+
+    @AppIdList.setter
+    def AppIdList(self, AppIdList):
+        self._AppIdList = AppIdList
+
+    @property
+    def CapacityInfo(self):
+        r"""<p>Capacity information.</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.KBCapacity`
+        """
+        return self._CapacityInfo
+
+    @CapacityInfo.setter
+    def CapacityInfo(self, CapacityInfo):
+        self._CapacityInfo = CapacityInfo
+
+    @property
+    def EsConfig(self):
+        r"""<p>ES configuration</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ESConfig`
+        """
+        return self._EsConfig
+
+    @EsConfig.setter
+    def EsConfig(self, EsConfig):
+        self._EsConfig = EsConfig
+
+    @property
+    def ModelConfig(self):
+        r"""<p>Model configuration</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.KBModelConfig`
+        """
+        return self._ModelConfig
+
+    @ModelConfig.setter
+    def ModelConfig(self, ModelConfig):
+        self._ModelConfig = ModelConfig
+
+    @property
+    def Owner(self):
+        r"""<p>Owner information</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.Operator`
+        """
+        return self._Owner
+
+    @Owner.setter
+    def Owner(self, Owner):
+        self._Owner = Owner
+
+    @property
+    def Summary(self):
+        r"""<p>Knowledge base digest information</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.KBSummary`
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AppIdList = params.get("AppIdList")
+        if params.get("CapacityInfo") is not None:
+            self._CapacityInfo = KBCapacity()
+            self._CapacityInfo._deserialize(params.get("CapacityInfo"))
+        if params.get("EsConfig") is not None:
+            self._EsConfig = ESConfig()
+            self._EsConfig._deserialize(params.get("EsConfig"))
+        if params.get("ModelConfig") is not None:
+            self._ModelConfig = KBModelConfig()
+            self._ModelConfig._deserialize(params.get("ModelConfig"))
+        if params.get("Owner") is not None:
+            self._Owner = Operator()
+            self._Owner._deserialize(params.get("Owner"))
+        if params.get("Summary") is not None:
+            self._Summary = KBSummary()
+            self._Summary._deserialize(params.get("Summary"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeKBSummaryListRequest(AbstractModel):
+    r"""DescribeKBSummaryList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>Workspace ID</p>
+        :type SpaceId: str
+        :param _FilterList: <p>Common filter</p>
+        :type FilterList: list of Filter
+        :param _PageNumber: <p>Page number, starting from 0</p>
+        :type PageNumber: int
+        :param _PageSize: <p>Number of items per page. Default value: 10. Maximum value: 100.</p>
+        :type PageSize: int
+        :param _Query: <p>Keyword</p>
+        :type Query: str
+        """
+        self._SpaceId = None
+        self._FilterList = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Query = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>Workspace ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def FilterList(self):
+        r"""<p>Common filter</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+    @property
+    def PageNumber(self):
+        r"""<p>Page number, starting from 0</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>Number of items per page. Default value: 10. Maximum value: 100.</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Query(self):
+        r"""<p>Keyword</p>
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Query = params.get("Query")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKBSummaryListResponse(AbstractModel):
+    r"""DescribeKBSummaryList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbList: <p>Knowledge base list</p>
+        :type KbList: list of KBSummary
+        :param _TotalCount: <p>Total.</p>
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._KbList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def KbList(self):
+        r"""<p>Knowledge base list</p>
+        :rtype: list of KBSummary
+        """
+        return self._KbList
+
+    @KbList.setter
+    def KbList(self, KbList):
+        self._KbList = KbList
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total.</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("KbList") is not None:
+            self._KbList = []
+            for item in params.get("KbList"):
+                obj = KBSummary()
+                obj._deserialize(item)
+                self._KbList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLabelRequest(AbstractModel):
     r"""DescribeLabel request structure.
 
@@ -19322,6 +21185,159 @@ class DescribeLatestReleaseResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMetricOverviewListRequest(AbstractModel):
+    r"""DescribeMetricOverviewList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: <p>Dashboard domain. Required. Determines which domain's KPI data to return.</p><table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>RESOURCE_TYPE_MODEL</td><td>1</td><td>Model usage</td></tr><tr><td>RESOURCE_TYPE_PLUGIN</td><td>2</td><td>Plug-in usage</td></tr><tr><td>RESOURCE_TYPE_PLATFORM</td><td>3</td><td>Platform feature usage</td></tr><tr><td>RESOURCE_TYPE_MODEL_CONCURRENCY</td><td>4</td><td>Model concurrency limit exceeded</td></tr><tr><td>RESOURCE_TYPE_KB_CAPACITY</td><td>5</td><td>Knowledge base capacity</td></tr><tr><td>RESOURCE_TYPE_USAGE_SUMMARY</td><td>6</td><td>Usage summary</td></tr><tr><td>RESOURCE_TYPE_RESOURCE_CONSUME</td><td>7</td><td>Resource consumption (billing details)</td></tr></tbody></table>
+        :type ResourceType: int
+        :param _TimeRange: <p>Query time range (Unix seconds).</p>
+        :type TimeRange: :class:`tencentcloud.adp.v20260520.models.TimeRange`
+        :param _ViewScope: <p>View scope: corporate view / space view</p>
+        :type ViewScope: :class:`tencentcloud.adp.v20260520.models.ViewScope`
+        :param _FilterList: <p>Extended filtering (resource_type=MODEL). Filter combination rule: multiple items use AND, AND value_list within the same item uses OR. Supported Names: MODEL_Name (MODEL Name), user_id (uid), space_id (space id), resource_id/source_id (source id), metric_source_type (metric_source_type_* Enumeration Name OR integer)</p>
+        :type FilterList: list of Filter
+        """
+        self._ResourceType = None
+        self._TimeRange = None
+        self._ViewScope = None
+        self._FilterList = None
+
+    @property
+    def ResourceType(self):
+        r"""<p>Dashboard domain. Required. Determines which domain's KPI data to return.</p><table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>RESOURCE_TYPE_MODEL</td><td>1</td><td>Model usage</td></tr><tr><td>RESOURCE_TYPE_PLUGIN</td><td>2</td><td>Plug-in usage</td></tr><tr><td>RESOURCE_TYPE_PLATFORM</td><td>3</td><td>Platform feature usage</td></tr><tr><td>RESOURCE_TYPE_MODEL_CONCURRENCY</td><td>4</td><td>Model concurrency limit exceeded</td></tr><tr><td>RESOURCE_TYPE_KB_CAPACITY</td><td>5</td><td>Knowledge base capacity</td></tr><tr><td>RESOURCE_TYPE_USAGE_SUMMARY</td><td>6</td><td>Usage summary</td></tr><tr><td>RESOURCE_TYPE_RESOURCE_CONSUME</td><td>7</td><td>Resource consumption (billing details)</td></tr></tbody></table>
+        :rtype: int
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def TimeRange(self):
+        r"""<p>Query time range (Unix seconds).</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TimeRange`
+        """
+        return self._TimeRange
+
+    @TimeRange.setter
+    def TimeRange(self, TimeRange):
+        self._TimeRange = TimeRange
+
+    @property
+    def ViewScope(self):
+        r"""<p>View scope: corporate view / space view</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ViewScope`
+        """
+        return self._ViewScope
+
+    @ViewScope.setter
+    def ViewScope(self, ViewScope):
+        self._ViewScope = ViewScope
+
+    @property
+    def FilterList(self):
+        r"""<p>Extended filtering (resource_type=MODEL). Filter combination rule: multiple items use AND, AND value_list within the same item uses OR. Supported Names: MODEL_Name (MODEL Name), user_id (uid), space_id (space id), resource_id/source_id (source id), metric_source_type (metric_source_type_* Enumeration Name OR integer)</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        if params.get("TimeRange") is not None:
+            self._TimeRange = TimeRange()
+            self._TimeRange._deserialize(params.get("TimeRange"))
+        if params.get("ViewScope") is not None:
+            self._ViewScope = ViewScope()
+            self._ViewScope._deserialize(params.get("ViewScope"))
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMetricOverviewListResponse(AbstractModel):
+    r"""DescribeMetricOverviewList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetricList: <p>All domain Overview unified output parameters: KPI Card List, key string identification indicator, client parses by resource_type; for key allowlist, see platform.common.v2.MetricOverview annotation</p>
+        :type MetricList: list of MetricOverview
+        :param _TotalCount: <p>Total record count, equal to the length of MetricList, reserved only for list API consistency</p>
+        :type TotalCount: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._MetricList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def MetricList(self):
+        r"""<p>All domain Overview unified output parameters: KPI Card List, key string identification indicator, client parses by resource_type; for key allowlist, see platform.common.v2.MetricOverview annotation</p>
+        :rtype: list of MetricOverview
+        """
+        return self._MetricList
+
+    @MetricList.setter
+    def MetricList(self, MetricList):
+        self._MetricList = MetricList
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total record count, equal to the length of MetricList, reserved only for list API consistency</p>
+        :rtype: str
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MetricList") is not None:
+            self._MetricList = []
+            for item in params.get("MetricList"):
+                obj = MetricOverview()
+                obj._deserialize(item)
+                self._MetricList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeModelListRequest(AbstractModel):
     r"""DescribeModelList request structure.
 
@@ -19582,6 +21598,217 @@ class DescribeMsgRecordCategoryListResponse(AbstractModel):
                 obj = MsgRecordCategory()
                 obj._deserialize(item)
                 self._CategoryList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMsgRecordListRequest(AbstractModel):
+    r"""DescribeMsgRecordList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>Application ID</p>
+        :type AppId: str
+        :param _FilterList: <ul><li><strong>ChannelType</strong> : 0-all 2-experience page (Tencent Cloud) 3-web debugging page (Tencent Cloud) 4-experience page (phone number) 5-dialogue API connection 6-application evaluation 7-debug API 10000-WeChat service account 10001-WeChat Subscription Account 10002-WeCom app 10004-WeChat Customer Service 10005-WeChat mini program 10006-Tencent Yuanqi 10007-App Treasure 10009-WeCom intelligent bot 10014-WeCom intelligent bot 10011-LINE 10012-Telegram 10013-DingTalk chatbot 10016-Lark chatbot 30000-scheduled task 30001-trigger </li><li><strong>FeedbackType</strong> : feedback type, -1-all 0-not rated 1-like 2-dislike </li><li><strong>QueryType</strong> : retrieval type (take value as agreed by the platform), SessionId-sessionID Question-question Answer-reply Intent-intent User-user </li><li><strong>Query</strong> : filter criteria corresponding to QueryType </li><li><strong>CategoryId</strong> : category ID </li><li><strong>ReplyMethod</strong> : reply type 0-all reply types 1-reply to rejected questions 2-direct QA reply 3-review failure reply 4-knowledge polish reply 6-workflow reply 8-image understanding reply 9-search engine reply 10-large model direct reply 11-fallback response </li><li><strong>StartTime</strong> : start time, unix second-level timestamp </li><li><strong>EndTime</strong> : end time, unix second-level timestamp </li><li><strong>Cursor</strong> : cursor. For the previous page, take PrevCursor from the response; for the next page, take NextCursor from the response. </li><li><strong>Direction</strong> : direction. next: next page, prev: previous page</li><li><strong>CallResult</strong> : call result: 0-all / 1-success / 2-failure / 3-canceled by the user </li><li><strong>FailReason</strong> : failure reason 0-all 1-review failure 2-QPM limit reached 3-TPM limit reached 4-concurrency limit reached 5-system exception </li><li><strong>Intent</strong> : intent</li></ul>
+        :type FilterList: list of Filter
+        :param _PageNumber: <p>Page number, starting from 0. If not passed, it is processed as 0.</p>
+        :type PageNumber: int
+        :param _PageSize: <p>Number of items per page. Maximum value: 100. If not specified or set to 0, the default pagination size is used.</p>
+        :type PageSize: int
+        :param _Sort: <p>Sort condition. Supports sorting by CreateTime only</p>
+        :type Sort: :class:`tencentcloud.adp.v20260520.models.Sort`
+        """
+        self._AppId = None
+        self._FilterList = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Sort = None
+
+    @property
+    def AppId(self):
+        r"""<p>Application ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def FilterList(self):
+        r"""<ul><li><strong>ChannelType</strong> : 0-all 2-experience page (Tencent Cloud) 3-web debugging page (Tencent Cloud) 4-experience page (phone number) 5-dialogue API connection 6-application evaluation 7-debug API 10000-WeChat service account 10001-WeChat Subscription Account 10002-WeCom app 10004-WeChat Customer Service 10005-WeChat mini program 10006-Tencent Yuanqi 10007-App Treasure 10009-WeCom intelligent bot 10014-WeCom intelligent bot 10011-LINE 10012-Telegram 10013-DingTalk chatbot 10016-Lark chatbot 30000-scheduled task 30001-trigger </li><li><strong>FeedbackType</strong> : feedback type, -1-all 0-not rated 1-like 2-dislike </li><li><strong>QueryType</strong> : retrieval type (take value as agreed by the platform), SessionId-sessionID Question-question Answer-reply Intent-intent User-user </li><li><strong>Query</strong> : filter criteria corresponding to QueryType </li><li><strong>CategoryId</strong> : category ID </li><li><strong>ReplyMethod</strong> : reply type 0-all reply types 1-reply to rejected questions 2-direct QA reply 3-review failure reply 4-knowledge polish reply 6-workflow reply 8-image understanding reply 9-search engine reply 10-large model direct reply 11-fallback response </li><li><strong>StartTime</strong> : start time, unix second-level timestamp </li><li><strong>EndTime</strong> : end time, unix second-level timestamp </li><li><strong>Cursor</strong> : cursor. For the previous page, take PrevCursor from the response; for the next page, take NextCursor from the response. </li><li><strong>Direction</strong> : direction. next: next page, prev: previous page</li><li><strong>CallResult</strong> : call result: 0-all / 1-success / 2-failure / 3-canceled by the user </li><li><strong>FailReason</strong> : failure reason 0-all 1-review failure 2-QPM limit reached 3-TPM limit reached 4-concurrency limit reached 5-system exception </li><li><strong>Intent</strong> : intent</li></ul>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+    @property
+    def PageNumber(self):
+        r"""<p>Page number, starting from 0. If not passed, it is processed as 0.</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>Number of items per page. Maximum value: 100. If not specified or set to 0, the default pagination size is used.</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Sort(self):
+        r"""<p>Sort condition. Supports sorting by CreateTime only</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.Sort`
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Sort") is not None:
+            self._Sort = Sort()
+            self._Sort._deserialize(params.get("Sort"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMsgRecordListResponse(AbstractModel):
+    r"""DescribeMsgRecordList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HasMore: <p>Whether there are more pages</p>
+        :type HasMore: bool
+        :param _MsgRecordList: <p>Message record list</p>
+        :type MsgRecordList: list of MsgRecord
+        :param _NextCursor: <p>Next page cursor information.</p>
+        :type NextCursor: str
+        :param _PrevCursor: <p>Previous page cursor info.</p>
+        :type PrevCursor: str
+        :param _TotalCount: <p>Total record count that meets the conditions, used for frontend paginated display</p>
+        :type TotalCount: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._HasMore = None
+        self._MsgRecordList = None
+        self._NextCursor = None
+        self._PrevCursor = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def HasMore(self):
+        r"""<p>Whether there are more pages</p>
+        :rtype: bool
+        """
+        return self._HasMore
+
+    @HasMore.setter
+    def HasMore(self, HasMore):
+        self._HasMore = HasMore
+
+    @property
+    def MsgRecordList(self):
+        r"""<p>Message record list</p>
+        :rtype: list of MsgRecord
+        """
+        return self._MsgRecordList
+
+    @MsgRecordList.setter
+    def MsgRecordList(self, MsgRecordList):
+        self._MsgRecordList = MsgRecordList
+
+    @property
+    def NextCursor(self):
+        r"""<p>Next page cursor information.</p>
+        :rtype: str
+        """
+        return self._NextCursor
+
+    @NextCursor.setter
+    def NextCursor(self, NextCursor):
+        self._NextCursor = NextCursor
+
+    @property
+    def PrevCursor(self):
+        r"""<p>Previous page cursor info.</p>
+        :rtype: str
+        """
+        return self._PrevCursor
+
+    @PrevCursor.setter
+    def PrevCursor(self, PrevCursor):
+        self._PrevCursor = PrevCursor
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total record count that meets the conditions, used for frontend paginated display</p>
+        :rtype: str
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._HasMore = params.get("HasMore")
+        if params.get("MsgRecordList") is not None:
+            self._MsgRecordList = []
+            for item in params.get("MsgRecordList"):
+                obj = MsgRecord()
+                obj._deserialize(item)
+                self._MsgRecordList.append(obj)
+        self._NextCursor = params.get("NextCursor")
+        self._PrevCursor = params.get("PrevCursor")
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -20866,6 +23093,74 @@ class DescribeReleaseSummaryResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeResourceSummaryRequest(AbstractModel):
+    r"""DescribeResourceSummary request structure.
+
+    """
+
+
+class DescribeResourceSummaryResponse(AbstractModel):
+    r"""DescribeResourceSummary response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourcePackage: <p>Usage information of the billing package</p>
+        :type ResourcePackage: :class:`tencentcloud.adp.v20260520.models.ResourcePackageInfo`
+        :param _AddOnPackage: <p>Billing value-added package usage information</p>
+        :type AddOnPackage: :class:`tencentcloud.adp.v20260520.models.AddOnPackageInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ResourcePackage = None
+        self._AddOnPackage = None
+        self._RequestId = None
+
+    @property
+    def ResourcePackage(self):
+        r"""<p>Usage information of the billing package</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ResourcePackageInfo`
+        """
+        return self._ResourcePackage
+
+    @ResourcePackage.setter
+    def ResourcePackage(self, ResourcePackage):
+        self._ResourcePackage = ResourcePackage
+
+    @property
+    def AddOnPackage(self):
+        r"""<p>Billing value-added package usage information</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AddOnPackageInfo`
+        """
+        return self._AddOnPackage
+
+    @AddOnPackage.setter
+    def AddOnPackage(self, AddOnPackage):
+        self._AddOnPackage = AddOnPackage
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ResourcePackage") is not None:
+            self._ResourcePackage = ResourcePackageInfo()
+            self._ResourcePackage._deserialize(params.get("ResourcePackage"))
+        if params.get("AddOnPackage") is not None:
+            self._AddOnPackage = AddOnPackageInfo()
+            self._AddOnPackage._deserialize(params.get("AddOnPackage"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSkillCategoryListRequest(AbstractModel):
     r"""DescribeSkillCategoryList request structure.
 
@@ -20917,6 +23212,122 @@ class DescribeSkillCategoryListResponse(AbstractModel):
                 obj = SkillCategory()
                 obj._deserialize(item)
                 self._CategoryList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSkillDetailRequest(AbstractModel):
+    r"""DescribeSkillDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkillId: skillID
+        :type SkillId: str
+        :param _SpaceId: Space ID.
+        :type SpaceId: str
+        :param _VersionFilterList: version Filter criteria (multiple filters are in an AND relationship with each other, AND multiple Values of the same Filter are in an OR relationship): - Perspective: Perspective enumeration, single string value. The length of Values must be 1. Multiple Values are deemed as illegal. It only acts on the trimming of version_list returned in the details AND does not determine the visibility of the api itself. Default if not passed: USER (USER = USER Perspective, version_list returns only launch versions / EDITOR = EDITOR Perspective, version_list returns ALL liveness versions / ALL = full Perspective, same as EDITOR)
+        :type VersionFilterList: list of Filter
+        """
+        self._SkillId = None
+        self._SpaceId = None
+        self._VersionFilterList = None
+
+    @property
+    def SkillId(self):
+        r"""skillID
+        :rtype: str
+        """
+        return self._SkillId
+
+    @SkillId.setter
+    def SkillId(self, SkillId):
+        self._SkillId = SkillId
+
+    @property
+    def SpaceId(self):
+        r"""Space ID.
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def VersionFilterList(self):
+        r"""version Filter criteria (multiple filters are in an AND relationship with each other, AND multiple Values of the same Filter are in an OR relationship): - Perspective: Perspective enumeration, single string value. The length of Values must be 1. Multiple Values are deemed as illegal. It only acts on the trimming of version_list returned in the details AND does not determine the visibility of the api itself. Default if not passed: USER (USER = USER Perspective, version_list returns only launch versions / EDITOR = EDITOR Perspective, version_list returns ALL liveness versions / ALL = full Perspective, same as EDITOR)
+        :rtype: list of Filter
+        """
+        return self._VersionFilterList
+
+    @VersionFilterList.setter
+    def VersionFilterList(self, VersionFilterList):
+        self._VersionFilterList = VersionFilterList
+
+
+    def _deserialize(self, params):
+        self._SkillId = params.get("SkillId")
+        self._SpaceId = params.get("SpaceId")
+        if params.get("VersionFilterList") is not None:
+            self._VersionFilterList = []
+            for item in params.get("VersionFilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._VersionFilterList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSkillDetailResponse(AbstractModel):
+    r"""DescribeSkillDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkillDetail: skill details
+        :type SkillDetail: :class:`tencentcloud.adp.v20260520.models.SkillDetail`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._SkillDetail = None
+        self._RequestId = None
+
+    @property
+    def SkillDetail(self):
+        r"""skill details
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SkillDetail`
+        """
+        return self._SkillDetail
+
+    @SkillDetail.setter
+    def SkillDetail(self, SkillDetail):
+        self._SkillDetail = SkillDetail
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SkillDetail") is not None:
+            self._SkillDetail = SkillDetail()
+            self._SkillDetail._deserialize(params.get("SkillDetail"))
         self._RequestId = params.get("RequestId")
 
 
@@ -21427,6 +23838,189 @@ class DescribeSystemVariableListResponse(AbstractModel):
                 obj = SystemVariable()
                 obj._deserialize(item)
                 self._SystemVariableList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUsageDetailListRequest(AbstractModel):
+    r"""DescribeUsageDetailList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: <p>Resource type, limited to RESOURCE_TYPE_MODEL / RESOURCE_TYPE_PLUGIN</p><table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>RESOURCE_TYPE_MODEL</td><td>1</td><td>Model usage</td></tr><tr><td>RESOURCE_TYPE_PLUGIN</td><td>2</td><td>Plug-in usage (reserved, not currently supported)</td></tr><tr><td>RESOURCE_TYPE_PLATFORM</td><td>3</td><td>Platform feature usage (reserved, not currently supported)</td></tr><tr><td>RESOURCE_TYPE_MODEL_CONCURRENCY</td><td>4</td><td>Model concurrency limit exceeded (reserved, not currently supported)</td></tr><tr><td>RESOURCE_TYPE_KB_CAPACITY</td><td>5</td><td>Knowledge base capacity (reserved, not currently supported)</td></tr><tr><td>RESOURCE_TYPE_USAGE_SUMMARY</td><td>6</td><td>Usage summary (reserved, not currently supported)</td></tr><tr><td>RESOURCE_TYPE_RESOURCE_CONSUME</td><td>7</td><td>Resource consumption (billing details) (reserved, not currently supported)</td></tr></tbody></table>
+        :type ResourceType: int
+        :param _TimeRange: <p>Query time range (Unix seconds).</p>
+        :type TimeRange: :class:`tencentcloud.adp.v20260520.models.TimeRange`
+        :param _ViewScope: <p>View scope: corporate view / space view / application view</p>
+        :type ViewScope: :class:`tencentcloud.adp.v20260520.models.ViewScope`
+        :param _FilterList: <p>Extended Filter (resource_type=MODEL). Filter combination rule: multiple items use AND, AND values within the same item use OR. Supported names: MODEL_Name, user_id, space_id, resource_id/source_id, metric_source_type (metric_source_type_* OR integer), call_type (invocation type)</p>
+        :type FilterList: list of Filter
+        :param _PageNumber: <p>Page number, starting from 0.</p>
+        :type PageNumber: int
+        :param _PageSize: <p>Number of items per page. Maximum: 100.</p>
+        :type PageSize: int
+        """
+        self._ResourceType = None
+        self._TimeRange = None
+        self._ViewScope = None
+        self._FilterList = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def ResourceType(self):
+        r"""<p>Resource type, limited to RESOURCE_TYPE_MODEL / RESOURCE_TYPE_PLUGIN</p><table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>RESOURCE_TYPE_MODEL</td><td>1</td><td>Model usage</td></tr><tr><td>RESOURCE_TYPE_PLUGIN</td><td>2</td><td>Plug-in usage (reserved, not currently supported)</td></tr><tr><td>RESOURCE_TYPE_PLATFORM</td><td>3</td><td>Platform feature usage (reserved, not currently supported)</td></tr><tr><td>RESOURCE_TYPE_MODEL_CONCURRENCY</td><td>4</td><td>Model concurrency limit exceeded (reserved, not currently supported)</td></tr><tr><td>RESOURCE_TYPE_KB_CAPACITY</td><td>5</td><td>Knowledge base capacity (reserved, not currently supported)</td></tr><tr><td>RESOURCE_TYPE_USAGE_SUMMARY</td><td>6</td><td>Usage summary (reserved, not currently supported)</td></tr><tr><td>RESOURCE_TYPE_RESOURCE_CONSUME</td><td>7</td><td>Resource consumption (billing details) (reserved, not currently supported)</td></tr></tbody></table>
+        :rtype: int
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def TimeRange(self):
+        r"""<p>Query time range (Unix seconds).</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TimeRange`
+        """
+        return self._TimeRange
+
+    @TimeRange.setter
+    def TimeRange(self, TimeRange):
+        self._TimeRange = TimeRange
+
+    @property
+    def ViewScope(self):
+        r"""<p>View scope: corporate view / space view / application view</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ViewScope`
+        """
+        return self._ViewScope
+
+    @ViewScope.setter
+    def ViewScope(self, ViewScope):
+        self._ViewScope = ViewScope
+
+    @property
+    def FilterList(self):
+        r"""<p>Extended Filter (resource_type=MODEL). Filter combination rule: multiple items use AND, AND values within the same item use OR. Supported names: MODEL_Name, user_id, space_id, resource_id/source_id, metric_source_type (metric_source_type_* OR integer), call_type (invocation type)</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+    @property
+    def PageNumber(self):
+        r"""<p>Page number, starting from 0.</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>Number of items per page. Maximum: 100.</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        if params.get("TimeRange") is not None:
+            self._TimeRange = TimeRange()
+            self._TimeRange._deserialize(params.get("TimeRange"))
+        if params.get("ViewScope") is not None:
+            self._ViewScope = ViewScope()
+            self._ViewScope._deserialize(params.get("ViewScope"))
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUsageDetailListResponse(AbstractModel):
+    r"""DescribeUsageDetailList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>Total record count for frontend pagination</p>
+        :type TotalCount: str
+        :param _UsageDetailList: <p>Resource invocation time series details list</p>
+        :type UsageDetailList: list of UsageDetail
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._UsageDetailList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total record count for frontend pagination</p>
+        :rtype: str
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def UsageDetailList(self):
+        r"""<p>Resource invocation time series details list</p>
+        :rtype: list of UsageDetail
+        """
+        return self._UsageDetailList
+
+    @UsageDetailList.setter
+    def UsageDetailList(self, UsageDetailList):
+        self._UsageDetailList = UsageDetailList
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("UsageDetailList") is not None:
+            self._UsageDetailList = []
+            for item in params.get("UsageDetailList"):
+                obj = UsageDetail()
+                obj._deserialize(item)
+                self._UsageDetailList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -22079,6 +24673,170 @@ class DescribeWorkflowRunResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeWorkflowRunSummaryListRequest(AbstractModel):
+    r"""DescribeWorkflowRunSummaryList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>Application ID. For how to obtain it, see <a href="https://www.tencentcloud.com/document/product/1759/109469?from_cn_redirect=1#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">AppId</a></p>
+        :type AppId: str
+        :param _PageSize: <p>Number of items per page (value ranges from 1 to 200)</p>
+        :type PageSize: int
+        :param _PageNumber: <p>Page number (must be greater than 0)</p>
+        :type PageNumber: int
+        :param _Domain: <p>Execution environment. 1: Development domain, 2: Production domain -</p>
+        :type Domain: int
+        :param _FilterList: <p>Parameter filtering</p>
+        :type FilterList: list of Filter
+        """
+        self._AppId = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._Domain = None
+        self._FilterList = None
+
+    @property
+    def AppId(self):
+        r"""<p>Application ID. For how to obtain it, see <a href="https://www.tencentcloud.com/document/product/1759/109469?from_cn_redirect=1#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">AppId</a></p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def PageSize(self):
+        r"""<p>Number of items per page (value ranges from 1 to 200)</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        r"""<p>Page number (must be greater than 0)</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def Domain(self):
+        r"""<p>Execution environment. 1: Development domain, 2: Production domain -</p>
+        :rtype: int
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def FilterList(self):
+        r"""<p>Parameter filtering</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._Domain = params.get("Domain")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWorkflowRunSummaryListResponse(AbstractModel):
+    r"""DescribeWorkflowRunSummaryList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>Total.</p>
+        :type TotalCount: int
+        :param _WorkflowRunSummaryList: <p>Workflow operation instance list</p>
+        :type WorkflowRunSummaryList: list of WorkflowRunSummary
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._WorkflowRunSummaryList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total.</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def WorkflowRunSummaryList(self):
+        r"""<p>Workflow operation instance list</p>
+        :rtype: list of WorkflowRunSummary
+        """
+        return self._WorkflowRunSummaryList
+
+    @WorkflowRunSummaryList.setter
+    def WorkflowRunSummaryList(self, WorkflowRunSummaryList):
+        self._WorkflowRunSummaryList = WorkflowRunSummaryList
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("WorkflowRunSummaryList") is not None:
+            self._WorkflowRunSummaryList = []
+            for item in params.get("WorkflowRunSummaryList"):
+                obj = WorkflowRunSummary()
+                obj._deserialize(item)
+                self._WorkflowRunSummaryList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DialogCustomConfig(AbstractModel):
     r"""Custom configuration for the dialogue side (shared across all modes, with permission to modify configuration dynamically during a dialogue)
 
@@ -22313,6 +25071,934 @@ class DocExternalLink(AbstractModel):
         
 
 
+class DocImportSpec(AbstractModel):
+    r"""Document import specification (one-time input of non-persistent data)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: <p>File ID (file identifier obtained through the file management service, required)</p>
+        :type FileId: str
+        :param _CategoryId: <p>Ownership category ID</p>
+        :type CategoryId: str
+        :param _DeDuplicateStrategyList: <p>List of rules regarding repeated files</p>
+        :type DeDuplicateStrategyList: list of DeDuplicateStrategy
+        :param _EffectiveDomain: <p>Knowledge effective scope<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>Disabled</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>Development domain only</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>Release domain only</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>Global</td></tr></tbody></table></p>
+        :type EffectiveDomain: int
+        :param _ExpirationPolicy: <p>Expiration policy (validity time and behavior after the validity period expires)</p>
+        :type ExpirationPolicy: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        :param _ExternalLink: <p>External link</p>
+        :type ExternalLink: :class:`tencentcloud.adp.v20260520.models.DocExternalLink`
+        :param _LabelRefList: <p>Applicable scope (tag condition).</p>
+        :type LabelRefList: list of LabelRefIdentity
+        :param _ParseConfig: <p>Parsing configuration (split rules, content filtering, etc.)</p>
+        :type ParseConfig: :class:`tencentcloud.adp.v20260520.models.DocParseConfig`
+        :param _Switch: <p>Switch configuration</p>
+        :type Switch: :class:`tencentcloud.adp.v20260520.models.DocSwitch`
+        :param _UpdatePeriod: <p>Update cycle</p>
+        :type UpdatePeriod: :class:`tencentcloud.adp.v20260520.models.DocUpdatePeriod`
+        :param _UserAccessConfig: <p>User access configuration</p>
+        :type UserAccessConfig: :class:`tencentcloud.adp.v20260520.models.UserAccessConfig`
+        """
+        self._FileId = None
+        self._CategoryId = None
+        self._DeDuplicateStrategyList = None
+        self._EffectiveDomain = None
+        self._ExpirationPolicy = None
+        self._ExternalLink = None
+        self._LabelRefList = None
+        self._ParseConfig = None
+        self._Switch = None
+        self._UpdatePeriod = None
+        self._UserAccessConfig = None
+
+    @property
+    def FileId(self):
+        r"""<p>File ID (file identifier obtained through the file management service, required)</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def CategoryId(self):
+        r"""<p>Ownership category ID</p>
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def DeDuplicateStrategyList(self):
+        r"""<p>List of rules regarding repeated files</p>
+        :rtype: list of DeDuplicateStrategy
+        """
+        return self._DeDuplicateStrategyList
+
+    @DeDuplicateStrategyList.setter
+    def DeDuplicateStrategyList(self, DeDuplicateStrategyList):
+        self._DeDuplicateStrategyList = DeDuplicateStrategyList
+
+    @property
+    def EffectiveDomain(self):
+        r"""<p>Knowledge effective scope<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>Disabled</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>Development domain only</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>Release domain only</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>Global</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._EffectiveDomain
+
+    @EffectiveDomain.setter
+    def EffectiveDomain(self, EffectiveDomain):
+        self._EffectiveDomain = EffectiveDomain
+
+    @property
+    def ExpirationPolicy(self):
+        r"""<p>Expiration policy (validity time and behavior after the validity period expires)</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        """
+        return self._ExpirationPolicy
+
+    @ExpirationPolicy.setter
+    def ExpirationPolicy(self, ExpirationPolicy):
+        self._ExpirationPolicy = ExpirationPolicy
+
+    @property
+    def ExternalLink(self):
+        r"""<p>External link</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocExternalLink`
+        """
+        return self._ExternalLink
+
+    @ExternalLink.setter
+    def ExternalLink(self, ExternalLink):
+        self._ExternalLink = ExternalLink
+
+    @property
+    def LabelRefList(self):
+        r"""<p>Applicable scope (tag condition).</p>
+        :rtype: list of LabelRefIdentity
+        """
+        return self._LabelRefList
+
+    @LabelRefList.setter
+    def LabelRefList(self, LabelRefList):
+        self._LabelRefList = LabelRefList
+
+    @property
+    def ParseConfig(self):
+        r"""<p>Parsing configuration (split rules, content filtering, etc.)</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocParseConfig`
+        """
+        return self._ParseConfig
+
+    @ParseConfig.setter
+    def ParseConfig(self, ParseConfig):
+        self._ParseConfig = ParseConfig
+
+    @property
+    def Switch(self):
+        r"""<p>Switch configuration</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocSwitch`
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def UpdatePeriod(self):
+        r"""<p>Update cycle</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocUpdatePeriod`
+        """
+        return self._UpdatePeriod
+
+    @UpdatePeriod.setter
+    def UpdatePeriod(self, UpdatePeriod):
+        self._UpdatePeriod = UpdatePeriod
+
+    @property
+    def UserAccessConfig(self):
+        r"""<p>User access configuration</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.UserAccessConfig`
+        """
+        return self._UserAccessConfig
+
+    @UserAccessConfig.setter
+    def UserAccessConfig(self, UserAccessConfig):
+        self._UserAccessConfig = UserAccessConfig
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._CategoryId = params.get("CategoryId")
+        if params.get("DeDuplicateStrategyList") is not None:
+            self._DeDuplicateStrategyList = []
+            for item in params.get("DeDuplicateStrategyList"):
+                obj = DeDuplicateStrategy()
+                obj._deserialize(item)
+                self._DeDuplicateStrategyList.append(obj)
+        self._EffectiveDomain = params.get("EffectiveDomain")
+        if params.get("ExpirationPolicy") is not None:
+            self._ExpirationPolicy = ExpirationPolicy()
+            self._ExpirationPolicy._deserialize(params.get("ExpirationPolicy"))
+        if params.get("ExternalLink") is not None:
+            self._ExternalLink = DocExternalLink()
+            self._ExternalLink._deserialize(params.get("ExternalLink"))
+        if params.get("LabelRefList") is not None:
+            self._LabelRefList = []
+            for item in params.get("LabelRefList"):
+                obj = LabelRefIdentity()
+                obj._deserialize(item)
+                self._LabelRefList.append(obj)
+        if params.get("ParseConfig") is not None:
+            self._ParseConfig = DocParseConfig()
+            self._ParseConfig._deserialize(params.get("ParseConfig"))
+        if params.get("Switch") is not None:
+            self._Switch = DocSwitch()
+            self._Switch._deserialize(params.get("Switch"))
+        if params.get("UpdatePeriod") is not None:
+            self._UpdatePeriod = DocUpdatePeriod()
+            self._UpdatePeriod._deserialize(params.get("UpdatePeriod"))
+        if params.get("UserAccessConfig") is not None:
+            self._UserAccessConfig = UserAccessConfig()
+            self._UserAccessConfig._deserialize(params.get("UserAccessConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocLifecycle(AbstractModel):
+    r"""Document lifecycle information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CreateTime: <p>Creation time (Unix seconds).</p>
+        :type CreateTime: str
+        :param _ExpirationPolicy: <p>Expiration policy (validity time and behavior after the validity period expires)</p>
+        :type ExpirationPolicy: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        :param _Status: <p>Document status: 1=parsing, 2=parsing failure, 3=import failed, 4=under review, 5=review failure, 6=Learning, 7=learning failed, 8=import complete, 9=expired, 10=quota invalid, 11=quota recovering, 12=rename review failure, 13=rename appeal failure, 14=manual appeal in progress, 15=manual appeal failure<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>DOC_STATUS_UNKNOWN</td><td>0</td><td></td></tr><tr><td>DOC_STATUS_PARSING</td><td>1</td><td>Parsing</td></tr><tr><td>DOC_STATUS_PARSE_FAIL</td><td>2</td><td>Parsing failure</td></tr><tr><td>DOC_STATUS_IMPORT_FAIL</td><td>3</td><td>Import failed</td></tr><tr><td>DOC_STATUS_AUDITING</td><td>4</td><td>Under review</td></tr><tr><td>DOC_STATUS_AUDIT_FAIL</td><td>5</td><td>Review failure</td></tr><tr><td>DOC_STATUS_LEARNING</td><td>6</td><td>Learning</td></tr><tr><td>DOC_STATUS_LEARN_FAIL</td><td>7</td><td>Learning failed</td></tr><tr><td>DOC_STATUS_IMPORTED</td><td>8</td><td>Import complete</td></tr><tr><td>DOC_STATUS_EXPIRED</td><td>9</td><td>Expired</td></tr><tr><td>DOC_STATUS_QUOTA_INVALID</td><td>10</td><td>Quota invalid</td></tr><tr><td>DOC_STATUS_QUOTA_RECOVERING</td><td>11</td><td>Quota recovering</td></tr><tr><td>DOC_STATUS_RENAME_AUDIT_FAIL</td><td>12</td><td>Rename review failure</td></tr><tr><td>DOC_STATUS_RENAME_APPEAL_FAIL</td><td>13</td><td>Rename appeal failure</td></tr><tr><td>DOC_STATUS_MANUAL_APPEALING</td><td>14</td><td>Manual appeal in progress</td></tr><tr><td>DOC_STATUS_MANUAL_APPEAL_FAIL</td><td>15</td><td>Manual appeal failure</td></tr></tbody></table></p>
+        :type Status: int
+        :param _StatusDesc: <p>Status description</p>
+        :type StatusDesc: str
+        :param _StatusMessage: <p>Status additional information</p>
+        :type StatusMessage: str
+        :param _UpdateTime: <p>Update time (Unix seconds)</p>
+        :type UpdateTime: str
+        """
+        self._CreateTime = None
+        self._ExpirationPolicy = None
+        self._Status = None
+        self._StatusDesc = None
+        self._StatusMessage = None
+        self._UpdateTime = None
+
+    @property
+    def CreateTime(self):
+        r"""<p>Creation time (Unix seconds).</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpirationPolicy(self):
+        r"""<p>Expiration policy (validity time and behavior after the validity period expires)</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        """
+        return self._ExpirationPolicy
+
+    @ExpirationPolicy.setter
+    def ExpirationPolicy(self, ExpirationPolicy):
+        self._ExpirationPolicy = ExpirationPolicy
+
+    @property
+    def Status(self):
+        r"""<p>Document status: 1=parsing, 2=parsing failure, 3=import failed, 4=under review, 5=review failure, 6=Learning, 7=learning failed, 8=import complete, 9=expired, 10=quota invalid, 11=quota recovering, 12=rename review failure, 13=rename appeal failure, 14=manual appeal in progress, 15=manual appeal failure<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>DOC_STATUS_UNKNOWN</td><td>0</td><td></td></tr><tr><td>DOC_STATUS_PARSING</td><td>1</td><td>Parsing</td></tr><tr><td>DOC_STATUS_PARSE_FAIL</td><td>2</td><td>Parsing failure</td></tr><tr><td>DOC_STATUS_IMPORT_FAIL</td><td>3</td><td>Import failed</td></tr><tr><td>DOC_STATUS_AUDITING</td><td>4</td><td>Under review</td></tr><tr><td>DOC_STATUS_AUDIT_FAIL</td><td>5</td><td>Review failure</td></tr><tr><td>DOC_STATUS_LEARNING</td><td>6</td><td>Learning</td></tr><tr><td>DOC_STATUS_LEARN_FAIL</td><td>7</td><td>Learning failed</td></tr><tr><td>DOC_STATUS_IMPORTED</td><td>8</td><td>Import complete</td></tr><tr><td>DOC_STATUS_EXPIRED</td><td>9</td><td>Expired</td></tr><tr><td>DOC_STATUS_QUOTA_INVALID</td><td>10</td><td>Quota invalid</td></tr><tr><td>DOC_STATUS_QUOTA_RECOVERING</td><td>11</td><td>Quota recovering</td></tr><tr><td>DOC_STATUS_RENAME_AUDIT_FAIL</td><td>12</td><td>Rename review failure</td></tr><tr><td>DOC_STATUS_RENAME_APPEAL_FAIL</td><td>13</td><td>Rename appeal failure</td></tr><tr><td>DOC_STATUS_MANUAL_APPEALING</td><td>14</td><td>Manual appeal in progress</td></tr><tr><td>DOC_STATUS_MANUAL_APPEAL_FAIL</td><td>15</td><td>Manual appeal failure</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        r"""<p>Status description</p>
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def StatusMessage(self):
+        r"""<p>Status additional information</p>
+        :rtype: str
+        """
+        return self._StatusMessage
+
+    @StatusMessage.setter
+    def StatusMessage(self, StatusMessage):
+        self._StatusMessage = StatusMessage
+
+    @property
+    def UpdateTime(self):
+        r"""<p>Update time (Unix seconds)</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._CreateTime = params.get("CreateTime")
+        if params.get("ExpirationPolicy") is not None:
+            self._ExpirationPolicy = ExpirationPolicy()
+            self._ExpirationPolicy._deserialize(params.get("ExpirationPolicy"))
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._StatusMessage = params.get("StatusMessage")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocLink(AbstractModel):
+    r"""Document link
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosUrl: <p>COS link address, which can be used for preview and download</p>
+        :type CosUrl: str
+        :param _ExternalLink: <p>External link</p>
+        :type ExternalLink: :class:`tencentcloud.adp.v20260520.models.DocExternalLink`
+        """
+        self._CosUrl = None
+        self._ExternalLink = None
+
+    @property
+    def CosUrl(self):
+        r"""<p>COS link address, which can be used for preview and download</p>
+        :rtype: str
+        """
+        return self._CosUrl
+
+    @CosUrl.setter
+    def CosUrl(self, CosUrl):
+        self._CosUrl = CosUrl
+
+    @property
+    def ExternalLink(self):
+        r"""<p>External link</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocExternalLink`
+        """
+        return self._ExternalLink
+
+    @ExternalLink.setter
+    def ExternalLink(self, ExternalLink):
+        self._ExternalLink = ExternalLink
+
+
+    def _deserialize(self, params):
+        self._CosUrl = params.get("CosUrl")
+        if params.get("ExternalLink") is not None:
+            self._ExternalLink = DocExternalLink()
+            self._ExternalLink._deserialize(params.get("ExternalLink"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocMetadata(AbstractModel):
+    r"""Document metadata
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocCharCount: <p>Number of characters in the document</p>
+        :type DocCharCount: str
+        :param _FileName: <p>File name.</p>
+        :type FileName: str
+        :param _FileSize: <p>File size (byte)</p>
+        :type FileSize: str
+        :param _FileType: <p>File type/extension</p>
+        :type FileType: str
+        :param _RefFieldNameList: <p>List of metadata reference field names (used to display which categories and properties of a document are set as metadata)</p>
+        :type RefFieldNameList: list of str
+        :param _SourceDesc: <p>Source description.</p>
+        :type SourceDesc: str
+        :param _SourceType: <p>Document source type: 1=local upload, 2=webpage link, 3=COS integration, 4=import from external sources<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>DOC_SOURCE_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>DOC_SOURCE_TYPE_LOCAL</td><td>1</td><td>Local upload</td></tr><tr><td>DOC_SOURCE_TYPE_URL</td><td>2</td><td>Webpage link</td></tr><tr><td>DOC_SOURCE_TYPE_COS</td><td>3</td><td>COS integration</td></tr><tr><td>DOC_SOURCE_TYPE_IMPORT</td><td>4</td><td>Import from external sources</td></tr></tbody></table></p>
+        :type SourceType: int
+        """
+        self._DocCharCount = None
+        self._FileName = None
+        self._FileSize = None
+        self._FileType = None
+        self._RefFieldNameList = None
+        self._SourceDesc = None
+        self._SourceType = None
+
+    @property
+    def DocCharCount(self):
+        r"""<p>Number of characters in the document</p>
+        :rtype: str
+        """
+        return self._DocCharCount
+
+    @DocCharCount.setter
+    def DocCharCount(self, DocCharCount):
+        self._DocCharCount = DocCharCount
+
+    @property
+    def FileName(self):
+        r"""<p>File name.</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileSize(self):
+        r"""<p>File size (byte)</p>
+        :rtype: str
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def FileType(self):
+        r"""<p>File type/extension</p>
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def RefFieldNameList(self):
+        r"""<p>List of metadata reference field names (used to display which categories and properties of a document are set as metadata)</p>
+        :rtype: list of str
+        """
+        return self._RefFieldNameList
+
+    @RefFieldNameList.setter
+    def RefFieldNameList(self, RefFieldNameList):
+        self._RefFieldNameList = RefFieldNameList
+
+    @property
+    def SourceDesc(self):
+        r"""<p>Source description.</p>
+        :rtype: str
+        """
+        return self._SourceDesc
+
+    @SourceDesc.setter
+    def SourceDesc(self, SourceDesc):
+        self._SourceDesc = SourceDesc
+
+    @property
+    def SourceType(self):
+        r"""<p>Document source type: 1=local upload, 2=webpage link, 3=COS integration, 4=import from external sources<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>DOC_SOURCE_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>DOC_SOURCE_TYPE_LOCAL</td><td>1</td><td>Local upload</td></tr><tr><td>DOC_SOURCE_TYPE_URL</td><td>2</td><td>Webpage link</td></tr><tr><td>DOC_SOURCE_TYPE_COS</td><td>3</td><td>COS integration</td></tr><tr><td>DOC_SOURCE_TYPE_IMPORT</td><td>4</td><td>Import from external sources</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+
+    def _deserialize(self, params):
+        self._DocCharCount = params.get("DocCharCount")
+        self._FileName = params.get("FileName")
+        self._FileSize = params.get("FileSize")
+        self._FileType = params.get("FileType")
+        self._RefFieldNameList = params.get("RefFieldNameList")
+        self._SourceDesc = params.get("SourceDesc")
+        self._SourceType = params.get("SourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocModifyFields(AbstractModel):
+    r"""Collection of modifiable document fields (used in conjunction with update_mask)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryId: <p>Ownership category ID</p>
+        :type CategoryId: str
+        :param _EffectiveDomain: <p>Application scope<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>Disabled</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>Development domain only</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>Release domain only</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>Global</td></tr></tbody></table></p>
+        :type EffectiveDomain: int
+        :param _ExpirationPolicy: <p>Expiration policy (validity time and behavior after the validity period expires)</p>
+        :type ExpirationPolicy: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        :param _ExternalLink: <p>External link</p>
+        :type ExternalLink: :class:`tencentcloud.adp.v20260520.models.DocExternalLink`
+        :param _LabelRefList: <p>Tag list.</p>
+        :type LabelRefList: list of LabelRefIdentity
+        :param _Name: <p>Document name.</p>
+        :type Name: str
+        :param _ParseConfig: <p>Parsing configuration (split rules, content filtering, etc.)</p>
+        :type ParseConfig: :class:`tencentcloud.adp.v20260520.models.DocParseConfig`
+        :param _Switch: <p>Switch configuration</p>
+        :type Switch: :class:`tencentcloud.adp.v20260520.models.DocSwitch`
+        :param _UpdatePeriod: <p>Update cycle</p>
+        :type UpdatePeriod: :class:`tencentcloud.adp.v20260520.models.DocUpdatePeriod`
+        :param _UserAccessConfig: <p>User access configuration</p>
+        :type UserAccessConfig: :class:`tencentcloud.adp.v20260520.models.UserAccessConfig`
+        """
+        self._CategoryId = None
+        self._EffectiveDomain = None
+        self._ExpirationPolicy = None
+        self._ExternalLink = None
+        self._LabelRefList = None
+        self._Name = None
+        self._ParseConfig = None
+        self._Switch = None
+        self._UpdatePeriod = None
+        self._UserAccessConfig = None
+
+    @property
+    def CategoryId(self):
+        r"""<p>Ownership category ID</p>
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def EffectiveDomain(self):
+        r"""<p>Application scope<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>Disabled</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>Development domain only</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>Release domain only</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>Global</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._EffectiveDomain
+
+    @EffectiveDomain.setter
+    def EffectiveDomain(self, EffectiveDomain):
+        self._EffectiveDomain = EffectiveDomain
+
+    @property
+    def ExpirationPolicy(self):
+        r"""<p>Expiration policy (validity time and behavior after the validity period expires)</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        """
+        return self._ExpirationPolicy
+
+    @ExpirationPolicy.setter
+    def ExpirationPolicy(self, ExpirationPolicy):
+        self._ExpirationPolicy = ExpirationPolicy
+
+    @property
+    def ExternalLink(self):
+        r"""<p>External link</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocExternalLink`
+        """
+        return self._ExternalLink
+
+    @ExternalLink.setter
+    def ExternalLink(self, ExternalLink):
+        self._ExternalLink = ExternalLink
+
+    @property
+    def LabelRefList(self):
+        r"""<p>Tag list.</p>
+        :rtype: list of LabelRefIdentity
+        """
+        return self._LabelRefList
+
+    @LabelRefList.setter
+    def LabelRefList(self, LabelRefList):
+        self._LabelRefList = LabelRefList
+
+    @property
+    def Name(self):
+        r"""<p>Document name.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ParseConfig(self):
+        r"""<p>Parsing configuration (split rules, content filtering, etc.)</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocParseConfig`
+        """
+        return self._ParseConfig
+
+    @ParseConfig.setter
+    def ParseConfig(self, ParseConfig):
+        self._ParseConfig = ParseConfig
+
+    @property
+    def Switch(self):
+        r"""<p>Switch configuration</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocSwitch`
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def UpdatePeriod(self):
+        r"""<p>Update cycle</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocUpdatePeriod`
+        """
+        return self._UpdatePeriod
+
+    @UpdatePeriod.setter
+    def UpdatePeriod(self, UpdatePeriod):
+        self._UpdatePeriod = UpdatePeriod
+
+    @property
+    def UserAccessConfig(self):
+        r"""<p>User access configuration</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.UserAccessConfig`
+        """
+        return self._UserAccessConfig
+
+    @UserAccessConfig.setter
+    def UserAccessConfig(self, UserAccessConfig):
+        self._UserAccessConfig = UserAccessConfig
+
+
+    def _deserialize(self, params):
+        self._CategoryId = params.get("CategoryId")
+        self._EffectiveDomain = params.get("EffectiveDomain")
+        if params.get("ExpirationPolicy") is not None:
+            self._ExpirationPolicy = ExpirationPolicy()
+            self._ExpirationPolicy._deserialize(params.get("ExpirationPolicy"))
+        if params.get("ExternalLink") is not None:
+            self._ExternalLink = DocExternalLink()
+            self._ExternalLink._deserialize(params.get("ExternalLink"))
+        if params.get("LabelRefList") is not None:
+            self._LabelRefList = []
+            for item in params.get("LabelRefList"):
+                obj = LabelRefIdentity()
+                obj._deserialize(item)
+                self._LabelRefList.append(obj)
+        self._Name = params.get("Name")
+        if params.get("ParseConfig") is not None:
+            self._ParseConfig = DocParseConfig()
+            self._ParseConfig._deserialize(params.get("ParseConfig"))
+        if params.get("Switch") is not None:
+            self._Switch = DocSwitch()
+            self._Switch._deserialize(params.get("Switch"))
+        if params.get("UpdatePeriod") is not None:
+            self._UpdatePeriod = DocUpdatePeriod()
+            self._UpdatePeriod._deserialize(params.get("UpdatePeriod"))
+        if params.get("UserAccessConfig") is not None:
+            self._UserAccessConfig = UserAccessConfig()
+            self._UserAccessConfig._deserialize(params.get("UserAccessConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocOperator(AbstractModel):
+    r"""Document operator information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Modifier: <p>Modifier</p>
+        :type Modifier: :class:`tencentcloud.adp.v20260520.models.Operator`
+        :param _Permission: <p>Operation permission</p>
+        :type Permission: :class:`tencentcloud.adp.v20260520.models.DocPermission`
+        """
+        self._Modifier = None
+        self._Permission = None
+
+    @property
+    def Modifier(self):
+        r"""<p>Modifier</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.Operator`
+        """
+        return self._Modifier
+
+    @Modifier.setter
+    def Modifier(self, Modifier):
+        self._Modifier = Modifier
+
+    @property
+    def Permission(self):
+        r"""<p>Operation permission</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocPermission`
+        """
+        return self._Permission
+
+    @Permission.setter
+    def Permission(self, Permission):
+        self._Permission = Permission
+
+
+    def _deserialize(self, params):
+        if params.get("Modifier") is not None:
+            self._Modifier = Operator()
+            self._Modifier._deserialize(params.get("Modifier"))
+        if params.get("Permission") is not None:
+            self._Permission = DocPermission()
+            self._Permission._deserialize(params.get("Permission"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocParseConfig(AbstractModel):
+    r"""Document parsing configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContentFilter: <p>Content filtering configuration</p>
+        :type ContentFilter: :class:`tencentcloud.adp.v20260520.models.ContentFilter`
+        :param _SplitRule: <p>Split rule</p>
+        :type SplitRule: str
+        """
+        self._ContentFilter = None
+        self._SplitRule = None
+
+    @property
+    def ContentFilter(self):
+        r"""<p>Content filtering configuration</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ContentFilter`
+        """
+        return self._ContentFilter
+
+    @ContentFilter.setter
+    def ContentFilter(self, ContentFilter):
+        self._ContentFilter = ContentFilter
+
+    @property
+    def SplitRule(self):
+        r"""<p>Split rule</p>
+        :rtype: str
+        """
+        return self._SplitRule
+
+    @SplitRule.setter
+    def SplitRule(self, SplitRule):
+        self._SplitRule = SplitRule
+
+
+    def _deserialize(self, params):
+        if params.get("ContentFilter") is not None:
+            self._ContentFilter = ContentFilter()
+            self._ContentFilter._deserialize(params.get("ContentFilter"))
+        self._SplitRule = params.get("SplitRule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocPermission(AbstractModel):
+    r"""Document operation permission information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CanDelete: <p>Whether it is deletable.</p>
+        :type CanDelete: bool
+        :param _CanEdit: <p>Whether it is editable</p>
+        :type CanEdit: bool
+        :param _CanRestart: <p>Whether it can be regenerated</p>
+        :type CanRestart: bool
+        :param _CanRetry: <p>Whether retry is allowed</p>
+        :type CanRetry: bool
+        """
+        self._CanDelete = None
+        self._CanEdit = None
+        self._CanRestart = None
+        self._CanRetry = None
+
+    @property
+    def CanDelete(self):
+        r"""<p>Whether it is deletable.</p>
+        :rtype: bool
+        """
+        return self._CanDelete
+
+    @CanDelete.setter
+    def CanDelete(self, CanDelete):
+        self._CanDelete = CanDelete
+
+    @property
+    def CanEdit(self):
+        r"""<p>Whether it is editable</p>
+        :rtype: bool
+        """
+        return self._CanEdit
+
+    @CanEdit.setter
+    def CanEdit(self, CanEdit):
+        self._CanEdit = CanEdit
+
+    @property
+    def CanRestart(self):
+        r"""<p>Whether it can be regenerated</p>
+        :rtype: bool
+        """
+        return self._CanRestart
+
+    @CanRestart.setter
+    def CanRestart(self, CanRestart):
+        self._CanRestart = CanRestart
+
+    @property
+    def CanRetry(self):
+        r"""<p>Whether retry is allowed</p>
+        :rtype: bool
+        """
+        return self._CanRetry
+
+    @CanRetry.setter
+    def CanRetry(self, CanRetry):
+        self._CanRetry = CanRetry
+
+
+    def _deserialize(self, params):
+        self._CanDelete = params.get("CanDelete")
+        self._CanEdit = params.get("CanEdit")
+        self._CanRestart = params.get("CanRestart")
+        self._CanRetry = params.get("CanRetry")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocQuery(AbstractModel):
+    r"""Documentation query condition
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Query: <p>Query keyword (name fuzzy search)</p>
+        :type Query: str
+        :param _QueryScopeList: <p>Query scope (fields that the query applies to): 1=file name, 2=tag or tag value; multiple selections supported, invalid by default</p>
+        :type QueryScopeList: list of int
+        """
+        self._Query = None
+        self._QueryScopeList = None
+
+    @property
+    def Query(self):
+        r"""<p>Query keyword (name fuzzy search)</p>
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def QueryScopeList(self):
+        r"""<p>Query scope (fields that the query applies to): 1=file name, 2=tag or tag value; multiple selections supported, invalid by default</p>
+        :rtype: list of int
+        """
+        return self._QueryScopeList
+
+    @QueryScopeList.setter
+    def QueryScopeList(self, QueryScopeList):
+        self._QueryScopeList = QueryScopeList
+
+
+    def _deserialize(self, params):
+        self._Query = params.get("Query")
+        self._QueryScopeList = params.get("QueryScopeList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DocRetrievalConfig(AbstractModel):
     r"""Document search configuration
 
@@ -22379,6 +26065,144 @@ class DocRetrievalConfig(AbstractModel):
         
 
 
+class DocSummary(AbstractModel):
+    r"""Document digest information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryPath: <p>Category path (including category ID, category ID path from the root node, and category name path)</p>
+        :type CategoryPath: :class:`tencentcloud.adp.v20260520.models.CategoryPath`
+        :param _DocId: <p>Document ID</p>
+        :type DocId: str
+        :param _KnowledgeScope: <p>Knowledge effective scope (aggregate application scope + tag condition)</p>
+        :type KnowledgeScope: :class:`tencentcloud.adp.v20260520.models.KnowledgeScope`
+        :param _Lifecycle: <p>Lifecycle information.</p>
+        :type Lifecycle: :class:`tencentcloud.adp.v20260520.models.DocLifecycle`
+        :param _Metadata: <p>Meta information.</p>
+        :type Metadata: :class:`tencentcloud.adp.v20260520.models.DocMetadata`
+        :param _OperatorInfo: <p>Operator information (aggregate modifier + operation permission)</p>
+        :type OperatorInfo: :class:`tencentcloud.adp.v20260520.models.DocOperator`
+        :param _TaskStatus: <p>Task status information</p>
+        :type TaskStatus: :class:`tencentcloud.adp.v20260520.models.DocTaskStatus`
+        """
+        self._CategoryPath = None
+        self._DocId = None
+        self._KnowledgeScope = None
+        self._Lifecycle = None
+        self._Metadata = None
+        self._OperatorInfo = None
+        self._TaskStatus = None
+
+    @property
+    def CategoryPath(self):
+        r"""<p>Category path (including category ID, category ID path from the root node, and category name path)</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CategoryPath`
+        """
+        return self._CategoryPath
+
+    @CategoryPath.setter
+    def CategoryPath(self, CategoryPath):
+        self._CategoryPath = CategoryPath
+
+    @property
+    def DocId(self):
+        r"""<p>Document ID</p>
+        :rtype: str
+        """
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+    @property
+    def KnowledgeScope(self):
+        r"""<p>Knowledge effective scope (aggregate application scope + tag condition)</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.KnowledgeScope`
+        """
+        return self._KnowledgeScope
+
+    @KnowledgeScope.setter
+    def KnowledgeScope(self, KnowledgeScope):
+        self._KnowledgeScope = KnowledgeScope
+
+    @property
+    def Lifecycle(self):
+        r"""<p>Lifecycle information.</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocLifecycle`
+        """
+        return self._Lifecycle
+
+    @Lifecycle.setter
+    def Lifecycle(self, Lifecycle):
+        self._Lifecycle = Lifecycle
+
+    @property
+    def Metadata(self):
+        r"""<p>Meta information.</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocMetadata`
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+    @property
+    def OperatorInfo(self):
+        r"""<p>Operator information (aggregate modifier + operation permission)</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocOperator`
+        """
+        return self._OperatorInfo
+
+    @OperatorInfo.setter
+    def OperatorInfo(self, OperatorInfo):
+        self._OperatorInfo = OperatorInfo
+
+    @property
+    def TaskStatus(self):
+        r"""<p>Task status information</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocTaskStatus`
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+
+    def _deserialize(self, params):
+        if params.get("CategoryPath") is not None:
+            self._CategoryPath = CategoryPath()
+            self._CategoryPath._deserialize(params.get("CategoryPath"))
+        self._DocId = params.get("DocId")
+        if params.get("KnowledgeScope") is not None:
+            self._KnowledgeScope = KnowledgeScope()
+            self._KnowledgeScope._deserialize(params.get("KnowledgeScope"))
+        if params.get("Lifecycle") is not None:
+            self._Lifecycle = DocLifecycle()
+            self._Lifecycle._deserialize(params.get("Lifecycle"))
+        if params.get("Metadata") is not None:
+            self._Metadata = DocMetadata()
+            self._Metadata._deserialize(params.get("Metadata"))
+        if params.get("OperatorInfo") is not None:
+            self._OperatorInfo = DocOperator()
+            self._OperatorInfo._deserialize(params.get("OperatorInfo"))
+        if params.get("TaskStatus") is not None:
+            self._TaskStatus = DocTaskStatus()
+            self._TaskStatus._deserialize(params.get("TaskStatus"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DocSwitch(AbstractModel):
     r"""Document switch configuration
 
@@ -22420,6 +26244,108 @@ class DocSwitch(AbstractModel):
     def _deserialize(self, params):
         self._DownloadEnabled = params.get("DownloadEnabled")
         self._ReferEnabled = params.get("ReferEnabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocTaskStatus(AbstractModel):
+    r"""Document task status information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CompletedTaskTypeList: <p>List of completed historical task types</p>
+        :type CompletedTaskTypeList: list of int
+        :param _OngoingTaskTypeList: <p>List of supported task types in progress</p>
+        :type OngoingTaskTypeList: list of int
+        """
+        self._CompletedTaskTypeList = None
+        self._OngoingTaskTypeList = None
+
+    @property
+    def CompletedTaskTypeList(self):
+        r"""<p>List of completed historical task types</p>
+        :rtype: list of int
+        """
+        return self._CompletedTaskTypeList
+
+    @CompletedTaskTypeList.setter
+    def CompletedTaskTypeList(self, CompletedTaskTypeList):
+        self._CompletedTaskTypeList = CompletedTaskTypeList
+
+    @property
+    def OngoingTaskTypeList(self):
+        r"""<p>List of supported task types in progress</p>
+        :rtype: list of int
+        """
+        return self._OngoingTaskTypeList
+
+    @OngoingTaskTypeList.setter
+    def OngoingTaskTypeList(self, OngoingTaskTypeList):
+        self._OngoingTaskTypeList = OngoingTaskTypeList
+
+
+    def _deserialize(self, params):
+        self._CompletedTaskTypeList = params.get("CompletedTaskTypeList")
+        self._OngoingTaskTypeList = params.get("OngoingTaskTypeList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocUpdatePeriod(AbstractModel):
+    r"""Document update cycle configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>Whether periodic update is enabled</p>
+        :type Enabled: bool
+        :param _PeriodHour: <p>Update interval (hr)</p>
+        :type PeriodHour: int
+        """
+        self._Enabled = None
+        self._PeriodHour = None
+
+    @property
+    def Enabled(self):
+        r"""<p>Whether periodic update is enabled</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def PeriodHour(self):
+        r"""<p>Update interval (hr)</p>
+        :rtype: int
+        """
+        return self._PeriodHour
+
+    @PeriodHour.setter
+    def PeriodHour(self, PeriodHour):
+        self._PeriodHour = PeriodHour
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._PeriodHour = params.get("PeriodHour")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22930,6 +26856,164 @@ class ExportQAResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ExportTaskId = params.get("ExportTaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class FavoritePluginRequest(AbstractModel):
+    r"""FavoritePlugin request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PluginId: <p>Plugin_id</p>
+        :type PluginId: str
+        :param _SpaceId: <p>Current workspace id</p>
+        :type SpaceId: str
+        """
+        self._PluginId = None
+        self._SpaceId = None
+
+    @property
+    def PluginId(self):
+        r"""<p>Plugin_id</p>
+        :rtype: str
+        """
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def SpaceId(self):
+        r"""<p>Current workspace id</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+
+    def _deserialize(self, params):
+        self._PluginId = params.get("PluginId")
+        self._SpaceId = params.get("SpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FavoritePluginResponse(AbstractModel):
+    r"""FavoritePlugin response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class FavoriteSkillRequest(AbstractModel):
+    r"""FavoriteSkill request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkillId: <p>SkillId</p>
+        :type SkillId: str
+        :param _SpaceId: <p>Workspace ID</p>
+        :type SpaceId: str
+        """
+        self._SkillId = None
+        self._SpaceId = None
+
+    @property
+    def SkillId(self):
+        r"""<p>SkillId</p>
+        :rtype: str
+        """
+        return self._SkillId
+
+    @SkillId.setter
+    def SkillId(self, SkillId):
+        self._SkillId = SkillId
+
+    @property
+    def SpaceId(self):
+        r"""<p>Workspace ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+
+    def _deserialize(self, params):
+        self._SkillId = params.get("SkillId")
+        self._SpaceId = params.get("SpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FavoriteSkillResponse(AbstractModel):
+    r"""FavoriteSkill response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -23498,6 +27582,110 @@ class Identity(AbstractModel):
         
 
 
+class ImportDocListRequest(AbstractModel):
+    r"""ImportDocList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocList: <p>List of documents to be imported (quantity: 1-20)</p>
+        :type DocList: list of DocImportSpec
+        :param _KbId: <p>Knowledge base ID</p>
+        :type KbId: str
+        """
+        self._DocList = None
+        self._KbId = None
+
+    @property
+    def DocList(self):
+        r"""<p>List of documents to be imported (quantity: 1-20)</p>
+        :rtype: list of DocImportSpec
+        """
+        return self._DocList
+
+    @DocList.setter
+    def DocList(self, DocList):
+        self._DocList = DocList
+
+    @property
+    def KbId(self):
+        r"""<p>Knowledge base ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+
+    def _deserialize(self, params):
+        if params.get("DocList") is not None:
+            self._DocList = []
+            for item in params.get("DocList"):
+                obj = DocImportSpec()
+                obj._deserialize(item)
+                self._DocList.append(obj)
+        self._KbId = params.get("KbId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImportDocListResponse(AbstractModel):
+    r"""ImportDocList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultList: <p>Batch import result.</p>
+        :type ResultList: list of OperationResult
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ResultList = None
+        self._RequestId = None
+
+    @property
+    def ResultList(self):
+        r"""<p>Batch import result.</p>
+        :rtype: list of OperationResult
+        """
+        return self._ResultList
+
+    @ResultList.setter
+    def ResultList(self, ResultList):
+        self._ResultList = ResultList
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ResultList") is not None:
+            self._ResultList = []
+            for item in params.get("ResultList"):
+                obj = OperationResult()
+                obj._deserialize(item)
+                self._ResultList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class InputBoxConfig(AbstractModel):
     r"""Input box configuration
 
@@ -23651,6 +27839,72 @@ class IntervalSchedule(AbstractModel):
         self._StartAt = params.get("StartAt")
         self._Unit = params.get("Unit")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KBCapacity(AbstractModel):
+    r"""Knowledge base capacity information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaxCharSize: <p>Maximum number of characters</p>
+        :type MaxCharSize: str
+        :param _OverCharSize: <p>Number of excess characters</p>
+        :type OverCharSize: str
+        :param _UsedCharSize: <p>Used number of characters</p>
+        :type UsedCharSize: str
+        """
+        self._MaxCharSize = None
+        self._OverCharSize = None
+        self._UsedCharSize = None
+
+    @property
+    def MaxCharSize(self):
+        r"""<p>Maximum number of characters</p>
+        :rtype: str
+        """
+        return self._MaxCharSize
+
+    @MaxCharSize.setter
+    def MaxCharSize(self, MaxCharSize):
+        self._MaxCharSize = MaxCharSize
+
+    @property
+    def OverCharSize(self):
+        r"""<p>Number of excess characters</p>
+        :rtype: str
+        """
+        return self._OverCharSize
+
+    @OverCharSize.setter
+    def OverCharSize(self, OverCharSize):
+        self._OverCharSize = OverCharSize
+
+    @property
+    def UsedCharSize(self):
+        r"""<p>Used number of characters</p>
+        :rtype: str
+        """
+        return self._UsedCharSize
+
+    @UsedCharSize.setter
+    def UsedCharSize(self, UsedCharSize):
+        self._UsedCharSize = UsedCharSize
+
+
+    def _deserialize(self, params):
+        self._MaxCharSize = params.get("MaxCharSize")
+        self._OverCharSize = params.get("OverCharSize")
+        self._UsedCharSize = params.get("UsedCharSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23926,6 +28180,87 @@ class KBModifyExtendFields(AbstractModel):
         
 
 
+class KBPermission(AbstractModel):
+    r"""Knowledge base operation permission information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CanDelete: <p>Whether it is deletable.</p>
+        :type CanDelete: bool
+        :param _CanEdit: <p>Whether it is editable</p>
+        :type CanEdit: bool
+        :param _CanShare: <p>Whether or not it can be shared</p>
+        :type CanShare: bool
+        :param _CanView: <p>Whether it is viewable</p>
+        :type CanView: bool
+        """
+        self._CanDelete = None
+        self._CanEdit = None
+        self._CanShare = None
+        self._CanView = None
+
+    @property
+    def CanDelete(self):
+        r"""<p>Whether it is deletable.</p>
+        :rtype: bool
+        """
+        return self._CanDelete
+
+    @CanDelete.setter
+    def CanDelete(self, CanDelete):
+        self._CanDelete = CanDelete
+
+    @property
+    def CanEdit(self):
+        r"""<p>Whether it is editable</p>
+        :rtype: bool
+        """
+        return self._CanEdit
+
+    @CanEdit.setter
+    def CanEdit(self, CanEdit):
+        self._CanEdit = CanEdit
+
+    @property
+    def CanShare(self):
+        r"""<p>Whether or not it can be shared</p>
+        :rtype: bool
+        """
+        return self._CanShare
+
+    @CanShare.setter
+    def CanShare(self, CanShare):
+        self._CanShare = CanShare
+
+    @property
+    def CanView(self):
+        r"""<p>Whether it is viewable</p>
+        :rtype: bool
+        """
+        return self._CanView
+
+    @CanView.setter
+    def CanView(self, CanView):
+        self._CanView = CanView
+
+
+    def _deserialize(self, params):
+        self._CanDelete = params.get("CanDelete")
+        self._CanEdit = params.get("CanEdit")
+        self._CanShare = params.get("CanShare")
+        self._CanView = params.get("CanView")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KBRetrievalConfig(AbstractModel):
     r"""Search configuration of each knowledge base
 
@@ -24096,6 +28431,145 @@ class KBRetrievalConfig(AbstractModel):
         
 
 
+class KBShareStatus(AbstractModel):
+    r"""Sub-status information of the knowledge base
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApprovalId: <p>Approval Id.</p>
+        :type ApprovalId: str
+        :param _SubStatusList: <p>Approval/shared state: 1=PENDING Pending Approval, 2=REJECTED rejected, 3=APPROVED approved, 4=CANCELLED canceled</p>
+        :type SubStatusList: list of int
+        """
+        self._ApprovalId = None
+        self._SubStatusList = None
+
+    @property
+    def ApprovalId(self):
+        r"""<p>Approval Id.</p>
+        :rtype: str
+        """
+        return self._ApprovalId
+
+    @ApprovalId.setter
+    def ApprovalId(self, ApprovalId):
+        self._ApprovalId = ApprovalId
+
+    @property
+    def SubStatusList(self):
+        r"""<p>Approval/shared state: 1=PENDING Pending Approval, 2=REJECTED rejected, 3=APPROVED approved, 4=CANCELLED canceled</p>
+        :rtype: list of int
+        """
+        return self._SubStatusList
+
+    @SubStatusList.setter
+    def SubStatusList(self, SubStatusList):
+        self._SubStatusList = SubStatusList
+
+
+    def _deserialize(self, params):
+        self._ApprovalId = params.get("ApprovalId")
+        self._SubStatusList = params.get("SubStatusList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KBSpaceShare(AbstractModel):
+    r"""Knowledge base space share information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsSpaceShared: <p>Whether it has been referenced by other spaces</p>
+        :type IsSpaceShared: bool
+        :param _SharedSpaceList: <p>Referenced spatial information.</p>
+        :type SharedSpaceList: list of Identity
+        :param _SubStatus: <p>Shared state</p>
+        :type SubStatus: :class:`tencentcloud.adp.v20260520.models.KBShareStatus`
+        :param _Enable: <p>Whether operation is allowed</p>
+        :type Enable: bool
+        """
+        self._IsSpaceShared = None
+        self._SharedSpaceList = None
+        self._SubStatus = None
+        self._Enable = None
+
+    @property
+    def IsSpaceShared(self):
+        r"""<p>Whether it has been referenced by other spaces</p>
+        :rtype: bool
+        """
+        return self._IsSpaceShared
+
+    @IsSpaceShared.setter
+    def IsSpaceShared(self, IsSpaceShared):
+        self._IsSpaceShared = IsSpaceShared
+
+    @property
+    def SharedSpaceList(self):
+        r"""<p>Referenced spatial information.</p>
+        :rtype: list of Identity
+        """
+        return self._SharedSpaceList
+
+    @SharedSpaceList.setter
+    def SharedSpaceList(self, SharedSpaceList):
+        self._SharedSpaceList = SharedSpaceList
+
+    @property
+    def SubStatus(self):
+        r"""<p>Shared state</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.KBShareStatus`
+        """
+        return self._SubStatus
+
+    @SubStatus.setter
+    def SubStatus(self, SubStatus):
+        self._SubStatus = SubStatus
+
+    @property
+    def Enable(self):
+        r"""<p>Whether operation is allowed</p>
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        self._IsSpaceShared = params.get("IsSpaceShared")
+        if params.get("SharedSpaceList") is not None:
+            self._SharedSpaceList = []
+            for item in params.get("SharedSpaceList"):
+                obj = Identity()
+                obj._deserialize(item)
+                self._SharedSpaceList.append(obj)
+        if params.get("SubStatus") is not None:
+            self._SubStatus = KBShareStatus()
+            self._SubStatus._deserialize(params.get("SubStatus"))
+        self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KBSpec(AbstractModel):
     r"""Collection of writable attributes of the knowledge base (used in conjunction with update_mask)
 
@@ -24186,6 +28660,265 @@ class KBSpec(AbstractModel):
             self._ModelConfig._deserialize(params.get("ModelConfig"))
         self._Name = params.get("Name")
         self._OwnerId = params.get("OwnerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KBSummary(AbstractModel):
+    r"""Digest information of the knowledge base
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppList: <p>List of associated applications. Returned only for shared knowledge base.</p>
+        :type AppList: list of Identity
+        :param _CreateTime: <p>Creation time (Unix seconds).</p>
+        :type CreateTime: str
+        :param _Creator: <p>Creator</p>
+        :type Creator: :class:`tencentcloud.adp.v20260520.models.Operator`
+        :param _Description: <p>Description.</p>
+        :type Description: str
+        :param _DocCount: <p>Number of documents</p>
+        :type DocCount: int
+        :param _IsExceeded: <p>Whether it is excessive</p>
+        :type IsExceeded: bool
+        :param _KbId: <p>Knowledge base ID</p>
+        :type KbId: str
+        :param _KbType: <p>Type: 1=default knowledge base, 2=shared knowledge base<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>KB_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KB_TYPE_DEFAULT</td><td>1</td><td>Default knowledge base</td></tr><tr><td>KB_TYPE_SHARED</td><td>2</td><td>Shared knowledge base</td></tr></tbody></table></p>
+        :type KbType: int
+        :param _LatestOperator: <p>Last operator. Returned only for shared knowledge bases.</p>
+        :type LatestOperator: :class:`tencentcloud.adp.v20260520.models.Operator`
+        :param _Name: <p>Knowledge base name.</p>
+        :type Name: str
+        :param _Permission: <p>Operation permission.</p>
+        :type Permission: :class:`tencentcloud.adp.v20260520.models.KBPermission`
+        :param _ProcessingFlagList: <p>List of in-processing statuses</p>
+        :type ProcessingFlagList: list of int
+        :param _SharedSubType: <p>Share sub-type: 1=ordinary, 2=wechat official account<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>SHARED_KB_SUB_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>SHARED_KB_SUB_TYPE_NORMAL</td><td>1</td><td>Ordinary</td></tr><tr><td>SHARED_KB_SUB_TYPE_PUBLIC_ACCOUNT</td><td>2</td><td>WeChat official account</td></tr></tbody></table></p>
+        :type SharedSubType: int
+        :param _UpdateTime: <p>Update time (Unix seconds)</p>
+        :type UpdateTime: str
+        :param _SpaceShare: <p>Knowledge base space share information</p>
+        :type SpaceShare: :class:`tencentcloud.adp.v20260520.models.KBSpaceShare`
+        """
+        self._AppList = None
+        self._CreateTime = None
+        self._Creator = None
+        self._Description = None
+        self._DocCount = None
+        self._IsExceeded = None
+        self._KbId = None
+        self._KbType = None
+        self._LatestOperator = None
+        self._Name = None
+        self._Permission = None
+        self._ProcessingFlagList = None
+        self._SharedSubType = None
+        self._UpdateTime = None
+        self._SpaceShare = None
+
+    @property
+    def AppList(self):
+        r"""<p>List of associated applications. Returned only for shared knowledge base.</p>
+        :rtype: list of Identity
+        """
+        return self._AppList
+
+    @AppList.setter
+    def AppList(self, AppList):
+        self._AppList = AppList
+
+    @property
+    def CreateTime(self):
+        r"""<p>Creation time (Unix seconds).</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Creator(self):
+        r"""<p>Creator</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.Operator`
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def Description(self):
+        r"""<p>Description.</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def DocCount(self):
+        r"""<p>Number of documents</p>
+        :rtype: int
+        """
+        return self._DocCount
+
+    @DocCount.setter
+    def DocCount(self, DocCount):
+        self._DocCount = DocCount
+
+    @property
+    def IsExceeded(self):
+        r"""<p>Whether it is excessive</p>
+        :rtype: bool
+        """
+        return self._IsExceeded
+
+    @IsExceeded.setter
+    def IsExceeded(self, IsExceeded):
+        self._IsExceeded = IsExceeded
+
+    @property
+    def KbId(self):
+        r"""<p>Knowledge base ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def KbType(self):
+        r"""<p>Type: 1=default knowledge base, 2=shared knowledge base<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>KB_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KB_TYPE_DEFAULT</td><td>1</td><td>Default knowledge base</td></tr><tr><td>KB_TYPE_SHARED</td><td>2</td><td>Shared knowledge base</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._KbType
+
+    @KbType.setter
+    def KbType(self, KbType):
+        self._KbType = KbType
+
+    @property
+    def LatestOperator(self):
+        r"""<p>Last operator. Returned only for shared knowledge bases.</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.Operator`
+        """
+        return self._LatestOperator
+
+    @LatestOperator.setter
+    def LatestOperator(self, LatestOperator):
+        self._LatestOperator = LatestOperator
+
+    @property
+    def Name(self):
+        r"""<p>Knowledge base name.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Permission(self):
+        r"""<p>Operation permission.</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.KBPermission`
+        """
+        return self._Permission
+
+    @Permission.setter
+    def Permission(self, Permission):
+        self._Permission = Permission
+
+    @property
+    def ProcessingFlagList(self):
+        r"""<p>List of in-processing statuses</p>
+        :rtype: list of int
+        """
+        return self._ProcessingFlagList
+
+    @ProcessingFlagList.setter
+    def ProcessingFlagList(self, ProcessingFlagList):
+        self._ProcessingFlagList = ProcessingFlagList
+
+    @property
+    def SharedSubType(self):
+        r"""<p>Share sub-type: 1=ordinary, 2=wechat official account<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>SHARED_KB_SUB_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>SHARED_KB_SUB_TYPE_NORMAL</td><td>1</td><td>Ordinary</td></tr><tr><td>SHARED_KB_SUB_TYPE_PUBLIC_ACCOUNT</td><td>2</td><td>WeChat official account</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._SharedSubType
+
+    @SharedSubType.setter
+    def SharedSubType(self, SharedSubType):
+        self._SharedSubType = SharedSubType
+
+    @property
+    def UpdateTime(self):
+        r"""<p>Update time (Unix seconds)</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def SpaceShare(self):
+        r"""<p>Knowledge base space share information</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.KBSpaceShare`
+        """
+        return self._SpaceShare
+
+    @SpaceShare.setter
+    def SpaceShare(self, SpaceShare):
+        self._SpaceShare = SpaceShare
+
+
+    def _deserialize(self, params):
+        if params.get("AppList") is not None:
+            self._AppList = []
+            for item in params.get("AppList"):
+                obj = Identity()
+                obj._deserialize(item)
+                self._AppList.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        if params.get("Creator") is not None:
+            self._Creator = Operator()
+            self._Creator._deserialize(params.get("Creator"))
+        self._Description = params.get("Description")
+        self._DocCount = params.get("DocCount")
+        self._IsExceeded = params.get("IsExceeded")
+        self._KbId = params.get("KbId")
+        self._KbType = params.get("KbType")
+        if params.get("LatestOperator") is not None:
+            self._LatestOperator = Operator()
+            self._LatestOperator._deserialize(params.get("LatestOperator"))
+        self._Name = params.get("Name")
+        if params.get("Permission") is not None:
+            self._Permission = KBPermission()
+            self._Permission._deserialize(params.get("Permission"))
+        self._ProcessingFlagList = params.get("ProcessingFlagList")
+        self._SharedSubType = params.get("SharedSubType")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("SpaceShare") is not None:
+            self._SpaceShare = KBSpaceShare()
+            self._SpaceShare._deserialize(params.get("SpaceShare"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25374,6 +30107,102 @@ class MCPPluginConfig(AbstractModel):
         
 
 
+class MCPResourceContents(AbstractModel):
+    r"""MCP ResourceContents. The chat-manage side does not parse internal fields and only passes through the structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Blob: <p>Binary content. Either this parameter or text must be specified.</p>
+        :type Blob: str
+        :param _Meta: <p>JSON: Original _meta of a single resource</p>
+        :type Meta: str
+        :param _MimeType: <p>MIME type. The HTML of the MCP App is text/html;profile=mcp-app</p>
+        :type MimeType: str
+        :param _Text: <p>Text content. Either this field or blob is required.</p>
+        :type Text: str
+        :param _Uri: <p>Resource URI</p>
+        :type Uri: str
+        """
+        self._Blob = None
+        self._Meta = None
+        self._MimeType = None
+        self._Text = None
+        self._Uri = None
+
+    @property
+    def Blob(self):
+        r"""<p>Binary content. Either this parameter or text must be specified.</p>
+        :rtype: str
+        """
+        return self._Blob
+
+    @Blob.setter
+    def Blob(self, Blob):
+        self._Blob = Blob
+
+    @property
+    def Meta(self):
+        r"""<p>JSON: Original _meta of a single resource</p>
+        :rtype: str
+        """
+        return self._Meta
+
+    @Meta.setter
+    def Meta(self, Meta):
+        self._Meta = Meta
+
+    @property
+    def MimeType(self):
+        r"""<p>MIME type. The HTML of the MCP App is text/html;profile=mcp-app</p>
+        :rtype: str
+        """
+        return self._MimeType
+
+    @MimeType.setter
+    def MimeType(self, MimeType):
+        self._MimeType = MimeType
+
+    @property
+    def Text(self):
+        r"""<p>Text content. Either this field or blob is required.</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Uri(self):
+        r"""<p>Resource URI</p>
+        :rtype: str
+        """
+        return self._Uri
+
+    @Uri.setter
+    def Uri(self, Uri):
+        self._Uri = Uri
+
+
+    def _deserialize(self, params):
+        self._Blob = params.get("Blob")
+        self._Meta = params.get("Meta")
+        self._MimeType = params.get("MimeType")
+        self._Text = params.get("Text")
+        self._Uri = params.get("Uri")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MCPToolConfig(AbstractModel):
     r"""MCPToolConfig
 
@@ -25678,6 +30507,87 @@ class MetaValue(AbstractModel):
         self._RefValueId = params.get("RefValueId")
         self._Scene = params.get("Scene")
         self._ValueType = params.get("ValueType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetricOverview(AbstractModel):
+    r"""Overview KPI card metric items
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>Metric key. For the value, see the key allowlist in the MetricOverview note.</p>
+        :type Key: str
+        :param _Mom: <p>Month-over-month percentage. Enter 0 if there is no month-over-month comparison</p>
+        :type Mom: float
+        :param _Unit: <p>Metric unit, enumeration value DosageUnit; for the mapping between key and unit, see the MetricOverview comment allowlist</p><table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>DOSAGE_UNIT_TOKEN</td><td>0</td><td>token (default)</td></tr><tr><td>DOSAGE_UNIT_PAGE_COUNT</td><td>1</td><td>page_count (page number)</td></tr><tr><td>DOSAGE_UNIT_TIMES</td><td>2</td><td>times (count)</td></tr><tr><td>DOSAGE_UNIT_SECOND</td><td>3</td><td>second</td></tr><tr><td>DOSAGE_UNIT_ITEM</td><td>4</td><td>item</td></tr><tr><td>DOSAGE_UNIT_SHEET</td><td>5</td><td>sheet</td></tr><tr><td>DOSAGE_UNIT_CHARACTER</td><td>6</td><td>character</td></tr><tr><td>DOSAGE_UNIT_GB</td><td>7</td><td>GB</td></tr><tr><td>DOSAGE_UNIT_NUMBER</td><td>8</td><td>number (count)</td></tr><tr><td>DOSAGE_UNIT_MILL_SECOND</td><td>9</td><td>mill_second (ms)</td></tr></tbody></table>
+        :type Unit: int
+        :param _Value: <p>Metric value.</p>
+        :type Value: float
+        """
+        self._Key = None
+        self._Mom = None
+        self._Unit = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>Metric key. For the value, see the key allowlist in the MetricOverview note.</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Mom(self):
+        r"""<p>Month-over-month percentage. Enter 0 if there is no month-over-month comparison</p>
+        :rtype: float
+        """
+        return self._Mom
+
+    @Mom.setter
+    def Mom(self, Mom):
+        self._Mom = Mom
+
+    @property
+    def Unit(self):
+        r"""<p>Metric unit, enumeration value DosageUnit; for the mapping between key and unit, see the MetricOverview comment allowlist</p><table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>DOSAGE_UNIT_TOKEN</td><td>0</td><td>token (default)</td></tr><tr><td>DOSAGE_UNIT_PAGE_COUNT</td><td>1</td><td>page_count (page number)</td></tr><tr><td>DOSAGE_UNIT_TIMES</td><td>2</td><td>times (count)</td></tr><tr><td>DOSAGE_UNIT_SECOND</td><td>3</td><td>second</td></tr><tr><td>DOSAGE_UNIT_ITEM</td><td>4</td><td>item</td></tr><tr><td>DOSAGE_UNIT_SHEET</td><td>5</td><td>sheet</td></tr><tr><td>DOSAGE_UNIT_CHARACTER</td><td>6</td><td>character</td></tr><tr><td>DOSAGE_UNIT_GB</td><td>7</td><td>GB</td></tr><tr><td>DOSAGE_UNIT_NUMBER</td><td>8</td><td>number (count)</td></tr><tr><td>DOSAGE_UNIT_MILL_SECOND</td><td>9</td><td>mill_second (ms)</td></tr></tbody></table>
+        :rtype: int
+        """
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+    @property
+    def Value(self):
+        r"""<p>Metric value.</p>
+        :rtype: float
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Mom = params.get("Mom")
+        self._Unit = params.get("Unit")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26816,6 +31726,107 @@ class ModelStatus(AbstractModel):
         
 
 
+class ModelUsageDetail(AbstractModel):
+    r"""Model invocation details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CallType: <p>Invocation type, originating from billing scene_billing (corresponding to filter.call_type)</p>
+        :type CallType: str
+        :param _IsDefaultKB: <p>Whether it is the default knowledge base. It is only meaningful for the business where ResourceType=5 (knowledge base capacity)</p>
+        :type IsDefaultKB: bool
+        :param _ModelName: <p>Model name</p>
+        :type ModelName: str
+        :param _ResourceConsumptionList: <p>List of consumption measurements for a single call in the MODEL field (authoritative field): lists each measurement type by unit + label. When unit=TOKEN, label is case-sensitive for Token subcategories (input/output/avg_*/cache_*), and being empty indicates total_tokens; unit=PAGE_COUNT refers to the number of pages consumed by the model</p>
+        :type ResourceConsumptionList: list of ResourceConsumption
+        :param _ConsumptionPU: <p>PU consumption of this call</p>
+        :type ConsumptionPU: float
+        """
+        self._CallType = None
+        self._IsDefaultKB = None
+        self._ModelName = None
+        self._ResourceConsumptionList = None
+        self._ConsumptionPU = None
+
+    @property
+    def CallType(self):
+        r"""<p>Invocation type, originating from billing scene_billing (corresponding to filter.call_type)</p>
+        :rtype: str
+        """
+        return self._CallType
+
+    @CallType.setter
+    def CallType(self, CallType):
+        self._CallType = CallType
+
+    @property
+    def IsDefaultKB(self):
+        r"""<p>Whether it is the default knowledge base. It is only meaningful for the business where ResourceType=5 (knowledge base capacity)</p>
+        :rtype: bool
+        """
+        return self._IsDefaultKB
+
+    @IsDefaultKB.setter
+    def IsDefaultKB(self, IsDefaultKB):
+        self._IsDefaultKB = IsDefaultKB
+
+    @property
+    def ModelName(self):
+        r"""<p>Model name</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ResourceConsumptionList(self):
+        r"""<p>List of consumption measurements for a single call in the MODEL field (authoritative field): lists each measurement type by unit + label. When unit=TOKEN, label is case-sensitive for Token subcategories (input/output/avg_*/cache_*), and being empty indicates total_tokens; unit=PAGE_COUNT refers to the number of pages consumed by the model</p>
+        :rtype: list of ResourceConsumption
+        """
+        return self._ResourceConsumptionList
+
+    @ResourceConsumptionList.setter
+    def ResourceConsumptionList(self, ResourceConsumptionList):
+        self._ResourceConsumptionList = ResourceConsumptionList
+
+    @property
+    def ConsumptionPU(self):
+        r"""<p>PU consumption of this call</p>
+        :rtype: float
+        """
+        return self._ConsumptionPU
+
+    @ConsumptionPU.setter
+    def ConsumptionPU(self, ConsumptionPU):
+        self._ConsumptionPU = ConsumptionPU
+
+
+    def _deserialize(self, params):
+        self._CallType = params.get("CallType")
+        self._IsDefaultKB = params.get("IsDefaultKB")
+        self._ModelName = params.get("ModelName")
+        if params.get("ResourceConsumptionList") is not None:
+            self._ResourceConsumptionList = []
+            for item in params.get("ResourceConsumptionList"):
+                obj = ResourceConsumption()
+                obj._deserialize(item)
+                self._ResourceConsumptionList.append(obj)
+        self._ConsumptionPU = params.get("ConsumptionPU")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModelUsageSummary(AbstractModel):
     r"""Aggregated details of model resource usage (exclusive to MODEL domain)
 
@@ -27396,6 +32407,292 @@ class ModifyAppTriggerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyCategoryRequest(AbstractModel):
+    r"""ModifyCategory request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryId: <p>Category ID to be modified (must be greater than 0)</p>
+        :type CategoryId: str
+        :param _CategoryType: <p>Classification type (not allowed to be 0. Value: 1=document classification, 2=QA classification)<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>CATEGORY_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>CATEGORY_TYPE_DOC</td><td>1</td><td>Document classification</td></tr><tr><td>CATEGORY_TYPE_QA</td><td>2</td><td>QA classification</td></tr></tbody></table></p>
+        :type CategoryType: int
+        :param _Fields: <p>Modify field content (required, used in conjunction with update_mask)</p>
+        :type Fields: :class:`tencentcloud.adp.v20260520.models.CategoryModifyFields`
+        :param _KbId: <p>ID of the knowledge base it belongs to</p>
+        :type KbId: str
+        :param _UpdateMask: <p>Field mask: specifies the field to modify (supported Paths: Name)</p>
+        :type UpdateMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        self._CategoryId = None
+        self._CategoryType = None
+        self._Fields = None
+        self._KbId = None
+        self._UpdateMask = None
+
+    @property
+    def CategoryId(self):
+        r"""<p>Category ID to be modified (must be greater than 0)</p>
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def CategoryType(self):
+        r"""<p>Classification type (not allowed to be 0. Value: 1=document classification, 2=QA classification)<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>CATEGORY_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>CATEGORY_TYPE_DOC</td><td>1</td><td>Document classification</td></tr><tr><td>CATEGORY_TYPE_QA</td><td>2</td><td>QA classification</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._CategoryType
+
+    @CategoryType.setter
+    def CategoryType(self, CategoryType):
+        self._CategoryType = CategoryType
+
+    @property
+    def Fields(self):
+        r"""<p>Modify field content (required, used in conjunction with update_mask)</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CategoryModifyFields`
+        """
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+    @property
+    def KbId(self):
+        r"""<p>ID of the knowledge base it belongs to</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def UpdateMask(self):
+        r"""<p>Field mask: specifies the field to modify (supported Paths: Name)</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        return self._UpdateMask
+
+    @UpdateMask.setter
+    def UpdateMask(self, UpdateMask):
+        self._UpdateMask = UpdateMask
+
+
+    def _deserialize(self, params):
+        self._CategoryId = params.get("CategoryId")
+        self._CategoryType = params.get("CategoryType")
+        if params.get("Fields") is not None:
+            self._Fields = CategoryModifyFields()
+            self._Fields._deserialize(params.get("Fields"))
+        self._KbId = params.get("KbId")
+        if params.get("UpdateMask") is not None:
+            self._UpdateMask = FieldMask()
+            self._UpdateMask._deserialize(params.get("UpdateMask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCategoryResponse(AbstractModel):
+    r"""ModifyCategory response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyChannelRequest(AbstractModel):
+    r"""ModifyChannel request structure.
+
+    """
+
+
+class ModifyChannelResponse(AbstractModel):
+    r"""ModifyChannel response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyConflictQARequest(AbstractModel):
+    r"""ModifyConflictQA request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>Knowledge base ID</p>
+        :type KbId: str
+        :param _ConflictGroupId: <p>Conflict group ID (optional if ignored globally)</p>
+        :type ConflictGroupId: str
+        :param _IsIgnoreAll: <p>Whether to ignore globally (ignore all pending conflict issues under the current KB)</p>
+        :type IsIgnoreAll: bool
+        :param _QaIdList: <p>QA ID list involved in decision-making (required for KEEP and DELETE)</p>
+        :type QaIdList: list of str
+        :param _Resolution: <p>Conflict resolution policy: 1=reserve, 2=ignore, 3=delete (can be omitted when ignored globally)<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>CONFLICT_RESOLUTION_UNKNOWN</td><td>0</td><td>-</td></tr><tr><td>CONFLICT_RESOLUTION_KEEP</td><td>1</td><td>Reserve</td></tr><tr><td>CONFLICT_RESOLUTION_IGNORE</td><td>2</td><td>Ignore</td></tr><tr><td>CONFLICT_RESOLUTION_DELETE</td><td>3</td><td>Delete</td></tr></tbody></table></p>
+        :type Resolution: int
+        """
+        self._KbId = None
+        self._ConflictGroupId = None
+        self._IsIgnoreAll = None
+        self._QaIdList = None
+        self._Resolution = None
+
+    @property
+    def KbId(self):
+        r"""<p>Knowledge base ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def ConflictGroupId(self):
+        r"""<p>Conflict group ID (optional if ignored globally)</p>
+        :rtype: str
+        """
+        return self._ConflictGroupId
+
+    @ConflictGroupId.setter
+    def ConflictGroupId(self, ConflictGroupId):
+        self._ConflictGroupId = ConflictGroupId
+
+    @property
+    def IsIgnoreAll(self):
+        r"""<p>Whether to ignore globally (ignore all pending conflict issues under the current KB)</p>
+        :rtype: bool
+        """
+        return self._IsIgnoreAll
+
+    @IsIgnoreAll.setter
+    def IsIgnoreAll(self, IsIgnoreAll):
+        self._IsIgnoreAll = IsIgnoreAll
+
+    @property
+    def QaIdList(self):
+        r"""<p>QA ID list involved in decision-making (required for KEEP and DELETE)</p>
+        :rtype: list of str
+        """
+        return self._QaIdList
+
+    @QaIdList.setter
+    def QaIdList(self, QaIdList):
+        self._QaIdList = QaIdList
+
+    @property
+    def Resolution(self):
+        r"""<p>Conflict resolution policy: 1=reserve, 2=ignore, 3=delete (can be omitted when ignored globally)<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>CONFLICT_RESOLUTION_UNKNOWN</td><td>0</td><td>-</td></tr><tr><td>CONFLICT_RESOLUTION_KEEP</td><td>1</td><td>Reserve</td></tr><tr><td>CONFLICT_RESOLUTION_IGNORE</td><td>2</td><td>Ignore</td></tr><tr><td>CONFLICT_RESOLUTION_DELETE</td><td>3</td><td>Delete</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        self._ConflictGroupId = params.get("ConflictGroupId")
+        self._IsIgnoreAll = params.get("IsIgnoreAll")
+        self._QaIdList = params.get("QaIdList")
+        self._Resolution = params.get("Resolution")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyConflictQAResponse(AbstractModel):
+    r"""ModifyConflictQA response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyConversationRequest(AbstractModel):
     r"""ModifyConversation request structure.
 
@@ -27777,6 +33074,119 @@ class ModifyDocListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDocRequest(AbstractModel):
+    r"""ModifyDoc request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocId: <p>Document ID</p>
+        :type DocId: str
+        :param _Fields: <p>Modify field contents (required, used together with update_mask)</p>
+        :type Fields: :class:`tencentcloud.adp.v20260520.models.DocModifyFields`
+        :param _KbId: <p>ID of the knowledge base it belongs to</p>
+        :type KbId: str
+        :param _UpdateMask: <p>Field mask: specifies the fields to be modified (supported Paths: Name, CategoryId, EffectiveDomain, LabelRefList, ExternalLink, ExpirationPolicy, UpdatePeriod, Switch, ParseConfig, UserAccessConfig)</p>
+        :type UpdateMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        self._DocId = None
+        self._Fields = None
+        self._KbId = None
+        self._UpdateMask = None
+
+    @property
+    def DocId(self):
+        r"""<p>Document ID</p>
+        :rtype: str
+        """
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+    @property
+    def Fields(self):
+        r"""<p>Modify field contents (required, used together with update_mask)</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocModifyFields`
+        """
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+    @property
+    def KbId(self):
+        r"""<p>ID of the knowledge base it belongs to</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def UpdateMask(self):
+        r"""<p>Field mask: specifies the fields to be modified (supported Paths: Name, CategoryId, EffectiveDomain, LabelRefList, ExternalLink, ExpirationPolicy, UpdatePeriod, Switch, ParseConfig, UserAccessConfig)</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        return self._UpdateMask
+
+    @UpdateMask.setter
+    def UpdateMask(self, UpdateMask):
+        self._UpdateMask = UpdateMask
+
+
+    def _deserialize(self, params):
+        self._DocId = params.get("DocId")
+        if params.get("Fields") is not None:
+            self._Fields = DocModifyFields()
+            self._Fields._deserialize(params.get("Fields"))
+        self._KbId = params.get("KbId")
+        if params.get("UpdateMask") is not None:
+            self._UpdateMask = FieldMask()
+            self._UpdateMask._deserialize(params.get("UpdateMask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDocResponse(AbstractModel):
+    r"""ModifyDoc response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyKBRequest(AbstractModel):
     r"""ModifyKB request structure.
 
@@ -28022,6 +33432,280 @@ class ModifyLabelResponse(AbstractModel):
                 obj = LabelTerm()
                 obj._deserialize(item)
                 self._TermList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyMsgRecordCategoryRequest(AbstractModel):
+    r"""ModifyMsgRecordCategory request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>App ID</p>
+        :type AppId: str
+        :param _CategoryId: <p>Business ID of the category to be modified</p>
+        :type CategoryId: str
+        :param _Name: <p>Category name after modification</p>
+        :type Name: str
+        """
+        self._AppId = None
+        self._CategoryId = None
+        self._Name = None
+
+    @property
+    def AppId(self):
+        r"""<p>App ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CategoryId(self):
+        r"""<p>Business ID of the category to be modified</p>
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def Name(self):
+        r"""<p>Category name after modification</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._CategoryId = params.get("CategoryId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMsgRecordCategoryResponse(AbstractModel):
+    r"""ModifyMsgRecordCategory response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyPluginRequest(AbstractModel):
+    r"""ModifyPlugin request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PluginId: <p>Plugin_id</p>
+        :type PluginId: str
+        :param _PluginVersion: <p>Plugin version number</p>
+        :type PluginVersion: int
+        :param _Profile: <p>Plug-in basic information</p>
+        :type Profile: :class:`tencentcloud.adp.v20260520.models.PluginProfile`
+        :param _Config: <p>Plug-in type configuration</p>
+        :type Config: :class:`tencentcloud.adp.v20260520.models.PluginConfig`
+        :param _UpdateMask: <p>Specify the fields to update to avoid full coverage</p>
+        :type UpdateMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        :param _ToolList: <p>Tool list of the plug-in. This parameter is not required for mcp plug-ins.</p>
+        :type ToolList: list of Tool
+        :param _LoginUin: <p>User Main Account logged in (required in integrator mode)</p>
+        :type LoginUin: str
+        :param _LoginSubAccountUin: <p>User Sub-account logged in (required in integrator mode)</p>
+        :type LoginSubAccountUin: str
+        """
+        self._PluginId = None
+        self._PluginVersion = None
+        self._Profile = None
+        self._Config = None
+        self._UpdateMask = None
+        self._ToolList = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+
+    @property
+    def PluginId(self):
+        r"""<p>Plugin_id</p>
+        :rtype: str
+        """
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def PluginVersion(self):
+        r"""<p>Plugin version number</p>
+        :rtype: int
+        """
+        return self._PluginVersion
+
+    @PluginVersion.setter
+    def PluginVersion(self, PluginVersion):
+        self._PluginVersion = PluginVersion
+
+    @property
+    def Profile(self):
+        r"""<p>Plug-in basic information</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.PluginProfile`
+        """
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def Config(self):
+        r"""<p>Plug-in type configuration</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.PluginConfig`
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def UpdateMask(self):
+        r"""<p>Specify the fields to update to avoid full coverage</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        return self._UpdateMask
+
+    @UpdateMask.setter
+    def UpdateMask(self, UpdateMask):
+        self._UpdateMask = UpdateMask
+
+    @property
+    def ToolList(self):
+        r"""<p>Tool list of the plug-in. This parameter is not required for mcp plug-ins.</p>
+        :rtype: list of Tool
+        """
+        return self._ToolList
+
+    @ToolList.setter
+    def ToolList(self, ToolList):
+        self._ToolList = ToolList
+
+    @property
+    def LoginUin(self):
+        r"""<p>User Main Account logged in (required in integrator mode)</p>
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        r"""<p>User Sub-account logged in (required in integrator mode)</p>
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._PluginId = params.get("PluginId")
+        self._PluginVersion = params.get("PluginVersion")
+        if params.get("Profile") is not None:
+            self._Profile = PluginProfile()
+            self._Profile._deserialize(params.get("Profile"))
+        if params.get("Config") is not None:
+            self._Config = PluginConfig()
+            self._Config._deserialize(params.get("Config"))
+        if params.get("UpdateMask") is not None:
+            self._UpdateMask = FieldMask()
+            self._UpdateMask._deserialize(params.get("UpdateMask"))
+        if params.get("ToolList") is not None:
+            self._ToolList = []
+            for item in params.get("ToolList"):
+                obj = Tool()
+                obj._deserialize(item)
+                self._ToolList.append(obj)
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPluginResponse(AbstractModel):
+    r"""ModifyPlugin response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -28316,6 +34000,175 @@ class ModifyQAResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifySkillRequest(AbstractModel):
+    r"""ModifySkill request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkillId: <p>SkillId</p>
+        :type SkillId: str
+        :param _SpaceId: <p>Space ID</p>
+        :type SpaceId: str
+        :param _DisplayDescription: <p>skill description</p>
+        :type DisplayDescription: str
+        :param _DisplayName: <p>skill name</p>
+        :type DisplayName: str
+        :param _FileUrl: <p>skill package file address (zip); importing it triggers new version generation. It must be imported together with SkillVersion and UpdateDescription</p>
+        :type FileUrl: str
+        :param _IconUrl: <p>Icon address</p>
+        :type IconUrl: str
+        :param _SkillVersion: <p>skill version number (import together with FileUrl)</p>
+        :type SkillVersion: str
+        :param _UpdateDescription: <p>Version change description (import together with FileUrl).</p>
+        :type UpdateDescription: str
+        """
+        self._SkillId = None
+        self._SpaceId = None
+        self._DisplayDescription = None
+        self._DisplayName = None
+        self._FileUrl = None
+        self._IconUrl = None
+        self._SkillVersion = None
+        self._UpdateDescription = None
+
+    @property
+    def SkillId(self):
+        r"""<p>SkillId</p>
+        :rtype: str
+        """
+        return self._SkillId
+
+    @SkillId.setter
+    def SkillId(self, SkillId):
+        self._SkillId = SkillId
+
+    @property
+    def SpaceId(self):
+        r"""<p>Space ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def DisplayDescription(self):
+        r"""<p>skill description</p>
+        :rtype: str
+        """
+        return self._DisplayDescription
+
+    @DisplayDescription.setter
+    def DisplayDescription(self, DisplayDescription):
+        self._DisplayDescription = DisplayDescription
+
+    @property
+    def DisplayName(self):
+        r"""<p>skill name</p>
+        :rtype: str
+        """
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def FileUrl(self):
+        r"""<p>skill package file address (zip); importing it triggers new version generation. It must be imported together with SkillVersion and UpdateDescription</p>
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def IconUrl(self):
+        r"""<p>Icon address</p>
+        :rtype: str
+        """
+        return self._IconUrl
+
+    @IconUrl.setter
+    def IconUrl(self, IconUrl):
+        self._IconUrl = IconUrl
+
+    @property
+    def SkillVersion(self):
+        r"""<p>skill version number (import together with FileUrl)</p>
+        :rtype: str
+        """
+        return self._SkillVersion
+
+    @SkillVersion.setter
+    def SkillVersion(self, SkillVersion):
+        self._SkillVersion = SkillVersion
+
+    @property
+    def UpdateDescription(self):
+        r"""<p>Version change description (import together with FileUrl).</p>
+        :rtype: str
+        """
+        return self._UpdateDescription
+
+    @UpdateDescription.setter
+    def UpdateDescription(self, UpdateDescription):
+        self._UpdateDescription = UpdateDescription
+
+
+    def _deserialize(self, params):
+        self._SkillId = params.get("SkillId")
+        self._SpaceId = params.get("SpaceId")
+        self._DisplayDescription = params.get("DisplayDescription")
+        self._DisplayName = params.get("DisplayName")
+        self._FileUrl = params.get("FileUrl")
+        self._IconUrl = params.get("IconUrl")
+        self._SkillVersion = params.get("SkillVersion")
+        self._UpdateDescription = params.get("UpdateDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySkillResponse(AbstractModel):
+    r"""ModifySkill response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifySpaceRequest(AbstractModel):
     r"""ModifySpace request structure.
 
@@ -28508,6 +34361,256 @@ class ModifyVariableResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class MsgRecord(AbstractModel):
+    r"""MsgRecord
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Answer: Answer.
+        :type Answer: str
+        :param _AppId: Application ID
+        :type AppId: str
+        :param _CategoryId: Category ID
+        :type CategoryId: str
+        :param _CreateTime: Creation time.
+        :type CreateTime: str
+        :param _Intent: Intent.
+        :type Intent: str
+        :param _IntentCategory: Intent category
+        :type IntentCategory: str
+        :param _IsSmart: Whether it is intelligent categorization
+        :type IsSmart: bool
+        :param _Question: Issue
+        :type Question: str
+        :param _RecordId: Record ID
+        :type RecordId: str
+        :param _ReplyMethod: method. Enumerates ReplyMethod: 0=not specified, 1=direct reply by large model, 2=conservative reply, 3=refuse to answer, 4=sensitive reply, 5=Q&A pair prioritized reply, 6=welcome message, 7=concurrency limit exceeded, 8=global intervention knowledge, 9=task flow process reply, 10=task flow answer, 11=search engine, 12=knowledge polish, 13=image understanding, 14=real-time document, 15=clarification confirmation, 16=workflow reply, 17=workflow completion, 18=Intelligent Agent reply, 19=multiple intents, 20=interruption, 21=Intelligent Agent plan preview, 22=Intelligent Agent plan result, 23=Intelligent Agent structured output.
+        :type ReplyMethod: int
+        :param _Result: Returned result
+        :type Result: :class:`tencentcloud.adp.v20260520.models.MsgRecordResult`
+        :param _Score: Score
+        :type Score: int
+        :param _SessionId: Session ID
+        :type SessionId: str
+        :param _Source: Source.
+        :type Source: :class:`tencentcloud.adp.v20260520.models.MsgRecordSource`
+        :param _TraceId: trace_id
+        :type TraceId: str
+        """
+        self._Answer = None
+        self._AppId = None
+        self._CategoryId = None
+        self._CreateTime = None
+        self._Intent = None
+        self._IntentCategory = None
+        self._IsSmart = None
+        self._Question = None
+        self._RecordId = None
+        self._ReplyMethod = None
+        self._Result = None
+        self._Score = None
+        self._SessionId = None
+        self._Source = None
+        self._TraceId = None
+
+    @property
+    def Answer(self):
+        r"""Answer.
+        :rtype: str
+        """
+        return self._Answer
+
+    @Answer.setter
+    def Answer(self, Answer):
+        self._Answer = Answer
+
+    @property
+    def AppId(self):
+        r"""Application ID
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CategoryId(self):
+        r"""Category ID
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def CreateTime(self):
+        r"""Creation time.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Intent(self):
+        r"""Intent.
+        :rtype: str
+        """
+        return self._Intent
+
+    @Intent.setter
+    def Intent(self, Intent):
+        self._Intent = Intent
+
+    @property
+    def IntentCategory(self):
+        r"""Intent category
+        :rtype: str
+        """
+        return self._IntentCategory
+
+    @IntentCategory.setter
+    def IntentCategory(self, IntentCategory):
+        self._IntentCategory = IntentCategory
+
+    @property
+    def IsSmart(self):
+        r"""Whether it is intelligent categorization
+        :rtype: bool
+        """
+        return self._IsSmart
+
+    @IsSmart.setter
+    def IsSmart(self, IsSmart):
+        self._IsSmart = IsSmart
+
+    @property
+    def Question(self):
+        r"""Issue
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def RecordId(self):
+        r"""Record ID
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def ReplyMethod(self):
+        r"""method. Enumerates ReplyMethod: 0=not specified, 1=direct reply by large model, 2=conservative reply, 3=refuse to answer, 4=sensitive reply, 5=Q&A pair prioritized reply, 6=welcome message, 7=concurrency limit exceeded, 8=global intervention knowledge, 9=task flow process reply, 10=task flow answer, 11=search engine, 12=knowledge polish, 13=image understanding, 14=real-time document, 15=clarification confirmation, 16=workflow reply, 17=workflow completion, 18=Intelligent Agent reply, 19=multiple intents, 20=interruption, 21=Intelligent Agent plan preview, 22=Intelligent Agent plan result, 23=Intelligent Agent structured output.
+        :rtype: int
+        """
+        return self._ReplyMethod
+
+    @ReplyMethod.setter
+    def ReplyMethod(self, ReplyMethod):
+        self._ReplyMethod = ReplyMethod
+
+    @property
+    def Result(self):
+        r"""Returned result
+        :rtype: :class:`tencentcloud.adp.v20260520.models.MsgRecordResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Score(self):
+        r"""Score
+        :rtype: int
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def SessionId(self):
+        r"""Session ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def Source(self):
+        r"""Source.
+        :rtype: :class:`tencentcloud.adp.v20260520.models.MsgRecordSource`
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def TraceId(self):
+        r"""trace_id
+        :rtype: str
+        """
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
+
+    def _deserialize(self, params):
+        self._Answer = params.get("Answer")
+        self._AppId = params.get("AppId")
+        self._CategoryId = params.get("CategoryId")
+        self._CreateTime = params.get("CreateTime")
+        self._Intent = params.get("Intent")
+        self._IntentCategory = params.get("IntentCategory")
+        self._IsSmart = params.get("IsSmart")
+        self._Question = params.get("Question")
+        self._RecordId = params.get("RecordId")
+        self._ReplyMethod = params.get("ReplyMethod")
+        if params.get("Result") is not None:
+            self._Result = MsgRecordResult()
+            self._Result._deserialize(params.get("Result"))
+        self._Score = params.get("Score")
+        self._SessionId = params.get("SessionId")
+        if params.get("Source") is not None:
+            self._Source = MsgRecordSource()
+            self._Source._deserialize(params.get("Source"))
+        self._TraceId = params.get("TraceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MsgRecordCategory(AbstractModel):
     r"""MsgRecordCategory
 
@@ -28601,6 +34704,258 @@ class MsgRecordCategory(AbstractModel):
             self._Permission = CategoryPermission()
             self._Permission._deserialize(params.get("Permission"))
         self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MsgRecordResult(AbstractModel):
+    r"""MsgRecordResult
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CallResult: Indicates the call result of the message: 0=CALL_RESULT_UNKNOWN (all/unknown), 1=CALL_RESULT_SUCCESS (success), 2=CALL_RESULT_FAILED (failed). fail_reason (string) describes the failure reason when the call failed.
+        :type CallResult: int
+        :param _CustomerVariable: Custom variable, json string
+        :type CustomerVariable: str
+        :param _FailReason: Failure cause.
+        :type FailReason: str
+        :param _FirstTokenLatency: Time to first token
+        :type FirstTokenLatency: int
+        :param _InputToken: Number of input tokens.
+        :type InputToken: int
+        :param _OutputToken: Number of output tokens.
+        :type OutputToken: int
+        :param _TotalToken: Total number of tokens.
+        :type TotalToken: int
+        :param _TotalTokenLatency: Total token duration
+        :type TotalTokenLatency: int
+        """
+        self._CallResult = None
+        self._CustomerVariable = None
+        self._FailReason = None
+        self._FirstTokenLatency = None
+        self._InputToken = None
+        self._OutputToken = None
+        self._TotalToken = None
+        self._TotalTokenLatency = None
+
+    @property
+    def CallResult(self):
+        r"""Indicates the call result of the message: 0=CALL_RESULT_UNKNOWN (all/unknown), 1=CALL_RESULT_SUCCESS (success), 2=CALL_RESULT_FAILED (failed). fail_reason (string) describes the failure reason when the call failed.
+        :rtype: int
+        """
+        return self._CallResult
+
+    @CallResult.setter
+    def CallResult(self, CallResult):
+        self._CallResult = CallResult
+
+    @property
+    def CustomerVariable(self):
+        r"""Custom variable, json string
+        :rtype: str
+        """
+        return self._CustomerVariable
+
+    @CustomerVariable.setter
+    def CustomerVariable(self, CustomerVariable):
+        self._CustomerVariable = CustomerVariable
+
+    @property
+    def FailReason(self):
+        r"""Failure cause.
+        :rtype: str
+        """
+        return self._FailReason
+
+    @FailReason.setter
+    def FailReason(self, FailReason):
+        self._FailReason = FailReason
+
+    @property
+    def FirstTokenLatency(self):
+        r"""Time to first token
+        :rtype: int
+        """
+        return self._FirstTokenLatency
+
+    @FirstTokenLatency.setter
+    def FirstTokenLatency(self, FirstTokenLatency):
+        self._FirstTokenLatency = FirstTokenLatency
+
+    @property
+    def InputToken(self):
+        r"""Number of input tokens.
+        :rtype: int
+        """
+        return self._InputToken
+
+    @InputToken.setter
+    def InputToken(self, InputToken):
+        self._InputToken = InputToken
+
+    @property
+    def OutputToken(self):
+        r"""Number of output tokens.
+        :rtype: int
+        """
+        return self._OutputToken
+
+    @OutputToken.setter
+    def OutputToken(self, OutputToken):
+        self._OutputToken = OutputToken
+
+    @property
+    def TotalToken(self):
+        r"""Total number of tokens.
+        :rtype: int
+        """
+        return self._TotalToken
+
+    @TotalToken.setter
+    def TotalToken(self, TotalToken):
+        self._TotalToken = TotalToken
+
+    @property
+    def TotalTokenLatency(self):
+        r"""Total token duration
+        :rtype: int
+        """
+        return self._TotalTokenLatency
+
+    @TotalTokenLatency.setter
+    def TotalTokenLatency(self, TotalTokenLatency):
+        self._TotalTokenLatency = TotalTokenLatency
+
+
+    def _deserialize(self, params):
+        self._CallResult = params.get("CallResult")
+        self._CustomerVariable = params.get("CustomerVariable")
+        self._FailReason = params.get("FailReason")
+        self._FirstTokenLatency = params.get("FirstTokenLatency")
+        self._InputToken = params.get("InputToken")
+        self._OutputToken = params.get("OutputToken")
+        self._TotalToken = params.get("TotalToken")
+        self._TotalTokenLatency = params.get("TotalTokenLatency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MsgRecordSource(AbstractModel):
+    r"""MsgRecordSource
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelType: Channel type for dialogue message access: 0=not specified, 1=agent, 2=experience page (Tencent Cloud), 3=evaluation dialogue, 4=experience page (phone number), 5=dialogue API connection, 6=evaluation task dialogue, 10=workflow debugging, 10000=WeChat official account, 10001=WeChat service account, 10002=WeCom app, 10003=web components, 10004=WeChat Customer Service, 10005=WeChat mini program, 10006=Yuanqi, 10007=App Treasure, 10008=Yuanbao, 10009=WeCom intelligent bot, 10010=Yuanqi API, 10011=LINE, 10012=Telegram, 10100=PC manager, 20001=honor Intelligent Agent platform, 20002=Xiaomi app store; user_id (string) is the unique ID of the visitor under this channel.
+        :type ChannelType: int
+        :param _FromId: User ID.
+        :type FromId: str
+        :param _FromType: User source type of the message sender: 1=user (visitor/C-end user), 2=robot (AI reply), 3=agent (human customer service); from_id (string) is the unique user ID under this source type.
+        :type FromType: int
+        :param _UserAvatar: User profile photo
+        :type UserAvatar: str
+        :param _UserId: Visitor ID.
+        :type UserId: str
+        :param _UserNickname: Visitor name
+        :type UserNickname: str
+        """
+        self._ChannelType = None
+        self._FromId = None
+        self._FromType = None
+        self._UserAvatar = None
+        self._UserId = None
+        self._UserNickname = None
+
+    @property
+    def ChannelType(self):
+        r"""Channel type for dialogue message access: 0=not specified, 1=agent, 2=experience page (Tencent Cloud), 3=evaluation dialogue, 4=experience page (phone number), 5=dialogue API connection, 6=evaluation task dialogue, 10=workflow debugging, 10000=WeChat official account, 10001=WeChat service account, 10002=WeCom app, 10003=web components, 10004=WeChat Customer Service, 10005=WeChat mini program, 10006=Yuanqi, 10007=App Treasure, 10008=Yuanbao, 10009=WeCom intelligent bot, 10010=Yuanqi API, 10011=LINE, 10012=Telegram, 10100=PC manager, 20001=honor Intelligent Agent platform, 20002=Xiaomi app store; user_id (string) is the unique ID of the visitor under this channel.
+        :rtype: int
+        """
+        return self._ChannelType
+
+    @ChannelType.setter
+    def ChannelType(self, ChannelType):
+        self._ChannelType = ChannelType
+
+    @property
+    def FromId(self):
+        r"""User ID.
+        :rtype: str
+        """
+        return self._FromId
+
+    @FromId.setter
+    def FromId(self, FromId):
+        self._FromId = FromId
+
+    @property
+    def FromType(self):
+        r"""User source type of the message sender: 1=user (visitor/C-end user), 2=robot (AI reply), 3=agent (human customer service); from_id (string) is the unique user ID under this source type.
+        :rtype: int
+        """
+        return self._FromType
+
+    @FromType.setter
+    def FromType(self, FromType):
+        self._FromType = FromType
+
+    @property
+    def UserAvatar(self):
+        r"""User profile photo
+        :rtype: str
+        """
+        return self._UserAvatar
+
+    @UserAvatar.setter
+    def UserAvatar(self, UserAvatar):
+        self._UserAvatar = UserAvatar
+
+    @property
+    def UserId(self):
+        r"""Visitor ID.
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserNickname(self):
+        r"""Visitor name
+        :rtype: str
+        """
+        return self._UserNickname
+
+    @UserNickname.setter
+    def UserNickname(self, UserNickname):
+        self._UserNickname = UserNickname
+
+
+    def _deserialize(self, params):
+        self._ChannelType = params.get("ChannelType")
+        self._FromId = params.get("FromId")
+        self._FromType = params.get("FromType")
+        self._UserAvatar = params.get("UserAvatar")
+        self._UserId = params.get("UserId")
+        self._UserNickname = params.get("UserNickname")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30531,6 +36886,77 @@ class PluginSummary(AbstractModel):
         
 
 
+class PluginUsageDetail(AbstractModel):
+    r"""Plug-in call detail
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PluginName: <p>Plugin name.</p>
+        :type PluginName: str
+        :param _ResourceConsumptionList: <p>Consumption measurement list for a single PLUGIN domain call (authoritative field): lists each measurement category by unit + label. When unit=TOKEN, label is case-sensitive for Token subcategories (input/output/avg_*). Being empty indicates total_tokens</p>
+        :type ResourceConsumptionList: list of ResourceConsumption
+        :param _ToolName: <p>Plug-in Tool Name (tool_name)</p>
+        :type ToolName: str
+        """
+        self._PluginName = None
+        self._ResourceConsumptionList = None
+        self._ToolName = None
+
+    @property
+    def PluginName(self):
+        r"""<p>Plugin name.</p>
+        :rtype: str
+        """
+        return self._PluginName
+
+    @PluginName.setter
+    def PluginName(self, PluginName):
+        self._PluginName = PluginName
+
+    @property
+    def ResourceConsumptionList(self):
+        r"""<p>Consumption measurement list for a single PLUGIN domain call (authoritative field): lists each measurement category by unit + label. When unit=TOKEN, label is case-sensitive for Token subcategories (input/output/avg_*). Being empty indicates total_tokens</p>
+        :rtype: list of ResourceConsumption
+        """
+        return self._ResourceConsumptionList
+
+    @ResourceConsumptionList.setter
+    def ResourceConsumptionList(self, ResourceConsumptionList):
+        self._ResourceConsumptionList = ResourceConsumptionList
+
+    @property
+    def ToolName(self):
+        r"""<p>Plug-in Tool Name (tool_name)</p>
+        :rtype: str
+        """
+        return self._ToolName
+
+    @ToolName.setter
+    def ToolName(self, ToolName):
+        self._ToolName = ToolName
+
+
+    def _deserialize(self, params):
+        self._PluginName = params.get("PluginName")
+        if params.get("ResourceConsumptionList") is not None:
+            self._ResourceConsumptionList = []
+            for item in params.get("ResourceConsumptionList"):
+                obj = ResourceConsumption()
+                obj._deserialize(item)
+                self._ResourceConsumptionList.append(obj)
+        self._ToolName = params.get("ToolName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PluginUsageSummary(AbstractModel):
     r"""Aggregated details of plug-in resource usage (exclusive to the PLUGIN domain)
 
@@ -31837,6 +38263,135 @@ class QASummary(AbstractModel):
         
 
 
+class ReadMCPResourceRequest(AbstractModel):
+    r"""ReadMCPResource request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PluginId: <p>Capacity boundary: one request can only read the resources belonging to this plugin</p>
+        :type PluginId: str
+        :param _ThreadId: <p>thread on the agent-exec side</p>
+        :type ThreadId: str
+        :param _Uri: <p>Resource URI, source: _meta.ui.resourceUri of the tool</p>
+        :type Uri: str
+        """
+        self._PluginId = None
+        self._ThreadId = None
+        self._Uri = None
+
+    @property
+    def PluginId(self):
+        r"""<p>Capacity boundary: one request can only read the resources belonging to this plugin</p>
+        :rtype: str
+        """
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def ThreadId(self):
+        r"""<p>thread on the agent-exec side</p>
+        :rtype: str
+        """
+        return self._ThreadId
+
+    @ThreadId.setter
+    def ThreadId(self, ThreadId):
+        self._ThreadId = ThreadId
+
+    @property
+    def Uri(self):
+        r"""<p>Resource URI, source: _meta.ui.resourceUri of the tool</p>
+        :rtype: str
+        """
+        return self._Uri
+
+    @Uri.setter
+    def Uri(self, Uri):
+        self._Uri = Uri
+
+
+    def _deserialize(self, params):
+        self._PluginId = params.get("PluginId")
+        self._ThreadId = params.get("ThreadId")
+        self._Uri = params.get("Uri")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReadMCPResourceResponse(AbstractModel):
+    r"""ReadMCPResource response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Contents: <p>Resource content returned by MCP resources/read</p>
+        :type Contents: list of MCPResourceContents
+        :param _ResourceMeta: <p>JSON: The original _meta of Resource. In the MCP App scenario, Host enforces the CSP policy based on ui.csp.</p>
+        :type ResourceMeta: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Contents = None
+        self._ResourceMeta = None
+        self._RequestId = None
+
+    @property
+    def Contents(self):
+        r"""<p>Resource content returned by MCP resources/read</p>
+        :rtype: list of MCPResourceContents
+        """
+        return self._Contents
+
+    @Contents.setter
+    def Contents(self, Contents):
+        self._Contents = Contents
+
+    @property
+    def ResourceMeta(self):
+        r"""<p>JSON: The original _meta of Resource. In the MCP App scenario, Host enforces the CSP policy based on ui.csp.</p>
+        :rtype: str
+        """
+        return self._ResourceMeta
+
+    @ResourceMeta.setter
+    def ResourceMeta(self, ResourceMeta):
+        self._ResourceMeta = ResourceMeta
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Contents") is not None:
+            self._Contents = []
+            for item in params.get("Contents"):
+                obj = MCPResourceContents()
+                obj._deserialize(item)
+                self._Contents.append(obj)
+        self._ResourceMeta = params.get("ResourceMeta")
+        self._RequestId = params.get("RequestId")
+
+
 class ReleaseRecord(AbstractModel):
     r"""[Data structure definition] Release record
 
@@ -32907,6 +39462,117 @@ class ResourceConsumption(AbstractModel):
         
 
 
+class ResourcePackageInfo(AbstractModel):
+    r"""Usage information of the billing package
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PackageType: <p>Package type</p><p>Enumeration values:</p><ul><li>1: Free edition</li><li>2: Pro edition</li><li>3: Enterprise edition</li></ul>
+        :type PackageType: int
+        :param _ResourceTotal: <p>Total resource package quantity</p>
+        :type ResourceTotal: int
+        :param _ResourceUsage: <p>Resource package usage</p>
+        :type ResourceUsage: float
+        :param _KnowledgeCapacity: <p>Knowledge base capacity.</p>
+        :type KnowledgeCapacity: float
+        :param _KnowledgeUsage: <p>Knowledge base amount</p>
+        :type KnowledgeUsage: float
+        :param _ResourceStatus: <p>Resource pack status</p><p>Enumeration values:</p><ul><li>1: Normal</li><li>3: Expired</li><li>4: About to expire</li></ul>
+        :type ResourceStatus: int
+        """
+        self._PackageType = None
+        self._ResourceTotal = None
+        self._ResourceUsage = None
+        self._KnowledgeCapacity = None
+        self._KnowledgeUsage = None
+        self._ResourceStatus = None
+
+    @property
+    def PackageType(self):
+        r"""<p>Package type</p><p>Enumeration values:</p><ul><li>1: Free edition</li><li>2: Pro edition</li><li>3: Enterprise edition</li></ul>
+        :rtype: int
+        """
+        return self._PackageType
+
+    @PackageType.setter
+    def PackageType(self, PackageType):
+        self._PackageType = PackageType
+
+    @property
+    def ResourceTotal(self):
+        r"""<p>Total resource package quantity</p>
+        :rtype: int
+        """
+        return self._ResourceTotal
+
+    @ResourceTotal.setter
+    def ResourceTotal(self, ResourceTotal):
+        self._ResourceTotal = ResourceTotal
+
+    @property
+    def ResourceUsage(self):
+        r"""<p>Resource package usage</p>
+        :rtype: float
+        """
+        return self._ResourceUsage
+
+    @ResourceUsage.setter
+    def ResourceUsage(self, ResourceUsage):
+        self._ResourceUsage = ResourceUsage
+
+    @property
+    def KnowledgeCapacity(self):
+        r"""<p>Knowledge base capacity.</p>
+        :rtype: float
+        """
+        return self._KnowledgeCapacity
+
+    @KnowledgeCapacity.setter
+    def KnowledgeCapacity(self, KnowledgeCapacity):
+        self._KnowledgeCapacity = KnowledgeCapacity
+
+    @property
+    def KnowledgeUsage(self):
+        r"""<p>Knowledge base amount</p>
+        :rtype: float
+        """
+        return self._KnowledgeUsage
+
+    @KnowledgeUsage.setter
+    def KnowledgeUsage(self, KnowledgeUsage):
+        self._KnowledgeUsage = KnowledgeUsage
+
+    @property
+    def ResourceStatus(self):
+        r"""<p>Resource pack status</p><p>Enumeration values:</p><ul><li>1: Normal</li><li>3: Expired</li><li>4: About to expire</li></ul>
+        :rtype: int
+        """
+        return self._ResourceStatus
+
+    @ResourceStatus.setter
+    def ResourceStatus(self, ResourceStatus):
+        self._ResourceStatus = ResourceStatus
+
+
+    def _deserialize(self, params):
+        self._PackageType = params.get("PackageType")
+        self._ResourceTotal = params.get("ResourceTotal")
+        self._ResourceUsage = params.get("ResourceUsage")
+        self._KnowledgeCapacity = params.get("KnowledgeCapacity")
+        self._KnowledgeUsage = params.get("KnowledgeUsage")
+        self._ResourceStatus = params.get("ResourceStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResponseParam(AbstractModel):
     r"""ResponseParam
 
@@ -33006,6 +39672,229 @@ class ResponseParam(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ResumeAppTriggerRequest(AbstractModel):
+    r"""ResumeAppTrigger request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>Application ID.</p>
+        :type AppId: str
+        :param _Scope: <table> <tbody> <tr> <td>Enumeration item</td> <td>Enumeration value</td> <td>Description</td> </tr> <tr> <td>APP_TRIGGER_SCOPE_UNSPECIFIED</td> <td>0</td> <td>Unspecified</td> </tr> <tr> <td>APP_TRIGGER_SCOPE_APP</td> <td>1</td> <td>B-end admin</td> </tr> <tr> <td>APP_TRIGGER_SCOPE_USER</td> <td>2</td> <td>C-end visitor</td> </tr> </tbody> </table>
+        :type Scope: int
+        :param _TriggerId: <p>Application trigger ID</p>
+        :type TriggerId: str
+        :param _UserId: <p>Visitor ID</p>
+        :type UserId: str
+        """
+        self._AppId = None
+        self._Scope = None
+        self._TriggerId = None
+        self._UserId = None
+
+    @property
+    def AppId(self):
+        r"""<p>Application ID.</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Scope(self):
+        r"""<table> <tbody> <tr> <td>Enumeration item</td> <td>Enumeration value</td> <td>Description</td> </tr> <tr> <td>APP_TRIGGER_SCOPE_UNSPECIFIED</td> <td>0</td> <td>Unspecified</td> </tr> <tr> <td>APP_TRIGGER_SCOPE_APP</td> <td>1</td> <td>B-end admin</td> </tr> <tr> <td>APP_TRIGGER_SCOPE_USER</td> <td>2</td> <td>C-end visitor</td> </tr> </tbody> </table>
+        :rtype: int
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def TriggerId(self):
+        r"""<p>Application trigger ID</p>
+        :rtype: str
+        """
+        return self._TriggerId
+
+    @TriggerId.setter
+    def TriggerId(self, TriggerId):
+        self._TriggerId = TriggerId
+
+    @property
+    def UserId(self):
+        r"""<p>Visitor ID</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._Scope = params.get("Scope")
+        self._TriggerId = params.get("TriggerId")
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResumeAppTriggerResponse(AbstractModel):
+    r"""ResumeAppTrigger response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ResumeWorkflowRunRequest(AbstractModel):
+    r"""ResumeWorkflowRun request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>Application ID.</p>
+        :type AppId: str
+        :param _WorkflowRunId: <p>Workflow operation instance ID</p>
+        :type WorkflowRunId: str
+        :param _Query: <p>User input</p>
+        :type Query: str
+        :param _FileList: <p>File information</p>
+        :type FileList: list of ConversationFileInfo
+        """
+        self._AppId = None
+        self._WorkflowRunId = None
+        self._Query = None
+        self._FileList = None
+
+    @property
+    def AppId(self):
+        r"""<p>Application ID.</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def WorkflowRunId(self):
+        r"""<p>Workflow operation instance ID</p>
+        :rtype: str
+        """
+        return self._WorkflowRunId
+
+    @WorkflowRunId.setter
+    def WorkflowRunId(self, WorkflowRunId):
+        self._WorkflowRunId = WorkflowRunId
+
+    @property
+    def Query(self):
+        r"""<p>User input</p>
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def FileList(self):
+        r"""<p>File information</p>
+        :rtype: list of ConversationFileInfo
+        """
+        return self._FileList
+
+    @FileList.setter
+    def FileList(self, FileList):
+        self._FileList = FileList
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._WorkflowRunId = params.get("WorkflowRunId")
+        self._Query = params.get("Query")
+        if params.get("FileList") is not None:
+            self._FileList = []
+            for item in params.get("FileList"):
+                obj = ConversationFileInfo()
+                obj._deserialize(item)
+                self._FileList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResumeWorkflowRunResponse(AbstractModel):
+    r"""ResumeWorkflowRun response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class RetrievalOption(AbstractModel):
@@ -33395,6 +40284,229 @@ class RunAppTriggerNowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+
+
+class SaveWorkflowDebugContextRequest(AbstractModel):
+    r"""SaveWorkflowDebugContext request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>Application ID.</p>
+        :type AppId: str
+        :param _AppVariableValueList: <p>Application variable list.</p>
+        :type AppVariableValueList: list of AppVariableValue
+        :param _SessionId: <p>Session ID</p>
+        :type SessionId: str
+        :param _UserId: <p>Custom user ID</p>
+        :type UserId: str
+        """
+        self._AppId = None
+        self._AppVariableValueList = None
+        self._SessionId = None
+        self._UserId = None
+
+    @property
+    def AppId(self):
+        r"""<p>Application ID.</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AppVariableValueList(self):
+        r"""<p>Application variable list.</p>
+        :rtype: list of AppVariableValue
+        """
+        return self._AppVariableValueList
+
+    @AppVariableValueList.setter
+    def AppVariableValueList(self, AppVariableValueList):
+        self._AppVariableValueList = AppVariableValueList
+
+    @property
+    def SessionId(self):
+        r"""<p>Session ID</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def UserId(self):
+        r"""<p>Custom user ID</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        if params.get("AppVariableValueList") is not None:
+            self._AppVariableValueList = []
+            for item in params.get("AppVariableValueList"):
+                obj = AppVariableValue()
+                obj._deserialize(item)
+                self._AppVariableValueList.append(obj)
+        self._SessionId = params.get("SessionId")
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SaveWorkflowDebugContextResponse(AbstractModel):
+    r"""SaveWorkflowDebugContext response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class SaveWorkflowToolNodeOutputRequest(AbstractModel):
+    r"""SaveWorkflowToolNodeOutput request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CallbackToken: <p>Callback token</p><p>Request Header X-ADP-Callback-Token</p>
+        :type CallbackToken: str
+        :param _Result: <p>Callback result</p>
+        :type Result: str
+        """
+        self._CallbackToken = None
+        self._Result = None
+
+    @property
+    def CallbackToken(self):
+        r"""<p>Callback token</p><p>Request Header X-ADP-Callback-Token</p>
+        :rtype: str
+        """
+        return self._CallbackToken
+
+    @CallbackToken.setter
+    def CallbackToken(self, CallbackToken):
+        self._CallbackToken = CallbackToken
+
+    @property
+    def Result(self):
+        r"""<p>Callback result</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+
+    def _deserialize(self, params):
+        self._CallbackToken = params.get("CallbackToken")
+        self._Result = params.get("Result")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SaveWorkflowToolNodeOutputResponse(AbstractModel):
+    r"""SaveWorkflowToolNodeOutput response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: <p>Status code</p><p>Enumeration values:</p><ul><li>0: success</li><li>1000: failure</li></ul>
+        :type Code: int
+        :param _Msg: <p>Error description</p>
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Code = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def Code(self):
+        r"""<p>Status code</p><p>Enumeration values:</p><ul><li>0: success</li><li>1000: failure</li></ul>
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Msg(self):
+        r"""<p>Error description</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Msg = params.get("Msg")
         self._RequestId = params.get("RequestId")
 
 
@@ -34831,6 +41943,84 @@ class SkillCorpShareConfig(AbstractModel):
         
 
 
+class SkillDetail(AbstractModel):
+    r"""skill details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReferenceSummaryList: Call condition abstract
+        :type ReferenceSummaryList: list of SkillReferenceSummary
+        :param _SkillSummary: Skill abstract
+        :type SkillSummary: :class:`tencentcloud.adp.v20260520.models.SkillSummary`
+        :param _VersionList: Version list
+        :type VersionList: list of SkillVersion
+        """
+        self._ReferenceSummaryList = None
+        self._SkillSummary = None
+        self._VersionList = None
+
+    @property
+    def ReferenceSummaryList(self):
+        r"""Call condition abstract
+        :rtype: list of SkillReferenceSummary
+        """
+        return self._ReferenceSummaryList
+
+    @ReferenceSummaryList.setter
+    def ReferenceSummaryList(self, ReferenceSummaryList):
+        self._ReferenceSummaryList = ReferenceSummaryList
+
+    @property
+    def SkillSummary(self):
+        r"""Skill abstract
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SkillSummary`
+        """
+        return self._SkillSummary
+
+    @SkillSummary.setter
+    def SkillSummary(self, SkillSummary):
+        self._SkillSummary = SkillSummary
+
+    @property
+    def VersionList(self):
+        r"""Version list
+        :rtype: list of SkillVersion
+        """
+        return self._VersionList
+
+    @VersionList.setter
+    def VersionList(self, VersionList):
+        self._VersionList = VersionList
+
+
+    def _deserialize(self, params):
+        if params.get("ReferenceSummaryList") is not None:
+            self._ReferenceSummaryList = []
+            for item in params.get("ReferenceSummaryList"):
+                obj = SkillReferenceSummary()
+                obj._deserialize(item)
+                self._ReferenceSummaryList.append(obj)
+        if params.get("SkillSummary") is not None:
+            self._SkillSummary = SkillSummary()
+            self._SkillSummary._deserialize(params.get("SkillSummary"))
+        if params.get("VersionList") is not None:
+            self._VersionList = []
+            for item in params.get("VersionList"):
+                obj = SkillVersion()
+                obj._deserialize(item)
+                self._VersionList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SkillNotice(AbstractModel):
     r"""Skill exception notification.
 
@@ -35786,6 +42976,57 @@ class SkillVersion(AbstractModel):
         
 
 
+class Sort(AbstractModel):
+    r"""<p>Sorting condition</p>
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>Sort field name, for example, create_time</p>
+        :type Name: str
+        :param _Direction: <p>Sorting order. 1: ascending, 2: descending</p><table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>SORT_ORDER_INVALID</td><td>0</td><td>invalid</td></tr><tr><td>SORT_ORDER_ASC</td><td>1</td><td>ascending</td></tr><tr><td>SORT_ORDER_DESC</td><td>2</td><td>descending</td></tr></tbody></table>
+        :type Direction: int
+        """
+        self._Name = None
+        self._Direction = None
+
+    @property
+    def Name(self):
+        r"""<p>Sort field name, for example, create_time</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Direction(self):
+        r"""<p>Sorting order. 1: ascending, 2: descending</p><table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>SORT_ORDER_INVALID</td><td>0</td><td>invalid</td></tr><tr><td>SORT_ORDER_ASC</td><td>1</td><td>ascending</td></tr><tr><td>SORT_ORDER_DESC</td><td>2</td><td>descending</td></tr></tbody></table>
+        :rtype: int
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Space(AbstractModel):
     r"""Spatial information
 
@@ -36042,6 +43283,115 @@ class Statistic(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class StopWorkflowRunListRequest(AbstractModel):
+    r"""StopWorkflowRunList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>Application ID.</p>
+        :type AppId: str
+        :param _WorkflowRunIdList: <p>Workflow running instance ID list</p>
+        :type WorkflowRunIdList: list of str
+        """
+        self._AppId = None
+        self._WorkflowRunIdList = None
+
+    @property
+    def AppId(self):
+        r"""<p>Application ID.</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def WorkflowRunIdList(self):
+        r"""<p>Workflow running instance ID list</p>
+        :rtype: list of str
+        """
+        return self._WorkflowRunIdList
+
+    @WorkflowRunIdList.setter
+    def WorkflowRunIdList(self, WorkflowRunIdList):
+        self._WorkflowRunIdList = WorkflowRunIdList
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._WorkflowRunIdList = params.get("WorkflowRunIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopWorkflowRunListResponse(AbstractModel):
+    r"""StopWorkflowRunList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SuccessIdList: <p>List of instance IDs stopped successfully</p>
+        :type SuccessIdList: list of str
+        :param _FailedIdList: <p>List of instance IDs that failed to stop</p>
+        :type FailedIdList: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._SuccessIdList = None
+        self._FailedIdList = None
+        self._RequestId = None
+
+    @property
+    def SuccessIdList(self):
+        r"""<p>List of instance IDs stopped successfully</p>
+        :rtype: list of str
+        """
+        return self._SuccessIdList
+
+    @SuccessIdList.setter
+    def SuccessIdList(self, SuccessIdList):
+        self._SuccessIdList = SuccessIdList
+
+    @property
+    def FailedIdList(self):
+        r"""<p>List of instance IDs that failed to stop</p>
+        :rtype: list of str
+        """
+        return self._FailedIdList
+
+    @FailedIdList.setter
+    def FailedIdList(self, FailedIdList):
+        self._FailedIdList = FailedIdList
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SuccessIdList = params.get("SuccessIdList")
+        self._FailedIdList = params.get("FailedIdList")
+        self._RequestId = params.get("RequestId")
 
 
 class SummaryListSwitch(AbstractModel):
@@ -37203,6 +44553,296 @@ class TriggerStatus(AbstractModel):
         
 
 
+class UnfavoritePluginRequest(AbstractModel):
+    r"""UnfavoritePlugin request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PluginId: <p>Plugin_id</p>
+        :type PluginId: str
+        :param _SpaceId: <p>Current workspace id</p>
+        :type SpaceId: str
+        """
+        self._PluginId = None
+        self._SpaceId = None
+
+    @property
+    def PluginId(self):
+        r"""<p>Plugin_id</p>
+        :rtype: str
+        """
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def SpaceId(self):
+        r"""<p>Current workspace id</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+
+    def _deserialize(self, params):
+        self._PluginId = params.get("PluginId")
+        self._SpaceId = params.get("SpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnfavoritePluginResponse(AbstractModel):
+    r"""UnfavoritePlugin response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UnfavoriteSkillRequest(AbstractModel):
+    r"""UnfavoriteSkill request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkillId: <p>SkillId</p>
+        :type SkillId: str
+        :param _SpaceId: <p>Workspace ID</p>
+        :type SpaceId: str
+        """
+        self._SkillId = None
+        self._SpaceId = None
+
+    @property
+    def SkillId(self):
+        r"""<p>SkillId</p>
+        :rtype: str
+        """
+        return self._SkillId
+
+    @SkillId.setter
+    def SkillId(self, SkillId):
+        self._SkillId = SkillId
+
+    @property
+    def SpaceId(self):
+        r"""<p>Workspace ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+
+    def _deserialize(self, params):
+        self._SkillId = params.get("SkillId")
+        self._SpaceId = params.get("SpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnfavoriteSkillResponse(AbstractModel):
+    r"""UnfavoriteSkill response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UsageDetail(AbstractModel):
+    r"""Resource invocation time series details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CallSource: <p>Invocation source</p>
+        :type CallSource: :class:`tencentcloud.adp.v20260520.models.CallSource`
+        :param _DosageId: <p>Measurement ID, used for reconciliation/tracing</p>
+        :type DosageId: str
+        :param _EventTime: <p>Call timestamp (Unix seconds).</p>
+        :type EventTime: str
+        :param _Model: <p>Exclusive to MODEL domain</p>
+        :type Model: :class:`tencentcloud.adp.v20260520.models.ModelUsageDetail`
+        :param _Plugin: <p>Exclusive to the PLUGIN domain</p>
+        :type Plugin: :class:`tencentcloud.adp.v20260520.models.PluginUsageDetail`
+        :param _TraceId: <p>Call chain tracing ID</p>
+        :type TraceId: str
+        :param _UserId: <p>User ID</p>
+        :type UserId: str
+        """
+        self._CallSource = None
+        self._DosageId = None
+        self._EventTime = None
+        self._Model = None
+        self._Plugin = None
+        self._TraceId = None
+        self._UserId = None
+
+    @property
+    def CallSource(self):
+        r"""<p>Invocation source</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CallSource`
+        """
+        return self._CallSource
+
+    @CallSource.setter
+    def CallSource(self, CallSource):
+        self._CallSource = CallSource
+
+    @property
+    def DosageId(self):
+        r"""<p>Measurement ID, used for reconciliation/tracing</p>
+        :rtype: str
+        """
+        return self._DosageId
+
+    @DosageId.setter
+    def DosageId(self, DosageId):
+        self._DosageId = DosageId
+
+    @property
+    def EventTime(self):
+        r"""<p>Call timestamp (Unix seconds).</p>
+        :rtype: str
+        """
+        return self._EventTime
+
+    @EventTime.setter
+    def EventTime(self, EventTime):
+        self._EventTime = EventTime
+
+    @property
+    def Model(self):
+        r"""<p>Exclusive to MODEL domain</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModelUsageDetail`
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Plugin(self):
+        r"""<p>Exclusive to the PLUGIN domain</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.PluginUsageDetail`
+        """
+        return self._Plugin
+
+    @Plugin.setter
+    def Plugin(self, Plugin):
+        self._Plugin = Plugin
+
+    @property
+    def TraceId(self):
+        r"""<p>Call chain tracing ID</p>
+        :rtype: str
+        """
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
+    @property
+    def UserId(self):
+        r"""<p>User ID</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        if params.get("CallSource") is not None:
+            self._CallSource = CallSource()
+            self._CallSource._deserialize(params.get("CallSource"))
+        self._DosageId = params.get("DosageId")
+        self._EventTime = params.get("EventTime")
+        if params.get("Model") is not None:
+            self._Model = ModelUsageDetail()
+            self._Model._deserialize(params.get("Model"))
+        if params.get("Plugin") is not None:
+            self._Plugin = PluginUsageDetail()
+            self._Plugin._deserialize(params.get("Plugin"))
+        self._TraceId = params.get("TraceId")
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UsageSummary(AbstractModel):
     r"""Aggregated details of resource usage
 
@@ -37310,6 +44950,57 @@ class UsageSummary(AbstractModel):
         self._SourceId = params.get("SourceId")
         self._SourceName = params.get("SourceName")
         self._ViewType = params.get("ViewType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserAccessConfig(AbstractModel):
+    r"""User access configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CustomerKnowledgeId: <p>Customer-defined knowledge ID</p>
+        :type CustomerKnowledgeId: str
+        :param _IsPublic: <p>Whether the document is public</p>
+        :type IsPublic: bool
+        """
+        self._CustomerKnowledgeId = None
+        self._IsPublic = None
+
+    @property
+    def CustomerKnowledgeId(self):
+        r"""<p>Customer-defined knowledge ID</p>
+        :rtype: str
+        """
+        return self._CustomerKnowledgeId
+
+    @CustomerKnowledgeId.setter
+    def CustomerKnowledgeId(self, CustomerKnowledgeId):
+        self._CustomerKnowledgeId = CustomerKnowledgeId
+
+    @property
+    def IsPublic(self):
+        r"""<p>Whether the document is public</p>
+        :rtype: bool
+        """
+        return self._IsPublic
+
+    @IsPublic.setter
+    def IsPublic(self, IsPublic):
+        self._IsPublic = IsPublic
+
+
+    def _deserialize(self, params):
+        self._CustomerKnowledgeId = params.get("CustomerKnowledgeId")
+        self._IsPublic = params.get("IsPublic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

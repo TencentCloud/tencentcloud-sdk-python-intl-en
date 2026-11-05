@@ -1246,6 +1246,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAuditLogMeta(self, request):
+        r"""This API is used to obtain meta-information of audit logs.
+
+        :param request: Request instance for DescribeAuditLogMeta.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeAuditLogMetaRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeAuditLogMetaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditLogMeta", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditLogMetaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCategoryList(self, request):
         r"""Query the classification list
 
@@ -1260,6 +1283,52 @@ class AdpClient(AbstractClient):
             body = self.call("DescribeCategoryList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCategoryListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeChannel(self, request):
+        r"""Query channel details (case-sensitive by scenario)
+
+        :param request: Request instance for DescribeChannel.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeChannelRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeChannelList(self, request):
+        r"""This API is used to obtain the channel list by scenario.
+
+        :param request: Request instance for DescribeChannelList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeChannelListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeChannelListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeChannelList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeChannelListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1338,6 +1407,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeConsumptionDetailList(self, request):
+        r"""Query resource consumption details, including billing fields such as consumption type, consumption target, consumption scenario, package, and PU consumption.
+
+        :param request: Request instance for DescribeConsumptionDetailList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeConsumptionDetailListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeConsumptionDetailListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConsumptionDetailList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConsumptionDetailListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeConversation(self, request):
         r"""View session information.
 
@@ -1398,6 +1490,98 @@ class AdpClient(AbstractClient):
             body = self.call("DescribeConversationMessageList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeConversationMessageListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDoc(self, request):
+        r"""Queries the details of a document.
+
+        :param request: Request instance for DescribeDoc.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeDocRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeDocResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDoc", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDocResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDocSummaryList(self, request):
+        r"""Query the abstract list of a document.
+
+        :param request: Request instance for DescribeDocSummaryList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeDocSummaryListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeDocSummaryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDocSummaryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDocSummaryListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeKB(self, request):
+        r"""Query knowledge base details
+
+        :param request: Request instance for DescribeKB.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeKBRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeKBResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKB", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeKBResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeKBSummaryList(self, request):
+        r"""Queries the knowledge base list
+
+        :param request: Request instance for DescribeKBSummaryList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeKBSummaryListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeKBSummaryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKBSummaryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeKBSummaryListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1476,6 +1660,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMetricOverviewList(self, request):
+        r"""Query the overview KPI card data of dashboards, distinguish resource dashboards from business dashboards by resource_type, and return the KPI metric list of each domain.
+
+        :param request: Request instance for DescribeMetricOverviewList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeMetricOverviewListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeMetricOverviewListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMetricOverviewList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMetricOverviewListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeModelList(self, request):
         r"""Query the model list
 
@@ -1513,6 +1720,29 @@ class AdpClient(AbstractClient):
             body = self.call("DescribeMsgRecordCategoryList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeMsgRecordCategoryListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMsgRecordList(self, request):
+        r"""This API is used to query the dialogue message record list of an application. It supports filtering by channel type, feedback type, intent, call result, and other conditions, and supports cursor pagination and sorting by creation time.
+
+        :param request: Request instance for DescribeMsgRecordList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeMsgRecordListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeMsgRecordListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMsgRecordList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMsgRecordListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1706,6 +1936,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeResourceSummary(self, request):
+        r"""This API is used to obtain user resource package and value-added package usage information.
+
+        :param request: Request instance for DescribeResourceSummary.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeResourceSummaryRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeResourceSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceSummary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceSummaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSkillCategoryList(self, request):
         r"""Query the Skill classification list
 
@@ -1720,6 +1973,29 @@ class AdpClient(AbstractClient):
             body = self.call("DescribeSkillCategoryList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSkillCategoryListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSkillDetail(self, request):
+        r"""Query skill details
+
+        :param request: Request instance for DescribeSkillDetail.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeSkillDetailRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeSkillDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSkillDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSkillDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1821,6 +2097,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUsageDetailList(self, request):
+        r"""This API is used to query time series details of resource invocations, including two types of resources: models and plug-ins. It returns detailed information of each call record in chronological order.
+
+        :param request: Request instance for DescribeUsageDetailList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeUsageDetailListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeUsageDetailListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUsageDetailList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUsageDetailListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUsageSummaryList(self, request):
         r"""This API is used to query aggregated details of resource usage, including three types of resources: models, plug-ins, and platforms. It displays indicators such as call count and Token consumption, aggregated by space or application dimension.
 
@@ -1913,6 +2212,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeWorkflowRunSummaryList(self, request):
+        r"""Query the list of workflow running instances
+
+        :param request: Request instance for DescribeWorkflowRunSummaryList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeWorkflowRunSummaryListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeWorkflowRunSummaryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkflowRunSummaryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkflowRunSummaryListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExportQA(self, request):
         r"""Asynchronously export QAs.
 
@@ -1927,6 +2249,75 @@ class AdpClient(AbstractClient):
             body = self.call("ExportQA", params, headers=headers)
             response = json.loads(body)
             model = models.ExportQAResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def FavoritePlugin(self, request):
+        r"""Favorite a plug-in
+
+        :param request: Request instance for FavoritePlugin.
+        :type request: :class:`tencentcloud.adp.v20260520.models.FavoritePluginRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.FavoritePluginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("FavoritePlugin", params, headers=headers)
+            response = json.loads(body)
+            model = models.FavoritePluginResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def FavoriteSkill(self, request):
+        r"""Favorites a skill
+
+        :param request: Request instance for FavoriteSkill.
+        :type request: :class:`tencentcloud.adp.v20260520.models.FavoriteSkillRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.FavoriteSkillResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("FavoriteSkill", params, headers=headers)
+            response = json.loads(body)
+            model = models.FavoriteSkillResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ImportDocList(self, request):
+        r"""Batch imports documents
+
+        :param request: Request instance for ImportDocList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ImportDocListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ImportDocListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImportDocList", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImportDocListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2005,6 +2396,75 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyCategory(self, request):
+        r"""Modify category
+
+        :param request: Request instance for ModifyCategory.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ModifyCategoryRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModifyCategoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCategory", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCategoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyChannel(self, request):
+        r"""This API is used to modify a channel, including remarks and the callback robot ID of a WeCom chatbot channel.
+
+        :param request: Request instance for ModifyChannel.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ModifyChannelRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModifyChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyConflictQA(self, request):
+        r"""Modify a conflict
+
+        :param request: Request instance for ModifyConflictQA.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ModifyConflictQARequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModifyConflictQAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyConflictQA", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyConflictQAResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyConversation(self, request):
         r"""Modify session information.
 
@@ -2019,6 +2479,29 @@ class AdpClient(AbstractClient):
             body = self.call("ModifyConversation", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyConversationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDoc(self, request):
+        r"""Modify a single document
+
+        :param request: Request instance for ModifyDoc.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ModifyDocRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModifyDocResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDoc", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDocResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2097,6 +2580,52 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyMsgRecordCategory(self, request):
+        r"""Modify the name of a specified message record category
+
+        :param request: Request instance for ModifyMsgRecordCategory.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ModifyMsgRecordCategoryRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModifyMsgRecordCategoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMsgRecordCategory", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMsgRecordCategoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyPlugin(self, request):
+        r"""Modify a plug-in
+
+        :param request: Request instance for ModifyPlugin.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ModifyPluginRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModifyPluginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPlugin", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPluginResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyQA(self, request):
         r"""Modify single QA
 
@@ -2134,6 +2663,29 @@ class AdpClient(AbstractClient):
             body = self.call("ModifyQAList", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyQAListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySkill(self, request):
+        r"""Modify a Skill
+
+        :param request: Request instance for ModifySkill.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ModifySkillRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModifySkillResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySkill", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySkillResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2212,6 +2764,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ReadMCPResource(self, request):
+        r"""This API is used to read MCP UI resources in HTML for frontend iframe to load the MCP App interface.
+
+        :param request: Request instance for ReadMCPResource.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ReadMCPResourceRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ReadMCPResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReadMCPResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReadMCPResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ReleaseSkill(self, request):
         r"""This API is used to list a skill.
 
@@ -2250,6 +2825,52 @@ class AdpClient(AbstractClient):
             body = self.call("ResetConversation", params, headers=headers)
             response = json.loads(body)
             model = models.ResetConversationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResumeAppTrigger(self, request):
+        r"""ResumeAppTrigger
+
+        :param request: Request instance for ResumeAppTrigger.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ResumeAppTriggerRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ResumeAppTriggerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResumeAppTrigger", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResumeAppTriggerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResumeWorkflowRun(self, request):
+        r"""Resume a workflow asynchronous execution instance that is waiting for input.
+
+        :param request: Request instance for ResumeWorkflowRun.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ResumeWorkflowRunRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ResumeWorkflowRunResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResumeWorkflowRun", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResumeWorkflowRunResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2328,6 +2949,52 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SaveWorkflowDebugContext(self, request):
+        r"""SaveWorkflowDebugContext
+
+        :param request: Request instance for SaveWorkflowDebugContext.
+        :type request: :class:`tencentcloud.adp.v20260520.models.SaveWorkflowDebugContextRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SaveWorkflowDebugContextResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SaveWorkflowDebugContext", params, headers=headers)
+            response = json.loads(body)
+            model = models.SaveWorkflowDebugContextResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SaveWorkflowToolNodeOutput(self, request):
+        r"""SaveWorkflowToolNodeOutput
+
+        :param request: Request instance for SaveWorkflowToolNodeOutput.
+        :type request: :class:`tencentcloud.adp.v20260520.models.SaveWorkflowToolNodeOutputRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SaveWorkflowToolNodeOutputResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SaveWorkflowToolNodeOutput", params, headers=headers)
+            response = json.loads(body)
+            model = models.SaveWorkflowToolNodeOutputResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SearchKnowledge(self, request):
         r"""Knowledge retrieval
 
@@ -2342,6 +3009,75 @@ class AdpClient(AbstractClient):
             body = self.call("SearchKnowledge", params, headers=headers)
             response = json.loads(body)
             model = models.SearchKnowledgeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopWorkflowRunList(self, request):
+        r"""Batch stop running workflow instances.
+
+        :param request: Request instance for StopWorkflowRunList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.StopWorkflowRunListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.StopWorkflowRunListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopWorkflowRunList", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopWorkflowRunListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UnfavoritePlugin(self, request):
+        r"""Unfavorite a plug-in
+
+        :param request: Request instance for UnfavoritePlugin.
+        :type request: :class:`tencentcloud.adp.v20260520.models.UnfavoritePluginRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.UnfavoritePluginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnfavoritePlugin", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnfavoritePluginResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UnfavoriteSkill(self, request):
+        r"""Unfavorites a skill
+
+        :param request: Request instance for UnfavoriteSkill.
+        :type request: :class:`tencentcloud.adp.v20260520.models.UnfavoriteSkillRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.UnfavoriteSkillResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnfavoriteSkill", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnfavoriteSkillResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
