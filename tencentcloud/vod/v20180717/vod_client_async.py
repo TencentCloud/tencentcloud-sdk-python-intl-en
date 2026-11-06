@@ -388,11 +388,11 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAigcQuotaResponse:
         """
-        This API is used to create and enable AIGC quota configuration. Quota usage starts accumulating from the enablement of the quota feature. Once the quota is reached, AIGC features will no longer be usable.
+        This API is used to create and enable AIGC quota configuration. Quota usage starts accumulating when the quota feature is enabled. Once the quota is reached, AIGC features will no longer be usable.
 
-        If the quota is deleted and re-enabled, the amount will be cleared and recalculated.
+        If the quota is deleted and re-enabled, the amount will be zero and recalculated.
 
-        Since AGC content generation is an asynchronous task, real-time usage data cannot be obtained. Therefore, quota limits may result in some errors, and completely precise control over the set limit cannot be achieved.
+        Since content generation in AGC is an asynchronous task, real-time usage data cannot be obtained. Therefore, quota limits may result in some errors, and full precise control over the set limit cannot be achieved.
         """
         
         kwargs = {}
@@ -3428,9 +3428,9 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyAigcQuotaResponse:
         """
-        This API is used to edit AIGC quota configuration. Quota usage starts accumulating when the quota feature is enabled. Once the quota is reached, AIGC features will no longer be usable.
+        This API is used to edit AIGC quota configuration. Quota usage accumulates from the start of quota enablement. Once the quota is reached, AIGC features will no longer be usable.
 
-        Since AGC content generation is an async task, real-time usage data cannot be obtained. Therefore, quota limits result in some errors, and precise control over the set limit cannot be achieved.
+        Since content generation in AGC is an asynchronous task, real-time usage data cannot be obtained. Therefore, quota limits may result in some errors, and precise control over the set limit cannot be achieved.
         """
         
         kwargs = {}

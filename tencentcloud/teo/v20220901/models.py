@@ -16807,9 +16807,9 @@ class CustomizedHeader(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: Specifies the custom header Key.
+        :param _Key: Custom header Key.
         :type Key: str
-        :param _Value: Set custom headers Value.
+        :param _Value: Value of the custom header.
         :type Value: str
         """
         self._Key = None
@@ -16817,7 +16817,7 @@ class CustomizedHeader(AbstractModel):
 
     @property
     def Key(self):
-        r"""Specifies the custom header Key.
+        r"""Custom header Key.
         :rtype: str
         """
         return self._Key
@@ -16828,7 +16828,7 @@ class CustomizedHeader(AbstractModel):
 
     @property
     def Value(self):
-        r"""Set custom headers Value.
+        r"""Value of the custom header.
         :rtype: str
         """
         return self._Value
@@ -38923,42 +38923,36 @@ class HealthChecker(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: Health check policy. Valid values:
-<li>HTTP.</li>
-<li>HTTPS.</li>
-<li>TCP.</li>
-<li>UDP.</li>
-<li>ICMP Ping.</li>
-<li>NoCheck.</li>
-Note: NoCheck means the health check policy is not enabled.
+        :param _Type: <p>Health check policy. Valid values:</p><li>HTTP;</li><li>HTTPS;</li><li>TCP;</li><li>UDP;</li><li>ICMP Ping;</li><li>NoCheck.</li>Note: NoCheck means health check policy is not enabled.
         :type Type: str
-        :param _Port: Check port, which is required when Type = HTTP, Type = HTTPS, Type = TCP, or Type = UDP.
+        :param _Port: <p>Check port, which is required when Type = HTTP, Type = HTTPS, Type = TCP, or Type = UDP.</p>
         :type Port: int
-        :param _Interval: Check frequency, in seconds. It indicates how often a health check task is initiated. Configurable range: 10-600 seconds.
+        :param _Interval: <p>Check frequency, in seconds. It indicates how often a health check task is initiated. Configurable range: 10-600 seconds.</p>
         :type Interval: int
-        :param _Timeout: Timeout for each health check, in seconds. If the health check time exceeds this value, the check result is determined as "unhealthy". The default value is 5s, and the value should be less than Interval.
+        :param _Timeout: <p>Timeout for each health check, in seconds. If the health check time exceeds this value, the check result is determined as "unhealthy". The default value is 5s, and the value should be less than Interval.</p>
         :type Timeout: int
-        :param _HealthThreshold: Healthy state threshold, in the number of times. It indicates that if the consecutive health check results are "healthy" for a certain number of times, an origin server is considered "healthy". The default value is 3 times, with the minimum value of 1 time.
+        :param _HealthThreshold: <p>Health threshold, in the number of times. It indicates that if the consecutive health check results are "healthy" for a certain number of times, an origin server is considered "healthy". The default value is 3 times, with the minimum value of 1 time.</p>
         :type HealthThreshold: int
-        :param _CriticalThreshold: Unhealthy state threshold, in the number of times. It indicates that if the consecutive health check results are "unhealthy" for a certain number of times, an origin server is considered "unhealthy". The default value is 2 times.
+        :param _CriticalThreshold: <p>Unhealthy state threshold, in the number of times. It indicates that if the consecutive health check results are "unhealthy" for a certain number of times, an origin server is considered "unhealthy". The default value is 2 times.</p>
         :type CriticalThreshold: int
-        :param _Path: Probe path. This parameter is valid only when Type = HTTP or Type = HTTPS. It needs to include the complete host/path and should not contain a protocol, for example, www.example.com/test.
-
+        :param _Path: <p>Probe path. This parameter is valid only when Type = HTTP or Type = HTTPS. It needs to include the complete host/path and should not contain a protocol, for example, www.example.com/test.</p>
         :type Path: str
-        :param _Method: Request method. This parameter is valid only when Type = HTTP or Type = HTTPS. Valid values:
-<li>GET.</li>
-<li>HEAD.</li>
+        :param _HostHeaderPolicy: <p>Probe request Host Header policy. It takes effect only when Type=HTTP or Type=HTTPS and the instance type is HTTP-dedicated (V2). Valid values:</p><li>FollowCheckURL: Follows the Host specified by the probe URL, that is, the Host part in the HealthChecker.Path field will be used as the Host address for probing;</li><li>FollowOriginGroup: Follows the origin-pull Host Header configured in the origin group, that is, the OriginGroup.HostHeader field value of the origin group where the probed origin resides will be used as the Host address for probing. If the origin group has no HostHeader configured, the Host part in the HealthChecker.Path field will be used as the Host address for probing;</li><li>FollowOrigin: Follows the origin address, that is, the OriginGroup.Records[N].Record field value (the origin address itself) of the corresponding origin record in the origin group where the probed origin resides will be used as the Host address for probing.</li>Default: FollowCheckURL.
+        :type HostHeaderPolicy: str
+        :param _Method: <p>Request method. This parameter is valid only when Type = HTTP or Type = HTTPS. Valid values:</p><li>GET;</li><li>HEAD.</li>
         :type Method: str
-        :param _ExpectedCodes: The status codes used to determine that the probe result is healthy when the probe node initiates a health check to an origin server. This parameter is valid only when Type = HTTP or Type = HTTPS.
+        :param _ExpectedCodes: <p>The status codes used to determine that the probe result is healthy when the probe node initiates a health check to an origin server. This parameter is valid only when Type = HTTP or Type = HTTPS.</p>
         :type ExpectedCodes: list of str
-        :param _Headers: The custom HTTP request header carried by a probe request, with a maximum value of 10. This parameter is valid only when Type = HTTP or Type = HTTPS.
+        :param _Headers: <p>This parameter is valid only when Type=HTTP or Type=HTTPS. It refers to the custom HTTP request header carried in the probe request. Up to 10 can be configured.</p>
         :type Headers: list of CustomizedHeader
-        :param _FollowRedirect: Whether to follow 301/302 redirect. When enabled, 301/302 is considered a "healthy" status code, redirecting 3 times by default. This parameter is valid only when Type = HTTP or Type = HTTPS.
+        :param _FollowRedirect: <p>Whether to follow 301/302 redirect. When enabled, 301/302 is considered a "healthy" status code, redirecting 3 times by default. This parameter is valid only when Type = HTTP or Type = HTTPS.</p>
         :type FollowRedirect: str
-        :param _SendContext: The content sent by a health check. Only ASCII visible characters are allowed, with up to 500 characters. This parameter is valid only when Type = UDP.
+        :param _SendContext: <p>The content sent by a health check. Only ASCII visible characters are allowed, with up to 500 characters. This parameter is valid only when Type = UDP.</p>
         :type SendContext: str
-        :param _RecvContext: The expected return result from an origin server during health check. Only ASCII visible characters are allowed, with up to 500 characters. This parameter is valid only when Type = UDP.
+        :param _RecvContext: <p>The expected return result from an origin server during health check. Only ASCII visible characters are allowed, with up to 500 characters. This parameter is valid only when Type = UDP.</p>
         :type RecvContext: str
+        :param _ProbeCluster: <p>Health check probe cluster. Specifies the cluster region scope from which this load balancer instance initiates health probes. For details on the regional distribution of probe clusters, see <a href="https://www.tencentcloud.com/document/product/1552/104228?from_cn_redirect=1">Health Check Policy Introduction</a>. This can be configured only for HTTP-dedicated (V2) load balancer instances. Valid values:</p><li>global: Probes are initiated by probe clusters in all regions worldwide, including the Chinese mainland and regions outside the Chinese mainland. Clusters in each region independently maintain their own probe results;</li><li>mainland_china: Probes are initiated only by probe clusters in the Chinese mainland. Currently, the Chinese mainland shares one probe cluster, and probe results are maintained by the probe cluster in the Chinese mainland. Other regions follow the probe results of the cluster in the Chinese mainland;</li><li>overseas: Probes are initiated only by probe clusters in regions outside the Chinese mainland. Currently, regions outside the Chinese mainland contain probe clusters in multiple areas, and probe results are independently maintained by the probe clusters in each area. Probe results for the Chinese mainland are generated by aggregating the probe results of the probe clusters in all other areas.</li>Default: global.
+        :type ProbeCluster: str
         """
         self._Type = None
         self._Port = None
@@ -38967,23 +38961,18 @@ Note: NoCheck means the health check policy is not enabled.
         self._HealthThreshold = None
         self._CriticalThreshold = None
         self._Path = None
+        self._HostHeaderPolicy = None
         self._Method = None
         self._ExpectedCodes = None
         self._Headers = None
         self._FollowRedirect = None
         self._SendContext = None
         self._RecvContext = None
+        self._ProbeCluster = None
 
     @property
     def Type(self):
-        r"""Health check policy. Valid values:
-<li>HTTP.</li>
-<li>HTTPS.</li>
-<li>TCP.</li>
-<li>UDP.</li>
-<li>ICMP Ping.</li>
-<li>NoCheck.</li>
-Note: NoCheck means the health check policy is not enabled.
+        r"""<p>Health check policy. Valid values:</p><li>HTTP;</li><li>HTTPS;</li><li>TCP;</li><li>UDP;</li><li>ICMP Ping;</li><li>NoCheck.</li>Note: NoCheck means health check policy is not enabled.
         :rtype: str
         """
         return self._Type
@@ -38994,7 +38983,7 @@ Note: NoCheck means the health check policy is not enabled.
 
     @property
     def Port(self):
-        r"""Check port, which is required when Type = HTTP, Type = HTTPS, Type = TCP, or Type = UDP.
+        r"""<p>Check port, which is required when Type = HTTP, Type = HTTPS, Type = TCP, or Type = UDP.</p>
         :rtype: int
         """
         return self._Port
@@ -39005,7 +38994,7 @@ Note: NoCheck means the health check policy is not enabled.
 
     @property
     def Interval(self):
-        r"""Check frequency, in seconds. It indicates how often a health check task is initiated. Configurable range: 10-600 seconds.
+        r"""<p>Check frequency, in seconds. It indicates how often a health check task is initiated. Configurable range: 10-600 seconds.</p>
         :rtype: int
         """
         return self._Interval
@@ -39016,7 +39005,7 @@ Note: NoCheck means the health check policy is not enabled.
 
     @property
     def Timeout(self):
-        r"""Timeout for each health check, in seconds. If the health check time exceeds this value, the check result is determined as "unhealthy". The default value is 5s, and the value should be less than Interval.
+        r"""<p>Timeout for each health check, in seconds. If the health check time exceeds this value, the check result is determined as "unhealthy". The default value is 5s, and the value should be less than Interval.</p>
         :rtype: int
         """
         return self._Timeout
@@ -39027,7 +39016,7 @@ Note: NoCheck means the health check policy is not enabled.
 
     @property
     def HealthThreshold(self):
-        r"""Healthy state threshold, in the number of times. It indicates that if the consecutive health check results are "healthy" for a certain number of times, an origin server is considered "healthy". The default value is 3 times, with the minimum value of 1 time.
+        r"""<p>Health threshold, in the number of times. It indicates that if the consecutive health check results are "healthy" for a certain number of times, an origin server is considered "healthy". The default value is 3 times, with the minimum value of 1 time.</p>
         :rtype: int
         """
         return self._HealthThreshold
@@ -39038,7 +39027,7 @@ Note: NoCheck means the health check policy is not enabled.
 
     @property
     def CriticalThreshold(self):
-        r"""Unhealthy state threshold, in the number of times. It indicates that if the consecutive health check results are "unhealthy" for a certain number of times, an origin server is considered "unhealthy". The default value is 2 times.
+        r"""<p>Unhealthy state threshold, in the number of times. It indicates that if the consecutive health check results are "unhealthy" for a certain number of times, an origin server is considered "unhealthy". The default value is 2 times.</p>
         :rtype: int
         """
         return self._CriticalThreshold
@@ -39049,8 +39038,7 @@ Note: NoCheck means the health check policy is not enabled.
 
     @property
     def Path(self):
-        r"""Probe path. This parameter is valid only when Type = HTTP or Type = HTTPS. It needs to include the complete host/path and should not contain a protocol, for example, www.example.com/test.
-
+        r"""<p>Probe path. This parameter is valid only when Type = HTTP or Type = HTTPS. It needs to include the complete host/path and should not contain a protocol, for example, www.example.com/test.</p>
         :rtype: str
         """
         return self._Path
@@ -39060,10 +39048,19 @@ Note: NoCheck means the health check policy is not enabled.
         self._Path = Path
 
     @property
+    def HostHeaderPolicy(self):
+        r"""<p>Probe request Host Header policy. It takes effect only when Type=HTTP or Type=HTTPS and the instance type is HTTP-dedicated (V2). Valid values:</p><li>FollowCheckURL: Follows the Host specified by the probe URL, that is, the Host part in the HealthChecker.Path field will be used as the Host address for probing;</li><li>FollowOriginGroup: Follows the origin-pull Host Header configured in the origin group, that is, the OriginGroup.HostHeader field value of the origin group where the probed origin resides will be used as the Host address for probing. If the origin group has no HostHeader configured, the Host part in the HealthChecker.Path field will be used as the Host address for probing;</li><li>FollowOrigin: Follows the origin address, that is, the OriginGroup.Records[N].Record field value (the origin address itself) of the corresponding origin record in the origin group where the probed origin resides will be used as the Host address for probing.</li>Default: FollowCheckURL.
+        :rtype: str
+        """
+        return self._HostHeaderPolicy
+
+    @HostHeaderPolicy.setter
+    def HostHeaderPolicy(self, HostHeaderPolicy):
+        self._HostHeaderPolicy = HostHeaderPolicy
+
+    @property
     def Method(self):
-        r"""Request method. This parameter is valid only when Type = HTTP or Type = HTTPS. Valid values:
-<li>GET.</li>
-<li>HEAD.</li>
+        r"""<p>Request method. This parameter is valid only when Type = HTTP or Type = HTTPS. Valid values:</p><li>GET;</li><li>HEAD.</li>
         :rtype: str
         """
         return self._Method
@@ -39074,7 +39071,7 @@ Note: NoCheck means the health check policy is not enabled.
 
     @property
     def ExpectedCodes(self):
-        r"""The status codes used to determine that the probe result is healthy when the probe node initiates a health check to an origin server. This parameter is valid only when Type = HTTP or Type = HTTPS.
+        r"""<p>The status codes used to determine that the probe result is healthy when the probe node initiates a health check to an origin server. This parameter is valid only when Type = HTTP or Type = HTTPS.</p>
         :rtype: list of str
         """
         return self._ExpectedCodes
@@ -39085,7 +39082,7 @@ Note: NoCheck means the health check policy is not enabled.
 
     @property
     def Headers(self):
-        r"""The custom HTTP request header carried by a probe request, with a maximum value of 10. This parameter is valid only when Type = HTTP or Type = HTTPS.
+        r"""<p>This parameter is valid only when Type=HTTP or Type=HTTPS. It refers to the custom HTTP request header carried in the probe request. Up to 10 can be configured.</p>
         :rtype: list of CustomizedHeader
         """
         return self._Headers
@@ -39096,7 +39093,7 @@ Note: NoCheck means the health check policy is not enabled.
 
     @property
     def FollowRedirect(self):
-        r"""Whether to follow 301/302 redirect. When enabled, 301/302 is considered a "healthy" status code, redirecting 3 times by default. This parameter is valid only when Type = HTTP or Type = HTTPS.
+        r"""<p>Whether to follow 301/302 redirect. When enabled, 301/302 is considered a "healthy" status code, redirecting 3 times by default. This parameter is valid only when Type = HTTP or Type = HTTPS.</p>
         :rtype: str
         """
         return self._FollowRedirect
@@ -39107,7 +39104,7 @@ Note: NoCheck means the health check policy is not enabled.
 
     @property
     def SendContext(self):
-        r"""The content sent by a health check. Only ASCII visible characters are allowed, with up to 500 characters. This parameter is valid only when Type = UDP.
+        r"""<p>The content sent by a health check. Only ASCII visible characters are allowed, with up to 500 characters. This parameter is valid only when Type = UDP.</p>
         :rtype: str
         """
         return self._SendContext
@@ -39118,7 +39115,7 @@ Note: NoCheck means the health check policy is not enabled.
 
     @property
     def RecvContext(self):
-        r"""The expected return result from an origin server during health check. Only ASCII visible characters are allowed, with up to 500 characters. This parameter is valid only when Type = UDP.
+        r"""<p>The expected return result from an origin server during health check. Only ASCII visible characters are allowed, with up to 500 characters. This parameter is valid only when Type = UDP.</p>
         :rtype: str
         """
         return self._RecvContext
@@ -39126,6 +39123,17 @@ Note: NoCheck means the health check policy is not enabled.
     @RecvContext.setter
     def RecvContext(self, RecvContext):
         self._RecvContext = RecvContext
+
+    @property
+    def ProbeCluster(self):
+        r"""<p>Health check probe cluster. Specifies the cluster region scope from which this load balancer instance initiates health probes. For details on the regional distribution of probe clusters, see <a href="https://www.tencentcloud.com/document/product/1552/104228?from_cn_redirect=1">Health Check Policy Introduction</a>. This can be configured only for HTTP-dedicated (V2) load balancer instances. Valid values:</p><li>global: Probes are initiated by probe clusters in all regions worldwide, including the Chinese mainland and regions outside the Chinese mainland. Clusters in each region independently maintain their own probe results;</li><li>mainland_china: Probes are initiated only by probe clusters in the Chinese mainland. Currently, the Chinese mainland shares one probe cluster, and probe results are maintained by the probe cluster in the Chinese mainland. Other regions follow the probe results of the cluster in the Chinese mainland;</li><li>overseas: Probes are initiated only by probe clusters in regions outside the Chinese mainland. Currently, regions outside the Chinese mainland contain probe clusters in multiple areas, and probe results are independently maintained by the probe clusters in each area. Probe results for the Chinese mainland are generated by aggregating the probe results of the probe clusters in all other areas.</li>Default: global.
+        :rtype: str
+        """
+        return self._ProbeCluster
+
+    @ProbeCluster.setter
+    def ProbeCluster(self, ProbeCluster):
+        self._ProbeCluster = ProbeCluster
 
 
     def _deserialize(self, params):
@@ -39136,6 +39144,7 @@ Note: NoCheck means the health check policy is not enabled.
         self._HealthThreshold = params.get("HealthThreshold")
         self._CriticalThreshold = params.get("CriticalThreshold")
         self._Path = params.get("Path")
+        self._HostHeaderPolicy = params.get("HostHeaderPolicy")
         self._Method = params.get("Method")
         self._ExpectedCodes = params.get("ExpectedCodes")
         if params.get("Headers") is not None:
@@ -39147,6 +39156,7 @@ Note: NoCheck means the health check policy is not enabled.
         self._FollowRedirect = params.get("FollowRedirect")
         self._SendContext = params.get("SendContext")
         self._RecvContext = params.get("RecvContext")
+        self._ProbeCluster = params.get("ProbeCluster")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

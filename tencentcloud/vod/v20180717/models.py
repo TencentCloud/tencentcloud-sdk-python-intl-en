@@ -13737,6 +13737,72 @@ class AigcImageTaskOutputFileInfo(AbstractModel):
         
 
 
+class AigcModelQuota(AbstractModel):
+    r"""AIGC single-quota model.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: <p>Model name.</p>
+        :type ModelName: str
+        :param _QuotaLimit: <p>Quota quantity of tasks.</p><p>Unit: frames/second.</p><ul><li>When QuotaType is Image, the unit is frames;</li><li>When QuotaType is Video, the unit is seconds;</li></ul>
+        :type QuotaLimit: int
+        :param _ModelVersion: <p>Model version.</p>
+        :type ModelVersion: str
+        """
+        self._ModelName = None
+        self._QuotaLimit = None
+        self._ModelVersion = None
+
+    @property
+    def ModelName(self):
+        r"""<p>Model name.</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def QuotaLimit(self):
+        r"""<p>Quota quantity of tasks.</p><p>Unit: frames/second.</p><ul><li>When QuotaType is Image, the unit is frames;</li><li>When QuotaType is Video, the unit is seconds;</li></ul>
+        :rtype: int
+        """
+        return self._QuotaLimit
+
+    @QuotaLimit.setter
+    def QuotaLimit(self, QuotaLimit):
+        self._QuotaLimit = QuotaLimit
+
+    @property
+    def ModelVersion(self):
+        r"""<p>Model version.</p>
+        :rtype: str
+        """
+        return self._ModelVersion
+
+    @ModelVersion.setter
+    def ModelVersion(self, ModelVersion):
+        self._ModelVersion = ModelVersion
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._QuotaLimit = params.get("QuotaLimit")
+        self._ModelVersion = params.get("ModelVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcQuotaItem(AbstractModel):
     r"""AIGC quota
 
@@ -28520,23 +28586,35 @@ class CreateAigcQuotaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <p><strong>VOD application ID. From December 25, 2023, customers who activate on-demand services must fill in this field with the app ID when accessing resources in on-demand applications, whether it is the default application or a newly created application.</strong></p>
+        :param _SubAppId: <p><strong>VOD application ID. From December 25, 2023, customers who activate on-demand services must fill in this field with the app ID when accessing resources in on-demand applications, whether in the default application or a newly created application.</strong></p>
         :type SubAppId: int
         :param _QuotaType: <p>Quota type</p><p>Enumeration values:</p><ul><li>Image: AIGC image task</li><li>Video: AIGC video task</li><li>Text: AIGC text task</li></ul>
         :type QuotaType: str
-        :param _QuotaLimit: <p>Number of task quotas.</p><p>Unit: images/seconds/tokens.</p><ul><li>When QuotaType is Image, the unit is images;</li><li>When QuotaType is Video, the unit is seconds;</li><li>When QuotaType is Text, the unit is tokens.</li></ul>
+        :param _QuotaLimit: <p>Number of quotas for the task.</p><p>Unit: images/second/tokens.</p><ul><li>When QuotaType is Image, the unit is images;</li><li>When QuotaType is Video, the unit is seconds;</li><li>When QuotaType is Text, the unit is tokens.</li></ul>
         :type QuotaLimit: int
-        :param _ApiToken: <p>Valid only when QuotaType is Text. It is used to select the ApiToken that needs a quota limit.</p>
+        :param _ApiToken: <p>Valid only when QuotaType=Text, used to select the ApiToken that requires quota limit</p>
         :type ApiToken: str
+        :param _QuotaPeriod: <p>Quota reset cycle.</p><p>Enumeration values:</p><ul><li>Day: Reset every day.</li><li>Month: Reset on a specified date each month.</li><li>Total: Never reset. The QuotaLimit parameter is the total quota.</li></ul>
+        :type QuotaPeriod: str
+        :param _ResetDay: <p>Reset date of the per month quota. Valid only when QuotaPeriod=Month.</p><p>If the selected date does not exist in the current month, the reset is postponed to 00:00 on the 1st of the next month.</p>
+        :type ResetDay: int
+        :param _ModelQuotaSwitch: <p>Whether to set specified quotas for each model</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul>
+        :type ModelQuotaSwitch: str
+        :param _ModelQuotas: <p>Quota set for each model, valid only when ModelQuotaSwitch=ON.</p>
+        :type ModelQuotas: list of AigcModelQuota
         """
         self._SubAppId = None
         self._QuotaType = None
         self._QuotaLimit = None
         self._ApiToken = None
+        self._QuotaPeriod = None
+        self._ResetDay = None
+        self._ModelQuotaSwitch = None
+        self._ModelQuotas = None
 
     @property
     def SubAppId(self):
-        r"""<p><strong>VOD application ID. From December 25, 2023, customers who activate on-demand services must fill in this field with the app ID when accessing resources in on-demand applications, whether it is the default application or a newly created application.</strong></p>
+        r"""<p><strong>VOD application ID. From December 25, 2023, customers who activate on-demand services must fill in this field with the app ID when accessing resources in on-demand applications, whether in the default application or a newly created application.</strong></p>
         :rtype: int
         """
         return self._SubAppId
@@ -28558,7 +28636,7 @@ class CreateAigcQuotaRequest(AbstractModel):
 
     @property
     def QuotaLimit(self):
-        r"""<p>Number of task quotas.</p><p>Unit: images/seconds/tokens.</p><ul><li>When QuotaType is Image, the unit is images;</li><li>When QuotaType is Video, the unit is seconds;</li><li>When QuotaType is Text, the unit is tokens.</li></ul>
+        r"""<p>Number of quotas for the task.</p><p>Unit: images/second/tokens.</p><ul><li>When QuotaType is Image, the unit is images;</li><li>When QuotaType is Video, the unit is seconds;</li><li>When QuotaType is Text, the unit is tokens.</li></ul>
         :rtype: int
         """
         return self._QuotaLimit
@@ -28569,7 +28647,7 @@ class CreateAigcQuotaRequest(AbstractModel):
 
     @property
     def ApiToken(self):
-        r"""<p>Valid only when QuotaType is Text. It is used to select the ApiToken that needs a quota limit.</p>
+        r"""<p>Valid only when QuotaType=Text, used to select the ApiToken that requires quota limit</p>
         :rtype: str
         """
         return self._ApiToken
@@ -28578,12 +28656,65 @@ class CreateAigcQuotaRequest(AbstractModel):
     def ApiToken(self, ApiToken):
         self._ApiToken = ApiToken
 
+    @property
+    def QuotaPeriod(self):
+        r"""<p>Quota reset cycle.</p><p>Enumeration values:</p><ul><li>Day: Reset every day.</li><li>Month: Reset on a specified date each month.</li><li>Total: Never reset. The QuotaLimit parameter is the total quota.</li></ul>
+        :rtype: str
+        """
+        return self._QuotaPeriod
+
+    @QuotaPeriod.setter
+    def QuotaPeriod(self, QuotaPeriod):
+        self._QuotaPeriod = QuotaPeriod
+
+    @property
+    def ResetDay(self):
+        r"""<p>Reset date of the per month quota. Valid only when QuotaPeriod=Month.</p><p>If the selected date does not exist in the current month, the reset is postponed to 00:00 on the 1st of the next month.</p>
+        :rtype: int
+        """
+        return self._ResetDay
+
+    @ResetDay.setter
+    def ResetDay(self, ResetDay):
+        self._ResetDay = ResetDay
+
+    @property
+    def ModelQuotaSwitch(self):
+        r"""<p>Whether to set specified quotas for each model</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul>
+        :rtype: str
+        """
+        return self._ModelQuotaSwitch
+
+    @ModelQuotaSwitch.setter
+    def ModelQuotaSwitch(self, ModelQuotaSwitch):
+        self._ModelQuotaSwitch = ModelQuotaSwitch
+
+    @property
+    def ModelQuotas(self):
+        r"""<p>Quota set for each model, valid only when ModelQuotaSwitch=ON.</p>
+        :rtype: list of AigcModelQuota
+        """
+        return self._ModelQuotas
+
+    @ModelQuotas.setter
+    def ModelQuotas(self, ModelQuotas):
+        self._ModelQuotas = ModelQuotas
+
 
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
         self._QuotaType = params.get("QuotaType")
         self._QuotaLimit = params.get("QuotaLimit")
         self._ApiToken = params.get("ApiToken")
+        self._QuotaPeriod = params.get("QuotaPeriod")
+        self._ResetDay = params.get("ResetDay")
+        self._ModelQuotaSwitch = params.get("ModelQuotaSwitch")
+        if params.get("ModelQuotas") is not None:
+            self._ModelQuotas = []
+            for item in params.get("ModelQuotas"):
+                obj = AigcModelQuota()
+                obj._deserialize(item)
+                self._ModelQuotas.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -73576,23 +73707,35 @@ class ModifyAigcQuotaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <p><strong>VOD application ID. For customers who activate on-demand services after December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</strong></p>
+        :param _SubAppId: <p><strong>VOD application ID. For customers who activate on-demand services after December 25, 2023, this field must be filled in with the app ID when accessing resources in on-demand applications, whether in the default application or a newly created application.</strong></p>
         :type SubAppId: int
         :param _QuotaType: <p>Quota type</p><p>Enumeration values:</p><ul><li>Image: AIGC image task</li><li>Video: AIGC video task</li><li>Text: AIGC text task</li></ul>
         :type QuotaType: str
         :param _QuotaLimit: <p>Number of quotas for the task.</p><p>Unit: images/second/tokens.</p><ul><li>When QuotaType is Image, the unit is images;</li><li>When QuotaType is Video, the unit is seconds;</li><li>When QuotaType is Text, the unit is tokens.</li></ul>
         :type QuotaLimit: int
-        :param _ApiToken: <p>Valid only when QuotaType=Text. Used to select the ApiToken that needs a quota limit.</p>
+        :param _ApiToken: <p>Valid only when QuotaType=Text, used to select the ApiToken that requires quota limit</p>
         :type ApiToken: str
+        :param _QuotaPeriod: <p>Quota reset cycle.</p><p>Enumeration values:</p><ul><li>Day: Reset daily.</li><li>Month: Reset on a specified date per month.</li><li>Total: Never reset. The QuotaLimit parameter is the total quota.</li></ul>
+        :type QuotaPeriod: str
+        :param _ResetDay: <p>Reset date of the monthly quota. Valid only when QuotaPeriod=Month.</p><p>If the selected date does not exist in the current month, the reset will be postponed to 00:00 on the 1st of the next month.</p>
+        :type ResetDay: int
+        :param _ModelQuotaSwitch: <p>Whether to set specified quotas for each model</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul>
+        :type ModelQuotaSwitch: str
+        :param _ModelQuotas: <p>Quota set for each model, valid only when ModelQuotaSwitch=ON.</p>
+        :type ModelQuotas: list of AigcModelQuota
         """
         self._SubAppId = None
         self._QuotaType = None
         self._QuotaLimit = None
         self._ApiToken = None
+        self._QuotaPeriod = None
+        self._ResetDay = None
+        self._ModelQuotaSwitch = None
+        self._ModelQuotas = None
 
     @property
     def SubAppId(self):
-        r"""<p><strong>VOD application ID. For customers who activate on-demand services after December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</strong></p>
+        r"""<p><strong>VOD application ID. For customers who activate on-demand services after December 25, 2023, this field must be filled in with the app ID when accessing resources in on-demand applications, whether in the default application or a newly created application.</strong></p>
         :rtype: int
         """
         return self._SubAppId
@@ -73625,7 +73768,7 @@ class ModifyAigcQuotaRequest(AbstractModel):
 
     @property
     def ApiToken(self):
-        r"""<p>Valid only when QuotaType=Text. Used to select the ApiToken that needs a quota limit.</p>
+        r"""<p>Valid only when QuotaType=Text, used to select the ApiToken that requires quota limit</p>
         :rtype: str
         """
         return self._ApiToken
@@ -73634,12 +73777,65 @@ class ModifyAigcQuotaRequest(AbstractModel):
     def ApiToken(self, ApiToken):
         self._ApiToken = ApiToken
 
+    @property
+    def QuotaPeriod(self):
+        r"""<p>Quota reset cycle.</p><p>Enumeration values:</p><ul><li>Day: Reset daily.</li><li>Month: Reset on a specified date per month.</li><li>Total: Never reset. The QuotaLimit parameter is the total quota.</li></ul>
+        :rtype: str
+        """
+        return self._QuotaPeriod
+
+    @QuotaPeriod.setter
+    def QuotaPeriod(self, QuotaPeriod):
+        self._QuotaPeriod = QuotaPeriod
+
+    @property
+    def ResetDay(self):
+        r"""<p>Reset date of the monthly quota. Valid only when QuotaPeriod=Month.</p><p>If the selected date does not exist in the current month, the reset will be postponed to 00:00 on the 1st of the next month.</p>
+        :rtype: int
+        """
+        return self._ResetDay
+
+    @ResetDay.setter
+    def ResetDay(self, ResetDay):
+        self._ResetDay = ResetDay
+
+    @property
+    def ModelQuotaSwitch(self):
+        r"""<p>Whether to set specified quotas for each model</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul>
+        :rtype: str
+        """
+        return self._ModelQuotaSwitch
+
+    @ModelQuotaSwitch.setter
+    def ModelQuotaSwitch(self, ModelQuotaSwitch):
+        self._ModelQuotaSwitch = ModelQuotaSwitch
+
+    @property
+    def ModelQuotas(self):
+        r"""<p>Quota set for each model, valid only when ModelQuotaSwitch=ON.</p>
+        :rtype: list of AigcModelQuota
+        """
+        return self._ModelQuotas
+
+    @ModelQuotas.setter
+    def ModelQuotas(self, ModelQuotas):
+        self._ModelQuotas = ModelQuotas
+
 
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
         self._QuotaType = params.get("QuotaType")
         self._QuotaLimit = params.get("QuotaLimit")
         self._ApiToken = params.get("ApiToken")
+        self._QuotaPeriod = params.get("QuotaPeriod")
+        self._ResetDay = params.get("ResetDay")
+        self._ModelQuotaSwitch = params.get("ModelQuotaSwitch")
+        if params.get("ModelQuotas") is not None:
+            self._ModelQuotas = []
+            for item in params.get("ModelQuotas"):
+                obj = AigcModelQuota()
+                obj._deserialize(item)
+                self._ModelQuotas.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
