@@ -4667,7 +4667,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateAigcApiTokenResponse:
         """
-        Creates a Token for invoking AIGC APIs. Data sync has a delay once created. It can be queried or deleted after about 30 seconds.
+        Update the Token for AIGC API calls. Data synchronization has a delay of about 30 seconds after the update.
         """
         
         kwargs = {}

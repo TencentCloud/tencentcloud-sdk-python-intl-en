@@ -5853,7 +5853,7 @@ class VodClient(AbstractClient):
 
 
     def UpdateAigcApiToken(self, request):
-        r"""Creates a Token for invoking AIGC APIs. Data sync has a delay once created. It can be queried or deleted after about 30 seconds.
+        r"""Update the Token for AIGC API calls. Data synchronization has a delay of about 30 seconds after the update.
 
         :param request: Request instance for UpdateAigcApiToken.
         :type request: :class:`tencentcloud.vod.v20180717.models.UpdateAigcApiTokenRequest`

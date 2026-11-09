@@ -104814,30 +104814,19 @@ class UpdateAigcApiTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <p><b>Video-on-demand <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate on-demand services after December 25, 2023, this field must be filled in as the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b></p>
-        :type SubAppId: int
         :param _ApiToken: <p>To update the Api Key</p>
         :type ApiToken: str
-        :param _ActionType: <p>Merge (default, merge the ExtInfo JSON by top-level key), Overwrite (direct overwrite)</p>
+        :param _SubAppId: <p><b>On-demand <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate on-demand services after December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b></p>
+        :type SubAppId: int
+        :param _ActionType: <p>Merge (default, merge ExtInfo JSON by top-level key), Overwrite (direct overwrite)</p>
         :type ActionType: str
-        :param _ExtInfo: <p>Extended information of the token</p>
+        :param _ExtInfo: <p>The ip allowlist and model allowlist are stored in ExtInfo in json format, with the following fields:</p><p>(1) ip allowlist<br>&quot;ip&quot;: {&quot;127.0.0.1&quot;:true}<br>Not enabled: &quot;ip&quot;: {}<br>Multiple groups: {&quot;&#39;11.12.112.90&quot;:true,&quot;15.12.112.90&quot;:true}</p><p>(2) model allowlist<br>&quot;model&quot;: {&quot;deepseek-v4-pro&quot;:true}<br>Not enabled: &quot;model&quot;: {}</p><p>(3) name<br>&quot;name&quot;: &quot;test&quot;</p>
         :type ExtInfo: str
         """
-        self._SubAppId = None
         self._ApiToken = None
+        self._SubAppId = None
         self._ActionType = None
         self._ExtInfo = None
-
-    @property
-    def SubAppId(self):
-        r"""<p><b>Video-on-demand <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate on-demand services after December 25, 2023, this field must be filled in as the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b></p>
-        :rtype: int
-        """
-        return self._SubAppId
-
-    @SubAppId.setter
-    def SubAppId(self, SubAppId):
-        self._SubAppId = SubAppId
 
     @property
     def ApiToken(self):
@@ -104851,8 +104840,19 @@ class UpdateAigcApiTokenRequest(AbstractModel):
         self._ApiToken = ApiToken
 
     @property
+    def SubAppId(self):
+        r"""<p><b>On-demand <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate on-demand services after December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
     def ActionType(self):
-        r"""<p>Merge (default, merge the ExtInfo JSON by top-level key), Overwrite (direct overwrite)</p>
+        r"""<p>Merge (default, merge ExtInfo JSON by top-level key), Overwrite (direct overwrite)</p>
         :rtype: str
         """
         return self._ActionType
@@ -104863,7 +104863,7 @@ class UpdateAigcApiTokenRequest(AbstractModel):
 
     @property
     def ExtInfo(self):
-        r"""<p>Extended information of the token</p>
+        r"""<p>The ip allowlist and model allowlist are stored in ExtInfo in json format, with the following fields:</p><p>(1) ip allowlist<br>&quot;ip&quot;: {&quot;127.0.0.1&quot;:true}<br>Not enabled: &quot;ip&quot;: {}<br>Multiple groups: {&quot;&#39;11.12.112.90&quot;:true,&quot;15.12.112.90&quot;:true}</p><p>(2) model allowlist<br>&quot;model&quot;: {&quot;deepseek-v4-pro&quot;:true}<br>Not enabled: &quot;model&quot;: {}</p><p>(3) name<br>&quot;name&quot;: &quot;test&quot;</p>
         :rtype: str
         """
         return self._ExtInfo
@@ -104874,8 +104874,8 @@ class UpdateAigcApiTokenRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._SubAppId = params.get("SubAppId")
         self._ApiToken = params.get("ApiToken")
+        self._SubAppId = params.get("SubAppId")
         self._ActionType = params.get("ActionType")
         self._ExtInfo = params.get("ExtInfo")
         memeber_set = set(params.keys())

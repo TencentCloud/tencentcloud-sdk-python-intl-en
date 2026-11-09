@@ -710,6 +710,24 @@ class CamClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GenerateOIDCAccessToken(
+            self,
+            request: models.GenerateOIDCAccessTokenRequest,
+            opts: Dict = None,
+    ) -> models.GenerateOIDCAccessTokenResponse:
+        """
+        Generate an OIDC access token. This feature is in grayscale stage. Contact Tencent Cloud if needed.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GenerateOIDCAccessToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GenerateOIDCAccessTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetAccountSummary(
             self,
             request: models.GetAccountSummaryRequest,

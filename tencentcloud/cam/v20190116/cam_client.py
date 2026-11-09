@@ -901,6 +901,29 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GenerateOIDCAccessToken(self, request):
+        r"""Generate an OIDC access token. This feature is in grayscale stage. Contact Tencent Cloud if needed.
+
+        :param request: Request instance for GenerateOIDCAccessToken.
+        :type request: :class:`tencentcloud.cam.v20190116.models.GenerateOIDCAccessTokenRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.GenerateOIDCAccessTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GenerateOIDCAccessToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.GenerateOIDCAccessTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetAccountSummary(self, request):
         r"""This API is used to query account summary.
 
