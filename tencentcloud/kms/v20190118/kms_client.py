@@ -210,6 +210,29 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateKmsInstance(self, request):
+        r"""This API is used to purchase and activate the KMS service.
+
+        :param request: Request instance for CreateKmsInstance.
+        :type request: :class:`tencentcloud.kms.v20190118.models.CreateKmsInstanceRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.CreateKmsInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateKmsInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateKmsInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateWhiteBoxKey(self, request):
         r"""This API is used to create a white-box key. Up to 50 ones can be created.
 

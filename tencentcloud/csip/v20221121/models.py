@@ -6801,6 +6801,106 @@ class AssetBaseInfoResponse(AbstractModel):
         
 
 
+class AssetBaselineRisk(AbstractModel):
+    r"""Asset baseline risk
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RiskID: <p>Unique identifier of a risk record.</p>
+        :type RiskID: str
+        :param _Item: <p>Detection item details.</p>
+        :type Item: :class:`tencentcloud.csip.v20221121.models.BaselineItem`
+        :param _LatestCheckTime: <p>Most recent detection time (ISO 8601 format).</p>
+        :type LatestCheckTime: str
+        :param _ResultStatus: <p>Detection result status. Parameter values:</p><ul><li>NOT_PASS: failed</li><li>PASS: passed</li><li>CHECKING: in-progress detection</li></ul><p></p>
+        :type ResultStatus: str
+        :param _PolicyInfo: <p>Brief information of the associated baseline policy.</p>
+        :type PolicyInfo: :class:`tencentcloud.csip.v20221121.models.BaselinePolicyBrief`
+        """
+        self._RiskID = None
+        self._Item = None
+        self._LatestCheckTime = None
+        self._ResultStatus = None
+        self._PolicyInfo = None
+
+    @property
+    def RiskID(self):
+        r"""<p>Unique identifier of a risk record.</p>
+        :rtype: str
+        """
+        return self._RiskID
+
+    @RiskID.setter
+    def RiskID(self, RiskID):
+        self._RiskID = RiskID
+
+    @property
+    def Item(self):
+        r"""<p>Detection item details.</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.BaselineItem`
+        """
+        return self._Item
+
+    @Item.setter
+    def Item(self, Item):
+        self._Item = Item
+
+    @property
+    def LatestCheckTime(self):
+        r"""<p>Most recent detection time (ISO 8601 format).</p>
+        :rtype: str
+        """
+        return self._LatestCheckTime
+
+    @LatestCheckTime.setter
+    def LatestCheckTime(self, LatestCheckTime):
+        self._LatestCheckTime = LatestCheckTime
+
+    @property
+    def ResultStatus(self):
+        r"""<p>Detection result status. Parameter values:</p><ul><li>NOT_PASS: failed</li><li>PASS: passed</li><li>CHECKING: in-progress detection</li></ul><p></p>
+        :rtype: str
+        """
+        return self._ResultStatus
+
+    @ResultStatus.setter
+    def ResultStatus(self, ResultStatus):
+        self._ResultStatus = ResultStatus
+
+    @property
+    def PolicyInfo(self):
+        r"""<p>Brief information of the associated baseline policy.</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.BaselinePolicyBrief`
+        """
+        return self._PolicyInfo
+
+    @PolicyInfo.setter
+    def PolicyInfo(self, PolicyInfo):
+        self._PolicyInfo = PolicyInfo
+
+
+    def _deserialize(self, params):
+        self._RiskID = params.get("RiskID")
+        if params.get("Item") is not None:
+            self._Item = BaselineItem()
+            self._Item._deserialize(params.get("Item"))
+        self._LatestCheckTime = params.get("LatestCheckTime")
+        self._ResultStatus = params.get("ResultStatus")
+        if params.get("PolicyInfo") is not None:
+            self._PolicyInfo = BaselinePolicyBrief()
+            self._PolicyInfo._deserialize(params.get("PolicyInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssetCluster(AbstractModel):
     r"""This example shows you how to obtain the cluster list.
 
@@ -14761,7 +14861,7 @@ class BaselineAggregatedPolicy(AbstractModel):
 
 
 class BaselineCategory(AbstractModel):
-    r"""Baseline classification basic information, covering both parent and subcategory layers.
+    r"""Basic information of baseline categories, covering two layers: parent categories and subcategories.
 
     """
 
@@ -14773,7 +14873,7 @@ class BaselineCategory(AbstractModel):
         :type Name: str
         :param _Description: <p>Baseline category description (Chinese).</p>
         :type Description: str
-        :param _CheckAssetType: <p>Detect the asset major category and distinguish between host baseline and container cluster baseline. Parameter Value:</p><ul><li>HOST: Host</li><li>CLUSTER: Container cluster</li></ul>
+        :param _CheckAssetType: <p>Detect asset major category, case-sensitive between host baseline and container cluster baseline. Parameter Value:</p><ul><li>HOST: Host</li><li>CLUSTER: Container cluster</li></ul>
         :type CheckAssetType: str
         """
         self._ID = None
@@ -14816,7 +14916,7 @@ class BaselineCategory(AbstractModel):
 
     @property
     def CheckAssetType(self):
-        r"""<p>Detect the asset major category and distinguish between host baseline and container cluster baseline. Parameter Value:</p><ul><li>HOST: Host</li><li>CLUSTER: Container cluster</li></ul>
+        r"""<p>Detect asset major category, case-sensitive between host baseline and container cluster baseline. Parameter Value:</p><ul><li>HOST: Host</li><li>CLUSTER: Container cluster</li></ul>
         :rtype: str
         """
         return self._CheckAssetType
@@ -15423,6 +15523,207 @@ class BaselineHostAsset(AbstractModel):
         
 
 
+class BaselineIgnorePolicy(AbstractModel):
+    r"""Baseline ignore policy
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: <p>Ignore policy record ID.</p>
+        :type ID: int
+        :param _ItemName: <p>Detection item name.</p>
+        :type ItemName: str
+        :param _CategoryName: <p>Category name of the detection item.</p>
+        :type CategoryName: str
+        :param _AppID: <p>User AppID.</p>
+        :type AppID: int
+        :param _ScopeType: <p>Ignorable range type</p><p>Enumeration values:</p><ul><li>ALL: all assets</li><li>PICK: specified asset</li></ul>
+        :type ScopeType: str
+        :param _ScopeIncludeList: <p>Custom asset ID list. This parameter is valid only when PICK is selected. Store instance-id or cluster ID.</p>
+        :type ScopeIncludeList: list of str
+        :param _ScopeExcludeList: <p>Remove asset ID list. This parameter is valid only when set to ALL. Store instance-id or cluster ID.</p>
+        :type ScopeExcludeList: list of str
+        :param _Remark: <p>Remark information.</p>
+        :type Remark: str
+        :param _CreateTime: <p>Creation time.</p>
+        :type CreateTime: str
+        :param _ModifyTime: <p>Last modification time.</p>
+        :type ModifyTime: str
+        :param _AssetType: <p>Corresponding asset type</p><p>Enumeration values:</p><ul><li>HOST: host</li><li>CLUSTER: cluster-related assets</li></ul>
+        :type AssetType: str
+        :param _ItemID: <p>Check item ID</p>
+        :type ItemID: int
+        """
+        self._ID = None
+        self._ItemName = None
+        self._CategoryName = None
+        self._AppID = None
+        self._ScopeType = None
+        self._ScopeIncludeList = None
+        self._ScopeExcludeList = None
+        self._Remark = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._AssetType = None
+        self._ItemID = None
+
+    @property
+    def ID(self):
+        r"""<p>Ignore policy record ID.</p>
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def ItemName(self):
+        r"""<p>Detection item name.</p>
+        :rtype: str
+        """
+        return self._ItemName
+
+    @ItemName.setter
+    def ItemName(self, ItemName):
+        self._ItemName = ItemName
+
+    @property
+    def CategoryName(self):
+        r"""<p>Category name of the detection item.</p>
+        :rtype: str
+        """
+        return self._CategoryName
+
+    @CategoryName.setter
+    def CategoryName(self, CategoryName):
+        self._CategoryName = CategoryName
+
+    @property
+    def AppID(self):
+        r"""<p>User AppID.</p>
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def ScopeType(self):
+        r"""<p>Ignorable range type</p><p>Enumeration values:</p><ul><li>ALL: all assets</li><li>PICK: specified asset</li></ul>
+        :rtype: str
+        """
+        return self._ScopeType
+
+    @ScopeType.setter
+    def ScopeType(self, ScopeType):
+        self._ScopeType = ScopeType
+
+    @property
+    def ScopeIncludeList(self):
+        r"""<p>Custom asset ID list. This parameter is valid only when PICK is selected. Store instance-id or cluster ID.</p>
+        :rtype: list of str
+        """
+        return self._ScopeIncludeList
+
+    @ScopeIncludeList.setter
+    def ScopeIncludeList(self, ScopeIncludeList):
+        self._ScopeIncludeList = ScopeIncludeList
+
+    @property
+    def ScopeExcludeList(self):
+        r"""<p>Remove asset ID list. This parameter is valid only when set to ALL. Store instance-id or cluster ID.</p>
+        :rtype: list of str
+        """
+        return self._ScopeExcludeList
+
+    @ScopeExcludeList.setter
+    def ScopeExcludeList(self, ScopeExcludeList):
+        self._ScopeExcludeList = ScopeExcludeList
+
+    @property
+    def Remark(self):
+        r"""<p>Remark information.</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CreateTime(self):
+        r"""<p>Creation time.</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        r"""<p>Last modification time.</p>
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def AssetType(self):
+        r"""<p>Corresponding asset type</p><p>Enumeration values:</p><ul><li>HOST: host</li><li>CLUSTER: cluster-related assets</li></ul>
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def ItemID(self):
+        r"""<p>Check item ID</p>
+        :rtype: int
+        """
+        return self._ItemID
+
+    @ItemID.setter
+    def ItemID(self, ItemID):
+        self._ItemID = ItemID
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._ItemName = params.get("ItemName")
+        self._CategoryName = params.get("CategoryName")
+        self._AppID = params.get("AppID")
+        self._ScopeType = params.get("ScopeType")
+        self._ScopeIncludeList = params.get("ScopeIncludeList")
+        self._ScopeExcludeList = params.get("ScopeExcludeList")
+        self._Remark = params.get("Remark")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._AssetType = params.get("AssetType")
+        self._ItemID = params.get("ItemID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BaselineItem(AbstractModel):
     r"""Baseline detection item.
 
@@ -15434,7 +15735,7 @@ class BaselineItem(AbstractModel):
         :type ID: int
         :param _RuleID: <p>Built-in rule ID.</p>
         :type RuleID: int
-        :param _CheckObject: <p>Detection object description, such as configuration file path, kernel parameter, and Kubernetes Resources.</p>
+        :param _CheckObject: <p>Detection target description, such as configuration file path, kernel parameter, Kubernetes Resources.</p>
         :type CheckObject: list of str
         :param _RiskLevel: <p>Risk level. Value:</p><ul><li>LOW: Low risk</li><li>MEDIUM: Medium risk</li><li>HIGH: High risk</li><li>CRITICAL: Critical</li></ul>
         :type RiskLevel: str
@@ -15442,27 +15743,27 @@ class BaselineItem(AbstractModel):
         :type Name: str
         :param _Description: <p>Detection item description (Chinese, explaining the detection background and determination logic).</p>
         :type Description: str
-        :param _FixSuggestion: <p>Detection item repair advice (Chinese, including recommended configuration reference values or hardening commands).</p>
+        :param _FixSuggestion: <p>Detection item repair advice (in Chinese, including recommended configuration reference values or hardening commands).</p>
         :type FixSuggestion: str
-        :param _ReferenceLink: <p>Reference link list of detection items.</p>
+        :param _ReferenceLink: <p>Detection item reference link list.</p>
         :type ReferenceLink: str
-        :param _SystemCategory: <p>Classification information of the parent category in the associated system.</p>
+        :param _SystemCategory: <p>Parent classification information of the associated system.</p>
         :type SystemCategory: :class:`tencentcloud.csip.v20221121.models.BaselineCategory`
-        :param _Category: <p>Classification information of the subcategory it belongs to.</p>
+        :param _Category: <p>Belonging subcategory information.</p>
         :type Category: :class:`tencentcloud.csip.v20221121.models.BaselineCategory`
-        :param _SupportFix: <p>Whether one-click repair is supported. true: supported, false: unsupported.</p>
+        :param _SupportFix: <p>Whether one-click repair is supported. true: support, false: no support.</p>
         :type SupportFix: bool
-        :param _SupportCustomValue: <p>Whether user-defined judgment values are supported. true: supported; false: not supported.</p>
+        :param _SupportCustomValue: <p>Whether to support user customization of judgment values. true: support, false: no support.</p>
         :type SupportCustomValue: bool
-        :param _AffectedVersionList: <p>Operating system/component version list applicable to this detection item.</p>
+        :param _AffectedVersionList: <p>Applicable operating system/component version list for this detection item.</p>
         :type AffectedVersionList: list of str
-        :param _WebEditParam: <p>Parameter definition when editing a custom judgment value (for example, permissible range, control type).</p>
+        :param _WebEditParam: <p>Parameter definition when editing custom judgment values (such as value range, control type, etc.).</p>
         :type WebEditParam: str
-        :param _DefaultValueList: <p>Default detection item judgment value list.</p>
+        :param _DefaultValueList: <p>Default judgment value list of the detection item.</p>
         :type DefaultValueList: list of str
-        :param _IsCustomConf: <p>Whether customized by the user. true: customized; false: use default values.</p>
+        :param _IsCustomConf: <p>Whether it has been customized by the user. true: customized, false: still use default values.</p>
         :type IsCustomConf: bool
-        :param _CustomItemID: <p>User-customized configuration record ID. The value is 0 if not customized.</p>
+        :param _CustomItemID: <p>User-customized configuration record ID. 0 if not customized.</p>
         :type CustomItemID: int
         """
         self._ID = None
@@ -15507,7 +15808,7 @@ class BaselineItem(AbstractModel):
 
     @property
     def CheckObject(self):
-        r"""<p>Detection object description, such as configuration file path, kernel parameter, and Kubernetes Resources.</p>
+        r"""<p>Detection target description, such as configuration file path, kernel parameter, Kubernetes Resources.</p>
         :rtype: list of str
         """
         return self._CheckObject
@@ -15551,7 +15852,7 @@ class BaselineItem(AbstractModel):
 
     @property
     def FixSuggestion(self):
-        r"""<p>Detection item repair advice (Chinese, including recommended configuration reference values or hardening commands).</p>
+        r"""<p>Detection item repair advice (in Chinese, including recommended configuration reference values or hardening commands).</p>
         :rtype: str
         """
         return self._FixSuggestion
@@ -15562,7 +15863,7 @@ class BaselineItem(AbstractModel):
 
     @property
     def ReferenceLink(self):
-        r"""<p>Reference link list of detection items.</p>
+        r"""<p>Detection item reference link list.</p>
         :rtype: str
         """
         return self._ReferenceLink
@@ -15573,7 +15874,7 @@ class BaselineItem(AbstractModel):
 
     @property
     def SystemCategory(self):
-        r"""<p>Classification information of the parent category in the associated system.</p>
+        r"""<p>Parent classification information of the associated system.</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.BaselineCategory`
         """
         return self._SystemCategory
@@ -15584,7 +15885,7 @@ class BaselineItem(AbstractModel):
 
     @property
     def Category(self):
-        r"""<p>Classification information of the subcategory it belongs to.</p>
+        r"""<p>Belonging subcategory information.</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.BaselineCategory`
         """
         return self._Category
@@ -15595,7 +15896,7 @@ class BaselineItem(AbstractModel):
 
     @property
     def SupportFix(self):
-        r"""<p>Whether one-click repair is supported. true: supported, false: unsupported.</p>
+        r"""<p>Whether one-click repair is supported. true: support, false: no support.</p>
         :rtype: bool
         """
         return self._SupportFix
@@ -15606,7 +15907,7 @@ class BaselineItem(AbstractModel):
 
     @property
     def SupportCustomValue(self):
-        r"""<p>Whether user-defined judgment values are supported. true: supported; false: not supported.</p>
+        r"""<p>Whether to support user customization of judgment values. true: support, false: no support.</p>
         :rtype: bool
         """
         return self._SupportCustomValue
@@ -15617,7 +15918,7 @@ class BaselineItem(AbstractModel):
 
     @property
     def AffectedVersionList(self):
-        r"""<p>Operating system/component version list applicable to this detection item.</p>
+        r"""<p>Applicable operating system/component version list for this detection item.</p>
         :rtype: list of str
         """
         return self._AffectedVersionList
@@ -15628,7 +15929,7 @@ class BaselineItem(AbstractModel):
 
     @property
     def WebEditParam(self):
-        r"""<p>Parameter definition when editing a custom judgment value (for example, permissible range, control type).</p>
+        r"""<p>Parameter definition when editing custom judgment values (such as value range, control type, etc.).</p>
         :rtype: str
         """
         return self._WebEditParam
@@ -15639,7 +15940,7 @@ class BaselineItem(AbstractModel):
 
     @property
     def DefaultValueList(self):
-        r"""<p>Default detection item judgment value list.</p>
+        r"""<p>Default judgment value list of the detection item.</p>
         :rtype: list of str
         """
         return self._DefaultValueList
@@ -15650,7 +15951,7 @@ class BaselineItem(AbstractModel):
 
     @property
     def IsCustomConf(self):
-        r"""<p>Whether customized by the user. true: customized; false: use default values.</p>
+        r"""<p>Whether it has been customized by the user. true: customized, false: still use default values.</p>
         :rtype: bool
         """
         return self._IsCustomConf
@@ -15661,7 +15962,7 @@ class BaselineItem(AbstractModel):
 
     @property
     def CustomItemID(self):
-        r"""<p>User-customized configuration record ID. The value is 0 if not customized.</p>
+        r"""<p>User-customized configuration record ID. 0 if not customized.</p>
         :rtype: int
         """
         return self._CustomItemID
@@ -16563,6 +16864,72 @@ class BaselinePolicy(AbstractModel):
         self._LatestCycleScanTime = params.get("LatestCycleScanTime")
         self._TagIDList = params.get("TagIDList")
         self._CloudTagList = params.get("CloudTagList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BaselinePolicyBrief(AbstractModel):
+    r"""Brief information of the baseline policy
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: <p>Baseline policy ID.</p>
+        :type ID: int
+        :param _PolicyName: <p>Baseline policy name.</p>
+        :type PolicyName: str
+        :param _IsSystem: <p>Whether it is a system built-in policy. true indicates yes, false indicates no (user-defined policy).</p>
+        :type IsSystem: bool
+        """
+        self._ID = None
+        self._PolicyName = None
+        self._IsSystem = None
+
+    @property
+    def ID(self):
+        r"""<p>Baseline policy ID.</p>
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def PolicyName(self):
+        r"""<p>Baseline policy name.</p>
+        :rtype: str
+        """
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def IsSystem(self):
+        r"""<p>Whether it is a system built-in policy. true indicates yes, false indicates no (user-defined policy).</p>
+        :rtype: bool
+        """
+        return self._IsSystem
+
+    @IsSystem.setter
+    def IsSystem(self, IsSystem):
+        self._IsSystem = IsSystem
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._PolicyName = params.get("PolicyName")
+        self._IsSystem = params.get("IsSystem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23654,6 +24021,102 @@ class CloudFunctionItem(AbstractModel):
         self._PublicURL = params.get("PublicURL")
         self._PrivateURL = params.get("PrivateURL")
         self._AccountInfo = params.get("AccountInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterBaselinePolicy(AbstractModel):
+    r"""Baseline policy for a cluster
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyID: <p>Baseline policy ID.</p>
+        :type PolicyID: int
+        :param _PolicyName: <p>Baseline policy name.</p>
+        :type PolicyName: str
+        :param _CheckAssetType: <p>Asset type to detect.<br>Enumeration values:<br>HOST: host<br>CLUSTER: container cluster</p>
+        :type CheckAssetType: str
+        :param _ParentCategoryID: <p>Baseline system parent category ID.</p>
+        :type ParentCategoryID: int
+        :param _IsSystem: <p>Whether it is a system baseline policy. true means system policy, false means custom policy.</p>
+        :type IsSystem: bool
+        """
+        self._PolicyID = None
+        self._PolicyName = None
+        self._CheckAssetType = None
+        self._ParentCategoryID = None
+        self._IsSystem = None
+
+    @property
+    def PolicyID(self):
+        r"""<p>Baseline policy ID.</p>
+        :rtype: int
+        """
+        return self._PolicyID
+
+    @PolicyID.setter
+    def PolicyID(self, PolicyID):
+        self._PolicyID = PolicyID
+
+    @property
+    def PolicyName(self):
+        r"""<p>Baseline policy name.</p>
+        :rtype: str
+        """
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def CheckAssetType(self):
+        r"""<p>Asset type to detect.<br>Enumeration values:<br>HOST: host<br>CLUSTER: container cluster</p>
+        :rtype: str
+        """
+        return self._CheckAssetType
+
+    @CheckAssetType.setter
+    def CheckAssetType(self, CheckAssetType):
+        self._CheckAssetType = CheckAssetType
+
+    @property
+    def ParentCategoryID(self):
+        r"""<p>Baseline system parent category ID.</p>
+        :rtype: int
+        """
+        return self._ParentCategoryID
+
+    @ParentCategoryID.setter
+    def ParentCategoryID(self, ParentCategoryID):
+        self._ParentCategoryID = ParentCategoryID
+
+    @property
+    def IsSystem(self):
+        r"""<p>Whether it is a system baseline policy. true means system policy, false means custom policy.</p>
+        :rtype: bool
+        """
+        return self._IsSystem
+
+    @IsSystem.setter
+    def IsSystem(self, IsSystem):
+        self._IsSystem = IsSystem
+
+
+    def _deserialize(self, params):
+        self._PolicyID = params.get("PolicyID")
+        self._PolicyName = params.get("PolicyName")
+        self._CheckAssetType = params.get("CheckAssetType")
+        self._ParentCategoryID = params.get("ParentCategoryID")
+        self._IsSystem = params.get("IsSystem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32884,6 +33347,165 @@ class CreateAllAssetsExportJobResponse(AbstractModel):
     @property
     def JobId(self):
         r"""Export Task ID
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAssetBaselineRiskExportJobRequest(AbstractModel):
+    r"""CreateAssetBaselineRiskExportJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetUniqueID: <p>Unique asset identifier (UUID), used with AssetType to locate a specific asset.</p>
+        :type AssetUniqueID: str
+        :param _AssetType: <p>Asset type. Parameter Value: HOST (host), CLUSTER (cluster).</p>
+        :type AssetType: str
+        :param _AssetAppID: <p>appid of asset ownership</p>
+        :type AssetAppID: int
+        :param _Name: <p>Export task name</p>
+        :type Name: str
+        :param _MemberId: <p>Group account member id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>Universal Filter Criteria. Supported fields: ItemName (detection item name, blurry), PolicyName (baseline name, blurry), InstanceName (host name, blurry), InstanceID (instance ID, exact), IP (IP, blurry). Different Names are in an AND relationship with each other, while multiple Values under the same Name are in an OR relationship.</p>
+        :type Filters: list of Filters
+        """
+        self._AssetUniqueID = None
+        self._AssetType = None
+        self._AssetAppID = None
+        self._Name = None
+        self._MemberId = None
+        self._Filters = None
+
+    @property
+    def AssetUniqueID(self):
+        r"""<p>Unique asset identifier (UUID), used with AssetType to locate a specific asset.</p>
+        :rtype: str
+        """
+        return self._AssetUniqueID
+
+    @AssetUniqueID.setter
+    def AssetUniqueID(self, AssetUniqueID):
+        self._AssetUniqueID = AssetUniqueID
+
+    @property
+    def AssetType(self):
+        r"""<p>Asset type. Parameter Value: HOST (host), CLUSTER (cluster).</p>
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def AssetAppID(self):
+        r"""<p>appid of asset ownership</p>
+        :rtype: int
+        """
+        return self._AssetAppID
+
+    @AssetAppID.setter
+    def AssetAppID(self, AssetAppID):
+        self._AssetAppID = AssetAppID
+
+    @property
+    def Name(self):
+        r"""<p>Export task name</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MemberId(self):
+        r"""<p>Group account member id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>Universal Filter Criteria. Supported fields: ItemName (detection item name, blurry), PolicyName (baseline name, blurry), InstanceName (host name, blurry), InstanceID (instance ID, exact), IP (IP, blurry). Different Names are in an AND relationship with each other, while multiple Values under the same Name are in an OR relationship.</p>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._AssetUniqueID = params.get("AssetUniqueID")
+        self._AssetType = params.get("AssetType")
+        self._AssetAppID = params.get("AssetAppID")
+        self._Name = params.get("Name")
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAssetBaselineRiskExportJobResponse(AbstractModel):
+    r"""CreateAssetBaselineRiskExportJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>Export task ID.</p>
+        :type JobId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        r"""<p>Export task ID.</p>
         :rtype: str
         """
         return self._JobId
@@ -48829,6 +49451,85 @@ class DeleteAssetTagResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteBaselineIgnorePolicyRequest(AbstractModel):
+    r"""DeleteBaselineIgnorePolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: <p>ID of the ignored policy record to delete.</p>
+        :type ID: list of int non-negative
+        :param _MemberId: <p>Group account member id</p>
+        :type MemberId: list of str
+        """
+        self._ID = None
+        self._MemberId = None
+
+    @property
+    def ID(self):
+        r"""<p>ID of the ignored policy record to delete.</p>
+        :rtype: list of int non-negative
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def MemberId(self):
+        r"""<p>Group account member id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBaselineIgnorePolicyResponse(AbstractModel):
+    r"""DeleteBaselineIgnorePolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteBaselineSelfDefinedPolicyListRequest(AbstractModel):
     r"""DeleteBaselineSelfDefinedPolicyList request structure.
 
@@ -51895,6 +52596,354 @@ class DeleteImageVulWhitelistResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteLoginWhiteCustomEDRRequest(AbstractModel):
+    r"""DeleteLoginWhiteCustomEDR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>Group account member id</p>
+        :type MemberId: list of str
+        :param _Ids: <p>List of explicitly selected rule IDs, up to 1,000; mutually exclusive with SelectAll</p>
+        :type Ids: list of int non-negative
+        :param _SelectAll: <p>Select all across pages: true - Delete all rules that meet Filters (Filters is required at this point). false - Delete only Ids</p>
+        :type SelectAll: bool
+        :param _TargetAppIDs: <p>List of target account AppIds for multi-account, up to 1000; being empty indicates only the current account; returns InvalidParameter when input but no permissions at all</p>
+        :type TargetAppIDs: list of int non-negative
+        :param _ExcludeIds: <p>List of excluded rule IDs, up to 1000</p>
+        :type ExcludeIds: list of int
+        :param _Filters: <p>Filtering criteria under select all</p>
+        :type Filters: list of EDRFilter
+        """
+        self._MemberId = None
+        self._Ids = None
+        self._SelectAll = None
+        self._TargetAppIDs = None
+        self._ExcludeIds = None
+        self._Filters = None
+
+    @property
+    def MemberId(self):
+        r"""<p>Group account member id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Ids(self):
+        r"""<p>List of explicitly selected rule IDs, up to 1,000; mutually exclusive with SelectAll</p>
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def SelectAll(self):
+        r"""<p>Select all across pages: true - Delete all rules that meet Filters (Filters is required at this point). false - Delete only Ids</p>
+        :rtype: bool
+        """
+        return self._SelectAll
+
+    @SelectAll.setter
+    def SelectAll(self, SelectAll):
+        self._SelectAll = SelectAll
+
+    @property
+    def TargetAppIDs(self):
+        r"""<p>List of target account AppIds for multi-account, up to 1000; being empty indicates only the current account; returns InvalidParameter when input but no permissions at all</p>
+        :rtype: list of int non-negative
+        """
+        return self._TargetAppIDs
+
+    @TargetAppIDs.setter
+    def TargetAppIDs(self, TargetAppIDs):
+        self._TargetAppIDs = TargetAppIDs
+
+    @property
+    def ExcludeIds(self):
+        r"""<p>List of excluded rule IDs, up to 1000</p>
+        :rtype: list of int
+        """
+        return self._ExcludeIds
+
+    @ExcludeIds.setter
+    def ExcludeIds(self, ExcludeIds):
+        self._ExcludeIds = ExcludeIds
+
+    @property
+    def Filters(self):
+        r"""<p>Filtering criteria under select all</p>
+        :rtype: list of EDRFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._Ids = params.get("Ids")
+        self._SelectAll = params.get("SelectAll")
+        self._TargetAppIDs = params.get("TargetAppIDs")
+        self._ExcludeIds = params.get("ExcludeIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = EDRFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLoginWhiteCustomEDRResponse(AbstractModel):
+    r"""DeleteLoginWhiteCustomEDR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeletedCount: <p>Number of deleted rules</p>
+        :type DeletedCount: int
+        :param _FailedAppIds: <p>List of account AppIds that failed to delete; returns an error only if all failed</p>
+        :type FailedAppIds: list of int non-negative
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DeletedCount = None
+        self._FailedAppIds = None
+        self._RequestId = None
+
+    @property
+    def DeletedCount(self):
+        r"""<p>Number of deleted rules</p>
+        :rtype: int
+        """
+        return self._DeletedCount
+
+    @DeletedCount.setter
+    def DeletedCount(self, DeletedCount):
+        self._DeletedCount = DeletedCount
+
+    @property
+    def FailedAppIds(self):
+        r"""<p>List of account AppIds that failed to delete; returns an error only if all failed</p>
+        :rtype: list of int non-negative
+        """
+        return self._FailedAppIds
+
+    @FailedAppIds.setter
+    def FailedAppIds(self, FailedAppIds):
+        self._FailedAppIds = FailedAppIds
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DeletedCount = params.get("DeletedCount")
+        self._FailedAppIds = params.get("FailedAppIds")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteLoginWhiteLearnEDRRequest(AbstractModel):
+    r"""DeleteLoginWhiteLearnEDR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>Group account member id</p>
+        :type MemberId: list of str
+        :param _Ids: <p>Explicitly selected rule ID list, up to 1000; choose either this or SelectAll</p>
+        :type Ids: list of int non-negative
+        :param _SelectAll: <p>Select all across pages: true - Delete all rules that meet Filters (Filters is required at this point). false - Delete only Ids</p>
+        :type SelectAll: bool
+        :param _TargetAppIDs: <p>List of target account AppIds for multi-account, up to 1000; being empty indicates only the current account; returns InvalidParameter when input but no permissions at all</p>
+        :type TargetAppIDs: list of int non-negative
+        :param _ExcludeIds: <p>List of excluded rule IDs</p>
+        :type ExcludeIds: list of int
+        :param _Filters: <p>Filtering criteria under select all</p>
+        :type Filters: list of EDRFilter
+        """
+        self._MemberId = None
+        self._Ids = None
+        self._SelectAll = None
+        self._TargetAppIDs = None
+        self._ExcludeIds = None
+        self._Filters = None
+
+    @property
+    def MemberId(self):
+        r"""<p>Group account member id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Ids(self):
+        r"""<p>Explicitly selected rule ID list, up to 1000; choose either this or SelectAll</p>
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def SelectAll(self):
+        r"""<p>Select all across pages: true - Delete all rules that meet Filters (Filters is required at this point). false - Delete only Ids</p>
+        :rtype: bool
+        """
+        return self._SelectAll
+
+    @SelectAll.setter
+    def SelectAll(self, SelectAll):
+        self._SelectAll = SelectAll
+
+    @property
+    def TargetAppIDs(self):
+        r"""<p>List of target account AppIds for multi-account, up to 1000; being empty indicates only the current account; returns InvalidParameter when input but no permissions at all</p>
+        :rtype: list of int non-negative
+        """
+        return self._TargetAppIDs
+
+    @TargetAppIDs.setter
+    def TargetAppIDs(self, TargetAppIDs):
+        self._TargetAppIDs = TargetAppIDs
+
+    @property
+    def ExcludeIds(self):
+        r"""<p>List of excluded rule IDs</p>
+        :rtype: list of int
+        """
+        return self._ExcludeIds
+
+    @ExcludeIds.setter
+    def ExcludeIds(self, ExcludeIds):
+        self._ExcludeIds = ExcludeIds
+
+    @property
+    def Filters(self):
+        r"""<p>Filtering criteria under select all</p>
+        :rtype: list of EDRFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._Ids = params.get("Ids")
+        self._SelectAll = params.get("SelectAll")
+        self._TargetAppIDs = params.get("TargetAppIDs")
+        self._ExcludeIds = params.get("ExcludeIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = EDRFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLoginWhiteLearnEDRResponse(AbstractModel):
+    r"""DeleteLoginWhiteLearnEDR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeletedCount: <p>Number of deleted host record rows (a rule group may contain multiple rows, which is different from the custom allowlist API that uses the number of rules for statistics)</p>
+        :type DeletedCount: int
+        :param _FailedAppIds: <p>List of account AppIds that failed to delete; an error is returned only when all failed</p>
+        :type FailedAppIds: list of int non-negative
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DeletedCount = None
+        self._FailedAppIds = None
+        self._RequestId = None
+
+    @property
+    def DeletedCount(self):
+        r"""<p>Number of deleted host record rows (a rule group may contain multiple rows, which is different from the custom allowlist API that uses the number of rules for statistics)</p>
+        :rtype: int
+        """
+        return self._DeletedCount
+
+    @DeletedCount.setter
+    def DeletedCount(self, DeletedCount):
+        self._DeletedCount = DeletedCount
+
+    @property
+    def FailedAppIds(self):
+        r"""<p>List of account AppIds that failed to delete; an error is returned only when all failed</p>
+        :rtype: list of int non-negative
+        """
+        return self._FailedAppIds
+
+    @FailedAppIds.setter
+    def FailedAppIds(self, FailedAppIds):
+        self._FailedAppIds = FailedAppIds
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DeletedCount = params.get("DeletedCount")
+        self._FailedAppIds = params.get("FailedAppIds")
         self._RequestId = params.get("RequestId")
 
 
@@ -56819,6 +57868,200 @@ class DescribeAlertListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAssetBaselineRiskListRequest(AbstractModel):
+    r"""DescribeAssetBaselineRiskList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetUniqueID: <p>Unique asset identifier (UUID), used with AssetType to locate a specific asset.</p>
+        :type AssetUniqueID: str
+        :param _AssetType: <p>Asset type. Parameter Value: HOST (host), CLUSTER (cluster).</p>
+        :type AssetType: str
+        :param _AssetAppID: <p>appid of asset ownership</p>
+        :type AssetAppID: int
+        :param _MemberId: <p>Group account member id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>Universal Filter Criteria. Supported fields: ItemName (detection item name, blurry), PolicyName (baseline name, blurry), ResultStatus (result status), RiskLevel (risk level). Different Names are in an AND relationship with each other, and multiple Values under the same Name are in an OR relationship.</p>
+        :type Filters: list of Filters
+        :param _Limit: <p>Number of items per page for paging query. Maximum value: 100. If exceeded, the server will automatically fall back to the default value 10.</p>
+        :type Limit: int
+        :param _Offset: <p>Paging query starting offset amount, starting from 0.</p>
+        :type Offset: int
+        """
+        self._AssetUniqueID = None
+        self._AssetType = None
+        self._AssetAppID = None
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def AssetUniqueID(self):
+        r"""<p>Unique asset identifier (UUID), used with AssetType to locate a specific asset.</p>
+        :rtype: str
+        """
+        return self._AssetUniqueID
+
+    @AssetUniqueID.setter
+    def AssetUniqueID(self, AssetUniqueID):
+        self._AssetUniqueID = AssetUniqueID
+
+    @property
+    def AssetType(self):
+        r"""<p>Asset type. Parameter Value: HOST (host), CLUSTER (cluster).</p>
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def AssetAppID(self):
+        r"""<p>appid of asset ownership</p>
+        :rtype: int
+        """
+        return self._AssetAppID
+
+    @AssetAppID.setter
+    def AssetAppID(self, AssetAppID):
+        self._AssetAppID = AssetAppID
+
+    @property
+    def MemberId(self):
+        r"""<p>Group account member id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>Universal Filter Criteria. Supported fields: ItemName (detection item name, blurry), PolicyName (baseline name, blurry), ResultStatus (result status), RiskLevel (risk level). Different Names are in an AND relationship with each other, and multiple Values under the same Name are in an OR relationship.</p>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>Number of items per page for paging query. Maximum value: 100. If exceeded, the server will automatically fall back to the default value 10.</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>Paging query starting offset amount, starting from 0.</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._AssetUniqueID = params.get("AssetUniqueID")
+        self._AssetType = params.get("AssetType")
+        self._AssetAppID = params.get("AssetAppID")
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetBaselineRiskListResponse(AbstractModel):
+    r"""DescribeAssetBaselineRiskList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>Baseline risk repair record list.</p>
+        :type List: list of AssetBaselineRisk
+        :param _TotalCount: <p>Total number of secrets</p>
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""<p>Baseline risk repair record list.</p>
+        :rtype: list of AssetBaselineRisk
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total number of secrets</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = AssetBaselineRisk()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAssetComponentListRequest(AbstractModel):
     r"""DescribeAssetComponentList request structure.
 
@@ -60304,6 +61547,155 @@ class DescribeBaselineFixRecordListResponse(AbstractModel):
             self._List = []
             for item in params.get("List"):
                 obj = BaselineFixRecord()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBaselineIgnorePolicyListRequest(AbstractModel):
+    r"""DescribeBaselineIgnorePolicyList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>Group account member id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>Universal Filter Criteria. Supported fields: ItemName (detection item name, blurry). Different Names are in an AND relationship, while multiple Values under the same Name are in an OR relationship.</p>
+        :type Filters: list of Filters
+        :param _Limit: <p>Number of items per page for paging query. Maximum value: 100. If exceeded, the server will automatically fall back to the default value 10.</p>
+        :type Limit: int
+        :param _Offset: <p>Paging query starting offset amount, starting from 0.</p>
+        :type Offset: int
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def MemberId(self):
+        r"""<p>Group account member id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>Universal Filter Criteria. Supported fields: ItemName (detection item name, blurry). Different Names are in an AND relationship, while multiple Values under the same Name are in an OR relationship.</p>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>Number of items per page for paging query. Maximum value: 100. If exceeded, the server will automatically fall back to the default value 10.</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>Paging query starting offset amount, starting from 0.</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBaselineIgnorePolicyListResponse(AbstractModel):
+    r"""DescribeBaselineIgnorePolicyList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>Baseline risk repair record list.</p>
+        :type List: list of BaselineIgnorePolicy
+        :param _TotalCount: <p>Total number of secrets</p>
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""<p>Baseline risk repair record list.</p>
+        :rtype: list of BaselineIgnorePolicy
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total number of secrets</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = BaselineIgnorePolicy()
                 obj._deserialize(item)
                 self._List.append(obj)
         self._TotalCount = params.get("TotalCount")
@@ -68410,6 +69802,120 @@ class DescribeClusterAssetsResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._ProtectStatusList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterBaselineRiskPolicyListRequest(AbstractModel):
+    r"""DescribeClusterBaselineRiskPolicyList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterAppid: <p>Appid of the cluster's account, used to specify the account for querying baseline risk policies.</p>
+        :type ClusterAppid: int
+        :param _ClusterCaMD5: <p>Cluster CaMD5</p>
+        :type ClusterCaMD5: str
+        :param _MemberId: List of member IDs of the group account.
+        :type MemberId: list of str
+        """
+        self._ClusterAppid = None
+        self._ClusterCaMD5 = None
+        self._MemberId = None
+
+    @property
+    def ClusterAppid(self):
+        r"""<p>Appid of the cluster's account, used to specify the account for querying baseline risk policies.</p>
+        :rtype: int
+        """
+        return self._ClusterAppid
+
+    @ClusterAppid.setter
+    def ClusterAppid(self, ClusterAppid):
+        self._ClusterAppid = ClusterAppid
+
+    @property
+    def ClusterCaMD5(self):
+        r"""<p>Cluster CaMD5</p>
+        :rtype: str
+        """
+        return self._ClusterCaMD5
+
+    @ClusterCaMD5.setter
+    def ClusterCaMD5(self, ClusterCaMD5):
+        self._ClusterCaMD5 = ClusterCaMD5
+
+    @property
+    def MemberId(self):
+        r"""List of member IDs of the group account.
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._ClusterAppid = params.get("ClusterAppid")
+        self._ClusterCaMD5 = params.get("ClusterCaMD5")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterBaselineRiskPolicyListResponse(AbstractModel):
+    r"""DescribeClusterBaselineRiskPolicyList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>Scan the main task list.</p>
+        :type List: list of ClusterBaselinePolicy
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""<p>Scan the main task list.</p>
+        :rtype: list of ClusterBaselinePolicy
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = ClusterBaselinePolicy()
+                obj._deserialize(item)
+                self._List.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -89618,6 +91124,130 @@ class DescribeEdrLogCollectPathsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEdrMalwareFileRequest(AbstractModel):
+    r"""DescribeEdrMalwareFile request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlertId: <p>Unique ID of the EDR alert. Required. Up to 34 characters</p>
+        :type AlertId: str
+        :param _MemberId: <p>Group account member id</p>
+        :type MemberId: list of str
+        :param _TargetAppId: <p>AppId of the account associated with the alarm (in cross-account scenarios, the member AppId is passed through by the frontend); if 0 or omitted, the login account AppId is used</p>
+        :type TargetAppId: int
+        """
+        self._AlertId = None
+        self._MemberId = None
+        self._TargetAppId = None
+
+    @property
+    def AlertId(self):
+        r"""<p>Unique ID of the EDR alert. Required. Up to 34 characters</p>
+        :rtype: str
+        """
+        return self._AlertId
+
+    @AlertId.setter
+    def AlertId(self, AlertId):
+        self._AlertId = AlertId
+
+    @property
+    def MemberId(self):
+        r"""<p>Group account member id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def TargetAppId(self):
+        r"""<p>AppId of the account associated with the alarm (in cross-account scenarios, the member AppId is passed through by the frontend); if 0 or omitted, the login account AppId is used</p>
+        :rtype: int
+        """
+        return self._TargetAppId
+
+    @TargetAppId.setter
+    def TargetAppId(self, TargetAppId):
+        self._TargetAppId = TargetAppId
+
+
+    def _deserialize(self, params):
+        self._AlertId = params.get("AlertId")
+        self._MemberId = params.get("MemberId")
+        self._TargetAppId = params.get("TargetAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEdrMalwareFileResponse(AbstractModel):
+    r"""DescribeEdrMalwareFile response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileUrl: <p>Sample download link. For public cloud, it is a COS presigned URL (expires in 1 hour); for non-public cloud with the export switch on, it is data:application/octet-stream;base64,&lt;base64 of the zip&gt;</p>
+        :type FileUrl: str
+        :param _FileName: <p>Export file name, such as &lt;name&gt;.zip; only returned in the non-public cloud base64 branch, and this field is not returned in other scenarios</p>
+        :type FileName: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FileUrl = None
+        self._FileName = None
+        self._RequestId = None
+
+    @property
+    def FileUrl(self):
+        r"""<p>Sample download link. For public cloud, it is a COS presigned URL (expires in 1 hour); for non-public cloud with the export switch on, it is data:application/octet-stream;base64,&lt;base64 of the zip&gt;</p>
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def FileName(self):
+        r"""<p>Export file name, such as &lt;name&gt;.zip; only returned in the non-public cloud base64 branch, and this field is not returned in other scenarios</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FileUrl = params.get("FileUrl")
+        self._FileName = params.get("FileName")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeExportJobDownloadURLRequest(AbstractModel):
     r"""DescribeExportJobDownloadURL request structure.
 
@@ -91909,6 +93539,185 @@ class DescribeHostVulOverviewResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeHostVulRiskEventListRequest(AbstractModel):
+    r"""DescribeHostVulRiskEventList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: <p>Pagination offset.<br>Value range: [0, +∞).<br>Default value: 0.</p>
+        :type Offset: int
+        :param _Limit: <p>Number of returned items per page.<br>Value range: [1, 100].<br>Default value: 10.</p>
+        :type Limit: int
+        :param _Filters: <p>Filter.Name supported by Filter criteria: VulName - fuzzy matching, search by vulnerability Name. Category - exact matching, Filter by vulnerability Category: LINUX-LINUX software vulnerability, WINDOWS-WINDOWS system patch vulnerability, WEB_CMS-WEB-CMS vulnerability, APPLICATION-APPLICATION vulnerability, EMERGENCY-URGENT vulnerability. RiskStatus - exact matching, Filter by risk status: PENDING-PENDING, HANDLED-processed, FIXED-FIXED, SCANNING-rechecking, IGNORED-IGNORED, NOT_REQUIRED-no action is REQUIRED, DELETED-DELETED, FIXING-in remediation, NEED_REBOOT-FIXED PENDING restart, FIX_FAILED-FIX failure. Level - exact matching, Filter by vulnerability severity Level: UNKNOWN-unavailable, LOW-LOW risk, MEDIUM-MEDIUM risk, HIGH-HIGH risk, CRITICAL-CRITICAL. CVSSLevel - exact matching, compatible field, equivalent to Level. VPRLevel - exact matching, Filter by VPR repair priority: DEFERRABLE-DEFERRABLE repair, PLANNED-PLANNED repair, SOON-repair as SOON as possible, URGENT-URGENT repair. - exact matching, Filter by vulnerability ID. InstanceID - exact matching, Filter by CVM instance ID. InstanceID - exact matching, compatible field, equivalent to InstanceID. UUID - exact matching, Filter by host security UUID. LatestScanTimeStart - range matching, latest scan time start, format: YYYY-MM-DD HH:MM:ss. LatestScanTimeEnd - range matching, latest scan time end, format: YYYY-MM-DD HH:MM:ss</p>
+        :type Filters: list of Filters
+        :param _Order: <p>Sorting order.<br>Enumeration values:<br>asc: ascending<br>desc: descending<br>Default value: desc.</p>
+        :type Order: str
+        :param _By: <p>Sorting field<br>Enumeration values:<br>LatestScanTime: sort by latest scan time<br>Level: sort by threat level<br>VPRLevel: sort by VPR rating<br>RiskStatus: sort by risk status<br>VulID: sort by vulnerability ID<br>InstanceID: sort by instance ID<br>Default value: LatestScanTime</p>
+        :type By: str
+        :param _MemberId: Group Account Member ID
+        :type MemberId: list of str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._Order = None
+        self._By = None
+        self._MemberId = None
+
+    @property
+    def Offset(self):
+        r"""<p>Pagination offset.<br>Value range: [0, +∞).<br>Default value: 0.</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>Number of returned items per page.<br>Value range: [1, 100].<br>Default value: 10.</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>Filter.Name supported by Filter criteria: VulName - fuzzy matching, search by vulnerability Name. Category - exact matching, Filter by vulnerability Category: LINUX-LINUX software vulnerability, WINDOWS-WINDOWS system patch vulnerability, WEB_CMS-WEB-CMS vulnerability, APPLICATION-APPLICATION vulnerability, EMERGENCY-URGENT vulnerability. RiskStatus - exact matching, Filter by risk status: PENDING-PENDING, HANDLED-processed, FIXED-FIXED, SCANNING-rechecking, IGNORED-IGNORED, NOT_REQUIRED-no action is REQUIRED, DELETED-DELETED, FIXING-in remediation, NEED_REBOOT-FIXED PENDING restart, FIX_FAILED-FIX failure. Level - exact matching, Filter by vulnerability severity Level: UNKNOWN-unavailable, LOW-LOW risk, MEDIUM-MEDIUM risk, HIGH-HIGH risk, CRITICAL-CRITICAL. CVSSLevel - exact matching, compatible field, equivalent to Level. VPRLevel - exact matching, Filter by VPR repair priority: DEFERRABLE-DEFERRABLE repair, PLANNED-PLANNED repair, SOON-repair as SOON as possible, URGENT-URGENT repair. - exact matching, Filter by vulnerability ID. InstanceID - exact matching, Filter by CVM instance ID. InstanceID - exact matching, compatible field, equivalent to InstanceID. UUID - exact matching, Filter by host security UUID. LatestScanTimeStart - range matching, latest scan time start, format: YYYY-MM-DD HH:MM:ss. LatestScanTimeEnd - range matching, latest scan time end, format: YYYY-MM-DD HH:MM:ss</p>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Order(self):
+        r"""<p>Sorting order.<br>Enumeration values:<br>asc: ascending<br>desc: descending<br>Default value: desc.</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>Sorting field<br>Enumeration values:<br>LatestScanTime: sort by latest scan time<br>Level: sort by threat level<br>VPRLevel: sort by VPR rating<br>RiskStatus: sort by risk status<br>VulID: sort by vulnerability ID<br>InstanceID: sort by instance ID<br>Default value: LatestScanTime</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def MemberId(self):
+        r"""Group Account Member ID
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostVulRiskEventListResponse(AbstractModel):
+    r"""DescribeHostVulRiskEventList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>Host vulnerability risk event list</p>
+        :type List: list of HostVulRiskEventItem
+        :param _TotalCount: <p>Total number of entries that meet the criteria</p>
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""<p>Host vulnerability risk event list</p>
+        :rtype: list of HostVulRiskEventItem
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total number of entries that meet the criteria</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = HostVulRiskEventItem()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeHostVulRiskListRequest(AbstractModel):
     r"""DescribeHostVulRiskList request structure.
 
@@ -92085,6 +93894,87 @@ class DescribeHostVulRiskListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._List.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHostVulScanStatusRequest(AbstractModel):
+    r"""DescribeHostVulScanStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>Group account member id</p>
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""<p>Group account member id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostVulScanStatusResponse(AbstractModel):
+    r"""DescribeHostVulScanStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>Host vulnerability scanning status</p>
+        :type Status: :class:`tencentcloud.csip.v20221121.models.HostVulScanStatus`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>Host vulnerability scanning status</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.HostVulScanStatus`
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Status") is not None:
+            self._Status = HostVulScanStatus()
+            self._Status._deserialize(params.get("Status"))
         self._RequestId = params.get("RequestId")
 
 
@@ -97413,6 +99303,185 @@ class DescribeLoginWhiteCombinedListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLoginWhiteCustomListEDRRequest(AbstractModel):
+    r"""DescribeLoginWhiteCustomListEDR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>Group account member id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>Filter condition array (multiple Filters have an AND relationship). Supports Name: Keyword (SrcIp/UserName/Locations/Remark blurry), SrcIp, UserName, Location, Remark, ModifyBeginTime, ModifyEndTime (time format 2006-01-02 15:04:05); unknown Name is ignored with no error reported</p>
+        :type Filters: list of EDRFilter
+        :param _Limit: <p>Page size. Default: 10. Upper limit: 100. If 0 or more than 100 is passed, the default or upper limit is used.</p>
+        :type Limit: int
+        :param _Offset: <p>Pagination offset. Default value: 0.</p>
+        :type Offset: int
+        :param _Order: <p>Sorting order: ASC - ascending, DESC - descending (not case-sensitive). Default: DESC</p>
+        :type Order: str
+        :param _By: <p>Sorting field: CreateTime-creation time, ModifyTime-last modified. Default: ModifyTime. If an illegal value is passed, InvalidParameter is returned.</p>
+        :type By: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def MemberId(self):
+        r"""<p>Group account member id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>Filter condition array (multiple Filters have an AND relationship). Supports Name: Keyword (SrcIp/UserName/Locations/Remark blurry), SrcIp, UserName, Location, Remark, ModifyBeginTime, ModifyEndTime (time format 2006-01-02 15:04:05); unknown Name is ignored with no error reported</p>
+        :rtype: list of EDRFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>Page size. Default: 10. Upper limit: 100. If 0 or more than 100 is passed, the default or upper limit is used.</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>Pagination offset. Default value: 0.</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""<p>Sorting order: ASC - ascending, DESC - descending (not case-sensitive). Default: DESC</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>Sorting field: CreateTime-creation time, ModifyTime-last modified. Default: ModifyTime. If an illegal value is passed, InvalidParameter is returned.</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = EDRFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLoginWhiteCustomListEDRResponse(AbstractModel):
+    r"""DescribeLoginWhiteCustomListEDR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>Total number of rules that meet the criteria</p>
+        :type TotalCount: int
+        :param _List: <p>Custom allowlist rule list (Type is always Custom). If empty, [] is returned.</p>
+        :type List: list of LoginWhiteItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total number of rules that meet the criteria</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def List(self):
+        r"""<p>Custom allowlist rule list (Type is always Custom). If empty, [] is returned.</p>
+        :rtype: list of LoginWhiteItem
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = LoginWhiteItem()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLoginWhiteHostListRequest(AbstractModel):
     r"""DescribeLoginWhiteHostList request structure.
 
@@ -97574,6 +99643,200 @@ class DescribeLoginWhiteHostListResponse(AbstractModel):
                 obj = HostDesc()
                 obj._deserialize(item)
                 self._Hosts.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLoginWhiteLearnListEDRRequest(AbstractModel):
+    r"""DescribeLoginWhiteLearnListEDR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>Group account member id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>Filter condition array (multiple Filters have an AND relationship). Supports Name: Keyword or Location (common login location blurry), Remark, ModifyBeginTime, ModifyEndTime (time format 2006-01-02 15:04:05); unknown Name is ignored with no error reported</p>
+        :type Filters: list of EDRFilter
+        :param _Limit: <p>Page size. Default: 10. Upper limit: 100. If 0 or more than 100 is passed, the default or upper limit is used.</p>
+        :type Limit: int
+        :param _Offset: <p>Pagination offset. Default value: 0.</p>
+        :type Offset: int
+        :param _Order: <p>Sorting order: ASC - ascending, DESC - descending (not case-sensitive). Default: DESC</p>
+        :type Order: str
+        :param _By: <p>Sorting field: CreateTime-creation time, ModifyTime-last modified. Default: ModifyTime. If an illegal value is passed, InvalidParameter is returned.</p>
+        :type By: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def MemberId(self):
+        r"""<p>Group account member id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>Filter condition array (multiple Filters have an AND relationship). Supports Name: Keyword or Location (common login location blurry), Remark, ModifyBeginTime, ModifyEndTime (time format 2006-01-02 15:04:05); unknown Name is ignored with no error reported</p>
+        :rtype: list of EDRFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>Page size. Default: 10. Upper limit: 100. If 0 or more than 100 is passed, the default or upper limit is used.</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>Pagination offset. Default value: 0.</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""<p>Sorting order: ASC - ascending, DESC - descending (not case-sensitive). Default: DESC</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>Sorting field: CreateTime-creation time, ModifyTime-last modified. Default: ModifyTime. If an illegal value is passed, InvalidParameter is returned.</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = EDRFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLoginWhiteLearnListEDRResponse(AbstractModel):
+    r"""DescribeLoginWhiteLearnListEDR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>Total number of rule groups (aggregated by AppId + common login location)</p>
+        :type TotalCount: int
+        :param _List: <p>Self-learning allowlist rule group list (Type is always Learn). If empty, [] is returned.</p>
+        :type List: list of LoginWhiteItem
+        :param _AutoLearnEnable: <p>Self-learning allowlist switch status; for multi-account, the current account is used to prompt the frontend to go to enable in the empty state</p>
+        :type AutoLearnEnable: bool
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._List = None
+        self._AutoLearnEnable = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total number of rule groups (aggregated by AppId + common login location)</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def List(self):
+        r"""<p>Self-learning allowlist rule group list (Type is always Learn). If empty, [] is returned.</p>
+        :rtype: list of LoginWhiteItem
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def AutoLearnEnable(self):
+        r"""<p>Self-learning allowlist switch status; for multi-account, the current account is used to prompt the frontend to go to enable in the empty state</p>
+        :rtype: bool
+        """
+        return self._AutoLearnEnable
+
+    @AutoLearnEnable.setter
+    def AutoLearnEnable(self, AutoLearnEnable):
+        self._AutoLearnEnable = AutoLearnEnable
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = LoginWhiteItem()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._AutoLearnEnable = params.get("AutoLearnEnable")
         self._RequestId = params.get("RequestId")
 
 
@@ -128934,7 +131197,7 @@ class EDRFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: <p>Name of filter key</p>
+        :param _Name: <p>Name of filter key.</p>
         :type Name: str
         :param _Values: <p>One or more filter values.</p>
         :type Values: list of str
@@ -128947,7 +131210,7 @@ class EDRFilter(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>Name of filter key</p>
+        r"""<p>Name of filter key.</p>
         :rtype: str
         """
         return self._Name
@@ -129667,11 +131930,11 @@ class EDRRuleTagItem(AbstractModel):
         :type TagKeyEn: str
         :param _TagValue: <p>Tag Chinese value</p>
         :type TagValue: str
-        :param _TagValueEn: <p>Tag value in English.</p>
+        :param _TagValueEn: <p>Tag value in English</p>
         :type TagValueEn: str
-        :param _Description: <p>Tag description</p>
+        :param _Description: <p>Tag description.</p>
         :type Description: str
-        :param _Color: <p>Tag color</p>
+        :param _Color: <p>Tag color.</p>
         :type Color: str
         """
         self._ID = None
@@ -129728,7 +131991,7 @@ class EDRRuleTagItem(AbstractModel):
 
     @property
     def TagValueEn(self):
-        r"""<p>Tag value in English.</p>
+        r"""<p>Tag value in English</p>
         :rtype: str
         """
         return self._TagValueEn
@@ -129739,7 +132002,7 @@ class EDRRuleTagItem(AbstractModel):
 
     @property
     def Description(self):
-        r"""<p>Tag description</p>
+        r"""<p>Tag description.</p>
         :rtype: str
         """
         return self._Description
@@ -129750,7 +132013,7 @@ class EDRRuleTagItem(AbstractModel):
 
     @property
     def Color(self):
-        r"""<p>Tag color</p>
+        r"""<p>Tag color.</p>
         :rtype: str
         """
         return self._Color
@@ -134700,7 +136963,7 @@ class FilterDataObject(AbstractModel):
 
 
 class Filters(AbstractModel):
-    r"""Filter criteria. Multiple Values under the same Name are OR-related, while different Names are AND-related. Supported Name: Status (execution result, Values: SUCCESS/FAILED/USER_CANCELED/CHECKING)
+    r"""Filter criteria. Multiple Values under the same Name are in an OR relationship. Different Names are in an AND relationship with each other. Supported Name: Status (execution result, Values: SUCCESS/FAILED/USER_CANCELED/CHECKING)
 
     """
 
@@ -134708,9 +136971,9 @@ class Filters(AbstractModel):
         r"""
         :param _Name: Filter criterion name. Parameter value: Status (Execution result. Values: SUCCESS/FAILED/USER_CANCELED/CHECKING)
         :type Name: str
-        :param _Values: List of filter condition values
+        :param _Values: Filter condition value list
         :type Values: list of str
-        :param _ExactMatch: Exact match: 1 for exact match; fuzzy match by default
+        :param _ExactMatch: Exact match: 1 - exact match; fuzzy match by default
         :type ExactMatch: str
         """
         self._Name = None
@@ -134730,7 +136993,7 @@ class Filters(AbstractModel):
 
     @property
     def Values(self):
-        r"""List of filter condition values
+        r"""Filter condition value list
         :rtype: list of str
         """
         return self._Values
@@ -134741,7 +137004,7 @@ class Filters(AbstractModel):
 
     @property
     def ExactMatch(self):
-        r"""Exact match: 1 for exact match; fuzzy match by default
+        r"""Exact match: 1 - exact match; fuzzy match by default
         :rtype: str
         """
         return self._ExactMatch
@@ -136784,6 +139047,536 @@ class HostVulRisk(AbstractModel):
         if params.get("VulDetail") is not None:
             self._VulDetail = VulDetailInfo()
             self._VulDetail._deserialize(params.get("VulDetail"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HostVulRiskEventItem(AbstractModel):
+    r"""Host vulnerability risk event details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UUID: Unique identifier of a vulnerability risk record.
+        :type UUID: str
+        :param _RiskID: Risk record ID
+        :type RiskID: int
+        :param _VulID: Vulnerability ID
+        :type VulID: int
+        :param _VulName: Vulnerability name
+        :type VulName: str
+        :param _CVEID: CVE No.
+Parameter format: such as CVE-2024-12345
+        :type CVEID: str
+        :param _Category: Vulnerability category
+Enumeration values:
+LINUX: Linux software vulnerability
+WINDOWS: Windows system patch
+WEB_CMS: Web-CMS vulnerability
+APPLICATION: Application vulnerability
+EMERGENCY: Urgent vulnerability
+        :type Category: str
+        :param _Level: Vulnerability severity level
+Enumeration values:
+UNKNOWN: invalid
+LOW: low-risk
+MEDIUM: Medium risk
+HIGH: High risk
+CRITICAL: Critical
+        :type Level: str
+        :param _VPRLevel: VPR repair priority
+Enumeration values:
+DEFERRABLE: Can be repaired later
+PLANNED: Planned repair
+SOON: Fix as soon as possible
+URGENT: urgent repair
+        :type VPRLevel: str
+        :param _CheckMethod: Detection mode
+Enumeration values:
+VersionCompare: version comparison
+POC: POC detection
+VersionComparePOC: version comparison + POC
+        :type CheckMethod: str
+        :param _RiskStatus: Risk status
+Enumeration value:
+PENDING: to be processed.
+HANDLED: processed
+FIXED: Fixed
+SCANNING: Rechecking
+IGNORED: ignored
+NOT_REQUIRED: No action is required
+DELETED: Deleted
+FIXING: In remediation
+NEED_REBOOT: Fixed and pending restart
+FIX_FAILURE: FIX failure
+        :type RiskStatus: str
+        :param _SupportFix: Whether one-click repair is supported
+        :type SupportFix: bool
+        :param _LatestScanTime: Last scan time
+Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)
+        :type LatestScanTime: str
+        :param _InstanceID: Cloud host instance ID
+Parameter format: such as ins-xxxxxxxx
+        :type InstanceID: str
+        :param _AppID: Account AppID
+        :type AppID: int
+        """
+        self._UUID = None
+        self._RiskID = None
+        self._VulID = None
+        self._VulName = None
+        self._CVEID = None
+        self._Category = None
+        self._Level = None
+        self._VPRLevel = None
+        self._CheckMethod = None
+        self._RiskStatus = None
+        self._SupportFix = None
+        self._LatestScanTime = None
+        self._InstanceID = None
+        self._AppID = None
+
+    @property
+    def UUID(self):
+        r"""Unique identifier of a vulnerability risk record.
+        :rtype: str
+        """
+        return self._UUID
+
+    @UUID.setter
+    def UUID(self, UUID):
+        self._UUID = UUID
+
+    @property
+    def RiskID(self):
+        r"""Risk record ID
+        :rtype: int
+        """
+        return self._RiskID
+
+    @RiskID.setter
+    def RiskID(self, RiskID):
+        self._RiskID = RiskID
+
+    @property
+    def VulID(self):
+        r"""Vulnerability ID
+        :rtype: int
+        """
+        return self._VulID
+
+    @VulID.setter
+    def VulID(self, VulID):
+        self._VulID = VulID
+
+    @property
+    def VulName(self):
+        r"""Vulnerability name
+        :rtype: str
+        """
+        return self._VulName
+
+    @VulName.setter
+    def VulName(self, VulName):
+        self._VulName = VulName
+
+    @property
+    def CVEID(self):
+        r"""CVE No.
+Parameter format: such as CVE-2024-12345
+        :rtype: str
+        """
+        return self._CVEID
+
+    @CVEID.setter
+    def CVEID(self, CVEID):
+        self._CVEID = CVEID
+
+    @property
+    def Category(self):
+        r"""Vulnerability category
+Enumeration values:
+LINUX: Linux software vulnerability
+WINDOWS: Windows system patch
+WEB_CMS: Web-CMS vulnerability
+APPLICATION: Application vulnerability
+EMERGENCY: Urgent vulnerability
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Level(self):
+        r"""Vulnerability severity level
+Enumeration values:
+UNKNOWN: invalid
+LOW: low-risk
+MEDIUM: Medium risk
+HIGH: High risk
+CRITICAL: Critical
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def VPRLevel(self):
+        r"""VPR repair priority
+Enumeration values:
+DEFERRABLE: Can be repaired later
+PLANNED: Planned repair
+SOON: Fix as soon as possible
+URGENT: urgent repair
+        :rtype: str
+        """
+        return self._VPRLevel
+
+    @VPRLevel.setter
+    def VPRLevel(self, VPRLevel):
+        self._VPRLevel = VPRLevel
+
+    @property
+    def CheckMethod(self):
+        r"""Detection mode
+Enumeration values:
+VersionCompare: version comparison
+POC: POC detection
+VersionComparePOC: version comparison + POC
+        :rtype: str
+        """
+        return self._CheckMethod
+
+    @CheckMethod.setter
+    def CheckMethod(self, CheckMethod):
+        self._CheckMethod = CheckMethod
+
+    @property
+    def RiskStatus(self):
+        r"""Risk status
+Enumeration value:
+PENDING: to be processed.
+HANDLED: processed
+FIXED: Fixed
+SCANNING: Rechecking
+IGNORED: ignored
+NOT_REQUIRED: No action is required
+DELETED: Deleted
+FIXING: In remediation
+NEED_REBOOT: Fixed and pending restart
+FIX_FAILURE: FIX failure
+        :rtype: str
+        """
+        return self._RiskStatus
+
+    @RiskStatus.setter
+    def RiskStatus(self, RiskStatus):
+        self._RiskStatus = RiskStatus
+
+    @property
+    def SupportFix(self):
+        r"""Whether one-click repair is supported
+        :rtype: bool
+        """
+        return self._SupportFix
+
+    @SupportFix.setter
+    def SupportFix(self, SupportFix):
+        self._SupportFix = SupportFix
+
+    @property
+    def LatestScanTime(self):
+        r"""Last scan time
+Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)
+        :rtype: str
+        """
+        return self._LatestScanTime
+
+    @LatestScanTime.setter
+    def LatestScanTime(self, LatestScanTime):
+        self._LatestScanTime = LatestScanTime
+
+    @property
+    def InstanceID(self):
+        r"""Cloud host instance ID
+Parameter format: such as ins-xxxxxxxx
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def AppID(self):
+        r"""Account AppID
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+
+    def _deserialize(self, params):
+        self._UUID = params.get("UUID")
+        self._RiskID = params.get("RiskID")
+        self._VulID = params.get("VulID")
+        self._VulName = params.get("VulName")
+        self._CVEID = params.get("CVEID")
+        self._Category = params.get("Category")
+        self._Level = params.get("Level")
+        self._VPRLevel = params.get("VPRLevel")
+        self._CheckMethod = params.get("CheckMethod")
+        self._RiskStatus = params.get("RiskStatus")
+        self._SupportFix = params.get("SupportFix")
+        self._LatestScanTime = params.get("LatestScanTime")
+        self._InstanceID = params.get("InstanceID")
+        self._AppID = params.get("AppID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HostVulScanStatus(AbstractModel):
+    r"""Vulnerability scanning status of a host
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HasScanned: Whether vulnerability scanning has been initiated
+Enumeration values:
+true: Vulnerability scanning initiated
+false: vulnerability scanning not initiated
+        :type HasScanned: bool
+        :param _IsFirstScan: If it is the first vulnerability scanning judgment scenario
+Enumeration values:
+true: is in the first-time vulnerability scanning judgment scenario
+false: not in the first vulnerability scanning judgment scenario
+        :type IsFirstScan: bool
+        :param _ScanTaskStatus: Status of the last scan task
+Enumeration values:
+SCANNING: scan in progress
+SUCCESS: Scan successful
+PARTIAL_FAILED: Partial scan failure
+ALL_FAILED: All scans failed
+STOPPED: Stop scanning
+        :type ScanTaskStatus: str
+        :param _ScanScene: Business status of the page
+Enumeration values:
+NEVER_SCANNED: Never scanned for vulnerabilities
+SCANNING: scan in progress
+FIRST_SCAN_FAILED: Vulnerability scanning failed for the first time
+FIRST_SCAN_HAS_FIXABLE_VUL: First scan complete, fixable vulnerabilities exist
+FIRST_SCAN_NO_FIXABLE_VUL: First scan completed. Vulnerabilities exist but none can be fixed.
+FIRST_SCAN_NO_VUL: First scan complete, no vulnerabilities
+SCANNED_HAS_FIXABLE_VUL: Not the first scan, fixable vulnerabilities exist
+SCANNED_NO_FIXABLE_VUL: Not the first scan. Vulnerabilities exist but none can be fixed.
+SCANNED_NO_VUL: Not the first scan, no vulnerabilities
+        :type ScanScene: str
+        :param _LatestScanTime: Last scan time
+Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)
+Returns an empty string if unscanned.
+        :type LatestScanTime: str
+        :param _TotalVulCount: Current total count of pending vulnerabilities
+Contains common host vulnerabilities and pending risks of the latest Windows KB.
+        :type TotalVulCount: int
+        :param _FixableVulCount: Current number of fixable vulnerabilities
+Contains ordinary host vulnerabilities that support one-click repair and the latest pending Windows KB risks.
+        :type FixableVulCount: int
+        :param _FixableEmergencyCount: Current number of repairable emergency vulnerabilities
+Urgent vulnerabilities are prioritized for categorization: urgent vulnerabilities are only counted into this field and no longer included in the Linux software vulnerability count.
+        :type FixableEmergencyCount: int
+        :param _FixableLinuxVulCount: Current number of repairable Linux software vulnerabilities
+Only non-emergency Linux software vulnerabilities are counted.
+        :type FixableLinuxVulCount: int
+        :param _FixableWindowVulCount: Number of currently repairable patches for Windows systems
+Statistics of the latest pending Windows KB risks.
+        :type FixableWindowVulCount: int
+        """
+        self._HasScanned = None
+        self._IsFirstScan = None
+        self._ScanTaskStatus = None
+        self._ScanScene = None
+        self._LatestScanTime = None
+        self._TotalVulCount = None
+        self._FixableVulCount = None
+        self._FixableEmergencyCount = None
+        self._FixableLinuxVulCount = None
+        self._FixableWindowVulCount = None
+
+    @property
+    def HasScanned(self):
+        r"""Whether vulnerability scanning has been initiated
+Enumeration values:
+true: Vulnerability scanning initiated
+false: vulnerability scanning not initiated
+        :rtype: bool
+        """
+        return self._HasScanned
+
+    @HasScanned.setter
+    def HasScanned(self, HasScanned):
+        self._HasScanned = HasScanned
+
+    @property
+    def IsFirstScan(self):
+        r"""If it is the first vulnerability scanning judgment scenario
+Enumeration values:
+true: is in the first-time vulnerability scanning judgment scenario
+false: not in the first vulnerability scanning judgment scenario
+        :rtype: bool
+        """
+        return self._IsFirstScan
+
+    @IsFirstScan.setter
+    def IsFirstScan(self, IsFirstScan):
+        self._IsFirstScan = IsFirstScan
+
+    @property
+    def ScanTaskStatus(self):
+        r"""Status of the last scan task
+Enumeration values:
+SCANNING: scan in progress
+SUCCESS: Scan successful
+PARTIAL_FAILED: Partial scan failure
+ALL_FAILED: All scans failed
+STOPPED: Stop scanning
+        :rtype: str
+        """
+        return self._ScanTaskStatus
+
+    @ScanTaskStatus.setter
+    def ScanTaskStatus(self, ScanTaskStatus):
+        self._ScanTaskStatus = ScanTaskStatus
+
+    @property
+    def ScanScene(self):
+        r"""Business status of the page
+Enumeration values:
+NEVER_SCANNED: Never scanned for vulnerabilities
+SCANNING: scan in progress
+FIRST_SCAN_FAILED: Vulnerability scanning failed for the first time
+FIRST_SCAN_HAS_FIXABLE_VUL: First scan complete, fixable vulnerabilities exist
+FIRST_SCAN_NO_FIXABLE_VUL: First scan completed. Vulnerabilities exist but none can be fixed.
+FIRST_SCAN_NO_VUL: First scan complete, no vulnerabilities
+SCANNED_HAS_FIXABLE_VUL: Not the first scan, fixable vulnerabilities exist
+SCANNED_NO_FIXABLE_VUL: Not the first scan. Vulnerabilities exist but none can be fixed.
+SCANNED_NO_VUL: Not the first scan, no vulnerabilities
+        :rtype: str
+        """
+        return self._ScanScene
+
+    @ScanScene.setter
+    def ScanScene(self, ScanScene):
+        self._ScanScene = ScanScene
+
+    @property
+    def LatestScanTime(self):
+        r"""Last scan time
+Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)
+Returns an empty string if unscanned.
+        :rtype: str
+        """
+        return self._LatestScanTime
+
+    @LatestScanTime.setter
+    def LatestScanTime(self, LatestScanTime):
+        self._LatestScanTime = LatestScanTime
+
+    @property
+    def TotalVulCount(self):
+        r"""Current total count of pending vulnerabilities
+Contains common host vulnerabilities and pending risks of the latest Windows KB.
+        :rtype: int
+        """
+        return self._TotalVulCount
+
+    @TotalVulCount.setter
+    def TotalVulCount(self, TotalVulCount):
+        self._TotalVulCount = TotalVulCount
+
+    @property
+    def FixableVulCount(self):
+        r"""Current number of fixable vulnerabilities
+Contains ordinary host vulnerabilities that support one-click repair and the latest pending Windows KB risks.
+        :rtype: int
+        """
+        return self._FixableVulCount
+
+    @FixableVulCount.setter
+    def FixableVulCount(self, FixableVulCount):
+        self._FixableVulCount = FixableVulCount
+
+    @property
+    def FixableEmergencyCount(self):
+        r"""Current number of repairable emergency vulnerabilities
+Urgent vulnerabilities are prioritized for categorization: urgent vulnerabilities are only counted into this field and no longer included in the Linux software vulnerability count.
+        :rtype: int
+        """
+        return self._FixableEmergencyCount
+
+    @FixableEmergencyCount.setter
+    def FixableEmergencyCount(self, FixableEmergencyCount):
+        self._FixableEmergencyCount = FixableEmergencyCount
+
+    @property
+    def FixableLinuxVulCount(self):
+        r"""Current number of repairable Linux software vulnerabilities
+Only non-emergency Linux software vulnerabilities are counted.
+        :rtype: int
+        """
+        return self._FixableLinuxVulCount
+
+    @FixableLinuxVulCount.setter
+    def FixableLinuxVulCount(self, FixableLinuxVulCount):
+        self._FixableLinuxVulCount = FixableLinuxVulCount
+
+    @property
+    def FixableWindowVulCount(self):
+        r"""Number of currently repairable patches for Windows systems
+Statistics of the latest pending Windows KB risks.
+        :rtype: int
+        """
+        return self._FixableWindowVulCount
+
+    @FixableWindowVulCount.setter
+    def FixableWindowVulCount(self, FixableWindowVulCount):
+        self._FixableWindowVulCount = FixableWindowVulCount
+
+
+    def _deserialize(self, params):
+        self._HasScanned = params.get("HasScanned")
+        self._IsFirstScan = params.get("IsFirstScan")
+        self._ScanTaskStatus = params.get("ScanTaskStatus")
+        self._ScanScene = params.get("ScanScene")
+        self._LatestScanTime = params.get("LatestScanTime")
+        self._TotalVulCount = params.get("TotalVulCount")
+        self._FixableVulCount = params.get("FixableVulCount")
+        self._FixableEmergencyCount = params.get("FixableEmergencyCount")
+        self._FixableLinuxVulCount = params.get("FixableLinuxVulCount")
+        self._FixableWindowVulCount = params.get("FixableWindowVulCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -143523,13 +146316,13 @@ class InstallSandboxPluginResponse(AbstractModel):
 
 
 class InstanceIDWithAppIdItem(AbstractModel):
-    r"""Host instance location information
+    r"""Location information of the host instance
 
     """
 
     def __init__(self):
         r"""
-        :param _AppId: AppId of the machine ownership
+        :param _AppId: AppId of the machine
         :type AppId: int
         :param _InstanceID: Machine instance ID.
         :type InstanceID: str
@@ -143539,7 +146332,7 @@ class InstanceIDWithAppIdItem(AbstractModel):
 
     @property
     def AppId(self):
-        r"""AppId of the machine ownership
+        r"""AppId of the machine
         :rtype: int
         """
         return self._AppId
@@ -147594,6 +150387,469 @@ class LoginWhiteCombinedInfo(AbstractModel):
         
 
 
+class LoginWhiteItem(AbstractModel):
+    r"""Abnormal login allowlist rule item (shared by custom and self-learning, distinguished by Type)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>Allowlist type: Custom - custom allowlist; Learn - self-learning allowlist</p>
+        :type Type: str
+        :param _AppId: <p>AppId of the account associated with the policy, used to distinguish and locate for subsequent editing in multi-account scenarios</p>
+        :type AppId: int
+        :param _Id: <p>Rule ID; for self-learning, it is the rule group ID (minimum line ID in the group)</p>
+        :type Id: int
+        :param _SrcIp: <p>Login source IP (comma-separated); self-learning allowlist is always empty</p>
+        :type SrcIp: str
+        :param _UserName: <p>Login usernames (separate with commas); self-learning allowlist is always empty</p>
+        :type UserName: str
+        :param _StartTime: <p>Starting HH:MM when logging in; the self-learning allowlist is always empty</p>
+        :type StartTime: str
+        :param _EndTime: <p>Login period ends at HH:MM; self-learning allowlist is always empty</p>
+        :type EndTime: str
+        :param _Places: <p>Common login location list</p>
+        :type Places: list of LoginWhitePlace
+        :param _Locations: <p>Common login location display copy (comma-separated) for direct display in the list</p>
+        :type Locations: str
+        :param _Scope: <p>Effective asset scope: 0-specified hosts (host or tag hit) 1-all hosts</p>
+        :type Scope: int
+        :param _QUUIDS: <p>Effective host QUUID list (one-to-one correspondence with InstanceIDs)</p>
+        :type QUUIDS: list of str
+        :param _InstanceIDs: <p>List of host instance IDs that take effect (one-to-one correspondence with QUUIDS)</p>
+        :type InstanceIDs: list of str
+        :param _ExcludeQUUIDS: <p>Remove host QUUID list</p>
+        :type ExcludeQUUIDS: list of str
+        :param _ExcludeInstanceIDs: <p>Host instance ID list for removal</p>
+        :type ExcludeInstanceIDs: list of str
+        :param _TagItems: <p>List of effective tag details.</p>
+        :type TagItems: list of EDRRuleTagItem
+        :param _HostCount: <p>Hosts: custom to the specified number of hosts (0 when Scope=1, all hosts displayed on the front-end); self-learning is the number of deduplicated hosts in the group</p>
+        :type HostCount: int
+        :param _Remark: <p>Remarks.</p>
+        :type Remark: str
+        :param _CreateTime: <p>Creation time, format 2006-01-02 15:04:05</p>
+        :type CreateTime: str
+        :param _ModifyTime: <p>Last modification time, format 2006-01-02 15:04:05</p>
+        :type ModifyTime: str
+        """
+        self._Type = None
+        self._AppId = None
+        self._Id = None
+        self._SrcIp = None
+        self._UserName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Places = None
+        self._Locations = None
+        self._Scope = None
+        self._QUUIDS = None
+        self._InstanceIDs = None
+        self._ExcludeQUUIDS = None
+        self._ExcludeInstanceIDs = None
+        self._TagItems = None
+        self._HostCount = None
+        self._Remark = None
+        self._CreateTime = None
+        self._ModifyTime = None
+
+    @property
+    def Type(self):
+        r"""<p>Allowlist type: Custom - custom allowlist; Learn - self-learning allowlist</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AppId(self):
+        r"""<p>AppId of the account associated with the policy, used to distinguish and locate for subsequent editing in multi-account scenarios</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Id(self):
+        r"""<p>Rule ID; for self-learning, it is the rule group ID (minimum line ID in the group)</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def SrcIp(self):
+        r"""<p>Login source IP (comma-separated); self-learning allowlist is always empty</p>
+        :rtype: str
+        """
+        return self._SrcIp
+
+    @SrcIp.setter
+    def SrcIp(self, SrcIp):
+        self._SrcIp = SrcIp
+
+    @property
+    def UserName(self):
+        r"""<p>Login usernames (separate with commas); self-learning allowlist is always empty</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def StartTime(self):
+        r"""<p>Starting HH:MM when logging in; the self-learning allowlist is always empty</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>Login period ends at HH:MM; self-learning allowlist is always empty</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Places(self):
+        r"""<p>Common login location list</p>
+        :rtype: list of LoginWhitePlace
+        """
+        return self._Places
+
+    @Places.setter
+    def Places(self, Places):
+        self._Places = Places
+
+    @property
+    def Locations(self):
+        r"""<p>Common login location display copy (comma-separated) for direct display in the list</p>
+        :rtype: str
+        """
+        return self._Locations
+
+    @Locations.setter
+    def Locations(self, Locations):
+        self._Locations = Locations
+
+    @property
+    def Scope(self):
+        r"""<p>Effective asset scope: 0-specified hosts (host or tag hit) 1-all hosts</p>
+        :rtype: int
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def QUUIDS(self):
+        r"""<p>Effective host QUUID list (one-to-one correspondence with InstanceIDs)</p>
+        :rtype: list of str
+        """
+        return self._QUUIDS
+
+    @QUUIDS.setter
+    def QUUIDS(self, QUUIDS):
+        self._QUUIDS = QUUIDS
+
+    @property
+    def InstanceIDs(self):
+        r"""<p>List of host instance IDs that take effect (one-to-one correspondence with QUUIDS)</p>
+        :rtype: list of str
+        """
+        return self._InstanceIDs
+
+    @InstanceIDs.setter
+    def InstanceIDs(self, InstanceIDs):
+        self._InstanceIDs = InstanceIDs
+
+    @property
+    def ExcludeQUUIDS(self):
+        r"""<p>Remove host QUUID list</p>
+        :rtype: list of str
+        """
+        return self._ExcludeQUUIDS
+
+    @ExcludeQUUIDS.setter
+    def ExcludeQUUIDS(self, ExcludeQUUIDS):
+        self._ExcludeQUUIDS = ExcludeQUUIDS
+
+    @property
+    def ExcludeInstanceIDs(self):
+        r"""<p>Host instance ID list for removal</p>
+        :rtype: list of str
+        """
+        return self._ExcludeInstanceIDs
+
+    @ExcludeInstanceIDs.setter
+    def ExcludeInstanceIDs(self, ExcludeInstanceIDs):
+        self._ExcludeInstanceIDs = ExcludeInstanceIDs
+
+    @property
+    def TagItems(self):
+        r"""<p>List of effective tag details.</p>
+        :rtype: list of EDRRuleTagItem
+        """
+        return self._TagItems
+
+    @TagItems.setter
+    def TagItems(self, TagItems):
+        self._TagItems = TagItems
+
+    @property
+    def HostCount(self):
+        r"""<p>Hosts: custom to the specified number of hosts (0 when Scope=1, all hosts displayed on the front-end); self-learning is the number of deduplicated hosts in the group</p>
+        :rtype: int
+        """
+        return self._HostCount
+
+    @HostCount.setter
+    def HostCount(self, HostCount):
+        self._HostCount = HostCount
+
+    @property
+    def Remark(self):
+        r"""<p>Remarks.</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CreateTime(self):
+        r"""<p>Creation time, format 2006-01-02 15:04:05</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        r"""<p>Last modification time, format 2006-01-02 15:04:05</p>
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._AppId = params.get("AppId")
+        self._Id = params.get("Id")
+        self._SrcIp = params.get("SrcIp")
+        self._UserName = params.get("UserName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("Places") is not None:
+            self._Places = []
+            for item in params.get("Places"):
+                obj = LoginWhitePlace()
+                obj._deserialize(item)
+                self._Places.append(obj)
+        self._Locations = params.get("Locations")
+        self._Scope = params.get("Scope")
+        self._QUUIDS = params.get("QUUIDS")
+        self._InstanceIDs = params.get("InstanceIDs")
+        self._ExcludeQUUIDS = params.get("ExcludeQUUIDS")
+        self._ExcludeInstanceIDs = params.get("ExcludeInstanceIDs")
+        if params.get("TagItems") is not None:
+            self._TagItems = []
+            for item in params.get("TagItems"):
+                obj = EDRRuleTagItem()
+                obj._deserialize(item)
+                self._TagItems.append(obj)
+        self._HostCount = params.get("HostCount")
+        self._Remark = params.get("Remark")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LoginWhitePlace(AbstractModel):
+    r"""Common login location (output parameter)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CountryId: <p>Country ID</p>
+        :type CountryId: int
+        :param _ProvinceId: <p>Province ID; 99999 means all provinces</p>
+        :type ProvinceId: int
+        :param _CityId: <p>City ID; 99999 means all cities</p>
+        :type CityId: int
+        :param _Location: <p>Location display copy, generated by the server based on Language, for example, China-Guangdong-Shenzhen</p>
+        :type Location: str
+        """
+        self._CountryId = None
+        self._ProvinceId = None
+        self._CityId = None
+        self._Location = None
+
+    @property
+    def CountryId(self):
+        r"""<p>Country ID</p>
+        :rtype: int
+        """
+        return self._CountryId
+
+    @CountryId.setter
+    def CountryId(self, CountryId):
+        self._CountryId = CountryId
+
+    @property
+    def ProvinceId(self):
+        r"""<p>Province ID; 99999 means all provinces</p>
+        :rtype: int
+        """
+        return self._ProvinceId
+
+    @ProvinceId.setter
+    def ProvinceId(self, ProvinceId):
+        self._ProvinceId = ProvinceId
+
+    @property
+    def CityId(self):
+        r"""<p>City ID; 99999 means all cities</p>
+        :rtype: int
+        """
+        return self._CityId
+
+    @CityId.setter
+    def CityId(self, CityId):
+        self._CityId = CityId
+
+    @property
+    def Location(self):
+        r"""<p>Location display copy, generated by the server based on Language, for example, China-Guangdong-Shenzhen</p>
+        :rtype: str
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+
+    def _deserialize(self, params):
+        self._CountryId = params.get("CountryId")
+        self._ProvinceId = params.get("ProvinceId")
+        self._CityId = params.get("CityId")
+        self._Location = params.get("Location")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LoginWhitePlaceInput(AbstractModel):
+    r"""Common login location (input parameter)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CountryId: <p>Country ID. Currently, only 1 is supported, indicating China.</p>
+        :type CountryId: int
+        :param _ProvinceId: <p>Province ID; 99999 means all provinces</p>
+        :type ProvinceId: int
+        :param _CityId: <p>City ID; 99999 means all cities</p>
+        :type CityId: int
+        """
+        self._CountryId = None
+        self._ProvinceId = None
+        self._CityId = None
+
+    @property
+    def CountryId(self):
+        r"""<p>Country ID. Currently, only 1 is supported, indicating China.</p>
+        :rtype: int
+        """
+        return self._CountryId
+
+    @CountryId.setter
+    def CountryId(self, CountryId):
+        self._CountryId = CountryId
+
+    @property
+    def ProvinceId(self):
+        r"""<p>Province ID; 99999 means all provinces</p>
+        :rtype: int
+        """
+        return self._ProvinceId
+
+    @ProvinceId.setter
+    def ProvinceId(self, ProvinceId):
+        self._ProvinceId = ProvinceId
+
+    @property
+    def CityId(self):
+        r"""<p>City ID; 99999 means all cities</p>
+        :rtype: int
+        """
+        return self._CityId
+
+    @CityId.setter
+    def CityId(self, CityId):
+        self._CityId = CityId
+
+
+    def _deserialize(self, params):
+        self._CountryId = params.get("CountryId")
+        self._ProvinceId = params.get("ProvinceId")
+        self._CityId = params.get("CityId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Machine(AbstractModel):
     r"""Host list
 
@@ -151225,6 +154481,160 @@ class ModifyBanModeRequest(AbstractModel):
 
 class ModifyBanModeResponse(AbstractModel):
     r"""ModifyBanMode response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyBaselineIgnorePolicyRequest(AbstractModel):
+    r"""ModifyBaselineIgnorePolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ItemID: <p>Detection item ID, identifying which detection item to set an ignore policy for.</p>
+        :type ItemID: int
+        :param _ScopeType: <p>Ignorable range type.</p><p>Enumeration values:</p><ul><li>ALL: all assets</li><li>PICK: specified asset</li></ul>
+        :type ScopeType: str
+        :param _Remark: <p>Remark information.</p>
+        :type Remark: str
+        :param _ID: <p>Ignore policy record ID. Pass 0 when creating, and pass the corresponding record ID when updating.</p>
+        :type ID: int
+        :param _ScopeIncludeList: <p>Custom asset ID list. This parameter is valid only when PICK is selected. Import instance-id or cluster ID.</p>
+        :type ScopeIncludeList: list of str
+        :param _ScopeExcludeList: <p>Remove asset ID list. This parameter is valid only when set to ALL. Input instance-id or cluster ID.</p>
+        :type ScopeExcludeList: list of str
+        :param _MemberId: <p>Group account member id</p>
+        :type MemberId: list of str
+        """
+        self._ItemID = None
+        self._ScopeType = None
+        self._Remark = None
+        self._ID = None
+        self._ScopeIncludeList = None
+        self._ScopeExcludeList = None
+        self._MemberId = None
+
+    @property
+    def ItemID(self):
+        r"""<p>Detection item ID, identifying which detection item to set an ignore policy for.</p>
+        :rtype: int
+        """
+        return self._ItemID
+
+    @ItemID.setter
+    def ItemID(self, ItemID):
+        self._ItemID = ItemID
+
+    @property
+    def ScopeType(self):
+        r"""<p>Ignorable range type.</p><p>Enumeration values:</p><ul><li>ALL: all assets</li><li>PICK: specified asset</li></ul>
+        :rtype: str
+        """
+        return self._ScopeType
+
+    @ScopeType.setter
+    def ScopeType(self, ScopeType):
+        self._ScopeType = ScopeType
+
+    @property
+    def Remark(self):
+        r"""<p>Remark information.</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ID(self):
+        r"""<p>Ignore policy record ID. Pass 0 when creating, and pass the corresponding record ID when updating.</p>
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def ScopeIncludeList(self):
+        r"""<p>Custom asset ID list. This parameter is valid only when PICK is selected. Import instance-id or cluster ID.</p>
+        :rtype: list of str
+        """
+        return self._ScopeIncludeList
+
+    @ScopeIncludeList.setter
+    def ScopeIncludeList(self, ScopeIncludeList):
+        self._ScopeIncludeList = ScopeIncludeList
+
+    @property
+    def ScopeExcludeList(self):
+        r"""<p>Remove asset ID list. This parameter is valid only when set to ALL. Input instance-id or cluster ID.</p>
+        :rtype: list of str
+        """
+        return self._ScopeExcludeList
+
+    @ScopeExcludeList.setter
+    def ScopeExcludeList(self, ScopeExcludeList):
+        self._ScopeExcludeList = ScopeExcludeList
+
+    @property
+    def MemberId(self):
+        r"""<p>Group account member id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._ItemID = params.get("ItemID")
+        self._ScopeType = params.get("ScopeType")
+        self._Remark = params.get("Remark")
+        self._ID = params.get("ID")
+        self._ScopeIncludeList = params.get("ScopeIncludeList")
+        self._ScopeExcludeList = params.get("ScopeExcludeList")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBaselineIgnorePolicyResponse(AbstractModel):
+    r"""ModifyBaselineIgnorePolicy response structure.
 
     """
 
@@ -159723,6 +163133,494 @@ class ModifyLoginTypeFailInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyLoginWhiteCustomEDRRequest(AbstractModel):
+    r"""ModifyLoginWhiteCustomEDR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>Rule ID; for self-learning, it is the rule group ID (minimum line ID in the group)</p>
+        :type Id: int
+        :param _MemberId: <p>Group account member id</p>
+        :type MemberId: list of str
+        :param _SrcIp: <p>Login source IP. Use commas (,) to separate multiple items. Supports individual IPs, intervals (a-b), and CIDR. Supports IPv4 and IPv6. Up to 2048 characters.</p>
+        :type SrcIp: str
+        :param _UserName: <p>Login username separated by commas; up to 1024 characters</p>
+        :type UserName: str
+        :param _StartTime: <p>Login time start HH:MM; it must be filled in or left empty simultaneously with EndTime</p>
+        :type StartTime: str
+        :param _EndTime: <p>Login period end HH:MM; must be filled in or empty at the same time as StartTime</p>
+        :type EndTime: str
+        :param _Places: <p>List of common login locations, up to 200. Set ProvinceId/CityId to 99999 to indicate all provinces/all cities.</p>
+        :type Places: list of LoginWhitePlaceInput
+        :param _Remark: <p>Remark, up to 255 characters</p>
+        :type Remark: str
+        :param _Scope: <p>Effective asset scope: 0-specified hosts (host or tag hit) 1-all hosts</p>
+        :type Scope: int
+        :param _InstanceIDsWithAppId: <p>List of specified hosts (in instance ID form), up to 10,000 items. The server translates them to QUUIDs via idmap, then merges and deduplicates them with QUUIDSWithAppId.</p>
+        :type InstanceIDsWithAppId: list of InstanceIDWithAppIdItem
+        :param _ExcludeInstanceIDsWithAppId: <p>List of hosts (instance ID form) to remove, up to 10,000 items</p>
+        :type ExcludeInstanceIDsWithAppId: list of InstanceIDWithAppIdItem
+        :param _TagIDs: <p>Security center tag ID list, up to 100. When Scope=0, it is in an OR relationship with the host. Self-learning allowlist does not support taking effect by tag (a non-empty value will be rejected).</p>
+        :type TagIDs: list of str
+        :param _TargetAppIDs: <p>Target appid</p>
+        :type TargetAppIDs: list of int non-negative
+        :param _DealOldEvents: <p>Whether to add historical alarm data to whitelist</p>
+        :type DealOldEvents: int
+        """
+        self._Id = None
+        self._MemberId = None
+        self._SrcIp = None
+        self._UserName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Places = None
+        self._Remark = None
+        self._Scope = None
+        self._InstanceIDsWithAppId = None
+        self._ExcludeInstanceIDsWithAppId = None
+        self._TagIDs = None
+        self._TargetAppIDs = None
+        self._DealOldEvents = None
+
+    @property
+    def Id(self):
+        r"""<p>Rule ID; for self-learning, it is the rule group ID (minimum line ID in the group)</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def MemberId(self):
+        r"""<p>Group account member id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def SrcIp(self):
+        r"""<p>Login source IP. Use commas (,) to separate multiple items. Supports individual IPs, intervals (a-b), and CIDR. Supports IPv4 and IPv6. Up to 2048 characters.</p>
+        :rtype: str
+        """
+        return self._SrcIp
+
+    @SrcIp.setter
+    def SrcIp(self, SrcIp):
+        self._SrcIp = SrcIp
+
+    @property
+    def UserName(self):
+        r"""<p>Login username separated by commas; up to 1024 characters</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def StartTime(self):
+        r"""<p>Login time start HH:MM; it must be filled in or left empty simultaneously with EndTime</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>Login period end HH:MM; must be filled in or empty at the same time as StartTime</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Places(self):
+        r"""<p>List of common login locations, up to 200. Set ProvinceId/CityId to 99999 to indicate all provinces/all cities.</p>
+        :rtype: list of LoginWhitePlaceInput
+        """
+        return self._Places
+
+    @Places.setter
+    def Places(self, Places):
+        self._Places = Places
+
+    @property
+    def Remark(self):
+        r"""<p>Remark, up to 255 characters</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Scope(self):
+        r"""<p>Effective asset scope: 0-specified hosts (host or tag hit) 1-all hosts</p>
+        :rtype: int
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def InstanceIDsWithAppId(self):
+        r"""<p>List of specified hosts (in instance ID form), up to 10,000 items. The server translates them to QUUIDs via idmap, then merges and deduplicates them with QUUIDSWithAppId.</p>
+        :rtype: list of InstanceIDWithAppIdItem
+        """
+        return self._InstanceIDsWithAppId
+
+    @InstanceIDsWithAppId.setter
+    def InstanceIDsWithAppId(self, InstanceIDsWithAppId):
+        self._InstanceIDsWithAppId = InstanceIDsWithAppId
+
+    @property
+    def ExcludeInstanceIDsWithAppId(self):
+        r"""<p>List of hosts (instance ID form) to remove, up to 10,000 items</p>
+        :rtype: list of InstanceIDWithAppIdItem
+        """
+        return self._ExcludeInstanceIDsWithAppId
+
+    @ExcludeInstanceIDsWithAppId.setter
+    def ExcludeInstanceIDsWithAppId(self, ExcludeInstanceIDsWithAppId):
+        self._ExcludeInstanceIDsWithAppId = ExcludeInstanceIDsWithAppId
+
+    @property
+    def TagIDs(self):
+        r"""<p>Security center tag ID list, up to 100. When Scope=0, it is in an OR relationship with the host. Self-learning allowlist does not support taking effect by tag (a non-empty value will be rejected).</p>
+        :rtype: list of str
+        """
+        return self._TagIDs
+
+    @TagIDs.setter
+    def TagIDs(self, TagIDs):
+        self._TagIDs = TagIDs
+
+    @property
+    def TargetAppIDs(self):
+        r"""<p>Target appid</p>
+        :rtype: list of int non-negative
+        """
+        return self._TargetAppIDs
+
+    @TargetAppIDs.setter
+    def TargetAppIDs(self, TargetAppIDs):
+        self._TargetAppIDs = TargetAppIDs
+
+    @property
+    def DealOldEvents(self):
+        r"""<p>Whether to add historical alarm data to whitelist</p>
+        :rtype: int
+        """
+        return self._DealOldEvents
+
+    @DealOldEvents.setter
+    def DealOldEvents(self, DealOldEvents):
+        self._DealOldEvents = DealOldEvents
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._MemberId = params.get("MemberId")
+        self._SrcIp = params.get("SrcIp")
+        self._UserName = params.get("UserName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("Places") is not None:
+            self._Places = []
+            for item in params.get("Places"):
+                obj = LoginWhitePlaceInput()
+                obj._deserialize(item)
+                self._Places.append(obj)
+        self._Remark = params.get("Remark")
+        self._Scope = params.get("Scope")
+        if params.get("InstanceIDsWithAppId") is not None:
+            self._InstanceIDsWithAppId = []
+            for item in params.get("InstanceIDsWithAppId"):
+                obj = InstanceIDWithAppIdItem()
+                obj._deserialize(item)
+                self._InstanceIDsWithAppId.append(obj)
+        if params.get("ExcludeInstanceIDsWithAppId") is not None:
+            self._ExcludeInstanceIDsWithAppId = []
+            for item in params.get("ExcludeInstanceIDsWithAppId"):
+                obj = InstanceIDWithAppIdItem()
+                obj._deserialize(item)
+                self._ExcludeInstanceIDsWithAppId.append(obj)
+        self._TagIDs = params.get("TagIDs")
+        self._TargetAppIDs = params.get("TargetAppIDs")
+        self._DealOldEvents = params.get("DealOldEvents")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLoginWhiteCustomEDRResponse(AbstractModel):
+    r"""ModifyLoginWhiteCustomEDR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailedAppIds: <p>Failed account</p>
+        :type FailedAppIds: list of int non-negative
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FailedAppIds = None
+        self._RequestId = None
+
+    @property
+    def FailedAppIds(self):
+        r"""<p>Failed account</p>
+        :rtype: list of int non-negative
+        """
+        return self._FailedAppIds
+
+    @FailedAppIds.setter
+    def FailedAppIds(self, FailedAppIds):
+        self._FailedAppIds = FailedAppIds
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FailedAppIds = params.get("FailedAppIds")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLoginWhiteLearnEDRRequest(AbstractModel):
+    r"""ModifyLoginWhiteLearnEDR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>Rule ID; for self-learning, it is the rule group ID (minimum line ID in the group)</p>
+        :type Id: int
+        :param _Places: <p>List of common login locations. Required. 1-200 entries. It is the unique content dimension of the self-learning rule.</p>
+        :type Places: list of LoginWhitePlaceInput
+        :param _MemberId: <p>Group account member id</p>
+        :type MemberId: list of str
+        :param _RuleAppId: <p>AppId of the account associated with the policy (obtained from the list output parameter AppId); if empty, the current account is used; non-current accounts must pass ownership verification</p>
+        :type RuleAppId: int
+        :param _Remark: <p>Remark, up to 255 characters</p>
+        :type Remark: str
+        :param _Scope: <p>Effective asset scope: 0-specified hosts (host or tag hit) 1-all hosts</p>
+        :type Scope: int
+        :param _InstanceIDsWithAppId: <p>List of specified hosts (in instance ID form), up to 10,000 items. The server translates them to QUUIDs via idmap, then merges and deduplicates them with QUUIDSWithAppId.</p>
+        :type InstanceIDsWithAppId: list of InstanceIDWithAppIdItem
+        :param _ExcludeInstanceIDsWithAppId: <p>List of hosts (instance ID form) to remove, up to 10,000 items</p>
+        :type ExcludeInstanceIDsWithAppId: list of InstanceIDWithAppIdItem
+        :param _TagIDs: <p>Security center tag ID list, up to 100. When Scope=0, it is in an OR relationship with the host. Self-learning allowlist does not support taking effect by tag (a non-empty value will be rejected).</p>
+        :type TagIDs: list of str
+        """
+        self._Id = None
+        self._Places = None
+        self._MemberId = None
+        self._RuleAppId = None
+        self._Remark = None
+        self._Scope = None
+        self._InstanceIDsWithAppId = None
+        self._ExcludeInstanceIDsWithAppId = None
+        self._TagIDs = None
+
+    @property
+    def Id(self):
+        r"""<p>Rule ID; for self-learning, it is the rule group ID (minimum line ID in the group)</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Places(self):
+        r"""<p>List of common login locations. Required. 1-200 entries. It is the unique content dimension of the self-learning rule.</p>
+        :rtype: list of LoginWhitePlaceInput
+        """
+        return self._Places
+
+    @Places.setter
+    def Places(self, Places):
+        self._Places = Places
+
+    @property
+    def MemberId(self):
+        r"""<p>Group account member id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def RuleAppId(self):
+        r"""<p>AppId of the account associated with the policy (obtained from the list output parameter AppId); if empty, the current account is used; non-current accounts must pass ownership verification</p>
+        :rtype: int
+        """
+        return self._RuleAppId
+
+    @RuleAppId.setter
+    def RuleAppId(self, RuleAppId):
+        self._RuleAppId = RuleAppId
+
+    @property
+    def Remark(self):
+        r"""<p>Remark, up to 255 characters</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Scope(self):
+        r"""<p>Effective asset scope: 0-specified hosts (host or tag hit) 1-all hosts</p>
+        :rtype: int
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def InstanceIDsWithAppId(self):
+        r"""<p>List of specified hosts (in instance ID form), up to 10,000 items. The server translates them to QUUIDs via idmap, then merges and deduplicates them with QUUIDSWithAppId.</p>
+        :rtype: list of InstanceIDWithAppIdItem
+        """
+        return self._InstanceIDsWithAppId
+
+    @InstanceIDsWithAppId.setter
+    def InstanceIDsWithAppId(self, InstanceIDsWithAppId):
+        self._InstanceIDsWithAppId = InstanceIDsWithAppId
+
+    @property
+    def ExcludeInstanceIDsWithAppId(self):
+        r"""<p>List of hosts (instance ID form) to remove, up to 10,000 items</p>
+        :rtype: list of InstanceIDWithAppIdItem
+        """
+        return self._ExcludeInstanceIDsWithAppId
+
+    @ExcludeInstanceIDsWithAppId.setter
+    def ExcludeInstanceIDsWithAppId(self, ExcludeInstanceIDsWithAppId):
+        self._ExcludeInstanceIDsWithAppId = ExcludeInstanceIDsWithAppId
+
+    @property
+    def TagIDs(self):
+        r"""<p>Security center tag ID list, up to 100. When Scope=0, it is in an OR relationship with the host. Self-learning allowlist does not support taking effect by tag (a non-empty value will be rejected).</p>
+        :rtype: list of str
+        """
+        return self._TagIDs
+
+    @TagIDs.setter
+    def TagIDs(self, TagIDs):
+        self._TagIDs = TagIDs
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        if params.get("Places") is not None:
+            self._Places = []
+            for item in params.get("Places"):
+                obj = LoginWhitePlaceInput()
+                obj._deserialize(item)
+                self._Places.append(obj)
+        self._MemberId = params.get("MemberId")
+        self._RuleAppId = params.get("RuleAppId")
+        self._Remark = params.get("Remark")
+        self._Scope = params.get("Scope")
+        if params.get("InstanceIDsWithAppId") is not None:
+            self._InstanceIDsWithAppId = []
+            for item in params.get("InstanceIDsWithAppId"):
+                obj = InstanceIDWithAppIdItem()
+                obj._deserialize(item)
+                self._InstanceIDsWithAppId.append(obj)
+        if params.get("ExcludeInstanceIDsWithAppId") is not None:
+            self._ExcludeInstanceIDsWithAppId = []
+            for item in params.get("ExcludeInstanceIDsWithAppId"):
+                obj = InstanceIDWithAppIdItem()
+                obj._deserialize(item)
+                self._ExcludeInstanceIDsWithAppId.append(obj)
+        self._TagIDs = params.get("TagIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLoginWhiteLearnEDRResponse(AbstractModel):
+    r"""ModifyLoginWhiteLearnEDR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyLoginWhiteRecordRequest(AbstractModel):

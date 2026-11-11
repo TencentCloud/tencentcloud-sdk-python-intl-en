@@ -32,11 +32,20 @@ FAILEDOPERATION_DECRYPTERROR = 'FailedOperation.DecryptError'
 # Encryption failed.
 FAILEDOPERATION_ENCRYPTIONERROR = 'FailedOperation.EncryptionError'
 
+# Order validation failed.
+FAILEDOPERATION_ORDERCHECKFAILED = 'FailedOperation.OrderCheckFailed'
+
 # Existing ongoing rotation tasks
 FAILEDOPERATION_ROTATETASKRUNNING = 'FailedOperation.RotateTaskRunning'
 
+# Signature operation failed.
+FAILEDOPERATION_SIGNERROR = 'FailedOperation.SignError'
+
 # Tagging error.
 FAILEDOPERATION_TAGGINGERROR = 'FailedOperation.TaggingError'
+
+# Signature verification failed.
+FAILEDOPERATION_VERIFYERROR = 'FailedOperation.VerifyError'
 
 # Internal error.
 INTERNALERROR = 'InternalError'
@@ -44,11 +53,17 @@ INTERNALERROR = 'InternalError'
 # Invalid parameter.
 INVALIDPARAMETER = 'InvalidParameter'
 
+# ProductVersion/InstanceChargePrepaid is passed for a postpaid instance.
+INVALIDPARAMETER_CONFLICTPARAMETER = 'InvalidParameter.ConflictParameter'
+
 # Decryption of `EncryptedKeyMaterial` failed.
 INVALIDPARAMETER_DECRYPTMATERIALERROR = 'InvalidParameter.DecryptMaterialError'
 
 # The schedule deletion time parameter is invalid.
 INVALIDPARAMETER_INVALIDPENDINGWINDOWINDAYS = 'InvalidParameter.InvalidPendingWindowInDays'
+
+# The ProductVersion parameter is missing.
+INVALIDPARAMETER_MISSINGPRODUCTVERSION = 'InvalidParameter.MissingProductVersion'
 
 # Incorrect parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
@@ -83,14 +98,23 @@ INVALIDPARAMETERVALUE_INVALIDHSMCLUSTERID = 'InvalidParameterValue.InvalidHsmClu
 # The imported data key is valid.
 INVALIDPARAMETERVALUE_INVALIDIMPORTKEYMATERIAL = 'InvalidParameterValue.InvalidImportKeyMaterial'
 
+# Invalid InstanceChargeType.
+INVALIDPARAMETERVALUE_INVALIDINSTANCECHARGETYPE = 'InvalidParameterValue.InvalidInstanceChargeType'
+
 # Invalid `KeyId`.
 INVALIDPARAMETERVALUE_INVALIDKEYID = 'InvalidParameterValue.InvalidKeyId'
 
 # Incorrect `KeyUsage` parameter.
 INVALIDPARAMETERVALUE_INVALIDKEYUSAGE = 'InvalidParameterValue.InvalidKeyUsage'
 
+# Period is out of range (1-36).
+INVALIDPARAMETERVALUE_INVALIDPERIOD = 'InvalidParameterValue.InvalidPeriod'
+
 # Invalid `Plaintext`.
 INVALIDPARAMETERVALUE_INVALIDPLAINTEXT = 'InvalidParameterValue.InvalidPlaintext'
+
+# Invalid ProductVersion.
+INVALIDPARAMETERVALUE_INVALIDPRODUCTVERSION = 'InvalidParameterValue.InvalidProductVersion'
 
 # Incorrect `Type` parameter.
 INVALIDPARAMETERVALUE_INVALIDTYPE = 'InvalidParameterValue.InvalidType'
@@ -113,6 +137,9 @@ LIMITEXCEEDED_DATAKEYLIMITEXCEEDED = 'LimitExceeded.DataKeyLimitExceeded'
 # The number of device fingerprints exceeded the limit.
 LIMITEXCEEDED_FINGERPRINTSLIMITEXCEEDED = 'LimitExceeded.FingerprintsLimitExceeded'
 
+# The maximum number of prepaid instances has been reached.
+LIMITEXCEEDED_INSTANCEQUOTAEXCEEDED = 'LimitExceeded.InstanceQuotaExceeded'
+
 # The number of created keys exceeded the limit.
 LIMITEXCEEDED_KEYLIMITEXCEEDED = 'LimitExceeded.KeyLimitExceeded'
 
@@ -121,6 +148,12 @@ MISSINGPARAMETER = 'MissingParameter'
 
 # Rotation operation triggers frequency limit, default can only rotate once within 24 hours.
 REQUESTLIMITEXCEEDED_ROTATERATELIMITED = 'RequestLimitExceeded.RotateRateLimited'
+
+# An order is in progress.
+RESOURCEINUSE_ORDERINPROGRESS = 'ResourceInUse.OrderInProgress'
+
+# A postpaid instance already exists.
+RESOURCEINUSE_POSTPAIDINSTANCEALREADYEXISTS = 'ResourceInUse.PostpaidInstanceAlreadyExists'
 
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
@@ -199,3 +232,6 @@ UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = 'UnsupportedOperation.Service
 
 # The encryption method is not supported in the current region.
 UNSUPPORTEDOPERATION_UNSUPPORTEDKEYUSAGEINCURRENTREGION = 'UnsupportedOperation.UnsupportedKeyUsageInCurrentRegion'
+
+# Unsupported user version.
+UNSUPPORTEDOPERATION_USERVERSIONNOTSUPPORT = 'UnsupportedOperation.UserVersionNotSupport'

@@ -757,17 +757,17 @@ class CreateKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Alias: Unique alias that makes a key more recognizable and understandable. This parameter cannot be empty, can contain 1-60 letters, digits, `-`, and `_`, and must begin with a letter or digit. The `kms-` prefix is used for Tencent Cloud products.
+        :param _Alias: <p>Alias that makes the key easier to identify and understand. It cannot be empty and must contain 1-60 alphanumeric characters, hyphens (-), or underscores (_), and start with a letter or digit. Aliases prefixed with kms- are reserved for cloud services. The alias must be unique.</p>
         :type Alias: str
-        :param _Description: CMK description of up to 1,024 bytes in length
+        :param _Description: <p>Description of the CMK. Maximum length: 1024 bytes.</p>
         :type Description: str
-        :param _KeyUsage: Specifies the key purpose, defaults to "ENCRYPT_DECRYPT" indicating the creation of a symmetric encryption/decryption key. other supported purposes include "ASYMMETRIC_DECRYPT_RSA_2048" for RSA2048 ASYMMETRIC keys used to ENCRYPT and DECRYPT, "ASYMMETRIC_DECRYPT_SM2" for SM2 ASYMMETRIC keys used to ENCRYPT and DECRYPT, "ASYMMETRIC_SIGN_VERIFY_SM2" for SM2 ASYMMETRIC keys used for signature verification, "ASYMMETRIC_SIGN_VERIFY_ECC" for ECC ASYMMETRIC keys used for signature verification, "ASYMMETRIC_SIGN_VERIFY_RSA_2048" for RSA_2048 ASYMMETRIC keys used for signature verification, and "ASYMMETRIC_SIGN_VERIFY_ECDSA384" for ECDSA384 ASYMMETRIC keys used for signature verification. the complete list of key purposes and algorithm support can be obtained through the ListAlgorithms api.
+        :param _KeyUsage: <p>Specifies the purpose of the key. The default value is "ENCRYPT_DECRYPT", which indicates creating a symmetric encryption/decryption key. Other supported purposes: "ASYMMETRIC_DECRYPT_RSA_2048" indicates creating an RSA2048 asymmetric key for encryption/decryption; "ASYMMETRIC_DECRYPT_RSA_3072" indicates creating an RSA3072 asymmetric key for encryption/decryption; "ASYMMETRIC_DECRYPT_RSA_4096" indicates creating an RSA4096 asymmetric key for encryption/decryption; "ASYMMETRIC_DECRYPT_SM2" indicates creating an SM2 asymmetric key for encryption/decryption; "ASYMMETRIC_SIGN_VERIFY_SM2" indicates creating an SM2 asymmetric key for signature generation and verification; "ASYMMETRIC_SIGN_VERIFY_ECC" indicates creating an ECC asymmetric key for signature generation and verification; "ASYMMETRIC_SIGN_VERIFY_RSA_2048" indicates creating an RSA_2048 asymmetric key for signature generation and verification; "ASYMMETRIC_SIGN_VERIFY_RSA_3072" indicates creating an RSA_3072 asymmetric key for signature generation and verification; <br>"ASYMMETRIC_SIGN_VERIFY_RSA_4096" indicates creating an RSA_4096 asymmetric key for signature generation and verification; "ASYMMETRIC_SIGN_VERIFY_ECDSA384" indicates creating an ECDSA384 asymmetric key for signature generation and verification. For the complete list of key purposes and supported algorithms, call the ListAlgorithms API.</p>
         :type KeyUsage: str
-        :param _Type: Specifies the key type. Default value: 1. Valid value: 1 - default type, indicating that the CMK is created by KMS; 2 - EXTERNAL type, indicating that you need to import key material. For more information, please see the `GetParametersForImport` and `ImportKeyMaterial` API documents.
+        :param _Type: <p>Specifies the key type. The default value is 1. 1 indicates the default type, where the CMK is created by KMS. 2 indicates the EXTERNAL type, where you need to import the key material. For more information, see the GetParametersForImport and ImportKeyMaterial APIs.</p>
         :type Type: int
-        :param _Tags: Tag list
+        :param _Tags: <p>Tag list.</p>
         :type Tags: list of Tag
-        :param _HsmClusterId: ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.
+        :param _HsmClusterId: <p>HSM cluster ID corresponding to KMS Advanced Edition (valid only for KMS exclusive/managed service instances).</p>
         :type HsmClusterId: str
         """
         self._Alias = None
@@ -779,7 +779,7 @@ class CreateKeyRequest(AbstractModel):
 
     @property
     def Alias(self):
-        r"""Unique alias that makes a key more recognizable and understandable. This parameter cannot be empty, can contain 1-60 letters, digits, `-`, and `_`, and must begin with a letter or digit. The `kms-` prefix is used for Tencent Cloud products.
+        r"""<p>Alias that makes the key easier to identify and understand. It cannot be empty and must contain 1-60 alphanumeric characters, hyphens (-), or underscores (_), and start with a letter or digit. Aliases prefixed with kms- are reserved for cloud services. The alias must be unique.</p>
         :rtype: str
         """
         return self._Alias
@@ -790,7 +790,7 @@ class CreateKeyRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""CMK description of up to 1,024 bytes in length
+        r"""<p>Description of the CMK. Maximum length: 1024 bytes.</p>
         :rtype: str
         """
         return self._Description
@@ -801,7 +801,7 @@ class CreateKeyRequest(AbstractModel):
 
     @property
     def KeyUsage(self):
-        r"""Specifies the key purpose, defaults to "ENCRYPT_DECRYPT" indicating the creation of a symmetric encryption/decryption key. other supported purposes include "ASYMMETRIC_DECRYPT_RSA_2048" for RSA2048 ASYMMETRIC keys used to ENCRYPT and DECRYPT, "ASYMMETRIC_DECRYPT_SM2" for SM2 ASYMMETRIC keys used to ENCRYPT and DECRYPT, "ASYMMETRIC_SIGN_VERIFY_SM2" for SM2 ASYMMETRIC keys used for signature verification, "ASYMMETRIC_SIGN_VERIFY_ECC" for ECC ASYMMETRIC keys used for signature verification, "ASYMMETRIC_SIGN_VERIFY_RSA_2048" for RSA_2048 ASYMMETRIC keys used for signature verification, and "ASYMMETRIC_SIGN_VERIFY_ECDSA384" for ECDSA384 ASYMMETRIC keys used for signature verification. the complete list of key purposes and algorithm support can be obtained through the ListAlgorithms api.
+        r"""<p>Specifies the purpose of the key. The default value is "ENCRYPT_DECRYPT", which indicates creating a symmetric encryption/decryption key. Other supported purposes: "ASYMMETRIC_DECRYPT_RSA_2048" indicates creating an RSA2048 asymmetric key for encryption/decryption; "ASYMMETRIC_DECRYPT_RSA_3072" indicates creating an RSA3072 asymmetric key for encryption/decryption; "ASYMMETRIC_DECRYPT_RSA_4096" indicates creating an RSA4096 asymmetric key for encryption/decryption; "ASYMMETRIC_DECRYPT_SM2" indicates creating an SM2 asymmetric key for encryption/decryption; "ASYMMETRIC_SIGN_VERIFY_SM2" indicates creating an SM2 asymmetric key for signature generation and verification; "ASYMMETRIC_SIGN_VERIFY_ECC" indicates creating an ECC asymmetric key for signature generation and verification; "ASYMMETRIC_SIGN_VERIFY_RSA_2048" indicates creating an RSA_2048 asymmetric key for signature generation and verification; "ASYMMETRIC_SIGN_VERIFY_RSA_3072" indicates creating an RSA_3072 asymmetric key for signature generation and verification; <br>"ASYMMETRIC_SIGN_VERIFY_RSA_4096" indicates creating an RSA_4096 asymmetric key for signature generation and verification; "ASYMMETRIC_SIGN_VERIFY_ECDSA384" indicates creating an ECDSA384 asymmetric key for signature generation and verification. For the complete list of key purposes and supported algorithms, call the ListAlgorithms API.</p>
         :rtype: str
         """
         return self._KeyUsage
@@ -812,7 +812,7 @@ class CreateKeyRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""Specifies the key type. Default value: 1. Valid value: 1 - default type, indicating that the CMK is created by KMS; 2 - EXTERNAL type, indicating that you need to import key material. For more information, please see the `GetParametersForImport` and `ImportKeyMaterial` API documents.
+        r"""<p>Specifies the key type. The default value is 1. 1 indicates the default type, where the CMK is created by KMS. 2 indicates the EXTERNAL type, where you need to import the key material. For more information, see the GetParametersForImport and ImportKeyMaterial APIs.</p>
         :rtype: int
         """
         return self._Type
@@ -823,7 +823,7 @@ class CreateKeyRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""Tag list
+        r"""<p>Tag list.</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -834,7 +834,7 @@ class CreateKeyRequest(AbstractModel):
 
     @property
     def HsmClusterId(self):
-        r"""ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.
+        r"""<p>HSM cluster ID corresponding to KMS Advanced Edition (valid only for KMS exclusive/managed service instances).</p>
         :rtype: str
         """
         return self._HsmClusterId
@@ -873,23 +873,23 @@ class CreateKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KeyId: Globally unique CMK ID
+        :param _KeyId: <p>Globally unique identifier of the CMK</p>
         :type KeyId: str
-        :param _Alias: Alias that makes a key more recognizable and understandable
+        :param _Alias: <p>Alias that makes the key easier to identify and understand</p>
         :type Alias: str
-        :param _CreateTime: Key creation time in UNIX timestamp format
+        :param _CreateTime: <p>Key creation time, unix timestamp</p>
         :type CreateTime: int
-        :param _Description: Specifies the description of the CMK.
+        :param _Description: <p>Description of the CMK</p>
         :type Description: str
-        :param _KeyState: CMK status
+        :param _KeyState: <p>Status of the CMK</p>
         :type KeyState: str
-        :param _KeyUsage: CMK usage
+        :param _KeyUsage: <p>Purpose of the CMK</p>
         :type KeyUsage: str
-        :param _TagCode: Return code of Tag operation. `0`: success; `1`: cls internal error; `2`: business processing error.
+        :param _TagCode: <p>Return code of the tag operation. 0: Success; 1: Internal error; 2: Business processing error</p>
         :type TagCode: int
-        :param _TagMsg: Response information of Tag operation.
+        :param _TagMsg: <p>Return message of the tag operation</p>
         :type TagMsg: str
-        :param _HsmClusterId: HSM cluster ID (valid only for exclusive or managed version KMS service instances).
+        :param _HsmClusterId: <p>HSM cluster ID (valid only for KMS exclusive/managed service instances)</p>
         :type HsmClusterId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -907,7 +907,7 @@ class CreateKeyResponse(AbstractModel):
 
     @property
     def KeyId(self):
-        r"""Globally unique CMK ID
+        r"""<p>Globally unique identifier of the CMK</p>
         :rtype: str
         """
         return self._KeyId
@@ -918,7 +918,7 @@ class CreateKeyResponse(AbstractModel):
 
     @property
     def Alias(self):
-        r"""Alias that makes a key more recognizable and understandable
+        r"""<p>Alias that makes the key easier to identify and understand</p>
         :rtype: str
         """
         return self._Alias
@@ -929,7 +929,7 @@ class CreateKeyResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Key creation time in UNIX timestamp format
+        r"""<p>Key creation time, unix timestamp</p>
         :rtype: int
         """
         return self._CreateTime
@@ -940,7 +940,7 @@ class CreateKeyResponse(AbstractModel):
 
     @property
     def Description(self):
-        r"""Specifies the description of the CMK.
+        r"""<p>Description of the CMK</p>
         :rtype: str
         """
         return self._Description
@@ -951,7 +951,7 @@ class CreateKeyResponse(AbstractModel):
 
     @property
     def KeyState(self):
-        r"""CMK status
+        r"""<p>Status of the CMK</p>
         :rtype: str
         """
         return self._KeyState
@@ -962,7 +962,7 @@ class CreateKeyResponse(AbstractModel):
 
     @property
     def KeyUsage(self):
-        r"""CMK usage
+        r"""<p>Purpose of the CMK</p>
         :rtype: str
         """
         return self._KeyUsage
@@ -973,7 +973,7 @@ class CreateKeyResponse(AbstractModel):
 
     @property
     def TagCode(self):
-        r"""Return code of Tag operation. `0`: success; `1`: cls internal error; `2`: business processing error.
+        r"""<p>Return code of the tag operation. 0: Success; 1: Internal error; 2: Business processing error</p>
         :rtype: int
         """
         return self._TagCode
@@ -984,7 +984,7 @@ class CreateKeyResponse(AbstractModel):
 
     @property
     def TagMsg(self):
-        r"""Response information of Tag operation.
+        r"""<p>Return message of the tag operation</p>
         :rtype: str
         """
         return self._TagMsg
@@ -995,7 +995,7 @@ class CreateKeyResponse(AbstractModel):
 
     @property
     def HsmClusterId(self):
-        r"""HSM cluster ID (valid only for exclusive or managed version KMS service instances).
+        r"""<p>HSM cluster ID (valid only for KMS exclusive/managed service instances)</p>
         :rtype: str
         """
         return self._HsmClusterId
@@ -1026,6 +1026,182 @@ class CreateKeyResponse(AbstractModel):
         self._TagCode = params.get("TagCode")
         self._TagMsg = params.get("TagMsg")
         self._HsmClusterId = params.get("HsmClusterId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateKmsInstanceRequest(AbstractModel):
+    r"""CreateKmsInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceChargeType: <p>Instance billing type (PREPAID).</p>
+        :type InstanceChargeType: str
+        :param _ProductVersion: <p>Version type.</p><p>Valid values:</p><ul><li>professional: Professional Edition</li></ul>
+        :type ProductVersion: str
+        :param _InstanceChargePrepaid: <p>Prepaid instance information.</p>
+        :type InstanceChargePrepaid: :class:`tencentcloud.kms.v20190118.models.InstanceChargePrepaid`
+        :param _ClientToken: <p>Reentrant client ID.</p>
+        :type ClientToken: str
+        :param _Tags: <p>Instance tag.</p>
+        :type Tags: list of Tag
+        """
+        self._InstanceChargeType = None
+        self._ProductVersion = None
+        self._InstanceChargePrepaid = None
+        self._ClientToken = None
+        self._Tags = None
+
+    @property
+    def InstanceChargeType(self):
+        r"""<p>Instance billing type (PREPAID).</p>
+        :rtype: str
+        """
+        return self._InstanceChargeType
+
+    @InstanceChargeType.setter
+    def InstanceChargeType(self, InstanceChargeType):
+        self._InstanceChargeType = InstanceChargeType
+
+    @property
+    def ProductVersion(self):
+        r"""<p>Version type.</p><p>Valid values:</p><ul><li>professional: Professional Edition</li></ul>
+        :rtype: str
+        """
+        return self._ProductVersion
+
+    @ProductVersion.setter
+    def ProductVersion(self, ProductVersion):
+        self._ProductVersion = ProductVersion
+
+    @property
+    def InstanceChargePrepaid(self):
+        r"""<p>Prepaid instance information.</p>
+        :rtype: :class:`tencentcloud.kms.v20190118.models.InstanceChargePrepaid`
+        """
+        return self._InstanceChargePrepaid
+
+    @InstanceChargePrepaid.setter
+    def InstanceChargePrepaid(self, InstanceChargePrepaid):
+        self._InstanceChargePrepaid = InstanceChargePrepaid
+
+    @property
+    def ClientToken(self):
+        r"""<p>Reentrant client ID.</p>
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+    @property
+    def Tags(self):
+        r"""<p>Instance tag.</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._InstanceChargeType = params.get("InstanceChargeType")
+        self._ProductVersion = params.get("ProductVersion")
+        if params.get("InstanceChargePrepaid") is not None:
+            self._InstanceChargePrepaid = InstanceChargePrepaid()
+            self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self._ClientToken = params.get("ClientToken")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateKmsInstanceResponse(AbstractModel):
+    r"""CreateKmsInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>Instance ID.</p>
+        :type InstanceId: str
+        :param _DealName: <p>Billing order number</p>
+        :type DealName: str
+        :param _BillId: <p>Billing freeze serial number</p>
+        :type BillId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._DealName = None
+        self._BillId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>Instance ID.</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DealName(self):
+        r"""<p>Billing order number</p>
+        :rtype: str
+        """
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def BillId(self):
+        r"""<p>Billing freeze serial number</p>
+        :rtype: str
+        """
+        return self._BillId
+
+    @BillId.setter
+    def BillId(self, BillId):
+        self._BillId = BillId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DealName = params.get("DealName")
+        self._BillId = params.get("BillId")
         self._RequestId = params.get("RequestId")
 
 
@@ -4258,7 +4434,7 @@ class GenerateDataKeyRequest(AbstractModel):
         :type EncryptionContext: str
         :param _EncryptionPublicKey: PEM-encoded public key (2048-bit RSA/SM2 key), which can be used to encrypt the `Plaintext` returned. If this field is left empty, the `Plaintext` will not be encrypted.
         :type EncryptionPublicKey: str
-        :param _EncryptionAlgorithm: Asymmetric encryption algorithm. Valid values: `SM2` (C1C3C2 ciphertext is returned)`, `SM2_C1C3C2_ASN1` (C1C3C2 ASN1 ciphertext is returned), `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256`. This field is used in combination with `EncryptionPublicKey` for encryption. If it is left empty, an SM2 public key will be used by default.
+        :param _EncryptionAlgorithm: Asymmetric encryption algorithm. Valid values: `SM2` (C1C3C2 ciphertext is returned), `SM2_C1C3C2_ASN1` (C1C3C2 ASN1 ciphertext is returned), `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256`. This field is used in combination with `EncryptionPublicKey` for encryption. If it is left empty, an SM2 public key will be used by default.
         :type EncryptionAlgorithm: str
         :param _IsHostedByKms: Indicates whether the data generated key is managed by KMS. 1 means the key is managed and saved by KMS. 0 means the key is not managed by KMS.
         :type IsHostedByKms: int
@@ -4340,7 +4516,7 @@ class GenerateDataKeyRequest(AbstractModel):
 
     @property
     def EncryptionAlgorithm(self):
-        r"""Asymmetric encryption algorithm. Valid values: `SM2` (C1C3C2 ciphertext is returned)`, `SM2_C1C3C2_ASN1` (C1C3C2 ASN1 ciphertext is returned), `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256`. This field is used in combination with `EncryptionPublicKey` for encryption. If it is left empty, an SM2 public key will be used by default.
+        r"""Asymmetric encryption algorithm. Valid values: `SM2` (C1C3C2 ciphertext is returned), `SM2_C1C3C2_ASN1` (C1C3C2 ASN1 ciphertext is returned), `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256`. This field is used in combination with `EncryptionPublicKey` for encryption. If it is left empty, an SM2 public key will be used by default.
         :rtype: str
         """
         return self._EncryptionAlgorithm
@@ -5303,6 +5479,10 @@ class GetServiceStatusResponse(AbstractModel):
         :type ResourceZone: int
         :param _ResourceRegion: <p>Regional availability zone info of the resource</p>
         :type ResourceRegion: int
+        :param _MultiAccountLimit: <p>Multi-account activation limit</p><p>Unit: count</p>
+        :type MultiAccountLimit: int
+        :param _MultiAccountUsedCount: <p>Multi-account enablement count</p><p>Unit: count</p>
+        :type MultiAccountUsedCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -5329,6 +5509,8 @@ class GetServiceStatusResponse(AbstractModel):
         self._RegionsQps = None
         self._ResourceZone = None
         self._ResourceRegion = None
+        self._MultiAccountLimit = None
+        self._MultiAccountUsedCount = None
         self._RequestId = None
 
     @property
@@ -5585,6 +5767,28 @@ class GetServiceStatusResponse(AbstractModel):
         self._ResourceRegion = ResourceRegion
 
     @property
+    def MultiAccountLimit(self):
+        r"""<p>Multi-account activation limit</p><p>Unit: count</p>
+        :rtype: int
+        """
+        return self._MultiAccountLimit
+
+    @MultiAccountLimit.setter
+    def MultiAccountLimit(self, MultiAccountLimit):
+        self._MultiAccountLimit = MultiAccountLimit
+
+    @property
+    def MultiAccountUsedCount(self):
+        r"""<p>Multi-account enablement count</p><p>Unit: count</p>
+        :rtype: int
+        """
+        return self._MultiAccountUsedCount
+
+    @MultiAccountUsedCount.setter
+    def MultiAccountUsedCount(self, MultiAccountUsedCount):
+        self._MultiAccountUsedCount = MultiAccountUsedCount
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -5635,6 +5839,8 @@ class GetServiceStatusResponse(AbstractModel):
                 self._RegionsQps.append(obj)
         self._ResourceZone = params.get("ResourceZone")
         self._ResourceRegion = params.get("ResourceRegion")
+        self._MultiAccountLimit = params.get("MultiAccountLimit")
+        self._MultiAccountUsedCount = params.get("MultiAccountUsedCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -5966,6 +6172,57 @@ class ImportKeyMaterialResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class InstanceChargePrepaid(AbstractModel):
+    r"""Prepaid billing information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Period: <p>Purchase duration in months (1-100).</p>
+        :type Period: int
+        :param _RenewFlag: <p>Renewal flag (0: not set by the user; 1: auto-renewal; 2: no auto-renewal).</p>
+        :type RenewFlag: int
+        """
+        self._Period = None
+        self._RenewFlag = None
+
+    @property
+    def Period(self):
+        r"""<p>Purchase duration in months (1-100).</p>
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def RenewFlag(self):
+        r"""<p>Renewal flag (0: not set by the user; 1: auto-renewal; 2: no auto-renewal).</p>
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._Period = params.get("Period")
+        self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Key(AbstractModel):
@@ -8525,13 +8782,13 @@ class SignByAsymmetricKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Algorithm: Signature algorithm. The valid values include `SM2DSA`, `ECC_P256_R1`, `RSA_PSS_SHA_256`, and `RSA_PKCS1_SHA_256`, etc. You can get a full list of supported algorithms using the ListAlgorithms API.
+        :param _Algorithm: <p>Signature algorithm. Supported algorithms: SM2DSA, ECC_P256_R1, ECDSA384_SHA384, RSA_PSS_SHA_256, RSA_PKCS1_SHA_256, RSA_PSS_SHA_384, RSA_PKCS1_SHA_384, RSA_PSS_SHA_512, RSA_PKCS1_SHA_512, etc. For more supported algorithms, query them through the ListAlgorithms API.</p>
         :type Algorithm: str
-        :param _Message: Full message or message abstract. Before Base64 encoding, an original message can contain up to 4,096 bytes while a message abstract must be 32 bytes.
+        :param _Message: <p>Message original text or message digest. If the message original text is provided, its length (before Base64 encoding) cannot exceed 4096 bytes. If the message digest is provided, its length (before Base64 encoding) must be 32 bytes.</p>
         :type Message: str
-        :param _KeyId: Unique ID of a key
+        :param _KeyId: <p>Unique identifier of the key</p>
         :type KeyId: str
-        :param _MessageType: Message type. Valid values: `RAW` (indicating an original message; used by default if the parameter is not passed in) and `DIGEST`.
+        :param _MessageType: <p>Message type: RAW or DIGEST. If not specified, RAW is used by default, indicating the message original text.</p>
         :type MessageType: str
         """
         self._Algorithm = None
@@ -8541,7 +8798,7 @@ class SignByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def Algorithm(self):
-        r"""Signature algorithm. The valid values include `SM2DSA`, `ECC_P256_R1`, `RSA_PSS_SHA_256`, and `RSA_PKCS1_SHA_256`, etc. You can get a full list of supported algorithms using the ListAlgorithms API.
+        r"""<p>Signature algorithm. Supported algorithms: SM2DSA, ECC_P256_R1, ECDSA384_SHA384, RSA_PSS_SHA_256, RSA_PKCS1_SHA_256, RSA_PSS_SHA_384, RSA_PKCS1_SHA_384, RSA_PSS_SHA_512, RSA_PKCS1_SHA_512, etc. For more supported algorithms, query them through the ListAlgorithms API.</p>
         :rtype: str
         """
         return self._Algorithm
@@ -8552,7 +8809,7 @@ class SignByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def Message(self):
-        r"""Full message or message abstract. Before Base64 encoding, an original message can contain up to 4,096 bytes while a message abstract must be 32 bytes.
+        r"""<p>Message original text or message digest. If the message original text is provided, its length (before Base64 encoding) cannot exceed 4096 bytes. If the message digest is provided, its length (before Base64 encoding) must be 32 bytes.</p>
         :rtype: str
         """
         return self._Message
@@ -8563,7 +8820,7 @@ class SignByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
-        r"""Unique ID of a key
+        r"""<p>Unique identifier of the key</p>
         :rtype: str
         """
         return self._KeyId
@@ -8574,7 +8831,7 @@ class SignByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def MessageType(self):
-        r"""Message type. Valid values: `RAW` (indicating an original message; used by default if the parameter is not passed in) and `DIGEST`.
+        r"""<p>Message type: RAW or DIGEST. If not specified, RAW is used by default, indicating the message original text.</p>
         :rtype: str
         """
         return self._MessageType
@@ -8606,7 +8863,7 @@ class SignByAsymmetricKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Signature: Base64-encoded signature
+        :param _Signature: <p>Signature, Base64-encoded.</p>
         :type Signature: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -8616,7 +8873,7 @@ class SignByAsymmetricKeyResponse(AbstractModel):
 
     @property
     def Signature(self):
-        r"""Base64-encoded signature
+        r"""<p>Signature, Base64-encoded.</p>
         :rtype: str
         """
         return self._Signature
@@ -9229,15 +9486,15 @@ class VerifyByAsymmetricKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KeyId: Unique ID of a key
+        :param _KeyId: <p>Unique identifier of the key</p>
         :type KeyId: str
-        :param _SignatureValue: Signature value, which is generated by calling the KMS signature API.
+        :param _SignatureValue: <p>Signature value, generated by calling the KMS signing API</p>
         :type SignatureValue: str
-        :param _Message: Full message or message abstract. Before Base64 encoding, an original message can contain up to 4,096 bytes while a message abstract must be 32 bytes.
+        :param _Message: <p>Message original text or message digest. If the message original text is provided, its length (before Base64 encoding) cannot exceed 4096 bytes. If the message digest is provided, its length (before Base64 encoding) must be 32 bytes.</p>
         :type Message: str
-        :param _Algorithm: Signature algorithm. The valid values include `SM2DSA`, `ECC_P256_R1`, `RSA_PSS_SHA_256`, and `RSA_PKCS1_SHA_256`, etc. You can get a full list of supported algorithms using the ListAlgorithms API.
+        :param _Algorithm: <p>Signature algorithm. Supported algorithms: SM2DSA, ECC_P256_R1, ECDSA384_SHA384, RSA_PSS_SHA_256, RSA_PKCS1_SHA_256, RSA_PSS_SHA_384, RSA_PKCS1_SHA_384, RSA_PSS_SHA_512, RSA_PKCS1_SHA_512, etc. For more supported algorithms, query them through the ListAlgorithms API.</p>
         :type Algorithm: str
-        :param _MessageType: Message type. Valid values: `RAW` (indicating an original message; used by default if the parameter is not passed in) and `DIGEST`.
+        :param _MessageType: <p>Message type: RAW or DIGEST. If not specified, RAW is used by default, indicating the message original text.</p>
         :type MessageType: str
         """
         self._KeyId = None
@@ -9248,7 +9505,7 @@ class VerifyByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
-        r"""Unique ID of a key
+        r"""<p>Unique identifier of the key</p>
         :rtype: str
         """
         return self._KeyId
@@ -9259,7 +9516,7 @@ class VerifyByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def SignatureValue(self):
-        r"""Signature value, which is generated by calling the KMS signature API.
+        r"""<p>Signature value, generated by calling the KMS signing API</p>
         :rtype: str
         """
         return self._SignatureValue
@@ -9270,7 +9527,7 @@ class VerifyByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def Message(self):
-        r"""Full message or message abstract. Before Base64 encoding, an original message can contain up to 4,096 bytes while a message abstract must be 32 bytes.
+        r"""<p>Message original text or message digest. If the message original text is provided, its length (before Base64 encoding) cannot exceed 4096 bytes. If the message digest is provided, its length (before Base64 encoding) must be 32 bytes.</p>
         :rtype: str
         """
         return self._Message
@@ -9281,7 +9538,7 @@ class VerifyByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def Algorithm(self):
-        r"""Signature algorithm. The valid values include `SM2DSA`, `ECC_P256_R1`, `RSA_PSS_SHA_256`, and `RSA_PKCS1_SHA_256`, etc. You can get a full list of supported algorithms using the ListAlgorithms API.
+        r"""<p>Signature algorithm. Supported algorithms: SM2DSA, ECC_P256_R1, ECDSA384_SHA384, RSA_PSS_SHA_256, RSA_PKCS1_SHA_256, RSA_PSS_SHA_384, RSA_PKCS1_SHA_384, RSA_PSS_SHA_512, RSA_PKCS1_SHA_512, etc. For more supported algorithms, query them through the ListAlgorithms API.</p>
         :rtype: str
         """
         return self._Algorithm
@@ -9292,7 +9549,7 @@ class VerifyByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def MessageType(self):
-        r"""Message type. Valid values: `RAW` (indicating an original message; used by default if the parameter is not passed in) and `DIGEST`.
+        r"""<p>Message type: RAW or DIGEST. If not specified, RAW is used by default, indicating the message original text.</p>
         :rtype: str
         """
         return self._MessageType
@@ -9325,7 +9582,7 @@ class VerifyByAsymmetricKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SignatureValid: Whether the signature is valid. `true`: the signature is valid; `false`: the signature is invalid.
+        :param _SignatureValid: <p>Whether the signature is valid. true: valid; false: invalid.</p>
         :type SignatureValid: bool
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -9335,7 +9592,7 @@ class VerifyByAsymmetricKeyResponse(AbstractModel):
 
     @property
     def SignatureValid(self):
-        r"""Whether the signature is valid. `true`: the signature is valid; `false`: the signature is invalid.
+        r"""<p>Whether the signature is valid. true: valid; false: invalid.</p>
         :rtype: bool
         """
         return self._SignatureValid

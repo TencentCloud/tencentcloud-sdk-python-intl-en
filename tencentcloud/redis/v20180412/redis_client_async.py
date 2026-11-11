@@ -391,7 +391,7 @@ class RedisClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteReplicationInstanceResponse:
         """
-        This API is used to remove a replication group member. Note: This API is being deprecated. Use [RemoveReplicationInstance](https://intl.cloud.tencent.com/document/product/239/90099?from_cn_redirect=1) instead.
+        This API is used to remove replication group members. Note: This API is offline. Please use RemoveReplicationInstance.
         """
         
         kwargs = {}
@@ -697,7 +697,7 @@ class RedisClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeInstanceMonitorBigKeyResponse:
         """
-        The API for querying big keys of a TencentDB for Redis instance was disused on October 31, 2022. For more information, see [API for Querying Instance Big Key Will Be Disused](https://intl.cloud.tencent.com/document/product/239/81005?from_cn_redirect=1).
+        Tencent Cloud Database Redis decommissioned the API for querying large keys of instances on October 31, 2022. For the specific notice, please refer to the decommissioning announcement of the API for querying large keys of instances.
         """
         
         kwargs = {}
@@ -715,7 +715,7 @@ class RedisClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeInstanceMonitorBigKeySizeDistResponse:
         """
-        The API for querying big keys of a TencentDB for Redis instance was disused on October 31, 2022. For more information, see [API for Querying Instance Big Key Will Be Disused](https://intl.cloud.tencent.com/document/product/239/81005?from_cn_redirect=1).
+        TencentDB for Redis decommissioned the API for querying large keys in instances on October 31, 2022. For the specific announcement, please refer to the decommissioning announcement of the API for querying large keys in instances.
         """
         
         kwargs = {}
@@ -733,7 +733,7 @@ class RedisClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeInstanceMonitorBigKeyTypeDistResponse:
         """
-        The API for querying big keys of a TencentDB for Redis instance was disused on October 31, 2022. For more information, see [API for Querying Instance Big Key Will Be Disused](https://intl.cloud.tencent.com/document/product/239/81005?from_cn_redirect=1).
+        TencentDB for Redis decommissioned the API for querying large keys in instances on October 31, 2022. For the specific announcement, please refer to the decommissioning announcement of the API for querying large keys in instances.
         """
         
         kwargs = {}
@@ -769,7 +769,7 @@ class RedisClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeInstanceMonitorSIPResponse:
         """
-        This API is no longer used. Please use the TencentDB for DBbrain API [DescribeProxyProcessStatistics](https://intl.cloud.tencent.com/document/product/1130/84544?from_cn_redirect=1) to obtain the instance access source.
+        This API is no longer used. Please use the TencentDB for DBbrain API [DescribeProxyProcessStatistics](https://www.tencentcloud.com/document/product/1130/84544?from_cn_redirect=1) to obtain the instance access source.
         """
         
         kwargs = {}
@@ -1525,7 +1525,7 @@ class RedisClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModfiyInstancePasswordResponse:
         """
-        This API is used to change the instance access password. Due to a spelling error in the original API name, it has been corrected to [ModifyInstancePassword](https://intl.cloud.tencent.com/document/product/239/111555?from_cn_redirect=1). It is recommended to use the corrected API.
+        This API is used to change the instance access password. As the API name contains a spelling error, it has been corrected to [ModifyInstancePassword](https://www.tencentcloud.com/document/product/239/111555?from_cn_redirect=1). The corrected API is recommended for use.
         """
         
         kwargs = {}
@@ -1915,6 +1915,42 @@ class RedisClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifySSLEncryptionMode(
+            self,
+            request: models.ModifySSLEncryptionModeRequest,
+            opts: Dict = None,
+    ) -> models.ModifySSLEncryptionModeResponse:
+        """
+        This API is used to change the SSL encryption mode.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySSLEncryptionMode"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySSLEncryptionModeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyValkeyModule(
+            self,
+            request: models.ModifyValkeyModuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyValkeyModuleResponse:
+        """
+        This API is used to modify the enable status of the Valkey instance extension module.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyValkeyModule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyValkeyModuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def OpenLog(
             self,
             request: models.OpenLogRequest,
@@ -2126,6 +2162,24 @@ class RedisClient(AbstractClient):
         kwargs["action"] = "SwitchProxy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SwitchProxyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateSSLCert(
+            self,
+            request: models.UpdateSSLCertRequest,
+            opts: Dict = None,
+    ) -> models.UpdateSSLCertResponse:
+        """
+        This API is used to update SSL key information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateSSLCert"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateSSLCertResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

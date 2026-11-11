@@ -56086,72 +56086,53 @@ class PartialModule(AbstractModel):
 
 
 class Plan(AbstractModel):
-    r"""Package information.
+    r"""Plan information
 
     """
 
     def __init__(self):
         r"""
-        :param _PlanType: Package type. valid values:.
-<Li>`Plan-Trial`: trial plan</li>.
-<Li>`Plan-Personal`: personal plan</li>.
-<Li>`Plan-Basic`: basic plan</li>.
-<Li>`Plan-Standard`: standard edition plan</li>.
-<li>plan-enterprise-v2: enterprise plan;</li>.
-<li>plan-enterprise-model-a: enterprise edition model a package.</li>.
-<Li>Plan-Enterprise: legacy enterprise plan.</li>.
+        :param _PlanType: <p>Plan type. Valid values:</p><li>plan-trial: Trial Edition plan;</li><li>plan-personal: Personal Edition plan;</li><li>plan-basic: Basic Edition plan;</li><li>plan-standard: Standard Edition plan;</li><li>plan-enterprise-v2: Enterprise Edition plan;</li><li>plan-enterprise-model-a: Enterprise Edition Model A plan;</li><li>plan-enterprise: Legacy Enterprise Edition plan;</li><li>plan-makers-pro: Makers Pro Edition plan;</li><li>plan-makers-business: Makers Business Edition plan;</li><p>Valid values:</p><ul><li>plan-trial: Trial Edition plan</li><li>plan-personal: Personal Edition plan</li><li>plan-basic: Basic Edition plan</li><li>plan-standard: Standard Edition plan</li><li>plan-enterprise-v2: Enterprise Edition plan</li><li>plan-enterprise-model-a: Enterprise Edition Model A plan</li><li>plan-enterprise: Legacy Enterprise Edition plan</li><li>plan-makers-pro: Makers Pro Edition plan</li><li>plan-makers-business: Makers Business Edition plan</li></ul>
         :type PlanType: str
-        :param _PlanId: Package ID. such as edgeone-2y041pblwaxe.
+        :param _PlanId: <p>Plan ID, in the format of edgeone-2y041pblwaxe.</p>
         :type PlanId: str
-        :param _Area: Service area. valid values:.
-<Li>`Mainland`: chinese mainland</li>.
-<li>`overseas`: global (chinese mainland not included)</li>.
-<Li>`Global`: global (chinese mainland included)</li>.
+        :param _Area: <p>Service region. Valid values:</p><li>mainland: Chinese mainland;</li><li>overseas: Global (excluding the Chinese mainland);</li><li>global: Global (including the Chinese mainland).</li>
         :type Area: str
-        :param _AutoRenewal: Auto-Renew switch. valid values:.
-<li>true: automatic renewal is enabled.</li>.
-<li>false: automatic renewal is not enabled.</li>.
+        :param _AutoRenewal: <p>Auto-renewal switch. Valid values:</p><li>true: Auto-renewal enabled;</li><li>false: Auto-renewal disabled.</li>
         :type AutoRenewal: bool
-        :param _Status: Package status. valid values:.
-<Li>Normal: indicates the normal status.</li>.
-<li>`expiring-soon`: will expire soon;</li>.
-<li>`expired`: expiration status;</li>.
-<Li>`Isolated`: isolated state</li>.
-<li>`overdue-isolated`: arrears isolated state.</li>.
+        :param _Status: <p>Plan status. Valid values:</p><li>normal: Normal;</li><li>expiring-soon: Expiring soon;</li><li>expired: Expired;</li><li>isolated: Isolated;</li><li>overdue-isolated: Isolated due to overdue payment.</li>
         :type Status: str
-        :param _PayMode: Payment type. valid values:.
-<Li>0: postpaid;</li>.
-<Li>1: prepaid.</li>.
+        :param _PayMode: <p>Billing type. Valid values:</p><li>0: Postpaid;</li><li>1: Prepaid.</li>
         :type PayMode: int
-        :param _ZonesInfo: Describes the site information bound to the package, including the site id, site name, and site status.
+        :param _ZonesInfo: <p>Information of the sites bound to the plan, including site id, site name, and site status.</p>
         :type ZonesInfo: list of ZoneInfo
-        :param _SmartRequestCapacity: Smart acceleration request quantity in the package, unit: times.
+        :param _SmartRequestCapacity: <p>Quota of smart acceleration requests in the plan, in the unit of requests.</p>
         :type SmartRequestCapacity: int
-        :param _VAUCapacity: Specifies the VAU specification in the package. measurement unit: unit.
+        :param _VAUCapacity: <p>VAU quota in the plan, in the unit of VAUs.</p>
         :type VAUCapacity: int
-        :param _AccTrafficCapacity: Specifies the content acceleration traffic specification in the package, measurement unit: byte.
+        :param _AccTrafficCapacity: <p>Quota of content acceleration traffic in the plan, in the unit of bytes.</p>
         :type AccTrafficCapacity: int
-        :param _SmartTrafficCapacity: Specifies the smart acceleration traffic specification in the package. measurement unit: byte.
+        :param _ClientAuthTrafficCapacity: <p>Quota of client authentication traffic in the plan, in the unit of bytes.</p>
+        :type ClientAuthTrafficCapacity: int
+        :param _SmartTrafficCapacity: <p>Quota of smart acceleration traffic in the plan, in the unit of bytes.</p>
         :type SmartTrafficCapacity: int
-        :param _DDoSTrafficCapacity: Specifies the DDoS protection traffic specification in the package, measurement unit: byte.
+        :param _DDoSTrafficCapacity: <p>Quota of DDoS protection traffic in the plan, in the unit of bytes.</p>
         :type DDoSTrafficCapacity: int
-        :param _SecTrafficCapacity: Security traffic specification in the package. measurement unit: byte.
+        :param _SecTrafficCapacity: <p>Quota of security traffic in the plan, in the unit of bytes.</p>
         :type SecTrafficCapacity: int
-        :param _SecRequestCapacity: Security requests in the package, unit: times.
+        :param _SecRequestCapacity: <p>Quota of security requests in the plan, in the unit of requests.</p>
         :type SecRequestCapacity: int
-        :param _L4TrafficCapacity: Specifies the layer 4 acceleration traffic specification in the package, measurement unit: byte.
+        :param _L4TrafficCapacity: <p>Quota of L4 acceleration traffic in the plan, in the unit of bytes.</p>
         :type L4TrafficCapacity: int
-        :param _CrossMLCTrafficCapacity: Specifies the network optimization traffic specification in the package for the chinese mainland, measurement unit: byte.
+        :param _CrossMLCTrafficCapacity: <p>Quota of network optimization traffic for the Chinese mainland in the plan, in the unit of bytes.</p>
         :type CrossMLCTrafficCapacity: int
-        :param _Bindable: Specifies whether the package allows binding to new sites. valid values:.
-<li>true: allows binding a new site.</li>.
-<li>`false`: cannot bind new sites.</li>.
+        :param _Bindable: <p>Whether the plan allows binding new sites. Valid values:</p><li>true: Allows binding new sites;</li><li>false: Does not allow binding new sites.</li>
         :type Bindable: str
-        :param _EnabledTime: Package activation time.
+        :param _EnabledTime: <p>Time when the plan takes effect.</p>
         :type EnabledTime: str
-        :param _ExpiredTime: Plan expiration time.
+        :param _ExpiredTime: <p>Expiration time of the plan.</p>
         :type ExpiredTime: str
-        :param _Features: Supported features of the package include: <li>ContentAcceleration: content acceleration feature;</li> <li>SmartAcceleration: intelligent acceleration feature;</li> <li>L4: L4 acceleration feature;</li> <li>Waf: advanced Web protection;</li> <li>QUIC: QUIC feature;</li> <li>CrossMLC: network optimization in the chinese mainland;</li> <li>ProcessMedia: media processing feature;</li> <li>L4DDoS: L4 DDoS protection feature;</li> L7DDoS feature will only appear in one of the following specifications: <li>L7DDoS.CM30G; layer-7 DDoS protection feature - 30G guaranteed minimum bandwidth specification in the chinese mainland;</li> <li>L7DDoS.CM60G; layer-7 DDoS protection feature - 60G guaranteed minimum bandwidth specification in the chinese mainland;</li> <li>L7DDoS.CM100G; layer-7 DDoS protection feature - 100G guaranteed minimum bandwidth specification in the chinese mainland;</li> <li>L7DDoS.Anycast300G; layer-7 DDoS protection feature - 300G guaranteed minimum bandwidth specification outside the chinese mainland with Anycast;</li> <li>L7DDoS.AnycastUnlimited; layer-7 DDoS protection feature - unlimited Anycast full protection outside the chinese mainland;</li> <li>L7DDoS.CM30G_Anycast300G; layer-7 DDoS protection feature - 30G guaranteed minimum bandwidth specification in the chinese mainland and 300G guaranteed minimum bandwidth specification outside the chinese mainland with Anycast;</li> <li>L7DDoS.CM60G_Anycast300G; layer-7 DDoS protection feature - 60G guaranteed minimum bandwidth specification in the chinese mainland and 300G guaranteed minimum bandwidth specification outside the chinese mainland with Anycast;</li> <li>L7DDoS.CM100G_Anycast300G; layer-7 DDoS protection feature - 100G guaranteed minimum bandwidth specification in the chinese mainland and 300G guaranteed minimum bandwidth specification outside the chinese mainland with Anycast;</li> <li>L7DDoS.CM30G_AnycastUnlimited; layer-7 DDoS protection feature - 30G guaranteed minimum bandwidth specification in the chinese mainland and unlimited Anycast full protection outside the chinese mainland;</li> <li>L7DDoS.CM60G_AnycastUnlimited; layer-7 DDoS protection feature - 60G guaranteed minimum bandwidth specification in the chinese mainland and unlimited Anycast full protection outside the chinese mainland;</li> <li>L7DDoS.CM100G_AnycastUnlimited; layer-7 DDoS protection feature - 100G guaranteed minimum bandwidth specification in the chinese mainland and unlimited Anycast full protection outside the chinese mainland;</li>.
+        :param _Features: <p>Features supported by the plan. Valid values: <li>ContentAcceleration: content acceleration;</li><li>SmartAcceleration: smart acceleration;</li><li>L4: L4 acceleration;</li><li>Waf: advanced Web protection;</li><li>QUIC: QUIC;</li><li>CrossMLC: network optimization for the Chinese mainland;</li><li>ProcessMedia: media processing;</li><li>L4DDoS: L4 DDoS protection.</li>Only one of the following L7DDoS specifications can appear: <li>L7DDoS.CM30G: L7 DDoS protection - 30 Gbps guaranteed bandwidth in the Chinese mainland;</li><li>L7DDoS.CM60G: L7 DDoS protection - 60 Gbps guaranteed bandwidth in the Chinese mainland;</li><li>L7DDoS.CM100G: L7 DDoS protection - 100 Gbps guaranteed bandwidth in the Chinese mainland;</li><li>L7DDoS.Anycast300G: L7 DDoS protection - 300 Gbps Anycast guaranteed bandwidth outside the Chinese mainland;</li><li>L7DDoS.AnycastUnlimited: L7 DDoS protection - unlimited Anycast full protection outside the Chinese mainland;</li><li>L7DDoS.CM30G_Anycast300G: L7 DDoS protection - 30 Gbps guaranteed bandwidth in the Chinese mainland and 300 Gbps Anycast guaranteed bandwidth outside the Chinese mainland;</li><li>L7DDoS.CM60G_Anycast300G: L7 DDoS protection - 60 Gbps guaranteed bandwidth in the Chinese mainland and 300 Gbps Anycast guaranteed bandwidth outside the Chinese mainland;</li><li>L7DDoS.CM100G_Anycast300G: L7 DDoS protection - 100 Gbps guaranteed bandwidth in the Chinese mainland and 300 Gbps Anycast guaranteed bandwidth outside the Chinese mainland;</li><li>L7DDoS.CM30G_AnycastUnlimited: L7 DDoS protection - 30 Gbps guaranteed bandwidth in the Chinese mainland and unlimited Anycast full protection outside the Chinese mainland;</li><li>L7DDoS.CM60G_AnycastUnlimited: L7 DDoS protection - 60 Gbps guaranteed bandwidth in the Chinese mainland and unlimited Anycast full protection outside the Chinese mainland;</li><li>L7DDoS.CM100G_AnycastUnlimited: L7 DDoS protection - 100 Gbps guaranteed bandwidth in the Chinese mainland and unlimited Anycast full protection outside the Chinese mainland.</li></p>
         :type Features: list of str
         """
         self._PlanType = None
@@ -56164,6 +56145,7 @@ class Plan(AbstractModel):
         self._SmartRequestCapacity = None
         self._VAUCapacity = None
         self._AccTrafficCapacity = None
+        self._ClientAuthTrafficCapacity = None
         self._SmartTrafficCapacity = None
         self._DDoSTrafficCapacity = None
         self._SecTrafficCapacity = None
@@ -56177,14 +56159,7 @@ class Plan(AbstractModel):
 
     @property
     def PlanType(self):
-        r"""Package type. valid values:.
-<Li>`Plan-Trial`: trial plan</li>.
-<Li>`Plan-Personal`: personal plan</li>.
-<Li>`Plan-Basic`: basic plan</li>.
-<Li>`Plan-Standard`: standard edition plan</li>.
-<li>plan-enterprise-v2: enterprise plan;</li>.
-<li>plan-enterprise-model-a: enterprise edition model a package.</li>.
-<Li>Plan-Enterprise: legacy enterprise plan.</li>.
+        r"""<p>Plan type. Valid values:</p><li>plan-trial: Trial Edition plan;</li><li>plan-personal: Personal Edition plan;</li><li>plan-basic: Basic Edition plan;</li><li>plan-standard: Standard Edition plan;</li><li>plan-enterprise-v2: Enterprise Edition plan;</li><li>plan-enterprise-model-a: Enterprise Edition Model A plan;</li><li>plan-enterprise: Legacy Enterprise Edition plan;</li><li>plan-makers-pro: Makers Pro Edition plan;</li><li>plan-makers-business: Makers Business Edition plan;</li><p>Valid values:</p><ul><li>plan-trial: Trial Edition plan</li><li>plan-personal: Personal Edition plan</li><li>plan-basic: Basic Edition plan</li><li>plan-standard: Standard Edition plan</li><li>plan-enterprise-v2: Enterprise Edition plan</li><li>plan-enterprise-model-a: Enterprise Edition Model A plan</li><li>plan-enterprise: Legacy Enterprise Edition plan</li><li>plan-makers-pro: Makers Pro Edition plan</li><li>plan-makers-business: Makers Business Edition plan</li></ul>
         :rtype: str
         """
         return self._PlanType
@@ -56195,7 +56170,7 @@ class Plan(AbstractModel):
 
     @property
     def PlanId(self):
-        r"""Package ID. such as edgeone-2y041pblwaxe.
+        r"""<p>Plan ID, in the format of edgeone-2y041pblwaxe.</p>
         :rtype: str
         """
         return self._PlanId
@@ -56206,10 +56181,7 @@ class Plan(AbstractModel):
 
     @property
     def Area(self):
-        r"""Service area. valid values:.
-<Li>`Mainland`: chinese mainland</li>.
-<li>`overseas`: global (chinese mainland not included)</li>.
-<Li>`Global`: global (chinese mainland included)</li>.
+        r"""<p>Service region. Valid values:</p><li>mainland: Chinese mainland;</li><li>overseas: Global (excluding the Chinese mainland);</li><li>global: Global (including the Chinese mainland).</li>
         :rtype: str
         """
         return self._Area
@@ -56220,9 +56192,7 @@ class Plan(AbstractModel):
 
     @property
     def AutoRenewal(self):
-        r"""Auto-Renew switch. valid values:.
-<li>true: automatic renewal is enabled.</li>.
-<li>false: automatic renewal is not enabled.</li>.
+        r"""<p>Auto-renewal switch. Valid values:</p><li>true: Auto-renewal enabled;</li><li>false: Auto-renewal disabled.</li>
         :rtype: bool
         """
         return self._AutoRenewal
@@ -56233,12 +56203,7 @@ class Plan(AbstractModel):
 
     @property
     def Status(self):
-        r"""Package status. valid values:.
-<Li>Normal: indicates the normal status.</li>.
-<li>`expiring-soon`: will expire soon;</li>.
-<li>`expired`: expiration status;</li>.
-<Li>`Isolated`: isolated state</li>.
-<li>`overdue-isolated`: arrears isolated state.</li>.
+        r"""<p>Plan status. Valid values:</p><li>normal: Normal;</li><li>expiring-soon: Expiring soon;</li><li>expired: Expired;</li><li>isolated: Isolated;</li><li>overdue-isolated: Isolated due to overdue payment.</li>
         :rtype: str
         """
         return self._Status
@@ -56249,9 +56214,7 @@ class Plan(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""Payment type. valid values:.
-<Li>0: postpaid;</li>.
-<Li>1: prepaid.</li>.
+        r"""<p>Billing type. Valid values:</p><li>0: Postpaid;</li><li>1: Prepaid.</li>
         :rtype: int
         """
         return self._PayMode
@@ -56262,7 +56225,7 @@ class Plan(AbstractModel):
 
     @property
     def ZonesInfo(self):
-        r"""Describes the site information bound to the package, including the site id, site name, and site status.
+        r"""<p>Information of the sites bound to the plan, including site id, site name, and site status.</p>
         :rtype: list of ZoneInfo
         """
         return self._ZonesInfo
@@ -56273,7 +56236,7 @@ class Plan(AbstractModel):
 
     @property
     def SmartRequestCapacity(self):
-        r"""Smart acceleration request quantity in the package, unit: times.
+        r"""<p>Quota of smart acceleration requests in the plan, in the unit of requests.</p>
         :rtype: int
         """
         return self._SmartRequestCapacity
@@ -56284,7 +56247,7 @@ class Plan(AbstractModel):
 
     @property
     def VAUCapacity(self):
-        r"""Specifies the VAU specification in the package. measurement unit: unit.
+        r"""<p>VAU quota in the plan, in the unit of VAUs.</p>
         :rtype: int
         """
         return self._VAUCapacity
@@ -56295,7 +56258,7 @@ class Plan(AbstractModel):
 
     @property
     def AccTrafficCapacity(self):
-        r"""Specifies the content acceleration traffic specification in the package, measurement unit: byte.
+        r"""<p>Quota of content acceleration traffic in the plan, in the unit of bytes.</p>
         :rtype: int
         """
         return self._AccTrafficCapacity
@@ -56305,8 +56268,19 @@ class Plan(AbstractModel):
         self._AccTrafficCapacity = AccTrafficCapacity
 
     @property
+    def ClientAuthTrafficCapacity(self):
+        r"""<p>Quota of client authentication traffic in the plan, in the unit of bytes.</p>
+        :rtype: int
+        """
+        return self._ClientAuthTrafficCapacity
+
+    @ClientAuthTrafficCapacity.setter
+    def ClientAuthTrafficCapacity(self, ClientAuthTrafficCapacity):
+        self._ClientAuthTrafficCapacity = ClientAuthTrafficCapacity
+
+    @property
     def SmartTrafficCapacity(self):
-        r"""Specifies the smart acceleration traffic specification in the package. measurement unit: byte.
+        r"""<p>Quota of smart acceleration traffic in the plan, in the unit of bytes.</p>
         :rtype: int
         """
         return self._SmartTrafficCapacity
@@ -56317,7 +56291,7 @@ class Plan(AbstractModel):
 
     @property
     def DDoSTrafficCapacity(self):
-        r"""Specifies the DDoS protection traffic specification in the package, measurement unit: byte.
+        r"""<p>Quota of DDoS protection traffic in the plan, in the unit of bytes.</p>
         :rtype: int
         """
         return self._DDoSTrafficCapacity
@@ -56328,7 +56302,7 @@ class Plan(AbstractModel):
 
     @property
     def SecTrafficCapacity(self):
-        r"""Security traffic specification in the package. measurement unit: byte.
+        r"""<p>Quota of security traffic in the plan, in the unit of bytes.</p>
         :rtype: int
         """
         return self._SecTrafficCapacity
@@ -56339,7 +56313,7 @@ class Plan(AbstractModel):
 
     @property
     def SecRequestCapacity(self):
-        r"""Security requests in the package, unit: times.
+        r"""<p>Quota of security requests in the plan, in the unit of requests.</p>
         :rtype: int
         """
         return self._SecRequestCapacity
@@ -56350,7 +56324,7 @@ class Plan(AbstractModel):
 
     @property
     def L4TrafficCapacity(self):
-        r"""Specifies the layer 4 acceleration traffic specification in the package, measurement unit: byte.
+        r"""<p>Quota of L4 acceleration traffic in the plan, in the unit of bytes.</p>
         :rtype: int
         """
         return self._L4TrafficCapacity
@@ -56361,7 +56335,7 @@ class Plan(AbstractModel):
 
     @property
     def CrossMLCTrafficCapacity(self):
-        r"""Specifies the network optimization traffic specification in the package for the chinese mainland, measurement unit: byte.
+        r"""<p>Quota of network optimization traffic for the Chinese mainland in the plan, in the unit of bytes.</p>
         :rtype: int
         """
         return self._CrossMLCTrafficCapacity
@@ -56372,9 +56346,7 @@ class Plan(AbstractModel):
 
     @property
     def Bindable(self):
-        r"""Specifies whether the package allows binding to new sites. valid values:.
-<li>true: allows binding a new site.</li>.
-<li>`false`: cannot bind new sites.</li>.
+        r"""<p>Whether the plan allows binding new sites. Valid values:</p><li>true: Allows binding new sites;</li><li>false: Does not allow binding new sites.</li>
         :rtype: str
         """
         return self._Bindable
@@ -56385,7 +56357,7 @@ class Plan(AbstractModel):
 
     @property
     def EnabledTime(self):
-        r"""Package activation time.
+        r"""<p>Time when the plan takes effect.</p>
         :rtype: str
         """
         return self._EnabledTime
@@ -56396,7 +56368,7 @@ class Plan(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        r"""Plan expiration time.
+        r"""<p>Expiration time of the plan.</p>
         :rtype: str
         """
         return self._ExpiredTime
@@ -56407,7 +56379,7 @@ class Plan(AbstractModel):
 
     @property
     def Features(self):
-        r"""Supported features of the package include: <li>ContentAcceleration: content acceleration feature;</li> <li>SmartAcceleration: intelligent acceleration feature;</li> <li>L4: L4 acceleration feature;</li> <li>Waf: advanced Web protection;</li> <li>QUIC: QUIC feature;</li> <li>CrossMLC: network optimization in the chinese mainland;</li> <li>ProcessMedia: media processing feature;</li> <li>L4DDoS: L4 DDoS protection feature;</li> L7DDoS feature will only appear in one of the following specifications: <li>L7DDoS.CM30G; layer-7 DDoS protection feature - 30G guaranteed minimum bandwidth specification in the chinese mainland;</li> <li>L7DDoS.CM60G; layer-7 DDoS protection feature - 60G guaranteed minimum bandwidth specification in the chinese mainland;</li> <li>L7DDoS.CM100G; layer-7 DDoS protection feature - 100G guaranteed minimum bandwidth specification in the chinese mainland;</li> <li>L7DDoS.Anycast300G; layer-7 DDoS protection feature - 300G guaranteed minimum bandwidth specification outside the chinese mainland with Anycast;</li> <li>L7DDoS.AnycastUnlimited; layer-7 DDoS protection feature - unlimited Anycast full protection outside the chinese mainland;</li> <li>L7DDoS.CM30G_Anycast300G; layer-7 DDoS protection feature - 30G guaranteed minimum bandwidth specification in the chinese mainland and 300G guaranteed minimum bandwidth specification outside the chinese mainland with Anycast;</li> <li>L7DDoS.CM60G_Anycast300G; layer-7 DDoS protection feature - 60G guaranteed minimum bandwidth specification in the chinese mainland and 300G guaranteed minimum bandwidth specification outside the chinese mainland with Anycast;</li> <li>L7DDoS.CM100G_Anycast300G; layer-7 DDoS protection feature - 100G guaranteed minimum bandwidth specification in the chinese mainland and 300G guaranteed minimum bandwidth specification outside the chinese mainland with Anycast;</li> <li>L7DDoS.CM30G_AnycastUnlimited; layer-7 DDoS protection feature - 30G guaranteed minimum bandwidth specification in the chinese mainland and unlimited Anycast full protection outside the chinese mainland;</li> <li>L7DDoS.CM60G_AnycastUnlimited; layer-7 DDoS protection feature - 60G guaranteed minimum bandwidth specification in the chinese mainland and unlimited Anycast full protection outside the chinese mainland;</li> <li>L7DDoS.CM100G_AnycastUnlimited; layer-7 DDoS protection feature - 100G guaranteed minimum bandwidth specification in the chinese mainland and unlimited Anycast full protection outside the chinese mainland;</li>.
+        r"""<p>Features supported by the plan. Valid values: <li>ContentAcceleration: content acceleration;</li><li>SmartAcceleration: smart acceleration;</li><li>L4: L4 acceleration;</li><li>Waf: advanced Web protection;</li><li>QUIC: QUIC;</li><li>CrossMLC: network optimization for the Chinese mainland;</li><li>ProcessMedia: media processing;</li><li>L4DDoS: L4 DDoS protection.</li>Only one of the following L7DDoS specifications can appear: <li>L7DDoS.CM30G: L7 DDoS protection - 30 Gbps guaranteed bandwidth in the Chinese mainland;</li><li>L7DDoS.CM60G: L7 DDoS protection - 60 Gbps guaranteed bandwidth in the Chinese mainland;</li><li>L7DDoS.CM100G: L7 DDoS protection - 100 Gbps guaranteed bandwidth in the Chinese mainland;</li><li>L7DDoS.Anycast300G: L7 DDoS protection - 300 Gbps Anycast guaranteed bandwidth outside the Chinese mainland;</li><li>L7DDoS.AnycastUnlimited: L7 DDoS protection - unlimited Anycast full protection outside the Chinese mainland;</li><li>L7DDoS.CM30G_Anycast300G: L7 DDoS protection - 30 Gbps guaranteed bandwidth in the Chinese mainland and 300 Gbps Anycast guaranteed bandwidth outside the Chinese mainland;</li><li>L7DDoS.CM60G_Anycast300G: L7 DDoS protection - 60 Gbps guaranteed bandwidth in the Chinese mainland and 300 Gbps Anycast guaranteed bandwidth outside the Chinese mainland;</li><li>L7DDoS.CM100G_Anycast300G: L7 DDoS protection - 100 Gbps guaranteed bandwidth in the Chinese mainland and 300 Gbps Anycast guaranteed bandwidth outside the Chinese mainland;</li><li>L7DDoS.CM30G_AnycastUnlimited: L7 DDoS protection - 30 Gbps guaranteed bandwidth in the Chinese mainland and unlimited Anycast full protection outside the Chinese mainland;</li><li>L7DDoS.CM60G_AnycastUnlimited: L7 DDoS protection - 60 Gbps guaranteed bandwidth in the Chinese mainland and unlimited Anycast full protection outside the Chinese mainland;</li><li>L7DDoS.CM100G_AnycastUnlimited: L7 DDoS protection - 100 Gbps guaranteed bandwidth in the Chinese mainland and unlimited Anycast full protection outside the Chinese mainland.</li></p>
         :rtype: list of str
         """
         return self._Features
@@ -56433,6 +56405,7 @@ class Plan(AbstractModel):
         self._SmartRequestCapacity = params.get("SmartRequestCapacity")
         self._VAUCapacity = params.get("VAUCapacity")
         self._AccTrafficCapacity = params.get("AccTrafficCapacity")
+        self._ClientAuthTrafficCapacity = params.get("ClientAuthTrafficCapacity")
         self._SmartTrafficCapacity = params.get("SmartTrafficCapacity")
         self._DDoSTrafficCapacity = params.get("DDoSTrafficCapacity")
         self._SecTrafficCapacity = params.get("SecTrafficCapacity")
@@ -68606,7 +68579,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
 
 class ZoneInfo(AbstractModel):
-    r"""Describes the returned site information.
+    r"""Back to site information
 
     """
 
@@ -68616,8 +68589,8 @@ class ZoneInfo(AbstractModel):
         :type ZoneId: str
         :param _ZoneName: Site name.
         :type ZoneName: str
-        :param _Paused: Whether to disable the site. valid values: <li>false: not disabled;</li>.
-<li>true: disabled.</li>.
+        :param _Paused: Whether to disable the site. Valid values: <li>false: not disabled;</li>
+<li>true: Disable.</li>
         :type Paused: bool
         """
         self._ZoneId = None
@@ -68648,8 +68621,8 @@ class ZoneInfo(AbstractModel):
 
     @property
     def Paused(self):
-        r"""Whether to disable the site. valid values: <li>false: not disabled;</li>.
-<li>true: disabled.</li>.
+        r"""Whether to disable the site. Valid values: <li>false: not disabled;</li>
+<li>true: Disable.</li>
         :rtype: bool
         """
         return self._Paused

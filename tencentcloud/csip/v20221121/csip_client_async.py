@@ -405,6 +405,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAssetBaselineRiskExportJob(
+            self,
+            request: models.CreateAssetBaselineRiskExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateAssetBaselineRiskExportJobResponse:
+        """
+        This API is used to create an asset baseline risk export task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAssetBaselineRiskExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAssetBaselineRiskExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAssetComponentListExportJob(
             self,
             request: models.CreateAssetComponentListExportJobRequest,
@@ -2153,6 +2171,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteBaselineIgnorePolicy(
+            self,
+            request: models.DeleteBaselineIgnorePolicyRequest,
+            opts: Dict = None,
+    ) -> models.DeleteBaselineIgnorePolicyResponse:
+        """
+        Delete baseline ignore policy
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteBaselineIgnorePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteBaselineIgnorePolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteBaselineSelfDefinedPolicyList(
             self,
             request: models.DeleteBaselineSelfDefinedPolicyListRequest,
@@ -2778,6 +2814,42 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DeleteImageVulWhitelist"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteImageVulWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteLoginWhiteCustomEDR(
+            self,
+            request: models.DeleteLoginWhiteCustomEDRRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLoginWhiteCustomEDRResponse:
+        """
+        This API is used to delete CSC abnormal login custom allowlist entries in batches (soft delete, status=2), with support for cross-page select all. Either Ids or SelectAll is required. If both are empty, InvalidParameter is returned. If the total amount of cross-page select all exceeds 100,000 entries, the entire request is denied.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLoginWhiteCustomEDR"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLoginWhiteCustomEDRResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteLoginWhiteLearnEDR(
+            self,
+            request: models.DeleteLoginWhiteLearnEDRRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLoginWhiteLearnEDRResponse:
+        """
+        Delete CSC abnormal login self-learning allowlist rule groups in batches (soft delete the entire group with enable=0). Import any row ID in a group to locate the entire group. Cross-page select all is supported (cap: 100,000 rule groups). Once deleted, the groups will not be automatically re-learned. You need to toggle self-learning again to update the learning anchor. This interface does not rescan historical alarms.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLoginWhiteLearnEDR"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLoginWhiteLearnEDRResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3515,6 +3587,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAssetBaselineRiskList(
+            self,
+            request: models.DescribeAssetBaselineRiskListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAssetBaselineRiskListResponse:
+        """
+        This API is used to obtain the asset risk list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAssetBaselineRiskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAssetBaselineRiskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAssetComponentList(
             self,
             request: models.DescribeAssetComponentListRequest,
@@ -3960,6 +4050,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeBaselineFixRecordList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeBaselineFixRecordListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBaselineIgnorePolicyList(
+            self,
+            request: models.DescribeBaselineIgnorePolicyListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselineIgnorePolicyListResponse:
+        """
+        Queries the baseline ignore policy list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselineIgnorePolicyList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselineIgnorePolicyListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4824,6 +4932,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeClusterAssets"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeClusterAssetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeClusterBaselineRiskPolicyList(
+            self,
+            request: models.DescribeClusterBaselineRiskPolicyListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterBaselineRiskPolicyListResponse:
+        """
+        Get the cluster risk policy list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterBaselineRiskPolicyList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterBaselineRiskPolicyListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -7259,6 +7385,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeEdrMalwareFile(
+            self,
+            request: models.DescribeEdrMalwareFileRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEdrMalwareFileResponse:
+        """
+        Locate malicious file alarms by EDR alarm ID and return the download URL of the malicious sample. Only alarms with alert_sub_type=1 (malicious file) can be downloaded. Other sub-types are handled as resource not found. Public cloud returns a COS presigned URL (valid for 1 hour). Non-public cloud returns a base64 DataURL and FileName when the export switch is on. In cross-account scenarios, TargetAppId specifies the account that owns the alarm, and ownership verification is performed (fail-close, InvalidParameter is returned if no permission).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEdrMalwareFile"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEdrMalwareFileResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeExportJobDownloadURL(
             self,
             request: models.DescribeExportJobDownloadURLRequest,
@@ -7547,6 +7691,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeHostVulRiskEventList(
+            self,
+            request: models.DescribeHostVulRiskEventListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHostVulRiskEventListResponse:
+        """
+        This API is used to query the host vulnerability risk event list and return basic vulnerability information, instance information, risk status, and latest scan time by risk record dimension.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHostVulRiskEventList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHostVulRiskEventListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeHostVulRiskList(
             self,
             request: models.DescribeHostVulRiskListRequest,
@@ -7560,6 +7722,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeHostVulRiskList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeHostVulRiskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeHostVulScanStatus(
+            self,
+            request: models.DescribeHostVulScanStatusRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHostVulScanStatusResponse:
+        """
+        Query the host vulnerability scanning status to determine whether vulnerabilities have been scanned, whether the first vulnerability scan failed, and the fixable vulnerability status after the first scan is completed.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHostVulScanStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHostVulScanStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -8321,6 +8501,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeLoginWhiteCustomListEDR(
+            self,
+            request: models.DescribeLoginWhiteCustomListEDRRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLoginWhiteCustomListEDRResponse:
+        """
+        This API is used to query the CSC abnormal login custom allowlist. In multi-account scenarios, parse out all member AppIds by MemberId and perform an aggregate query only once. Return in pages by ModifyTime DESC. The output slice field is always [] and never null.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLoginWhiteCustomListEDR"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLoginWhiteCustomListEDRResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeLoginWhiteHostList(
             self,
             request: models.DescribeLoginWhiteHostListRequest,
@@ -8334,6 +8532,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeLoginWhiteHostList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeLoginWhiteHostListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLoginWhiteLearnListEDR(
+            self,
+            request: models.DescribeLoginWhiteLearnListEDRRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLoginWhiteLearnListEDRResponse:
+        """
+        This API is used to query the CSC abnormal login self-learning allowlist (rule group). Rule groups are aggregated by (AppId, common login location), and the ID is the minimum line ID in the group. The output fields SrcIp, UserName, StartTime, and EndTime are always empty. AutoLearnEnable returns the self-learning switch state for the frontend to determine whether to redirect to enable it based on the empty state.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLoginWhiteLearnListEDR"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLoginWhiteLearnListEDRResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -10979,6 +11195,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyBaselineIgnorePolicy(
+            self,
+            request: models.ModifyBaselineIgnorePolicyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBaselineIgnorePolicyResponse:
+        """
+        Modify baseline ignore policy
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBaselineIgnorePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBaselineIgnorePolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyBaselinePolicy(
             self,
             request: models.ModifyBaselinePolicyRequest,
@@ -12144,6 +12378,42 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyImageVulWhitelist"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyImageVulWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLoginWhiteCustomEDR(
+            self,
+            request: models.ModifyLoginWhiteCustomEDRRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLoginWhiteCustomEDRResponse:
+        """
+        Modify the CSC abnormal login custom allowlist with full coverage saving (fields not passed are deemed as cleared). This API does not trigger historical alarm rescanning. Exclude itself during deduplication. If the rule does not exist, return ResourceNotFound.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLoginWhiteCustomEDR"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLoginWhiteCustomEDRResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLoginWhiteLearnEDR(
+            self,
+            request: models.ModifyLoginWhiteLearnEDRRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLoginWhiteLearnEDRResponse:
+        """
+        This API is used to modify the CSC abnormal login self-learning allowlist rule group, locating the entire group by (AppId, common login location). Constraints: creating is not supported, and taking effect by tag is not supported (TagIDs must be empty). Only Scope=0 direct selection and Scope=1 all assets + removal are supported. Reject when the rule group row count exceeds 5000. In a single transaction, insert first and delete later. It takes effect within one cache cycle (default 120s) after editing. This API does not rescan historical alarms.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLoginWhiteLearnEDR"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLoginWhiteLearnEDRResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

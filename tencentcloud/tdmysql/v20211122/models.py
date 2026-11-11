@@ -12161,6 +12161,310 @@ class ModifyAutoRenewFlagResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceRequest(AbstractModel):
+    r"""ModifyDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>Instance ID.</p>
+        :type InstanceId: str
+        :param _DryRun: <p>Whether to only perform pre-check without actually executing the configuration change. true: only return the configuration change plan and pre-check result; false: actually execute the configuration change (default)</p>
+        :type DryRun: bool
+        :param _HybridNodeCpu: <p>Number of CPU cores of peer nodes. If not passed, maintain current value unchanged</p>
+        :type HybridNodeCpu: int
+        :param _HybridNodeMem: <p>Peer-to-peer node memory size in GB. If not passed, maintain current value unchanged</p>
+        :type HybridNodeMem: int
+        :param _HybridNodeNum: <p>Number of peer nodes. If not passed, maintain current value unchanged</p>
+        :type HybridNodeNum: int
+        :param _Disk: <p>Peer-to-peer node disk capacity in GB. If not passed, maintain current value unchanged</p>
+        :type Disk: int
+        :param _StorageType: <p>Storage type. Available values: CLOUD_HSSD (enhanced SSD cloud disk), CLOUD_TCS (local disk), CLOUD_BSSD (universal SSD cloud disk). If not specified, the current value remains unchanged.</p>
+        :type StorageType: str
+        :param _SpecCode: <p>Specification code, for example, 4c8g, 16c32g</p>
+        :type SpecCode: str
+        :param _Zones: <p>Target AZ list. If not passed, maintain current value unchanged</p>
+        :type Zones: list of str
+        :param _AZMode: <p>Availability zone mode. 1: single availability zone. 3: multi-availability zone primary AZ mode</p>
+        :type AZMode: int
+        :param _PrimaryAZ: <p>Primary AZ. This parameter is valid only when AZMode is 3</p>
+        :type PrimaryAZ: str
+        :param _FullReplications: <p>Number of replicas, value ranges from 1 to 3</p>
+        :type FullReplications: int
+        """
+        self._InstanceId = None
+        self._DryRun = None
+        self._HybridNodeCpu = None
+        self._HybridNodeMem = None
+        self._HybridNodeNum = None
+        self._Disk = None
+        self._StorageType = None
+        self._SpecCode = None
+        self._Zones = None
+        self._AZMode = None
+        self._PrimaryAZ = None
+        self._FullReplications = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>Instance ID.</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DryRun(self):
+        r"""<p>Whether to only perform pre-check without actually executing the configuration change. true: only return the configuration change plan and pre-check result; false: actually execute the configuration change (default)</p>
+        :rtype: bool
+        """
+        return self._DryRun
+
+    @DryRun.setter
+    def DryRun(self, DryRun):
+        self._DryRun = DryRun
+
+    @property
+    def HybridNodeCpu(self):
+        r"""<p>Number of CPU cores of peer nodes. If not passed, maintain current value unchanged</p>
+        :rtype: int
+        """
+        return self._HybridNodeCpu
+
+    @HybridNodeCpu.setter
+    def HybridNodeCpu(self, HybridNodeCpu):
+        self._HybridNodeCpu = HybridNodeCpu
+
+    @property
+    def HybridNodeMem(self):
+        r"""<p>Peer-to-peer node memory size in GB. If not passed, maintain current value unchanged</p>
+        :rtype: int
+        """
+        return self._HybridNodeMem
+
+    @HybridNodeMem.setter
+    def HybridNodeMem(self, HybridNodeMem):
+        self._HybridNodeMem = HybridNodeMem
+
+    @property
+    def HybridNodeNum(self):
+        r"""<p>Number of peer nodes. If not passed, maintain current value unchanged</p>
+        :rtype: int
+        """
+        return self._HybridNodeNum
+
+    @HybridNodeNum.setter
+    def HybridNodeNum(self, HybridNodeNum):
+        self._HybridNodeNum = HybridNodeNum
+
+    @property
+    def Disk(self):
+        r"""<p>Peer-to-peer node disk capacity in GB. If not passed, maintain current value unchanged</p>
+        :rtype: int
+        """
+        return self._Disk
+
+    @Disk.setter
+    def Disk(self, Disk):
+        self._Disk = Disk
+
+    @property
+    def StorageType(self):
+        r"""<p>Storage type. Available values: CLOUD_HSSD (enhanced SSD cloud disk), CLOUD_TCS (local disk), CLOUD_BSSD (universal SSD cloud disk). If not specified, the current value remains unchanged.</p>
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def SpecCode(self):
+        r"""<p>Specification code, for example, 4c8g, 16c32g</p>
+        :rtype: str
+        """
+        return self._SpecCode
+
+    @SpecCode.setter
+    def SpecCode(self, SpecCode):
+        self._SpecCode = SpecCode
+
+    @property
+    def Zones(self):
+        r"""<p>Target AZ list. If not passed, maintain current value unchanged</p>
+        :rtype: list of str
+        """
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
+    @property
+    def AZMode(self):
+        r"""<p>Availability zone mode. 1: single availability zone. 3: multi-availability zone primary AZ mode</p>
+        :rtype: int
+        """
+        return self._AZMode
+
+    @AZMode.setter
+    def AZMode(self, AZMode):
+        self._AZMode = AZMode
+
+    @property
+    def PrimaryAZ(self):
+        r"""<p>Primary AZ. This parameter is valid only when AZMode is 3</p>
+        :rtype: str
+        """
+        return self._PrimaryAZ
+
+    @PrimaryAZ.setter
+    def PrimaryAZ(self, PrimaryAZ):
+        self._PrimaryAZ = PrimaryAZ
+
+    @property
+    def FullReplications(self):
+        r"""<p>Number of replicas, value ranges from 1 to 3</p>
+        :rtype: int
+        """
+        return self._FullReplications
+
+    @FullReplications.setter
+    def FullReplications(self, FullReplications):
+        self._FullReplications = FullReplications
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DryRun = params.get("DryRun")
+        self._HybridNodeCpu = params.get("HybridNodeCpu")
+        self._HybridNodeMem = params.get("HybridNodeMem")
+        self._HybridNodeNum = params.get("HybridNodeNum")
+        self._Disk = params.get("Disk")
+        self._StorageType = params.get("StorageType")
+        self._SpecCode = params.get("SpecCode")
+        self._Zones = params.get("Zones")
+        self._AZMode = params.get("AZMode")
+        self._PrimaryAZ = params.get("PrimaryAZ")
+        self._FullReplications = params.get("FullReplications")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceResponse(AbstractModel):
+    r"""ModifyDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>Asynchronous task ID, returned when DryRun=false. You can call the Query Task API with this ID to get task status.</p>
+        :type FlowId: int
+        :param _DealName: <p>Order number, returned in prepaid scenarios</p>
+        :type DealName: str
+        :param _IsInPlaceModification: <p>Whether to perform in-place configuration changes. Returned when DryRun=true.</p>
+        :type IsInPlaceModification: bool
+        :param _IsMigrateModification: <p>Whether to perform configuration adjustment. Returned when DryRun=true</p>
+        :type IsMigrateModification: bool
+        :param _ModifyPlan: <p>Configuration change plan description. Returned when DryRun=true, describing the sub-process orchestration to be executed</p>
+        :type ModifyPlan: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._DealName = None
+        self._IsInPlaceModification = None
+        self._IsMigrateModification = None
+        self._ModifyPlan = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>Asynchronous task ID, returned when DryRun=false. You can call the Query Task API with this ID to get task status.</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def DealName(self):
+        r"""<p>Order number, returned in prepaid scenarios</p>
+        :rtype: str
+        """
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def IsInPlaceModification(self):
+        r"""<p>Whether to perform in-place configuration changes. Returned when DryRun=true.</p>
+        :rtype: bool
+        """
+        return self._IsInPlaceModification
+
+    @IsInPlaceModification.setter
+    def IsInPlaceModification(self, IsInPlaceModification):
+        self._IsInPlaceModification = IsInPlaceModification
+
+    @property
+    def IsMigrateModification(self):
+        r"""<p>Whether to perform configuration adjustment. Returned when DryRun=true</p>
+        :rtype: bool
+        """
+        return self._IsMigrateModification
+
+    @IsMigrateModification.setter
+    def IsMigrateModification(self, IsMigrateModification):
+        self._IsMigrateModification = IsMigrateModification
+
+    @property
+    def ModifyPlan(self):
+        r"""<p>Configuration change plan description. Returned when DryRun=true, describing the sub-process orchestration to be executed</p>
+        :rtype: str
+        """
+        return self._ModifyPlan
+
+    @ModifyPlan.setter
+    def ModifyPlan(self, ModifyPlan):
+        self._ModifyPlan = ModifyPlan
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._DealName = params.get("DealName")
+        self._IsInPlaceModification = params.get("IsInPlaceModification")
+        self._IsMigrateModification = params.get("IsMigrateModification")
+        self._ModifyPlan = params.get("ModifyPlan")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
     r"""ModifyDBInstanceSecurityGroups request structure.
 

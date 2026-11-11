@@ -50,10 +50,10 @@ FAILEDOPERATION_ACTIONFACERIGHT = 'FailedOperation.ActionFaceRight'
 # No movement is detected.
 FAILEDOPERATION_ACTIONFIRSTACTION = 'FailedOperation.ActionFirstAction'
 
-# The lighting is too dim.
+# Light is too dim.
 FAILEDOPERATION_ACTIONLIGHTDARK = 'FailedOperation.ActionLightDark'
 
-# The lighting is too strong.
+# Light is too strong.
 FAILEDOPERATION_ACTIONLIGHTSTRONG = 'FailedOperation.ActionLightStrong'
 
 # Failed to detect a full face.
@@ -137,7 +137,7 @@ FAILEDOPERATION_IMAGEDECODEFAILED = 'FailedOperation.ImageDecodeFailed'
 # No ID card is detected in the image.
 FAILEDOPERATION_IMAGENOIDCARD = 'FailedOperation.ImageNoIdCard'
 
-# The image is too large.
+# The image size is too large.
 FAILEDOPERATION_IMAGESIZETOOLARGE = 'FailedOperation.ImageSizeTooLarge'
 
 # No complete face was detected. Please enter a complete face image.
@@ -194,13 +194,13 @@ FAILEDOPERATION_LIVESSBESTFRAMEERROR = 'FailedOperation.LivessBestFrameError'
 # Liveness detection failed.
 FAILEDOPERATION_LIVESSDETECTFAIL = 'FailedOperation.LivessDetectFail'
 
-# Suspected spoofed recording.
+# Suspected non-real-person recording.
 FAILEDOPERATION_LIVESSDETECTFAKE = 'FailedOperation.LivessDetectFake'
 
-# Error calling the liveness engine API.
+# Error calling the live engine interface.
 FAILEDOPERATION_LIVESSSYSTEMERROR = 'FailedOperation.LivessSystemError'
 
-# Video-based real person detection failed.
+# Video real person detection failed.
 FAILEDOPERATION_LIVESSUNKNOWNERROR = 'FailedOperation.LivessUnknownError'
 
 # Input name error.
@@ -221,10 +221,10 @@ FAILEDOPERATION_SILENTDETECTFAIL = 'FailedOperation.SilentDetectFail'
 # Eye detection failed.
 FAILEDOPERATION_SILENTEYELIVEFAIL = 'FailedOperation.SilentEyeLiveFail'
 
-# No face is detected in the video.
+# No face detected in the video.
 FAILEDOPERATION_SILENTFACEDETECTFAIL = 'FailedOperation.SilentFaceDetectFail'
 
-# Low face quality.
+# Face in video quality is low.
 FAILEDOPERATION_SILENTFACEQUALITYFAIL = 'FailedOperation.SilentFaceQualityFail'
 
 # A face mask is detected.
@@ -233,13 +233,13 @@ FAILEDOPERATION_SILENTFACEWITHMASKFAIL = 'FailedOperation.SilentFaceWithMaskFail
 # Mouth detection failed.
 FAILEDOPERATION_SILENTMOUTHLIVEFAIL = 'FailedOperation.SilentMouthLiveFail'
 
-# Multiple faces are detected in the video.
+# There are multiple faces in video detection.
 FAILEDOPERATION_SILENTMULTIFACEFAIL = 'FailedOperation.SilentMultiFaceFail'
 
-# The video might be spoofed.
+# Suspected rephotograph.
 FAILEDOPERATION_SILENTPICTURELIVEFAIL = 'FailedOperation.SilentPictureLiveFail'
 
-# Real person detection did not reach the passing standard.
+# Real person detection does not reach the pass standard.
 FAILEDOPERATION_SILENTTHRESHOLD = 'FailedOperation.SilentThreshold'
 
 # The video is too short. Please capture a video longer than 2 seconds.
@@ -260,25 +260,25 @@ FAILEDOPERATION_VIDEODURATIONEXCEEDED = 'FailedOperation.VideoDurationExceeded'
 # Internal error.
 INTERNALERROR = 'InternalError'
 
-# The lighting is too dim.This error code is only returned by ReflectCompare and DetectReflectLivenessAndCompare.
+# Light is too dim.
 INTERNALERROR_ACTIONLIGHTDARK = 'InternalError.ActionLightDark'
 
-# The lighting is too strong.
+# The light is too strong.
 INTERNALERROR_ACTIONLIGHTSTRONG = 'InternalError.ActionLightStrong'
 
-# Failed to detect a full face.
+# Full face not detected.
 INTERNALERROR_ACTIONNODETECTFACE = 'InternalError.ActionNodetectFace'
 
-# The similarity did not reach the passing standard.This error code is only returned by ReflectCompare and DetectReflectLivenessAndCompare.
+# Comparison similarity does not reach the pass standard.
 INTERNALERROR_COMPARELOWSIMILARITY = 'InternalError.CompareLowSimilarity'
 
 # Encryption failed.
 INTERNALERROR_ENCRYPTSYSTEMERROR = 'InternalError.EncryptSystemError'
 
-# The resolution of the image passed in is too low. Please upload a new one.
+# The input image resolution is too low. Re-upload it.
 INTERNALERROR_LIFEPHOTOPOORQUALITY = 'InternalError.LifePhotoPoorQuality'
 
-# The image passed in is too large or too small.
+# Uploaded image too large or too small.
 INTERNALERROR_LIFEPHOTOSIZEERROR = 'InternalError.LifePhotoSizeError'
 
 # Internal unknown error.

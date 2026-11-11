@@ -866,11 +866,11 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :type CopyRightWatermark: :class:`tencentcloud.vod.v20180717.models.CopyRightWatermarkInput`
         :param _BlindWatermark: <p>Digital watermark.</p>
         :type BlindWatermark: :class:`tencentcloud.vod.v20180717.models.BlindWatermarkInput`
-        :param _SubtitleSet: <p>External subtitle file. Elements are subtitle IDs. Supports multiple subtitles, up to 16.</p>
+        :param _SubtitleSet: <p>External subtitle list. The element is Subtitle ID. Supports multiple subtitles, up to 16.</p>
         :type SubtitleSet: list of str
         :param _SubtitleInfoSet: <p>Subtitle suppression information list. Up to 2 supported.</p>
         :type SubtitleInfoSet: list of SubtitleInfoInput
-        :param _DrmInfo: <p>Third-party DRM encryption information. It is not currently supported to initiate tasks using third-party DRM info via task flow.</p>
+        :param _DrmInfo: <p>Third-party DRM encryption information. It is not currently supported to initiate tasks using third-party DRM information via task flow.</p>
         :type DrmInfo: :class:`tencentcloud.vod.v20180717.models.ThirdPartyDrmInfo`
         """
         self._Definition = None
@@ -939,7 +939,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 
     @property
     def SubtitleSet(self):
-        r"""<p>External subtitle file. Elements are subtitle IDs. Supports multiple subtitles, up to 16.</p>
+        r"""<p>External subtitle list. The element is Subtitle ID. Supports multiple subtitles, up to 16.</p>
         :rtype: list of str
         """
         return self._SubtitleSet
@@ -961,7 +961,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 
     @property
     def DrmInfo(self):
-        r"""<p>Third-party DRM encryption information. It is not currently supported to initiate tasks using third-party DRM info via task flow.</p>
+        r"""<p>Third-party DRM encryption information. It is not currently supported to initiate tasks using third-party DRM information via task flow.</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.ThirdPartyDrmInfo`
         """
         return self._DrmInfo
@@ -3346,7 +3346,7 @@ class AiContentReviewResult(AbstractModel):
 
 
 class AiContentReviewTaskInput(AbstractModel):
-    r"""Type of the audio/video moderation task
+    r"""Audio/video moderation task type
 
     """
 
@@ -5674,14 +5674,14 @@ class AiRecognitionTaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Video intelligent identification template ID.
+        :param _Definition: Intelligent video identification template ID.
         :type Definition: int
         """
         self._Definition = None
 
     @property
     def Definition(self):
-        r"""Video intelligent identification template ID.
+        r"""Intelligent video identification template ID.
         :rtype: int
         """
         return self._Definition
@@ -16272,7 +16272,7 @@ class AigcVideoTaskUsage(AbstractModel):
 
 
 class AnimatedGraphicTaskInput(AbstractModel):
-    r"""Type of rotating image tasks
+    r"""Rotating image task type
 
     """
 
@@ -16281,14 +16281,14 @@ class AnimatedGraphicTaskInput(AbstractModel):
         :param _Definition: Video-to-GIF conversion template ID.
         :type Definition: int
         :param _StartTimeOffset: Start time offset of the GIF in the video, in seconds.
-<li>If not set or set to 0, it starts from the starting position of the video.</li>
-<li>When the value is greater than 0 (assume it is n), it means starting from the nth second of the video;</li>
+<li>If not set or set to 0, it starts from the beginning of the video.</li>
+<li>When the value is greater than 0 (assuming n), it means starting from the nth second of the video;</li>
 <li>When the value is less than 0 (assuming -n), it means starting from the position n seconds before the video ends.</li>
         :type StartTimeOffset: float
-        :param _EndTimeOffset: End time offset of an animated image in the video, in seconds.
+        :param _EndTimeOffset: End time offset of the GIF in the video, in seconds.
 <li>If not set or set to 0, it will last until the end of a video.</li>
-<li>When the value is greater than 0 (assuming n), it means it will last until the nth second of the video and then terminate;</li>
-<li>When the value is less than 0 (assuming -n), it means the video will terminate n seconds before the end.</li>
+<li>When the value is greater than 0 (assuming n), it means the video ends at the nth second.</li>
+<li>When the value is less than 0 (assuming -n), it means termination n seconds before the video ends.</li>
         :type EndTimeOffset: float
         """
         self._Definition = None
@@ -16309,8 +16309,8 @@ class AnimatedGraphicTaskInput(AbstractModel):
     @property
     def StartTimeOffset(self):
         r"""Start time offset of the GIF in the video, in seconds.
-<li>If not set or set to 0, it starts from the starting position of the video.</li>
-<li>When the value is greater than 0 (assume it is n), it means starting from the nth second of the video;</li>
+<li>If not set or set to 0, it starts from the beginning of the video.</li>
+<li>When the value is greater than 0 (assuming n), it means starting from the nth second of the video;</li>
 <li>When the value is less than 0 (assuming -n), it means starting from the position n seconds before the video ends.</li>
         :rtype: float
         """
@@ -16322,10 +16322,10 @@ class AnimatedGraphicTaskInput(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        r"""End time offset of an animated image in the video, in seconds.
+        r"""End time offset of the GIF in the video, in seconds.
 <li>If not set or set to 0, it will last until the end of a video.</li>
-<li>When the value is greater than 0 (assuming n), it means it will last until the nth second of the video and then terminate;</li>
-<li>When the value is less than 0 (assuming -n), it means the video will terminate n seconds before the end.</li>
+<li>When the value is greater than 0 (assuming n), it means the video ends at the nth second.</li>
+<li>When the value is less than 0 (assuming -n), it means termination n seconds before the video ends.</li>
         :rtype: float
         """
         return self._EndTimeOffset
@@ -18568,7 +18568,7 @@ Default value: 2.
 
 
 class AudioTemplateInfoForUpdate(AbstractModel):
-    r"""Audio stream configuration parameters
+    r"""Audio stream configuration parameters.
 
     """
 
@@ -18576,13 +18576,13 @@ class AudioTemplateInfoForUpdate(AbstractModel):
         r"""
         :param _Codec: <p>Audio stream encoding format.<br>When the outer parameter Container is mp3, the valid value is:</p><li>libmp3lame.</li>When the outer parameter Container is ogg or flac, the valid value is:<li>flac.</li>When the outer parameter Container is m4a, the valid values are:<li>libfdk_aac;</li><li>libmp3lame;</li><li>ac3.</li>When the outer parameter Container is mp4 or flv, the valid values are:<li>libfdk_aac: suitable for mp4.</li><li>libmp3lame: suitable for flv.</li><li>mp2.</li>When the outer parameter Container is hls, the valid value is:<li>libfdk_aac.</li>When the outer parameter Format is HLS or MPEG-DASH, the valid value is:<li>libfdk_aac.</li>When the outer parameter Container is wav, the valid value is:<li>pcm16.</li>
         :type Codec: str
-        :param _Bitrate: <p>Audio stream bitrate, in kbps. Value range: 0 and [26, 256]. When the value is 0, it means VOD automatically sets the bitrate.</p>
+        :param _Bitrate: <p>Audio stream bitrate. Value range: 0 and [26, 256]. Unit: kbps. When the value is 0, it means VOD automatically sets the bitrate.</p>
         :type Bitrate: int
         :param _SampleRate: <p>Sampling rate of the audio stream. Available values:</p><li>16000, selectable only when Codec is pcm16.</li><li>32000</li><li>44100</li><li>48000</li>Unit: Hz.
         :type SampleRate: int
-        :param _AudioChannel: <p>Audio channel. Available values:</p><li>1: single channel</li><li>2: dual-channel</li><li>6: stereo</li><li>0: the number of audio channels remains consistent with the original audio</li>When the media encapsulation format is an audio format (flac, ogg, mp3, m4a), the number of sound channels cannot be set to stereo.
+        :param _AudioChannel: <p>Audio channel. Valid values:</p><li>1: Single channel</li><li>2: Two channels</li><li>6: Stereo</li><li>0: The number of audio channels remains the same as the original audio.</li>When the media encapsulation format is an audio format (flac, ogg, mp3, m4a), the number of audio channels cannot be set to stereo.
         :type AudioChannel: int
-        :param _StreamSelects: <p>Specifies the retained audio tracks for output. All source tracks are retained by default.</p><p>This parameter is valid only when specified in OverrideParameter. In other cases, it does not take effect.</p>
+        :param _StreamSelects: <p>Specifies the retained audio tracks for output. All source tracks are retained by default.</p><p>This parameter is valid only when specified in the OverrideParameter parameter. In other cases, it does not take effect.</p>
         :type StreamSelects: list of int
         """
         self._Codec = None
@@ -18604,7 +18604,7 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Bitrate(self):
-        r"""<p>Audio stream bitrate, in kbps. Value range: 0 and [26, 256]. When the value is 0, it means VOD automatically sets the bitrate.</p>
+        r"""<p>Audio stream bitrate. Value range: 0 and [26, 256]. Unit: kbps. When the value is 0, it means VOD automatically sets the bitrate.</p>
         :rtype: int
         """
         return self._Bitrate
@@ -18626,7 +18626,7 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 
     @property
     def AudioChannel(self):
-        r"""<p>Audio channel. Available values:</p><li>1: single channel</li><li>2: dual-channel</li><li>6: stereo</li><li>0: the number of audio channels remains consistent with the original audio</li>When the media encapsulation format is an audio format (flac, ogg, mp3, m4a), the number of sound channels cannot be set to stereo.
+        r"""<p>Audio channel. Valid values:</p><li>1: Single channel</li><li>2: Two channels</li><li>6: Stereo</li><li>0: The number of audio channels remains the same as the original audio.</li>When the media encapsulation format is an audio format (flac, ogg, mp3, m4a), the number of audio channels cannot be set to stereo.
         :rtype: int
         """
         return self._AudioChannel
@@ -18637,7 +18637,7 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 
     @property
     def StreamSelects(self):
-        r"""<p>Specifies the retained audio tracks for output. All source tracks are retained by default.</p><p>This parameter is valid only when specified in OverrideParameter. In other cases, it does not take effect.</p>
+        r"""<p>Specifies the retained audio tracks for output. All source tracks are retained by default.</p><p>This parameter is valid only when specified in the OverrideParameter parameter. In other cases, it does not take effect.</p>
         :rtype: list of int
         """
         return self._StreamSelects
@@ -24836,7 +24836,7 @@ class CopyRightWatermarkInput(AbstractModel):
 
 
 class CoverBySnapshotTaskInput(AbstractModel):
-    r"""Task input parameter type for screencapturing for cover image of a video
+    r"""Task input parameter type for screencapturing for cover image in a video
 
     """
 
@@ -24845,12 +24845,12 @@ class CoverBySnapshotTaskInput(AbstractModel):
         :param _Definition: Time point screenshot template ID.
         :type Definition: int
         :param _PositionType: Screenshot type. Valid values:
-<li>Time: time point screencapturing</li>
+<li>Time: screenshot by time point</li>
 <li>Percent: screenshot by percentage</li>
         :type PositionType: str
         :param _PositionValue: Screenshot position:
-<li>For time point screenshot taking, this value indicates the second of the specified video to use as the cover</li>
-<li>For percentage-based screenshots, this value indicates the percentage of the video used as the cover.</li>
+<li>For time point screenshots, this value indicates the second of the specified video to use as the cover</li>
+<li>For screenshot by percentage, this value indicates the percentage of the video used as the cover.</li>
         :type PositionValue: float
         :param _WatermarkSet: Watermark list. Multiple image or text watermarks up to a maximum of 10 are supported.
         :type WatermarkSet: list of WatermarkInput
@@ -24874,7 +24874,7 @@ class CoverBySnapshotTaskInput(AbstractModel):
     @property
     def PositionType(self):
         r"""Screenshot type. Valid values:
-<li>Time: time point screencapturing</li>
+<li>Time: screenshot by time point</li>
 <li>Percent: screenshot by percentage</li>
         :rtype: str
         """
@@ -24887,8 +24887,8 @@ class CoverBySnapshotTaskInput(AbstractModel):
     @property
     def PositionValue(self):
         r"""Screenshot position:
-<li>For time point screenshot taking, this value indicates the second of the specified video to use as the cover</li>
-<li>For percentage-based screenshots, this value indicates the percentage of the video used as the cover.</li>
+<li>For time point screenshots, this value indicates the second of the specified video to use as the cover</li>
+<li>For screenshot by percentage, this value indicates the percentage of the video used as the cover.</li>
         :rtype: float
         """
         return self._PositionValue
@@ -32780,19 +32780,19 @@ class CreateProcedureTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: <p>Task flow name (support Chinese, up to 20 characters).</p>
+        :param _Name: <p>Task flow name (supports Chinese, up to 20 characters).</p>
         :type Name: str
-        :param _SubAppId: <p><b>On-demand <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate on-demand services after December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications, whether in the default application or a newly created application.</b></p>
+        :param _SubAppId: <p><b>Video-on-demand (VOD) <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate VOD services on or after December 25, 2023, this field must be set to the app ID when accessing resources in VOD applications, whether in the default application or a newly created application.</b></p>
         :type SubAppId: int
         :param _Comment: <p>Transcoding template description. Length limit: 256 characters.</p>
         :type Comment: str
         :param _MediaProcessTask: <p>Video processing type task parameters.</p>
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param _AiContentReviewTask: <p>AI content moderation type task parameter *.<br><font color="red">*: This parameter is used to initiate legacy review and is not recommended. It is recommended to use the ReviewAudioVideoTask parameter to initiate review.</font></p>
+        :param _AiContentReviewTask: <p>AI content review type task parameter *. <font color="red">*This parameter is used to initiate legacy review and is not recommended. It is recommended to use the ReviewAudioVideoTask parameter to initiate review.</font></p>
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         :param _AiAnalysisTask: <p>Parameters for the AI content analysis task.</p>
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
-        :param _AiRecognitionTaskSet: <p>Parameters for the AI content recognition type task.</p>
+        :param _AiRecognitionTaskSet: <p>Parameters for the AI content recognition task.</p>
         :type AiRecognitionTaskSet: list of AiRecognitionTaskInput
         :param _AiRecognitionTask: <p>This parameter is not recommended. Use AiRecognitionTaskSet instead.</p>
         :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
@@ -32814,7 +32814,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>Task flow name (support Chinese, up to 20 characters).</p>
+        r"""<p>Task flow name (supports Chinese, up to 20 characters).</p>
         :rtype: str
         """
         return self._Name
@@ -32825,7 +32825,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<p><b>On-demand <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate on-demand services after December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications, whether in the default application or a newly created application.</b></p>
+        r"""<p><b>Video-on-demand (VOD) <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate VOD services on or after December 25, 2023, this field must be set to the app ID when accessing resources in VOD applications, whether in the default application or a newly created application.</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -32858,7 +32858,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
 
     @property
     def AiContentReviewTask(self):
-        r"""<p>AI content moderation type task parameter *.<br><font color="red">*: This parameter is used to initiate legacy review and is not recommended. It is recommended to use the ReviewAudioVideoTask parameter to initiate review.</font></p>
+        r"""<p>AI content review type task parameter *. <font color="red">*This parameter is used to initiate legacy review and is not recommended. It is recommended to use the ReviewAudioVideoTask parameter to initiate review.</font></p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         """
         return self._AiContentReviewTask
@@ -32880,7 +32880,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
 
     @property
     def AiRecognitionTaskSet(self):
-        r"""<p>Parameters for the AI content recognition type task.</p>
+        r"""<p>Parameters for the AI content recognition task.</p>
         :rtype: list of AiRecognitionTaskInput
         """
         return self._AiRecognitionTaskSet
@@ -59103,20 +59103,20 @@ class ImageSceneAigcEncodeConfig(AbstractModel):
 
 
 class ImageSpriteTaskInput(AbstractModel):
-    r"""Task input parameter type of sprite sheet capture in a video
+    r"""Task input parameter type for generating a sprite sheet from a video
 
     """
 
     def __init__(self):
         r"""
-        :param _Definition: Image sprite template ID.
+        :param _Definition: Sprite screenshot template ID.
         :type Definition: int
         """
         self._Definition = None
 
     @property
     def Definition(self):
-        r"""Image sprite template ID.
+        r"""Sprite screenshot template ID.
         :rtype: int
         """
         return self._Definition
@@ -60200,7 +60200,7 @@ class ImportMediaKnowledgeTask(AbstractModel):
 
 
 class ImportMediaKnowledgeTaskInput(AbstractModel):
-    r"""Input parameter type for importing an intelligent media assets knowledge base in a task flow template.
+    r"""Input parameter type for importing a task flow template into the Intelligent Media Assets knowledge base.
 
     """
 
@@ -60208,7 +60208,7 @@ class ImportMediaKnowledgeTaskInput(AbstractModel):
         r"""
         :param _Definition: <p>Large Model Understanding Template</p>
         :type Definition: int
-        :param _KnowledgeBaseIds: <p>List of knowledge base IDs. Leave empty to use the default knowledge base.</p>
+        :param _KnowledgeBaseIds: <p>List of knowledge base IDs. If left empty, the default knowledge base will be used.</p>
         :type KnowledgeBaseIds: list of str
         """
         self._Definition = None
@@ -60227,7 +60227,7 @@ class ImportMediaKnowledgeTaskInput(AbstractModel):
 
     @property
     def KnowledgeBaseIds(self):
-        r"""<p>List of knowledge base IDs. Leave empty to use the default knowledge base.</p>
+        r"""<p>List of knowledge base IDs. If left empty, the default knowledge base will be used.</p>
         :rtype: list of str
         """
         return self._KnowledgeBaseIds
@@ -70695,15 +70695,15 @@ class MediaProcessTaskInput(AbstractModel):
         r"""
         :param _TranscodeTaskSet: List of video transcoding tasks.
         :type TranscodeTaskSet: list of TranscodeTaskInput
-        :param _AnimatedGraphicTaskSet: List of video-to-GIF tasks.
+        :param _AnimatedGraphicTaskSet: List of video-to-animated-image tasks.
         :type AnimatedGraphicTaskSet: list of AnimatedGraphicTaskInput
-        :param _SnapshotByTimeOffsetTaskSet: List of time point screenshot tasks for videos.
+        :param _SnapshotByTimeOffsetTaskSet: List of time point screencapturing tasks for videos.
         :type SnapshotByTimeOffsetTaskSet: list of SnapshotByTimeOffsetTaskInput
         :param _SampleSnapshotTaskSet: List of sampled screenshot tasks for videos.
         :type SampleSnapshotTaskSet: list of SampleSnapshotTaskInput
         :param _ImageSpriteTaskSet: List of image sprite tasks for videos.
         :type ImageSpriteTaskSet: list of ImageSpriteTaskInput
-        :param _CoverBySnapshotTaskSet: Task list of screencapturing for cover images from videos.
+        :param _CoverBySnapshotTaskSet: Task list of screencapturing for cover images of videos.
         :type CoverBySnapshotTaskSet: list of CoverBySnapshotTaskInput
         :param _AdaptiveDynamicStreamingTaskSet: List of video to adaptive streaming tasks.
         :type AdaptiveDynamicStreamingTaskSet: list of AdaptiveDynamicStreamingTaskInput
@@ -70729,7 +70729,7 @@ class MediaProcessTaskInput(AbstractModel):
 
     @property
     def AnimatedGraphicTaskSet(self):
-        r"""List of video-to-GIF tasks.
+        r"""List of video-to-animated-image tasks.
         :rtype: list of AnimatedGraphicTaskInput
         """
         return self._AnimatedGraphicTaskSet
@@ -70740,7 +70740,7 @@ class MediaProcessTaskInput(AbstractModel):
 
     @property
     def SnapshotByTimeOffsetTaskSet(self):
-        r"""List of time point screenshot tasks for videos.
+        r"""List of time point screencapturing tasks for videos.
         :rtype: list of SnapshotByTimeOffsetTaskInput
         """
         return self._SnapshotByTimeOffsetTaskSet
@@ -70773,7 +70773,7 @@ class MediaProcessTaskInput(AbstractModel):
 
     @property
     def CoverBySnapshotTaskSet(self):
-        r"""Task list of screencapturing for cover images from videos.
+        r"""Task list of screencapturing for cover images of videos.
         :rtype: list of CoverBySnapshotTaskInput
         """
         return self._CoverBySnapshotTaskSet
@@ -79723,27 +79723,27 @@ Default value: 0px.
         :type XPos: str
         :param _YPos: Vertical position of the mosaic origin relative to the origin of coordinates of the video image. Supports two formats: % and px.
 <li>If a string ends with %, it indicates that the `YPos` of a mosaic is a specified percentage of a video's height. For example, `10%` means that `YPos` is 10% of a video's height.</li>
-<li>If a string ends with px, it means the mosaic YPos is specified in pixels. For example, 100px means the YPos is 100 pixels.</li>
+<li>If a string ends with px, it means the mosaic YPos is specified in pixels. For example, 100px means YPos is 100 pixels.</li>
 Default value: 0px.
         :type YPos: str
-        :param _Width: Width of the mosaic, supporting two formats: % and px.
+        :param _Width: Width of a mosaic, supporting two formats: % and px.
 <li>If a string ends with %, it indicates that the `Width` of a mosaic is a percentage of a video's width. For example, `10%` means that `Width` is 10% of a video's width.</li>
 <li>If a string ends with px, it means the mosaic Width unit is pixel. For example, 100px means the Width is 100 pixels.</li>
 Default value: 10%.
         :type Width: str
-        :param _Height: Height of a mosaic, supporting two formats: % and px.
+        :param _Height: Height of the mosaic, supporting two formats: % and px.
 <li>If a string ends with %, it indicates that the `Height` of a mosaic is a percentage of a video's height. For example, `10%` means that `Height` is 10% of a video's height.</li>
 <li>If a string ends with px, it means the mosaic Height unit is pixel. For example, 100px means the Height is 100 pixels.</li>
 Default value: 10%.
         :type Height: str
         :param _StartTimeOffset: Start time offset of a mosaic, in seconds. If not set or set to 0, a mosaic starts appearing when a video starts.
-<li>If not set or set to 0, a mosaic appears when a video starts.</li>
-<li>If the value is greater than 0 (for example, n), a mosaic will appear at second n of a frame.</li>
+<li>If not set or set to 0, a mosaic starts appearing when a video starts.</li>
+<li>If the value is greater than 0 (for example, n), a mosaic will appear at second n of a video.</li>
 <li>When the value is less than 0 (assuming -n), it means the mosaic appears n seconds before the end of a video.</li>
         :type StartTimeOffset: float
         :param _EndTimeOffset: End time offset of a mosaic, in seconds.
-<li>If not set or set to 0, mosaic will last until the end of a frame.</li>
-<li>If the value is greater than 0 (for example, n), a mosaic will disappear at second n.</li>
+<li>If not set or set to 0, a mosaic will last until the end of a frame.</li>
+<li>If the value is greater than 0 (for example, n), the mosaic will disappear at second n.</li>
 <li>When the value is less than 0 (assuming -n), it means the mosaic lasts until n seconds before the end of a video.</li>
         :type EndTimeOffset: float
         """
@@ -79786,7 +79786,7 @@ Default value: 0px.
     def YPos(self):
         r"""Vertical position of the mosaic origin relative to the origin of coordinates of the video image. Supports two formats: % and px.
 <li>If a string ends with %, it indicates that the `YPos` of a mosaic is a specified percentage of a video's height. For example, `10%` means that `YPos` is 10% of a video's height.</li>
-<li>If a string ends with px, it means the mosaic YPos is specified in pixels. For example, 100px means the YPos is 100 pixels.</li>
+<li>If a string ends with px, it means the mosaic YPos is specified in pixels. For example, 100px means YPos is 100 pixels.</li>
 Default value: 0px.
         :rtype: str
         """
@@ -79798,7 +79798,7 @@ Default value: 0px.
 
     @property
     def Width(self):
-        r"""Width of the mosaic, supporting two formats: % and px.
+        r"""Width of a mosaic, supporting two formats: % and px.
 <li>If a string ends with %, it indicates that the `Width` of a mosaic is a percentage of a video's width. For example, `10%` means that `Width` is 10% of a video's width.</li>
 <li>If a string ends with px, it means the mosaic Width unit is pixel. For example, 100px means the Width is 100 pixels.</li>
 Default value: 10%.
@@ -79812,7 +79812,7 @@ Default value: 10%.
 
     @property
     def Height(self):
-        r"""Height of a mosaic, supporting two formats: % and px.
+        r"""Height of the mosaic, supporting two formats: % and px.
 <li>If a string ends with %, it indicates that the `Height` of a mosaic is a percentage of a video's height. For example, `10%` means that `Height` is 10% of a video's height.</li>
 <li>If a string ends with px, it means the mosaic Height unit is pixel. For example, 100px means the Height is 100 pixels.</li>
 Default value: 10%.
@@ -79827,8 +79827,8 @@ Default value: 10%.
     @property
     def StartTimeOffset(self):
         r"""Start time offset of a mosaic, in seconds. If not set or set to 0, a mosaic starts appearing when a video starts.
-<li>If not set or set to 0, a mosaic appears when a video starts.</li>
-<li>If the value is greater than 0 (for example, n), a mosaic will appear at second n of a frame.</li>
+<li>If not set or set to 0, a mosaic starts appearing when a video starts.</li>
+<li>If the value is greater than 0 (for example, n), a mosaic will appear at second n of a video.</li>
 <li>When the value is less than 0 (assuming -n), it means the mosaic appears n seconds before the end of a video.</li>
         :rtype: float
         """
@@ -79841,8 +79841,8 @@ Default value: 10%.
     @property
     def EndTimeOffset(self):
         r"""End time offset of a mosaic, in seconds.
-<li>If not set or set to 0, mosaic will last until the end of a frame.</li>
-<li>If the value is greater than 0 (for example, n), a mosaic will disappear at second n.</li>
+<li>If not set or set to 0, a mosaic will last until the end of a frame.</li>
+<li>If the value is greater than 0 (for example, n), the mosaic will disappear at second n.</li>
 <li>When the value is less than 0 (assuming -n), it means the mosaic lasts until n seconds before the end of a video.</li>
         :rtype: float
         """
@@ -80813,7 +80813,7 @@ class OverrideTranscodeParameter(AbstractModel):
         r"""
         :param _Container: <p>Container format. Valid values: mp4, flv, hls, mp3, flac, ogg, m4a, and wav. Among them, mp3, flac, ogg, m4a, and wav are for audio-only files.</p>
         :type Container: str
-        :param _RemoveVideo: <p>Indicates whether to remove video data. Valid values:<br>&lt;li&gt;0: Data is reserved;&lt;\li&gt;<br>&lt;li&gt;1: Data is removed.&lt;\li&gt;</p>
+        :param _RemoveVideo: <p>Indicates whether to remove video data. Parameter value:<br>&lt;li&gt;0: Data is reserved;&lt;\li&gt;<br>&lt;li&gt;1: Data is removed.&lt;\li&gt;</p>
         :type RemoveVideo: int
         :param _RemoveAudio: <p>Indicates whether to remove audio data. Valid values:<br>&lt;li&gt;0: Data is reserved;&lt;\li&gt;<br>&lt;li&gt;1: Data is removed.&lt;\li&gt;</p>
         :type RemoveAudio: int
@@ -80821,7 +80821,7 @@ class OverrideTranscodeParameter(AbstractModel):
         :type VideoTemplate: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfoForUpdate`
         :param _AudioTemplate: <p>Audio stream configuration parameters.</p>
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfoForUpdate`
-        :param _TEHDConfig: <p>Top Speed Codec transcoding configuration parameters.</p>
+        :param _TEHDConfig: <p>TSC transcoding configuration parameters.</p>
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfigForUpdate`
         :param _StdExtInfo: <p>Standard extended fields for special usage.</p>
         :type StdExtInfo: str
@@ -80847,7 +80847,7 @@ class OverrideTranscodeParameter(AbstractModel):
 
     @property
     def RemoveVideo(self):
-        r"""<p>Indicates whether to remove video data. Valid values:<br>&lt;li&gt;0: Data is reserved;&lt;\li&gt;<br>&lt;li&gt;1: Data is removed.&lt;\li&gt;</p>
+        r"""<p>Indicates whether to remove video data. Parameter value:<br>&lt;li&gt;0: Data is reserved;&lt;\li&gt;<br>&lt;li&gt;1: Data is removed.&lt;\li&gt;</p>
         :rtype: int
         """
         return self._RemoveVideo
@@ -80891,7 +80891,7 @@ class OverrideTranscodeParameter(AbstractModel):
 
     @property
     def TEHDConfig(self):
-        r"""<p>Top Speed Codec transcoding configuration parameters.</p>
+        r"""<p>TSC transcoding configuration parameters.</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.TEHDConfigForUpdate`
         """
         return self._TEHDConfig
@@ -82917,7 +82917,7 @@ class PornOcrReviewTemplateInfoForUpdate(AbstractModel):
 
 
 class ProcedureReviewAudioVideoTaskInput(AbstractModel):
-    r"""Input parameter type for audio/video moderation in the task flow template.
+    r"""Input parameter type for audio/video moderation in a task flow template.
 
     """
 
@@ -82928,7 +82928,7 @@ class ProcedureReviewAudioVideoTaskInput(AbstractModel):
         :param _ReviewContents: Content for review. Available values:
 <li>Media: original audio/video;</li>
 <li>Cover: cover.</li>
-If this parameter is not specified or is set to an empty array, Media is reviewed by default.
+If this parameter is not specified or is set to an empty array, Media is used for review by default.
         :type ReviewContents: list of str
         """
         self._Definition = None
@@ -82950,7 +82950,7 @@ If this parameter is not specified or is set to an empty array, Media is reviewe
         r"""Content for review. Available values:
 <li>Media: original audio/video;</li>
 <li>Cover: cover.</li>
-If this parameter is not specified or is set to an empty array, Media is reviewed by default.
+If this parameter is not specified or is set to an empty array, Media is used for review by default.
         :rtype: list of str
         """
         return self._ReviewContents
@@ -95470,23 +95470,23 @@ class SDMCDrmKeyProviderInfo(AbstractModel):
 
 
 class SPEKEDrm(AbstractModel):
-    r"""Encryption information of a third-party DRM manufacturer.
+    r"""Encryption information of the external DRM vendor.
 
     """
 
     def __init__(self):
         r"""
-        :param _ResourceId: <p>Resource tagging. The field content is user-customized. It supports 1-128 characters, including numbers, letters, underscores (_), and hyphens (-). This field corresponds to the cid field in the Speke request. Note: Different DRM manufacturers have different restrictions on this field (for example, SDMC does not support underscores in this field). For specific rules, please confirm with the DRM manufacturer.</p>
+        :param _ResourceId: <p>Resource tagging. The field content is user-customized. It supports 1-128 characters, including numbers, letters, underscores (_), and hyphens (-). This field corresponds to the cid field in the Speke request. Note: Different DRM manufacturers have differences in the limits for this field (for example, SDMC does not support underscores in this field). For specific rules, please contact the DRM manufacturer for confirmation.</p>
         :type ResourceId: str
-        :param _KeyServerUrl: <p>DRM manufacturer access address. This field content is obtained from the DRM manufacturer. Note: Different DRM manufacturers have different limits on the number of substreams. For example, PallyCon cannot exceed 5 substreams, and DRMtoday supports stream encryption for a maximum of 9 substreams.</p>
+        :param _KeyServerUrl: <p>DRM manufacturer access address. This field content is obtained from the DRM manufacturer. Note: Different DRM manufacturers have different limits on the number of substreams. For example, PallyCon allows no more than 5 substreams, while DRMtoday supports up to 9 substreams for encryption.</p>
         :type KeyServerUrl: str
         :param _Vector: <p>Encryption initialization vector (32-byte hexadecimal string). This field content is user-customized.</p>
         :type Vector: str
-        :param _EncryptionMethod: <p>Encryption method. Available values:<br>cbcs: PlayReady, Widevine, FairPlay, Widevine+FairPlay, Widevine+PlayReady, PlayReady+FairPlay, Widevine+PlayReady+FairPlay supported;<br>cenc: PlayReady, Widevine, Widevine+PlayReady supported;<br>If left blank, cbcs is used by default for FairPlay;<br>cenc is used by default for PlayReady and Widevine;<br>cbcs is used by default for Widevine+FairPlay, PlayReady+FairPlay, Widevine+PlayReady+FairPlay;<br>cenc is used by default for Widevine+PlayReady;</p>
+        :param _EncryptionMethod: <p>Encryption method. Available values:<br>cbcs: PlayReady, Widevine, FairPlay, Widevine+FairPlay, Widevine+PlayReady, PlayReady+FairPlay, Widevine+PlayReady+FairPlay are supported;<br>cenc: PlayReady, Widevine, Widevine+PlayReady are supported;<br>If left blank, cbcs is used for FairPlay by default;<br>cenc is used for PlayReady and Widevine by default;<br>cbcs is used for Widevine+FairPlay, PlayReady+FairPlay, Widevine+PlayReady+FairPlay by default;<br>cenc is used for Widevine+PlayReady by default;</p>
         :type EncryptionMethod: str
         :param _EncryptionPreset: <p>Substream encryption rule. Default: preset 0<br>preset 0: use the same key to encrypt all substreams;<br>preset 1: use different keys to encrypt each substream;</p>
         :type EncryptionPreset: str
-        :param _KeyAcquireMode: <p>DRM manufacturer request method.</p><p>Enumeration values:</p><ul><li>POST: Most DRM manufacturers use the POST method for requests.</li><li>GET: Some DRM manufacturers support the GET method for requests. When using this method, request information needs to be included in the KeyServerUrl field.</li></ul><p>Default value: POST</p>
+        :param _KeyAcquireMode: <p>Request method of the DRM manufacturer.</p><p>Enumeration values:</p><ul><li>POST: Most DRM manufacturers use the POST method for requests.</li><li>GET: Some DRM manufacturers support the GET method for requests. When using this method, request information needs to be included in the KeyServerUrl field.</li></ul><p>Default value: POST</p>
         :type KeyAcquireMode: str
         """
         self._ResourceId = None
@@ -95498,7 +95498,7 @@ class SPEKEDrm(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""<p>Resource tagging. The field content is user-customized. It supports 1-128 characters, including numbers, letters, underscores (_), and hyphens (-). This field corresponds to the cid field in the Speke request. Note: Different DRM manufacturers have different restrictions on this field (for example, SDMC does not support underscores in this field). For specific rules, please confirm with the DRM manufacturer.</p>
+        r"""<p>Resource tagging. The field content is user-customized. It supports 1-128 characters, including numbers, letters, underscores (_), and hyphens (-). This field corresponds to the cid field in the Speke request. Note: Different DRM manufacturers have differences in the limits for this field (for example, SDMC does not support underscores in this field). For specific rules, please contact the DRM manufacturer for confirmation.</p>
         :rtype: str
         """
         return self._ResourceId
@@ -95509,7 +95509,7 @@ class SPEKEDrm(AbstractModel):
 
     @property
     def KeyServerUrl(self):
-        r"""<p>DRM manufacturer access address. This field content is obtained from the DRM manufacturer. Note: Different DRM manufacturers have different limits on the number of substreams. For example, PallyCon cannot exceed 5 substreams, and DRMtoday supports stream encryption for a maximum of 9 substreams.</p>
+        r"""<p>DRM manufacturer access address. This field content is obtained from the DRM manufacturer. Note: Different DRM manufacturers have different limits on the number of substreams. For example, PallyCon allows no more than 5 substreams, while DRMtoday supports up to 9 substreams for encryption.</p>
         :rtype: str
         """
         return self._KeyServerUrl
@@ -95531,7 +95531,7 @@ class SPEKEDrm(AbstractModel):
 
     @property
     def EncryptionMethod(self):
-        r"""<p>Encryption method. Available values:<br>cbcs: PlayReady, Widevine, FairPlay, Widevine+FairPlay, Widevine+PlayReady, PlayReady+FairPlay, Widevine+PlayReady+FairPlay supported;<br>cenc: PlayReady, Widevine, Widevine+PlayReady supported;<br>If left blank, cbcs is used by default for FairPlay;<br>cenc is used by default for PlayReady and Widevine;<br>cbcs is used by default for Widevine+FairPlay, PlayReady+FairPlay, Widevine+PlayReady+FairPlay;<br>cenc is used by default for Widevine+PlayReady;</p>
+        r"""<p>Encryption method. Available values:<br>cbcs: PlayReady, Widevine, FairPlay, Widevine+FairPlay, Widevine+PlayReady, PlayReady+FairPlay, Widevine+PlayReady+FairPlay are supported;<br>cenc: PlayReady, Widevine, Widevine+PlayReady are supported;<br>If left blank, cbcs is used for FairPlay by default;<br>cenc is used for PlayReady and Widevine by default;<br>cbcs is used for Widevine+FairPlay, PlayReady+FairPlay, Widevine+PlayReady+FairPlay by default;<br>cenc is used for Widevine+PlayReady by default;</p>
         :rtype: str
         """
         return self._EncryptionMethod
@@ -95553,7 +95553,7 @@ class SPEKEDrm(AbstractModel):
 
     @property
     def KeyAcquireMode(self):
-        r"""<p>DRM manufacturer request method.</p><p>Enumeration values:</p><ul><li>POST: Most DRM manufacturers use the POST method for requests.</li><li>GET: Some DRM manufacturers support the GET method for requests. When using this method, request information needs to be included in the KeyServerUrl field.</li></ul><p>Default value: POST</p>
+        r"""<p>Request method of the DRM manufacturer.</p><p>Enumeration values:</p><ul><li>POST: Most DRM manufacturers use the POST method for requests.</li><li>GET: Some DRM manufacturers support the GET method for requests. When using this method, request information needs to be included in the KeyServerUrl field.</li></ul><p>Default value: POST</p>
         :rtype: str
         """
         return self._KeyAcquireMode
@@ -95581,7 +95581,7 @@ class SPEKEDrm(AbstractModel):
 
 
 class SampleSnapshotTaskInput(AbstractModel):
-    r"""Task input parameter type for sampling screenshot taking of a video
+    r"""Task input parameter type for sampling screenshot taking in a video
 
     """
 
@@ -98873,7 +98873,7 @@ class SnapshotByTimeOffsetTask2017(AbstractModel):
 
 
 class SnapshotByTimeOffsetTaskInput(AbstractModel):
-    r"""Task input parameter type for screenshot taking at specified time points for a video.
+    r"""Task input parameter type for screenshot taking at specified time points in a video
 
     """
 
@@ -98883,7 +98883,7 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
         :type Definition: int
         :param _ExtTimeOffsetSet: <p>List of screenshot time points. Time points support two formats: s and %.</p><li>The unit for a string that ends with s is second. For example, 3.5s means the time point is at 3.5 seconds.</li><li>The unit for a string that ends with % is a percentage of the video duration. For example, 10% means the time point is at 10% of the video's total duration.</li>
         :type ExtTimeOffsetSet: list of str
-        :param _TimeOffsetSet: <p>List of screenshot time points, in <font color="red">ms</font>. This parameter is not recommended. We recommend that you use the ExtTimeOffsetSet parameter.</p>
+        :param _TimeOffsetSet: <p>List of screencapturing time points, unit: <font color="red">ms</font>. This parameter is no longer recommended. We recommend that you use the ExtTimeOffsetSet parameter.</p>
         :type TimeOffsetSet: list of float
         :param _WatermarkSet: <p>Watermark list. Up to 10 image or text watermarks are supported.</p>
         :type WatermarkSet: list of WatermarkInput
@@ -98917,7 +98917,7 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
 
     @property
     def TimeOffsetSet(self):
-        r"""<p>List of screenshot time points, in <font color="red">ms</font>. This parameter is not recommended. We recommend that you use the ExtTimeOffsetSet parameter.</p>
+        r"""<p>List of screencapturing time points, unit: <font color="red">ms</font>. This parameter is no longer recommended. We recommend that you use the ExtTimeOffsetSet parameter.</p>
         :rtype: list of float
         """
         return self._TimeOffsetSet
@@ -100818,21 +100818,21 @@ class SubtitleInfoInput(AbstractModel):
         r"""
         :param _Id: <p>Subtitle ID.</p>
         :type Id: str
-        :param _StreamIndex: <p>Specifies the subtitle track index to be suppressed into the video. The value starts from 0, where 0 indicates usage of the first subtitle track in the source video. This parameter is valid only when Id is SUBTITLE_ID_PLACE_HOLDER. StreamIndex must be consistent with the subtitle track index in the source file. For example, if the subtitle track in the source file is stream#0:3, StreamIndex should be 3. Otherwise, task processing failed.</p>
+        :param _StreamIndex: <p>Specifies the subtitle track index to be suppressed into the video. The value starts from 0, where 0 indicates using the first subtitle track in the source video. This parameter is valid only when Id is SUBTITLE_ID_PLACE_HOLDER. StreamIndex must be consistent with the subtitle track index in the source file. For example, if the subtitle track in the source file is stream#0:3, StreamIndex should be 3. Otherwise, task processing may fail.</p>
         :type StreamIndex: int
-        :param _FontType: <p>Font type.</p><p>Enumeration values:</p><ul><li>hei.ttf: Heiti</li><li>song.ttf: Song Typeface</li><li>kai.ttf (recommended) or simkai.ttf: KaiTi</li><li>msyh.ttf: Microsoft YaHei</li><li>msyhbd.ttf: Microsoft YaHei in bold</li><li>hkjgt.ttf: Hwakangangtai</li><li>dhttx.ttf: Dianheiti Ultra Light</li><li>xqgdzt.ttf: Xique Ancient Dictionary</li><li>qpcyt.ttf: Smart Splice Super Round Body</li><li>arial.ttf: only supports English</li><li>dinalternate.ttf: DIN Alternate Bold</li><li>helveticalt.ttf: Helvetica</li><li>helveticains.ttf: Helvetica Inserat</li><li>trajanpro.ttf: TrajanPro-Bold</li><li>korean.ttf: Korean</li><li>japanese.ttf: Japanese</li><li>thai.ttf: Thai</li><li>roboto.ttf: Roboto</li><li>notosans.ttf: NotoSans</li><li>notosansthai.ttf: Thai NotoSansThai</li><li>sarabun.ttf: Thai Sarabun</li><li>kanit.ttf: Thai Kanit</li><li>charmonman.ttf: Thai Charmonman</li><li>notonaskharabic.ttf: Arabic NotoNaskhArabic</li><li>notosansdevanagari.ttf: India NotoSansDevanagari</li><li>notosanstc.ttf: Cantonese Source Han Sans NotoSansTC</li><li>notosanskr.ttf: Korean NotoSansKR</li><li>gothica1.ttf: Korean GothicA1</li><li>nanummyeongjo.ttf: Korean NanumMyeongjo</li><li>notosansjp.ttf: Japanese NotoSansJP</li><li>notoserifjp.ttf: Japanese NotoSerifJP</li><li>shipporimincho.ttf: Japanese ShipporiMincho</li></ul><p>Default value: hei.ttf Heiti</p>
+        :param _FontType: <p>Font type.</p><p>Enumeration values:</p><ul><li>hei.ttf: Heiti</li><li>song.ttf: Song Typeface</li><li>kai.ttf (recommended) or simkai.ttf: KaiTi</li><li>msyh.ttf: Microsoft YaHei</li><li>msyhbd.ttf: Microsoft YaHei in bold</li><li>hkjgt.ttf: Hwakangangtai</li><li>dhttx.ttf: Dianheiti Ultra Light</li><li>xqgdzt.ttf: Xique Ancient Dictionary</li><li>qpcyt.ttf: Smart Splice Super Round Body</li><li>arial.ttf: only supports English</li><li>dinalternate.ttf: DIN Alternate Bold</li><li>helveticalt.ttf: Helvetica</li><li>helveticains.ttf: Helvetica Inserat</li><li>trajanpro.ttf: TrajanPro-Bold</li><li>korean.ttf: Korean</li><li>japanese.ttf: Japanese</li><li>thai.ttf: Thai</li><li>roboto.ttf: Roboto</li><li>notosans.ttf: NotoSans</li><li>notosansthai.ttf: Thai NotoSansThai</li><li>sarabun.ttf: Thai Sarabun</li><li>kanit.ttf: Thai Kanit</li><li>charmonman.ttf: Thai Charmonman</li><li>notonaskharabic.ttf: Arabic NotoNaskhArabic</li><li>notosansdevanagari.ttf: India NotoSansDevanagari</li><li>notosanstc.ttf: Cantonese NotoSansTC</li><li>notosanskr.ttf: Korean NotoSansKR</li><li>gothica1.ttf: Korean GothicA1</li><li>nanummyeongjo.ttf: Korean NanumMyeongjo</li><li>notosansjp.ttf: Japanese NotoSansJP</li><li>notoserifjp.ttf: Japanese NotoSerifJP</li><li>shipporimincho.ttf: Japanese ShipporiMincho</li></ul><p>Default value: hei.ttf Heiti</p>
         :type FontType: str
         :param _FontSize: <p>Font size. If not specified, the font size of the subtitle file applies. Pixel and percentage formats are supported:</p><ul><li>Pixel: Npx, where N ranges from (0,4096].</li><li>Percentage: N%, where N ranges from (0,100]. For example, 10% means the subtitle font size equals 10% of the source video height. If left blank and the subtitle file has no settings, the default is 5% of the source video height.</li></ul>
         :type FontSize: str
-        :param _FontColor: <p>Text color, format: 0xRRGGBB.</p><p>Default value: 0xFFFFFF (white).</p>
+        :param _FontColor: <p>Font color. Format: 0xRRGGBB.</p><p>Default value: 0xFFFFFF (white).</p>
         :type FontColor: str
         :param _FontAlpha: <p>Text opacity. Value ranges from 0 to 1.</p><ul><li>0: completely transparent;</li><li>1: completely opaque</li></ul><p>Default value: 1</p>
         :type FontAlpha: float
-        :param _YPos: <p>Subtitle Y-coordinate position. Specify this parameter to ignore the built-in coordinates in the subtitle file. Supports pixel and percentage formats:</p><ul><li>Pixel: Npx, where N ranges from [0,4096].</li><li>Percentage: N%, where N ranges from [0,100]. For example, 10% means the subtitle Y-coordinate = 10%<em>source video height. Default value: source video height</em>4%.<br>Note: The coordinate axis origin is at the bottom of the central axis of the source video, and the subtitle reference point is at the bottom of the central axis of the subtitle. Refer to the figure below:<img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></li></ul>
+        :param _YPos: <p>Subtitle Y-coordinate position. Specify this parameter to ignore the built-in coordinates in the subtitle file. Supports pixel and percentage formats:</p><ul><li>Pixel: Npx, where N ranges from [0,4096].</li><li>Percentage: N%, where N ranges from [0,100]. For example, 10% means the subtitle Y-coordinate = 10% <em>source video height. Default value: source video height</em>4%.<br>Note: The coordinate axis origin is at the bottom of the central axis of the source video, and the subtitle reference point is at the bottom of the central axis of the subtitle. Refer to the figure below:<img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></li></ul>
         :type YPos: str
-        :param _BoardY: <p>Y-coordinate position of the subtitle background base plate. Supports pixel and percentage formats:</p><ul><li>Pixel: Npx, where N ranges from [0,4096].</li><li>Percentage: N%, where N ranges from [0,100]. For example, 10% means the subtitle background base plate Y-coordinate = 10% * source video height. If not specified, the subtitle background base plate is disabled.<br>Note: The coordinate axis origin is located at the bottom of the central axis of the source video, and the reference point of the subtitle background base plate is at the bottom of its central axis. See the following diagram:<img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></li></ul>
+        :param _BoardY: <p>Y-coordinate position of the subtitle background plate. Supports pixel and percentage formats:</p><ul><li>Pixel: Npx, where N ranges from [0,4096].</li><li>Percentage: N%, where N ranges from [0,100]. For example, 10% means the subtitle background plate Y-coordinate = 10% * source video height. If not specified, the subtitle background plate is disabled.<br>Note: The coordinate axis origin is located at the bottom of the central axis of the source video, and the reference point of the subtitle background plate is at the bottom of its central axis. See the following diagram:<img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></li></ul>
         :type BoardY: str
-        :param _BoardWidth: <p>Width of the base plate, a positive integer.</p><ul><li>Pixel: Npx, N value range: [0,4096].</li><li>Percentage: N%, N value range: [0, 100]. If background is enabled and this parameter is not specified, the default width is 90% of the source video width.</li></ul>
+        :param _BoardWidth: <p>Base plate width, positive integer.</p><ul><li>Pixel: Npx, N value range: [0,4096].</li><li>Percentage: N%, N value range: [0, 100]. If base plate is enabled and this parameter is not specified, the default width is 90% of the source video width.</li></ul>
         :type BoardWidth: str
         :param _BoardHeight: <p>Height of the base plate, a positive integer.</p><ul><li>Pixel: Npx, N value range: [0,4096].</li><li>Percentage: N%, N value range: [0, 100]. If background is enabled and this parameter is not specified, the default height is 15% of the source video height.</li></ul>
         :type BoardHeight: str
@@ -100840,9 +100840,9 @@ class SubtitleInfoInput(AbstractModel):
         :type BoardColor: str
         :param _BoardAlpha: <p>Subtitle background transparency. Value range: [0, 1].</p><ul><li>0: completely transparent;</li><li>1: completely opaque.</li></ul><p>Default value: 0.8.</p>
         :type BoardAlpha: float
-        :param _Alignment: <p>Alignment mode.</p><p>Enumeration values:</p><ul><li>top: Top alignment. The top position of subtitles is fixed, while the bottom position changes according to the number of lines. </li><li>bottom: Bottom alignment. The bottom position of subtitles is fixed, while the top position changes according to the number of lines. </li></ul><p>Default value: bottom</p>
+        :param _Alignment: <p>Alignment mode.</p><p>Enumeration values:</p><ul><li>top: Top alignment. The top position of subtitles is fixed, while the bottom position changes according to the number of lines.</li><li>bottom: Bottom alignment. The bottom position of subtitles is fixed, while the top position changes according to the number of lines.</li></ul><p>Default value: bottom</p>
         :type Alignment: str
-        :param _OutlineWidth: <p>Stroke width. Floating-point number.</p><ul><li>Pixel: Npx, N value range: [0, 1000].</li><li>Percentage: N%, N value range: [0, 100].</li></ul><p>By default if left blank, it is 0.3% of the source video height.</p>
+        :param _OutlineWidth: <p>Stroke width. Floating-point number.</p><ul><li>Pixel: Npx, N value range: [0, 1000].</li><li>Percentage: N%, N value range: [0, 100].</li></ul><p>By default if left blank, 0.3% of the source video height.</p>
         :type OutlineWidth: str
         :param _OutlineColor: <p>Border color. Format: 0xRRGGBB.</p><p>Default value: 0x000000 (black).</p>
         :type OutlineColor: str
@@ -100852,7 +100852,7 @@ class SubtitleInfoInput(AbstractModel):
         :type ShadowWidth: str
         :param _ShadowColor: <p>Shadow color. Format: 0xRRGGBB.</p><p>Default value: 0x000000 (black) if shadow is set.</p>
         :type ShadowColor: str
-        :param _ShadowAlpha: <p>Shadow transparency. The value should be a positive floating-point number in the range of (0, 1].</p><ul><li>0: completely transparent;</li><li>1: completely opaque.</li></ul><p>Default value: 1, which means completely opaque, with shadow configured.</p>
+        :param _ShadowAlpha: <p>Shadow transparency. The value should be a positive floating-point number in the range of (0, 1].</p><ul><li>0: completely transparent;</li><li>1: completely opaque.</li></ul><p>Default value: 1, which means completely opaque (with shadow configured).</p>
         :type ShadowAlpha: float
         :param _LineSpacing: <p>Line spacing. Positive integer.</p><ul><li>Pixel: Npx, N value ranges from 0 to 1000.</li><li>Percentage: N%, N value ranges from 0 to 100.</li></ul><p>Default value: 0</p>
         :type LineSpacing: str
@@ -100891,7 +100891,7 @@ class SubtitleInfoInput(AbstractModel):
 
     @property
     def StreamIndex(self):
-        r"""<p>Specifies the subtitle track index to be suppressed into the video. The value starts from 0, where 0 indicates usage of the first subtitle track in the source video. This parameter is valid only when Id is SUBTITLE_ID_PLACE_HOLDER. StreamIndex must be consistent with the subtitle track index in the source file. For example, if the subtitle track in the source file is stream#0:3, StreamIndex should be 3. Otherwise, task processing failed.</p>
+        r"""<p>Specifies the subtitle track index to be suppressed into the video. The value starts from 0, where 0 indicates using the first subtitle track in the source video. This parameter is valid only when Id is SUBTITLE_ID_PLACE_HOLDER. StreamIndex must be consistent with the subtitle track index in the source file. For example, if the subtitle track in the source file is stream#0:3, StreamIndex should be 3. Otherwise, task processing may fail.</p>
         :rtype: int
         """
         return self._StreamIndex
@@ -100902,7 +100902,7 @@ class SubtitleInfoInput(AbstractModel):
 
     @property
     def FontType(self):
-        r"""<p>Font type.</p><p>Enumeration values:</p><ul><li>hei.ttf: Heiti</li><li>song.ttf: Song Typeface</li><li>kai.ttf (recommended) or simkai.ttf: KaiTi</li><li>msyh.ttf: Microsoft YaHei</li><li>msyhbd.ttf: Microsoft YaHei in bold</li><li>hkjgt.ttf: Hwakangangtai</li><li>dhttx.ttf: Dianheiti Ultra Light</li><li>xqgdzt.ttf: Xique Ancient Dictionary</li><li>qpcyt.ttf: Smart Splice Super Round Body</li><li>arial.ttf: only supports English</li><li>dinalternate.ttf: DIN Alternate Bold</li><li>helveticalt.ttf: Helvetica</li><li>helveticains.ttf: Helvetica Inserat</li><li>trajanpro.ttf: TrajanPro-Bold</li><li>korean.ttf: Korean</li><li>japanese.ttf: Japanese</li><li>thai.ttf: Thai</li><li>roboto.ttf: Roboto</li><li>notosans.ttf: NotoSans</li><li>notosansthai.ttf: Thai NotoSansThai</li><li>sarabun.ttf: Thai Sarabun</li><li>kanit.ttf: Thai Kanit</li><li>charmonman.ttf: Thai Charmonman</li><li>notonaskharabic.ttf: Arabic NotoNaskhArabic</li><li>notosansdevanagari.ttf: India NotoSansDevanagari</li><li>notosanstc.ttf: Cantonese Source Han Sans NotoSansTC</li><li>notosanskr.ttf: Korean NotoSansKR</li><li>gothica1.ttf: Korean GothicA1</li><li>nanummyeongjo.ttf: Korean NanumMyeongjo</li><li>notosansjp.ttf: Japanese NotoSansJP</li><li>notoserifjp.ttf: Japanese NotoSerifJP</li><li>shipporimincho.ttf: Japanese ShipporiMincho</li></ul><p>Default value: hei.ttf Heiti</p>
+        r"""<p>Font type.</p><p>Enumeration values:</p><ul><li>hei.ttf: Heiti</li><li>song.ttf: Song Typeface</li><li>kai.ttf (recommended) or simkai.ttf: KaiTi</li><li>msyh.ttf: Microsoft YaHei</li><li>msyhbd.ttf: Microsoft YaHei in bold</li><li>hkjgt.ttf: Hwakangangtai</li><li>dhttx.ttf: Dianheiti Ultra Light</li><li>xqgdzt.ttf: Xique Ancient Dictionary</li><li>qpcyt.ttf: Smart Splice Super Round Body</li><li>arial.ttf: only supports English</li><li>dinalternate.ttf: DIN Alternate Bold</li><li>helveticalt.ttf: Helvetica</li><li>helveticains.ttf: Helvetica Inserat</li><li>trajanpro.ttf: TrajanPro-Bold</li><li>korean.ttf: Korean</li><li>japanese.ttf: Japanese</li><li>thai.ttf: Thai</li><li>roboto.ttf: Roboto</li><li>notosans.ttf: NotoSans</li><li>notosansthai.ttf: Thai NotoSansThai</li><li>sarabun.ttf: Thai Sarabun</li><li>kanit.ttf: Thai Kanit</li><li>charmonman.ttf: Thai Charmonman</li><li>notonaskharabic.ttf: Arabic NotoNaskhArabic</li><li>notosansdevanagari.ttf: India NotoSansDevanagari</li><li>notosanstc.ttf: Cantonese NotoSansTC</li><li>notosanskr.ttf: Korean NotoSansKR</li><li>gothica1.ttf: Korean GothicA1</li><li>nanummyeongjo.ttf: Korean NanumMyeongjo</li><li>notosansjp.ttf: Japanese NotoSansJP</li><li>notoserifjp.ttf: Japanese NotoSerifJP</li><li>shipporimincho.ttf: Japanese ShipporiMincho</li></ul><p>Default value: hei.ttf Heiti</p>
         :rtype: str
         """
         return self._FontType
@@ -100924,7 +100924,7 @@ class SubtitleInfoInput(AbstractModel):
 
     @property
     def FontColor(self):
-        r"""<p>Text color, format: 0xRRGGBB.</p><p>Default value: 0xFFFFFF (white).</p>
+        r"""<p>Font color. Format: 0xRRGGBB.</p><p>Default value: 0xFFFFFF (white).</p>
         :rtype: str
         """
         return self._FontColor
@@ -100946,7 +100946,7 @@ class SubtitleInfoInput(AbstractModel):
 
     @property
     def YPos(self):
-        r"""<p>Subtitle Y-coordinate position. Specify this parameter to ignore the built-in coordinates in the subtitle file. Supports pixel and percentage formats:</p><ul><li>Pixel: Npx, where N ranges from [0,4096].</li><li>Percentage: N%, where N ranges from [0,100]. For example, 10% means the subtitle Y-coordinate = 10%<em>source video height. Default value: source video height</em>4%.<br>Note: The coordinate axis origin is at the bottom of the central axis of the source video, and the subtitle reference point is at the bottom of the central axis of the subtitle. Refer to the figure below:<img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></li></ul>
+        r"""<p>Subtitle Y-coordinate position. Specify this parameter to ignore the built-in coordinates in the subtitle file. Supports pixel and percentage formats:</p><ul><li>Pixel: Npx, where N ranges from [0,4096].</li><li>Percentage: N%, where N ranges from [0,100]. For example, 10% means the subtitle Y-coordinate = 10% <em>source video height. Default value: source video height</em>4%.<br>Note: The coordinate axis origin is at the bottom of the central axis of the source video, and the subtitle reference point is at the bottom of the central axis of the subtitle. Refer to the figure below:<img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></li></ul>
         :rtype: str
         """
         return self._YPos
@@ -100957,7 +100957,7 @@ class SubtitleInfoInput(AbstractModel):
 
     @property
     def BoardY(self):
-        r"""<p>Y-coordinate position of the subtitle background base plate. Supports pixel and percentage formats:</p><ul><li>Pixel: Npx, where N ranges from [0,4096].</li><li>Percentage: N%, where N ranges from [0,100]. For example, 10% means the subtitle background base plate Y-coordinate = 10% * source video height. If not specified, the subtitle background base plate is disabled.<br>Note: The coordinate axis origin is located at the bottom of the central axis of the source video, and the reference point of the subtitle background base plate is at the bottom of its central axis. See the following diagram:<img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></li></ul>
+        r"""<p>Y-coordinate position of the subtitle background plate. Supports pixel and percentage formats:</p><ul><li>Pixel: Npx, where N ranges from [0,4096].</li><li>Percentage: N%, where N ranges from [0,100]. For example, 10% means the subtitle background plate Y-coordinate = 10% * source video height. If not specified, the subtitle background plate is disabled.<br>Note: The coordinate axis origin is located at the bottom of the central axis of the source video, and the reference point of the subtitle background plate is at the bottom of its central axis. See the following diagram:<img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></li></ul>
         :rtype: str
         """
         return self._BoardY
@@ -100968,7 +100968,7 @@ class SubtitleInfoInput(AbstractModel):
 
     @property
     def BoardWidth(self):
-        r"""<p>Width of the base plate, a positive integer.</p><ul><li>Pixel: Npx, N value range: [0,4096].</li><li>Percentage: N%, N value range: [0, 100]. If background is enabled and this parameter is not specified, the default width is 90% of the source video width.</li></ul>
+        r"""<p>Base plate width, positive integer.</p><ul><li>Pixel: Npx, N value range: [0,4096].</li><li>Percentage: N%, N value range: [0, 100]. If base plate is enabled and this parameter is not specified, the default width is 90% of the source video width.</li></ul>
         :rtype: str
         """
         return self._BoardWidth
@@ -101012,7 +101012,7 @@ class SubtitleInfoInput(AbstractModel):
 
     @property
     def Alignment(self):
-        r"""<p>Alignment mode.</p><p>Enumeration values:</p><ul><li>top: Top alignment. The top position of subtitles is fixed, while the bottom position changes according to the number of lines. </li><li>bottom: Bottom alignment. The bottom position of subtitles is fixed, while the top position changes according to the number of lines. </li></ul><p>Default value: bottom</p>
+        r"""<p>Alignment mode.</p><p>Enumeration values:</p><ul><li>top: Top alignment. The top position of subtitles is fixed, while the bottom position changes according to the number of lines.</li><li>bottom: Bottom alignment. The bottom position of subtitles is fixed, while the top position changes according to the number of lines.</li></ul><p>Default value: bottom</p>
         :rtype: str
         """
         return self._Alignment
@@ -101023,7 +101023,7 @@ class SubtitleInfoInput(AbstractModel):
 
     @property
     def OutlineWidth(self):
-        r"""<p>Stroke width. Floating-point number.</p><ul><li>Pixel: Npx, N value range: [0, 1000].</li><li>Percentage: N%, N value range: [0, 100].</li></ul><p>By default if left blank, it is 0.3% of the source video height.</p>
+        r"""<p>Stroke width. Floating-point number.</p><ul><li>Pixel: Npx, N value range: [0, 1000].</li><li>Percentage: N%, N value range: [0, 100].</li></ul><p>By default if left blank, 0.3% of the source video height.</p>
         :rtype: str
         """
         return self._OutlineWidth
@@ -101078,7 +101078,7 @@ class SubtitleInfoInput(AbstractModel):
 
     @property
     def ShadowAlpha(self):
-        r"""<p>Shadow transparency. The value should be a positive floating-point number in the range of (0, 1].</p><ul><li>0: completely transparent;</li><li>1: completely opaque.</li></ul><p>Default value: 1, which means completely opaque, with shadow configured.</p>
+        r"""<p>Shadow transparency. The value should be a positive floating-point number in the range of (0, 1].</p><ul><li>0: completely transparent;</li><li>1: completely opaque.</li></ul><p>Default value: 1, which means completely opaque (with shadow configured).</p>
         :rtype: float
         """
         return self._ShadowAlpha
@@ -101459,15 +101459,15 @@ If not specified or set to 0, VOD automatically sets the bitrate cap.
 
 
 class TEHDConfigForUpdate(AbstractModel):
-    r"""Top Speed Codec parameter configuration.
+    r"""Parameter configuration for top speed Codec.
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: Top speed Codec type. Available values: <li>TEHD-100: top speed Codec-100;</li> <li>OFF: disables top speed Codec.</li> If not specified, no modification is made.
+        :param _Type: Top speed Codec type. Available values: <li>TEHD-100 means top speed Codec-100;</li> <li>OFF means disabling top speed Codec.</li> If not specified, no modification is made.
         :type Type: str
-        :param _MaxVideoBitrate: Maximum video bitrate. If not specified, no modification is made.
+        :param _MaxVideoBitrate: Maximum video bitrate. If this parameter is not specified, no modification is made.
         :type MaxVideoBitrate: int
         """
         self._Type = None
@@ -101475,7 +101475,7 @@ class TEHDConfigForUpdate(AbstractModel):
 
     @property
     def Type(self):
-        r"""Top speed Codec type. Available values: <li>TEHD-100: top speed Codec-100;</li> <li>OFF: disables top speed Codec.</li> If not specified, no modification is made.
+        r"""Top speed Codec type. Available values: <li>TEHD-100 means top speed Codec-100;</li> <li>OFF means disabling top speed Codec.</li> If not specified, no modification is made.
         :rtype: str
         """
         return self._Type
@@ -101486,7 +101486,7 @@ class TEHDConfigForUpdate(AbstractModel):
 
     @property
     def MaxVideoBitrate(self):
-        r"""Maximum video bitrate. If not specified, no modification is made.
+        r"""Maximum video bitrate. If this parameter is not specified, no modification is made.
         :rtype: int
         """
         return self._MaxVideoBitrate
@@ -103667,7 +103667,7 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
 
 
 class ThirdPartyDrmInfo(AbstractModel):
-    r"""Third-party Drm encryption information.
+    r"""Encryption information of the external Drm vendor.
 
     """
 
@@ -103675,7 +103675,7 @@ class ThirdPartyDrmInfo(AbstractModel):
         r"""
         :param _DrmTypes: <p>Encryption type:</p><ul><li>FairPlay: can only be used for HLS, and the segment format can only be mp4 or mp4-mp4-segment</li><li>Widevine: can be used for HLS and DASH. For HLS, the segment format can only be mp4 or mp4-mp4-segment. For DASH, the segment format can only be mp4 or mp4-mp4-byterange</li><li>PlayReady: can be used for HLS and DASH. For HLS, the segment format can only be mp4 or mp4-mp4-segment. For DASH, the segment format can only be mp4 or mp4-mp4-byterange</li><li>Widevine+FairPlay, PlayReady+FairPlay, Widevine PlayReady FairPlay composite: can only be used for HLS, and the segment format can only be mp4 or mp4-mp4-segment</li><li>Widevine PlayReady composite: can be used for HLS and DASH. For HLS, the segment format can only be mp4 or mp4-mp4-segment. For DASH, the segment format can only be mp4 or mp4-mp4-byterange</li></ul>
         :type DrmTypes: list of str
-        :param _SPEKEDrm: <p>Third-party DRM vendor information.</p>
+        :param _SPEKEDrm: <p>External DRM vendor information.</p>
         :type SPEKEDrm: :class:`tencentcloud.vod.v20180717.models.SPEKEDrm`
         """
         self._DrmTypes = None
@@ -103694,7 +103694,7 @@ class ThirdPartyDrmInfo(AbstractModel):
 
     @property
     def SPEKEDrm(self):
-        r"""<p>Third-party DRM vendor information.</p>
+        r"""<p>External DRM vendor information.</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.SPEKEDrm`
         """
         return self._SPEKEDrm
@@ -103775,7 +103775,7 @@ class TimeRange(AbstractModel):
 
 
 class TraceWatermarkInput(AbstractModel):
-    r"""Watermark parameters for source tracing
+    r"""Traceability watermark parameters
 
     """
 
@@ -103783,7 +103783,7 @@ class TraceWatermarkInput(AbstractModel):
         r"""
         :param _Switch: Traceability watermark task switch. Required. Available values:
 <li>ON: enable traceability watermark</li>
-<li>OFF: disables traceability watermark.</li>
+<li>OFF: Disable traceability watermark.</li>
         :type Switch: str
         :param _Definition: Deprecated. Do not use.
         :type Definition: int
@@ -103795,7 +103795,7 @@ class TraceWatermarkInput(AbstractModel):
     def Switch(self):
         r"""Traceability watermark task switch. Required. Available values:
 <li>ON: enable traceability watermark</li>
-<li>OFF: disables traceability watermark.</li>
+<li>OFF: Disable traceability watermark.</li>
         :rtype: str
         """
         return self._Switch
@@ -104098,15 +104098,15 @@ class TranscodeTaskInput(AbstractModel):
         :type BlindWatermark: :class:`tencentcloud.vod.v20180717.models.BlindWatermarkInput`
         :param _MosaicSet: <p>Mosaic list. Up to 10 images are supported.</p>
         :type MosaicSet: list of MosaicInput
-        :param _HeadTailSet: <p>Opening and ending content list. Up to 10 opening and ending contents are supported.</p>
+        :param _HeadTailSet: <p>Opening and ending content list. Up to 10 supported.</p>
         :type HeadTailSet: list of HeadTailTaskInput
-        :param _StartTimeOffset: <p>Start time offset of the transcoded video, in seconds.</p><li>If not specified or set to 0, the transcoded video starts from the start position of the original video;</li><li>If the value is greater than 0 (assuming n), the transcoded video starts from the position at the nth second of the original video;</li><li>If the value is less than 0 (assuming -n), the transcoded video starts from the position n seconds before the end of the original video.</li>
+        :param _StartTimeOffset: <p>Start time offset of the transcoded video, in seconds.</p><li>If not specified or set to 0, the transcoded video starts from the start position of the original video;</li><li>If the value is greater than 0 (assuming n), the transcoded video starts from the nth second of the original video;</li><li>If the value is less than 0 (assuming -n), the transcoded video starts from the position n seconds before the end of the original video.</li>
         :type StartTimeOffset: float
         :param _EndTimeOffset: <p>End time offset of the transcoded video, in seconds.</p><li>If not specified or set to 0, the transcoded video lasts until the end of the original video.</li><li>If the value is greater than 0 (assuming n), the transcoded video lasts until the nth second of the original video.</li><li>If the value is less than 0 (assuming -n), the transcoded video lasts until n seconds before the end of the original video.</li>
         :type EndTimeOffset: float
         :param _OverrideParameter: <p>Custom video transcoding parameters.</p>
         :type OverrideParameter: :class:`tencentcloud.vod.v20180717.models.OverrideTranscodeParameter`
-        :param _SubtitleInfoSet: <p>Subtitle suppression information list. Up to 2 are supported.</p>
+        :param _SubtitleInfoSet: <p>Subtitle suppression information list. Up to 2 supported.</p>
         :type SubtitleInfoSet: list of SubtitleInfoInput
         """
         self._Definition = None
@@ -104189,7 +104189,7 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def HeadTailSet(self):
-        r"""<p>Opening and ending content list. Up to 10 opening and ending contents are supported.</p>
+        r"""<p>Opening and ending content list. Up to 10 supported.</p>
         :rtype: list of HeadTailTaskInput
         """
         return self._HeadTailSet
@@ -104200,7 +104200,7 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def StartTimeOffset(self):
-        r"""<p>Start time offset of the transcoded video, in seconds.</p><li>If not specified or set to 0, the transcoded video starts from the start position of the original video;</li><li>If the value is greater than 0 (assuming n), the transcoded video starts from the position at the nth second of the original video;</li><li>If the value is less than 0 (assuming -n), the transcoded video starts from the position n seconds before the end of the original video.</li>
+        r"""<p>Start time offset of the transcoded video, in seconds.</p><li>If not specified or set to 0, the transcoded video starts from the start position of the original video;</li><li>If the value is greater than 0 (assuming n), the transcoded video starts from the nth second of the original video;</li><li>If the value is less than 0 (assuming -n), the transcoded video starts from the position n seconds before the end of the original video.</li>
         :rtype: float
         """
         return self._StartTimeOffset
@@ -104233,7 +104233,7 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def SubtitleInfoSet(self):
-        r"""<p>Subtitle suppression information list. Up to 2 are supported.</p>
+        r"""<p>Subtitle suppression information list. Up to 2 supported.</p>
         :rtype: list of SubtitleInfoInput
         """
         return self._SubtitleInfoSet
@@ -107195,7 +107195,7 @@ class VideoTemplateInfo(AbstractModel):
 
 
 class VideoTemplateInfoForUpdate(AbstractModel):
-    r"""Video stream configuration parameters
+    r"""Video stream configuration parameters.
 
     """
 
@@ -107207,13 +107207,13 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         :type Fps: int
         :param _Bitrate: <p>Bitrate of video stream. Value range: 0 and [128, 100000]. Unit: kbps.<br>When the value is 0, it means VOD automatically sets the bitrate.</p>
         :type Bitrate: int
-        :param _ResolutionAdaptive: <p>Resolution adaptation. Available values:</p><li>open: enable. At this point, Width represents the long side of the video, and Height represents the short side.</li><li>close: disable. At this point, Width represents the width of the video, and Height represents the height.</li>
+        :param _ResolutionAdaptive: <p>Resolution adaptation. Available values:</p><li>open: enable. At this point, Width represents the long side of the video, and Height represents the short side of the video.</li><li>close: disable. At this point, Width represents the width of the video, and Height represents the height of the video.</li>
         :type ResolutionAdaptive: str
         :param _Width: <p>The maximum value of the video stream width (or long side). Valid values: 0 and [128, 8192]. Unit: px.</p><li>When Width and Height are both 0, the resolution is from the same source;</li><li>When Width is 0 and Height is non-0, Width is scaled proportionally;</li><li>When Width is non-0 and Height is 0, Height is scaled proportionally;</li><li>When both Width and Height are non-0, the resolution is specified by the user.</li>
         :type Width: int
         :param _Height: <p>Maximum height (or short side) of the video stream. Value range: 0 and [128, 8192]. Unit: px.</p>
         :type Height: int
-        :param _FillType: <p>Filling method. When the video stream configuration width and height parameters are inconsistent with the aspect ratio of the original video, the processing method for transcoding is "fill". Optional filling modes:</p><li>stretch: stretch each frame to fill the entire screen, which may cause the transcoded video to be "squashed" or "stretched";</li><li>black: keep the video aspect ratio unchanged, with the rest of the edges filled with black.</li><li>white: keep the video aspect ratio unchanged, with the rest of the edges filled with white.</li><li>gauss: Gaussian blur. Keep the video aspect ratio unchanged, with the rest of the edges filled using Gaussian blur.</li>
+        :param _FillType: <p>Filling method. When the video stream configuration width and height parameters are inconsistent with the aspect ratio of the original video, the processing method for transcoding is "filling". Optional filling methods:</p><li>stretch: Stretch each frame to fill the entire screen, which may cause the transcoded video to be "squashed" or "stretched";</li><li>black: Keep the video aspect ratio unchanged and fill the rest of the edges with black.</li><li>white: Keep the video aspect ratio unchanged and fill the rest of the edges with white.</li><li>gauss: Gaussian blur. Keep the video aspect ratio unchanged and use Gaussian blur filling for the rest of the edges.</li>
         :type FillType: str
         :param _Vcrf: <p>Control factor for constant video bitrate. Value range: [1, 51]. 0 indicates that it is disabled.</p><p><font color="red">Note:</font></p><li>If this parameter is specified, the bitrate control mode for CRF will be used to transcode (video bitrate will no longer take effect);</li><li>When the encoding format of the specified video stream is H.266, this field is required. Recommended value: 28;</li><li>If there are no special requirements, it is not recommended to specify this parameter.</li>
         :type Vcrf: int
@@ -107225,13 +107225,13 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         :type CodecTag: str
         :param _GopUnit: <p>Gop value unit.</p><p>Enumeration values:</p><ul><li>frame: number of frames.</li><li>second: seconds.</li></ul><p>Default value: frame</p>
         :type GopUnit: str
-        :param _Mode: <p>Bitrate control mode.</p><p>Enumeration values:</p><ul><li>VBR: Variable Bit Rate. It dynamically adjusts the output bitrate based on the complexity of the video image to ensure higher image quality. It is suitable for storage scenarios and applications with high image quality requirements.</li><li>ABR: Average Bit Rate. It tries to stabilize the average bitrate of the output video as much as possible while allowing short-term bitrate fluctuation. It is suitable for scenarios where minimizing overall bitrate is needed while maintaining a certain image quality.</li><li>CBR: Constant Bit Rate. It maintains a constant output bitrate during video encoding regardless of changes in image complexity. It is suitable for scenarios with strict network bandwidth requirements, such as live streaming.</li><li>VCRF: Constant Rate Factor. It controls video quality by setting a quality factor to achieve constant quality encoding of videos. The bitrate adjusts automatically based on content complexity. It is suitable for scenarios where maintaining a certain image quality is desired.</li></ul><p>Default value: VBR</p>
+        :param _Mode: <p>Bitrate control mode.</p><p>Enumeration values:</p><ul><li>VBR: Variable Bit Rate. The output bitrate is adjusted based on the complexity of the video image to ensure higher image quality. It is suitable for storage scenarios and applications with high image quality requirements.</li><li>ABR: Average Bit Rate. It tries to stabilize the average bitrate of the output video as much as possible while allowing short-term bitrate fluctuation. It is suitable for scenarios where minimizing overall bitrate is needed while maintaining a certain image quality.</li><li>CBR: Constant Bit Rate. The output bitrate remains constant during video encoding, regardless of image complexity. It is suitable for scenarios with strict network bandwidth requirements, such as live streaming.</li><li>VCRF: Constant Rate Factor. A quality factor is set for video quality control to achieve constant quality encoding of videos. The bitrate is adjusted based on content complexity. It is suitable for scenarios where maintaining a certain image quality is desired.</li></ul><p>Default value: VBR</p>
         :type Mode: str
         :param _Bframes: <p>Maximum number of consecutive B-frames. The default is auto, and -1 means change to automatic.</p><p>Value range: [-1, 16]</p>
         :type Bframes: int
-        :param _HlsTime: <p>Average shard duration. 0 or left empty means auto, which will automatically choose an appropriate shard duration based on video features such as GOP.</p><p>Value range: [0, 10]</p><p>Unit: seconds</p><p>Supports only transcoding templates, not adaptive bitrate stream templates.</p>
+        :param _HlsTime: <p>Average duration of slices. 0 or left empty means auto, which will choose an appropriate segment duration based on video features such as GOP.</p><p>Value range: [0, 10]</p><p>Unit: seconds</p><p>Supports only transcoding templates, not adaptive bitrate templates.</p>
         :type HlsTime: int
-        :param _VideoProfile: <p>A predefined combination of encoding tools or features allowed in a video encoding standard, suitable for different scenarios.</p><p>Enumeration values:</p><ul><li>baseline: Supports only I/p frames and non-interlaced scenarios, suitable for video calls, mobile video, and other scenarios.</li><li>main: Mainstream Profile, provides I-frames, p-frames, and B-frames, and supports both interlaced and non-interlaced modes. Mainly used in mainstream audio and video consumption products such as video players and streaming media transmission devices.</li><li>high: Highest encoding level, adds 8X8 prediction on top of the main Profile, and supports custom quantification. Widely used in Blu-ray storage, HDTV, and other scenarios.</li><li>default: Automatic filling along with the original video.  </li></ul><p>default value: default</p><p>This configuration item is valid only when Codec is libx264.</p>
+        :param _VideoProfile: <p>A predefined combination of encoding tools or features allowed in video encoding standards, suitable for different scenarios.</p><p>Enumeration values:</p><ul><li>baseline: Supports only I/p frames and non-interlaced scenarios, suitable for video calls, mobile video, and other scenarios.</li><li>main: Mainstream Profile that provides I, p, and B frames, and supports both interlaced and non-interlaced modes. It is mainly used in mainstream audio and video consumption products such as video players and streaming media transmission devices.</li><li>high: Highest encoding level. It adds 8X8 prediction on top of the main Profile and supports custom quantification. It is widely used in Blu-ray storage, HDTV, and other scenarios.</li><li>default: Automatic filling along with the original video.  </li></ul><p>default value: default</p><p>This configuration item is valid only when Codec is libx264.</p>
         :type VideoProfile: str
         """
         self._Codec = None
@@ -107286,7 +107286,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ResolutionAdaptive(self):
-        r"""<p>Resolution adaptation. Available values:</p><li>open: enable. At this point, Width represents the long side of the video, and Height represents the short side.</li><li>close: disable. At this point, Width represents the width of the video, and Height represents the height.</li>
+        r"""<p>Resolution adaptation. Available values:</p><li>open: enable. At this point, Width represents the long side of the video, and Height represents the short side of the video.</li><li>close: disable. At this point, Width represents the width of the video, and Height represents the height of the video.</li>
         :rtype: str
         """
         return self._ResolutionAdaptive
@@ -107319,7 +107319,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def FillType(self):
-        r"""<p>Filling method. When the video stream configuration width and height parameters are inconsistent with the aspect ratio of the original video, the processing method for transcoding is "fill". Optional filling modes:</p><li>stretch: stretch each frame to fill the entire screen, which may cause the transcoded video to be "squashed" or "stretched";</li><li>black: keep the video aspect ratio unchanged, with the rest of the edges filled with black.</li><li>white: keep the video aspect ratio unchanged, with the rest of the edges filled with white.</li><li>gauss: Gaussian blur. Keep the video aspect ratio unchanged, with the rest of the edges filled using Gaussian blur.</li>
+        r"""<p>Filling method. When the video stream configuration width and height parameters are inconsistent with the aspect ratio of the original video, the processing method for transcoding is "filling". Optional filling methods:</p><li>stretch: Stretch each frame to fill the entire screen, which may cause the transcoded video to be "squashed" or "stretched";</li><li>black: Keep the video aspect ratio unchanged and fill the rest of the edges with black.</li><li>white: Keep the video aspect ratio unchanged and fill the rest of the edges with white.</li><li>gauss: Gaussian blur. Keep the video aspect ratio unchanged and use Gaussian blur filling for the rest of the edges.</li>
         :rtype: str
         """
         return self._FillType
@@ -107385,7 +107385,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Mode(self):
-        r"""<p>Bitrate control mode.</p><p>Enumeration values:</p><ul><li>VBR: Variable Bit Rate. It dynamically adjusts the output bitrate based on the complexity of the video image to ensure higher image quality. It is suitable for storage scenarios and applications with high image quality requirements.</li><li>ABR: Average Bit Rate. It tries to stabilize the average bitrate of the output video as much as possible while allowing short-term bitrate fluctuation. It is suitable for scenarios where minimizing overall bitrate is needed while maintaining a certain image quality.</li><li>CBR: Constant Bit Rate. It maintains a constant output bitrate during video encoding regardless of changes in image complexity. It is suitable for scenarios with strict network bandwidth requirements, such as live streaming.</li><li>VCRF: Constant Rate Factor. It controls video quality by setting a quality factor to achieve constant quality encoding of videos. The bitrate adjusts automatically based on content complexity. It is suitable for scenarios where maintaining a certain image quality is desired.</li></ul><p>Default value: VBR</p>
+        r"""<p>Bitrate control mode.</p><p>Enumeration values:</p><ul><li>VBR: Variable Bit Rate. The output bitrate is adjusted based on the complexity of the video image to ensure higher image quality. It is suitable for storage scenarios and applications with high image quality requirements.</li><li>ABR: Average Bit Rate. It tries to stabilize the average bitrate of the output video as much as possible while allowing short-term bitrate fluctuation. It is suitable for scenarios where minimizing overall bitrate is needed while maintaining a certain image quality.</li><li>CBR: Constant Bit Rate. The output bitrate remains constant during video encoding, regardless of image complexity. It is suitable for scenarios with strict network bandwidth requirements, such as live streaming.</li><li>VCRF: Constant Rate Factor. A quality factor is set for video quality control to achieve constant quality encoding of videos. The bitrate is adjusted based on content complexity. It is suitable for scenarios where maintaining a certain image quality is desired.</li></ul><p>Default value: VBR</p>
         :rtype: str
         """
         return self._Mode
@@ -107407,7 +107407,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def HlsTime(self):
-        r"""<p>Average shard duration. 0 or left empty means auto, which will automatically choose an appropriate shard duration based on video features such as GOP.</p><p>Value range: [0, 10]</p><p>Unit: seconds</p><p>Supports only transcoding templates, not adaptive bitrate stream templates.</p>
+        r"""<p>Average duration of slices. 0 or left empty means auto, which will choose an appropriate segment duration based on video features such as GOP.</p><p>Value range: [0, 10]</p><p>Unit: seconds</p><p>Supports only transcoding templates, not adaptive bitrate templates.</p>
         :rtype: int
         """
         return self._HlsTime
@@ -107418,7 +107418,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def VideoProfile(self):
-        r"""<p>A predefined combination of encoding tools or features allowed in a video encoding standard, suitable for different scenarios.</p><p>Enumeration values:</p><ul><li>baseline: Supports only I/p frames and non-interlaced scenarios, suitable for video calls, mobile video, and other scenarios.</li><li>main: Mainstream Profile, provides I-frames, p-frames, and B-frames, and supports both interlaced and non-interlaced modes. Mainly used in mainstream audio and video consumption products such as video players and streaming media transmission devices.</li><li>high: Highest encoding level, adds 8X8 prediction on top of the main Profile, and supports custom quantification. Widely used in Blu-ray storage, HDTV, and other scenarios.</li><li>default: Automatic filling along with the original video.  </li></ul><p>default value: default</p><p>This configuration item is valid only when Codec is libx264.</p>
+        r"""<p>A predefined combination of encoding tools or features allowed in video encoding standards, suitable for different scenarios.</p><p>Enumeration values:</p><ul><li>baseline: Supports only I/p frames and non-interlaced scenarios, suitable for video calls, mobile video, and other scenarios.</li><li>main: Mainstream Profile that provides I, p, and B frames, and supports both interlaced and non-interlaced modes. It is mainly used in mainstream audio and video consumption products such as video players and streaming media transmission devices.</li><li>high: Highest encoding level. It adds 8X8 prediction on top of the main Profile and supports custom quantification. It is widely used in Blu-ray storage, HDTV, and other scenarios.</li><li>default: Automatic filling along with the original video.  </li></ul><p>default value: default</p><p>This configuration item is valid only when Codec is libx264.</p>
         :rtype: str
         """
         return self._VideoProfile
@@ -108649,11 +108649,11 @@ class WatermarkInput(AbstractModel):
         r"""
         :param _Definition: Watermark template ID.
         :type Definition: int
-        :param _TextContent: Text content, up to 100 characters. This field is required only when the watermark type is text.
+        :param _TextContent: Text content, up to 100 characters. Fill in only when the watermark type is text watermark.
 Text watermarks do not support watermarking screenshots.
         :type TextContent: str
         :param _SvgContent: SVG content. Length not exceeding 2,000,000 characters. Fill in only when the watermark type is SVG watermark.
-SVG watermark does not support watermarking screenshots.
+SVG watermark does not support screenshot watermarking.
         :type SvgContent: str
         :param _StartTimeOffset: Start time offset of a watermark, in seconds. If not set or set to 0, a watermark starts appearing when a video starts.
 <li>If not set or set to 0, a watermark starts appearing when a video starts.</li>
@@ -108663,7 +108663,7 @@ SVG watermark does not support watermarking screenshots.
         :param _EndTimeOffset: End time offset of a watermark, in seconds.
 <li>If not set or set to 0, a watermark will last until the end of a video.</li>
 <li>If the value is greater than 0 (for example, n), a watermark will disappear at second n.</li>
-<li>When the value is less than 0 (assuming -n), the watermark persists until n seconds before the end of the video.</li>
+<li>When the value is less than 0 (assuming -n), the watermark persists until n seconds before the end of a video.</li>
         :type EndTimeOffset: float
         """
         self._Definition = None
@@ -108685,7 +108685,7 @@ SVG watermark does not support watermarking screenshots.
 
     @property
     def TextContent(self):
-        r"""Text content, up to 100 characters. This field is required only when the watermark type is text.
+        r"""Text content, up to 100 characters. Fill in only when the watermark type is text watermark.
 Text watermarks do not support watermarking screenshots.
         :rtype: str
         """
@@ -108698,7 +108698,7 @@ Text watermarks do not support watermarking screenshots.
     @property
     def SvgContent(self):
         r"""SVG content. Length not exceeding 2,000,000 characters. Fill in only when the watermark type is SVG watermark.
-SVG watermark does not support watermarking screenshots.
+SVG watermark does not support screenshot watermarking.
         :rtype: str
         """
         return self._SvgContent
@@ -108726,7 +108726,7 @@ SVG watermark does not support watermarking screenshots.
         r"""End time offset of a watermark, in seconds.
 <li>If not set or set to 0, a watermark will last until the end of a video.</li>
 <li>If the value is greater than 0 (for example, n), a watermark will disappear at second n.</li>
-<li>When the value is less than 0 (assuming -n), the watermark persists until n seconds before the end of the video.</li>
+<li>When the value is less than 0 (assuming -n), the watermark persists until n seconds before the end of a video.</li>
         :rtype: float
         """
         return self._EndTimeOffset

@@ -727,6 +727,24 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyDBInstance(
+            self,
+            request: models.ModifyDBInstanceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDBInstanceResponse:
+        """
+        This API is used to modify instance configurations. It combines the ability to vertically and horizontally modify instances, and supports composite modifications of CPU, memory, disk, number of nodes, availability zone, and storage type. It supports DryRun precheck mode, allowing you to obtain the modification plan without actual execution.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDBInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDBInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyDBInstanceSecurityGroups(
             self,
             request: models.ModifyDBInstanceSecurityGroupsRequest,

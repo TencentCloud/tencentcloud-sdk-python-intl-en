@@ -923,6 +923,29 @@ class TdmysqlClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDBInstance(self, request):
+        r"""This API is used to modify instance configurations. It combines the ability to vertically and horizontally modify instances, and supports composite modifications of CPU, memory, disk, number of nodes, availability zone, and storage type. It supports DryRun precheck mode, allowing you to obtain the modification plan without actual execution.
+
+        :param request: Request instance for ModifyDBInstance.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.ModifyDBInstanceRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.ModifyDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDBInstanceSecurityGroups(self, request):
         r"""This API is used to modify cloud database security groups.
 

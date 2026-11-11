@@ -487,7 +487,7 @@ class RedisClient(AbstractClient):
 
 
     def DeleteReplicationInstance(self, request):
-        r"""This API is used to remove a replication group member. Note: This API is being deprecated. Use [RemoveReplicationInstance](https://intl.cloud.tencent.com/document/product/239/90099?from_cn_redirect=1) instead.
+        r"""This API is used to remove replication group members. Note: This API is offline. Please use RemoveReplicationInstance.
 
         :param request: Request instance for DeleteReplicationInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.DeleteReplicationInstanceRequest`
@@ -878,7 +878,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorBigKey(self, request):
-        r"""The API for querying big keys of a TencentDB for Redis instance was disused on October 31, 2022. For more information, see [API for Querying Instance Big Key Will Be Disused](https://intl.cloud.tencent.com/document/product/239/81005?from_cn_redirect=1).
+        r"""Tencent Cloud Database Redis decommissioned the API for querying large keys of instances on October 31, 2022. For the specific notice, please refer to the decommissioning announcement of the API for querying large keys of instances.
 
         :param request: Request instance for DescribeInstanceMonitorBigKey.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorBigKeyRequest`
@@ -901,7 +901,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorBigKeySizeDist(self, request):
-        r"""The API for querying big keys of a TencentDB for Redis instance was disused on October 31, 2022. For more information, see [API for Querying Instance Big Key Will Be Disused](https://intl.cloud.tencent.com/document/product/239/81005?from_cn_redirect=1).
+        r"""TencentDB for Redis decommissioned the API for querying large keys in instances on October 31, 2022. For the specific announcement, please refer to the decommissioning announcement of the API for querying large keys in instances.
 
         :param request: Request instance for DescribeInstanceMonitorBigKeySizeDist.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorBigKeySizeDistRequest`
@@ -924,7 +924,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorBigKeyTypeDist(self, request):
-        r"""The API for querying big keys of a TencentDB for Redis instance was disused on October 31, 2022. For more information, see [API for Querying Instance Big Key Will Be Disused](https://intl.cloud.tencent.com/document/product/239/81005?from_cn_redirect=1).
+        r"""TencentDB for Redis decommissioned the API for querying large keys in instances on October 31, 2022. For the specific announcement, please refer to the decommissioning announcement of the API for querying large keys in instances.
 
         :param request: Request instance for DescribeInstanceMonitorBigKeyTypeDist.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorBigKeyTypeDistRequest`
@@ -970,7 +970,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorSIP(self, request):
-        r"""This API is no longer used. Please use the TencentDB for DBbrain API [DescribeProxyProcessStatistics](https://intl.cloud.tencent.com/document/product/1130/84544?from_cn_redirect=1) to obtain the instance access source.
+        r"""This API is no longer used. Please use the TencentDB for DBbrain API [DescribeProxyProcessStatistics](https://www.tencentcloud.com/document/product/1130/84544?from_cn_redirect=1) to obtain the instance access source.
 
         :param request: Request instance for DescribeInstanceMonitorSIP.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorSIPRequest`
@@ -1936,7 +1936,7 @@ class RedisClient(AbstractClient):
 
 
     def ModfiyInstancePassword(self, request):
-        r"""This API is used to change the instance access password. Due to a spelling error in the original API name, it has been corrected to [ModifyInstancePassword](https://intl.cloud.tencent.com/document/product/239/111555?from_cn_redirect=1). It is recommended to use the corrected API.
+        r"""This API is used to change the instance access password. As the API name contains a spelling error, it has been corrected to [ModifyInstancePassword](https://www.tencentcloud.com/document/product/239/111555?from_cn_redirect=1). The corrected API is recommended for use.
 
         :param request: Request instance for ModfiyInstancePassword.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModfiyInstancePasswordRequest`
@@ -2441,6 +2441,52 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifySSLEncryptionMode(self, request):
+        r"""This API is used to change the SSL encryption mode.
+
+        :param request: Request instance for ModifySSLEncryptionMode.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifySSLEncryptionModeRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifySSLEncryptionModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySSLEncryptionMode", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySSLEncryptionModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyValkeyModule(self, request):
+        r"""This API is used to modify the enable status of the Valkey instance extension module.
+
+        :param request: Request instance for ModifyValkeyModule.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyValkeyModuleRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyValkeyModuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyValkeyModule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyValkeyModuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def OpenLog(self, request):
         r"""Enable logging
 
@@ -2708,6 +2754,29 @@ class RedisClient(AbstractClient):
             body = self.call("SwitchProxy", params, headers=headers)
             response = json.loads(body)
             model = models.SwitchProxyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateSSLCert(self, request):
+        r"""This API is used to update SSL key information.
+
+        :param request: Request instance for UpdateSSLCert.
+        :type request: :class:`tencentcloud.redis.v20180412.models.UpdateSSLCertRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.UpdateSSLCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateSSLCert", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateSSLCertResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
