@@ -44,9 +44,6 @@ FAILEDOPERATION_MYSQLDBOPERATIONFAILED = 'FailedOperation.MysqlDBOperationFailed
 # Failed to operate the Redis database.
 FAILEDOPERATION_REDISOPERATIONFAILED = 'FailedOperation.RedisOperationFailed'
 
-# The session being deleted is in use.
-FAILEDOPERATION_SESSIONINUSED = 'FailedOperation.SessionInUsed'
-
 # The number of additions to the blocklist/allowlist exceeds the limit.
 FAILEDOPERATION_THENUMBEROFADDEDBLACKANDWHITELISTEXCEEDSTHEUPPERLIMIT = 'FailedOperation.TheNumberOfAddedBlackAndWhiteListExceedsTheUpperLimit'
 
@@ -83,6 +80,30 @@ INVALIDPARAMETER_DOMAINNOTRECORD = 'InvalidParameter.DomainNotRecord'
 # Invalid certificate content.
 INVALIDPARAMETER_INVALIDCERTIFICATE = 'InvalidParameter.InvalidCertificate'
 
+# Content is empty.
+INVALIDPARAMETER_LLMCONTENTEMPTY = 'InvalidParameter.LLMContentEmpty'
+
+# Internal service error.
+INVALIDPARAMETER_LLMINTERNALERROR = 'InvalidParameter.LLMInternalError'
+
+# Invalid Type.
+INVALIDPARAMETER_LLMINVALIDTYPE = 'InvalidParameter.LLMInvalidType'
+
+# No rules are configured for the serviceid during large model invocation.
+INVALIDPARAMETER_LLMNORULES = 'InvalidParameter.LLMNoRules'
+
+# Failed to parse the request body.
+INVALIDPARAMETER_LLMPARSEFAILED = 'InvalidParameter.LLMParseFailed'
+
+# RequestId is empty.
+INVALIDPARAMETER_LLMREQUESTIDEMPTY = 'InvalidParameter.LLMRequestIdEmpty'
+
+# ServiceId is empty.
+INVALIDPARAMETER_LLMSERVICEIDEMPTY = 'InvalidParameter.LLMServiceIdEmpty'
+
+# The large model service switch is not enabled.
+INVALIDPARAMETER_LLMSWITCHOFF = 'InvalidParameter.LLMSwitchOff'
+
 # Logical error: Logical errors in SQL search statements can also lead to mistakes, such as using incorrect operators, wrong conditions, etc.
 INVALIDPARAMETER_LOGICERR = 'InvalidParameter.LogicErr'
 
@@ -100,6 +121,45 @@ INVALIDPARAMETER_QUERYSTRINGSYNTAXERR = 'InvalidParameter.QueryStringSyntaxErr'
 
 # Syntax error: SQL search statements must follow specific syntax rules. Failure to do so, such as missing keywords, spelling errors, missing semicolons, etc., will cause SQL statements to not execute.
 INVALIDPARAMETER_SQLSYNTAXERR = 'InvalidParameter.SQLSyntaxErr'
+
+# The API Key has been disabled.
+INVALIDPARAMETER_SKILLSCANAPIKEYDISABLED = 'InvalidParameter.SkillScanApiKeyDisabled'
+
+# Failed to create the scan task due to an internal service error.
+INVALIDPARAMETER_SKILLSCANCREATESCANFAILED = 'InvalidParameter.SkillScanCreateScanFailed'
+
+# FileData is not a valid Base64-encoded string.
+INVALIDPARAMETER_SKILLSCANINVALIDBASE64 = 'InvalidParameter.SkillScanInvalidBase64'
+
+# The file is not a valid ZIP archive.
+INVALIDPARAMETER_SKILLSCANINVALIDFILEFORMAT = 'InvalidParameter.SkillScanInvalidFileFormat'
+
+# Parameter validation failed, such as an invalid content_hash format or missing required fields.
+INVALIDPARAMETER_SKILLSCANINVALIDPARAM = 'InvalidParameter.SkillScanInvalidParam'
+
+# Invalid request format, such as an incorrect Content-Type or JSON parsing failure.
+INVALIDPARAMETER_SKILLSCANINVALIDREQUEST = 'InvalidParameter.SkillScanInvalidRequest'
+
+# No uploaded file detected.
+INVALIDPARAMETER_SKILLSCANNOFILES = 'InvalidParameter.SkillScanNoFiles'
+
+# Failed to query due to an internal service error.
+INVALIDPARAMETER_SKILLSCANQUERYFAILED = 'InvalidParameter.SkillScanQueryFailed'
+
+# Request frequency limit exceeded.
+INVALIDPARAMETER_SKILLSCANRATELIMITEXCEEDED = 'InvalidParameter.SkillScanRateLimitExceeded'
+
+# ServiceId is empty.
+INVALIDPARAMETER_SKILLSCANSERVICEIDEMPTY = 'InvalidParameter.SkillScanServiceIdEmpty'
+
+# The protection switch is not enabled.
+INVALIDPARAMETER_SKILLSCANSWITCHOFF = 'InvalidParameter.SkillScanSwitchOff'
+
+# Failed to trigger the detection task due to an internal service error.
+INVALIDPARAMETER_SKILLSCANTRIGGERFAILED = 'InvalidParameter.SkillScanTriggerFailed'
+
+# The API Key is missing or invalid.
+INVALIDPARAMETER_SKILLSCANUNAUTHORIZED = 'InvalidParameter.SkillScanUnauthorized'
 
 # The current instance version does not support enabling TLS by definition. Please upgrade to the Advanced Edition or above.
 INVALIDPARAMETER_SUPPORTTLSCONFFAILED = 'InvalidParameter.SupportTLSConfFailed'
@@ -127,6 +187,12 @@ INVALIDPARAMETERVALUE_INVALIDREQUEST = 'InvalidParameterValue.InvalidRequest'
 
 # The quota limit is exceeded.
 LIMITEXCEEDED = 'LimitExceeded'
+
+# The number of content rules under the current domain has reached the upper limit.
+LIMITEXCEEDED_CONTENTRULEERR = 'LimitExceeded.ContentRuleErr'
+
+# The number of compute consumption rules under the current domain has reached the upper limit.
+LIMITEXCEEDED_LIMITRULEERR = 'LimitExceeded.LimitRuleErr'
 
 # SpecificationErr
 LIMITEXCEEDED_SPECIFICATIONERR = 'LimitExceeded.SpecificationErr'

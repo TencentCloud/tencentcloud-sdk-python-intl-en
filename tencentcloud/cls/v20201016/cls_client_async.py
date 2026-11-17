@@ -1954,7 +1954,7 @@ class ClsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeKafkaConsumerResponse:
         """
-        This API is used to access Kafka protocol consumption information.
+        Accesses Kafka protocol consumption information
         """
         
         kwargs = {}

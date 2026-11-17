@@ -327,7 +327,7 @@ class FaceidClient(AbstractClient):
 
 
     def DetectAIFakeFaces(self, request):
-        r"""Based on the multimodal AI large model algorithm, it provides anti-attack detection capabilities for facial images and videos. It can effectively identify highly simulated AIGC face-changing, high-definition remakes, batch black market attacks, watermarks and other attack traces, and enhance the anti-counterfeiting security capabilities of images and videos.
+        r"""Based on multimodal AI large model algorithms, this API provides anti-attack detection capabilities for face images and videos. It can effectively identify highly realistic AIGC face swaps, high-definition recaptures, batch black-market attacks, watermarks, and other attack traces, enhancing the anti-counterfeiting security capabilities for images and videos.
 
         :param request: Request instance for DetectAIFakeFaces.
         :type request: :class:`tencentcloud.faceid.v20180301.models.DetectAIFakeFacesRequest`

@@ -2475,7 +2475,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeKafkaConsumer(self, request):
-        r"""This API is used to access Kafka protocol consumption information.
+        r"""Accesses Kafka protocol consumption information
 
         :param request: Request instance for DescribeKafkaConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeKafkaConsumerRequest`

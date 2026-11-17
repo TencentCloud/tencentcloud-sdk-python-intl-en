@@ -3543,6 +3543,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTimingFunctionAnalysisData(self, request):
+        r"""This API is used to query the time series data of edge function analysis. Note that the data queried by this API has a delay of about 10 minutes. It is recommended to pull data from at least 10 minutes before the current time.
+
+        :param request: Request instance for DescribeTimingFunctionAnalysisData.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTimingFunctionAnalysisDataRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeTimingFunctionAnalysisDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTimingFunctionAnalysisData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTimingFunctionAnalysisDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTimingL4Data(self, request):
         r"""<p>This API is used to query time series monitoring data for L4 proxy instences.</p>
 
@@ -3630,6 +3653,29 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeTimingL7OriginPullData", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTimingL7OriginPullDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTopFunctionAnalysisData(self, request):
+        r"""This API is used to query the topN data of Edge Functions by a specified dimension. Note that the data returned by this API has a delay of about 10 minutes. We recommend that you query the data generated at least 10 minutes before the current time.
+
+        :param request: Request instance for DescribeTopFunctionAnalysisData.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTopFunctionAnalysisDataRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeTopFunctionAnalysisDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTopFunctionAnalysisData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTopFunctionAnalysisDataResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

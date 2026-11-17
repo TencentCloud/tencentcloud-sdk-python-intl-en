@@ -17,13 +17,16 @@
 # Token expired
 AUTHFAILURE_SIGNATUREEXPIRE = 'AuthFailure.SignatureExpire'
 
-# The CardSide type of the ID card is incorrect.
+# Failed to classify the card type.
+FAILEDOPERATION_CARDCLASSIFYFAILED = 'FailedOperation.CardClassifyFailed'
+
+# The CardSide value is invalid.
 FAILEDOPERATION_CARDSIDEERROR = 'FailedOperation.CardSideError'
 
-# Failed to download the file.
+# File download failed.
 FAILEDOPERATION_DOWNLOADERROR = 'FailedOperation.DownLoadError'
 
-# The image is empty.
+# The image content is empty.
 FAILEDOPERATION_EMPTYIMAGEERROR = 'FailedOperation.EmptyImageError'
 
 # Recognition by the engine timed out.
@@ -44,13 +47,13 @@ FAILEDOPERATION_IDCARDTOOSMALL = 'FailedOperation.IdCardTooSmall'
 # The image is blurry.
 FAILEDOPERATION_IMAGEBLUR = 'FailedOperation.ImageBlur'
 
-# Failed to decode the image.
+# Image decoding failed.
 FAILEDOPERATION_IMAGEDECODEFAILED = 'FailedOperation.ImageDecodeFailed'
 
 # No second-generation resident identity card or temporary ID card is detected in the image.
 FAILEDOPERATION_IMAGENOIDCARD = 'FailedOperation.ImageNoIdCard'
 
-# Image is not of the specified card category.
+# The image is not of the specified card category.
 FAILEDOPERATION_IMAGENOSPECIFIEDCARD = 'FailedOperation.ImageNoSpecifiedCard'
 
 # No text is detected in the image.
@@ -86,11 +89,14 @@ FAILEDOPERATION_NOPASSPORT = 'FailedOperation.NoPassport'
 # Not the specified document.
 FAILEDOPERATION_NOTAPPOINTCARD = 'FailedOperation.NotAppointCard'
 
-# OCR recognition failed. This error may be caused by unstable network connections, service anomalies, or other issues.
+# OCR recognition failed.
 FAILEDOPERATION_OCRFAILED = 'FailedOperation.OcrFailed'
 
 # Failed to parse the PDF file. The file may be corrupted, encrypted or contains unsupported content.
 FAILEDOPERATION_PDFPARSEFAILED = 'FailedOperation.PDFParseFailed'
+
+# The front and back images show the same side of the card.
+FAILEDOPERATION_SAMESIDEIMAGES = 'FailedOperation.SameSideImages'
 
 # Unknown error.
 FAILEDOPERATION_UNKNOWERROR = 'FailedOperation.UnKnowError'
@@ -101,7 +107,10 @@ FAILEDOPERATION_UNKNOWFILETYPEERROR = 'FailedOperation.UnKnowFileTypeError'
 # The service has not been activated.
 FAILEDOPERATION_UNOPENERROR = 'FailedOperation.UnOpenError'
 
-# General warning service exception
+# The card type is not supported.
+FAILEDOPERATION_UNSUPPORTEDCARDTYPE = 'FailedOperation.UnsupportedCardType'
+
+# The general warning service is abnormal.
 FAILEDOPERATION_WARNINGSERVICEFAILED = 'FailedOperation.WarningServiceFailed'
 
 # Config is not in valid JSON format.

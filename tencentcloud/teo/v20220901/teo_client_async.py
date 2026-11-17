@@ -2792,6 +2792,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTimingFunctionAnalysisData(
+            self,
+            request: models.DescribeTimingFunctionAnalysisDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTimingFunctionAnalysisDataResponse:
+        """
+        This API is used to query the time series data of edge function analysis. Note that the data queried by this API has a delay of about 10 minutes. It is recommended to pull data from at least 10 minutes before the current time.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTimingFunctionAnalysisData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTimingFunctionAnalysisDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTimingL4Data(
             self,
             request: models.DescribeTimingL4DataRequest,
@@ -2863,6 +2881,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "DescribeTimingL7OriginPullData"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeTimingL7OriginPullDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTopFunctionAnalysisData(
+            self,
+            request: models.DescribeTopFunctionAnalysisDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTopFunctionAnalysisDataResponse:
+        """
+        This API is used to query the topN data of Edge Functions by a specified dimension. Note that the data returned by this API has a delay of about 10 minutes. We recommend that you query the data generated at least 10 minutes before the current time.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTopFunctionAnalysisData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTopFunctionAnalysisDataResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

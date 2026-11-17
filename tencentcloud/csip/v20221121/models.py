@@ -26950,7 +26950,7 @@ class ComplianceTermItem(AbstractModel):
 
 
 class ComponentDetailItem(AbstractModel):
-    r"""Associated component & path description
+    r"""Associated component & path details
 
     """
 
@@ -26958,7 +26958,7 @@ class ComponentDetailItem(AbstractModel):
         r"""
         :param _Name: Component name
         :type Name: str
-        :param _Version: cache hit version
+        :param _Version: Hit version
         :type Version: str
         :param _Path: Association path
         :type Path: str
@@ -26983,7 +26983,7 @@ class ComponentDetailItem(AbstractModel):
 
     @property
     def Version(self):
-        r"""cache hit version
+        r"""Hit version
         :rtype: str
         """
         return self._Version
@@ -27278,6 +27278,42 @@ class ContainerAppItem(AbstractModel):
         self._ExePath = params.get("ExePath")
         self._ConfigPath = params.get("ConfigPath")
         self._ProcessCnt = params.get("ProcessCnt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContainerAutoScaleConfig(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        r"""
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41759,11 +41795,11 @@ class CreateHostVulExportJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessAction: <p>Exported action</p><p>Enumeration value:</p><ul><li>LinuxHostVulRiskList: linux vulnerability risk list</li><li>WebCmsHostVulRiskList: WebCms vulnerability risk list</li><li>AppHostVulRiskList: App vulnerability risk list</li><li>EmergencyHostVulRiskList: Emergency vulnerability risk list</li><li>KBRiskList: Windows kb risk list</li><li>RelateHostList: Associated host list</li><li>WhiteList: Vulnerability allowlist</li></ul>
+        :param _BusinessAction: <p>Export action</p><p>Enumeration values:</p><ul><li>LinuxHostVulRiskList: linux vulnerability risk list</li><li>WebCmsHostVulRiskList: WebCms vulnerability risk list</li><li>AppHostVulRiskList: App vulnerability risk list</li><li>EmergencyHostVulRiskList: Emergency vulnerability risk list</li><li>KBRiskList: Windows kb risk list</li><li>RelateHostList: Associated host list</li><li>WhiteList: Vulnerability allowlist</li></ul>
         :type BusinessAction: str
         :param _MemberId: <p>Group account member id</p>
         :type MemberId: list of str
-        :param _Filters: <p>Filter conditions array, multi-condition with each other is AND relationship<br>Supported Filter.Name:<br>KbID: KB risk associated server in the current situation needs to add KB Risk ID<br>VulID: Vulnerability risk associated server in the current situation needs to add vul Risk ID</p>
+        :param _Filters: <p>Criteria array, multi-condition uses AND relationship with each other<br>Supported Filter.Name:<br>KbID: KB risk associated host requires adding KB Risk ID as needed<br>VulID: Vulnerability risk associated host requires adding vul Risk ID as needed</p>
         :type Filters: list of Filters
         """
         self._BusinessAction = None
@@ -41772,7 +41808,7 @@ class CreateHostVulExportJobRequest(AbstractModel):
 
     @property
     def BusinessAction(self):
-        r"""<p>Exported action</p><p>Enumeration value:</p><ul><li>LinuxHostVulRiskList: linux vulnerability risk list</li><li>WebCmsHostVulRiskList: WebCms vulnerability risk list</li><li>AppHostVulRiskList: App vulnerability risk list</li><li>EmergencyHostVulRiskList: Emergency vulnerability risk list</li><li>KBRiskList: Windows kb risk list</li><li>RelateHostList: Associated host list</li><li>WhiteList: Vulnerability allowlist</li></ul>
+        r"""<p>Export action</p><p>Enumeration values:</p><ul><li>LinuxHostVulRiskList: linux vulnerability risk list</li><li>WebCmsHostVulRiskList: WebCms vulnerability risk list</li><li>AppHostVulRiskList: App vulnerability risk list</li><li>EmergencyHostVulRiskList: Emergency vulnerability risk list</li><li>KBRiskList: Windows kb risk list</li><li>RelateHostList: Associated host list</li><li>WhiteList: Vulnerability allowlist</li></ul>
         :rtype: str
         """
         return self._BusinessAction
@@ -41794,7 +41830,7 @@ class CreateHostVulExportJobRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<p>Filter conditions array, multi-condition with each other is AND relationship<br>Supported Filter.Name:<br>KbID: KB risk associated server in the current situation needs to add KB Risk ID<br>VulID: Vulnerability risk associated server in the current situation needs to add vul Risk ID</p>
+        r"""<p>Criteria array, multi-condition uses AND relationship with each other<br>Supported Filter.Name:<br>KbID: KB risk associated host requires adding KB Risk ID as needed<br>VulID: Vulnerability risk associated host requires adding vul Risk ID as needed</p>
         :rtype: list of Filters
         """
         return self._Filters
@@ -46571,9 +46607,9 @@ class CreateVulFixRetryTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: <p>Repair task ID that needs to be retried</p>
+        :param _TaskId: <p>Repair task ID that needs to retry</p>
         :type TaskId: int
-        :param _InstanceIds: <p>Specify the list of host instance IDs that need to retry. If not passed, retry all failed hosts.</p>
+        :param _InstanceIds: <p>Specify the instance ID list of the host that needs to retry. If not passed, retry all failed hosts.</p>
         :type InstanceIds: list of str
         :param _MemberId: Group Account Member ID
         :type MemberId: list of str
@@ -46584,7 +46620,7 @@ class CreateVulFixRetryTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""<p>Repair task ID that needs to be retried</p>
+        r"""<p>Repair task ID that needs to retry</p>
         :rtype: int
         """
         return self._TaskId
@@ -46595,7 +46631,7 @@ class CreateVulFixRetryTaskRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""<p>Specify the list of host instance IDs that need to retry. If not passed, retry all failed hosts.</p>
+        r"""<p>Specify the instance ID list of the host that needs to retry. If not passed, retry all failed hosts.</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -46637,9 +46673,9 @@ class CreateVulFixRetryTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: <p>New task ID generated by retry, used for subsequent query task status</p>
+        :param _TaskId: <p>ID of the generated new task for retry, used for subsequently querying task status</p>
         :type TaskId: int
-        :param _RetryCount: <p>Number of hosts retried this time</p>
+        :param _RetryCount: <p>Number of hosts to retry this time</p>
         :type RetryCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -46650,7 +46686,7 @@ class CreateVulFixRetryTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""<p>New task ID generated by retry, used for subsequent query task status</p>
+        r"""<p>ID of the generated new task for retry, used for subsequently querying task status</p>
         :rtype: int
         """
         return self._TaskId
@@ -46661,7 +46697,7 @@ class CreateVulFixRetryTaskResponse(AbstractModel):
 
     @property
     def RetryCount(self):
-        r"""<p>Number of hosts retried this time</p>
+        r"""<p>Number of hosts to retry this time</p>
         :rtype: int
         """
         return self._RetryCount
@@ -46695,15 +46731,15 @@ class CreateVulFixTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FixItems: <p>Repair item list, each item specifies a vulnerability/KB patch and its hosts requiring fixing<br>Input parameter limit: No more than 100 items, total number of instances not more than 5000</p>
+        :param _FixItems: <p>Repair item list. Each item specifies a vulnerability/KB patch and its hosts requiring fixing<br>Input limit: up to 100 items, and the total number of instances cannot exceed 5000</p>
         :type FixItems: list of VulFixItem
-        :param _Timeout: <p>Maximum repair time<br>Measurement unit: second<br>Default value: 3600</p>
+        :param _Timeout: <p>Maximum repair time<br>Unit: second<br>Default value: 3600</p>
         :type Timeout: int
-        :param _CreateSnapshot: <p>Whether to create a disk snapshot before repair<br>Default value: false</p>
+        :param _CreateSnapshot: <p>Create a disk snapshot before repair<br>Default value: false</p>
         :type CreateSnapshot: bool
-        :param _SnapshotName: <p>Snapshot name. Valid when CreateSnapshot is true.<br>Input parameter limit: Up to 128 characters.</p>
+        :param _SnapshotName: <p>Snapshot name. Valid when CreateSnapshot is true. Input limits: up to 60 characters, with automatic truncation for overly long ones.</p>
         :type SnapshotName: str
-        :param _SaveDays: <p>Snapshot retention days. Valid when CreateSnapshot is true.</p>
+        :param _SaveDays: <p>Snapshot retention days. Valid when CreateSnapshot is true</p>
         :type SaveDays: int
         :param _MemberId: Group Account Member ID
         :type MemberId: list of str
@@ -46717,7 +46753,7 @@ class CreateVulFixTaskRequest(AbstractModel):
 
     @property
     def FixItems(self):
-        r"""<p>Repair item list, each item specifies a vulnerability/KB patch and its hosts requiring fixing<br>Input parameter limit: No more than 100 items, total number of instances not more than 5000</p>
+        r"""<p>Repair item list. Each item specifies a vulnerability/KB patch and its hosts requiring fixing<br>Input limit: up to 100 items, and the total number of instances cannot exceed 5000</p>
         :rtype: list of VulFixItem
         """
         return self._FixItems
@@ -46728,7 +46764,7 @@ class CreateVulFixTaskRequest(AbstractModel):
 
     @property
     def Timeout(self):
-        r"""<p>Maximum repair time<br>Measurement unit: second<br>Default value: 3600</p>
+        r"""<p>Maximum repair time<br>Unit: second<br>Default value: 3600</p>
         :rtype: int
         """
         return self._Timeout
@@ -46739,7 +46775,7 @@ class CreateVulFixTaskRequest(AbstractModel):
 
     @property
     def CreateSnapshot(self):
-        r"""<p>Whether to create a disk snapshot before repair<br>Default value: false</p>
+        r"""<p>Create a disk snapshot before repair<br>Default value: false</p>
         :rtype: bool
         """
         return self._CreateSnapshot
@@ -46750,7 +46786,7 @@ class CreateVulFixTaskRequest(AbstractModel):
 
     @property
     def SnapshotName(self):
-        r"""<p>Snapshot name. Valid when CreateSnapshot is true.<br>Input parameter limit: Up to 128 characters.</p>
+        r"""<p>Snapshot name. Valid when CreateSnapshot is true. Input limits: up to 60 characters, with automatic truncation for overly long ones.</p>
         :rtype: str
         """
         return self._SnapshotName
@@ -46761,7 +46797,7 @@ class CreateVulFixTaskRequest(AbstractModel):
 
     @property
     def SaveDays(self):
-        r"""<p>Snapshot retention days. Valid when CreateSnapshot is true.</p>
+        r"""<p>Snapshot retention days. Valid when CreateSnapshot is true</p>
         :rtype: int
         """
         return self._SaveDays
@@ -46811,7 +46847,7 @@ class CreateVulFixTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: <p>Repair task ID, used for subsequent query task status</p>
+        :param _TaskId: <p>Repair task ID, used for subsequent query of task status</p>
         :type TaskId: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -46821,7 +46857,7 @@ class CreateVulFixTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""<p>Repair task ID, used for subsequent query task status</p>
+        r"""<p>Repair task ID, used for subsequent query of task status</p>
         :rtype: int
         """
         return self._TaskId
@@ -46854,11 +46890,11 @@ class CreateVulFixedExportJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: <p>Filter criteria (same as DescribeVulFixedList)<br>Supported Filter.Name:<br>Keyword - Fuzzy matching, search by keyword (vulnerability name/CVE ID/host name/instance ID)<br>VulName - Fuzzy matching, vulnerability name search<br>Level - Exact match, filter by vulnerability level: LOW-Low risk MEDIUM-Medium risk HIGH-High risk CRITICAL-Critical<br>VprLevel - Exact match, filter by VPR rating: 1-Low 2-Medium 3-High 4-Critical<br>VulCategory - Exact match, filter by vulnerability type: LINUX-Linux software vulnerability WINDOWS-Windows system patch vulnerability WEB_CMS-Web-CMS vulnerability APPLICATION-Application vulnerability EMERGENCY-Emergency vulnerability<br>MachineName - Fuzzy matching, host name search<br>InstanceId - Fuzzy matching, instance ID search<br>FixTime - Range matching, repair time range, input two values for start and end time</p>
+        :param _Filters: <p>Filter criteria (same as DescribeVulFixedList)<br>Supported Filter.Name:<br>Keyword - fuzzy matching, search by keyword (vulnerability name/CVE ID/host name/instance ID)<br>VulName - fuzzy matching, search by vulnerability name<br>Level - exact match, filter by vulnerability level: LOW-low MEDIUM-medium HIGH-high CRITICAL-critical<br>VprLevel - exact match, filter by VPR rating: 1-Low 2-Medium 3-High 4-Critical<br>VulCategory - exact match, filter by vulnerability type: LINUX-Linux software vulnerability WINDOWS-Windows system patch vulnerability WEB_CMS-Web-CMS vulnerability APPLICATION-application vulnerability EMERGENCY-urgent vulnerability<br>MachineName - fuzzy matching, search by host name<br>InstanceId - fuzzy matching, search by instance ID<br>FixTime - range matching, repair time range. Input two values for start and end time</p>
         :type Filters: list of Filters
-        :param _Order: <p>Sorting field<br>Enumeration value:<br>FixTime: Sort by repair time<br>VulName: Sort by vulnerability name</p>
+        :param _Order: <p>Sorting field<br>Enumeration values:<br>FixTime: Sort by fix time<br>VulName: Sort by vulnerability name</p>
         :type Order: str
-        :param _By: <p>Sorting method<br>Enumeration value:<br>asc: Ascending<br>desc: Descending order<br>Default value: desc</p>
+        :param _By: <p>Sorting method<br>Enumeration values:<br>asc: ascending<br>desc: descending<br>Default value: desc</p>
         :type By: str
         :param _MemberId: Group Account Member ID
         :type MemberId: list of str
@@ -46870,7 +46906,7 @@ class CreateVulFixedExportJobRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<p>Filter criteria (same as DescribeVulFixedList)<br>Supported Filter.Name:<br>Keyword - Fuzzy matching, search by keyword (vulnerability name/CVE ID/host name/instance ID)<br>VulName - Fuzzy matching, vulnerability name search<br>Level - Exact match, filter by vulnerability level: LOW-Low risk MEDIUM-Medium risk HIGH-High risk CRITICAL-Critical<br>VprLevel - Exact match, filter by VPR rating: 1-Low 2-Medium 3-High 4-Critical<br>VulCategory - Exact match, filter by vulnerability type: LINUX-Linux software vulnerability WINDOWS-Windows system patch vulnerability WEB_CMS-Web-CMS vulnerability APPLICATION-Application vulnerability EMERGENCY-Emergency vulnerability<br>MachineName - Fuzzy matching, host name search<br>InstanceId - Fuzzy matching, instance ID search<br>FixTime - Range matching, repair time range, input two values for start and end time</p>
+        r"""<p>Filter criteria (same as DescribeVulFixedList)<br>Supported Filter.Name:<br>Keyword - fuzzy matching, search by keyword (vulnerability name/CVE ID/host name/instance ID)<br>VulName - fuzzy matching, search by vulnerability name<br>Level - exact match, filter by vulnerability level: LOW-low MEDIUM-medium HIGH-high CRITICAL-critical<br>VprLevel - exact match, filter by VPR rating: 1-Low 2-Medium 3-High 4-Critical<br>VulCategory - exact match, filter by vulnerability type: LINUX-Linux software vulnerability WINDOWS-Windows system patch vulnerability WEB_CMS-Web-CMS vulnerability APPLICATION-application vulnerability EMERGENCY-urgent vulnerability<br>MachineName - fuzzy matching, search by host name<br>InstanceId - fuzzy matching, search by instance ID<br>FixTime - range matching, repair time range. Input two values for start and end time</p>
         :rtype: list of Filters
         """
         return self._Filters
@@ -46881,7 +46917,7 @@ class CreateVulFixedExportJobRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""<p>Sorting field<br>Enumeration value:<br>FixTime: Sort by repair time<br>VulName: Sort by vulnerability name</p>
+        r"""<p>Sorting field<br>Enumeration values:<br>FixTime: Sort by fix time<br>VulName: Sort by vulnerability name</p>
         :rtype: str
         """
         return self._Order
@@ -46892,7 +46928,7 @@ class CreateVulFixedExportJobRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""<p>Sorting method<br>Enumeration value:<br>asc: Ascending<br>desc: Descending order<br>Default value: desc</p>
+        r"""<p>Sorting method<br>Enumeration values:<br>asc: ascending<br>desc: descending<br>Default value: desc</p>
         :rtype: str
         """
         return self._By
@@ -46940,7 +46976,7 @@ class CreateVulFixedExportJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobID: <p>Export task ID<br>Used when: front-end polling the status of tasks for reference</p>
+        :param _JobID: <p>Export task ID<br>Value for reference: used when polling the export task status on the frontend</p>
         :type JobID: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -46950,7 +46986,7 @@ class CreateVulFixedExportJobResponse(AbstractModel):
 
     @property
     def JobID(self):
-        r"""<p>Export task ID<br>Used when: front-end polling the status of tasks for reference</p>
+        r"""<p>Export task ID<br>Value for reference: used when polling the export task status on the frontend</p>
         :rtype: str
         """
         return self._JobID
@@ -64711,6 +64747,51 @@ class DescribeCSCPayInfoRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _MemberId: 
+        :type MemberId: list of str
+        :param _NeedQuotaUsed: 
+        :type NeedQuotaUsed: bool
+        """
+        self._MemberId = None
+        self._NeedQuotaUsed = None
+
+    @property
+    def MemberId(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def NeedQuotaUsed(self):
+        r"""
+        :rtype: bool
+        """
+        return self._NeedQuotaUsed
+
+    @NeedQuotaUsed.setter
+    def NeedQuotaUsed(self, NeedQuotaUsed):
+        self._NeedQuotaUsed = NeedQuotaUsed
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._NeedQuotaUsed = params.get("NeedQuotaUsed")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeCSCPayInfoResponse(AbstractModel):
     r"""DescribeCSCPayInfo response structure.
@@ -73254,6 +73335,8 @@ class DescribeClusterSummaryResponse(AbstractModel):
         :type HighRiskClusterCount: int
         :param _UnboundUltimateNodeCount: <p>Number of nodes not bound to the Ultimate Edition</p>
         :type UnboundUltimateNodeCount: int
+        :param _NormalNodeCount: Total number of regular nodes
+        :type NormalNodeCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -73286,6 +73369,7 @@ class DescribeClusterSummaryResponse(AbstractModel):
         self._CriticalRiskClusterCount = None
         self._HighRiskClusterCount = None
         self._UnboundUltimateNodeCount = None
+        self._NormalNodeCount = None
         self._RequestId = None
 
     @property
@@ -73672,6 +73756,17 @@ class DescribeClusterSummaryResponse(AbstractModel):
         self._UnboundUltimateNodeCount = UnboundUltimateNodeCount
 
     @property
+    def NormalNodeCount(self):
+        r"""Total number of regular nodes
+        :rtype: int
+        """
+        return self._NormalNodeCount
+
+    @NormalNodeCount.setter
+    def NormalNodeCount(self, NormalNodeCount):
+        self._NormalNodeCount = NormalNodeCount
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -73713,6 +73808,7 @@ class DescribeClusterSummaryResponse(AbstractModel):
         self._CriticalRiskClusterCount = params.get("CriticalRiskClusterCount")
         self._HighRiskClusterCount = params.get("HighRiskClusterCount")
         self._UnboundUltimateNodeCount = params.get("UnboundUltimateNodeCount")
+        self._NormalNodeCount = params.get("NormalNodeCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -88950,6 +89046,8 @@ class DescribeEDRRuleListRequest(AbstractModel):
         :type Order: str
         :param _By: <p>Optional sorting column: [ModifyTime]</p>
         :type By: str
+        :param _FileOperationRules: File operation rule, populated when ContentType=file_operation (file path regex AND any selected action)
+        :type FileOperationRules: :class:`tencentcloud.csip.v20221121.models.RuleContentFileOperation`
         """
         self._MemberId = None
         self._Filters = None
@@ -88957,6 +89055,7 @@ class DescribeEDRRuleListRequest(AbstractModel):
         self._Offset = None
         self._Order = None
         self._By = None
+        self._FileOperationRules = None
 
     @property
     def MemberId(self):
@@ -89024,6 +89123,17 @@ class DescribeEDRRuleListRequest(AbstractModel):
     def By(self, By):
         self._By = By
 
+    @property
+    def FileOperationRules(self):
+        r"""File operation rule, populated when ContentType=file_operation (file path regex AND any selected action)
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentFileOperation`
+        """
+        return self._FileOperationRules
+
+    @FileOperationRules.setter
+    def FileOperationRules(self, FileOperationRules):
+        self._FileOperationRules = FileOperationRules
+
 
     def _deserialize(self, params):
         self._MemberId = params.get("MemberId")
@@ -89037,6 +89147,9 @@ class DescribeEDRRuleListRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Order = params.get("Order")
         self._By = params.get("By")
+        if params.get("FileOperationRules") is not None:
+            self._FileOperationRules = RuleContentFileOperation()
+            self._FileOperationRules._deserialize(params.get("FileOperationRules"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -95645,6 +95758,18 @@ class DescribeImageRegistryAssetOverviewResponse(AbstractModel):
         :type RemainingQuota: int
         :param _TrialQuota: <p>Trial use quota</p>
         :type TrialQuota: int
+        :param _RiskImageCnt: <p>Number of risky images</p>
+        :type RiskImageCnt: int
+        :param _CICDImageCnt: <p>Number of CICD images</p>
+        :type CICDImageCnt: int
+        :param _CICDImageScannedCnt: <p>Number of scanned CICD images</p>
+        :type CICDImageScannedCnt: int
+        :param _RiskCICDImageCnt: <p>Number of risky CICD images</p>
+        :type RiskCICDImageCnt: int
+        :param _SecretFileCnt: <p>Number of sensitive files</p>
+        :type SecretFileCnt: int
+        :param _BuildRiskCnt: <p>Number of build risks</p>
+        :type BuildRiskCnt: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -95659,6 +95784,12 @@ class DescribeImageRegistryAssetOverviewResponse(AbstractModel):
         self._UsedQuota = None
         self._RemainingQuota = None
         self._TrialQuota = None
+        self._RiskImageCnt = None
+        self._CICDImageCnt = None
+        self._CICDImageScannedCnt = None
+        self._RiskCICDImageCnt = None
+        self._SecretFileCnt = None
+        self._BuildRiskCnt = None
         self._RequestId = None
 
     @property
@@ -95783,6 +95914,72 @@ class DescribeImageRegistryAssetOverviewResponse(AbstractModel):
         self._TrialQuota = TrialQuota
 
     @property
+    def RiskImageCnt(self):
+        r"""<p>Number of risky images</p>
+        :rtype: int
+        """
+        return self._RiskImageCnt
+
+    @RiskImageCnt.setter
+    def RiskImageCnt(self, RiskImageCnt):
+        self._RiskImageCnt = RiskImageCnt
+
+    @property
+    def CICDImageCnt(self):
+        r"""<p>Number of CICD images</p>
+        :rtype: int
+        """
+        return self._CICDImageCnt
+
+    @CICDImageCnt.setter
+    def CICDImageCnt(self, CICDImageCnt):
+        self._CICDImageCnt = CICDImageCnt
+
+    @property
+    def CICDImageScannedCnt(self):
+        r"""<p>Number of scanned CICD images</p>
+        :rtype: int
+        """
+        return self._CICDImageScannedCnt
+
+    @CICDImageScannedCnt.setter
+    def CICDImageScannedCnt(self, CICDImageScannedCnt):
+        self._CICDImageScannedCnt = CICDImageScannedCnt
+
+    @property
+    def RiskCICDImageCnt(self):
+        r"""<p>Number of risky CICD images</p>
+        :rtype: int
+        """
+        return self._RiskCICDImageCnt
+
+    @RiskCICDImageCnt.setter
+    def RiskCICDImageCnt(self, RiskCICDImageCnt):
+        self._RiskCICDImageCnt = RiskCICDImageCnt
+
+    @property
+    def SecretFileCnt(self):
+        r"""<p>Number of sensitive files</p>
+        :rtype: int
+        """
+        return self._SecretFileCnt
+
+    @SecretFileCnt.setter
+    def SecretFileCnt(self, SecretFileCnt):
+        self._SecretFileCnt = SecretFileCnt
+
+    @property
+    def BuildRiskCnt(self):
+        r"""<p>Number of build risks</p>
+        :rtype: int
+        """
+        return self._BuildRiskCnt
+
+    @BuildRiskCnt.setter
+    def BuildRiskCnt(self, BuildRiskCnt):
+        self._BuildRiskCnt = BuildRiskCnt
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -95806,6 +96003,12 @@ class DescribeImageRegistryAssetOverviewResponse(AbstractModel):
         self._UsedQuota = params.get("UsedQuota")
         self._RemainingQuota = params.get("RemainingQuota")
         self._TrialQuota = params.get("TrialQuota")
+        self._RiskImageCnt = params.get("RiskImageCnt")
+        self._CICDImageCnt = params.get("CICDImageCnt")
+        self._CICDImageScannedCnt = params.get("CICDImageScannedCnt")
+        self._RiskCICDImageCnt = params.get("RiskCICDImageCnt")
+        self._SecretFileCnt = params.get("SecretFileCnt")
+        self._BuildRiskCnt = params.get("BuildRiskCnt")
         self._RequestId = params.get("RequestId")
 
 
@@ -100605,6 +100808,10 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         :type QuaraExcludeClusterIDsWithAppId: list of ClusterIDWithAppIdItem
         :param _Timeout: <p>Timeout duration (seconds)</p>
         :type Timeout: int
+        :param _QuaraTypes: <p>List of alarm type codes saved in custom quarantine mode</p>
+        :type QuaraTypes: list of str
+        :param _QuaraTypeDict: <p>Alarm type dictionary (delivered via gray release rules, used by the frontend to render checkbox options)</p>
+        :type QuaraTypeDict: list of QuaraTypeDictItem
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -100638,6 +100845,8 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         self._QuaraClusterIDsWithAppId = None
         self._QuaraExcludeClusterIDsWithAppId = None
         self._Timeout = None
+        self._QuaraTypes = None
+        self._QuaraTypeDict = None
         self._RequestId = None
 
     @property
@@ -100971,6 +101180,28 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         self._Timeout = Timeout
 
     @property
+    def QuaraTypes(self):
+        r"""<p>List of alarm type codes saved in custom quarantine mode</p>
+        :rtype: list of str
+        """
+        return self._QuaraTypes
+
+    @QuaraTypes.setter
+    def QuaraTypes(self, QuaraTypes):
+        self._QuaraTypes = QuaraTypes
+
+    @property
+    def QuaraTypeDict(self):
+        r"""<p>Alarm type dictionary (delivered via gray release rules, used by the frontend to render checkbox options)</p>
+        :rtype: list of QuaraTypeDictItem
+        """
+        return self._QuaraTypeDict
+
+    @QuaraTypeDict.setter
+    def QuaraTypeDict(self, QuaraTypeDict):
+        self._QuaraTypeDict = QuaraTypeDict
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -101053,6 +101284,13 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
                 obj._deserialize(item)
                 self._QuaraExcludeClusterIDsWithAppId.append(obj)
         self._Timeout = params.get("Timeout")
+        self._QuaraTypes = params.get("QuaraTypes")
+        if params.get("QuaraTypeDict") is not None:
+            self._QuaraTypeDict = []
+            for item in params.get("QuaraTypeDict"):
+                obj = QuaraTypeDictItem()
+                obj._deserialize(item)
+                self._QuaraTypeDict.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -116732,15 +116970,15 @@ class DescribeVulFixTaskDetailRequest(AbstractModel):
         r"""
         :param _TaskId: <p>Repair task ID</p>
         :type TaskId: int
-        :param _Offset: <p>Paging offset<br>Value ranges from 0 to +∞<br>Default value: 0</p>
+        :param _Offset: <p>Paging offset<br>Value range: [0, +∞)<br>Default value: 0</p>
         :type Offset: int
-        :param _Limit: <p>Number of results per page<br>Value ranges from 1 to 100<br>Default value: 10</p>
+        :param _Limit: <p>Number of results per page<br>Value range: [1, 100]<br>Default value: 10</p>
         :type Limit: int
-        :param _Filters: <p>Filter criteria<br>Supported Filter.Name:<br>InstanceId - Exact match, filter by host instance ID<br>VulId - Exact match, filter by vulnerability ID, filter out hosts under a certain vulnerability<br>KBId - Exact match, filter by KB Patch ID, filter out hosts under a certain KB patch<br>Status - Exact match, filter by execution status: 0-Initial status 1-Issued 11-Client confirmed 2-Repair completed 3-Client offline 4-Timeout 5-Failure 6-No support 9-Waiting for snapshot creation to complete 10-Snapshot creation failed<br>FixStatus - Exact match, filter by repair result: 0-Initial status 1-Repair successful 2-Fix failure<br>SnapshotStatus - Exact match, filter by snapshot status: -1-No need to create snapshot 0-Not started 1-In progress 2-Completed 3-Creation failure</p>
+        :param _Filters: <p>Filter criteria<br>Supported Filter.Name:<br>InstanceId - Exact match. Filter by host instance ID.<br>VulId - Exact match. Filter by vulnerability ID to filter out hosts under a vulnerability.<br>KBId - Exact match. Filter by KB Patch ID to filter out hosts under a KB patch.<br>Status - Exact match. Filter by execution status: 0-Initial status 1-Issued 11-Confirmed by client 2-Repair completed 3-Client offline 4-Timeout 5-Failed 6-Unsupported 9-Waiting for snapshot creation 10-Snapshot creation failed<br>FixStatus - Exact match. Filter by fix result: 0-Initial status 1-Repair successful 2-Failed to fix<br>SnapshotStatus - Exact match. Filter by snapshot status: -1-No need to create snapshot 0-Not started 1-In progress 2-Completed 3-Creation failed</p>
         :type Filters: list of Filters
-        :param _Order: <p>Sorting field<br>Enumeration value:<br>StartTime: Sort by repair start time<br>EndTime: Sort by repair end time</p>
+        :param _Order: <p>Sorting field<br>Enumeration values:<br>StartTime: sort by repair start time<br>EndTime: sort by repair end time</p>
         :type Order: str
-        :param _By: <p>Sorting method<br>Enumeration value:<br>asc: Ascending<br>desc: Descending<br>Default value: desc</p>
+        :param _By: <p>Sorting method<br>Enumeration values:<br>asc: in ascending order<br>desc: in descending order<br>Default value: desc</p>
         :type By: str
         :param _MemberId: Group Account Member ID
         :type MemberId: list of str
@@ -116766,7 +117004,7 @@ class DescribeVulFixTaskDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""<p>Paging offset<br>Value ranges from 0 to +∞<br>Default value: 0</p>
+        r"""<p>Paging offset<br>Value range: [0, +∞)<br>Default value: 0</p>
         :rtype: int
         """
         return self._Offset
@@ -116777,7 +117015,7 @@ class DescribeVulFixTaskDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""<p>Number of results per page<br>Value ranges from 1 to 100<br>Default value: 10</p>
+        r"""<p>Number of results per page<br>Value range: [1, 100]<br>Default value: 10</p>
         :rtype: int
         """
         return self._Limit
@@ -116788,7 +117026,7 @@ class DescribeVulFixTaskDetailRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<p>Filter criteria<br>Supported Filter.Name:<br>InstanceId - Exact match, filter by host instance ID<br>VulId - Exact match, filter by vulnerability ID, filter out hosts under a certain vulnerability<br>KBId - Exact match, filter by KB Patch ID, filter out hosts under a certain KB patch<br>Status - Exact match, filter by execution status: 0-Initial status 1-Issued 11-Client confirmed 2-Repair completed 3-Client offline 4-Timeout 5-Failure 6-No support 9-Waiting for snapshot creation to complete 10-Snapshot creation failed<br>FixStatus - Exact match, filter by repair result: 0-Initial status 1-Repair successful 2-Fix failure<br>SnapshotStatus - Exact match, filter by snapshot status: -1-No need to create snapshot 0-Not started 1-In progress 2-Completed 3-Creation failure</p>
+        r"""<p>Filter criteria<br>Supported Filter.Name:<br>InstanceId - Exact match. Filter by host instance ID.<br>VulId - Exact match. Filter by vulnerability ID to filter out hosts under a vulnerability.<br>KBId - Exact match. Filter by KB Patch ID to filter out hosts under a KB patch.<br>Status - Exact match. Filter by execution status: 0-Initial status 1-Issued 11-Confirmed by client 2-Repair completed 3-Client offline 4-Timeout 5-Failed 6-Unsupported 9-Waiting for snapshot creation 10-Snapshot creation failed<br>FixStatus - Exact match. Filter by fix result: 0-Initial status 1-Repair successful 2-Failed to fix<br>SnapshotStatus - Exact match. Filter by snapshot status: -1-No need to create snapshot 0-Not started 1-In progress 2-Completed 3-Creation failed</p>
         :rtype: list of Filters
         """
         return self._Filters
@@ -116799,7 +117037,7 @@ class DescribeVulFixTaskDetailRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""<p>Sorting field<br>Enumeration value:<br>StartTime: Sort by repair start time<br>EndTime: Sort by repair end time</p>
+        r"""<p>Sorting field<br>Enumeration values:<br>StartTime: sort by repair start time<br>EndTime: sort by repair end time</p>
         :rtype: str
         """
         return self._Order
@@ -116810,7 +117048,7 @@ class DescribeVulFixTaskDetailRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""<p>Sorting method<br>Enumeration value:<br>asc: Ascending<br>desc: Descending<br>Default value: desc</p>
+        r"""<p>Sorting method<br>Enumeration values:<br>asc: in ascending order<br>desc: in descending order<br>Default value: desc</p>
         :rtype: str
         """
         return self._By
@@ -116861,7 +117099,7 @@ class DescribeVulFixTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Task details</p>
+        :param _Data: <p>Task details list</p>
         :type Data: list of VulFixTaskDetailItem
         :param _TotalCount: <p>Total quantity.</p>
         :type TotalCount: int
@@ -116877,7 +117115,7 @@ class DescribeVulFixTaskDetailResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Task details</p>
+        r"""<p>Task details list</p>
         :rtype: list of VulFixTaskDetailItem
         """
         return self._Data
@@ -116941,15 +117179,15 @@ class DescribeVulFixTaskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: <p>Paging offset<br>Value ranges from 0 to +∞<br>Default value: 0</p>
+        :param _Offset: <p>Paging offset<br>Value range: [0, +∞)<br>Default value: 0</p>
         :type Offset: int
-        :param _Limit: <p>Number of results per page<br>Value ranges from 1 to 100<br>Default value: 10</p>
+        :param _Limit: <p>Number of results per page<br>Value range: [1, 100]<br>Default value: 10</p>
         :type Limit: int
-        :param _Filters: <p>Filtering Conditions<br>Supported Filter.Name:<br>TaskId - Exact match, filter by task ID<br>JobId - Exact match, filter by task JobId, corresponding to the task ID of the background job system<br>FixStatus - Exact match, filter by remediation status: 0-Initialization 1-In remediation 2-Repair successful 3-Partially fix failed 4-All fix failed 5-Stop fix<br>StartTime - Range match, remediation startup time range, input two values to indicate start and end time<br>AppId - Exact match, filter by creator AppId<br>VulCategory - Exact match, filter by vulnerability type: LINUX-Linux software vulnerability WINDOWS-Windows system patch vulnerability WEB_CMS-Web-CMS vulnerability APPLICATION-Application vulnerability EMERGENCY-Emergency vulnerability<br>TaskName - Fuzzy matching, filter by vulnerability name/CVE ID/KB patch name, matching task associated vulnerability or KB patch</p>
+        :param _Filters: <p>Filter criteria<br>Supported Filter.Name:<br>TaskId - Exact match, Filter by task ID<br>JobId - Exact match, Filter by task JobId, which corresponds to the task ID in the background job system<br>FixStatus - Exact match, Filter by remediation status: 0-initialization 1-in remediation 2-repair successful 3-partially failed to fix 4-all failed to fix 5-stop fix<br>StartTime - Range match, remediation start time range. Input two values to indicate the start and end time<br>AppId - Exact match, Filter by creator AppId<br>VulCategory - Exact match, Filter by vulnerability type: LINUX-LINUX software vulnerability WINDOWS-WINDOWS system patch vulnerability WEB_CMS-WEB-CMS vulnerability APPLICATION-APPLICATION vulnerability EMERGENCY-urgent vulnerability<br>TaskName - Fuzzy matching, Filter by vulnerability Name/CVE ID/KB patch Name, matching the vulnerability or KB patch associated with the task</p>
         :type Filters: list of Filters
-        :param _Order: <p>Sorting field<br>Enumeration value:<br>StartTime: Sort by repair start time<br>EndTime: Sort by repair end time<br>CreateTime: Sort by creation time</p>
+        :param _Order: <p>Sorting field<br>Enumeration values:<br>StartTime: sort by repair start time<br>EndTime: sort by repair end time<br>CreateTime: sort by creation time</p>
         :type Order: str
-        :param _By: <p>Sorting method<br>Enumeration value:<br>asc: Ascending<br>desc: Descending order<br>Default value: desc</p>
+        :param _By: <p>Sorting method<br>Enumeration values:<br>asc: in ascending order<br>desc: in descending order<br>Default value: desc</p>
         :type By: str
         :param _MemberId: Group Account Member ID
         :type MemberId: list of str
@@ -116963,7 +117201,7 @@ class DescribeVulFixTaskListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""<p>Paging offset<br>Value ranges from 0 to +∞<br>Default value: 0</p>
+        r"""<p>Paging offset<br>Value range: [0, +∞)<br>Default value: 0</p>
         :rtype: int
         """
         return self._Offset
@@ -116974,7 +117212,7 @@ class DescribeVulFixTaskListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""<p>Number of results per page<br>Value ranges from 1 to 100<br>Default value: 10</p>
+        r"""<p>Number of results per page<br>Value range: [1, 100]<br>Default value: 10</p>
         :rtype: int
         """
         return self._Limit
@@ -116985,7 +117223,7 @@ class DescribeVulFixTaskListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<p>Filtering Conditions<br>Supported Filter.Name:<br>TaskId - Exact match, filter by task ID<br>JobId - Exact match, filter by task JobId, corresponding to the task ID of the background job system<br>FixStatus - Exact match, filter by remediation status: 0-Initialization 1-In remediation 2-Repair successful 3-Partially fix failed 4-All fix failed 5-Stop fix<br>StartTime - Range match, remediation startup time range, input two values to indicate start and end time<br>AppId - Exact match, filter by creator AppId<br>VulCategory - Exact match, filter by vulnerability type: LINUX-Linux software vulnerability WINDOWS-Windows system patch vulnerability WEB_CMS-Web-CMS vulnerability APPLICATION-Application vulnerability EMERGENCY-Emergency vulnerability<br>TaskName - Fuzzy matching, filter by vulnerability name/CVE ID/KB patch name, matching task associated vulnerability or KB patch</p>
+        r"""<p>Filter criteria<br>Supported Filter.Name:<br>TaskId - Exact match, Filter by task ID<br>JobId - Exact match, Filter by task JobId, which corresponds to the task ID in the background job system<br>FixStatus - Exact match, Filter by remediation status: 0-initialization 1-in remediation 2-repair successful 3-partially failed to fix 4-all failed to fix 5-stop fix<br>StartTime - Range match, remediation start time range. Input two values to indicate the start and end time<br>AppId - Exact match, Filter by creator AppId<br>VulCategory - Exact match, Filter by vulnerability type: LINUX-LINUX software vulnerability WINDOWS-WINDOWS system patch vulnerability WEB_CMS-WEB-CMS vulnerability APPLICATION-APPLICATION vulnerability EMERGENCY-urgent vulnerability<br>TaskName - Fuzzy matching, Filter by vulnerability Name/CVE ID/KB patch Name, matching the vulnerability or KB patch associated with the task</p>
         :rtype: list of Filters
         """
         return self._Filters
@@ -116996,7 +117234,7 @@ class DescribeVulFixTaskListRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""<p>Sorting field<br>Enumeration value:<br>StartTime: Sort by repair start time<br>EndTime: Sort by repair end time<br>CreateTime: Sort by creation time</p>
+        r"""<p>Sorting field<br>Enumeration values:<br>StartTime: sort by repair start time<br>EndTime: sort by repair end time<br>CreateTime: sort by creation time</p>
         :rtype: str
         """
         return self._Order
@@ -117007,7 +117245,7 @@ class DescribeVulFixTaskListRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""<p>Sorting method<br>Enumeration value:<br>asc: Ascending<br>desc: Descending order<br>Default value: desc</p>
+        r"""<p>Sorting method<br>Enumeration values:<br>asc: in ascending order<br>desc: in descending order<br>Default value: desc</p>
         :rtype: str
         """
         return self._By
@@ -117120,13 +117358,13 @@ class DescribeVulFixableMachineListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VulIds: <p>Vulnerability ID list, a maximum of 100</p>
+        :param _VulIds: <p>List of vulnerability IDs. Supports up to 100.</p>
         :type VulIds: list of int
-        :param _Offset: <p>Paging offset<br>Value ranges from 0 to +∞<br>Default value: 0</p>
+        :param _Offset: <p>Paging offset<br>Value range: [0, +∞)<br>Default value: 0</p>
         :type Offset: int
-        :param _Limit: <p>Number of results per page<br>Value ranges from 1 to 100<br>Default value: 10</p>
+        :param _Limit: <p>Number of results per page<br>Value range: [1, 100]<br>Default value: 10</p>
         :type Limit: int
-        :param _Filters: <p>Filtering Conditions<br>Supported Filter.Name:<br>Keyword - fuzzy matching, search by asset ID, asset name<br>ComponentName - fuzzy matching, search by associated component name<br>InstanceId - exact match, filter by host instance ID<br>MachineName - fuzzy matching, search by host name<br>MachineIp - fuzzy matching, search by host IP<br>OsType - exact match, filter by OS type: linux/windows<br>SupportAutoFix - exact match, filter by whether automatic fixing is supported: 0-unsupported 1-supported<br>Tag - exact match, filter by asset tag<br>AppId - exact match, filter by associated account</p>
+        :param _Filters: <p>Filter criteria<br>Supported Filter.Name:<br>Keyword - Fuzzy matching. Search by asset ID or asset name.<br>ComponentName - Fuzzy matching. Search by associated component name.<br>InstanceId - Exact match. Filter by host instance ID.<br>MachineName - Fuzzy matching. Search by host name.<br>MachineIp - Fuzzy matching. Search by host IP.<br>OsType - Exact match. Filter by OS type: linux/windows<br>SupportAutoFix - Exact match. Filter by whether auto-repair is supported: 0-unsupported 1-supported<br>Tag - Exact match. Filter by asset tag.<br>AppId - Exact match. Filter by associated account.</p>
         :type Filters: list of Filters
         :param _MemberId: Group Account Member ID
         :type MemberId: list of str
@@ -117139,7 +117377,7 @@ class DescribeVulFixableMachineListRequest(AbstractModel):
 
     @property
     def VulIds(self):
-        r"""<p>Vulnerability ID list, a maximum of 100</p>
+        r"""<p>List of vulnerability IDs. Supports up to 100.</p>
         :rtype: list of int
         """
         return self._VulIds
@@ -117150,7 +117388,7 @@ class DescribeVulFixableMachineListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""<p>Paging offset<br>Value ranges from 0 to +∞<br>Default value: 0</p>
+        r"""<p>Paging offset<br>Value range: [0, +∞)<br>Default value: 0</p>
         :rtype: int
         """
         return self._Offset
@@ -117161,7 +117399,7 @@ class DescribeVulFixableMachineListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""<p>Number of results per page<br>Value ranges from 1 to 100<br>Default value: 10</p>
+        r"""<p>Number of results per page<br>Value range: [1, 100]<br>Default value: 10</p>
         :rtype: int
         """
         return self._Limit
@@ -117172,7 +117410,7 @@ class DescribeVulFixableMachineListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<p>Filtering Conditions<br>Supported Filter.Name:<br>Keyword - fuzzy matching, search by asset ID, asset name<br>ComponentName - fuzzy matching, search by associated component name<br>InstanceId - exact match, filter by host instance ID<br>MachineName - fuzzy matching, search by host name<br>MachineIp - fuzzy matching, search by host IP<br>OsType - exact match, filter by OS type: linux/windows<br>SupportAutoFix - exact match, filter by whether automatic fixing is supported: 0-unsupported 1-supported<br>Tag - exact match, filter by asset tag<br>AppId - exact match, filter by associated account</p>
+        r"""<p>Filter criteria<br>Supported Filter.Name:<br>Keyword - Fuzzy matching. Search by asset ID or asset name.<br>ComponentName - Fuzzy matching. Search by associated component name.<br>InstanceId - Exact match. Filter by host instance ID.<br>MachineName - Fuzzy matching. Search by host name.<br>MachineIp - Fuzzy matching. Search by host IP.<br>OsType - Exact match. Filter by OS type: linux/windows<br>SupportAutoFix - Exact match. Filter by whether auto-repair is supported: 0-unsupported 1-supported<br>Tag - Exact match. Filter by asset tag.<br>AppId - Exact match. Filter by associated account.</p>
         :rtype: list of Filters
         """
         return self._Filters
@@ -117221,15 +117459,15 @@ class DescribeVulFixableMachineListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Repair host list</p>
+        :param _Data: <p>Repairable host list</p>
         :type Data: list of VulFixableMachineItem
         :param _TotalCount: <p>Total quantity.</p>
         :type TotalCount: int
         :param _FixableCount: <p>Number of hosts that can be repaired with one click</p>
         :type FixableCount: int
-        :param _NotFixableCount: <p>Number of hosts that cannot be one-click repaired</p>
+        :param _NotFixableCount: <p>Number of hosts that cannot be repaired with one click</p>
         :type NotFixableCount: int
-        :param _VulSummary: <p>Summary information of vulnerability dimension, showing overview of list of vulnerabilities to be fixed</p>
+        :param _VulSummary: <p>Vulnerability dimensional summary, showing an overview of the list of repaired vulnerabilities</p>
         :type VulSummary: list of VulFixSummaryItem
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -117243,7 +117481,7 @@ class DescribeVulFixableMachineListResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Repair host list</p>
+        r"""<p>Repairable host list</p>
         :rtype: list of VulFixableMachineItem
         """
         return self._Data
@@ -117276,7 +117514,7 @@ class DescribeVulFixableMachineListResponse(AbstractModel):
 
     @property
     def NotFixableCount(self):
-        r"""<p>Number of hosts that cannot be one-click repaired</p>
+        r"""<p>Number of hosts that cannot be repaired with one click</p>
         :rtype: int
         """
         return self._NotFixableCount
@@ -117287,7 +117525,7 @@ class DescribeVulFixableMachineListResponse(AbstractModel):
 
     @property
     def VulSummary(self):
-        r"""<p>Summary information of vulnerability dimension, showing overview of list of vulnerabilities to be fixed</p>
+        r"""<p>Vulnerability dimensional summary, showing an overview of the list of repaired vulnerabilities</p>
         :rtype: list of VulFixSummaryItem
         """
         return self._VulSummary
@@ -117338,9 +117576,9 @@ class DescribeVulFixedHostDetailRequest(AbstractModel):
         :type VulId: int
         :param _InstanceId: <p>Host instance ID.</p>
         :type InstanceId: str
-        :param _Offset: <p>Paging offset, used for associated component & path list pagination.<br>Value ranges from 0 to +∞.<br>Default value: 0.</p>
+        :param _Offset: <p>Paging offset for associated component &amp; path list pagination<br>Value range: [0, +∞)<br>Default value: 0</p>
         :type Offset: int
-        :param _Limit: <p>Number of results per page, used for paginating associated components & path list<br>Value ranges from 1 to 100<br>Default value: 10</p>
+        :param _Limit: <p>Number of results per page, used for list pagination of associated components &amp; paths<br>Value range: [1, 100]<br>Default value: 10</p>
         :type Limit: int
         :param _MemberId: Group Account Member ID
         :type MemberId: list of str
@@ -117375,7 +117613,7 @@ class DescribeVulFixedHostDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""<p>Paging offset, used for associated component & path list pagination.<br>Value ranges from 0 to +∞.<br>Default value: 0.</p>
+        r"""<p>Paging offset for associated component &amp; path list pagination<br>Value range: [0, +∞)<br>Default value: 0</p>
         :rtype: int
         """
         return self._Offset
@@ -117386,7 +117624,7 @@ class DescribeVulFixedHostDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""<p>Number of results per page, used for paginating associated components & path list<br>Value ranges from 1 to 100<br>Default value: 10</p>
+        r"""<p>Number of results per page, used for list pagination of associated components &amp; paths<br>Value range: [1, 100]<br>Default value: 10</p>
         :rtype: int
         """
         return self._Limit
@@ -117434,21 +117672,21 @@ class DescribeVulFixedHostDetailResponse(AbstractModel):
         :type VulName: str
         :param _CveId: <p>CVE id</p>
         :type CveId: str
-        :param _VulCategory: <p>Vulnerability type<br>Enumeration value:<br>LINUX: Linux software vulnerability<br>WINDOWS: Windows system patch vulnerability<br>WEB_CMS: Web-CMS vulnerability<br>APPLICATION: Application vulnerability</p>
+        :param _VulCategory: <p>Vulnerability type<br>Enumeration values:<br>LINUX: Linux software vulnerability<br>WINDOWS: Windows system patch vulnerability<br>WEB_CMS: Web-CMS vulnerability<br>APPLICATION: Application vulnerability</p>
         :type VulCategory: str
-        :param _FixTime: <p>Repair completion time<br>Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)</p>
+        :param _FixTime: <p>Repair completed time<br>Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)</p>
         :type FixTime: str
         :param _InstanceId: <p>Host instance ID.</p>
         :type InstanceId: str
         :param _MachineName: <p>Host name.</p>
         :type MachineName: str
-        :param _PublicIp: <p>Public IP of the server</p>
+        :param _PublicIp: <p>Public IP of the Server</p>
         :type PublicIp: str
         :param _PrivateIp: <p>Host private IP address</p>
         :type PrivateIp: str
-        :param _ComponentDetails: <p>Associated component & path detail list</p>
+        :param _ComponentDetails: <p>Associated component &amp; path detail list</p>
         :type ComponentDetails: list of ComponentDetailItem
-        :param _TotalCount: <p>Total number of associated components & paths</p>
+        :param _TotalCount: <p>Total number of associated components &amp; paths</p>
         :type TotalCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -117489,7 +117727,7 @@ class DescribeVulFixedHostDetailResponse(AbstractModel):
 
     @property
     def VulCategory(self):
-        r"""<p>Vulnerability type<br>Enumeration value:<br>LINUX: Linux software vulnerability<br>WINDOWS: Windows system patch vulnerability<br>WEB_CMS: Web-CMS vulnerability<br>APPLICATION: Application vulnerability</p>
+        r"""<p>Vulnerability type<br>Enumeration values:<br>LINUX: Linux software vulnerability<br>WINDOWS: Windows system patch vulnerability<br>WEB_CMS: Web-CMS vulnerability<br>APPLICATION: Application vulnerability</p>
         :rtype: str
         """
         return self._VulCategory
@@ -117500,7 +117738,7 @@ class DescribeVulFixedHostDetailResponse(AbstractModel):
 
     @property
     def FixTime(self):
-        r"""<p>Repair completion time<br>Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)</p>
+        r"""<p>Repair completed time<br>Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)</p>
         :rtype: str
         """
         return self._FixTime
@@ -117533,7 +117771,7 @@ class DescribeVulFixedHostDetailResponse(AbstractModel):
 
     @property
     def PublicIp(self):
-        r"""<p>Public IP of the server</p>
+        r"""<p>Public IP of the Server</p>
         :rtype: str
         """
         return self._PublicIp
@@ -117555,7 +117793,7 @@ class DescribeVulFixedHostDetailResponse(AbstractModel):
 
     @property
     def ComponentDetails(self):
-        r"""<p>Associated component & path detail list</p>
+        r"""<p>Associated component &amp; path detail list</p>
         :rtype: list of ComponentDetailItem
         """
         return self._ComponentDetails
@@ -117566,7 +117804,7 @@ class DescribeVulFixedHostDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""<p>Total number of associated components & paths</p>
+        r"""<p>Total number of associated components &amp; paths</p>
         :rtype: int
         """
         return self._TotalCount
@@ -117613,15 +117851,15 @@ class DescribeVulFixedListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: <p>Paging offset<br>Value ranges from 0 to +∞<br>Default value: 0</p>
+        :param _Offset: <p>Paging offset<br>Value range: [0, +∞)<br>Default value: 0</p>
         :type Offset: int
-        :param _Limit: <p>Number of results per page<br>Value ranges from 1 to 100<br>Default value: 10</p>
+        :param _Limit: <p>Number of results per page<br>Value range: [1, 100]<br>Default value: 10</p>
         :type Limit: int
-        :param _Filters: <p>Filtering Conditions<br>Supported Filter.Name:<br>Keyword - Fuzzy matching, search by keyword (vulnerability name/CVE ID/host name/instance ID)<br>VulName - Fuzzy matching, vulnerability name search<br>Level - Exact match, filter by vulnerability level: LOW-Low risk MEDIUM-Medium risk HIGH-High risk CRITICAL-Critical<br>VprLevel - Exact match, filter by VPR rating: 1-Low 2-Medium 3-High 4-Critical<br>VulCategory - Exact match, type filter: LINUX-Linux software vulnerability WINDOWS-Windows system patch vulnerability WEB_CMS-Web-CMS vulnerability APPLICATION-Application vulnerability EMERGENCY-Emergency vulnerability<br>MachineName - Fuzzy matching, search by host name<br>InstanceId - Fuzzy matching, id search by instance<br>FixTime - Range matching, repair time range, input two values to indicate start and end time</p>
+        :param _Filters: <p>Filter criteria<br>Supported Filter.Name:<br>Keyword - fuzzy matching, search by keyword (vulnerability name/CVE ID/host name/instance ID)<br>VulName - fuzzy matching, search by vulnerability name<br>Level - exact matching, filter by vulnerability level: LOW - low risk, MEDIUM - medium risk, HIGH - high risk, CRITICAL - critical<br>VprLevel - exact matching, filter by VPR rating: 1 - Low, 2 - Medium, 3 - High, 4 - Critical<br>VulCategory - exact matching, filter by vulnerability type: LINUX - Linux software vulnerability, WINDOWS - Windows system patch vulnerability, WEB_CMS - Web-CMS vulnerability, APPLICATION - application vulnerability, EMERGENCY - urgent vulnerability<br>MachineName - fuzzy matching, search by host name<br>InstanceId - fuzzy matching, search by instance ID<br>FixTime - range matching, repair time range. Input two values to indicate the start and end time</p>
         :type Filters: list of Filters
-        :param _Order: <p>Sorting field<br>Enumeration value:<br>FixTime: Sort by repair time<br>VulName: Sort by vulnerability name</p>
+        :param _Order: <p>Sorting field<br>Enumeration values:<br>FixTime: sort by fix time<br>VulName: sort by vulnerability name</p>
         :type Order: str
-        :param _By: <p>Sorting method<br>Enumeration value:<br>asc: Ascending<br>desc: Descending order<br>Default value: desc</p>
+        :param _By: <p>Sorting method<br>Enumeration values:<br>asc: Ascending<br>desc: Descending<br>Default value: desc</p>
         :type By: str
         :param _MemberId: Group Account Member ID
         :type MemberId: list of str
@@ -117635,7 +117873,7 @@ class DescribeVulFixedListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""<p>Paging offset<br>Value ranges from 0 to +∞<br>Default value: 0</p>
+        r"""<p>Paging offset<br>Value range: [0, +∞)<br>Default value: 0</p>
         :rtype: int
         """
         return self._Offset
@@ -117646,7 +117884,7 @@ class DescribeVulFixedListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""<p>Number of results per page<br>Value ranges from 1 to 100<br>Default value: 10</p>
+        r"""<p>Number of results per page<br>Value range: [1, 100]<br>Default value: 10</p>
         :rtype: int
         """
         return self._Limit
@@ -117657,7 +117895,7 @@ class DescribeVulFixedListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<p>Filtering Conditions<br>Supported Filter.Name:<br>Keyword - Fuzzy matching, search by keyword (vulnerability name/CVE ID/host name/instance ID)<br>VulName - Fuzzy matching, vulnerability name search<br>Level - Exact match, filter by vulnerability level: LOW-Low risk MEDIUM-Medium risk HIGH-High risk CRITICAL-Critical<br>VprLevel - Exact match, filter by VPR rating: 1-Low 2-Medium 3-High 4-Critical<br>VulCategory - Exact match, type filter: LINUX-Linux software vulnerability WINDOWS-Windows system patch vulnerability WEB_CMS-Web-CMS vulnerability APPLICATION-Application vulnerability EMERGENCY-Emergency vulnerability<br>MachineName - Fuzzy matching, search by host name<br>InstanceId - Fuzzy matching, id search by instance<br>FixTime - Range matching, repair time range, input two values to indicate start and end time</p>
+        r"""<p>Filter criteria<br>Supported Filter.Name:<br>Keyword - fuzzy matching, search by keyword (vulnerability name/CVE ID/host name/instance ID)<br>VulName - fuzzy matching, search by vulnerability name<br>Level - exact matching, filter by vulnerability level: LOW - low risk, MEDIUM - medium risk, HIGH - high risk, CRITICAL - critical<br>VprLevel - exact matching, filter by VPR rating: 1 - Low, 2 - Medium, 3 - High, 4 - Critical<br>VulCategory - exact matching, filter by vulnerability type: LINUX - Linux software vulnerability, WINDOWS - Windows system patch vulnerability, WEB_CMS - Web-CMS vulnerability, APPLICATION - application vulnerability, EMERGENCY - urgent vulnerability<br>MachineName - fuzzy matching, search by host name<br>InstanceId - fuzzy matching, search by instance ID<br>FixTime - range matching, repair time range. Input two values to indicate the start and end time</p>
         :rtype: list of Filters
         """
         return self._Filters
@@ -117668,7 +117906,7 @@ class DescribeVulFixedListRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""<p>Sorting field<br>Enumeration value:<br>FixTime: Sort by repair time<br>VulName: Sort by vulnerability name</p>
+        r"""<p>Sorting field<br>Enumeration values:<br>FixTime: sort by fix time<br>VulName: sort by vulnerability name</p>
         :rtype: str
         """
         return self._Order
@@ -117679,7 +117917,7 @@ class DescribeVulFixedListRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""<p>Sorting method<br>Enumeration value:<br>asc: Ascending<br>desc: Descending order<br>Default value: desc</p>
+        r"""<p>Sorting method<br>Enumeration values:<br>asc: Ascending<br>desc: Descending<br>Default value: desc</p>
         :rtype: str
         """
         return self._By
@@ -117729,7 +117967,7 @@ class DescribeVulFixedListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>List of fixed vulnerabilities</p>
+        :param _Data: <p>Fixed vulnerability list</p>
         :type Data: list of VulFixedItem
         :param _TotalCount: <p>Total quantity.</p>
         :type TotalCount: int
@@ -117742,7 +117980,7 @@ class DescribeVulFixedListResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>List of fixed vulnerabilities</p>
+        r"""<p>Fixed vulnerability list</p>
         :rtype: list of VulFixedItem
         """
         return self._Data
@@ -118516,7 +118754,7 @@ class DescribeVulRiskRelateComponentRequest(AbstractModel):
         :type VulID: int
         :param _MemberId: <p>Group account member id</p>
         :type MemberId: list of str
-        :param _Filters: <p>Filter conditions array, multi-condition with each other in the AND relationship<br>Supported Filter.Name:<br>Keyword: Keyword fuzzy search (fuzzy matching for component name)</p>
+        :param _Filters: <p>Criteria array, multi-condition uses AND relationship with each other<br>Supported Filter.Name:<br>Keyword: keyword fuzzy search (fuzzy matching for component name)</p>
         :type Filters: list of Filters
         """
         self._VulID = None
@@ -118547,7 +118785,7 @@ class DescribeVulRiskRelateComponentRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<p>Filter conditions array, multi-condition with each other in the AND relationship<br>Supported Filter.Name:<br>Keyword: Keyword fuzzy search (fuzzy matching for component name)</p>
+        r"""<p>Criteria array, multi-condition uses AND relationship with each other<br>Supported Filter.Name:<br>Keyword: keyword fuzzy search (fuzzy matching for component name)</p>
         :rtype: list of Filters
         """
         return self._Filters
@@ -118583,7 +118821,7 @@ class DescribeVulRiskRelateComponentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _List: <p>List of affected components for the vulnerability</p>
+        :param _List: <p>List of affected components</p>
         :type List: list of VulComponentSummary
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -118593,7 +118831,7 @@ class DescribeVulRiskRelateComponentResponse(AbstractModel):
 
     @property
     def List(self):
-        r"""<p>List of affected components for the vulnerability</p>
+        r"""<p>List of affected components</p>
         :rtype: list of VulComponentSummary
         """
         return self._List
@@ -118631,21 +118869,21 @@ class DescribeVulRiskRelateHostRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KBID: <p>p>KB patch internal ID (kb_info.id)</p>
+        :param _KBID: <p>KB patch internal ID (kb_info.id)</p>
         :type KBID: int
         :param _VulID: <p>Vulnerability ID (vul_vuls.id)</p>
         :type VulID: int
         :param _MemberId: <p>Group account member id</p>
         :type MemberId: list of str
-        :param _Filters: <p>Filter conditions array. Multi-condition with each other is AND relationship<br>Supported Filter.Name:<br>Keyword: Keyword fuzzy search (fuzzy matching for host name/IP/InstanceID)<br>CloudTag: Cloud tag<br>Tag: Security center tag</p>
+        :param _Filters: <p>Criteria array, multi-condition uses AND relationship with each other<br>Supported Filter.Name:<br>Keyword: Keyword fuzzy search (fuzzy matching for host name/IP/InstanceID)<br>CloudTag: Cloud tag<br>Tag: Security center tag</p>
         :type Filters: list of Filters
-        :param _Limit: <p>Number of results per page<br>Value ranges from 1 to 100<br>Default value: 10</p>
+        :param _Limit: <p>Number of results per page<br>Value range: [1, 100]<br>Default value: 10</p>
         :type Limit: int
-        :param _Offset: <p>Paging offset<br>Value ranges from 0 to +∞<br>Default value: 0</p>
+        :param _Offset: <p>Paging offset<br>Value range: [0, positive infinity)<br>Default value: 0</p>
         :type Offset: int
-        :param _Order: <p>Sorting order<br>Enumeration value:<br>ASC: Ascending<br>DESC: Descending order<br>Default value: DESC</p>
+        :param _Order: <p>Sorting order<br>Enumeration values:<br>ASC: ascending<br>DESC: descending<br>Default value: DESC</p>
         :type Order: str
-        :param _By: <p>Sorting field<br>Enumeration value:<br>LatestScanTime: Latest scan time<br>VPRLevel: VPR rating<br>RiskStatus: Remediation status<br>Default value: LatestScanTime</p>
+        :param _By: <p>Sorting field<br>Enumeration values:<br>LatestScanTime: Latest scan time<br>VPRLevel: VPR rating<br>RiskStatus: Remediation status<br>Default value: LatestScanTime</p>
         :type By: str
         """
         self._KBID = None
@@ -118659,7 +118897,7 @@ class DescribeVulRiskRelateHostRequest(AbstractModel):
 
     @property
     def KBID(self):
-        r"""<p>p>KB patch internal ID (kb_info.id)</p>
+        r"""<p>KB patch internal ID (kb_info.id)</p>
         :rtype: int
         """
         return self._KBID
@@ -118692,7 +118930,7 @@ class DescribeVulRiskRelateHostRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<p>Filter conditions array. Multi-condition with each other is AND relationship<br>Supported Filter.Name:<br>Keyword: Keyword fuzzy search (fuzzy matching for host name/IP/InstanceID)<br>CloudTag: Cloud tag<br>Tag: Security center tag</p>
+        r"""<p>Criteria array, multi-condition uses AND relationship with each other<br>Supported Filter.Name:<br>Keyword: Keyword fuzzy search (fuzzy matching for host name/IP/InstanceID)<br>CloudTag: Cloud tag<br>Tag: Security center tag</p>
         :rtype: list of Filters
         """
         return self._Filters
@@ -118703,7 +118941,7 @@ class DescribeVulRiskRelateHostRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""<p>Number of results per page<br>Value ranges from 1 to 100<br>Default value: 10</p>
+        r"""<p>Number of results per page<br>Value range: [1, 100]<br>Default value: 10</p>
         :rtype: int
         """
         return self._Limit
@@ -118714,7 +118952,7 @@ class DescribeVulRiskRelateHostRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""<p>Paging offset<br>Value ranges from 0 to +∞<br>Default value: 0</p>
+        r"""<p>Paging offset<br>Value range: [0, positive infinity)<br>Default value: 0</p>
         :rtype: int
         """
         return self._Offset
@@ -118725,7 +118963,7 @@ class DescribeVulRiskRelateHostRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""<p>Sorting order<br>Enumeration value:<br>ASC: Ascending<br>DESC: Descending order<br>Default value: DESC</p>
+        r"""<p>Sorting order<br>Enumeration values:<br>ASC: ascending<br>DESC: descending<br>Default value: DESC</p>
         :rtype: str
         """
         return self._Order
@@ -118736,7 +118974,7 @@ class DescribeVulRiskRelateHostRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""<p>Sorting field<br>Enumeration value:<br>LatestScanTime: Latest scan time<br>VPRLevel: VPR rating<br>RiskStatus: Remediation status<br>Default value: LatestScanTime</p>
+        r"""<p>Sorting field<br>Enumeration values:<br>LatestScanTime: Latest scan time<br>VPRLevel: VPR rating<br>RiskStatus: Remediation status<br>Default value: LatestScanTime</p>
         :rtype: str
         """
         return self._By
@@ -118777,9 +119015,9 @@ class DescribeVulRiskRelateHostResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _List: <p>List of affected hosts for the vulnerability</p>
+        :param _List: <p>List of affected hosts</p>
         :type List: list of VulHostBriefInfo
-        :param _TotalCount: <p>Total number of qualified instances</p>
+        :param _TotalCount: <p>Total number of eligible items</p>
         :type TotalCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -118790,7 +119028,7 @@ class DescribeVulRiskRelateHostResponse(AbstractModel):
 
     @property
     def List(self):
-        r"""<p>List of affected hosts for the vulnerability</p>
+        r"""<p>List of affected hosts</p>
         :rtype: list of VulHostBriefInfo
         """
         return self._List
@@ -118801,7 +119039,7 @@ class DescribeVulRiskRelateHostResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""<p>Total number of qualified instances</p>
+        r"""<p>Total number of eligible items</p>
         :rtype: int
         """
         return self._TotalCount
@@ -118876,36 +119114,38 @@ class DescribeVulScanPeriodicResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: <p>Period scanning switch (0-off, 1-on)</p>
+        :param _Status: <p>Periodic scan switch (0-Disable, 1-Enable)</p>
         :type Status: int
-        :param _VulCategory: <p>Vulnerability type</p><p>Enumeration value:</p><ul><li>LINUX: Linux software vulnerability</li><li>WINDOWS: Windows system patch</li><li>WEB_CMS: Web-CMS vulnerability</li><li>APPLICATION: Application vulnerability</li><li>EMERGENCY: Emergency vulnerability</li></ul>
+        :param _VulCategory: <p>Vulnerability type</p><p>Enumeration values:</p><ul><li>LINUX: Linux software vulnerability</li><li>WINDOWS: Windows system patch</li><li>WEB_CMS: Web-CMS vulnerability</li><li>APPLICATION: Application vulnerability</li><li>EMERGENCY: Emergency vulnerability</li></ul>
         :type VulCategory: list of str
-        :param _Level: <p>Vulnerability level (INVALID: Invalid, INFO: Notification, LOW: Low risk, MEDIUM: Medium risk, HIGH: High risk, CRITICAL: Critical)</p>
+        :param _Level: <p>Vulnerability level (INVALID: invalid, INFO: notification, LOW: low risk, MEDIUM: medium risk, HIGH: high risk, CRITICAL: critical)</p>
         :type Level: list of str
-        :param _Method: <p>Scanning method (VersionCompare: version comparison, POC: POC detection, VersionComparePOC: version p comparison+POC detection)</p>
+        :param _Method: <p>Scan mode (VersionCompare: version comparison, POC: POC detection, VersionComparePOC: version comparison + POC detection)</p>
         :type Method: str
-        :param _CycleType: <p>Period scanning type</p><p>Enumeration value:</p><ul><li>1: Daily</li><li>2: Weekly</li><li>3: Per month</li></ul>
+        :param _CycleType: <p>Periodic scan type</p><p>Enumeration values:</p><ul><li>1: Daily</li><li>2: Weekly</li><li>3: Per month</li></ul>
         :type CycleType: int
         :param _StartTime: <p>Start time (09:00:00)</p>
         :type StartTime: str
         :param _EndTime: <p>End time (18:00:00)</p>
         :type EndTime: str
-        :param _AssetRange: <p>Asset scope (0-All assets, 1-Custom assets, 2-Remove asset)</p>
+        :param _AssetRange: <p>Asset scope (0 - all assets, 1 - custom asset, 2 - remove asset)</p>
         :type AssetRange: int
         :param _AssetList: <p>Asset list (instance_id list)</p>
         :type AssetList: list of str
-        :param _CycleValue: <p>Period value</p><p>Unit: Day of the week or day of the month</p>
+        :param _CycleValue: <p>Cycle value</p><p>Unit: day of the week or day per month</p>
         :type CycleValue: list of int non-negative
-        :param _Timeout: <p>Timeout duration</p><p>Unit: second</p>
+        :param _Timeout: <p>Timeout duration</p><p>Unit: seconds</p>
         :type Timeout: int
-        :param _AllowSync: <p>Whether to synchronize configuration 0-cannot, 1-permission</p>
+        :param _AllowSync: <p>Whether to run the synchronized configuration. 0: not allowed, 1: allowed</p>
         :type AllowSync: int
-        :param _EnableSync: <p>Whether the admin account has the automated configuration synchronization switch enabled 0-Off, 1-On</p>
+        :param _EnableSync: <p>Whether automatic synchronization is enabled for the admin account. 0: disabled, 1: enabled</p>
         :type EnableSync: int
-        :param _AdminInfo: <p>Which account the configuration message comes from. Being empty indicates set by oneself.</p>
+        :param _AdminInfo: <p>Which account the configuration message comes from. Being empty indicates it is set by oneself.</p>
         :type AdminInfo: :class:`tencentcloud.csip.v20221121.models.AccountBriefInfo`
-        :param _TagIds: <p>tag id</p>
+        :param _TagIds: <p>Tag id</p>
         :type TagIds: list of int non-negative
+        :param _PreferCloudSource: <p>Whether to prefer Tencent Cloud software sources</p>
+        :type PreferCloudSource: bool
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -118924,11 +119164,12 @@ class DescribeVulScanPeriodicResponse(AbstractModel):
         self._EnableSync = None
         self._AdminInfo = None
         self._TagIds = None
+        self._PreferCloudSource = None
         self._RequestId = None
 
     @property
     def Status(self):
-        r"""<p>Period scanning switch (0-off, 1-on)</p>
+        r"""<p>Periodic scan switch (0-Disable, 1-Enable)</p>
         :rtype: int
         """
         return self._Status
@@ -118939,7 +119180,7 @@ class DescribeVulScanPeriodicResponse(AbstractModel):
 
     @property
     def VulCategory(self):
-        r"""<p>Vulnerability type</p><p>Enumeration value:</p><ul><li>LINUX: Linux software vulnerability</li><li>WINDOWS: Windows system patch</li><li>WEB_CMS: Web-CMS vulnerability</li><li>APPLICATION: Application vulnerability</li><li>EMERGENCY: Emergency vulnerability</li></ul>
+        r"""<p>Vulnerability type</p><p>Enumeration values:</p><ul><li>LINUX: Linux software vulnerability</li><li>WINDOWS: Windows system patch</li><li>WEB_CMS: Web-CMS vulnerability</li><li>APPLICATION: Application vulnerability</li><li>EMERGENCY: Emergency vulnerability</li></ul>
         :rtype: list of str
         """
         return self._VulCategory
@@ -118950,7 +119191,7 @@ class DescribeVulScanPeriodicResponse(AbstractModel):
 
     @property
     def Level(self):
-        r"""<p>Vulnerability level (INVALID: Invalid, INFO: Notification, LOW: Low risk, MEDIUM: Medium risk, HIGH: High risk, CRITICAL: Critical)</p>
+        r"""<p>Vulnerability level (INVALID: invalid, INFO: notification, LOW: low risk, MEDIUM: medium risk, HIGH: high risk, CRITICAL: critical)</p>
         :rtype: list of str
         """
         return self._Level
@@ -118961,7 +119202,7 @@ class DescribeVulScanPeriodicResponse(AbstractModel):
 
     @property
     def Method(self):
-        r"""<p>Scanning method (VersionCompare: version comparison, POC: POC detection, VersionComparePOC: version p comparison+POC detection)</p>
+        r"""<p>Scan mode (VersionCompare: version comparison, POC: POC detection, VersionComparePOC: version comparison + POC detection)</p>
         :rtype: str
         """
         return self._Method
@@ -118972,7 +119213,7 @@ class DescribeVulScanPeriodicResponse(AbstractModel):
 
     @property
     def CycleType(self):
-        r"""<p>Period scanning type</p><p>Enumeration value:</p><ul><li>1: Daily</li><li>2: Weekly</li><li>3: Per month</li></ul>
+        r"""<p>Periodic scan type</p><p>Enumeration values:</p><ul><li>1: Daily</li><li>2: Weekly</li><li>3: Per month</li></ul>
         :rtype: int
         """
         return self._CycleType
@@ -119005,7 +119246,7 @@ class DescribeVulScanPeriodicResponse(AbstractModel):
 
     @property
     def AssetRange(self):
-        r"""<p>Asset scope (0-All assets, 1-Custom assets, 2-Remove asset)</p>
+        r"""<p>Asset scope (0 - all assets, 1 - custom asset, 2 - remove asset)</p>
         :rtype: int
         """
         return self._AssetRange
@@ -119027,7 +119268,7 @@ class DescribeVulScanPeriodicResponse(AbstractModel):
 
     @property
     def CycleValue(self):
-        r"""<p>Period value</p><p>Unit: Day of the week or day of the month</p>
+        r"""<p>Cycle value</p><p>Unit: day of the week or day per month</p>
         :rtype: list of int non-negative
         """
         return self._CycleValue
@@ -119038,7 +119279,7 @@ class DescribeVulScanPeriodicResponse(AbstractModel):
 
     @property
     def Timeout(self):
-        r"""<p>Timeout duration</p><p>Unit: second</p>
+        r"""<p>Timeout duration</p><p>Unit: seconds</p>
         :rtype: int
         """
         return self._Timeout
@@ -119049,7 +119290,7 @@ class DescribeVulScanPeriodicResponse(AbstractModel):
 
     @property
     def AllowSync(self):
-        r"""<p>Whether to synchronize configuration 0-cannot, 1-permission</p>
+        r"""<p>Whether to run the synchronized configuration. 0: not allowed, 1: allowed</p>
         :rtype: int
         """
         return self._AllowSync
@@ -119060,7 +119301,7 @@ class DescribeVulScanPeriodicResponse(AbstractModel):
 
     @property
     def EnableSync(self):
-        r"""<p>Whether the admin account has the automated configuration synchronization switch enabled 0-Off, 1-On</p>
+        r"""<p>Whether automatic synchronization is enabled for the admin account. 0: disabled, 1: enabled</p>
         :rtype: int
         """
         return self._EnableSync
@@ -119071,7 +119312,7 @@ class DescribeVulScanPeriodicResponse(AbstractModel):
 
     @property
     def AdminInfo(self):
-        r"""<p>Which account the configuration message comes from. Being empty indicates set by oneself.</p>
+        r"""<p>Which account the configuration message comes from. Being empty indicates it is set by oneself.</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.AccountBriefInfo`
         """
         return self._AdminInfo
@@ -119082,7 +119323,7 @@ class DescribeVulScanPeriodicResponse(AbstractModel):
 
     @property
     def TagIds(self):
-        r"""<p>tag id</p>
+        r"""<p>Tag id</p>
         :rtype: list of int non-negative
         """
         return self._TagIds
@@ -119090,6 +119331,17 @@ class DescribeVulScanPeriodicResponse(AbstractModel):
     @TagIds.setter
     def TagIds(self, TagIds):
         self._TagIds = TagIds
+
+    @property
+    def PreferCloudSource(self):
+        r"""<p>Whether to prefer Tencent Cloud software sources</p>
+        :rtype: bool
+        """
+        return self._PreferCloudSource
+
+    @PreferCloudSource.setter
+    def PreferCloudSource(self, PreferCloudSource):
+        self._PreferCloudSource = PreferCloudSource
 
     @property
     def RequestId(self):
@@ -119121,6 +119373,7 @@ class DescribeVulScanPeriodicResponse(AbstractModel):
             self._AdminInfo = AccountBriefInfo()
             self._AdminInfo._deserialize(params.get("AdminInfo"))
         self._TagIds = params.get("TagIds")
+        self._PreferCloudSource = params.get("PreferCloudSource")
         self._RequestId = params.get("RequestId")
 
 
@@ -135181,11 +135434,14 @@ class ExportEDRRulesRequest(AbstractModel):
         :type Order: str
         :param _By: <p>Sort column: ModifyTime</p>
         :type By: str
+        :param _FileOperationRules: <p>File operation rules, populated when ContentType=file_operation (file path regex AND any selected action)</p>
+        :type FileOperationRules: :class:`tencentcloud.csip.v20221121.models.RuleContentFileOperation`
         """
         self._MemberId = None
         self._Filters = None
         self._Order = None
         self._By = None
+        self._FileOperationRules = None
 
     @property
     def MemberId(self):
@@ -135231,6 +135487,17 @@ class ExportEDRRulesRequest(AbstractModel):
     def By(self, By):
         self._By = By
 
+    @property
+    def FileOperationRules(self):
+        r"""<p>File operation rules, populated when ContentType=file_operation (file path regex AND any selected action)</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentFileOperation`
+        """
+        return self._FileOperationRules
+
+    @FileOperationRules.setter
+    def FileOperationRules(self, FileOperationRules):
+        self._FileOperationRules = FileOperationRules
+
 
     def _deserialize(self, params):
         self._MemberId = params.get("MemberId")
@@ -135242,6 +135509,9 @@ class ExportEDRRulesRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Order = params.get("Order")
         self._By = params.get("By")
+        if params.get("FileOperationRules") is not None:
+            self._FileOperationRules = RuleContentFileOperation()
+            self._FileOperationRules._deserialize(params.get("FileOperationRules"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -160275,6 +160545,10 @@ class ModifyEDRRuleRequest(AbstractModel):
         :type ImageIDsWithAppId: list of ImageIDWithAppIdItem
         :param _ConditionMatches: <p>Container condition matching</p>
         :type ConditionMatches: list of ConditionMatch
+        :param _FileOperationRules: <p>File operation rules, populated when ContentType=file_operation (file path regex AND any selected action)</p>
+        :type FileOperationRules: :class:`tencentcloud.csip.v20221121.models.RuleContentFileOperation`
+        :param _K8sApiRule: <p>K8s API rule passed when ContentType=k8s_api. Values of all non-empty fields must be Base64-encoded, and k8s_api rules apply only per cluster.</p>
+        :type K8sApiRule: :class:`tencentcloud.csip.v20221121.models.RuleContentK8sAPI`
         """
         self._RuleType = None
         self._AlertAction = None
@@ -160308,6 +160582,8 @@ class ModifyEDRRuleRequest(AbstractModel):
         self._ExcludeClusterIDsWithAppId = None
         self._ImageIDsWithAppId = None
         self._ConditionMatches = None
+        self._FileOperationRules = None
+        self._K8sApiRule = None
 
     @property
     def RuleType(self):
@@ -160661,6 +160937,28 @@ class ModifyEDRRuleRequest(AbstractModel):
     def ConditionMatches(self, ConditionMatches):
         self._ConditionMatches = ConditionMatches
 
+    @property
+    def FileOperationRules(self):
+        r"""<p>File operation rules, populated when ContentType=file_operation (file path regex AND any selected action)</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentFileOperation`
+        """
+        return self._FileOperationRules
+
+    @FileOperationRules.setter
+    def FileOperationRules(self, FileOperationRules):
+        self._FileOperationRules = FileOperationRules
+
+    @property
+    def K8sApiRule(self):
+        r"""<p>K8s API rule passed when ContentType=k8s_api. Values of all non-empty fields must be Base64-encoded, and k8s_api rules apply only per cluster.</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentK8sAPI`
+        """
+        return self._K8sApiRule
+
+    @K8sApiRule.setter
+    def K8sApiRule(self, K8sApiRule):
+        self._K8sApiRule = K8sApiRule
+
 
     def _deserialize(self, params):
         self._RuleType = params.get("RuleType")
@@ -160731,6 +161029,12 @@ class ModifyEDRRuleRequest(AbstractModel):
                 obj = ConditionMatch()
                 obj._deserialize(item)
                 self._ConditionMatches.append(obj)
+        if params.get("FileOperationRules") is not None:
+            self._FileOperationRules = RuleContentFileOperation()
+            self._FileOperationRules._deserialize(params.get("FileOperationRules"))
+        if params.get("K8sApiRule") is not None:
+            self._K8sApiRule = RuleContentK8sAPI()
+            self._K8sApiRule._deserialize(params.get("K8sApiRule"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -164389,6 +164693,8 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         :type QuaraExcludeClusterIDsWithAppId: list of ClusterIDWithAppIdItem
         :param _Timeout: <p>Timeout duration (seconds)</p>
         :type Timeout: int
+        :param _QuaraTypes: <p>List of alarm type codes for custom quarantine mode (required when ProtectMode=2; codes are taken from the QuaraTypeDict returned by Describe)</p>
+        :type QuaraTypes: list of str
         """
         self._Cycle = None
         self._StartTime = None
@@ -164421,6 +164727,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         self._QuaraClusterIDsWithAppId = None
         self._QuaraExcludeClusterIDsWithAppId = None
         self._Timeout = None
+        self._QuaraTypes = None
 
     @property
     def Cycle(self):
@@ -164763,6 +165070,17 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
     def Timeout(self, Timeout):
         self._Timeout = Timeout
 
+    @property
+    def QuaraTypes(self):
+        r"""<p>List of alarm type codes for custom quarantine mode (required when ProtectMode=2; codes are taken from the QuaraTypeDict returned by Describe)</p>
+        :rtype: list of str
+        """
+        return self._QuaraTypes
+
+    @QuaraTypes.setter
+    def QuaraTypes(self, QuaraTypes):
+        self._QuaraTypes = QuaraTypes
+
 
     def _deserialize(self, params):
         self._Cycle = params.get("Cycle")
@@ -164836,6 +165154,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
                 obj._deserialize(item)
                 self._QuaraExcludeClusterIDsWithAppId.append(obj)
         self._Timeout = params.get("Timeout")
+        self._QuaraTypes = params.get("QuaraTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -165964,8 +166283,11 @@ class ModifyPayConfigRequest(AbstractModel):
         :param _HostConfig: Auto-scaling configuration for the CWP module
 Supplemental description: if not passed, host configuration will not be modified. At least this module is required for the current period. Named module fields like ContainerConfig / AIAgentConfig can be added for subsequent scalability.
         :type HostConfig: :class:`tencentcloud.csip.v20221121.models.HostAutoScaleConfig`
+        :param _ContainerConfig: <p>Auto-scaling configuration for the container security module; if not passed, it remains unchanged</p>
+        :type ContainerConfig: :class:`tencentcloud.csip.v20221121.models.ContainerAutoScaleConfig`
         """
         self._HostConfig = None
+        self._ContainerConfig = None
 
     @property
     def HostConfig(self):
@@ -165979,11 +166301,25 @@ Supplemental description: if not passed, host configuration will not be modified
     def HostConfig(self, HostConfig):
         self._HostConfig = HostConfig
 
+    @property
+    def ContainerConfig(self):
+        r"""<p>Auto-scaling configuration for the container security module; if not passed, it remains unchanged</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ContainerAutoScaleConfig`
+        """
+        return self._ContainerConfig
+
+    @ContainerConfig.setter
+    def ContainerConfig(self, ContainerConfig):
+        self._ContainerConfig = ContainerConfig
+
 
     def _deserialize(self, params):
         if params.get("HostConfig") is not None:
             self._HostConfig = HostAutoScaleConfig()
             self._HostConfig._deserialize(params.get("HostConfig"))
+        if params.get("ContainerConfig") is not None:
+            self._ContainerConfig = ContainerAutoScaleConfig()
+            self._ContainerConfig._deserialize(params.get("ContainerConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -174609,6 +174945,87 @@ class PublicIpDomainListKey(AbstractModel):
         
 
 
+class QuaraTypeDictItem(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 
+        :type Code: str
+        :param _Name: 
+        :type Name: str
+        :param _Recommend: 
+        :type Recommend: bool
+        :param _Desc: 
+        :type Desc: str
+        """
+        self._Code = None
+        self._Name = None
+        self._Recommend = None
+        self._Desc = None
+
+    @property
+    def Code(self):
+        r"""
+        :rtype: str
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Name(self):
+        r"""
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Recommend(self):
+        r"""
+        :rtype: bool
+        """
+        return self._Recommend
+
+    @Recommend.setter
+    def Recommend(self, Recommend):
+        self._Recommend = Recommend
+
+    @property
+    def Desc(self):
+        r"""
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Name = params.get("Name")
+        self._Recommend = params.get("Recommend")
+        self._Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RaspLicenseList(AbstractModel):
     r"""List of authorization packages for major event protection.
 
@@ -177758,6 +178175,277 @@ class RuleContentCmdLine(AbstractModel):
         if params.get("AncestorProcess") is not None:
             self._AncestorProcess = RuleContentProcessInfo()
             self._AncestorProcess._deserialize(params.get("AncestorProcess"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleContentFileOperation(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Process: 
+        :type Process: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessInfo`
+        :param _ParentProcess: 
+        :type ParentProcess: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessInfo`
+        :param _FilePath: 
+        :type FilePath: str
+        :param _FileActions: 
+        :type FileActions: list of str
+        """
+        self._Process = None
+        self._ParentProcess = None
+        self._FilePath = None
+        self._FileActions = None
+
+    @property
+    def Process(self):
+        r"""
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessInfo`
+        """
+        return self._Process
+
+    @Process.setter
+    def Process(self, Process):
+        self._Process = Process
+
+    @property
+    def ParentProcess(self):
+        r"""
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessInfo`
+        """
+        return self._ParentProcess
+
+    @ParentProcess.setter
+    def ParentProcess(self, ParentProcess):
+        self._ParentProcess = ParentProcess
+
+    @property
+    def FilePath(self):
+        r"""
+        :rtype: str
+        """
+        return self._FilePath
+
+    @FilePath.setter
+    def FilePath(self, FilePath):
+        self._FilePath = FilePath
+
+    @property
+    def FileActions(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._FileActions
+
+    @FileActions.setter
+    def FileActions(self, FileActions):
+        self._FileActions = FileActions
+
+
+    def _deserialize(self, params):
+        if params.get("Process") is not None:
+            self._Process = RuleContentProcessInfo()
+            self._Process._deserialize(params.get("Process"))
+        if params.get("ParentProcess") is not None:
+            self._ParentProcess = RuleContentProcessInfo()
+            self._ParentProcess._deserialize(params.get("ParentProcess"))
+        self._FilePath = params.get("FilePath")
+        self._FileActions = params.get("FileActions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleContentK8sAPI(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestURI: 
+        :type RequestURI: str
+        :param _Verb: 
+        :type Verb: str
+        :param _RequestUser: 
+        :type RequestUser: str
+        :param _UserAgent: 
+        :type UserAgent: str
+        :param _SourceIPS: 
+        :type SourceIPS: str
+        :param _ResponseStatusCode: 
+        :type ResponseStatusCode: str
+        :param _RequestObject: 
+        :type RequestObject: str
+        :param _ResponseObject: 
+        :type ResponseObject: str
+        :param _MountHostDir: 
+        :type MountHostDir: str
+        :param _PodNameIP: 
+        :type PodNameIP: str
+        :param _AuditID: 
+        :type AuditID: str
+        """
+        self._RequestURI = None
+        self._Verb = None
+        self._RequestUser = None
+        self._UserAgent = None
+        self._SourceIPS = None
+        self._ResponseStatusCode = None
+        self._RequestObject = None
+        self._ResponseObject = None
+        self._MountHostDir = None
+        self._PodNameIP = None
+        self._AuditID = None
+
+    @property
+    def RequestURI(self):
+        r"""
+        :rtype: str
+        """
+        return self._RequestURI
+
+    @RequestURI.setter
+    def RequestURI(self, RequestURI):
+        self._RequestURI = RequestURI
+
+    @property
+    def Verb(self):
+        r"""
+        :rtype: str
+        """
+        return self._Verb
+
+    @Verb.setter
+    def Verb(self, Verb):
+        self._Verb = Verb
+
+    @property
+    def RequestUser(self):
+        r"""
+        :rtype: str
+        """
+        return self._RequestUser
+
+    @RequestUser.setter
+    def RequestUser(self, RequestUser):
+        self._RequestUser = RequestUser
+
+    @property
+    def UserAgent(self):
+        r"""
+        :rtype: str
+        """
+        return self._UserAgent
+
+    @UserAgent.setter
+    def UserAgent(self, UserAgent):
+        self._UserAgent = UserAgent
+
+    @property
+    def SourceIPS(self):
+        r"""
+        :rtype: str
+        """
+        return self._SourceIPS
+
+    @SourceIPS.setter
+    def SourceIPS(self, SourceIPS):
+        self._SourceIPS = SourceIPS
+
+    @property
+    def ResponseStatusCode(self):
+        r"""
+        :rtype: str
+        """
+        return self._ResponseStatusCode
+
+    @ResponseStatusCode.setter
+    def ResponseStatusCode(self, ResponseStatusCode):
+        self._ResponseStatusCode = ResponseStatusCode
+
+    @property
+    def RequestObject(self):
+        r"""
+        :rtype: str
+        """
+        return self._RequestObject
+
+    @RequestObject.setter
+    def RequestObject(self, RequestObject):
+        self._RequestObject = RequestObject
+
+    @property
+    def ResponseObject(self):
+        r"""
+        :rtype: str
+        """
+        return self._ResponseObject
+
+    @ResponseObject.setter
+    def ResponseObject(self, ResponseObject):
+        self._ResponseObject = ResponseObject
+
+    @property
+    def MountHostDir(self):
+        r"""
+        :rtype: str
+        """
+        return self._MountHostDir
+
+    @MountHostDir.setter
+    def MountHostDir(self, MountHostDir):
+        self._MountHostDir = MountHostDir
+
+    @property
+    def PodNameIP(self):
+        r"""
+        :rtype: str
+        """
+        return self._PodNameIP
+
+    @PodNameIP.setter
+    def PodNameIP(self, PodNameIP):
+        self._PodNameIP = PodNameIP
+
+    @property
+    def AuditID(self):
+        r"""
+        :rtype: str
+        """
+        return self._AuditID
+
+    @AuditID.setter
+    def AuditID(self, AuditID):
+        self._AuditID = AuditID
+
+
+    def _deserialize(self, params):
+        self._RequestURI = params.get("RequestURI")
+        self._Verb = params.get("Verb")
+        self._RequestUser = params.get("RequestUser")
+        self._UserAgent = params.get("UserAgent")
+        self._SourceIPS = params.get("SourceIPS")
+        self._ResponseStatusCode = params.get("ResponseStatusCode")
+        self._RequestObject = params.get("RequestObject")
+        self._ResponseObject = params.get("ResponseObject")
+        self._MountHostDir = params.get("MountHostDir")
+        self._PodNameIP = params.get("PodNameIP")
+        self._AuditID = params.get("AuditID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -191899,6 +192587,204 @@ class UserItem(AbstractModel):
         
 
 
+class VPRExplainDimension(AbstractModel):
+    r"""Explain one dimension in the VPR interpretation card.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>Tag key</p>
+        :type Key: str
+        :param _Name: <p>Tag name</p>
+        :type Name: str
+        :param _Items: <p>Tag sub-item.</p>
+        :type Items: list of VPRExplainDimensionItem
+        """
+        self._Key = None
+        self._Name = None
+        self._Items = None
+
+    @property
+    def Key(self):
+        r"""<p>Tag key</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Name(self):
+        r"""<p>Tag name</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Items(self):
+        r"""<p>Tag sub-item.</p>
+        :rtype: list of VPRExplainDimensionItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Name = params.get("Name")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = VPRExplainDimensionItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VPRExplainDimensionItem(AbstractModel):
+    r"""Interpret a single tag item in the VPR card
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>Tag.</p>
+        :type Key: str
+        :param _Name: <p>Tag name</p>
+        :type Name: str
+        :param _Remark: <p>Tag description.</p>
+        :type Remark: str
+        """
+        self._Key = None
+        self._Name = None
+        self._Remark = None
+
+    @property
+    def Key(self):
+        r"""<p>Tag.</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Name(self):
+        r"""<p>Tag name</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        r"""<p>Tag description.</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VPRExplainInfo(AbstractModel):
+    r"""VPR rating interpretation card
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulIntel: <p>Vulnerability intelligence</p>
+        :type VulIntel: list of VPRExplainDimension
+        :param _AssetContext: <p>Asset context</p>
+        :type AssetContext: list of VPRExplainDimension
+        """
+        self._VulIntel = None
+        self._AssetContext = None
+
+    @property
+    def VulIntel(self):
+        r"""<p>Vulnerability intelligence</p>
+        :rtype: list of VPRExplainDimension
+        """
+        return self._VulIntel
+
+    @VulIntel.setter
+    def VulIntel(self, VulIntel):
+        self._VulIntel = VulIntel
+
+    @property
+    def AssetContext(self):
+        r"""<p>Asset context</p>
+        :rtype: list of VPRExplainDimension
+        """
+        return self._AssetContext
+
+    @AssetContext.setter
+    def AssetContext(self, AssetContext):
+        self._AssetContext = AssetContext
+
+
+    def _deserialize(self, params):
+        if params.get("VulIntel") is not None:
+            self._VulIntel = []
+            for item in params.get("VulIntel"):
+                obj = VPRExplainDimension()
+                obj._deserialize(item)
+                self._VulIntel.append(obj)
+        if params.get("AssetContext") is not None:
+            self._AssetContext = []
+            for item in params.get("AssetContext"):
+                obj = VPRExplainDimension()
+                obj._deserialize(item)
+                self._AssetContext.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VPRLabel(AbstractModel):
     r"""Vulnerability VPR tag
 
@@ -191974,13 +192860,13 @@ class VPRRatingInfo(AbstractModel):
         r"""
         :param _Result: VPR rating result
 Enumeration value:
-URGENT: Immediate repair
-SUGGESTED: Suggested repairs
+URGENT: immediate repair
+SUGGESTED repairs
 DEFERRABLE: Deferrable repair
         :type Result: str
         :param _Remark: Rating description
         :type Remark: str
-        :param _Stage: List of stage rating details
+        :param _Stage: List of phased rating details
         :type Stage: list of VPRRatingStage
         """
         self._Result = None
@@ -191991,8 +192877,8 @@ DEFERRABLE: Deferrable repair
     def Result(self):
         r"""VPR rating result
 Enumeration value:
-URGENT: Immediate repair
-SUGGESTED: Suggested repairs
+URGENT: immediate repair
+SUGGESTED repairs
 DEFERRABLE: Deferrable repair
         :rtype: str
         """
@@ -192015,7 +192901,7 @@ DEFERRABLE: Deferrable repair
 
     @property
     def Stage(self):
-        r"""List of stage rating details
+        r"""List of phased rating details
         :rtype: list of VPRRatingStage
         """
         return self._Stage
@@ -192051,9 +192937,9 @@ class VPRRatingStage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Stage: Stage name (for example: threat activity level, exploitability, vulnerability severity)
+        :param _Stage: Stage name (for example, threat activity, exploitability, vulnerability severity)
         :type Stage: str
-        :param _Result: Rating result of this stage
+        :param _Result: Rating result of this stage.
         :type Result: str
         """
         self._Stage = None
@@ -192061,7 +192947,7 @@ class VPRRatingStage(AbstractModel):
 
     @property
     def Stage(self):
-        r"""Stage name (for example: threat activity level, exploitability, vulnerability severity)
+        r"""Stage name (for example, threat activity, exploitability, vulnerability severity)
         :rtype: str
         """
         return self._Stage
@@ -192072,7 +192958,7 @@ class VPRRatingStage(AbstractModel):
 
     @property
     def Result(self):
-        r"""Rating result of this stage
+        r"""Rating result of this stage.
         :rtype: str
         """
         return self._Result
@@ -194532,15 +195418,15 @@ Parameter format: YYYY-MM-DD HH:mm:ss
 
 
 class VulComponentSummary(AbstractModel):
-    r"""Host Vulnerability Component Overview
+    r"""Host vulnerability component overview
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: <p>Component name.</p>
+        :param _Name: <p>Component name</p>
         :type Name: str
-        :param _RelateHostCount: <p>Associated hosts.</p>
+        :param _RelateHostCount: <p>Number of associated hosts</p>
         :type RelateHostCount: int
         """
         self._Name = None
@@ -194548,7 +195434,7 @@ class VulComponentSummary(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>Component name.</p>
+        r"""<p>Component name</p>
         :rtype: str
         """
         return self._Name
@@ -194559,7 +195445,7 @@ class VulComponentSummary(AbstractModel):
 
     @property
     def RelateHostCount(self):
-        r"""<p>Associated hosts.</p>
+        r"""<p>Number of associated hosts</p>
         :rtype: int
         """
         return self._RelateHostCount
@@ -195127,17 +196013,17 @@ Valid values: [0.0, 1.0]
 
 
 class VulFixItem(AbstractModel):
-    r"""Vulnerability repair item, specify a vulnerability/KB patch and its target host that needs to be repaired.
+    r"""Vulnerability repair item. Specify a vulnerability/KB patch and its target host for repair.
 
     """
 
     def __init__(self):
         r"""
-        :param _InstanceIds: <p>Instance ID list of hosts requiring fixing<br>Input parameter limitation: Up to 1,000 instance IDs per single item</p>
+        :param _InstanceIds: <p>Instance ID list of hosts requiring fixing<br>Input limit: up to 1000 instance IDs per single item</p>
         :type InstanceIds: list of str
-        :param _VulId: <p>Vulnerability ID. Choose either VulId or KBId.</p>
+        :param _VulId: <p>Vulnerability ID. Choose either VulId or KBId</p>
         :type VulId: int
-        :param _KBId: <p>Patch ID. Choose either VulId or KBId.</p>
+        :param _KBId: <p>KB patch ID. Either VulId or KBId is required.</p>
         :type KBId: int
         """
         self._InstanceIds = None
@@ -195146,7 +196032,7 @@ class VulFixItem(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""<p>Instance ID list of hosts requiring fixing<br>Input parameter limitation: Up to 1,000 instance IDs per single item</p>
+        r"""<p>Instance ID list of hosts requiring fixing<br>Input limit: up to 1000 instance IDs per single item</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -195157,7 +196043,7 @@ class VulFixItem(AbstractModel):
 
     @property
     def VulId(self):
-        r"""<p>Vulnerability ID. Choose either VulId or KBId.</p>
+        r"""<p>Vulnerability ID. Choose either VulId or KBId</p>
         :rtype: int
         """
         return self._VulId
@@ -195168,7 +196054,7 @@ class VulFixItem(AbstractModel):
 
     @property
     def KBId(self):
-        r"""<p>Patch ID. Choose either VulId or KBId.</p>
+        r"""<p>KB patch ID. Either VulId or KBId is required.</p>
         :rtype: int
         """
         return self._KBId
@@ -195193,15 +196079,15 @@ class VulFixItem(AbstractModel):
 
 
 class VulFixStatusItem(AbstractModel):
-    r"""Vulnerability/KB patch dimensional remediation status
+    r"""Remediation status in vulnerability/KB patch dimension
 
     """
 
     def __init__(self):
         r"""
-        :param _VulId: Vulnerability ID (empty for KB patch fix tasks)
+        :param _VulId: Vulnerability ID (empty for KB patch repair tasks)
         :type VulId: int
-        :param _KBId: Patch ID (empty for vulnerability repair tasks)
+        :param _KBId: KB patch ID (empty for vulnerability repair tasks)
         :type KBId: int
         :param _VulName: Vulnerability name or KB patch name
         :type VulName: str
@@ -195209,14 +196095,14 @@ class VulFixStatusItem(AbstractModel):
 Enumeration value:
 0: In remediation
 1: All successful
-2: partially failed
+2: Partially failed
 3: All failed
         :type FixStatus: int
-        :param _HostCount: Total hosts associated with the vulnerability/KB patch
+        :param _HostCount: Total number of hosts associated with this vulnerability/KB patch
         :type HostCount: int
-        :param _SuccessHostCount: Number of hosts successfully fixed by the vulnerability/KB patch
+        :param _SuccessHostCount: Number of hosts successfully fixed by this vulnerability/KB patch
         :type SuccessHostCount: int
-        :param _FailHostCount: Number of hosts failed to be fixed for the vulnerability/KB patch
+        :param _FailHostCount: Number of hosts failed to be fixed by this vulnerability/KB patch
         :type FailHostCount: int
         """
         self._VulId = None
@@ -195229,7 +196115,7 @@ Enumeration value:
 
     @property
     def VulId(self):
-        r"""Vulnerability ID (empty for KB patch fix tasks)
+        r"""Vulnerability ID (empty for KB patch repair tasks)
         :rtype: int
         """
         return self._VulId
@@ -195240,7 +196126,7 @@ Enumeration value:
 
     @property
     def KBId(self):
-        r"""Patch ID (empty for vulnerability repair tasks)
+        r"""KB patch ID (empty for vulnerability repair tasks)
         :rtype: int
         """
         return self._KBId
@@ -195266,7 +196152,7 @@ Enumeration value:
 Enumeration value:
 0: In remediation
 1: All successful
-2: partially failed
+2: Partially failed
 3: All failed
         :rtype: int
         """
@@ -195278,7 +196164,7 @@ Enumeration value:
 
     @property
     def HostCount(self):
-        r"""Total hosts associated with the vulnerability/KB patch
+        r"""Total number of hosts associated with this vulnerability/KB patch
         :rtype: int
         """
         return self._HostCount
@@ -195289,7 +196175,7 @@ Enumeration value:
 
     @property
     def SuccessHostCount(self):
-        r"""Number of hosts successfully fixed by the vulnerability/KB patch
+        r"""Number of hosts successfully fixed by this vulnerability/KB patch
         :rtype: int
         """
         return self._SuccessHostCount
@@ -195300,7 +196186,7 @@ Enumeration value:
 
     @property
     def FailHostCount(self):
-        r"""Number of hosts failed to be fixed for the vulnerability/KB patch
+        r"""Number of hosts failed to be fixed by this vulnerability/KB patch
         :rtype: int
         """
         return self._FailHostCount
@@ -195329,7 +196215,7 @@ Enumeration value:
 
 
 class VulFixSummaryItem(AbstractModel):
-    r"""Vulnerability repair summary
+    r"""Vulnerability repair summary information
 
     """
 
@@ -195343,9 +196229,9 @@ class VulFixSummaryItem(AbstractModel):
         :type CveId: str
         :param _AffectedCount: <p>Number of affected hosts</p>
         :type AffectedCount: int
-        :param _NeedReboot: <p>Whether restart is required after repair</p>
+        :param _NeedReboot: <p>Whether the system needs to be restarted after repair</p>
         :type NeedReboot: bool
-        :param _FixSwitch: <p>Whether one-click repair is supported true-supported false-unsupported</p>
+        :param _FixSwitch: <p>Whether one-click repair is supported. true - support; false - not support</p>
         :type FixSwitch: bool
         """
         self._VulId = None
@@ -195401,7 +196287,7 @@ class VulFixSummaryItem(AbstractModel):
 
     @property
     def NeedReboot(self):
-        r"""<p>Whether restart is required after repair</p>
+        r"""<p>Whether the system needs to be restarted after repair</p>
         :rtype: bool
         """
         return self._NeedReboot
@@ -195412,7 +196298,7 @@ class VulFixSummaryItem(AbstractModel):
 
     @property
     def FixSwitch(self):
-        r"""<p>Whether one-click repair is supported true-supported false-unsupported</p>
+        r"""<p>Whether one-click repair is supported. true - support; false - not support</p>
         :rtype: bool
         """
         return self._FixSwitch
@@ -195440,7 +196326,7 @@ class VulFixSummaryItem(AbstractModel):
 
 
 class VulFixTaskDetailItem(AbstractModel):
-    r"""Vulnerability repair task details
+    r"""Vulnerability repair task details item
 
     """
 
@@ -195450,9 +196336,9 @@ class VulFixTaskDetailItem(AbstractModel):
         :type Id: int
         :param _TaskId: <p>Associated repair task ID</p>
         :type TaskId: int
-        :param _VulId: <p>Vulnerability ID to be repaired</p>
+        :param _VulId: <p>ID of the repaired vulnerability</p>
         :type VulId: int
-        :param _KBId: <p>Patch ID of the fixed KB</p>
+        :param _KBId: <p>KB patch ID repaired</p>
         :type KBId: int
         :param _InstanceId: <p>Host instance ID.</p>
         :type InstanceId: str
@@ -195462,15 +196348,15 @@ class VulFixTaskDetailItem(AbstractModel):
         :type MachineIp: str
         :param _VulName: <p>Vulnerability name</p>
         :type VulName: str
-        :param _Status: <p>Execution status<br>Enumeration value:<br>0: Initial state<br>1: Task issued<br>11: Client confirmed<br>2: Repair completed<br>3: Client offline<br>4: Timeout<br>5: Failure<br>6: Unsupported<br>9: Waiting for snapshot creation<br>10: Snapshot creation failed</p>
+        :param _Status: <p>Execution status<br>Enumeration values:<br>0: Initial status<br>1: Task issued<br>11: Confirmed by client<br>2: Repair completed<br>3: Client offline<br>4: Timeout<br>5: Failed<br>6: Not supported<br>9: Waiting for snapshot creation<br>10: Snapshot creation failed</p>
         :type Status: int
-        :param _FixStatus: <p>Fix result</p><p>Enumeration values:</p><ul><li>0: initial state</li><li>1: repair successful</li><li>2: fix failure</li><li>3: fix</li></ul>
+        :param _FixStatus: <p>Fix result</p><p>Enumeration values:</p><ul><li>0: initial status</li><li>1: successful fix</li><li>2: fix failure</li><li>3: in remediation</li></ul>
         :type FixStatus: int
-        :param _SnapshotStatus: <p>Snapshot status<br>Enumeration value:<br>-1: No need to create a snapshot<br>0: Not started<br>1: In progress<br>2: Completed<br>3: Creation failed</p>
+        :param _SnapshotStatus: <p>Snapshot status<br>Enumeration values:<br>-1: No need to create a snapshot<br>0: Not started<br>1: In progress<br>2: Completed<br>3: Creation failed</p>
         :type SnapshotStatus: int
         :param _ExceptionMessage: <p>Exception prompt message</p>
         :type ExceptionMessage: str
-        :param _StartTime: <p>Repair startup time<br>Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)</p>
+        :param _StartTime: <p>Recovery startup time<br>Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)</p>
         :type StartTime: str
         :param _EndTime: <p>Repair end time<br>Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)</p>
         :type EndTime: str
@@ -195478,7 +196364,7 @@ class VulFixTaskDetailItem(AbstractModel):
         :type SnapshotCreateTime: str
         :param _SnapshotExpireTime: <p>Snapshot expiration time<br>Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)</p>
         :type SnapshotExpireTime: str
-        :param _SnapshotFailReason: <p>Snapshot creation failure reason (available when SnapshotStatus=3)</p>
+        :param _SnapshotFailReason: <p>Snapshot creation failure reason (valid when SnapshotStatus=3)</p>
         :type SnapshotFailReason: str
         """
         self._Id = None
@@ -195523,7 +196409,7 @@ class VulFixTaskDetailItem(AbstractModel):
 
     @property
     def VulId(self):
-        r"""<p>Vulnerability ID to be repaired</p>
+        r"""<p>ID of the repaired vulnerability</p>
         :rtype: int
         """
         return self._VulId
@@ -195534,7 +196420,7 @@ class VulFixTaskDetailItem(AbstractModel):
 
     @property
     def KBId(self):
-        r"""<p>Patch ID of the fixed KB</p>
+        r"""<p>KB patch ID repaired</p>
         :rtype: int
         """
         return self._KBId
@@ -195589,7 +196475,7 @@ class VulFixTaskDetailItem(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>Execution status<br>Enumeration value:<br>0: Initial state<br>1: Task issued<br>11: Client confirmed<br>2: Repair completed<br>3: Client offline<br>4: Timeout<br>5: Failure<br>6: Unsupported<br>9: Waiting for snapshot creation<br>10: Snapshot creation failed</p>
+        r"""<p>Execution status<br>Enumeration values:<br>0: Initial status<br>1: Task issued<br>11: Confirmed by client<br>2: Repair completed<br>3: Client offline<br>4: Timeout<br>5: Failed<br>6: Not supported<br>9: Waiting for snapshot creation<br>10: Snapshot creation failed</p>
         :rtype: int
         """
         return self._Status
@@ -195600,7 +196486,7 @@ class VulFixTaskDetailItem(AbstractModel):
 
     @property
     def FixStatus(self):
-        r"""<p>Fix result</p><p>Enumeration values:</p><ul><li>0: initial state</li><li>1: repair successful</li><li>2: fix failure</li><li>3: fix</li></ul>
+        r"""<p>Fix result</p><p>Enumeration values:</p><ul><li>0: initial status</li><li>1: successful fix</li><li>2: fix failure</li><li>3: in remediation</li></ul>
         :rtype: int
         """
         return self._FixStatus
@@ -195611,7 +196497,7 @@ class VulFixTaskDetailItem(AbstractModel):
 
     @property
     def SnapshotStatus(self):
-        r"""<p>Snapshot status<br>Enumeration value:<br>-1: No need to create a snapshot<br>0: Not started<br>1: In progress<br>2: Completed<br>3: Creation failed</p>
+        r"""<p>Snapshot status<br>Enumeration values:<br>-1: No need to create a snapshot<br>0: Not started<br>1: In progress<br>2: Completed<br>3: Creation failed</p>
         :rtype: int
         """
         return self._SnapshotStatus
@@ -195633,7 +196519,7 @@ class VulFixTaskDetailItem(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""<p>Repair startup time<br>Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)</p>
+        r"""<p>Recovery startup time<br>Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)</p>
         :rtype: str
         """
         return self._StartTime
@@ -195677,7 +196563,7 @@ class VulFixTaskDetailItem(AbstractModel):
 
     @property
     def SnapshotFailReason(self):
-        r"""<p>Snapshot creation failure reason (available when SnapshotStatus=3)</p>
+        r"""<p>Snapshot creation failure reason (valid when SnapshotStatus=3)</p>
         :rtype: str
         """
         return self._SnapshotFailReason
@@ -195716,13 +196602,13 @@ class VulFixTaskDetailItem(AbstractModel):
 
 
 class VulFixTaskInfo(AbstractModel):
-    r"""Task summary of vulnerability repair
+    r"""Vulnerability repair task summary information
 
     """
 
     def __init__(self):
         r"""
-        :param _Id: Primary key ID of the fix task
+        :param _Id: Repair task primary key ID
         :type Id: int
         :param _TaskId: Task ID.
         :type TaskId: int
@@ -195731,37 +196617,37 @@ Enumeration values:
 0: initialization
 1: In remediation
 2: Repair successful
-3: Partially fix failed
+3: Partially fixed
 4: All fix failures
 5: Stop repair
         :type FixStatus: int
-        :param _AssetCount: Repair total number of assets
+        :param _AssetCount: Total number of repaired assets
         :type AssetCount: int
         :param _SuccessCount: Number of successful fixes
         :type SuccessCount: int
-        :param _FailCount: FIX_FAILURE count
+        :param _FailCount: Number of failed fixes
         :type FailCount: int
         :param _FixingCount: Number of hosts in remediation
         :type FixingCount: int
         :param _QueueCount: Number in queue (waiting for distribution or snapshot creation)
         :type QueueCount: int
-        :param _Progress: Progress percentage of the repair
+        :param _Progress: Repair progress percentage
 Value range: [0, 100].
-Supplemental description: Calculation method is (SuccessCount+FailCount)/AssetCount×100.
+Supplemental description: Calculation method: (SuccessCount+FailCount)/AssetCount×100
         :type Progress: int
-        :param _SuccessVulCount: Number of successfully fixed vulnerabilities
+        :param _SuccessVulCount: Number of vulnerabilities with successful fixes
         :type SuccessVulCount: int
         :param _FailVulCount: Number of vulnerabilities that failed to fix
         :type FailVulCount: int
-        :param _VulNames: List of vulnerability names to be fixed
+        :param _VulNames: List of fixed vulnerability names
         :type VulNames: list of str
-        :param _StartTime: Fix startup time
-Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
+        :param _StartTime: Startup time for repair
+Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)
         :type StartTime: str
-        :param _EndTime: Fixing end time
-Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
+        :param _EndTime: Repair end time
+Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)
         :type EndTime: str
-        :param _VulFixStatusList: List of vulnerability dimensional remediation status, status details of each vulnerability
+        :param _VulFixStatusList: List of vulnerability dimensional remediation statuses, with status details for each vulnerability
         :type VulFixStatusList: list of VulFixStatusItem
         """
         self._Id = None
@@ -195782,7 +196668,7 @@ Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
 
     @property
     def Id(self):
-        r"""Primary key ID of the fix task
+        r"""Repair task primary key ID
         :rtype: int
         """
         return self._Id
@@ -195809,7 +196695,7 @@ Enumeration values:
 0: initialization
 1: In remediation
 2: Repair successful
-3: Partially fix failed
+3: Partially fixed
 4: All fix failures
 5: Stop repair
         :rtype: int
@@ -195822,7 +196708,7 @@ Enumeration values:
 
     @property
     def AssetCount(self):
-        r"""Repair total number of assets
+        r"""Total number of repaired assets
         :rtype: int
         """
         return self._AssetCount
@@ -195844,7 +196730,7 @@ Enumeration values:
 
     @property
     def FailCount(self):
-        r"""FIX_FAILURE count
+        r"""Number of failed fixes
         :rtype: int
         """
         return self._FailCount
@@ -195877,9 +196763,9 @@ Enumeration values:
 
     @property
     def Progress(self):
-        r"""Progress percentage of the repair
+        r"""Repair progress percentage
 Value range: [0, 100].
-Supplemental description: Calculation method is (SuccessCount+FailCount)/AssetCount×100.
+Supplemental description: Calculation method: (SuccessCount+FailCount)/AssetCount×100
         :rtype: int
         """
         return self._Progress
@@ -195890,7 +196776,7 @@ Supplemental description: Calculation method is (SuccessCount+FailCount)/AssetCo
 
     @property
     def SuccessVulCount(self):
-        r"""Number of successfully fixed vulnerabilities
+        r"""Number of vulnerabilities with successful fixes
         :rtype: int
         """
         return self._SuccessVulCount
@@ -195912,7 +196798,7 @@ Supplemental description: Calculation method is (SuccessCount+FailCount)/AssetCo
 
     @property
     def VulNames(self):
-        r"""List of vulnerability names to be fixed
+        r"""List of fixed vulnerability names
         :rtype: list of str
         """
         return self._VulNames
@@ -195923,8 +196809,8 @@ Supplemental description: Calculation method is (SuccessCount+FailCount)/AssetCo
 
     @property
     def StartTime(self):
-        r"""Fix startup time
-Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
+        r"""Startup time for repair
+Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)
         :rtype: str
         """
         return self._StartTime
@@ -195935,8 +196821,8 @@ Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
 
     @property
     def EndTime(self):
-        r"""Fixing end time
-Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
+        r"""Repair end time
+Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)
         :rtype: str
         """
         return self._EndTime
@@ -195947,7 +196833,7 @@ Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
 
     @property
     def VulFixStatusList(self):
-        r"""List of vulnerability dimensional remediation status, status details of each vulnerability
+        r"""List of vulnerability dimensional remediation statuses, with status details for each vulnerability
         :rtype: list of VulFixStatusItem
         """
         return self._VulFixStatusList
@@ -195995,60 +196881,60 @@ class VulFixTaskItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: Primary key ID of the fix task
+        :param _Id: Primary key ID of the repair task
         :type Id: int
-        :param _TaskId: Task ID, hash flag for interactive
+        :param _TaskId: Task ID, a hash flag for interaction.
         :type TaskId: int
-        :param _JobId: JobId, corresponding to the Task ID of the task system.
+        :param _JobId: Task JobId, corresponding to the task ID in the task system.
         :type JobId: str
-        :param _VulIds: List of vulnerability IDs to be fixed
+        :param _VulIds: List of fixed vulnerability IDs
         :type VulIds: list of int
-        :param _KBIds: List of fixed KB patch IDs
+        :param _KBIds: List of repaired KB patch IDs
         :type KBIds: list of int
-        :param _AssetCount: Repair the total number of assets
+        :param _AssetCount: Total number of repaired assets
         :type AssetCount: int
         :param _SuccessCount: Number of successfully fixed hosts
         :type SuccessCount: int
         :param _FailCount: Number of hosts failed to be fixed
         :type FailCount: int
-        :param _Progress: Progress percentage of the repair
-Valid values: [0, 100]
-Supplemental description: Calculation method is (SuccessCount+FailCount)/AssetCount×100.
+        :param _Progress: Repair progress percentage
+Valid values: [0, 100].
+Supplemental description: Calculation method: (SuccessCount+FailCount)/AssetCount×100
         :type Progress: int
-        :param _TargetAppIdsCount: Number of users in the fix task
+        :param _TargetAppIdsCount: Number of users for fix tasks
         :type TargetAppIdsCount: int
         :param _FixStatus: Remediation status
-Enumeration value:
+Enumeration values:
 0: initialization
 1: In remediation
 2: Repair successful
-3: Partially fix failed
+3: Partial fix failure
 4: All fix failures
 5: Stop repair
         :type FixStatus: int
         :param _Timeout: Maximum repair time
 Unit: seconds.
         :type Timeout: int
-        :param _StartTime: Fix startup time
-Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
+        :param _StartTime: Repair startup time
+Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)
         :type StartTime: str
-        :param _EndTime: Fix end time
-Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
+        :param _EndTime: Repair end time
+Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)
         :type EndTime: str
         :param _CreateTime: Record creation time.
-Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
+Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)
         :type CreateTime: str
-        :param _VulNames: List of vulnerability names to be fixed, making it easy to show directly on the list page
+        :param _VulNames: List of names of repaired vulnerabilities, making it easy to show directly on the list page
         :type VulNames: list of str
         :param _VulCategory: Vulnerability Type List
-Enumeration values:
+Enumeration value:
 LINUX: Linux software vulnerability
-WINDOWS: Windows system patch vulnerability
-WEB_CMS: Web-CMS vulnerabilities
+WINDOWS: WINDOWS system patch vulnerabilities
+WEB_CMS: Web-CMS vulnerability
 APPLICATION: Application vulnerability
 EMERGENCY: Urgent vulnerability
         :type VulCategory: list of str
-        :param _AppId: Creator AppId
+        :param _AppId: Creator `AppId`
         :type AppId: int
         """
         self._Id = None
@@ -196072,7 +196958,7 @@ EMERGENCY: Urgent vulnerability
 
     @property
     def Id(self):
-        r"""Primary key ID of the fix task
+        r"""Primary key ID of the repair task
         :rtype: int
         """
         return self._Id
@@ -196083,7 +196969,7 @@ EMERGENCY: Urgent vulnerability
 
     @property
     def TaskId(self):
-        r"""Task ID, hash flag for interactive
+        r"""Task ID, a hash flag for interaction.
         :rtype: int
         """
         return self._TaskId
@@ -196094,7 +196980,7 @@ EMERGENCY: Urgent vulnerability
 
     @property
     def JobId(self):
-        r"""JobId, corresponding to the Task ID of the task system.
+        r"""Task JobId, corresponding to the task ID in the task system.
         :rtype: str
         """
         return self._JobId
@@ -196105,7 +196991,7 @@ EMERGENCY: Urgent vulnerability
 
     @property
     def VulIds(self):
-        r"""List of vulnerability IDs to be fixed
+        r"""List of fixed vulnerability IDs
         :rtype: list of int
         """
         return self._VulIds
@@ -196116,7 +197002,7 @@ EMERGENCY: Urgent vulnerability
 
     @property
     def KBIds(self):
-        r"""List of fixed KB patch IDs
+        r"""List of repaired KB patch IDs
         :rtype: list of int
         """
         return self._KBIds
@@ -196127,7 +197013,7 @@ EMERGENCY: Urgent vulnerability
 
     @property
     def AssetCount(self):
-        r"""Repair the total number of assets
+        r"""Total number of repaired assets
         :rtype: int
         """
         return self._AssetCount
@@ -196160,9 +197046,9 @@ EMERGENCY: Urgent vulnerability
 
     @property
     def Progress(self):
-        r"""Progress percentage of the repair
-Valid values: [0, 100]
-Supplemental description: Calculation method is (SuccessCount+FailCount)/AssetCount×100.
+        r"""Repair progress percentage
+Valid values: [0, 100].
+Supplemental description: Calculation method: (SuccessCount+FailCount)/AssetCount×100
         :rtype: int
         """
         return self._Progress
@@ -196173,7 +197059,7 @@ Supplemental description: Calculation method is (SuccessCount+FailCount)/AssetCo
 
     @property
     def TargetAppIdsCount(self):
-        r"""Number of users in the fix task
+        r"""Number of users for fix tasks
         :rtype: int
         """
         return self._TargetAppIdsCount
@@ -196185,11 +197071,11 @@ Supplemental description: Calculation method is (SuccessCount+FailCount)/AssetCo
     @property
     def FixStatus(self):
         r"""Remediation status
-Enumeration value:
+Enumeration values:
 0: initialization
 1: In remediation
 2: Repair successful
-3: Partially fix failed
+3: Partial fix failure
 4: All fix failures
 5: Stop repair
         :rtype: int
@@ -196214,8 +197100,8 @@ Unit: seconds.
 
     @property
     def StartTime(self):
-        r"""Fix startup time
-Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
+        r"""Repair startup time
+Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)
         :rtype: str
         """
         return self._StartTime
@@ -196226,8 +197112,8 @@ Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
 
     @property
     def EndTime(self):
-        r"""Fix end time
-Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
+        r"""Repair end time
+Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)
         :rtype: str
         """
         return self._EndTime
@@ -196239,7 +197125,7 @@ Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
     @property
     def CreateTime(self):
         r"""Record creation time.
-Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
+Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)
         :rtype: str
         """
         return self._CreateTime
@@ -196250,7 +197136,7 @@ Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
 
     @property
     def VulNames(self):
-        r"""List of vulnerability names to be fixed, making it easy to show directly on the list page
+        r"""List of names of repaired vulnerabilities, making it easy to show directly on the list page
         :rtype: list of str
         """
         return self._VulNames
@@ -196262,10 +197148,10 @@ Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
     @property
     def VulCategory(self):
         r"""Vulnerability Type List
-Enumeration values:
+Enumeration value:
 LINUX: Linux software vulnerability
-WINDOWS: Windows system patch vulnerability
-WEB_CMS: Web-CMS vulnerabilities
+WINDOWS: WINDOWS system patch vulnerabilities
+WEB_CMS: Web-CMS vulnerability
 APPLICATION: Application vulnerability
 EMERGENCY: Urgent vulnerability
         :rtype: list of str
@@ -196278,7 +197164,7 @@ EMERGENCY: Urgent vulnerability
 
     @property
     def AppId(self):
-        r"""Creator AppId
+        r"""Creator `AppId`
         :rtype: int
         """
         return self._AppId
@@ -196318,13 +197204,13 @@ EMERGENCY: Urgent vulnerability
 
 
 class VulFixableMachineItem(AbstractModel):
-    r"""Fixable host information
+    r"""Repairable host information
 
     """
 
     def __init__(self):
         r"""
-        :param _VulIds: <p>Vulnerability ID list, grouped by SupportAutoFix dimension: repairable vulnerability IDs when SupportAutoFix=1, non-repairable vulnerability IDs when SupportAutoFix=0</p>
+        :param _VulIds: <p>Vulnerability ID list, grouped by the SupportAutoFix dimension: When SupportAutoFix=1, it is a repairable vulnerability ID; when SupportAutoFix=0, it is a non-repairable vulnerability ID</p>
         :type VulIds: list of int
         :param _InstanceId: <p>Host instance ID.</p>
         :type InstanceId: str
@@ -196332,31 +197218,31 @@ class VulFixableMachineItem(AbstractModel):
         :type MachineName: str
         :param _MachineIp: <p>Host IP address.</p>
         :type MachineIp: str
-        :param _PublicIp: <p>public IP address</p>
+        :param _PublicIp: <p>Public IP Address</p>
         :type PublicIp: str
-        :param _OsType: <p>OS type<br>Enumeration value:<br>linux: Linux operating system<br>windows: Windows operating system</p>
+        :param _OsType: <p>Operating system type<br>Enumeration values:<br>linux: Linux operating system<br>windows: Windows operating system</p>
         :type OsType: str
-        :param _OsName: <p>Operating system name.</p>
+        :param _OsName: <p>OS name</p>
         :type OsName: str
         :param _MachineStatus: <p>Host online status<br>Enumeration value:<br>ONLINE: online<br>OFFLINE: offline</p>
         :type MachineStatus: str
-        :param _SupportAutoFix: <p>Is auto-repair supported<br>Enumeration value:<br>0: No support<br>1: Support</p>
+        :param _SupportAutoFix: <p>Is auto-repair supported<br>Enumeration values:<br>0: No support<br>1: Support</p>
         :type SupportAutoFix: int
-        :param _FixStatus: <p>Current remediation status<br>Enumeration value:<br>0: Unfixed<br>1: In remediation<br>2: Fix failure<br>3: Repair successful<br>4: Timeout</p>
+        :param _FixStatus: <p>Current remediation status<br>Enumeration values:<br>0: unfixed<br>1: in remediation<br>2: fix failed<br>3: successful fix<br>4: remediation timeout</p>
         :type FixStatus: int
         :param _LatestFixTime: <p>Last repair time<br>Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)</p>
         :type LatestFixTime: str
         :param _NotFixableReason: <p>Non-repairable reason. Returned when SupportAutoFix is 0.</p>
         :type NotFixableReason: str
-        :param _FixCommands: <p>Fix command list, returned when SupportAutoFix is 1</p>
+        :param _FixCommands: <p>List of fix commands. Returned when SupportAutoFix is 1</p>
         :type FixCommands: list of str
         :param _Components: <p>Associated component list</p>
         :type Components: list of str
         :param _TagItems: <p>Asset tag list</p>
         :type TagItems: list of MiniTagItem
-        :param _AppId: <p>Account AppId</p>
+        :param _AppId: <p>Associated account AppId</p>
         :type AppId: int
-        :param _PayVersion: <p>Paid edition info<br>Enumeration value:<br>BASIC: Basic version<br>PRO: Pro edition<br>ULTIMATE: Flagship edition</p>
+        :param _PayVersion: <p>Paid edition info<br>Enumeration values:<br>BASIC: Basic version<br>PRO: Pro edition<br>ULTIMATE: Flagship edition</p>
         :type PayVersion: str
         """
         self._VulIds = None
@@ -196379,7 +197265,7 @@ class VulFixableMachineItem(AbstractModel):
 
     @property
     def VulIds(self):
-        r"""<p>Vulnerability ID list, grouped by SupportAutoFix dimension: repairable vulnerability IDs when SupportAutoFix=1, non-repairable vulnerability IDs when SupportAutoFix=0</p>
+        r"""<p>Vulnerability ID list, grouped by the SupportAutoFix dimension: When SupportAutoFix=1, it is a repairable vulnerability ID; when SupportAutoFix=0, it is a non-repairable vulnerability ID</p>
         :rtype: list of int
         """
         return self._VulIds
@@ -196423,7 +197309,7 @@ class VulFixableMachineItem(AbstractModel):
 
     @property
     def PublicIp(self):
-        r"""<p>public IP address</p>
+        r"""<p>Public IP Address</p>
         :rtype: str
         """
         return self._PublicIp
@@ -196434,7 +197320,7 @@ class VulFixableMachineItem(AbstractModel):
 
     @property
     def OsType(self):
-        r"""<p>OS type<br>Enumeration value:<br>linux: Linux operating system<br>windows: Windows operating system</p>
+        r"""<p>Operating system type<br>Enumeration values:<br>linux: Linux operating system<br>windows: Windows operating system</p>
         :rtype: str
         """
         return self._OsType
@@ -196445,7 +197331,7 @@ class VulFixableMachineItem(AbstractModel):
 
     @property
     def OsName(self):
-        r"""<p>Operating system name.</p>
+        r"""<p>OS name</p>
         :rtype: str
         """
         return self._OsName
@@ -196467,7 +197353,7 @@ class VulFixableMachineItem(AbstractModel):
 
     @property
     def SupportAutoFix(self):
-        r"""<p>Is auto-repair supported<br>Enumeration value:<br>0: No support<br>1: Support</p>
+        r"""<p>Is auto-repair supported<br>Enumeration values:<br>0: No support<br>1: Support</p>
         :rtype: int
         """
         return self._SupportAutoFix
@@ -196478,7 +197364,7 @@ class VulFixableMachineItem(AbstractModel):
 
     @property
     def FixStatus(self):
-        r"""<p>Current remediation status<br>Enumeration value:<br>0: Unfixed<br>1: In remediation<br>2: Fix failure<br>3: Repair successful<br>4: Timeout</p>
+        r"""<p>Current remediation status<br>Enumeration values:<br>0: unfixed<br>1: in remediation<br>2: fix failed<br>3: successful fix<br>4: remediation timeout</p>
         :rtype: int
         """
         return self._FixStatus
@@ -196511,7 +197397,7 @@ class VulFixableMachineItem(AbstractModel):
 
     @property
     def FixCommands(self):
-        r"""<p>Fix command list, returned when SupportAutoFix is 1</p>
+        r"""<p>List of fix commands. Returned when SupportAutoFix is 1</p>
         :rtype: list of str
         """
         return self._FixCommands
@@ -196544,7 +197430,7 @@ class VulFixableMachineItem(AbstractModel):
 
     @property
     def AppId(self):
-        r"""<p>Account AppId</p>
+        r"""<p>Associated account AppId</p>
         :rtype: int
         """
         return self._AppId
@@ -196555,7 +197441,7 @@ class VulFixableMachineItem(AbstractModel):
 
     @property
     def PayVersion(self):
-        r"""<p>Paid edition info<br>Enumeration value:<br>BASIC: Basic version<br>PRO: Pro edition<br>ULTIMATE: Flagship edition</p>
+        r"""<p>Paid edition info<br>Enumeration values:<br>BASIC: Basic version<br>PRO: Pro edition<br>ULTIMATE: Flagship edition</p>
         :rtype: str
         """
         return self._PayVersion
@@ -196599,46 +197485,36 @@ class VulFixableMachineItem(AbstractModel):
 
 
 class VulFixedItem(AbstractModel):
-    r"""Fixed vulnerability information
+    r"""Information of fixed vulnerabilities
 
     """
 
     def __init__(self):
         r"""
-        :param _VulId: Vulnerability ID
+        :param _VulId: <p>Vulnerability ID</p>
         :type VulId: int
-        :param _VulName: Vulnerability name
+        :param _VulName: <p>Vulnerability name</p>
         :type VulName: str
-        :param _Level: Vulnerability level
-Enumeration values:
-LOW: low-risk
-MEDIUM: Medium risk
-HIGH: High risk
-CRITICAL
+        :param _Level: <p>Vulnerability level<br>Enumeration values:<br>LOW: Low risk<br>MEDIUM: Medium risk<br>HIGH: High risk<br>CRITICAL: Critical</p>
         :type Level: str
-        :param _VRPRatingInfo: VPR rating information (including rating result, description, and phased score), consistent with DescribeHostVulRiskList
+        :param _VRPRatingInfo: <p>VPR rating information (including rating result, description, and staged score), consistent with DescribeHostVulRiskList</p>
         :type VRPRatingInfo: :class:`tencentcloud.csip.v20221121.models.VPRRatingInfo`
-        :param _VulCategory: Vulnerability Type
-Enumeration values:
-LINUX: Linux software vulnerability
-WINDOWS: Windows system patch vulnerability
-WEB_CMS: Web-CMS vulnerabilities
-APPLICATION: Application vulnerability
-EMERGENCY: Urgent vulnerability
+        :param _VulCategory: <p>Vulnerability type<br>Enumeration values:<br>LINUX: Linux software vulnerability<br>WINDOWS: Windows system patch vulnerability<br>WEB_CMS: Web-CMS vulnerability<br>APPLICATION: Application vulnerability<br>EMERGENCY: Urgent vulnerability</p>
         :type VulCategory: str
-        :param _CveId: CVE id
+        :param _CveId: <p>CVE id</p>
         :type CveId: str
-        :param _MachineName: Repair the host name
+        :param _MachineName: <p>Repair host name</p>
         :type MachineName: str
-        :param _InstanceId: Repair the host instance ID
+        :param _InstanceId: <p>Repair host instance ID</p>
         :type InstanceId: str
-        :param _ComponentCount: Associated component & number of paths
+        :param _ComponentCount: <p>Associated component &amp; number of paths</p>
         :type ComponentCount: int
-        :param _Components: Associated component & path list
+        :param _Components: <p>Associated component &amp; path list</p>
         :type Components: list of str
-        :param _LatestFixTime: Last repair time
-Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
+        :param _LatestFixTime: <p>Last repair time<br>Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)</p>
         :type LatestFixTime: str
+        :param _VPRExplainInfo: <p>VPR rating basis</p>
+        :type VPRExplainInfo: :class:`tencentcloud.csip.v20221121.models.VPRExplainInfo`
         """
         self._VulId = None
         self._VulName = None
@@ -196651,10 +197527,11 @@ Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
         self._ComponentCount = None
         self._Components = None
         self._LatestFixTime = None
+        self._VPRExplainInfo = None
 
     @property
     def VulId(self):
-        r"""Vulnerability ID
+        r"""<p>Vulnerability ID</p>
         :rtype: int
         """
         return self._VulId
@@ -196665,7 +197542,7 @@ Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
 
     @property
     def VulName(self):
-        r"""Vulnerability name
+        r"""<p>Vulnerability name</p>
         :rtype: str
         """
         return self._VulName
@@ -196676,12 +197553,7 @@ Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
 
     @property
     def Level(self):
-        r"""Vulnerability level
-Enumeration values:
-LOW: low-risk
-MEDIUM: Medium risk
-HIGH: High risk
-CRITICAL
+        r"""<p>Vulnerability level<br>Enumeration values:<br>LOW: Low risk<br>MEDIUM: Medium risk<br>HIGH: High risk<br>CRITICAL: Critical</p>
         :rtype: str
         """
         return self._Level
@@ -196692,7 +197564,7 @@ CRITICAL
 
     @property
     def VRPRatingInfo(self):
-        r"""VPR rating information (including rating result, description, and phased score), consistent with DescribeHostVulRiskList
+        r"""<p>VPR rating information (including rating result, description, and staged score), consistent with DescribeHostVulRiskList</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.VPRRatingInfo`
         """
         return self._VRPRatingInfo
@@ -196703,13 +197575,7 @@ CRITICAL
 
     @property
     def VulCategory(self):
-        r"""Vulnerability Type
-Enumeration values:
-LINUX: Linux software vulnerability
-WINDOWS: Windows system patch vulnerability
-WEB_CMS: Web-CMS vulnerabilities
-APPLICATION: Application vulnerability
-EMERGENCY: Urgent vulnerability
+        r"""<p>Vulnerability type<br>Enumeration values:<br>LINUX: Linux software vulnerability<br>WINDOWS: Windows system patch vulnerability<br>WEB_CMS: Web-CMS vulnerability<br>APPLICATION: Application vulnerability<br>EMERGENCY: Urgent vulnerability</p>
         :rtype: str
         """
         return self._VulCategory
@@ -196720,7 +197586,7 @@ EMERGENCY: Urgent vulnerability
 
     @property
     def CveId(self):
-        r"""CVE id
+        r"""<p>CVE id</p>
         :rtype: str
         """
         return self._CveId
@@ -196731,7 +197597,7 @@ EMERGENCY: Urgent vulnerability
 
     @property
     def MachineName(self):
-        r"""Repair the host name
+        r"""<p>Repair host name</p>
         :rtype: str
         """
         return self._MachineName
@@ -196742,7 +197608,7 @@ EMERGENCY: Urgent vulnerability
 
     @property
     def InstanceId(self):
-        r"""Repair the host instance ID
+        r"""<p>Repair host instance ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -196753,7 +197619,7 @@ EMERGENCY: Urgent vulnerability
 
     @property
     def ComponentCount(self):
-        r"""Associated component & number of paths
+        r"""<p>Associated component &amp; number of paths</p>
         :rtype: int
         """
         return self._ComponentCount
@@ -196764,7 +197630,7 @@ EMERGENCY: Urgent vulnerability
 
     @property
     def Components(self):
-        r"""Associated component & path list
+        r"""<p>Associated component &amp; path list</p>
         :rtype: list of str
         """
         return self._Components
@@ -196775,8 +197641,7 @@ EMERGENCY: Urgent vulnerability
 
     @property
     def LatestFixTime(self):
-        r"""Last repair time
-Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
+        r"""<p>Last repair time<br>Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)</p>
         :rtype: str
         """
         return self._LatestFixTime
@@ -196784,6 +197649,17 @@ Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
     @LatestFixTime.setter
     def LatestFixTime(self, LatestFixTime):
         self._LatestFixTime = LatestFixTime
+
+    @property
+    def VPRExplainInfo(self):
+        r"""<p>VPR rating basis</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.VPRExplainInfo`
+        """
+        return self._VPRExplainInfo
+
+    @VPRExplainInfo.setter
+    def VPRExplainInfo(self, VPRExplainInfo):
+        self._VPRExplainInfo = VPRExplainInfo
 
 
     def _deserialize(self, params):
@@ -196800,6 +197676,9 @@ Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).
         self._ComponentCount = params.get("ComponentCount")
         self._Components = params.get("Components")
         self._LatestFixTime = params.get("LatestFixTime")
+        if params.get("VPRExplainInfo") is not None:
+            self._VPRExplainInfo = VPRExplainInfo()
+            self._VPRExplainInfo._deserialize(params.get("VPRExplainInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -196821,25 +197700,25 @@ class VulHostBriefInfo(AbstractModel):
         :type InstanceID: str
         :param _Name: <p>Host name.</p>
         :type Name: str
-        :param _PublicIP: <p>Public network IP address</p>
+        :param _PublicIP: <p>Public IP address</p>
         :type PublicIP: str
         :param _PrivateIP: <p>Private IP address</p>
         :type PrivateIP: str
-        :param _DefendVersion: <p>Protection edition<br>Enumeration value:<br>NONE: No protection<br>BASIC: Basic version<br>PRO: Pro edition<br>ULTIMATE: Flagship edition<br>PRO_LH: Lightweight edition</p>
+        :param _DefendVersion: <p>Protection edition<br>Enumeration values:<br>NONE: no protection<br>BASIC: basic version<br>PRO: pro edition<br>ULTIMATE: flagship edition<br>PRO_LH: lightweight edition</p>
         :type DefendVersion: str
-        :param _DefendStatus: <p>Vulnerability defense status<br>Enumeration value:<br>ENABLED: Enabled<br>NOT_SUPPORTED: Unsupported<br>NOT_ENABLED: Not enabled</p>
+        :param _DefendStatus: <p>Vulnerability defense status<br>Enumeration values:<br>ENABLED: enabled<br>NOT_SUPPORTED: unsupported<br>NOT_ENABLED: not enabled</p>
         :type DefendStatus: str
-        :param _Account: <p>Associated account information</p>
+        :param _Account: <p>Account information belonging to</p>
         :type Account: :class:`tencentcloud.csip.v20221121.models.AccountBriefInfo`
-        :param _InstanceStatus: <p>Cloud host instance status<br>Enumeration value:<br>RUNNING: running<br>STOPPED: stopped<br>UNKNOWN: unknown</p>
+        :param _InstanceStatus: <p>CVM instance status<br>Enumeration value:<br>RUNNING: running<br>STOPPED: stopped<br>UNKNOWN: unknown</p>
         :type InstanceStatus: str
-        :param _RiskStatus: <p>Remediation status enumeration values.</p><p>Enumeration values: </p><ul><li>PENDING: To be fixed, </li><li>SCANNING: Scan in progress, </li><li>FIXED: Fixed, </li><li>IGNORED: Ignored, </li><li>FIXING: In remediation, </li><li>FIX_FAILED: Fix failure, </li><li>NEED_REBOOT: Pending restart.</li></ul>
+        :param _RiskStatus: <p>Remediation status enumeration values.</p><p>Enumeration values: </p><ul><li>PENDING: To be fixed, </li><li>SCANNING: Scanning, </li><li>FIXED: Fixed, </li><li>IGNORED: Ignored, </li><li>FIXING: In remediation, </li><li>FIX_FAILED: Fix failure, </li><li>NEED_REBOOT: Pending restart.</li></ul>
         :type RiskStatus: str
         :param _VPRRating: <p>VPR rating information (including rating result and details in each dimension)</p>
         :type VPRRating: :class:`tencentcloud.csip.v20221121.models.VPRRatingInfo`
-        :param _AgentStatus: <p>CWP Agent status<br>Enumeration value:<br>ONLINE: Online<br>OFFLINE: Offline<br>UNINSTALLED: Not installed</p>
+        :param _AgentStatus: <p>CWP Agent status<br>Enumeration values:<br>ONLINE: ONLINE<br>OFFLINE: OFFLINE<br>UNINSTALLED: not installed</p>
         :type AgentStatus: str
-        :param _TagItem: <p>Asset tag list (CSIP internal asset tag)</p>
+        :param _TagItem: <p>Asset tag list (CSIP internal asset tags)</p>
         :type TagItem: list of MiniTagItem
         :param _CloudTag: <p>Cloud tag list (cloud asset side Tag)</p>
         :type CloudTag: list of Tag
@@ -196882,7 +197761,7 @@ class VulHostBriefInfo(AbstractModel):
 
     @property
     def PublicIP(self):
-        r"""<p>Public network IP address</p>
+        r"""<p>Public IP address</p>
         :rtype: str
         """
         return self._PublicIP
@@ -196904,7 +197783,7 @@ class VulHostBriefInfo(AbstractModel):
 
     @property
     def DefendVersion(self):
-        r"""<p>Protection edition<br>Enumeration value:<br>NONE: No protection<br>BASIC: Basic version<br>PRO: Pro edition<br>ULTIMATE: Flagship edition<br>PRO_LH: Lightweight edition</p>
+        r"""<p>Protection edition<br>Enumeration values:<br>NONE: no protection<br>BASIC: basic version<br>PRO: pro edition<br>ULTIMATE: flagship edition<br>PRO_LH: lightweight edition</p>
         :rtype: str
         """
         return self._DefendVersion
@@ -196915,7 +197794,7 @@ class VulHostBriefInfo(AbstractModel):
 
     @property
     def DefendStatus(self):
-        r"""<p>Vulnerability defense status<br>Enumeration value:<br>ENABLED: Enabled<br>NOT_SUPPORTED: Unsupported<br>NOT_ENABLED: Not enabled</p>
+        r"""<p>Vulnerability defense status<br>Enumeration values:<br>ENABLED: enabled<br>NOT_SUPPORTED: unsupported<br>NOT_ENABLED: not enabled</p>
         :rtype: str
         """
         return self._DefendStatus
@@ -196926,7 +197805,7 @@ class VulHostBriefInfo(AbstractModel):
 
     @property
     def Account(self):
-        r"""<p>Associated account information</p>
+        r"""<p>Account information belonging to</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.AccountBriefInfo`
         """
         return self._Account
@@ -196937,7 +197816,7 @@ class VulHostBriefInfo(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        r"""<p>Cloud host instance status<br>Enumeration value:<br>RUNNING: running<br>STOPPED: stopped<br>UNKNOWN: unknown</p>
+        r"""<p>CVM instance status<br>Enumeration value:<br>RUNNING: running<br>STOPPED: stopped<br>UNKNOWN: unknown</p>
         :rtype: str
         """
         return self._InstanceStatus
@@ -196948,7 +197827,7 @@ class VulHostBriefInfo(AbstractModel):
 
     @property
     def RiskStatus(self):
-        r"""<p>Remediation status enumeration values.</p><p>Enumeration values: </p><ul><li>PENDING: To be fixed, </li><li>SCANNING: Scan in progress, </li><li>FIXED: Fixed, </li><li>IGNORED: Ignored, </li><li>FIXING: In remediation, </li><li>FIX_FAILED: Fix failure, </li><li>NEED_REBOOT: Pending restart.</li></ul>
+        r"""<p>Remediation status enumeration values.</p><p>Enumeration values: </p><ul><li>PENDING: To be fixed, </li><li>SCANNING: Scanning, </li><li>FIXED: Fixed, </li><li>IGNORED: Ignored, </li><li>FIXING: In remediation, </li><li>FIX_FAILED: Fix failure, </li><li>NEED_REBOOT: Pending restart.</li></ul>
         :rtype: str
         """
         return self._RiskStatus
@@ -196970,7 +197849,7 @@ class VulHostBriefInfo(AbstractModel):
 
     @property
     def AgentStatus(self):
-        r"""<p>CWP Agent status<br>Enumeration value:<br>ONLINE: Online<br>OFFLINE: Offline<br>UNINSTALLED: Not installed</p>
+        r"""<p>CWP Agent status<br>Enumeration values:<br>ONLINE: ONLINE<br>OFFLINE: OFFLINE<br>UNINSTALLED: not installed</p>
         :rtype: str
         """
         return self._AgentStatus
@@ -196981,7 +197860,7 @@ class VulHostBriefInfo(AbstractModel):
 
     @property
     def TagItem(self):
-        r"""<p>Asset tag list (CSIP internal asset tag)</p>
+        r"""<p>Asset tag list (CSIP internal asset tags)</p>
         :rtype: list of MiniTagItem
         """
         return self._TagItem

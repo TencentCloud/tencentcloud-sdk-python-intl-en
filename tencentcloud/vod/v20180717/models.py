@@ -16271,6 +16271,57 @@ class AigcVideoTaskUsage(AbstractModel):
         
 
 
+class AigcWhitelistModel(AbstractModel):
+    r"""AIGC model allowlist
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: <p>Model name</p>
+        :type ModelName: str
+        :param _ModelVersion: <p>Model version</p>
+        :type ModelVersion: str
+        """
+        self._ModelName = None
+        self._ModelVersion = None
+
+    @property
+    def ModelName(self):
+        r"""<p>Model name</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ModelVersion(self):
+        r"""<p>Model version</p>
+        :rtype: str
+        """
+        return self._ModelVersion
+
+    @ModelVersion.setter
+    def ModelVersion(self, ModelVersion):
+        self._ModelVersion = ModelVersion
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._ModelVersion = params.get("ModelVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AnimatedGraphicTaskInput(AbstractModel):
     r"""Rotating image task type
 
@@ -40776,6 +40827,165 @@ class DescribeAigcUsageDataResponse(AbstractModel):
         if params.get("AigcTextDetails") is not None:
             self._AigcTextDetails = AigcTextDetail()
             self._AigcTextDetails._deserialize(params.get("AigcTextDetails"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAigcWhitelistRequest(AbstractModel):
+    r"""DescribeAigcWhitelist request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p><b>VOD <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate VOD after December 25, 2023, this field must be set to the application ID when accessing resources in a VOD application (whether the default application or a newly created application).</b></p>
+        :type SubAppId: int
+        :param _AigcType: <p>AIGC task type</p><p>Valid values:</p><ul><li>Image: AIGC image generation task</li><li>Video: AIGC video generation task</li></ul>
+        :type AigcType: str
+        """
+        self._SubAppId = None
+        self._AigcType = None
+
+    @property
+    def SubAppId(self):
+        r"""<p><b>VOD <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate VOD after December 25, 2023, this field must be set to the application ID when accessing resources in a VOD application (whether the default application or a newly created application).</b></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def AigcType(self):
+        r"""<p>AIGC task type</p><p>Valid values:</p><ul><li>Image: AIGC image generation task</li><li>Video: AIGC video generation task</li></ul>
+        :rtype: str
+        """
+        return self._AigcType
+
+    @AigcType.setter
+    def AigcType(self, AigcType):
+        self._AigcType = AigcType
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._AigcType = params.get("AigcType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcWhitelistResponse(AbstractModel):
+    r"""DescribeAigcWhitelist response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AigcType: <p>AIGC task type</p><p>Valid values:</p><ul><li>Image: AIGC image generation task</li><li>Video: AIGC video generation task</li></ul>
+        :type AigcType: str
+        :param _ModelWhitelistSwitch: <p>Model allowlist switch</p><p>Valid values:</p><ul><li>ON: Enabled. Only models listed in ModelWhitelist can be called.</li><li>OFF: Disabled. All models can be called.</li></ul>
+        :type ModelWhitelistSwitch: str
+        :param _ModelWhitelist: <p>Model allowlist</p>
+        :type ModelWhitelist: list of AigcWhitelistModel
+        :param _IpWhitelistSwitch: <p>IP allowlist switch</p><p>Valid values:</p><ul><li>ON: Enabled. Only IP ranges listed in IpWhitelist are allowed to call.</li><li>OFF: Disabled. All IPs are allowed to call.</li></ul>
+        :type IpWhitelistSwitch: str
+        :param _IpWhitelist: <p>CIDR list of the IP allowlist</p>
+        :type IpWhitelist: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AigcType = None
+        self._ModelWhitelistSwitch = None
+        self._ModelWhitelist = None
+        self._IpWhitelistSwitch = None
+        self._IpWhitelist = None
+        self._RequestId = None
+
+    @property
+    def AigcType(self):
+        r"""<p>AIGC task type</p><p>Valid values:</p><ul><li>Image: AIGC image generation task</li><li>Video: AIGC video generation task</li></ul>
+        :rtype: str
+        """
+        return self._AigcType
+
+    @AigcType.setter
+    def AigcType(self, AigcType):
+        self._AigcType = AigcType
+
+    @property
+    def ModelWhitelistSwitch(self):
+        r"""<p>Model allowlist switch</p><p>Valid values:</p><ul><li>ON: Enabled. Only models listed in ModelWhitelist can be called.</li><li>OFF: Disabled. All models can be called.</li></ul>
+        :rtype: str
+        """
+        return self._ModelWhitelistSwitch
+
+    @ModelWhitelistSwitch.setter
+    def ModelWhitelistSwitch(self, ModelWhitelistSwitch):
+        self._ModelWhitelistSwitch = ModelWhitelistSwitch
+
+    @property
+    def ModelWhitelist(self):
+        r"""<p>Model allowlist</p>
+        :rtype: list of AigcWhitelistModel
+        """
+        return self._ModelWhitelist
+
+    @ModelWhitelist.setter
+    def ModelWhitelist(self, ModelWhitelist):
+        self._ModelWhitelist = ModelWhitelist
+
+    @property
+    def IpWhitelistSwitch(self):
+        r"""<p>IP allowlist switch</p><p>Valid values:</p><ul><li>ON: Enabled. Only IP ranges listed in IpWhitelist are allowed to call.</li><li>OFF: Disabled. All IPs are allowed to call.</li></ul>
+        :rtype: str
+        """
+        return self._IpWhitelistSwitch
+
+    @IpWhitelistSwitch.setter
+    def IpWhitelistSwitch(self, IpWhitelistSwitch):
+        self._IpWhitelistSwitch = IpWhitelistSwitch
+
+    @property
+    def IpWhitelist(self):
+        r"""<p>CIDR list of the IP allowlist</p>
+        :rtype: list of str
+        """
+        return self._IpWhitelist
+
+    @IpWhitelist.setter
+    def IpWhitelist(self, IpWhitelist):
+        self._IpWhitelist = IpWhitelist
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AigcType = params.get("AigcType")
+        self._ModelWhitelistSwitch = params.get("ModelWhitelistSwitch")
+        if params.get("ModelWhitelist") is not None:
+            self._ModelWhitelist = []
+            for item in params.get("ModelWhitelist"):
+                obj = AigcWhitelistModel()
+                obj._deserialize(item)
+                self._ModelWhitelist.append(obj)
+        self._IpWhitelistSwitch = params.get("IpWhitelistSwitch")
+        self._IpWhitelist = params.get("IpWhitelist")
         self._RequestId = params.get("RequestId")
 
 
@@ -98044,6 +98254,150 @@ class SemanticsSearchResult(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SetAigcWhitelistRequest(AbstractModel):
+    r"""SetAigcWhitelist request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p><b>VOD <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate VOD after December 25, 2023, this field must be set to the application ID when accessing resources in a VOD application (whether the default application or a newly created application).</b></p>
+        :type SubAppId: int
+        :param _AigcType: <p>AIGC task type</p><p>Valid values:</p><ul><li>Image: AIGC image generation task</li><li>Video: AIGC video generation task</li></ul>
+        :type AigcType: str
+        :param _ModelWhitelistSwitch: <p>Model allowlist switch</p><p>Valid values:</p><ul><li>ON: Enabled. Only models listed in ModelWhitelist can be called.</li><li>OFF: Disabled. All models can be called.</li></ul>
+        :type ModelWhitelistSwitch: str
+        :param _IpWhitelistSwitch: <p>IP allowlist switch</p><p>Valid values:</p><ul><li>ON: Enabled. Only IP ranges listed in IpWhitelist are allowed to call.</li><li>OFF: Disabled. All IPs are allowed to call.</li></ul>
+        :type IpWhitelistSwitch: str
+        :param _ModelWhitelist: <p>Model allowlist</p>
+        :type ModelWhitelist: list of AigcWhitelistModel
+        :param _IpWhitelist: <p>CIDR list of the IP allowlist</p>
+        :type IpWhitelist: list of str
+        """
+        self._SubAppId = None
+        self._AigcType = None
+        self._ModelWhitelistSwitch = None
+        self._IpWhitelistSwitch = None
+        self._ModelWhitelist = None
+        self._IpWhitelist = None
+
+    @property
+    def SubAppId(self):
+        r"""<p><b>VOD <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate VOD after December 25, 2023, this field must be set to the application ID when accessing resources in a VOD application (whether the default application or a newly created application).</b></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def AigcType(self):
+        r"""<p>AIGC task type</p><p>Valid values:</p><ul><li>Image: AIGC image generation task</li><li>Video: AIGC video generation task</li></ul>
+        :rtype: str
+        """
+        return self._AigcType
+
+    @AigcType.setter
+    def AigcType(self, AigcType):
+        self._AigcType = AigcType
+
+    @property
+    def ModelWhitelistSwitch(self):
+        r"""<p>Model allowlist switch</p><p>Valid values:</p><ul><li>ON: Enabled. Only models listed in ModelWhitelist can be called.</li><li>OFF: Disabled. All models can be called.</li></ul>
+        :rtype: str
+        """
+        return self._ModelWhitelistSwitch
+
+    @ModelWhitelistSwitch.setter
+    def ModelWhitelistSwitch(self, ModelWhitelistSwitch):
+        self._ModelWhitelistSwitch = ModelWhitelistSwitch
+
+    @property
+    def IpWhitelistSwitch(self):
+        r"""<p>IP allowlist switch</p><p>Valid values:</p><ul><li>ON: Enabled. Only IP ranges listed in IpWhitelist are allowed to call.</li><li>OFF: Disabled. All IPs are allowed to call.</li></ul>
+        :rtype: str
+        """
+        return self._IpWhitelistSwitch
+
+    @IpWhitelistSwitch.setter
+    def IpWhitelistSwitch(self, IpWhitelistSwitch):
+        self._IpWhitelistSwitch = IpWhitelistSwitch
+
+    @property
+    def ModelWhitelist(self):
+        r"""<p>Model allowlist</p>
+        :rtype: list of AigcWhitelistModel
+        """
+        return self._ModelWhitelist
+
+    @ModelWhitelist.setter
+    def ModelWhitelist(self, ModelWhitelist):
+        self._ModelWhitelist = ModelWhitelist
+
+    @property
+    def IpWhitelist(self):
+        r"""<p>CIDR list of the IP allowlist</p>
+        :rtype: list of str
+        """
+        return self._IpWhitelist
+
+    @IpWhitelist.setter
+    def IpWhitelist(self, IpWhitelist):
+        self._IpWhitelist = IpWhitelist
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._AigcType = params.get("AigcType")
+        self._ModelWhitelistSwitch = params.get("ModelWhitelistSwitch")
+        self._IpWhitelistSwitch = params.get("IpWhitelistSwitch")
+        if params.get("ModelWhitelist") is not None:
+            self._ModelWhitelist = []
+            for item in params.get("ModelWhitelist"):
+                obj = AigcWhitelistModel()
+                obj._deserialize(item)
+                self._ModelWhitelist.append(obj)
+        self._IpWhitelist = params.get("IpWhitelist")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetAigcWhitelistResponse(AbstractModel):
+    r"""SetAigcWhitelist response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class SetCLSPushTargetRequest(AbstractModel):

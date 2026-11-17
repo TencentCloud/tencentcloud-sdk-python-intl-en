@@ -244,10 +244,9 @@ class Column(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ColumnName: Column nameNote: This field may return null, indicating that no valid values can be obtained.
+        :param _ColumnName: Column name
         :type ColumnName: str
-        :param _NewColumnName: New column name
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _NewColumnName: New column name.
         :type NewColumnName: str
         """
         self._ColumnName = None
@@ -255,7 +254,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ColumnName(self):
-        r"""Column nameNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Column name
         :rtype: str
         """
         return self._ColumnName
@@ -266,8 +265,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewColumnName(self):
-        r"""New column name
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""New column name.
         :rtype: str
         """
         return self._NewColumnName
@@ -2010,14 +2008,11 @@ class ConflictHandleOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConditionColumn: Conditionally overwritten column
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ConditionColumn: Columns for conditional overwrite.
         :type ConditionColumn: str
-        :param _ConditionOperator: Conditional overwrite operation
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ConditionOperator: Condition coverage operation. Currently, only > is supported.
         :type ConditionOperator: str
-        :param _ConditionOrderInSrcAndDst: Conditional overwrite priority configuration
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ConditionOrderInSrcAndDst: Condition coverage priority processing. Supported types are >, <, and =.
         :type ConditionOrderInSrcAndDst: str
         """
         self._ConditionColumn = None
@@ -2026,8 +2021,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConditionColumn(self):
-        r"""Conditionally overwritten column
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Columns for conditional overwrite.
         :rtype: str
         """
         return self._ConditionColumn
@@ -2038,8 +2032,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConditionOperator(self):
-        r"""Conditional overwrite operation
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Condition coverage operation. Currently, only > is supported.
         :rtype: str
         """
         return self._ConditionOperator
@@ -2050,8 +2043,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConditionOrderInSrcAndDst(self):
-        r"""Conditional overwrite priority configuration
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Condition coverage priority processing. Supported types are >, <, and =.
         :rtype: str
         """
         return self._ConditionOrderInSrcAndDst
@@ -2966,11 +2958,11 @@ class CreateSubscribeRequest(AbstractModel):
         r"""
         :param _Product: Subscription database type. Currently, cynosdbmysql, mariadb, mongodb, mysql, percona, tdpg, and tdsqlpercona are supported.
         :type Product: str
-        :param _PayType: Payment method. Valid values: 0 (monthly subscription); 1 (pay-as-you-go).
+        :param _PayType: Payment method. Valid values: 0 (yearly/monthly subscription); 1 (pay-as-you-go).
         :type PayType: int
-        :param _Duration: Purchase duration. This field needs to be filled in when the payType is monthly subscription. The unit is month. Value range: 1-120. Default value: 1.
+        :param _Duration: Purchase duration. This field needs to be filled in when the payType is yearly/monthly subscription. The unit is month. Value range: 1-120. Default value: 1.
         :type Duration: int
-        :param _AutoRenew: Whether to renew automatically. This field needs to be filled in when the payType is monthly subscription. Valid values: 0 (auto-renewal disabled); 1 (auto-renewal enabled). Automatic renewal is not performed by default. This flag is invalid for pay-as-you-go.
+        :param _AutoRenew: Whether to renew automatically. This field needs to be filled in when the payType is yearly/monthly subscription. Valid values: 0 (auto-renewal disabled); 1 (auto-renewal enabled). Automatic renewal is not performed by default. This flag is invalid for pay-as-you-go.
         :type AutoRenew: int
         :param _Count: Quantity. Default value: 1. Maximum value: 10.
         :type Count: int
@@ -2978,7 +2970,9 @@ class CreateSubscribeRequest(AbstractModel):
         :type Tags: list of TagItem
         :param _Name: Custom task name
         :type Name: str
-        :param _InstanceClass: 
+        :param _SubscribeVersion: For the data subscription version, Kafka and KafkaPro (Professional Edition) are currently supported; if left blank, it defaults to KafkaPro.
+        :type SubscribeVersion: str
+        :param _InstanceClass: For subscription instance specifications, only 'small', 'medium', and 'large' are currently supported.
         :type InstanceClass: str
         """
         self._Product = None
@@ -2988,6 +2982,7 @@ class CreateSubscribeRequest(AbstractModel):
         self._Count = None
         self._Tags = None
         self._Name = None
+        self._SubscribeVersion = None
         self._InstanceClass = None
 
     @property
@@ -3003,7 +2998,7 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def PayType(self):
-        r"""Payment method. Valid values: 0 (monthly subscription); 1 (pay-as-you-go).
+        r"""Payment method. Valid values: 0 (yearly/monthly subscription); 1 (pay-as-you-go).
         :rtype: int
         """
         return self._PayType
@@ -3014,7 +3009,7 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Duration(self):
-        r"""Purchase duration. This field needs to be filled in when the payType is monthly subscription. The unit is month. Value range: 1-120. Default value: 1.
+        r"""Purchase duration. This field needs to be filled in when the payType is yearly/monthly subscription. The unit is month. Value range: 1-120. Default value: 1.
         :rtype: int
         """
         return self._Duration
@@ -3025,7 +3020,7 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def AutoRenew(self):
-        r"""Whether to renew automatically. This field needs to be filled in when the payType is monthly subscription. Valid values: 0 (auto-renewal disabled); 1 (auto-renewal enabled). Automatic renewal is not performed by default. This flag is invalid for pay-as-you-go.
+        r"""Whether to renew automatically. This field needs to be filled in when the payType is yearly/monthly subscription. Valid values: 0 (auto-renewal disabled); 1 (auto-renewal enabled). Automatic renewal is not performed by default. This flag is invalid for pay-as-you-go.
         :rtype: int
         """
         return self._AutoRenew
@@ -3068,8 +3063,19 @@ class CreateSubscribeRequest(AbstractModel):
         self._Name = Name
 
     @property
+    def SubscribeVersion(self):
+        r"""For the data subscription version, Kafka and KafkaPro (Professional Edition) are currently supported; if left blank, it defaults to KafkaPro.
+        :rtype: str
+        """
+        return self._SubscribeVersion
+
+    @SubscribeVersion.setter
+    def SubscribeVersion(self, SubscribeVersion):
+        self._SubscribeVersion = SubscribeVersion
+
+    @property
     def InstanceClass(self):
-        r"""
+        r"""For subscription instance specifications, only 'small', 'medium', and 'large' are currently supported.
         :rtype: str
         """
         return self._InstanceClass
@@ -3092,6 +3098,7 @@ class CreateSubscribeRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._Name = params.get("Name")
+        self._SubscribeVersion = params.get("SubscribeVersion")
         self._InstanceClass = params.get("InstanceClass")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -3155,7 +3162,7 @@ class CreateSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PayMode: Billing mode. Valid values: `PrePay` (monthly subscription); `PostPay` (pay-as-you-go). Currently, DTS at Tencent Cloud International is free of charge.
+        :param _PayMode: Billing mode. Valid values: `PrePay` (yearly/monthly subscription); `PostPay` (pay-as-you-go). Currently, DTS at Tencent Cloud International is free of charge.
         :type PayMode: str
         :param _SrcDatabaseType: Source database type, such as `mysql`, `cynosdbmysql`, `tdapg`, `tdpg`, and `tdsqlmysql`.
         :type SrcDatabaseType: str
@@ -3167,7 +3174,7 @@ class CreateSyncJobRequest(AbstractModel):
         :type DstRegion: str
         :param _Specification: Sync task specification, such as `Standard`.
         :type Specification: str
-        :param _TimeSpan: 
+        :param _TimeSpan: Purchase duration (in months); this configuration is applicable only when PayMode is set to 'PrePay'. The default value is 1 month, and the valid range is [1, 100].
         :type TimeSpan: int
         :param _Tags: Tag information
         :type Tags: list of TagItem
@@ -3198,7 +3205,7 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""Billing mode. Valid values: `PrePay` (monthly subscription); `PostPay` (pay-as-you-go). Currently, DTS at Tencent Cloud International is free of charge.
+        r"""Billing mode. Valid values: `PrePay` (yearly/monthly subscription); `PostPay` (pay-as-you-go). Currently, DTS at Tencent Cloud International is free of charge.
         :rtype: str
         """
         return self._PayMode
@@ -3264,7 +3271,7 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
-        r"""
+        r"""Purchase duration (in months); this configuration is applicable only when PayMode is set to 'PrePay'. The default value is 1 month, and the valid range is [1, 100].
         :rtype: int
         """
         return self._TimeSpan
@@ -4340,6 +4347,99 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class DBOpFilter(AbstractModel):
+    r"""DDL/DML allowlist at the database/table/view level
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DbName: Database name for rule effectiveness
+        :type DbName: str
+        :param _OpFilter: Database-level DDL/DML Filter Rule
+        :type OpFilter: :class:`tencentcloud.dts.v20211206.models.OpFilter`
+        :param _Tables: Table-level DDL/DML filtering information
+        :type Tables: list of TableFilter
+        :param _Views: View-level DDL/DML filtering information
+        :type Views: list of ViewFilter
+        """
+        self._DbName = None
+        self._OpFilter = None
+        self._Tables = None
+        self._Views = None
+
+    @property
+    def DbName(self):
+        r"""Database name for rule effectiveness
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def OpFilter(self):
+        r"""Database-level DDL/DML Filter Rule
+        :rtype: :class:`tencentcloud.dts.v20211206.models.OpFilter`
+        """
+        return self._OpFilter
+
+    @OpFilter.setter
+    def OpFilter(self, OpFilter):
+        self._OpFilter = OpFilter
+
+    @property
+    def Tables(self):
+        r"""Table-level DDL/DML filtering information
+        :rtype: list of TableFilter
+        """
+        return self._Tables
+
+    @Tables.setter
+    def Tables(self, Tables):
+        self._Tables = Tables
+
+    @property
+    def Views(self):
+        r"""View-level DDL/DML filtering information
+        :rtype: list of ViewFilter
+        """
+        return self._Views
+
+    @Views.setter
+    def Views(self, Views):
+        self._Views = Views
+
+
+    def _deserialize(self, params):
+        self._DbName = params.get("DbName")
+        if params.get("OpFilter") is not None:
+            self._OpFilter = OpFilter()
+            self._OpFilter._deserialize(params.get("OpFilter"))
+        if params.get("Tables") is not None:
+            self._Tables = []
+            for item in params.get("Tables"):
+                obj = TableFilter()
+                obj._deserialize(item)
+                self._Tables.append(obj)
+        if params.get("Views") is not None:
+            self._Views = []
+            for item in params.get("Views"):
+                obj = ViewFilter()
+                obj._deserialize(item)
+                self._Views.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Database(AbstractModel):
     r"""The database/table objects to be synced
 
@@ -4347,59 +4447,41 @@ class Database(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DbName: Name of the database to be migrated or synced, which is required if `ObjectMode` is `Partial`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DbName: <p>Database name for migration or synchronization. This item is required when ObjectMode is Partial.</p>
         :type DbName: str
-        :param _NewDbName: Name of the database after migration or sync, which is the same as the source database name by default.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _NewDbName: <p>The name of the migrated or synchronized database is identical to that of the source database by default.</p>
         :type NewDbName: str
-        :param _DbMode: Database selection mode, which is required if `Mode` is `Partial`. Valid values: `All`, `Partial`. Note that the sync of advanced objects does not depend on this parameter. To sync an entire database, set this parameter to `All`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DbMode: <p>DB selection mode: All (for all objects under the current object), Partial (partial objects). This item is required when Mode is Partial. Note that synchronization of advanced objects is independent of this value. If you sync entire database, it should be All here.</p>
         :type DbMode: str
-        :param _SchemaName: The schema to be migrated or synced
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SchemaName: <p>schema for migration or synchronization</p>
         :type SchemaName: str
-        :param _NewSchemaName: Name of the schema after migration or sync
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _NewSchemaName: <p>schema name after migration or synchronization</p>
         :type NewSchemaName: str
-        :param _SchemaMode: Table selection mode, which is required if `DBMode` is `Partial` for postgresql or sqlserver. Valid values: `All`, `Partial`. To sync an entire schema, set this parameter to `All`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SchemaMode: <p>schema Selection Mode, pg and sqlserver require the use of</p><p>Enumeration value:</p><ul><li>All: All objects under the current object</li><li>Partial: Partial objects</li></ul>
         :type SchemaMode: str
-        :param _TableMode: Table selection mode, which is required if `DBMode` is `Partial`. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TableMode: <p>Schema selection mode: All (for all objects under the current object), Partial (partial objects). This item is required when DBMode is Partial. If you sync entire database, it should be All here.</p>
         :type TableMode: str
-        :param _Tables: The set of table objects, which is required if `TableMode` is `Partial`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Tables: <p>Table diagram object set. This item needs to be filled in when TableMode is Partial.</p>
         :type Tables: list of Table
-        :param _ViewMode: View selection mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ViewMode: <p>View selection mode: All indicates all view objects under the current object, Partial indicates partial view objects. If you sync entire database, it should be All here.</p>
         :type ViewMode: str
-        :param _Views: The set of view objects, which is required if `ViewMode` is `Partial`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Views: <p>View object set. When ViewMode is Partial, this item requires filling in.</p>
         :type Views: list of View
-        :param _FunctionMode: Sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FunctionMode: <p>Select the sync mode. Partial means part, and All means the entire database. If you want to sync entire database, select All here.</p>
         :type FunctionMode: str
-        :param _Functions: This parameter is required if `FunctionMode` is `Partial`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Functions: <p>This item needs to be filled in when FunctionMode value is Partial.</p>
         :type Functions: list of str
-        :param _ProcedureMode: Sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProcedureMode: <p>Select the sync mode. Partial means part, and All means the entire database. If you want to sync entire database, select All here.</p>
         :type ProcedureMode: str
-        :param _Procedures: This parameter is required if `ProcedureMode` is `Partial`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Procedures: <p>This item needs to be filled in when the ProcedureMode value is Partial.</p>
         :type Procedures: list of str
-        :param _TriggerMode: Trigger sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object "trigger" is not supported for data sync.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TriggerMode: <p>Trigger migration mode, All (all objects under the current object), Partial (partial objects). If syncing the entire database, it should be All here. Data sync does not currently support this advanced object.</p>
         :type TriggerMode: str
-        :param _Triggers: This parameter is used to specify the names of the triggers to be migrated when the value of `TriggerMode` is `partial`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Triggers: <p>When TriggerMode is partial, specify the trigger name to migrate.</p>
         :type Triggers: list of str
-        :param _EventMode: Event sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object "event" is not supported for data sync.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _EventMode: <p>Event migration mode: All (all objects under the current object), Partial (partial objects). If syncing the entire database, it should be All here. This advanced object is not currently supported for data sync.</p>
         :type EventMode: str
-        :param _Events: This parameter is used to specify the names of the events to be migrated when the value of `EventMode` is `partial`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Events: <p>When EventMode is partial, specify the event name to migrate.</p>
         :type Events: list of str
         """
         self._DbName = None
@@ -4423,8 +4505,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbName(self):
-        r"""Name of the database to be migrated or synced, which is required if `ObjectMode` is `Partial`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Database name for migration or synchronization. This item is required when ObjectMode is Partial.</p>
         :rtype: str
         """
         return self._DbName
@@ -4435,8 +4516,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewDbName(self):
-        r"""Name of the database after migration or sync, which is the same as the source database name by default.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>The name of the migrated or synchronized database is identical to that of the source database by default.</p>
         :rtype: str
         """
         return self._NewDbName
@@ -4447,8 +4527,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbMode(self):
-        r"""Database selection mode, which is required if `Mode` is `Partial`. Valid values: `All`, `Partial`. Note that the sync of advanced objects does not depend on this parameter. To sync an entire database, set this parameter to `All`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>DB selection mode: All (for all objects under the current object), Partial (partial objects). This item is required when Mode is Partial. Note that synchronization of advanced objects is independent of this value. If you sync entire database, it should be All here.</p>
         :rtype: str
         """
         return self._DbMode
@@ -4459,8 +4538,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SchemaName(self):
-        r"""The schema to be migrated or synced
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>schema for migration or synchronization</p>
         :rtype: str
         """
         return self._SchemaName
@@ -4471,8 +4549,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewSchemaName(self):
-        r"""Name of the schema after migration or sync
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>schema name after migration or synchronization</p>
         :rtype: str
         """
         return self._NewSchemaName
@@ -4483,8 +4560,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SchemaMode(self):
-        r"""Table selection mode, which is required if `DBMode` is `Partial` for postgresql or sqlserver. Valid values: `All`, `Partial`. To sync an entire schema, set this parameter to `All`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>schema Selection Mode, pg and sqlserver require the use of</p><p>Enumeration value:</p><ul><li>All: All objects under the current object</li><li>Partial: Partial objects</li></ul>
         :rtype: str
         """
         return self._SchemaMode
@@ -4495,8 +4571,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableMode(self):
-        r"""Table selection mode, which is required if `DBMode` is `Partial`. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Schema selection mode: All (for all objects under the current object), Partial (partial objects). This item is required when DBMode is Partial. If you sync entire database, it should be All here.</p>
         :rtype: str
         """
         return self._TableMode
@@ -4507,8 +4582,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tables(self):
-        r"""The set of table objects, which is required if `TableMode` is `Partial`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Table diagram object set. This item needs to be filled in when TableMode is Partial.</p>
         :rtype: list of Table
         """
         return self._Tables
@@ -4519,8 +4593,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ViewMode(self):
-        r"""View selection mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>View selection mode: All indicates all view objects under the current object, Partial indicates partial view objects. If you sync entire database, it should be All here.</p>
         :rtype: str
         """
         return self._ViewMode
@@ -4531,8 +4604,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Views(self):
-        r"""The set of view objects, which is required if `ViewMode` is `Partial`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>View object set. When ViewMode is Partial, this item requires filling in.</p>
         :rtype: list of View
         """
         return self._Views
@@ -4543,8 +4615,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FunctionMode(self):
-        r"""Sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Select the sync mode. Partial means part, and All means the entire database. If you want to sync entire database, select All here.</p>
         :rtype: str
         """
         return self._FunctionMode
@@ -4555,8 +4626,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Functions(self):
-        r"""This parameter is required if `FunctionMode` is `Partial`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>This item needs to be filled in when FunctionMode value is Partial.</p>
         :rtype: list of str
         """
         return self._Functions
@@ -4567,8 +4637,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProcedureMode(self):
-        r"""Sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Select the sync mode. Partial means part, and All means the entire database. If you want to sync entire database, select All here.</p>
         :rtype: str
         """
         return self._ProcedureMode
@@ -4579,8 +4648,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Procedures(self):
-        r"""This parameter is required if `ProcedureMode` is `Partial`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>This item needs to be filled in when the ProcedureMode value is Partial.</p>
         :rtype: list of str
         """
         return self._Procedures
@@ -4591,8 +4659,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TriggerMode(self):
-        r"""Trigger sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object "trigger" is not supported for data sync.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Trigger migration mode, All (all objects under the current object), Partial (partial objects). If syncing the entire database, it should be All here. Data sync does not currently support this advanced object.</p>
         :rtype: str
         """
         return self._TriggerMode
@@ -4603,8 +4670,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Triggers(self):
-        r"""This parameter is used to specify the names of the triggers to be migrated when the value of `TriggerMode` is `partial`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>When TriggerMode is partial, specify the trigger name to migrate.</p>
         :rtype: list of str
         """
         return self._Triggers
@@ -4615,8 +4681,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventMode(self):
-        r"""Event sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object "event" is not supported for data sync.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Event migration mode: All (all objects under the current object), Partial (partial objects). If syncing the entire database, it should be All here. This advanced object is not currently supported for data sync.</p>
         :rtype: str
         """
         return self._EventMode
@@ -4627,8 +4692,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Events(self):
-        r"""This parameter is used to specify the names of the events to be migrated when the value of `EventMode` is `partial`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>When EventMode is partial, specify the event name to migrate.</p>
         :rtype: list of str
         """
         return self._Events
@@ -4759,11 +4823,9 @@ class DdlOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DdlObject: DDL type, such as database, table, view, and index.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DdlObject: DDL type. For example: database, table, view, and index.
         :type DdlObject: str
-        :param _DdlValue: DDL value. Valid values: [Create,Drop,Alter] for database <br>[Create,Drop,Alter,Truncate,Rename] for table <br/>[Create,Drop] for view <br/>[Create,Drop] for index
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DdlValue: Specific values of DDL. For Database, it can be [Create, Drop, Alter];<br>for Table, it can be [Create, Drop, Alter, Truncate, Rename];<br>for View, it can be [Create, Drop];<br>for Index, it can be [Create, Drop].
         :type DdlValue: list of str
         """
         self._DdlObject = None
@@ -4771,8 +4833,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DdlObject(self):
-        r"""DDL type, such as database, table, view, and index.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""DDL type. For example: database, table, view, and index.
         :rtype: str
         """
         return self._DdlObject
@@ -4783,8 +4844,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DdlValue(self):
-        r"""DDL value. Valid values: [Create,Drop,Alter] for database <br>[Create,Drop,Alter,Truncate,Rename] for table <br/>[Create,Drop] for view <br/>[Create,Drop] for index
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Specific values of DDL. For Database, it can be [Create, Drop, Alter];<br>for Table, it can be [Create, Drop, Alter, Truncate, Rename];<br>for View, it can be [Create, Drop];<br>for Index, it can be [Create, Drop].
         :rtype: list of str
         """
         return self._DdlValue
@@ -7313,11 +7373,11 @@ class DescribeSubscribeDetailResponse(AbstractModel):
         :type CreateTime: str
         :param _IsolateTime: Isolation time, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
         :type IsolateTime: str
-        :param _ExpireTime: Expiration time for monthly subscription tasks, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ExpireTime: Expiration time for yearly/monthly subscription tasks, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
         :type ExpireTime: str
         :param _OfflineTime: Offline time, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
         :type OfflineTime: str
-        :param _PayType: Payment method. Valid values: 0 (monthly subscription); 1 (pay-as-you-go).
+        :param _PayType: Payment method. Valid values: 0 (yearly/monthly subscription); 1 (pay-as-you-go).
         :type PayType: int
         :param _AutoRenewFlag: Auto-renewal flag. It is meaningful only when PayType=0. Valid values: 0 (auto-renewal disabled); 1 (auto-renewal enabled).
         :type AutoRenewFlag: int
@@ -7337,7 +7397,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _KafkaConfig: Kafka configuration information
 Note: This field may return null, indicating that no valid values can be obtained.
         :type KafkaConfig: :class:`tencentcloud.dts.v20211206.models.SubscribeKafkaConfig`
-        :param _KafkaVersion: 
+        :param _KafkaVersion: Subscribe to version information for the built-in Kafka
         :type KafkaVersion: str
         :param _AccessType: Source database access type. Valid values: extranet (public network); vpncloud (VPN access); dcg (Direct Connect); ccn (CCN); cdb (database); cvm (self-build on CVM); intranet (intranet); vpc (VPC). Note: The specific optional values depend on the current link support capabilities.Note: This field may return null, indicating that no valid values can be obtained.
         :type AccessType: str
@@ -7354,13 +7414,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Errors: list of SubsErr
         :param _ExtraAttr: Additional information added for the business. The parameter name is called key, and the parameter value is called value.Optional parameters for mysql: ProcessXA. Fill in true to process, others will not be processed.Optional parameters for mongo: SubscribeType. Currently only changeStream is supported.Note: This field may return null, indicating that no valid values can be obtained.
         :type ExtraAttr: list of KeyValuePairOption
-        :param _SubscribeVersion: 
+        :param _SubscribeVersion: Data subscription version; currently supports Kafka and KafkaPro (Professional Edition).
         :type SubscribeVersion: str
-        :param _ConsumerVpcId: 
+        :param _ConsumerVpcId: VPC where the consumer-side address is located
         :type ConsumerVpcId: str
-        :param _ConsumerSubnetId: 
+        :param _ConsumerSubnetId: Subnet where the consumer-side address is located
         :type ConsumerSubnetId: str
-        :param _InstanceClass: 
+        :param _InstanceClass: Subscribe to instance specifications
         :type InstanceClass: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -7511,7 +7571,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpireTime(self):
-        r"""Expiration time for monthly subscription tasks, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Expiration time for yearly/monthly subscription tasks, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ExpireTime
@@ -7533,7 +7593,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayType(self):
-        r"""Payment method. Valid values: 0 (monthly subscription); 1 (pay-as-you-go).
+        r"""Payment method. Valid values: 0 (yearly/monthly subscription); 1 (pay-as-you-go).
         :rtype: int
         """
         return self._PayType
@@ -7634,7 +7694,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KafkaVersion(self):
-        r"""
+        r"""Subscribe to version information for the built-in Kafka
         :rtype: str
         """
         return self._KafkaVersion
@@ -7714,7 +7774,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubscribeVersion(self):
-        r"""
+        r"""Data subscription version; currently supports Kafka and KafkaPro (Professional Edition).
         :rtype: str
         """
         return self._SubscribeVersion
@@ -7725,7 +7785,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConsumerVpcId(self):
-        r"""
+        r"""VPC where the consumer-side address is located
         :rtype: str
         """
         return self._ConsumerVpcId
@@ -7736,7 +7796,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConsumerSubnetId(self):
-        r"""
+        r"""Subnet where the consumer-side address is located
         :rtype: str
         """
         return self._ConsumerSubnetId
@@ -7747,7 +7807,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceClass(self):
-        r"""
+        r"""Subscribe to instance specifications
         :rtype: str
         """
         return self._InstanceClass
@@ -7845,15 +7905,15 @@ class DescribeSubscribeJobsRequest(AbstractModel):
         r"""
         :param _SubscribeId: Subscription ID (exact match)
         :type SubscribeId: str
-        :param _SubscribeIds: 
+        :param _SubscribeIds: Filter by subscription ID, exact match
         :type SubscribeIds: list of str
         :param _SubscribeName: Subscription name (prefix fuzzy match)
         :type SubscribeName: str
         :param _InstanceId: Subscribed cloud database instance ID (exact match)
         :type InstanceId: str
-        :param _Topic: 
+        :param _Topic: Subscribed topicName
         :type Topic: str
-        :param _PayType: Payment method. Valid values: 0 (monthly subscription); 1 (pay-as-you-go).
+        :param _PayType: Payment method. Valid values: 0 (yearly/monthly subscription); 1 (pay-as-you-go).
         :type PayType: int
         :param _Product: Subscribed database product. Currently, cynosdbmysql, mariadb, mongodb, mysql, percona, tdpg, tdsqlpercona are supported.
         :type Product: str
@@ -7897,7 +7957,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def SubscribeIds(self):
-        r"""
+        r"""Filter by subscription ID, exact match
         :rtype: list of str
         """
         return self._SubscribeIds
@@ -7930,7 +7990,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def Topic(self):
-        r"""
+        r"""Subscribed topicName
         :rtype: str
         """
         return self._Topic
@@ -7941,7 +8001,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def PayType(self):
-        r"""Payment method. Valid values: 0 (monthly subscription); 1 (pay-as-you-go).
+        r"""Payment method. Valid values: 0 (yearly/monthly subscription); 1 (pay-as-you-go).
         :rtype: int
         """
         return self._PayType
@@ -9250,89 +9310,65 @@ class Endpoint(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Region: Region name, such as `ap-guangzhou`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Region: <p>Region English name, for example: ap-guangzhou</p>
         :type Region: str
-        :param _Role: Node type of TDSQL for MySQL. Enumerated values: `proxy`, `set`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Role: <p>Node type. proxy means the node type is host, set means the node type is node. proxy type must be the first item in the array. Source/target configuration for tdsqlmysql type is required.</p>
         :type Role: str
-        :param _DbKernel: Database kernel type, which is used to distinguish between different kernels in TDSQL. Valid values: `percona`, `mariadb`, `mysql`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DbKernel: <p>Database kernel type, used in tdsql to differentiate between different kernels: percona, mariadb, mysql. Note that tdsql-C mysql and tdsql PostgreSQL do not need to fill in this field.</p>
         :type DbKernel: str
-        :param _InstanceId: Database instance ID in the format of `cdb-powiqx8q`
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceId: <p>Database instance ID, in the format of: cdb-powiqx8q</p>
         :type InstanceId: str
-        :param _Ip: Instance IP address, which is required if the access type is not `cdb`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Ip: <p>IP address of the instance. This item is required when the access type is not cdb.</p>
         :type Ip: str
-        :param _Port: Instance port, which is required if the access type is not `cdb`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Port: <p>Instance port. This item is required when the access type is not cdb.</p>
         :type Port: int
-        :param _User: Username, which is required for an instance authenticated by username and password.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _User: <p>User name, required for accessing instances that need username and password authentication.</p>
         :type User: str
-        :param _Password: Password, which is required for an instance authenticated by username and password.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Password: <p>Password is required for accessing instances that need username and password authentication.</p>
         :type Password: str
-        :param _DbName: Database name, which is required if the database type is `cdwpg`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DbName: <p>Database name, required when the database is cdwpg</p>
         :type DbName: str
-        :param _VpcId: VPC ID in the format of `vpc-92jblxto`, which is required if the access type is `vpc`, `dcg`, or `vpncloud`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _VpcId: <p>Private network ID. This item is required for private network, Direct Connect, and VPN access methods, in the format of vpc-92jblxto.</p>
         :type VpcId: str
-        :param _SubnetId: ID of the subnet in the VPC in the format of `subnet-3paxmkdz`, which is required if the access type is `vpc`, `dcg`, or `vpncloud`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SubnetId: <p>Subnet ID under the private network. This item is required for private network, Direct Connect, and VPN access methods, in the format of subnet-3paxmkdz.</p>
         :type SubnetId: str
-        :param _CvmInstanceId: Short CVM instance ID in the format of `ins-olgl39y8`, which is required if the access type is `cvm`. It is the same as the instance ID displayed in the CVM console.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CvmInstanceId: <p>CVM instance short ID, in the format of: ins-olgl39y8, is identical to the instance ID displayed on the cloud server console page. If it is a CVM self-created instance, this field is required.</p>
         :type CvmInstanceId: str
-        :param _UniqDcgId: Direct Connect gateway ID in the format of `dcg-0rxtqqxb`, which is required if the access type is `dcg`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _UniqDcgId: <p>Direct Connect gateway ID. This item is required for dedicated access type, in the format of: dcg-0rxtqqxb</p>
         :type UniqDcgId: str
-        :param _UniqVpnGwId: VPN gateway ID in the format of `vpngw-9ghexg7q`, which is required if the access type is `vpncloud`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _UniqVpnGwId: <p>VPN Gateway ID. This item is required for VPN access type, in the format of vpngw-9ghexg7q.</p>
         :type UniqVpnGwId: str
-        :param _CcnId: CCN instance ID in the format of `ccn-afp6kltc`, which is required if the access type is `ccn`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CcnId: <p>Cloud Connect Network ID. This item is required for the CCN access type, for example: ccn-afp6kltc</p>
         :type CcnId: str
-        :param _Supplier: Cloud vendor type. For Alibaba Cloud ApsaraDB for RDS instances, enter `aliyun`; otherwise, enter `others`. Default value: `others`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Supplier: <p>Cloud vendor type. For RDS instances, fill in aliyun. In other cases, fill in others. Default is others.</p>
         :type Supplier: str
-        :param _EngineVersion: Database version in the format of `5.6` or `5.7`, which takes effect only if the instance is an RDS instance. Default value: `5.6`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _EngineVersion: <p>Database version. Valid only for RDS instances, ignored for other instances, in the format of 5.6 or 5.7, defaults to 5.6.</p>
         :type EngineVersion: str
-        :param _Account: Instance account, which is required if the operation is performed across accounts.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Account: <p>Account of the instance. This item is required if it is a cross-account instance.</p>
         :type Account: str
-        :param _AccountMode: The account to which the resource belongs. Valid values: empty or `self` (the current account); `other` (another account).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AccountMode: <p>Associated account is empty, self (means resources within this account), or other (means cross-account resources).</p>
         :type AccountMode: str
-        :param _AccountRole: The role used for cross-account sync, which can contain [a-zA-Z0-9\-\_]+ and is required if the operation is performed across accounts.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AccountRole: <p>Role for cross-account sync, only allow [a-zA-Z0-9-_]+. This item is required if it is a cross-account instance.</p>
         :type AccountRole: str
-        :param _RoleExternalId: External role ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RoleExternalId: <p>External role id</p>
         :type RoleExternalId: str
-        :param _TmpSecretId: Temporary SecretId, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1). This field is required if it is a cross-account instance.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TmpSecretId: <p>Temporary key Id can be obtained by applying for role assumption temporary access credentials https://www.tencentcloud.com/document/product/1312/48197.?from_cn_redirect=1 Among them, the definition of the role resource RoleArn can be found in the DTS cross-account sync document (https://www.tencentcloud.com/document/product/571/68729?from_cn_redirect=1) Section 4 about role-based definition.</p>
         :type TmpSecretId: str
-        :param _TmpSecretKey: Temporary SecretKey, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1). This field is required if it is a cross-account instance.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TmpSecretKey: <p>Temporary key Id can be obtained by applying for role assumption temporary access credentials at https://www.tencentcloud.com/document/product/1312/48197.?from_cn_redirect=1 Among them, the definition of the role resource RoleArn can be found in the DTS cross-account sync document (https://www.tencentcloud.com/document/product/571/68729?from_cn_redirect=1) Section 4 about role definition.</p>
         :type TmpSecretKey: str
-        :param _TmpToken: Temporary token, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1). This field is required if it is a cross-account instance. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TmpToken: <p>Temporary key Id can be obtained by applying for role assumption temporary access credentials https://www.tencentcloud.com/document/product/1312/48197.?from_cn_redirect=1 Among them, the definition of the role resource RoleArn can be found in the DTS cross-account sync document (https://www.tencentcloud.com/document/product/571/68729?from_cn_redirect=1) Section 4 about role-based definition.</p>
         :type TmpToken: str
-        :param _EncryptConn: Whether to enable encrypted transfer (`UnEncrypted`: No; `Encrypted`: Yes). Default value: `UnEncrypted`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _EncryptConn: <p>Whether to use encrypted transmission. UnEncrypted means no encrypted transmission, Encrypted means encrypted transmission. Default: UnEncrypted</p>
         :type EncryptConn: str
-        :param _DatabaseNetEnv: Network environment of the database. This parameter is required when `AccessType` is `ccn`. Valid values: `UserIDC` (user IDC), `TencentVPC` (Tencent Cloud VPC).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DatabaseNetEnv: <p>Network environment of the database. Required when AccessType is Cloud Connect Network (ccn). UserIDC refers to User IDC, and TencentVPC refers to Tencent Cloud VPC.</p>
         :type DatabaseNetEnv: str
-        :param _CcnOwnerUin: The root account of CCN in the scenario where the database is connected to CCN under another Tencent Cloud account
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _CcnOwnerUin: <p>When the database is an instance of cross-account cloud networking, it refers to the main account to which the CCN belongs.</p>
         :type CcnOwnerUin: str
-        :param _ChildInstanceId: 
+        :param _ChildInstanceId: <p>When the database is cynos and it is a sub-database instance within the cynos cluster, this parameter is the ID of the sub-instance.</p>
         :type ChildInstanceId: str
-        :param _ChildInstanceType: 
+        :param _ChildInstanceType: <p>When the database is cynos and it is a sub-database instance within the cynos cluster, this parameter is the type of the sub-instance, for example: pass ro for a read-only instance, pass rw for a read-write instance.</p>
         :type ChildInstanceType: str
-        :param _SetId: 
+        :param _SetId: <p>Shard id of tdsql. Required if the node type is set.</p>
         :type SetId: str
         """
         self._Region = None
@@ -9368,8 +9404,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Region(self):
-        r"""Region name, such as `ap-guangzhou`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Region English name, for example: ap-guangzhou</p>
         :rtype: str
         """
         return self._Region
@@ -9380,8 +9415,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Role(self):
-        r"""Node type of TDSQL for MySQL. Enumerated values: `proxy`, `set`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Node type. proxy means the node type is host, set means the node type is node. proxy type must be the first item in the array. Source/target configuration for tdsqlmysql type is required.</p>
         :rtype: str
         """
         return self._Role
@@ -9392,8 +9426,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbKernel(self):
-        r"""Database kernel type, which is used to distinguish between different kernels in TDSQL. Valid values: `percona`, `mariadb`, `mysql`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Database kernel type, used in tdsql to differentiate between different kernels: percona, mariadb, mysql. Note that tdsql-C mysql and tdsql PostgreSQL do not need to fill in this field.</p>
         :rtype: str
         """
         return self._DbKernel
@@ -9404,8 +9437,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        r"""Database instance ID in the format of `cdb-powiqx8q`
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Database instance ID, in the format of: cdb-powiqx8q</p>
         :rtype: str
         """
         return self._InstanceId
@@ -9416,8 +9448,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Ip(self):
-        r"""Instance IP address, which is required if the access type is not `cdb`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>IP address of the instance. This item is required when the access type is not cdb.</p>
         :rtype: str
         """
         return self._Ip
@@ -9428,8 +9459,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Port(self):
-        r"""Instance port, which is required if the access type is not `cdb`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Instance port. This item is required when the access type is not cdb.</p>
         :rtype: int
         """
         return self._Port
@@ -9440,8 +9470,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def User(self):
-        r"""Username, which is required for an instance authenticated by username and password.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>User name, required for accessing instances that need username and password authentication.</p>
         :rtype: str
         """
         return self._User
@@ -9452,8 +9481,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Password(self):
-        r"""Password, which is required for an instance authenticated by username and password.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Password is required for accessing instances that need username and password authentication.</p>
         :rtype: str
         """
         return self._Password
@@ -9464,8 +9492,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbName(self):
-        r"""Database name, which is required if the database type is `cdwpg`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Database name, required when the database is cdwpg</p>
         :rtype: str
         """
         return self._DbName
@@ -9476,8 +9503,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
-        r"""VPC ID in the format of `vpc-92jblxto`, which is required if the access type is `vpc`, `dcg`, or `vpncloud`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Private network ID. This item is required for private network, Direct Connect, and VPN access methods, in the format of vpc-92jblxto.</p>
         :rtype: str
         """
         return self._VpcId
@@ -9488,8 +9514,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetId(self):
-        r"""ID of the subnet in the VPC in the format of `subnet-3paxmkdz`, which is required if the access type is `vpc`, `dcg`, or `vpncloud`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Subnet ID under the private network. This item is required for private network, Direct Connect, and VPN access methods, in the format of subnet-3paxmkdz.</p>
         :rtype: str
         """
         return self._SubnetId
@@ -9500,8 +9525,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CvmInstanceId(self):
-        r"""Short CVM instance ID in the format of `ins-olgl39y8`, which is required if the access type is `cvm`. It is the same as the instance ID displayed in the CVM console.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>CVM instance short ID, in the format of: ins-olgl39y8, is identical to the instance ID displayed on the cloud server console page. If it is a CVM self-created instance, this field is required.</p>
         :rtype: str
         """
         return self._CvmInstanceId
@@ -9512,8 +9536,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqDcgId(self):
-        r"""Direct Connect gateway ID in the format of `dcg-0rxtqqxb`, which is required if the access type is `dcg`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Direct Connect gateway ID. This item is required for dedicated access type, in the format of: dcg-0rxtqqxb</p>
         :rtype: str
         """
         return self._UniqDcgId
@@ -9524,8 +9547,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqVpnGwId(self):
-        r"""VPN gateway ID in the format of `vpngw-9ghexg7q`, which is required if the access type is `vpncloud`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>VPN Gateway ID. This item is required for VPN access type, in the format of vpngw-9ghexg7q.</p>
         :rtype: str
         """
         return self._UniqVpnGwId
@@ -9536,8 +9558,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CcnId(self):
-        r"""CCN instance ID in the format of `ccn-afp6kltc`, which is required if the access type is `ccn`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Cloud Connect Network ID. This item is required for the CCN access type, for example: ccn-afp6kltc</p>
         :rtype: str
         """
         return self._CcnId
@@ -9548,8 +9569,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Supplier(self):
-        r"""Cloud vendor type. For Alibaba Cloud ApsaraDB for RDS instances, enter `aliyun`; otherwise, enter `others`. Default value: `others`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Cloud vendor type. For RDS instances, fill in aliyun. In other cases, fill in others. Default is others.</p>
         :rtype: str
         """
         return self._Supplier
@@ -9560,8 +9580,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EngineVersion(self):
-        r"""Database version in the format of `5.6` or `5.7`, which takes effect only if the instance is an RDS instance. Default value: `5.6`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Database version. Valid only for RDS instances, ignored for other instances, in the format of 5.6 or 5.7, defaults to 5.6.</p>
         :rtype: str
         """
         return self._EngineVersion
@@ -9572,8 +9591,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Account(self):
-        r"""Instance account, which is required if the operation is performed across accounts.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Account of the instance. This item is required if it is a cross-account instance.</p>
         :rtype: str
         """
         return self._Account
@@ -9584,8 +9602,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccountMode(self):
-        r"""The account to which the resource belongs. Valid values: empty or `self` (the current account); `other` (another account).
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Associated account is empty, self (means resources within this account), or other (means cross-account resources).</p>
         :rtype: str
         """
         return self._AccountMode
@@ -9596,8 +9613,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccountRole(self):
-        r"""The role used for cross-account sync, which can contain [a-zA-Z0-9\-\_]+ and is required if the operation is performed across accounts.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Role for cross-account sync, only allow [a-zA-Z0-9-_]+. This item is required if it is a cross-account instance.</p>
         :rtype: str
         """
         return self._AccountRole
@@ -9608,8 +9624,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RoleExternalId(self):
-        r"""External role ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>External role id</p>
         :rtype: str
         """
         return self._RoleExternalId
@@ -9620,7 +9635,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TmpSecretId(self):
-        r"""Temporary SecretId, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1). This field is required if it is a cross-account instance.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Temporary key Id can be obtained by applying for role assumption temporary access credentials https://www.tencentcloud.com/document/product/1312/48197.?from_cn_redirect=1 Among them, the definition of the role resource RoleArn can be found in the DTS cross-account sync document (https://www.tencentcloud.com/document/product/571/68729?from_cn_redirect=1) Section 4 about role-based definition.</p>
         :rtype: str
         """
         return self._TmpSecretId
@@ -9631,7 +9646,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TmpSecretKey(self):
-        r"""Temporary SecretKey, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1). This field is required if it is a cross-account instance.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Temporary key Id can be obtained by applying for role assumption temporary access credentials at https://www.tencentcloud.com/document/product/1312/48197.?from_cn_redirect=1 Among them, the definition of the role resource RoleArn can be found in the DTS cross-account sync document (https://www.tencentcloud.com/document/product/571/68729?from_cn_redirect=1) Section 4 about role definition.</p>
         :rtype: str
         """
         return self._TmpSecretKey
@@ -9642,7 +9657,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TmpToken(self):
-        r"""Temporary token, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1). This field is required if it is a cross-account instance. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Temporary key Id can be obtained by applying for role assumption temporary access credentials https://www.tencentcloud.com/document/product/1312/48197.?from_cn_redirect=1 Among them, the definition of the role resource RoleArn can be found in the DTS cross-account sync document (https://www.tencentcloud.com/document/product/571/68729?from_cn_redirect=1) Section 4 about role-based definition.</p>
         :rtype: str
         """
         return self._TmpToken
@@ -9653,8 +9668,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EncryptConn(self):
-        r"""Whether to enable encrypted transfer (`UnEncrypted`: No; `Encrypted`: Yes). Default value: `UnEncrypted`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Whether to use encrypted transmission. UnEncrypted means no encrypted transmission, Encrypted means encrypted transmission. Default: UnEncrypted</p>
         :rtype: str
         """
         return self._EncryptConn
@@ -9665,8 +9679,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DatabaseNetEnv(self):
-        r"""Network environment of the database. This parameter is required when `AccessType` is `ccn`. Valid values: `UserIDC` (user IDC), `TencentVPC` (Tencent Cloud VPC).
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Network environment of the database. Required when AccessType is Cloud Connect Network (ccn). UserIDC refers to User IDC, and TencentVPC refers to Tencent Cloud VPC.</p>
         :rtype: str
         """
         return self._DatabaseNetEnv
@@ -9677,8 +9690,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CcnOwnerUin(self):
-        r"""The root account of CCN in the scenario where the database is connected to CCN under another Tencent Cloud account
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""<p>When the database is an instance of cross-account cloud networking, it refers to the main account to which the CCN belongs.</p>
         :rtype: str
         """
         return self._CcnOwnerUin
@@ -9689,7 +9701,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ChildInstanceId(self):
-        r"""
+        r"""<p>When the database is cynos and it is a sub-database instance within the cynos cluster, this parameter is the ID of the sub-instance.</p>
         :rtype: str
         """
         return self._ChildInstanceId
@@ -9700,7 +9712,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ChildInstanceType(self):
-        r"""
+        r"""<p>When the database is cynos and it is a sub-database instance within the cynos cluster, this parameter is the type of the sub-instance, for example: pass ro for a read-only instance, pass rw for a read-write instance.</p>
         :rtype: str
         """
         return self._ChildInstanceType
@@ -9711,7 +9723,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SetId(self):
-        r"""
+        r"""<p>Shard id of tdsql. Required if the node type is set.</p>
         :rtype: str
         """
         return self._SetId
@@ -10965,29 +10977,32 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class KafkaOption(AbstractModel):
-    r"""Sync options configured when the target database is Kafka
+    r"""Synchronization option fields added when the destination is Kafka.
 
     """
 
     def __init__(self):
         r"""
-        :param _DataType: Data type delivered to Kafka, such as Avro, Json, canal-pb, canal-json
+        :param _DataType: <p>Data type delivered to kafka, such as Avro, Json, canal-pb, canal-Json, debezium</p>
         :type DataType: str
-        :param _TopicType: Topic sync policy, such as `Single` (deliver all data to a single topic), `Multi` (deliver data to multiple custom topics).
+        :param _TopicType: <p>Synchronize topic policies, for example, Single (Deliver to a single topic), Multi (Custom topic name)</p>
         :type TopicType: str
-        :param _DDLTopicName: Topic for DDL storage
+        :param _DDLTopicName: <p>topic used to store ddl</p>
         :type DDLTopicName: str
-        :param _TopicRules: Topic description
+        :param _TopicRules: <p>Description of single topic and custom topic</p>
         :type TopicRules: list of TopicRule
+        :param _DataOption: <p>Additional information, for specific data types, additional parameters can be set. For example, for Canal-compatible feature support: "canalOfficialFormat":"on" means to enable the Canal-compatible feature, not included by default. For large message skipping feature support: "skipLargeMessage":"on" means to enable skipping large messages, not included by default; when enabled, "maxMessageSizeMB" must be simultaneously set to a positive integer string from 1 to 100, representing the max message size threshold (MB), messages exceeding this size will be skipped, not included by default.</p>
+        :type DataOption: list of KeyValuePairOption
         """
         self._DataType = None
         self._TopicType = None
         self._DDLTopicName = None
         self._TopicRules = None
+        self._DataOption = None
 
     @property
     def DataType(self):
-        r"""Data type delivered to Kafka, such as Avro, Json, canal-pb, canal-json
+        r"""<p>Data type delivered to kafka, such as Avro, Json, canal-pb, canal-Json, debezium</p>
         :rtype: str
         """
         return self._DataType
@@ -10998,7 +11013,7 @@ class KafkaOption(AbstractModel):
 
     @property
     def TopicType(self):
-        r"""Topic sync policy, such as `Single` (deliver all data to a single topic), `Multi` (deliver data to multiple custom topics).
+        r"""<p>Synchronize topic policies, for example, Single (Deliver to a single topic), Multi (Custom topic name)</p>
         :rtype: str
         """
         return self._TopicType
@@ -11009,7 +11024,7 @@ class KafkaOption(AbstractModel):
 
     @property
     def DDLTopicName(self):
-        r"""Topic for DDL storage
+        r"""<p>topic used to store ddl</p>
         :rtype: str
         """
         return self._DDLTopicName
@@ -11020,7 +11035,7 @@ class KafkaOption(AbstractModel):
 
     @property
     def TopicRules(self):
-        r"""Topic description
+        r"""<p>Description of single topic and custom topic</p>
         :rtype: list of TopicRule
         """
         return self._TopicRules
@@ -11028,6 +11043,17 @@ class KafkaOption(AbstractModel):
     @TopicRules.setter
     def TopicRules(self, TopicRules):
         self._TopicRules = TopicRules
+
+    @property
+    def DataOption(self):
+        r"""<p>Additional information, for specific data types, additional parameters can be set. For example, for Canal-compatible feature support: "canalOfficialFormat":"on" means to enable the Canal-compatible feature, not included by default. For large message skipping feature support: "skipLargeMessage":"on" means to enable skipping large messages, not included by default; when enabled, "maxMessageSizeMB" must be simultaneously set to a positive integer string from 1 to 100, representing the max message size threshold (MB), messages exceeding this size will be skipped, not included by default.</p>
+        :rtype: list of KeyValuePairOption
+        """
+        return self._DataOption
+
+    @DataOption.setter
+    def DataOption(self, DataOption):
+        self._DataOption = DataOption
 
 
     def _deserialize(self, params):
@@ -11040,6 +11066,12 @@ class KafkaOption(AbstractModel):
                 obj = TopicRule()
                 obj._deserialize(item)
                 self._TopicRules.append(obj)
+        if params.get("DataOption") is not None:
+            self._DataOption = []
+            for item in params.get("DataOption"):
+                obj = KeyValuePairOption()
+                obj._deserialize(item)
+                self._DataOption.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11057,11 +11089,9 @@ class KeyValuePairOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: Option key
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Key: Option key.
         :type Key: str
-        :param _Value: Option value
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Value: Option value.
         :type Value: str
         """
         self._Key = None
@@ -11069,8 +11099,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Key(self):
-        r"""Option key
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Option key.
         :rtype: str
         """
         return self._Key
@@ -11081,8 +11110,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
-        r"""Option value
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Option value.
         :rtype: str
         """
         return self._Value
@@ -13282,25 +13310,26 @@ class Objects(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mode: Sync object type. Valid value: `Partial` (Partial objects). Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Mode: <p>Sync object type Partial (partial objects)</p>
         :type Mode: str
-        :param _Databases: Sync object, which is required if `Mode` is `Partial`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Databases: <p>Sync object, not empty when Mode is Partial</p>
         :type Databases: list of Database
-        :param _AdvancedObjects: Advanced object types, such as function and procedure. Note: If you want to migrate and synchronize advanced objects, the corresponding advanced object type should be included in this configuration. When advanced objects need to be synchronized, the initialization type must include the structure initialization type, that is, the Options.InitType value of the task is Structure or Full.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AdvancedObjects: <p>Advanced object types, such as function and procedure. Note: If you need to migrate and synchronize advanced objects, this configuration should contain the corresponding advanced object type. When synchronization of advanced objects is required, the initialization type must contain the structure initialization type, that is, the field value of task Options.InitType must be Structure or Full.</p>
         :type AdvancedObjects: list of str
-        :param _OnlineDDL: A redundant field that specifies the online DDL type
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _OnlineDDL: <p>This field is deprecated. For temporary table synchronization, use Objects.Databases[n].Tables[n].TmpTables to import.</p>
         :type OnlineDDL: :class:`tencentcloud.dts.v20211206.models.OnlineDDL`
+        :param _DatabasesOpFilter: <p>Database/Table/View-level DML/DDL allowlist</p>
+        :type DatabasesOpFilter: list of DBOpFilter
         """
         self._Mode = None
         self._Databases = None
         self._AdvancedObjects = None
         self._OnlineDDL = None
+        self._DatabasesOpFilter = None
 
     @property
     def Mode(self):
-        r"""Sync object type. Valid value: `Partial` (Partial objects). Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Sync object type Partial (partial objects)</p>
         :rtype: str
         """
         return self._Mode
@@ -13311,8 +13340,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Databases(self):
-        r"""Sync object, which is required if `Mode` is `Partial`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Sync object, not empty when Mode is Partial</p>
         :rtype: list of Database
         """
         return self._Databases
@@ -13323,7 +13351,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdvancedObjects(self):
-        r"""Advanced object types, such as function and procedure. Note: If you want to migrate and synchronize advanced objects, the corresponding advanced object type should be included in this configuration. When advanced objects need to be synchronized, the initialization type must include the structure initialization type, that is, the Options.InitType value of the task is Structure or Full.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Advanced object types, such as function and procedure. Note: If you need to migrate and synchronize advanced objects, this configuration should contain the corresponding advanced object type. When synchronization of advanced objects is required, the initialization type must contain the structure initialization type, that is, the field value of task Options.InitType must be Structure or Full.</p>
         :rtype: list of str
         """
         return self._AdvancedObjects
@@ -13334,8 +13362,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OnlineDDL(self):
-        r"""A redundant field that specifies the online DDL type
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>This field is deprecated. For temporary table synchronization, use Objects.Databases[n].Tables[n].TmpTables to import.</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.OnlineDDL`
         """
         return self._OnlineDDL
@@ -13343,6 +13370,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @OnlineDDL.setter
     def OnlineDDL(self, OnlineDDL):
         self._OnlineDDL = OnlineDDL
+
+    @property
+    def DatabasesOpFilter(self):
+        r"""<p>Database/Table/View-level DML/DDL allowlist</p>
+        :rtype: list of DBOpFilter
+        """
+        return self._DatabasesOpFilter
+
+    @DatabasesOpFilter.setter
+    def DatabasesOpFilter(self, DatabasesOpFilter):
+        self._DatabasesOpFilter = DatabasesOpFilter
 
 
     def _deserialize(self, params):
@@ -13357,6 +13395,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("OnlineDDL") is not None:
             self._OnlineDDL = OnlineDDL()
             self._OnlineDDL._deserialize(params.get("OnlineDDL"))
+        if params.get("DatabasesOpFilter") is not None:
+            self._DatabasesOpFilter = []
+            for item in params.get("DatabasesOpFilter"):
+                obj = DBOpFilter()
+                obj._deserialize(item)
+                self._DatabasesOpFilter.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13425,16 +13469,14 @@ class OnlineDDL(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: Status
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Status: Status. Valid values: ON (enable) and OFF (disable).
         :type Status: str
         """
         self._Status = None
 
     @property
     def Status(self):
-        r"""Status
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Status. Valid values: ON (enable) and OFF (disable).
         :rtype: str
         """
         return self._Status
@@ -13456,6 +13498,62 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class OpFilter(AbstractModel):
+    r"""DDL/DML Filter Rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OpTypes: DML allowlist
+        :type OpTypes: list of str
+        :param _DdlOptions: DDL allowlist
+        :type DdlOptions: list of DdlOption
+        """
+        self._OpTypes = None
+        self._DdlOptions = None
+
+    @property
+    def OpTypes(self):
+        r"""DML allowlist
+        :rtype: list of str
+        """
+        return self._OpTypes
+
+    @OpTypes.setter
+    def OpTypes(self, OpTypes):
+        self._OpTypes = OpTypes
+
+    @property
+    def DdlOptions(self):
+        r"""DDL allowlist
+        :rtype: list of DdlOption
+        """
+        return self._DdlOptions
+
+    @DdlOptions.setter
+    def DdlOptions(self, DdlOptions):
+        self._DdlOptions = DdlOptions
+
+
+    def _deserialize(self, params):
+        self._OpTypes = params.get("OpTypes")
+        if params.get("DdlOptions") is not None:
+            self._DdlOptions = []
+            for item in params.get("DdlOptions"):
+                obj = DdlOption()
+                obj._deserialize(item)
+                self._DdlOptions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Options(AbstractModel):
     r"""Data sync options
 
@@ -13463,41 +13561,31 @@ class Options(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InitType: Sync initialization option. Valid values: `data` (full data initialization); `Structure` (structure initialization); `Full` (full data and structure initialization); `None` (incremental data only). Default value: `Full`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InitType: <p>Synchronization initialization options: Data (Full Data initialization), Structure (Structure initialization), Full (Full Data and Structure initialization, default), None (incremental only). The mongodb link supports only Full Data initialization or incremental only.</p>
         :type InitType: str
-        :param _DealOfExistSameTable: Processing method for duplicate tables. Valid values: `ReportErrorAfterCheck`, `InitializeAfterDelete`, `ExecuteAfterIgnore`. Default value: `ReportErrorAfterCheck`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DealOfExistSameTable: <p>Handling of tables with the same name, ReportErrorAfterCheck (pre-validation and error reporting, default), ExecuteAfterIgnore (ignore and continue execution).</p>
         :type DealOfExistSameTable: str
-        :param _ConflictHandleType: Conflict processing option. Valid values: `ReportError` (report an error); `Ignore` (ignore); `Cover` (overwrite); `ConditionCover` (conditionally overwrite). Default value: `ReportError`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ConflictHandleType: <p>Conflict resolution options: ReportError (report error, default), Ignore, Cover, ConditionCover</p>
         :type ConflictHandleType: str
-        :param _AddAdditionalColumn: Whether to add the additional column
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AddAdditionalColumn: <p>Whether to add an additional column</p>
         :type AddAdditionalColumn: bool
-        :param _OpTypes: DML and DDL options to be synced. Valid values: `Insert` (INSERT operations); `Update` (UPDATE operations); `Delete` (DELETE operations); `DDL` (structure sync); `PartialDDL` (custom option, which is used together with `DdlOptions`). You can also leave this parameter empty.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _OpTypes: <p>Options for DML and DDL to be synchronized: Insert, Update, Delete, DDL (structure synchronization), PartialDDL (custom, can be used together with DdlOptions). Note that it must contain at least one DML option.</p>
         :type OpTypes: list of str
-        :param _ConflictHandleOption: Detailed option for conflict processing, such as condition rows and operations in conditional overwrite.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ConflictHandleOption: <p>Detailed options for conflict resolution, such as condition row and conditional operation in condition coverage</p>
         :type ConflictHandleOption: :class:`tencentcloud.dts.v20211206.models.ConflictHandleOption`
-        :param _DdlOptions: DDL statements to be synced
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DdlOptions: <p>DDL synchronization option. Description of which DDLs to synchronize.</p>
         :type DdlOptions: list of DdlOption
-        :param _KafkaOption: Kafka sync options
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _KafkaOption: <p>kafka sync options</p>
         :type KafkaOption: :class:`tencentcloud.dts.v20211206.models.KafkaOption`
-        :param _RateLimitOption: Task speed limit information
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RateLimitOption: <p>Task speed limit information</p>
         :type RateLimitOption: :class:`tencentcloud.dts.v20211206.models.RateLimitOption`
-        :param _AutoRetryTimeRangeMinutes: Settings of the automatic retry time range
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AutoRetryTimeRangeMinutes: <p>Time window for automatic retry settings</p>
         :type AutoRetryTimeRangeMinutes: int
-        :param _StartPosition: 
+        :param _StartPosition: <p>Synchronize to the specified checkpoint of the kafka link. Currently only support time format: 2023-12-20T19:24:23+08:00. If not specified, it is empty.</p>
         :type StartPosition: str
-        :param _FilterBeginCommit: 
+        :param _FilterBeginCommit: <p>Whether to filter out begin and commit messages when synchronizing to kafka. Currently, only the mysql-to-kafka link supports this.</p>
         :type FilterBeginCommit: bool
-        :param _FilterCheckpoint: 
+        :param _FilterCheckpoint: <p>Whether to filter out checkpoint messages when synchronizing to kafka. Currently, only the mysql-to-kafka link supports this.</p>
         :type FilterCheckpoint: bool
         """
         self._InitType = None
@@ -13516,8 +13604,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InitType(self):
-        r"""Sync initialization option. Valid values: `data` (full data initialization); `Structure` (structure initialization); `Full` (full data and structure initialization); `None` (incremental data only). Default value: `Full`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Synchronization initialization options: Data (Full Data initialization), Structure (Structure initialization), Full (Full Data and Structure initialization, default), None (incremental only). The mongodb link supports only Full Data initialization or incremental only.</p>
         :rtype: str
         """
         return self._InitType
@@ -13528,8 +13615,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DealOfExistSameTable(self):
-        r"""Processing method for duplicate tables. Valid values: `ReportErrorAfterCheck`, `InitializeAfterDelete`, `ExecuteAfterIgnore`. Default value: `ReportErrorAfterCheck`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Handling of tables with the same name, ReportErrorAfterCheck (pre-validation and error reporting, default), ExecuteAfterIgnore (ignore and continue execution).</p>
         :rtype: str
         """
         return self._DealOfExistSameTable
@@ -13540,8 +13626,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConflictHandleType(self):
-        r"""Conflict processing option. Valid values: `ReportError` (report an error); `Ignore` (ignore); `Cover` (overwrite); `ConditionCover` (conditionally overwrite). Default value: `ReportError`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Conflict resolution options: ReportError (report error, default), Ignore, Cover, ConditionCover</p>
         :rtype: str
         """
         return self._ConflictHandleType
@@ -13552,8 +13637,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddAdditionalColumn(self):
-        r"""Whether to add the additional column
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Whether to add an additional column</p>
         :rtype: bool
         """
         return self._AddAdditionalColumn
@@ -13564,8 +13648,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OpTypes(self):
-        r"""DML and DDL options to be synced. Valid values: `Insert` (INSERT operations); `Update` (UPDATE operations); `Delete` (DELETE operations); `DDL` (structure sync); `PartialDDL` (custom option, which is used together with `DdlOptions`). You can also leave this parameter empty.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Options for DML and DDL to be synchronized: Insert, Update, Delete, DDL (structure synchronization), PartialDDL (custom, can be used together with DdlOptions). Note that it must contain at least one DML option.</p>
         :rtype: list of str
         """
         return self._OpTypes
@@ -13576,8 +13659,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConflictHandleOption(self):
-        r"""Detailed option for conflict processing, such as condition rows and operations in conditional overwrite.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Detailed options for conflict resolution, such as condition row and conditional operation in condition coverage</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.ConflictHandleOption`
         """
         return self._ConflictHandleOption
@@ -13588,8 +13670,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DdlOptions(self):
-        r"""DDL statements to be synced
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>DDL synchronization option. Description of which DDLs to synchronize.</p>
         :rtype: list of DdlOption
         """
         return self._DdlOptions
@@ -13600,8 +13681,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KafkaOption(self):
-        r"""Kafka sync options
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>kafka sync options</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.KafkaOption`
         """
         return self._KafkaOption
@@ -13612,8 +13692,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RateLimitOption(self):
-        r"""Task speed limit information
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Task speed limit information</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.RateLimitOption`
         """
         return self._RateLimitOption
@@ -13624,8 +13703,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoRetryTimeRangeMinutes(self):
-        r"""Settings of the automatic retry time range
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Time window for automatic retry settings</p>
         :rtype: int
         """
         return self._AutoRetryTimeRangeMinutes
@@ -13636,7 +13714,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartPosition(self):
-        r"""
+        r"""<p>Synchronize to the specified checkpoint of the kafka link. Currently only support time format: 2023-12-20T19:24:23+08:00. If not specified, it is empty.</p>
         :rtype: str
         """
         return self._StartPosition
@@ -13647,7 +13725,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FilterBeginCommit(self):
-        r"""
+        r"""<p>Whether to filter out begin and commit messages when synchronizing to kafka. Currently, only the mysql-to-kafka link supports this.</p>
         :rtype: bool
         """
         return self._FilterBeginCommit
@@ -13658,7 +13736,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FilterCheckpoint(self):
-        r"""
+        r"""<p>Whether to filter out checkpoint messages when synchronizing to kafka. Currently, only the mysql-to-kafka link supports this.</p>
         :rtype: bool
         """
         return self._FilterCheckpoint
@@ -14140,29 +14218,44 @@ class RateLimitOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CurrentDumpThread: The number of full export threads currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 16.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CurrentDumpThread: Currently effective number of threads for full export. You can adjust this field value when the task is configured. Note: If it is not set or set to 0, the current value is kept. The maximum value is 16.
         :type CurrentDumpThread: int
-        :param _DefaultDumpThread: The default number of full export threads. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DefaultDumpThread: The default number of threads for full export. This field is only meaningful in the output parameters.
         :type DefaultDumpThread: int
-        :param _CurrentDumpRps: The full export Rps currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 50,000,000.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CurrentDumpRps: The currently effective Rps for full export. You can adjust this field value when configuring the task. Note: If not set or set to 0, it indicates to keep the current value. The maximum value is 50000000.
         :type CurrentDumpRps: int
-        :param _DefaultDumpRps: The default full export Rps. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DefaultDumpRps: The default Rps for full export. This field is only meaningful in the output parameters.
         :type DefaultDumpRps: int
-        :param _CurrentLoadThread: The number of full import threads currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 16.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CurrentLoadThread: Currently effective number of threads for full import. You can adjust this field value when the task is configured. Note: If it is not set or set to 0, the current value is kept. The maximum value is 16.
         :type CurrentLoadThread: int
-        :param _DefaultLoadThread: The default number of full import threads. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DefaultLoadThread: The default number of threads for full import. This field is only meaningful in the output parameters.
         :type DefaultLoadThread: int
-        :param _CurrentLoadRps: The full import Rps currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 50,000,000.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CurrentLoadRps: The currently effective Rps for full import. You can adjust this field value when configuring the task. Note: If not set or set to 0, it indicates to keep the current value. The maximum value is 50000000.	
         :type CurrentLoadRps: int
-        :param _DefaultLoadRps: The default full import Rps. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DefaultLoadRps: Default full import Rps. This field is only meaningful in the output parameter.	
         :type DefaultLoadRps: int
-        :param _CurrentSinkerThread: The number of incremental import threads currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 128.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CurrentSinkerThread: The currently effective number of threads for incremental import. You can adjust this field value when configuring the task. Note: If not set or set to 0, it indicates to keep the current value. The maximum value is 128.
         :type CurrentSinkerThread: int
-        :param _DefaultSinkerThread: The default number of incremental import threads. This field is only meaningful in the output parameter.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DefaultSinkerThread: The default number of threads for incremental import. This field is only meaningful in the output parameters.
         :type DefaultSinkerThread: int
-        :param _HasUserSetRateLimit: enum:"no"/"yes", no: the user has not set a speed limit; yes: a speed limit has been set. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _HasUserSetRateLimit: enum: "no"/"yes". no indicates that the user has not set a speed limit, while yes indicates that a speed limit has been set. This field is only meaningful in the output parameters.
         :type HasUserSetRateLimit: str
+        :param _DefaultDumpBps: Default full export BPS, currently supported only for MongoDB links.
+        :type DefaultDumpBps: int
+        :param _CurrentSinkerRps: Incremental import RPS, currently supported only for MongoDB links.
+        :type CurrentSinkerRps: int
+        :param _DefaultSinkerRps: Default incremental import RPS, currently supported only for MongoDB links.
+        :type DefaultSinkerRps: int
+        :param _CurrentLoadBps: Current import BPS. Currently, it is only used for Redis.
+        :type CurrentLoadBps: int
+        :param _CurrentDstShardCount: Number of shards in the target database. Currently, only used for Redis.
+        :type CurrentDstShardCount: int
+        :param _CurrentDumpBps: Full export BPS, currently supported only for MongoDB links.
+        :type CurrentDumpBps: int
+        :param _CurrentSinkerBps: Incremental import BPS, currently supported only for MongoDB links.
+        :type CurrentSinkerBps: int
+        :param _DefaultSinkerBps: Default incremental import BPS, currently supported only for MongoDB links.
+        :type DefaultSinkerBps: int
         """
         self._CurrentDumpThread = None
         self._DefaultDumpThread = None
@@ -14175,10 +14268,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CurrentSinkerThread = None
         self._DefaultSinkerThread = None
         self._HasUserSetRateLimit = None
+        self._DefaultDumpBps = None
+        self._CurrentSinkerRps = None
+        self._DefaultSinkerRps = None
+        self._CurrentLoadBps = None
+        self._CurrentDstShardCount = None
+        self._CurrentDumpBps = None
+        self._CurrentSinkerBps = None
+        self._DefaultSinkerBps = None
 
     @property
     def CurrentDumpThread(self):
-        r"""The number of full export threads currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 16.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Currently effective number of threads for full export. You can adjust this field value when the task is configured. Note: If it is not set or set to 0, the current value is kept. The maximum value is 16.
         :rtype: int
         """
         return self._CurrentDumpThread
@@ -14189,7 +14290,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultDumpThread(self):
-        r"""The default number of full export threads. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The default number of threads for full export. This field is only meaningful in the output parameters.
         :rtype: int
         """
         return self._DefaultDumpThread
@@ -14200,7 +14301,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurrentDumpRps(self):
-        r"""The full export Rps currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 50,000,000.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The currently effective Rps for full export. You can adjust this field value when configuring the task. Note: If not set or set to 0, it indicates to keep the current value. The maximum value is 50000000.
         :rtype: int
         """
         return self._CurrentDumpRps
@@ -14211,7 +14312,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultDumpRps(self):
-        r"""The default full export Rps. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The default Rps for full export. This field is only meaningful in the output parameters.
         :rtype: int
         """
         return self._DefaultDumpRps
@@ -14222,7 +14323,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurrentLoadThread(self):
-        r"""The number of full import threads currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 16.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Currently effective number of threads for full import. You can adjust this field value when the task is configured. Note: If it is not set or set to 0, the current value is kept. The maximum value is 16.
         :rtype: int
         """
         return self._CurrentLoadThread
@@ -14233,7 +14334,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultLoadThread(self):
-        r"""The default number of full import threads. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The default number of threads for full import. This field is only meaningful in the output parameters.
         :rtype: int
         """
         return self._DefaultLoadThread
@@ -14244,7 +14345,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurrentLoadRps(self):
-        r"""The full import Rps currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 50,000,000.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The currently effective Rps for full import. You can adjust this field value when configuring the task. Note: If not set or set to 0, it indicates to keep the current value. The maximum value is 50000000.	
         :rtype: int
         """
         return self._CurrentLoadRps
@@ -14255,7 +14356,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultLoadRps(self):
-        r"""The default full import Rps. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Default full import Rps. This field is only meaningful in the output parameter.	
         :rtype: int
         """
         return self._DefaultLoadRps
@@ -14266,7 +14367,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurrentSinkerThread(self):
-        r"""The number of incremental import threads currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 128.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The currently effective number of threads for incremental import. You can adjust this field value when configuring the task. Note: If not set or set to 0, it indicates to keep the current value. The maximum value is 128.
         :rtype: int
         """
         return self._CurrentSinkerThread
@@ -14277,8 +14378,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultSinkerThread(self):
-        r"""The default number of incremental import threads. This field is only meaningful in the output parameter.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The default number of threads for incremental import. This field is only meaningful in the output parameters.
         :rtype: int
         """
         return self._DefaultSinkerThread
@@ -14289,7 +14389,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HasUserSetRateLimit(self):
-        r"""enum:"no"/"yes", no: the user has not set a speed limit; yes: a speed limit has been set. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""enum: "no"/"yes". no indicates that the user has not set a speed limit, while yes indicates that a speed limit has been set. This field is only meaningful in the output parameters.
         :rtype: str
         """
         return self._HasUserSetRateLimit
@@ -14297,6 +14397,94 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @HasUserSetRateLimit.setter
     def HasUserSetRateLimit(self, HasUserSetRateLimit):
         self._HasUserSetRateLimit = HasUserSetRateLimit
+
+    @property
+    def DefaultDumpBps(self):
+        r"""Default full export BPS, currently supported only for MongoDB links.
+        :rtype: int
+        """
+        return self._DefaultDumpBps
+
+    @DefaultDumpBps.setter
+    def DefaultDumpBps(self, DefaultDumpBps):
+        self._DefaultDumpBps = DefaultDumpBps
+
+    @property
+    def CurrentSinkerRps(self):
+        r"""Incremental import RPS, currently supported only for MongoDB links.
+        :rtype: int
+        """
+        return self._CurrentSinkerRps
+
+    @CurrentSinkerRps.setter
+    def CurrentSinkerRps(self, CurrentSinkerRps):
+        self._CurrentSinkerRps = CurrentSinkerRps
+
+    @property
+    def DefaultSinkerRps(self):
+        r"""Default incremental import RPS, currently supported only for MongoDB links.
+        :rtype: int
+        """
+        return self._DefaultSinkerRps
+
+    @DefaultSinkerRps.setter
+    def DefaultSinkerRps(self, DefaultSinkerRps):
+        self._DefaultSinkerRps = DefaultSinkerRps
+
+    @property
+    def CurrentLoadBps(self):
+        r"""Current import BPS. Currently, it is only used for Redis.
+        :rtype: int
+        """
+        return self._CurrentLoadBps
+
+    @CurrentLoadBps.setter
+    def CurrentLoadBps(self, CurrentLoadBps):
+        self._CurrentLoadBps = CurrentLoadBps
+
+    @property
+    def CurrentDstShardCount(self):
+        r"""Number of shards in the target database. Currently, only used for Redis.
+        :rtype: int
+        """
+        return self._CurrentDstShardCount
+
+    @CurrentDstShardCount.setter
+    def CurrentDstShardCount(self, CurrentDstShardCount):
+        self._CurrentDstShardCount = CurrentDstShardCount
+
+    @property
+    def CurrentDumpBps(self):
+        r"""Full export BPS, currently supported only for MongoDB links.
+        :rtype: int
+        """
+        return self._CurrentDumpBps
+
+    @CurrentDumpBps.setter
+    def CurrentDumpBps(self, CurrentDumpBps):
+        self._CurrentDumpBps = CurrentDumpBps
+
+    @property
+    def CurrentSinkerBps(self):
+        r"""Incremental import BPS, currently supported only for MongoDB links.
+        :rtype: int
+        """
+        return self._CurrentSinkerBps
+
+    @CurrentSinkerBps.setter
+    def CurrentSinkerBps(self, CurrentSinkerBps):
+        self._CurrentSinkerBps = CurrentSinkerBps
+
+    @property
+    def DefaultSinkerBps(self):
+        r"""Default incremental import BPS, currently supported only for MongoDB links.
+        :rtype: int
+        """
+        return self._DefaultSinkerBps
+
+    @DefaultSinkerBps.setter
+    def DefaultSinkerBps(self, DefaultSinkerBps):
+        self._DefaultSinkerBps = DefaultSinkerBps
 
 
     def _deserialize(self, params):
@@ -14311,6 +14499,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CurrentSinkerThread = params.get("CurrentSinkerThread")
         self._DefaultSinkerThread = params.get("DefaultSinkerThread")
         self._HasUserSetRateLimit = params.get("HasUserSetRateLimit")
+        self._DefaultDumpBps = params.get("DefaultDumpBps")
+        self._CurrentSinkerRps = params.get("CurrentSinkerRps")
+        self._DefaultSinkerRps = params.get("DefaultSinkerRps")
+        self._CurrentLoadBps = params.get("CurrentLoadBps")
+        self._CurrentDstShardCount = params.get("CurrentDstShardCount")
+        self._CurrentDumpBps = params.get("CurrentDumpBps")
+        self._CurrentSinkerBps = params.get("CurrentSinkerBps")
+        self._DefaultSinkerBps = params.get("DefaultSinkerBps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16563,7 +16759,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type InstanceId: str
         :param _InstanceStatus: Cloud database status: running, isolated, offline. If it is not on the cloud, this value is empty.Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceStatus: str
-        :param _Status: Data subscription lifecycle status. Valid values: normal (normal), isolating (isolating), isolated (isolated), offlining (offlining), post2PrePayIng (changing from pay-as-you-go to monthly subscription).
+        :param _Status: Data subscription lifecycle status. Valid values: normal (normal), isolating (isolating), isolated (isolated), offlining (offlining), post2PrePayIng (changing from pay-as-you-go to yearly/monthly subscription).
         :type Status: str
         :param _SubsStatus: Data subscription status. Valid values: notStarted, checking, checkNotPass, checkPass, starting, running, error.
         :type SubsStatus: str
@@ -16573,7 +16769,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type CreateTime: str
         :param _IsolateTime: Isolation time, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
         :type IsolateTime: str
-        :param _ExpireTime: Expiration time for monthly subscription tasks, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ExpireTime: Expiration time for yearly/monthly subscription tasks, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
         :type ExpireTime: str
         :param _OfflineTime: Offline time, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
         :type OfflineTime: str
@@ -16594,6 +16790,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Tags: list of TagItem
         :param _Errors: Task error messageNote: This field may return null, indicating that no valid values can be obtained.
         :type Errors: list of SubsErr
+        :param _InstanceClass: Subscribe to instance specifications
+        :type InstanceClass: str
+        :param _ConsumerRoutePhase: Routing Phase for the New Version of Subscription Consumption
+        :type ConsumerRoutePhase: str
         """
         self._SubscribeId = None
         self._SubscribeName = None
@@ -16616,6 +16816,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._SubscribeVersion = None
         self._Tags = None
         self._Errors = None
+        self._InstanceClass = None
+        self._ConsumerRoutePhase = None
 
     @property
     def SubscribeId(self):
@@ -16686,7 +16888,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        r"""Data subscription lifecycle status. Valid values: normal (normal), isolating (isolating), isolated (isolated), offlining (offlining), post2PrePayIng (changing from pay-as-you-go to monthly subscription).
+        r"""Data subscription lifecycle status. Valid values: normal (normal), isolating (isolating), isolated (isolated), offlining (offlining), post2PrePayIng (changing from pay-as-you-go to yearly/monthly subscription).
         :rtype: str
         """
         return self._Status
@@ -16741,7 +16943,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpireTime(self):
-        r"""Expiration time for monthly subscription tasks, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Expiration time for yearly/monthly subscription tasks, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ExpireTime
@@ -16850,6 +17052,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Errors(self, Errors):
         self._Errors = Errors
 
+    @property
+    def InstanceClass(self):
+        r"""Subscribe to instance specifications
+        :rtype: str
+        """
+        return self._InstanceClass
+
+    @InstanceClass.setter
+    def InstanceClass(self, InstanceClass):
+        self._InstanceClass = InstanceClass
+
+    @property
+    def ConsumerRoutePhase(self):
+        r"""Routing Phase for the New Version of Subscription Consumption
+        :rtype: str
+        """
+        return self._ConsumerRoutePhase
+
+    @ConsumerRoutePhase.setter
+    def ConsumerRoutePhase(self, ConsumerRoutePhase):
+        self._ConsumerRoutePhase = ConsumerRoutePhase
+
 
     def _deserialize(self, params):
         self._SubscribeId = params.get("SubscribeId")
@@ -16888,6 +17112,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = SubsErr()
                 obj._deserialize(item)
                 self._Errors.append(obj)
+        self._InstanceClass = params.get("InstanceClass")
+        self._ConsumerRoutePhase = params.get("ConsumerRoutePhase")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17046,16 +17272,13 @@ class SyncDBEndpointInfos(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Region: Region of the database
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Region: Database region
         :type Region: str
-        :param _AccessType: Instance network access type. Valid values: `extranet` (public network); `ipv6` (public IPv6); `cvm` (self-build on CVM); `dcg` (Direct Connect); `vpncloud` (VPN access); `cdb` (database); `ccn` (CCN); `intranet` (intranet); `vpc` (VPC). Note that the valid values are subject to the current link.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AccessType: Instance network access type. For example: extranet (public network), ipv6 (public network ipv6), cvm (self-built CVM), dcg (DC), vpncloud (instance accessed via VPN), cdb (cloud database), ccn (CCN), intranet (self-developed cloud migration), and vpc (VPC). Note that the specific valid values depend on the current linkage.
         :type AccessType: str
-        :param _DatabaseType: Database type, such as `mysql`, `redis`, `mongodb`, `postgresql`, `mariadb`, and `percona`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DatabaseType: Instance database type. For example: mysql, redis, mongodb, postgresql, mariadb, and percona.
         :type DatabaseType: str
-        :param _Info: Database information. Note: If the data type is tdsqlmysql, the order of this Endpoint array should correspond to the set order, and the first shard (shardkey range starting from 0) must be entered first.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Info: Database information. Note: If the database type is tdsqlmysql, the order of the Endpoint array should follow the following rule: proxy nodes are placed before set nodes. If SrcConnectType selects proxy access, only the proxy node needs to be filled. If set access is selected, the first set node in the array should be the shard with a shardkey range starting from 0.
         :type Info: list of Endpoint
         """
         self._Region = None
@@ -17065,8 +17288,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        r"""Region of the database
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Database region
         :rtype: str
         """
         return self._Region
@@ -17077,8 +17299,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccessType(self):
-        r"""Instance network access type. Valid values: `extranet` (public network); `ipv6` (public IPv6); `cvm` (self-build on CVM); `dcg` (Direct Connect); `vpncloud` (VPN access); `cdb` (database); `ccn` (CCN); `intranet` (intranet); `vpc` (VPC). Note that the valid values are subject to the current link.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Instance network access type. For example: extranet (public network), ipv6 (public network ipv6), cvm (self-built CVM), dcg (DC), vpncloud (instance accessed via VPN), cdb (cloud database), ccn (CCN), intranet (self-developed cloud migration), and vpc (VPC). Note that the specific valid values depend on the current linkage.
         :rtype: str
         """
         return self._AccessType
@@ -17089,8 +17310,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DatabaseType(self):
-        r"""Database type, such as `mysql`, `redis`, `mongodb`, `postgresql`, `mariadb`, and `percona`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Instance database type. For example: mysql, redis, mongodb, postgresql, mariadb, and percona.
         :rtype: str
         """
         return self._DatabaseType
@@ -17101,7 +17321,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Info(self):
-        r"""Database information. Note: If the data type is tdsqlmysql, the order of this Endpoint array should correspond to the set order, and the first shard (shardkey range starting from 0) must be entered first.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Database information. Note: If the database type is tdsqlmysql, the order of the Endpoint array should follow the following rule: proxy nodes are placed before set nodes. If SrcConnectType selects proxy access, only the proxy node needs to be filled. If set access is selected, the first set node in the array should be the shard with a shardkey range starting from 0.
         :rtype: list of Endpoint
         """
         return self._Info
@@ -17342,7 +17562,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _JobName: Sync task name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type JobName: str
-        :param _PayMode: Billing mode. Valid values: `PostPay` (pay-as-you-go); `PrePay` (monthly subscription).
+        :param _PayMode: Billing mode. Valid values: `PostPay` (pay-as-you-go); `PrePay` (yearly/monthly subscription).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PayMode: str
         :param _RunMode: Running mode. Valid values: `Immediate`, `Timed`. Default value: `Immediate`.
@@ -17435,7 +17655,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _OfflineTime: Deletion time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OfflineTime: str
-        :param _OptObjStatus: 
+        :param _OptObjStatus: Dynamically modify objects, such as changing the status of a task.
         :type OptObjStatus: str
         :param _AutoRetryTimeRangeMinutes: Settings of automatic retry time
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -17507,7 +17727,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayMode(self):
-        r"""Billing mode. Valid values: `PostPay` (pay-as-you-go); `PrePay` (monthly subscription).
+        r"""Billing mode. Valid values: `PostPay` (pay-as-you-go); `PrePay` (yearly/monthly subscription).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17879,7 +18099,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OptObjStatus(self):
-        r"""
+        r"""Dynamically modify objects, such as changing the status of a task.
         :rtype: str
         """
         return self._OptObjStatus
@@ -17987,23 +18207,18 @@ class Table(AbstractModel):
     def __init__(self):
         r"""
         :param _TableName: Table name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TableName: str
         :param _NewTableName: New table name
-Note: This field may return null, indicating that no valid values can be obtained.
         :type NewTableName: str
-        :param _FilterCondition: Filter condition
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FilterCondition: Filter criteria.
         :type FilterCondition: str
-        :param _ColumnMode: Whether to synchronize all columns in the table. All: all columns under the current table; Partial (the corresponding field ColumnMode in ModifySyncJobConfig interface does not support Partial at the moment): some columns under the current table, detailed table information is provided by filling the Columns field.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ColumnMode: Whether to synchronize all columns in the table. All: all columns under the current table; Partial (the corresponding field ColumnMode in the ModifySyncJobConfig API does not currently support Partial): To synchronize some specific columns of the current table, Columns field is required.
         :type ColumnMode: str
-        :param _Columns: Column information in data sync. This field is required when ColumnMode is set to Partial.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Columns: Synchronized column information. It is required when ColumnMode is Partial.
         :type Columns: list of Column
-        :param _TmpTables: The temp tables to be synced. This parameter is mutually exclusive with `NewTableName`. It is valid only when the configured sync objects are table-level ones and `TableEditMode` is `pt`. To sync temp tables generated when pt-osc or other tools are used during the sync process, you must configure this parameter first. For example, if you want to perform the pt-osc operation on a table named "t1", configure this parameter as ["\_t1\_new","\_t1\_old"]; to perform the gh-ost operation on t1, configure it as ["\_t1\_ghc","\_t1\_gho","\_t1\_del"]. Temp tables generated by pt-osc and gh-ost operations can be configured at the same time.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TmpTables: Synchronize temporary tables. Note that this configuration is mutually exclusive with NewTableName, and only one of them can be used. When the configured synchronization object is at the table level and TableEditMode is pt, this parameter is meaningful. It is used to synchronize the temporary tables generated by tools such as pt-osc during the synchronization process. The possible temporary tables need to be configured here in advance, otherwise no temporary tables will be synchronized. For example, if you want to perform a pt-osc operation on t1, this configuration should be ["\_t1\_new","\_t1\_old"]; if you want to perform a gh-ost operation on t1, this configuration should be ["\_t1\_ghc","\_t1\_gho","\_t1\_del"]. Temporary tables generated by pt-osc and gh-ost can be configured simultaneously.
         :type TmpTables: list of str
-        :param _TableEditMode: Table editing type. Valid values: `rename` (table mapping); `pt` (additional table sync).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TableEditMode: Edit table type. Valid values: rename (table mapping); pt (synchronize additional table).
         :type TableEditMode: str
         """
         self._TableName = None
@@ -18017,7 +18232,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TableName(self):
         r"""Table name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TableName
@@ -18029,7 +18243,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def NewTableName(self):
         r"""New table name
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._NewTableName
@@ -18040,8 +18253,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FilterCondition(self):
-        r"""Filter condition
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Filter criteria.
         :rtype: str
         """
         return self._FilterCondition
@@ -18052,7 +18264,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ColumnMode(self):
-        r"""Whether to synchronize all columns in the table. All: all columns under the current table; Partial (the corresponding field ColumnMode in ModifySyncJobConfig interface does not support Partial at the moment): some columns under the current table, detailed table information is provided by filling the Columns field.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Whether to synchronize all columns in the table. All: all columns under the current table; Partial (the corresponding field ColumnMode in the ModifySyncJobConfig API does not currently support Partial): To synchronize some specific columns of the current table, Columns field is required.
         :rtype: str
         """
         return self._ColumnMode
@@ -18063,7 +18275,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Columns(self):
-        r"""Column information in data sync. This field is required when ColumnMode is set to Partial.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Synchronized column information. It is required when ColumnMode is Partial.
         :rtype: list of Column
         """
         return self._Columns
@@ -18074,8 +18286,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TmpTables(self):
-        r"""The temp tables to be synced. This parameter is mutually exclusive with `NewTableName`. It is valid only when the configured sync objects are table-level ones and `TableEditMode` is `pt`. To sync temp tables generated when pt-osc or other tools are used during the sync process, you must configure this parameter first. For example, if you want to perform the pt-osc operation on a table named "t1", configure this parameter as ["\_t1\_new","\_t1\_old"]; to perform the gh-ost operation on t1, configure it as ["\_t1\_ghc","\_t1\_gho","\_t1\_del"]. Temp tables generated by pt-osc and gh-ost operations can be configured at the same time.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Synchronize temporary tables. Note that this configuration is mutually exclusive with NewTableName, and only one of them can be used. When the configured synchronization object is at the table level and TableEditMode is pt, this parameter is meaningful. It is used to synchronize the temporary tables generated by tools such as pt-osc during the synchronization process. The possible temporary tables need to be configured here in advance, otherwise no temporary tables will be synchronized. For example, if you want to perform a pt-osc operation on t1, this configuration should be ["\_t1\_new","\_t1\_old"]; if you want to perform a gh-ost operation on t1, this configuration should be ["\_t1\_ghc","\_t1\_gho","\_t1\_del"]. Temporary tables generated by pt-osc and gh-ost can be configured simultaneously.
         :rtype: list of str
         """
         return self._TmpTables
@@ -18086,8 +18297,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableEditMode(self):
-        r"""Table editing type. Valid values: `rename` (table mapping); `pt` (additional table sync).
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Edit table type. Valid values: rename (table mapping); pt (synchronize additional table).
         :rtype: str
         """
         return self._TableEditMode
@@ -18110,6 +18320,59 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 self._Columns.append(obj)
         self._TmpTables = params.get("TmpTables")
         self._TableEditMode = params.get("TableEditMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableFilter(AbstractModel):
+    r"""Table-level DDL/DML filtering information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableName: Table name for rule effectiveness
+        :type TableName: str
+        :param _OpFilter: Table-level DDL/DML Filter Rule
+        :type OpFilter: :class:`tencentcloud.dts.v20211206.models.OpFilter`
+        """
+        self._TableName = None
+        self._OpFilter = None
+
+    @property
+    def TableName(self):
+        r"""Table name for rule effectiveness
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def OpFilter(self):
+        r"""Table-level DDL/DML Filter Rule
+        :rtype: :class:`tencentcloud.dts.v20211206.models.OpFilter`
+        """
+        return self._OpFilter
+
+    @OpFilter.setter
+    def OpFilter(self, OpFilter):
+        self._OpFilter = OpFilter
+
+
+    def _deserialize(self, params):
+        self._TableName = params.get("TableName")
+        if params.get("OpFilter") is not None:
+            self._OpFilter = OpFilter()
+            self._OpFilter._deserialize(params.get("OpFilter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18316,24 +18579,26 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TopicRule(AbstractModel):
-    r"""Topic description
+    r"""Description of single and custom topics. During shipping to a single topic, the last item in this array will be treated as the default partition strategy. All unmatched data will be shipped according to this strategy. The default strategy only supports three options: shipping to partition 0, by table name, or by table name+primary key.
 
     """
 
     def __init__(self):
         r"""
-        :param _TopicName: Topic name
+        :param _TopicName: Topic name. For single-topic scenarios, all TopicNames should be the same.
         :type TopicName: str
-        :param _PartitionType: Topic partitioning policy. If the topic sync policy is delivering data to multiple custom topics (`TopicType` = `Multi`), the value of this parameter is `Random` (deliver to a random partition). If the topic sync policy is delivering all data to a single topic (`TopicType` = `Single`), this parameter has three valid values: `AllInPartitionZero` (deliver all data to partition0), `PartitionByTable` (partition by table name), `PartitionByTableAndKey` (partition by table name and primary key).
+        :param _PartitionType: Topic partition policy. When a topic is customized, the valid value is Random (random shipping); when centralizing shipping to a single topic is adopted, the valid values are AllInPartitionZero (ship all to partition 0), PartitionByTable (partition by table name), PartitionByTableAndKey (partition by table name and primary key), and PartitionByCols (partition by column).
         :type PartitionType: str
-        :param _DbMatchMode: Database name matching rule. This parameter takes effect only when `TopicType` is `Multi`. Valid values: `Regular` (match by regex), `Default` (default rule for the remaining databases that cannot be matched by regex). The default rule must be included in the array of matching rules.
+        :param _DbMatchMode: Database name matching rule. For example: Regular (regular expression matching) and Default (remaining databases that do not meet any rule). The last item in the array should be Default.
         :type DbMatchMode: str
-        :param _DbName: Database name, which can only be matched by regex when `TopicType` is `Multi` and `DbMatchMode` is `Regular`.
+        :param _DbName: Database name. It is valid when DbMatchMode=Regular.
         :type DbName: str
-        :param _TableMatchMode: Table name matching rule. This parameter takes effect only when `TopicType` is `Multi`. Valid values: `Regular` (match by regex), `Default` (default rule for the remaining databases that cannot be matched by regex). The default rule must be included in the array of matching rules.
+        :param _TableMatchMode: Table name matching rule. For example: Regular (regular expression matching) and Default (remaining tables that do not meet any rule). The last item in the array should be Default.
         :type TableMatchMode: str
-        :param _TableName: Table name, which can only be matched by regex when `TopicType` is `Multi` and `DbMatchMode` is `Regular`.
+        :param _TableName: Table name. It is valid when TableMatchMode is Regular.
         :type TableName: str
+        :param _Columns: When partitioning by column, you need to select and configure column names. Multi-column selection is supported.
+        :type Columns: list of str
         """
         self._TopicName = None
         self._PartitionType = None
@@ -18341,10 +18606,11 @@ class TopicRule(AbstractModel):
         self._DbName = None
         self._TableMatchMode = None
         self._TableName = None
+        self._Columns = None
 
     @property
     def TopicName(self):
-        r"""Topic name
+        r"""Topic name. For single-topic scenarios, all TopicNames should be the same.
         :rtype: str
         """
         return self._TopicName
@@ -18355,7 +18621,7 @@ class TopicRule(AbstractModel):
 
     @property
     def PartitionType(self):
-        r"""Topic partitioning policy. If the topic sync policy is delivering data to multiple custom topics (`TopicType` = `Multi`), the value of this parameter is `Random` (deliver to a random partition). If the topic sync policy is delivering all data to a single topic (`TopicType` = `Single`), this parameter has three valid values: `AllInPartitionZero` (deliver all data to partition0), `PartitionByTable` (partition by table name), `PartitionByTableAndKey` (partition by table name and primary key).
+        r"""Topic partition policy. When a topic is customized, the valid value is Random (random shipping); when centralizing shipping to a single topic is adopted, the valid values are AllInPartitionZero (ship all to partition 0), PartitionByTable (partition by table name), PartitionByTableAndKey (partition by table name and primary key), and PartitionByCols (partition by column).
         :rtype: str
         """
         return self._PartitionType
@@ -18366,7 +18632,7 @@ class TopicRule(AbstractModel):
 
     @property
     def DbMatchMode(self):
-        r"""Database name matching rule. This parameter takes effect only when `TopicType` is `Multi`. Valid values: `Regular` (match by regex), `Default` (default rule for the remaining databases that cannot be matched by regex). The default rule must be included in the array of matching rules.
+        r"""Database name matching rule. For example: Regular (regular expression matching) and Default (remaining databases that do not meet any rule). The last item in the array should be Default.
         :rtype: str
         """
         return self._DbMatchMode
@@ -18377,7 +18643,7 @@ class TopicRule(AbstractModel):
 
     @property
     def DbName(self):
-        r"""Database name, which can only be matched by regex when `TopicType` is `Multi` and `DbMatchMode` is `Regular`.
+        r"""Database name. It is valid when DbMatchMode=Regular.
         :rtype: str
         """
         return self._DbName
@@ -18388,7 +18654,7 @@ class TopicRule(AbstractModel):
 
     @property
     def TableMatchMode(self):
-        r"""Table name matching rule. This parameter takes effect only when `TopicType` is `Multi`. Valid values: `Regular` (match by regex), `Default` (default rule for the remaining databases that cannot be matched by regex). The default rule must be included in the array of matching rules.
+        r"""Table name matching rule. For example: Regular (regular expression matching) and Default (remaining tables that do not meet any rule). The last item in the array should be Default.
         :rtype: str
         """
         return self._TableMatchMode
@@ -18399,7 +18665,7 @@ class TopicRule(AbstractModel):
 
     @property
     def TableName(self):
-        r"""Table name, which can only be matched by regex when `TopicType` is `Multi` and `DbMatchMode` is `Regular`.
+        r"""Table name. It is valid when TableMatchMode is Regular.
         :rtype: str
         """
         return self._TableName
@@ -18407,6 +18673,17 @@ class TopicRule(AbstractModel):
     @TableName.setter
     def TableName(self, TableName):
         self._TableName = TableName
+
+    @property
+    def Columns(self):
+        r"""When partitioning by column, you need to select and configure column names. Multi-column selection is supported.
+        :rtype: list of str
+        """
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
 
 
     def _deserialize(self, params):
@@ -18416,6 +18693,7 @@ class TopicRule(AbstractModel):
         self._DbName = params.get("DbName")
         self._TableMatchMode = params.get("TableMatchMode")
         self._TableName = params.get("TableName")
+        self._Columns = params.get("Columns")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18641,10 +18919,9 @@ class View(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ViewName: View name
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ViewName: View name.
         :type ViewName: str
-        :param _NewViewName: Reserved field. Currently, a view cannot be renamed. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _NewViewName: Reserved field. Currently, view renaming is not supported.
         :type NewViewName: str
         """
         self._ViewName = None
@@ -18652,8 +18929,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ViewName(self):
-        r"""View name
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""View name.
         :rtype: str
         """
         return self._ViewName
@@ -18664,7 +18940,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewViewName(self):
-        r"""Reserved field. Currently, a view cannot be renamed. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Reserved field. Currently, view renaming is not supported.
         :rtype: str
         """
         return self._NewViewName
@@ -18677,6 +18953,59 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self._ViewName = params.get("ViewName")
         self._NewViewName = params.get("NewViewName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ViewFilter(AbstractModel):
+    r"""View-level DDL/DML filtering information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ViewName: View name for rule effectiveness
+        :type ViewName: str
+        :param _OpFilter: View-level DDL/DML Filter Rule
+        :type OpFilter: :class:`tencentcloud.dts.v20211206.models.OpFilter`
+        """
+        self._ViewName = None
+        self._OpFilter = None
+
+    @property
+    def ViewName(self):
+        r"""View name for rule effectiveness
+        :rtype: str
+        """
+        return self._ViewName
+
+    @ViewName.setter
+    def ViewName(self, ViewName):
+        self._ViewName = ViewName
+
+    @property
+    def OpFilter(self):
+        r"""View-level DDL/DML Filter Rule
+        :rtype: :class:`tencentcloud.dts.v20211206.models.OpFilter`
+        """
+        return self._OpFilter
+
+    @OpFilter.setter
+    def OpFilter(self, OpFilter):
+        self._OpFilter = OpFilter
+
+
+    def _deserialize(self, params):
+        self._ViewName = params.get("ViewName")
+        if params.get("OpFilter") is not None:
+            self._OpFilter = OpFilter()
+            self._OpFilter._deserialize(params.get("OpFilter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

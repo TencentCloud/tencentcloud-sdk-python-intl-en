@@ -31067,6 +31067,200 @@ class DescribeSharedCNAMEResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTimingFunctionAnalysisDataRequest(AbstractModel):
+    r"""DescribeTimingFunctionAnalysisData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneIds: <p>Set of site IDs. Enter at least one site ID.</p>
+        :type ZoneIds: list of str
+        :param _StartTime: <p>Start time.</p>
+        :type StartTime: str
+        :param _EndTime: End time. The query time range (`EndTime` - `StartTime`) must be no longer than 7 days.
+        :type EndTime: str
+        :param _MetricNames: List of metrics. Valid values:<ul><li>`function_requestCount`: the number of Edge Function requests. This is a cumulative value.</li><li>`function_cpuCostTime`: the average CPU time consumed by Edge Function execution, in microseconds.</li><li>`function_wallClockTime`: the average wall clock time consumed by Edge Function execution, in microseconds.</li></ul>
+        :type MetricNames: list of str
+        :param _Interval: Query time granularity. Valid values:<ul><li>`min`: 1 minute.</li><li>`5min`: 5 minutes.</li><li>`hour`: 1 hour.</li><li>`day`: 1 day.</li></ul>If this parameter is not specified, the granularity is automatically inferred based on the interval between the start time and the end time. The specific rules are as follows: within 2 hours, the granularity is `min`; within 2 days, the granularity is `5min`; within 7 days, the granularity is `hour`; longer than 7 days, the granularity is `day`.
+        :type Interval: str
+        :param _Filters: Filter conditions. The maximum number of values in `Filters.Value` is 20. The detailed filter condition keys are as follows:<ul><li>`domain`: filters by subdomain name. Example value: `www.example.com`.</li><li>`function-name`: filters by Edge Function name. Example value: `test051301-zone-2r2fdoxxxx-130000000`.</li><li>`function-result`: filters by Edge Function execution result. Valid values for the corresponding `Value`:<ul><li>`success`: success.</li><li>`fail`: failure.</li></ul></li></ul>
+        :type Filters: list of QueryCondition
+        :param _Area: The region the data belongs to. Valid values:<ul><li>`overseas`: data from the global area (excluding the Chinese mainland).</li><li>`mainland`: data from the Chinese mainland.</li><li>`global`: global data.</li></ul>If this parameter is not specified, the default value is `global`.
+        :type Area: str
+        """
+        self._ZoneIds = None
+        self._StartTime = None
+        self._EndTime = None
+        self._MetricNames = None
+        self._Interval = None
+        self._Filters = None
+        self._Area = None
+
+    @property
+    def ZoneIds(self):
+        r"""<p>Set of site IDs. Enter at least one site ID.</p>
+        :rtype: list of str
+        """
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def StartTime(self):
+        r"""<p>Start time.</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time. The query time range (`EndTime` - `StartTime`) must be no longer than 7 days.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def MetricNames(self):
+        r"""List of metrics. Valid values:<ul><li>`function_requestCount`: the number of Edge Function requests. This is a cumulative value.</li><li>`function_cpuCostTime`: the average CPU time consumed by Edge Function execution, in microseconds.</li><li>`function_wallClockTime`: the average wall clock time consumed by Edge Function execution, in microseconds.</li></ul>
+        :rtype: list of str
+        """
+        return self._MetricNames
+
+    @MetricNames.setter
+    def MetricNames(self, MetricNames):
+        self._MetricNames = MetricNames
+
+    @property
+    def Interval(self):
+        r"""Query time granularity. Valid values:<ul><li>`min`: 1 minute.</li><li>`5min`: 5 minutes.</li><li>`hour`: 1 hour.</li><li>`day`: 1 day.</li></ul>If this parameter is not specified, the granularity is automatically inferred based on the interval between the start time and the end time. The specific rules are as follows: within 2 hours, the granularity is `min`; within 2 days, the granularity is `5min`; within 7 days, the granularity is `hour`; longer than 7 days, the granularity is `day`.
+        :rtype: str
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def Filters(self):
+        r"""Filter conditions. The maximum number of values in `Filters.Value` is 20. The detailed filter condition keys are as follows:<ul><li>`domain`: filters by subdomain name. Example value: `www.example.com`.</li><li>`function-name`: filters by Edge Function name. Example value: `test051301-zone-2r2fdoxxxx-130000000`.</li><li>`function-result`: filters by Edge Function execution result. Valid values for the corresponding `Value`:<ul><li>`success`: success.</li><li>`fail`: failure.</li></ul></li></ul>
+        :rtype: list of QueryCondition
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Area(self):
+        r"""The region the data belongs to. Valid values:<ul><li>`overseas`: data from the global area (excluding the Chinese mainland).</li><li>`mainland`: data from the Chinese mainland.</li><li>`global`: global data.</li></ul>If this parameter is not specified, the default value is `global`.
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+
+    def _deserialize(self, params):
+        self._ZoneIds = params.get("ZoneIds")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._MetricNames = params.get("MetricNames")
+        self._Interval = params.get("Interval")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = QueryCondition()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Area = params.get("Area")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTimingFunctionAnalysisDataResponse(AbstractModel):
+    r"""DescribeTimingFunctionAnalysisData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>Total number of query results.</p>
+        :type TotalCount: int
+        :param _Data: <p>List of time series data.</p>
+        :type Data: list of TimingDataRecord
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total number of query results.</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        r"""<p>List of time series data.</p>
+        :rtype: list of TimingDataRecord
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = TimingDataRecord()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTimingL4DataRequest(AbstractModel):
     r"""DescribeTimingL4Data request structure.
 
@@ -31937,6 +32131,215 @@ class DescribeTimingL7OriginPullDataResponse(AbstractModel):
                 obj = TimingDataRecord()
                 obj._deserialize(item)
                 self._TimingDataRecords.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTopFunctionAnalysisDataRequest(AbstractModel):
+    r"""DescribeTopFunctionAnalysisData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneIds: <p>Set of site IDs. Enter at least one site ID.</p>
+        :type ZoneIds: list of str
+        :param _StartTime: <p>Start time.</p>
+        :type StartTime: str
+        :param _EndTime: End time. The query time range (`EndTime` - `StartTime`) must be no longer than 7 days.
+        :type EndTime: str
+        :param _MetricName: The metric to query. Valid values:<ul><li>`function_requestCount_functionResult`: counts Edge Function requests by the dimension of execution result.</li><li>`function_requestCount_functionName`: counts Edge Function requests by the dimension of function name.</li><li>`function_requestCount_domain`: counts Edge Function requests by the dimension of domain name.</li></ul>
+        :type MetricName: str
+        :param _Limit: <p>Number of top data entries to query. The maximum value is 1000. If not specified, the default value is 10, indicating that the top 10 data entries are queried.</p>
+        :type Limit: int
+        :param _Filters: Filter conditions. The maximum number of values in `Filters.Value` is 20. The detailed filter condition keys are as follows:<ul><li>`domain`: filters by subdomain name. Example value: `www.example.com`.</li><li>`function-name`: filters by Edge Function name. Example value: `test051301-zone-2r2fdoxxxx-130000000`.</li><li>`function-result`: filters by Edge Function execution result. Valid values for the corresponding `Value`:<ul><li>`success`: success.</li><li>`fail`: failure.</li></ul></li></ul>
+        :type Filters: list of QueryCondition
+        :param _Interval: Query time granularity. Valid values:<ul><li>`min`: 1 minute.</li><li>`5min`: 5 minutes.</li><li>`hour`: 1 hour.</li><li>`day`: 1 day.</li></ul>If this parameter is not specified, the granularity is automatically inferred based on the interval between the start time and the end time. The specific rules are as follows: within 2 hours, the granularity is `min`; within 2 days, the granularity is `5min`; within 7 days, the granularity is `hour`; longer than 7 days, the granularity is `day`.
+        :type Interval: str
+        :param _Area: The region the data belongs to. Valid values:<ul><li>`overseas`: data from the global area (excluding the Chinese mainland).</li><li>`mainland`: data from the Chinese mainland.</li><li>`global`: global data.</li></ul>If this parameter is not specified, the default value is `global`.
+        :type Area: str
+        """
+        self._ZoneIds = None
+        self._StartTime = None
+        self._EndTime = None
+        self._MetricName = None
+        self._Limit = None
+        self._Filters = None
+        self._Interval = None
+        self._Area = None
+
+    @property
+    def ZoneIds(self):
+        r"""<p>Set of site IDs. Enter at least one site ID.</p>
+        :rtype: list of str
+        """
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def StartTime(self):
+        r"""<p>Start time.</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time. The query time range (`EndTime` - `StartTime`) must be no longer than 7 days.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def MetricName(self):
+        r"""The metric to query. Valid values:<ul><li>`function_requestCount_functionResult`: counts Edge Function requests by the dimension of execution result.</li><li>`function_requestCount_functionName`: counts Edge Function requests by the dimension of function name.</li><li>`function_requestCount_domain`: counts Edge Function requests by the dimension of domain name.</li></ul>
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def Limit(self):
+        r"""<p>Number of top data entries to query. The maximum value is 1000. If not specified, the default value is 10, indicating that the top 10 data entries are queried.</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""Filter conditions. The maximum number of values in `Filters.Value` is 20. The detailed filter condition keys are as follows:<ul><li>`domain`: filters by subdomain name. Example value: `www.example.com`.</li><li>`function-name`: filters by Edge Function name. Example value: `test051301-zone-2r2fdoxxxx-130000000`.</li><li>`function-result`: filters by Edge Function execution result. Valid values for the corresponding `Value`:<ul><li>`success`: success.</li><li>`fail`: failure.</li></ul></li></ul>
+        :rtype: list of QueryCondition
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Interval(self):
+        r"""Query time granularity. Valid values:<ul><li>`min`: 1 minute.</li><li>`5min`: 5 minutes.</li><li>`hour`: 1 hour.</li><li>`day`: 1 day.</li></ul>If this parameter is not specified, the granularity is automatically inferred based on the interval between the start time and the end time. The specific rules are as follows: within 2 hours, the granularity is `min`; within 2 days, the granularity is `5min`; within 7 days, the granularity is `hour`; longer than 7 days, the granularity is `day`.
+        :rtype: str
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def Area(self):
+        r"""The region the data belongs to. Valid values:<ul><li>`overseas`: data from the global area (excluding the Chinese mainland).</li><li>`mainland`: data from the Chinese mainland.</li><li>`global`: global data.</li></ul>If this parameter is not specified, the default value is `global`.
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+
+    def _deserialize(self, params):
+        self._ZoneIds = params.get("ZoneIds")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._MetricName = params.get("MetricName")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = QueryCondition()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Interval = params.get("Interval")
+        self._Area = params.get("Area")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopFunctionAnalysisDataResponse(AbstractModel):
+    r"""DescribeTopFunctionAnalysisData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>Total number of query results.</p>
+        :type TotalCount: int
+        :param _Data: <p>List of topN data by the statistical dimension specified by MetricName.</p>
+        :type Data: list of TopDataRecord
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total number of query results.</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        r"""<p>List of topN data by the statistical dimension specified by MetricName.</p>
+        :rtype: list of TopDataRecord
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = TopDataRecord()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -37047,7 +37450,7 @@ class FirstPartConfig(AbstractModel):
 
 
 class FloatTimingDataItem(AbstractModel):
-    r"""Statistical curve data item.
+    r"""Statistics curve data item
 
     """
 
@@ -37098,7 +37501,7 @@ class FloatTimingDataItem(AbstractModel):
 
 
 class FloatTimingTypeValue(AbstractModel):
-    r"""Time series type details.
+    r"""Detailed data of time series type
 
     """
 
@@ -37108,7 +37511,7 @@ class FloatTimingTypeValue(AbstractModel):
         :type Sum: float
         :param _Max: Maximum value.
         :type Max: float
-        :param _Avg: Average.
+        :param _Avg: Mean.
         :type Avg: float
         :param _MetricName: Metric name.
         :type MetricName: str
@@ -37145,7 +37548,7 @@ class FloatTimingTypeValue(AbstractModel):
 
     @property
     def Avg(self):
-        r"""Average.
+        r"""Mean.
         :rtype: float
         """
         return self._Avg
@@ -65625,7 +66028,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
 
 class TimingDataItem(AbstractModel):
-    r"""Data items of the statistical curve
+    r"""Statistical curve data item
 
     """
 
@@ -65633,7 +66036,7 @@ class TimingDataItem(AbstractModel):
         r"""
         :param _Timestamp: Time point for returning data, in the format of Unix timestamp in seconds.
         :type Timestamp: int
-        :param _Value: The value.
+        :param _Value: Specific values.
         :type Value: int
         """
         self._Timestamp = None
@@ -65652,7 +66055,7 @@ class TimingDataItem(AbstractModel):
 
     @property
     def Value(self):
-        r"""The value.
+        r"""Specific values.
         :rtype: int
         """
         return self._Value
@@ -65676,17 +66079,17 @@ class TimingDataItem(AbstractModel):
 
 
 class TimingDataRecord(AbstractModel):
-    r"""The time-series data
+    r"""Data information of time series
 
     """
 
     def __init__(self):
         r"""
-        :param _TypeKey: The query dimension value.
+        :param _TypeKey: Query the dimension value.
         :type TypeKey: str
-        :param _TypeValue: Detailed time series data of the <code>Integer</code> type. query metrics with the <code>Integer</code> value type will return corresponding time series data through this field.<br> **note**: if the query metric does not specify the value type, this field will return data by default.
+        :param _TypeValue: Detailed time series data of the <code>Integer</code> type. If the value type of the query metric is <code>Integer</code>, the corresponding time series data will be returned in this field.<br> **Note**: If the value type of the query metric is unclear, data will be returned in this field by default.
         :type TypeValue: list of TimingTypeValue
-        :param _FloatTypeValue: Detailed time series data of <code>Float</code> type. query metrics with <code>Float</code> value type will return corresponding time series data via this field.
+        :param _FloatTypeValue: Detailed time series data of <code>Float</code> type. For metrics whose query metric value type is <code>Float</code>, the corresponding time series data is returned in this field.
         :type FloatTypeValue: list of FloatTimingTypeValue
         """
         self._TypeKey = None
@@ -65695,7 +66098,7 @@ class TimingDataRecord(AbstractModel):
 
     @property
     def TypeKey(self):
-        r"""The query dimension value.
+        r"""Query the dimension value.
         :rtype: str
         """
         return self._TypeKey
@@ -65706,7 +66109,7 @@ class TimingDataRecord(AbstractModel):
 
     @property
     def TypeValue(self):
-        r"""Detailed time series data of the <code>Integer</code> type. query metrics with the <code>Integer</code> value type will return corresponding time series data through this field.<br> **note**: if the query metric does not specify the value type, this field will return data by default.
+        r"""Detailed time series data of the <code>Integer</code> type. If the value type of the query metric is <code>Integer</code>, the corresponding time series data will be returned in this field.<br> **Note**: If the value type of the query metric is unclear, data will be returned in this field by default.
         :rtype: list of TimingTypeValue
         """
         return self._TypeValue
@@ -65717,7 +66120,7 @@ class TimingDataRecord(AbstractModel):
 
     @property
     def FloatTypeValue(self):
-        r"""Detailed time series data of <code>Float</code> type. query metrics with <code>Float</code> value type will return corresponding time series data via this field.
+        r"""Detailed time series data of <code>Float</code> type. For metrics whose query metric value type is <code>Float</code>, the corresponding time series data is returned in this field.
         :rtype: list of FloatTimingTypeValue
         """
         return self._FloatTypeValue
@@ -65758,16 +66161,15 @@ class TimingTypeValue(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Sum: Sum.
+        :param _Sum: Data and.
         :type Sum: int
-        :param _Max: The maximum value.
+        :param _Max: Maximum value.
         :type Max: int
-        :param _Avg: The average value.
+        :param _Avg: Mean.
         :type Avg: int
         :param _MetricName: Metric name.
         :type MetricName: str
         :param _Detail: Details.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Detail: list of TimingDataItem
         """
         self._Sum = None
@@ -65778,7 +66180,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sum(self):
-        r"""Sum.
+        r"""Data and.
         :rtype: int
         """
         return self._Sum
@@ -65789,7 +66191,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Max(self):
-        r"""The maximum value.
+        r"""Maximum value.
         :rtype: int
         """
         return self._Max
@@ -65800,7 +66202,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Avg(self):
-        r"""The average value.
+        r"""Mean.
         :rtype: int
         """
         return self._Avg
@@ -65823,7 +66225,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Detail(self):
         r"""Details.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TimingDataItem
         """
         return self._Detail
@@ -65855,15 +66256,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TopDataRecord(AbstractModel):
-    r"""The top-ranked data record
+    r"""Top data record
 
     """
 
     def __init__(self):
         r"""
-        :param _TypeKey: The query dimension value.
+        :param _TypeKey: Dimension value to query.
         :type TypeKey: str
-        :param _DetailData: Top data rankings
+        :param _DetailData: top data ranking.
         :type DetailData: list of TopDetailData
         """
         self._TypeKey = None
@@ -65871,7 +66272,7 @@ class TopDataRecord(AbstractModel):
 
     @property
     def TypeKey(self):
-        r"""The query dimension value.
+        r"""Dimension value to query.
         :rtype: str
         """
         return self._TypeKey
@@ -65882,7 +66283,7 @@ class TopDataRecord(AbstractModel):
 
     @property
     def DetailData(self):
-        r"""Top data rankings
+        r"""top data ranking.
         :rtype: list of TopDetailData
         """
         return self._DetailData
@@ -65911,15 +66312,15 @@ class TopDataRecord(AbstractModel):
 
 
 class TopDetailData(AbstractModel):
-    r"""The top-ranked data details
+    r"""Detailed information of Top data
 
     """
 
     def __init__(self):
         r"""
-        :param _Key: The field name.
+        :param _Key: Field name.
         :type Key: str
-        :param _Value: The field value.
+        :param _Value: Field value.
         :type Value: int
         """
         self._Key = None
@@ -65927,7 +66328,7 @@ class TopDetailData(AbstractModel):
 
     @property
     def Key(self):
-        r"""The field name.
+        r"""Field name.
         :rtype: str
         """
         return self._Key
@@ -65938,7 +66339,7 @@ class TopDetailData(AbstractModel):
 
     @property
     def Value(self):
-        r"""The field value.
+        r"""Field value.
         :rtype: int
         """
         return self._Value

@@ -118,6 +118,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddLLMSdkAccess(self, request):
+        r"""This API is used to add an access configuration in llmwaf-sdk.
+
+        :param request: Request instance for AddLLMSdkAccess.
+        :type request: :class:`tencentcloud.waf.v20180125.models.AddLLMSdkAccessRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.AddLLMSdkAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddLLMSdkAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddLLMSdkAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddSpartaProtection(self, request):
         r"""Add SaaS WAF protection domain
 
@@ -385,6 +408,75 @@ class WafClient(AbstractClient):
             body = self.call("DeleteIpAccessControlV2", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteIpAccessControlV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteLLMContentRule(self, request):
+        r"""This API is used to delete an LLM content protection rule.
+
+        :param request: Request instance for DeleteLLMContentRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteLLMContentRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteLLMContentRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLLMContentRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLLMContentRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteLLMKeywordLibrary(self, request):
+        r"""This API is used to delete a thesaurus list.
+
+        :param request: Request instance for DeleteLLMKeywordLibrary.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteLLMKeywordLibraryRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteLLMKeywordLibraryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLLMKeywordLibrary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLLMKeywordLibraryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteLLMSdkAccess(self, request):
+        r"""This API is used to delete the access configuration in llmwaf-sdk.
+
+        :param request: Request instance for DeleteLLMSdkAccess.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteLLMSdkAccessRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteLLMSdkAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLLMSdkAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLLMSdkAccessResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1015,6 +1107,190 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLLMContentRuleList(self, request):
+        r"""This API is used to obtain the LLM content protection rules.
+
+        :param request: Request instance for DescribeLLMContentRuleList.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeLLMContentRuleListRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeLLMContentRuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLLMContentRuleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLLMContentRuleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLLMContentSecCheck(self, request):
+        r"""This API is used to review the request and response content of large models.
+
+        :param request: Request instance for DescribeLLMContentSecCheck.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeLLMContentSecCheckRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeLLMContentSecCheckResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLLMContentSecCheck", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLLMContentSecCheckResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLLMHourBillDetail(self, request):
+        r"""This API is used to query the hourly bill details of a single instance for a single day, including the estimated total bill amount, itemized costs, hourly trends, and hourly details.
+
+        :param request: Request instance for DescribeLLMHourBillDetail.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeLLMHourBillDetailRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeLLMHourBillDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLLMHourBillDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLLMHourBillDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLLMKeywordLibrary(self, request):
+        r"""This API is used to query the keyword list.
+
+        :param request: Request instance for DescribeLLMKeywordLibrary.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeLLMKeywordLibraryRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeLLMKeywordLibraryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLLMKeywordLibrary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLLMKeywordLibraryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLLMSdkAccess(self, request):
+        r"""This API is used to query sdk access configurations.
+
+        :param request: Request instance for DescribeLLMSdkAccess.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeLLMSdkAccessRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeLLMSdkAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLLMSdkAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLLMSdkAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLLMWafDLPRules(self, request):
+        r"""This API is used to query DLP rules.
+
+        :param request: Request instance for DescribeLLMWafDLPRules.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeLLMWafDLPRulesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeLLMWafDLPRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLLMWafDLPRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLLMWafDLPRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLLMWafProtectRules(self, request):
+        r"""This API is used to query LLM rule requests.
+
+        :param request: Request instance for DescribeLLMWafProtectRules.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeLLMWafProtectRulesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeLLMWafProtectRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLLMWafProtectRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLLMWafProtectRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLLMWafToolCallRules(self, request):
+        r"""This API is used to query Tool Call rules.
+
+        :param request: Request instance for DescribeLLMWafToolCallRules.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeLLMWafToolCallRulesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeLLMWafToolCallRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLLMWafToolCallRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLLMWafToolCallRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeModuleStatus(self, request):
         r"""Query the switch status of each WAF basic security module, check if each module is enabled
 
@@ -1245,6 +1521,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSkillSecScanResult(self, request):
+        r"""This API is used to query Skill security detection results by file Hash.
+
+        :param request: Request instance for DescribeSkillSecScanResult.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeSkillSecScanResultRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeSkillSecScanResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSkillSecScanResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSkillSecScanResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSpartaProtectionInfo(self, request):
         r"""WAF Sparta - Obtain protection domain information
 
@@ -1420,6 +1719,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribeWebshellStatus", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeWebshellStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ExportLLMKeywordLib(self, request):
+        r"""This API is used to export lexicon files.
+
+        :param request: Request instance for ExportLLMKeywordLib.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ExportLLMKeywordLibRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ExportLLMKeywordLibResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportLLMKeywordLib", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportLLMKeywordLibResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2074,6 +2396,190 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyLLMContentRule(self, request):
+        r"""This API is used to update the LLM content security rule.
+
+        :param request: Request instance for ModifyLLMContentRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyLLMContentRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyLLMContentRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLLMContentRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLLMContentRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLLMContentRuleStatus(self, request):
+        r"""This API is used to enable or disable the switch of protection rules for LLM content.
+
+        :param request: Request instance for ModifyLLMContentRuleStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyLLMContentRuleStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyLLMContentRuleStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLLMContentRuleStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLLMContentRuleStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLLMKeywordLibrary(self, request):
+        r"""This API is used to modify a custom lexicon.
+
+        :param request: Request instance for ModifyLLMKeywordLibrary.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyLLMKeywordLibraryRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyLLMKeywordLibraryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLLMKeywordLibrary", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLLMKeywordLibraryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLLMSdkAccess(self, request):
+        r"""This API is used to configure boundary access for llmwaf-sdk.
+
+        :param request: Request instance for ModifyLLMSdkAccess.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyLLMSdkAccessRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyLLMSdkAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLLMSdkAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLLMSdkAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLLMStatus(self, request):
+        r"""This API is used to modify the module switch status of large model protection, supporting independent on/off operations for the master switch and each submodule. Before enabling, ensure that the instance has purchased the large model protection capability. If not purchased, the enable operation returns the AuthFailure.ErrCodeNoPurchased error.
+
+        :param request: Request instance for ModifyLLMStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyLLMStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyLLMStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLLMStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLLMStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLLMWafDLPRule(self, request):
+        r"""This API is used to modify llmwaf DLP rules.
+
+        :param request: Request instance for ModifyLLMWafDLPRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyLLMWafDLPRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyLLMWafDLPRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLLMWafDLPRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLLMWafDLPRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLLMWafProtectRule(self, request):
+        r"""This API is used to modify LLM rules.
+
+        :param request: Request instance for ModifyLLMWafProtectRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyLLMWafProtectRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyLLMWafProtectRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLLMWafProtectRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLLMWafProtectRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLLMWafToolCallRule(self, request):
+        r"""This API is used to modify Tool Call rules.
+
+        :param request: Request instance for ModifyLLMWafToolCallRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyLLMWafToolCallRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyLLMWafToolCallRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLLMWafToolCallRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLLMWafToolCallRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyModuleStatus(self, request):
         r"""Set the switch for the basic security module under a certain domain
 
@@ -2433,6 +2939,29 @@ class WafClient(AbstractClient):
             body = self.call("SwitchElasticMode", params, headers=headers)
             response = json.loads(body)
             model = models.SwitchElasticModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UploadSkillSecScan(self, request):
+        r"""This API is used to upload a Skill ZIP file and trigger asynchronous security detection.
+
+        :param request: Request instance for UploadSkillSecScan.
+        :type request: :class:`tencentcloud.waf.v20180125.models.UploadSkillSecScanRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.UploadSkillSecScanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UploadSkillSecScan", params, headers=headers)
+            response = json.loads(body)
+            model = models.UploadSkillSecScanResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

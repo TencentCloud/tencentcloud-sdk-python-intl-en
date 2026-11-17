@@ -2257,6 +2257,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RotateClusterToken(
+            self,
+            request: models.RotateClusterTokenRequest,
+            opts: Dict = None,
+    ) -> models.RotateClusterTokenResponse:
+        """
+        This API is used to rotate a cluster token.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RotateClusterToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RotateClusterTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SetNodePoolNodeProtection(
             self,
             request: models.SetNodePoolNodeProtectionRequest,

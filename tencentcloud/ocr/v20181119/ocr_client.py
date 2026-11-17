@@ -512,6 +512,30 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RecognizeGeneralCardVerification(self, request):
+        r"""This API performs unified verification on images of various card types worldwide. It supports automatic card type classification, field recognition, quality check, tampering (PS) detection, copy detection, recapture detection, format validation, and information consistency check. Candidate card types and check items can be flexibly combined.
+        The following 20 document types are currently supported: Mainland China ID Card, Passport, Thai ID Card, Malaysian ID Card, Indonesian ID Card, Singapore ID Card, Philippine Driver's License, Philippine SSS ID, Philippine PRC ID, Philippine Postal ID Card, Philippine UMID, Philippine Voter ID, Philippine TIN Card, Philippine National ID, Philippine Health Card, Taiwan (China) ID Card, Vietnamese ID Card, Myanmar Driver's License, Brazilian ID Card, and Brazilian Driver's License.
+
+        :param request: Request instance for RecognizeGeneralCardVerification.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeGeneralCardVerificationRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeGeneralCardVerificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizeGeneralCardVerification", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizeGeneralCardVerificationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RecognizeIndonesiaIDCardOCR(self, request):
         r"""Indonesian identity card recognition
 

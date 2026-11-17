@@ -97,6 +97,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AddLLMSdkAccess(
+            self,
+            request: models.AddLLMSdkAccessRequest,
+            opts: Dict = None,
+    ) -> models.AddLLMSdkAccessResponse:
+        """
+        This API is used to add an access configuration in llmwaf-sdk.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddLLMSdkAccess"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddLLMSdkAccessResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def AddSpartaProtection(
             self,
             request: models.AddSpartaProtectionRequest,
@@ -308,6 +326,60 @@ class WafClient(AbstractClient):
         kwargs["action"] = "DeleteIpAccessControlV2"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteIpAccessControlV2Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteLLMContentRule(
+            self,
+            request: models.DeleteLLMContentRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLLMContentRuleResponse:
+        """
+        This API is used to delete an LLM content protection rule.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLLMContentRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLLMContentRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteLLMKeywordLibrary(
+            self,
+            request: models.DeleteLLMKeywordLibraryRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLLMKeywordLibraryResponse:
+        """
+        This API is used to delete a thesaurus list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLLMKeywordLibrary"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLLMKeywordLibraryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteLLMSdkAccess(
+            self,
+            request: models.DeleteLLMSdkAccessRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLLMSdkAccessResponse:
+        """
+        This API is used to delete the access configuration in llmwaf-sdk.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLLMSdkAccess"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLLMSdkAccessResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -799,6 +871,150 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeLLMContentRuleList(
+            self,
+            request: models.DescribeLLMContentRuleListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLLMContentRuleListResponse:
+        """
+        This API is used to obtain the LLM content protection rules.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLLMContentRuleList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLLMContentRuleListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLLMContentSecCheck(
+            self,
+            request: models.DescribeLLMContentSecCheckRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLLMContentSecCheckResponse:
+        """
+        This API is used to review the request and response content of large models.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLLMContentSecCheck"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLLMContentSecCheckResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLLMHourBillDetail(
+            self,
+            request: models.DescribeLLMHourBillDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLLMHourBillDetailResponse:
+        """
+        This API is used to query the hourly bill details of a single instance for a single day, including the estimated total bill amount, itemized costs, hourly trends, and hourly details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLLMHourBillDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLLMHourBillDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLLMKeywordLibrary(
+            self,
+            request: models.DescribeLLMKeywordLibraryRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLLMKeywordLibraryResponse:
+        """
+        This API is used to query the keyword list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLLMKeywordLibrary"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLLMKeywordLibraryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLLMSdkAccess(
+            self,
+            request: models.DescribeLLMSdkAccessRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLLMSdkAccessResponse:
+        """
+        This API is used to query sdk access configurations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLLMSdkAccess"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLLMSdkAccessResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLLMWafDLPRules(
+            self,
+            request: models.DescribeLLMWafDLPRulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLLMWafDLPRulesResponse:
+        """
+        This API is used to query DLP rules.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLLMWafDLPRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLLMWafDLPRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLLMWafProtectRules(
+            self,
+            request: models.DescribeLLMWafProtectRulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLLMWafProtectRulesResponse:
+        """
+        This API is used to query LLM rule requests.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLLMWafProtectRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLLMWafProtectRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLLMWafToolCallRules(
+            self,
+            request: models.DescribeLLMWafToolCallRulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLLMWafToolCallRulesResponse:
+        """
+        This API is used to query Tool Call rules.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLLMWafToolCallRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLLMWafToolCallRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeModuleStatus(
             self,
             request: models.DescribeModuleStatusRequest,
@@ -979,6 +1195,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSkillSecScanResult(
+            self,
+            request: models.DescribeSkillSecScanResultRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSkillSecScanResultResponse:
+        """
+        This API is used to query Skill security detection results by file Hash.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSkillSecScanResult"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSkillSecScanResultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSpartaProtectionInfo(
             self,
             request: models.DescribeSpartaProtectionInfoRequest,
@@ -1118,6 +1352,24 @@ class WafClient(AbstractClient):
         kwargs["action"] = "DescribeWebshellStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeWebshellStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ExportLLMKeywordLib(
+            self,
+            request: models.ExportLLMKeywordLibRequest,
+            opts: Dict = None,
+    ) -> models.ExportLLMKeywordLibResponse:
+        """
+        This API is used to export lexicon files.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExportLLMKeywordLib"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExportLLMKeywordLibResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1628,6 +1880,150 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyLLMContentRule(
+            self,
+            request: models.ModifyLLMContentRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLLMContentRuleResponse:
+        """
+        This API is used to update the LLM content security rule.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLLMContentRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLLMContentRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLLMContentRuleStatus(
+            self,
+            request: models.ModifyLLMContentRuleStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLLMContentRuleStatusResponse:
+        """
+        This API is used to enable or disable the switch of protection rules for LLM content.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLLMContentRuleStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLLMContentRuleStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLLMKeywordLibrary(
+            self,
+            request: models.ModifyLLMKeywordLibraryRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLLMKeywordLibraryResponse:
+        """
+        This API is used to modify a custom lexicon.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLLMKeywordLibrary"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLLMKeywordLibraryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLLMSdkAccess(
+            self,
+            request: models.ModifyLLMSdkAccessRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLLMSdkAccessResponse:
+        """
+        This API is used to configure boundary access for llmwaf-sdk.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLLMSdkAccess"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLLMSdkAccessResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLLMStatus(
+            self,
+            request: models.ModifyLLMStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLLMStatusResponse:
+        """
+        This API is used to modify the module switch status of large model protection, supporting independent on/off operations for the master switch and each submodule. Before enabling, ensure that the instance has purchased the large model protection capability. If not purchased, the enable operation returns the AuthFailure.ErrCodeNoPurchased error.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLLMStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLLMStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLLMWafDLPRule(
+            self,
+            request: models.ModifyLLMWafDLPRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLLMWafDLPRuleResponse:
+        """
+        This API is used to modify llmwaf DLP rules.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLLMWafDLPRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLLMWafDLPRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLLMWafProtectRule(
+            self,
+            request: models.ModifyLLMWafProtectRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLLMWafProtectRuleResponse:
+        """
+        This API is used to modify LLM rules.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLLMWafProtectRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLLMWafProtectRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLLMWafToolCallRule(
+            self,
+            request: models.ModifyLLMWafToolCallRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLLMWafToolCallRuleResponse:
+        """
+        This API is used to modify Tool Call rules.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLLMWafToolCallRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLLMWafToolCallRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyModuleStatus(
             self,
             request: models.ModifyModuleStatusRequest,
@@ -1911,6 +2307,24 @@ class WafClient(AbstractClient):
         kwargs["action"] = "SwitchElasticMode"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SwitchElasticModeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UploadSkillSecScan(
+            self,
+            request: models.UploadSkillSecScanRequest,
+            opts: Dict = None,
+    ) -> models.UploadSkillSecScanResponse:
+        """
+        This API is used to upload a Skill ZIP file and trigger asynchronous security detection.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UploadSkillSecScan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UploadSkillSecScanResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

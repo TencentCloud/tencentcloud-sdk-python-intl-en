@@ -158,7 +158,7 @@ INVALIDPARAMETER_DATAFROMTASKNOTEXIST = 'InvalidParameter.DataFromTaskNotExist'
 # Database unique key conflict.
 INVALIDPARAMETER_DBDUPLICATION = 'InvalidParameter.DbDuplication'
 
-# The export job already exists.
+# The export task already exists.
 INVALIDPARAMETER_EXPORTCONFLICT = 'InvalidParameter.ExportConflict'
 
 # IA storage does not support key-value or tag index configuration.
@@ -248,7 +248,7 @@ LIMITEXCEEDED_TAG = 'LimitExceeded.Tag'
 # The number of log topics exceeds the limit.
 LIMITEXCEEDED_TOPIC = 'LimitExceeded.Topic'
 
-# Parameters are missing.
+# Missing parameter error.
 MISSINGPARAMETER = 'MissingParameter'
 
 # Operation denied.
@@ -257,7 +257,7 @@ OPERATIONDENIED = 'OperationDenied'
 # ACL verification failed.
 OPERATIONDENIED_ACLFAILED = 'OperationDenied.ACLFailed'
 
-# The account has been terminated.
+# Account terminated.
 OPERATIONDENIED_ACCOUNTDESTROY = 'OperationDenied.AccountDestroy'
 
 # Account arrears.

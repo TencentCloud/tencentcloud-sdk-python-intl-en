@@ -411,6 +411,25 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RecognizeGeneralCardVerification(
+            self,
+            request: models.RecognizeGeneralCardVerificationRequest,
+            opts: Dict = None,
+    ) -> models.RecognizeGeneralCardVerificationResponse:
+        """
+        This API performs unified verification on images of various card types worldwide. It supports automatic card type classification, field recognition, quality check, tampering (PS) detection, copy detection, recapture detection, format validation, and information consistency check. Candidate card types and check items can be flexibly combined.
+        The following 20 document types are currently supported: Mainland China ID Card, Passport, Thai ID Card, Malaysian ID Card, Indonesian ID Card, Singapore ID Card, Philippine Driver's License, Philippine SSS ID, Philippine PRC ID, Philippine Postal ID Card, Philippine UMID, Philippine Voter ID, Philippine TIN Card, Philippine National ID, Philippine Health Card, Taiwan (China) ID Card, Vietnamese ID Card, Myanmar Driver's License, Brazilian ID Card, and Brazilian Driver's License.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RecognizeGeneralCardVerification"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RecognizeGeneralCardVerificationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RecognizeIndonesiaIDCardOCR(
             self,
             request: models.RecognizeIndonesiaIDCardOCRRequest,

@@ -289,6 +289,7 @@ class ApplySdkVerificationTokenRequest(AbstractModel):
 1: OCR + liveness detection + face comparison
 2: Liveness detection + face comparison
 3: Liveness detection
+4: OCR
 Default value: 1
         :type CheckMode: int
         :param _SecurityLevel: The security level of the verification. Valid values:
@@ -416,6 +417,7 @@ Default Value: OCR_DETECT_AUTO_MANUAL
 1: OCR + liveness detection + face comparison
 2: Liveness detection + face comparison
 3: Liveness detection
+4: OCR
 Default value: 1
         :rtype: int
         """
@@ -1011,20 +1013,20 @@ Example: https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBB
 
 
 class AttackRiskDetail(AbstractModel):
-    r"""Suspected attack detail
+    r"""Suspected attack risk details
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: <p>Suspected attack trace type, specific type as follows:<br>SuspectedSpoofingAttack: Re-photography Attack<br>SuspectedSynthesisImage: Suspected synthesized image<br>SuspectedSynthesisVideo: Suspected synthesized video<br>SuspectedAnomalyAttack: Facial features suspected of not being real<br>SuspectedAdversarialAttack: Suspected adversarial sample attack<br>SuspectedBlackIndustry: Suspected black industry batch Template attack<br>SuspectedWatermark: Suspected watermark</p>
+        :param _Type: <p>Types of suspected attack traces. The specific types are as follows:<br>SuspectedSpoofingAttack: Recapture attack<br>SuspectedSynthesisImage: Suspected synthetic image<br>SuspectedSynthesisVideo: Suspected synthetic video<br>SuspectedAnomalyAttack: Suspected non-live facial features<br>SuspectedAdversarialAttack: Suspected adversarial example attack<br>SuspectedBlackIndustry: Suspected batch template attack from black market operations<br>SuspectedWatermark: Suspected watermark presence</p>
         :type Type: str
         """
         self._Type = None
 
     @property
     def Type(self):
-        r"""<p>Suspected attack trace type, specific type as follows:<br>SuspectedSpoofingAttack: Re-photography Attack<br>SuspectedSynthesisImage: Suspected synthesized image<br>SuspectedSynthesisVideo: Suspected synthesized video<br>SuspectedAnomalyAttack: Facial features suspected of not being real<br>SuspectedAdversarialAttack: Suspected adversarial sample attack<br>SuspectedBlackIndustry: Suspected black industry batch Template attack<br>SuspectedWatermark: Suspected watermark</p>
+        r"""<p>Types of suspected attack traces. The specific types are as follows:<br>SuspectedSpoofingAttack: Recapture attack<br>SuspectedSynthesisImage: Suspected synthetic image<br>SuspectedSynthesisVideo: Suspected synthetic video<br>SuspectedAnomalyAttack: Suspected non-live facial features<br>SuspectedAdversarialAttack: Suspected adversarial example attack<br>SuspectedBlackIndustry: Suspected batch template attack from black market operations<br>SuspectedWatermark: Suspected watermark presence</p>
         :rtype: str
         """
         return self._Type
@@ -1772,6 +1774,87 @@ class BankCardVerificationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BlackListItem(AbstractModel):
+    r"""BlackListItem
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelId: <p>Blocklist entry ID, customized by the customer when creating the entry, used to trace which entry is matched.</p>
+        :type ModelId: str
+        :param _ModelType: <p>Entry type. Currently only face is supported.</p>
+        :type ModelType: str
+        :param _FaceScore: <p>Face similarity, expressed as a string with 4 decimal places, ranging from 0.0000 to 1.0000.</p>
+        :type FaceScore: str
+        :param _BackgroundScore: <p>Background similarity</p>
+        :type BackgroundScore: str
+        """
+        self._ModelId = None
+        self._ModelType = None
+        self._FaceScore = None
+        self._BackgroundScore = None
+
+    @property
+    def ModelId(self):
+        r"""<p>Blocklist entry ID, customized by the customer when creating the entry, used to trace which entry is matched.</p>
+        :rtype: str
+        """
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def ModelType(self):
+        r"""<p>Entry type. Currently only face is supported.</p>
+        :rtype: str
+        """
+        return self._ModelType
+
+    @ModelType.setter
+    def ModelType(self, ModelType):
+        self._ModelType = ModelType
+
+    @property
+    def FaceScore(self):
+        r"""<p>Face similarity, expressed as a string with 4 decimal places, ranging from 0.0000 to 1.0000.</p>
+        :rtype: str
+        """
+        return self._FaceScore
+
+    @FaceScore.setter
+    def FaceScore(self, FaceScore):
+        self._FaceScore = FaceScore
+
+    @property
+    def BackgroundScore(self):
+        r"""<p>Background similarity</p>
+        :rtype: str
+        """
+        return self._BackgroundScore
+
+    @BackgroundScore.setter
+    def BackgroundScore(self, BackgroundScore):
+        self._BackgroundScore = BackgroundScore
+
+
+    def _deserialize(self, params):
+        self._ModelId = params.get("ModelId")
+        self._ModelType = params.get("ModelType")
+        self._FaceScore = params.get("FaceScore")
+        self._BackgroundScore = params.get("BackgroundScore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CardInfo(AbstractModel):
     r"""Document recognition result
 
@@ -2275,12 +2358,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
 -9101 Alarm for covered certificate,
 -9102 Alarm for photocopied certificate,
 -9103 Alarm for photographed certificate,
+-9104 Alarm for tamper certificate,
 -9107 Alarm for reflective certificate,
 -9108 Alarm for blurry image,
+-8101 Alarm for document information format verification,
+-8102 Alarm for document information consistency verification,
 -9109 This capability is not enabled.
         :type WarnCardInfos: list of int
         :param _EditDetails: Details of the OCR modifications for this EKYC card, when the user manually modifies the card recognition results (IsEdit=true), EditDetails will return the modified fields. When IsEdit=false, EditDetails is empty.
         :type EditDetails: list of EditDetail
+        :param _DetectedCardType: Detected card type. Returns the corresponding document type combining country or region name and document type. Enums: Passport, IndonesiaIDCard, MalaysiaIDCard, SingaporeIDCard, ThailandIDCard, ThailandPinkCard, VietnamIDCard, MyanmarDriverLicense, HongKongIDCard, MacaoIDCard, TaiwanIDCard, HmtTravelPermit, HmtMainlandTravelPermit, HmtResidencePermit, HmtResidencePermitBack, MainlandIDCard, MainlandIDCardBack, MainlandTempIDCard, MainlandTempIDCardBack, BrazilIDCard, BrazilIDCardBack, BrazilRNM, BrazilRNMBack, BrazilRNE, BrazilDriverLicense, BrazilDriverLicenseBack, MexicoVoterCard, PhilippinesUMID, PhilippinesDriverLicense, PhilippinesVoteID, PhilippinesSSSID, PhilippinesTINID, PhilippinesNationalID, PhilippinesPRCID, PhilippinesPostalID, PhilippinesHealthCard, Other.
+        :type DetectedCardType: str
         """
         self._IsPass = None
         self._IsEdit = None
@@ -2292,6 +2380,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._NormalCardInfo = None
         self._WarnCardInfos = None
         self._EditDetails = None
+        self._DetectedCardType = None
 
     @property
     def IsPass(self):
@@ -2489,8 +2578,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 -9101 Alarm for covered certificate,
 -9102 Alarm for photocopied certificate,
 -9103 Alarm for photographed certificate,
+-9104 Alarm for tamper certificate,
 -9107 Alarm for reflective certificate,
 -9108 Alarm for blurry image,
+-8101 Alarm for document information format verification,
+-8102 Alarm for document information consistency verification,
 -9109 This capability is not enabled.
         :rtype: list of int
         """
@@ -2510,6 +2602,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @EditDetails.setter
     def EditDetails(self, EditDetails):
         self._EditDetails = EditDetails
+
+    @property
+    def DetectedCardType(self):
+        r"""Detected card type. Returns the corresponding document type combining country or region name and document type. Enums: Passport, IndonesiaIDCard, MalaysiaIDCard, SingaporeIDCard, ThailandIDCard, ThailandPinkCard, VietnamIDCard, MyanmarDriverLicense, HongKongIDCard, MacaoIDCard, TaiwanIDCard, HmtTravelPermit, HmtMainlandTravelPermit, HmtResidencePermit, HmtResidencePermitBack, MainlandIDCard, MainlandIDCardBack, MainlandTempIDCard, MainlandTempIDCardBack, BrazilIDCard, BrazilIDCardBack, BrazilRNM, BrazilRNMBack, BrazilRNE, BrazilDriverLicense, BrazilDriverLicenseBack, MexicoVoterCard, PhilippinesUMID, PhilippinesDriverLicense, PhilippinesVoteID, PhilippinesSSSID, PhilippinesTINID, PhilippinesNationalID, PhilippinesPRCID, PhilippinesPostalID, PhilippinesHealthCard, Other.
+        :rtype: str
+        """
+        return self._DetectedCardType
+
+    @DetectedCardType.setter
+    def DetectedCardType(self, DetectedCardType):
+        self._DetectedCardType = DetectedCardType
 
 
     def _deserialize(self, params):
@@ -2538,6 +2641,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = EditDetail()
                 obj._deserialize(item)
                 self._EditDetails.append(obj)
+        self._DetectedCardType = params.get("DetectedCardType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3462,7 +3566,7 @@ class CompareFaceLivenessResponse(AbstractModel):
         :param _Result: Business Error Codes.
 -When the return value is "Success", it indicates that liveness detection and face comparison passed. Determined to be the same person.
 -When the return value is "FailedOperation.CompareLowSimilarity", it indicates that liveness detection passed, but face comparison similarity is below 70. Determined not to be the same person.
--For other error cases, please refer to [Liveness Face Comparison (API only) Error Codes](https://www.tencentcloud.com/zh/document/product/1061/55390?lang=zh&pg=#97df7537-87fe-4266-87e9-02c816d41ee2)
+-For other error cases, please refer to [Selfie Verification (Pure API) Error Codes](https://www.tencentcloud.com/document/product/1061/55390?lang=en&pg=#97df7537-87fe-4266-87e9-02c816d41ee2)
         :type Result: str
         :param _Description: The service result description
         :type Description: str
@@ -3489,7 +3593,7 @@ Example values: "/9j/4AAQSk... (total length:142036)s97n//2Q=="
         r"""Business Error Codes.
 -When the return value is "Success", it indicates that liveness detection and face comparison passed. Determined to be the same person.
 -When the return value is "FailedOperation.CompareLowSimilarity", it indicates that liveness detection passed, but face comparison similarity is below 70. Determined not to be the same person.
--For other error cases, please refer to [Liveness Face Comparison (API only) Error Codes](https://www.tencentcloud.com/zh/document/product/1061/55390?lang=zh&pg=#97df7537-87fe-4266-87e9-02c816d41ee2)
+-For other error cases, please refer to [Selfie Verification (Pure API) Error Codes](https://www.tencentcloud.com/document/product/1061/55390?lang=en&pg=#97df7537-87fe-4266-87e9-02c816d41ee2)
         :rtype: str
         """
         return self._Result
@@ -4300,23 +4404,26 @@ class DetectAIFakeFacesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FaceInput: <p>Import the face image or facial video to be detected (currently only single face detection is supported) in base64 encoding. If your scenario involves both video and image, we recommend using video for detection. For better detection results, please note the following input data limits and suggestions:</p><ul><li><p>base64 value of the image:<br>Recommend an overall image resolution of 480x640, with the face size no less than 100x100, captured by the mobile front camera.<br>The size of the base64-encoded image data is recommended not to exceed 3M, with a maximum of 10M. Only jpg and png formats are supported.<br>Please use the standard base64 encoding method (with = padding). Refer to RFC4648 for the coding specification.</p></li><li><p>base64 value of the video:<br>The size after base64 encoding is recommended to be within 8M, with a maximum of 10M. Supported formats include mp4, avi,flv,and mov, captured by the mobile front camera.<br>Video duration is recommended to be 2-5s, with a maximum of 20s.<br>Video resolution is recommended at 480x640 (maximum support for 720p), with a frame rate between 25fps and 30fps.<br>Please use the standard base64 encoding method (with = padding). Refer to RFC4648 for the coding specification.</p></li></ul><p>If you do not use Encryption for secure transmission, this field is a required parameter.</p>
+        :param _FaceInput: <p>Pass in the face image or face video to be detected (currently only single-face detection is supported), encoded in Base64. If both video and image are available in your scenario, we recommend using video for detection. For better detection results, note the following restrictions and recommendations for input data:</p><ul><li><p>Base64 value of the image:<br>Recommended overall image resolution is 480x640, with the face size above 100X100, captured by the front camera of a mobile phone.<br>The Base64-encoded image data is recommended to be no more than 3 MB, and must not exceed 10 MB. Only jpg and png formats are supported.<br>Use the standard Base64 encoding method (with = padding). For encoding specifications, refer to RFC4648.</p></li><li><p>Base64 value of the video:<br>The Base64-encoded size is recommended to be within 8 MB, and must not exceed 10 MB. mp4, avi, flv, and mov formats are supported, captured by the front camera of a mobile phone.<br>Recommended video duration is 2 to 5 seconds, and must not exceed 20 seconds.<br>Recommended video resolution is 480x640 (up to 720p supported), with a frame rate between 25 fps and 30 fps.<br>Use the standard Base64 encoding method (with = padding). For encoding specifications, refer to RFC4648.</p></li></ul><p>If you do not use Encryption for encrypted transmission, this field is required.</p>
         :type FaceInput: str
-        :param _FaceInputType: <p>Passed in type.</p><ul><li>Value ranges from 1 to 2:<br>1: Passed in image type.<br>2: Passed in video type.<br>Other: Return error code InvalidParameter.</li></ul><p>If you do not use Encryption for encrypting transmission, this field is mandatory.</p>
+        :param _FaceInputType: <p>Type of the input.</p><ul><li>Valid values:<br>1: image type.<br>2: video type.<br>Others: the error code InvalidParameter is returned.</li></ul><p>If you do not use Encryption for encrypted transmission, this field is required.</p>
         :type FaceInputType: int
-        :param _Encryption: <p>Whether to encrypt the entire request information.</p><ul><li>Supported encryption algorithms: AES-256-CBC, SM4-GCM.</li><li>The user with encryption requirements can use this parameter. For details, please click the left-side link.</li></ul>
+        :param _Encryption: <p>Whether to encrypt the entire request body.</p><ul><li>Supported encryption algorithms: AES-256-CBC and SM4-GCM.</li><li>Users with encryption requirements can use this parameter. For details, click the link on the left.</li></ul>
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
-        :param _EncryptedBody: <p>Encrypted ciphertext.</p><ul><li>The data format before encryption is as follows: {"FaceInput":"AAAAA","FaceInputType":1}.</li></ul>
+        :param _EncryptedBody: <p>Encrypted ciphertext.</p><ul><li>The data format before encryption is as follows: {&quot;FaceInput&quot;:&quot;AAAAA&quot;,&quot;FaceInputType&quot;:1}.</li></ul>
         :type EncryptedBody: str
+        :param _ExtraRiskInfo: <p>Carries the risk control context of this request at one time, that is, "who, where, and from which IP the request is initiated".</p>
+        :type ExtraRiskInfo: :class:`tencentcloud.faceid.v20180301.models.ExtraRiskInfo`
         """
         self._FaceInput = None
         self._FaceInputType = None
         self._Encryption = None
         self._EncryptedBody = None
+        self._ExtraRiskInfo = None
 
     @property
     def FaceInput(self):
-        r"""<p>Import the face image or facial video to be detected (currently only single face detection is supported) in base64 encoding. If your scenario involves both video and image, we recommend using video for detection. For better detection results, please note the following input data limits and suggestions:</p><ul><li><p>base64 value of the image:<br>Recommend an overall image resolution of 480x640, with the face size no less than 100x100, captured by the mobile front camera.<br>The size of the base64-encoded image data is recommended not to exceed 3M, with a maximum of 10M. Only jpg and png formats are supported.<br>Please use the standard base64 encoding method (with = padding). Refer to RFC4648 for the coding specification.</p></li><li><p>base64 value of the video:<br>The size after base64 encoding is recommended to be within 8M, with a maximum of 10M. Supported formats include mp4, avi,flv,and mov, captured by the mobile front camera.<br>Video duration is recommended to be 2-5s, with a maximum of 20s.<br>Video resolution is recommended at 480x640 (maximum support for 720p), with a frame rate between 25fps and 30fps.<br>Please use the standard base64 encoding method (with = padding). Refer to RFC4648 for the coding specification.</p></li></ul><p>If you do not use Encryption for secure transmission, this field is a required parameter.</p>
+        r"""<p>Pass in the face image or face video to be detected (currently only single-face detection is supported), encoded in Base64. If both video and image are available in your scenario, we recommend using video for detection. For better detection results, note the following restrictions and recommendations for input data:</p><ul><li><p>Base64 value of the image:<br>Recommended overall image resolution is 480x640, with the face size above 100X100, captured by the front camera of a mobile phone.<br>The Base64-encoded image data is recommended to be no more than 3 MB, and must not exceed 10 MB. Only jpg and png formats are supported.<br>Use the standard Base64 encoding method (with = padding). For encoding specifications, refer to RFC4648.</p></li><li><p>Base64 value of the video:<br>The Base64-encoded size is recommended to be within 8 MB, and must not exceed 10 MB. mp4, avi, flv, and mov formats are supported, captured by the front camera of a mobile phone.<br>Recommended video duration is 2 to 5 seconds, and must not exceed 20 seconds.<br>Recommended video resolution is 480x640 (up to 720p supported), with a frame rate between 25 fps and 30 fps.<br>Use the standard Base64 encoding method (with = padding). For encoding specifications, refer to RFC4648.</p></li></ul><p>If you do not use Encryption for encrypted transmission, this field is required.</p>
         :rtype: str
         """
         return self._FaceInput
@@ -4327,7 +4434,7 @@ class DetectAIFakeFacesRequest(AbstractModel):
 
     @property
     def FaceInputType(self):
-        r"""<p>Passed in type.</p><ul><li>Value ranges from 1 to 2:<br>1: Passed in image type.<br>2: Passed in video type.<br>Other: Return error code InvalidParameter.</li></ul><p>If you do not use Encryption for encrypting transmission, this field is mandatory.</p>
+        r"""<p>Type of the input.</p><ul><li>Valid values:<br>1: image type.<br>2: video type.<br>Others: the error code InvalidParameter is returned.</li></ul><p>If you do not use Encryption for encrypted transmission, this field is required.</p>
         :rtype: int
         """
         return self._FaceInputType
@@ -4338,7 +4445,7 @@ class DetectAIFakeFacesRequest(AbstractModel):
 
     @property
     def Encryption(self):
-        r"""<p>Whether to encrypt the entire request information.</p><ul><li>Supported encryption algorithms: AES-256-CBC, SM4-GCM.</li><li>The user with encryption requirements can use this parameter. For details, please click the left-side link.</li></ul>
+        r"""<p>Whether to encrypt the entire request body.</p><ul><li>Supported encryption algorithms: AES-256-CBC and SM4-GCM.</li><li>Users with encryption requirements can use this parameter. For details, click the link on the left.</li></ul>
         :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         return self._Encryption
@@ -4349,7 +4456,7 @@ class DetectAIFakeFacesRequest(AbstractModel):
 
     @property
     def EncryptedBody(self):
-        r"""<p>Encrypted ciphertext.</p><ul><li>The data format before encryption is as follows: {"FaceInput":"AAAAA","FaceInputType":1}.</li></ul>
+        r"""<p>Encrypted ciphertext.</p><ul><li>The data format before encryption is as follows: {&quot;FaceInput&quot;:&quot;AAAAA&quot;,&quot;FaceInputType&quot;:1}.</li></ul>
         :rtype: str
         """
         return self._EncryptedBody
@@ -4357,6 +4464,17 @@ class DetectAIFakeFacesRequest(AbstractModel):
     @EncryptedBody.setter
     def EncryptedBody(self, EncryptedBody):
         self._EncryptedBody = EncryptedBody
+
+    @property
+    def ExtraRiskInfo(self):
+        r"""<p>Carries the risk control context of this request at one time, that is, "who, where, and from which IP the request is initiated".</p>
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.ExtraRiskInfo`
+        """
+        return self._ExtraRiskInfo
+
+    @ExtraRiskInfo.setter
+    def ExtraRiskInfo(self, ExtraRiskInfo):
+        self._ExtraRiskInfo = ExtraRiskInfo
 
 
     def _deserialize(self, params):
@@ -4366,6 +4484,9 @@ class DetectAIFakeFacesRequest(AbstractModel):
             self._Encryption = Encryption()
             self._Encryption._deserialize(params.get("Encryption"))
         self._EncryptedBody = params.get("EncryptedBody")
+        if params.get("ExtraRiskInfo") is not None:
+            self._ExtraRiskInfo = ExtraRiskInfo()
+            self._ExtraRiskInfo._deserialize(params.get("ExtraRiskInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4383,23 +4504,26 @@ class DetectAIFakeFacesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AttackRiskLevel: <p>Detection result for the input image/video to check the existence of face spoofing attack.</p><ul><li>Low: Low attack risk.</li><li>Mid: Moderately suspected attack.</li><li>High: Highly suspected attack.</li></ul><p>It is advisable to judge as interception when the return value is High, and pass for Mid and Low to better balance security and pass rate.</p>
+        :param _AttackRiskLevel: <p>Detection result for the input image/video, indicating whether a face attack exists.</p><ul><li>Low: Low attack risk.</li><li>Mid: Moderate suspected attack.</li><li>High: High suspected attack.</li></ul><p>It is recommended to block requests when the returned value is High, and allow requests when the value is Mid or Low, to better balance security and pass rate.</p>
         :type AttackRiskLevel: str
-        :param _AttackRiskDetailList: <p>List of suspected attack traces detected. It is returned only when AttackRiskLevel is High or Mid.</p><ul><li>Description: Return an empty array if no attack traces are detected.</li><li>This output parameter is for result determination reference. The result of AttackRiskLevel is still recommended for actual use.</li></ul>
+        :param _AttackRiskDetailList: <p>List of detected suspected attack traces. Returned only when AttackRiskLevel is High or Mid.</p><ul><li>Note: An empty array is returned when no attack trace is detected.</li><li>This output parameter is for reference only. It is recommended to use the result of AttackRiskLevel in actual applications.</li></ul>
         :type AttackRiskDetailList: list of AttackRiskDetail
-        :param _ExtraInfo: <p>Return additional information (including detailed information of cache hit templates).</p>
+        :param _ExtraInfo: <p>Returns additional information, including details of the matched template.</p>
         :type ExtraInfo: :class:`tencentcloud.faceid.v20180301.models.ExtraInfo`
+        :param _ExtraRiskResult: <p>Independent container for additional risk conclusions, indicating whether the additional risk check is trustworthy and whether any issues are found.</p>
+        :type ExtraRiskResult: :class:`tencentcloud.faceid.v20180301.models.ExtraRiskResult`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._AttackRiskLevel = None
         self._AttackRiskDetailList = None
         self._ExtraInfo = None
+        self._ExtraRiskResult = None
         self._RequestId = None
 
     @property
     def AttackRiskLevel(self):
-        r"""<p>Detection result for the input image/video to check the existence of face spoofing attack.</p><ul><li>Low: Low attack risk.</li><li>Mid: Moderately suspected attack.</li><li>High: Highly suspected attack.</li></ul><p>It is advisable to judge as interception when the return value is High, and pass for Mid and Low to better balance security and pass rate.</p>
+        r"""<p>Detection result for the input image/video, indicating whether a face attack exists.</p><ul><li>Low: Low attack risk.</li><li>Mid: Moderate suspected attack.</li><li>High: High suspected attack.</li></ul><p>It is recommended to block requests when the returned value is High, and allow requests when the value is Mid or Low, to better balance security and pass rate.</p>
         :rtype: str
         """
         return self._AttackRiskLevel
@@ -4410,7 +4534,7 @@ class DetectAIFakeFacesResponse(AbstractModel):
 
     @property
     def AttackRiskDetailList(self):
-        r"""<p>List of suspected attack traces detected. It is returned only when AttackRiskLevel is High or Mid.</p><ul><li>Description: Return an empty array if no attack traces are detected.</li><li>This output parameter is for result determination reference. The result of AttackRiskLevel is still recommended for actual use.</li></ul>
+        r"""<p>List of detected suspected attack traces. Returned only when AttackRiskLevel is High or Mid.</p><ul><li>Note: An empty array is returned when no attack trace is detected.</li><li>This output parameter is for reference only. It is recommended to use the result of AttackRiskLevel in actual applications.</li></ul>
         :rtype: list of AttackRiskDetail
         """
         return self._AttackRiskDetailList
@@ -4421,7 +4545,7 @@ class DetectAIFakeFacesResponse(AbstractModel):
 
     @property
     def ExtraInfo(self):
-        r"""<p>Return additional information (including detailed information of cache hit templates).</p>
+        r"""<p>Returns additional information, including details of the matched template.</p>
         :rtype: :class:`tencentcloud.faceid.v20180301.models.ExtraInfo`
         """
         return self._ExtraInfo
@@ -4429,6 +4553,17 @@ class DetectAIFakeFacesResponse(AbstractModel):
     @ExtraInfo.setter
     def ExtraInfo(self, ExtraInfo):
         self._ExtraInfo = ExtraInfo
+
+    @property
+    def ExtraRiskResult(self):
+        r"""<p>Independent container for additional risk conclusions, indicating whether the additional risk check is trustworthy and whether any issues are found.</p>
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.ExtraRiskResult`
+        """
+        return self._ExtraRiskResult
+
+    @ExtraRiskResult.setter
+    def ExtraRiskResult(self, ExtraRiskResult):
+        self._ExtraRiskResult = ExtraRiskResult
 
     @property
     def RequestId(self):
@@ -4453,6 +4588,9 @@ class DetectAIFakeFacesResponse(AbstractModel):
         if params.get("ExtraInfo") is not None:
             self._ExtraInfo = ExtraInfo()
             self._ExtraInfo._deserialize(params.get("ExtraInfo"))
+        if params.get("ExtraRiskResult") is not None:
+            self._ExtraRiskResult = ExtraRiskResult()
+            self._ExtraRiskResult._deserialize(params.get("ExtraRiskResult"))
         self._RequestId = params.get("RequestId")
 
 
@@ -4707,19 +4845,19 @@ class EditDetail(AbstractModel):
 
 
 class Encryption(AbstractModel):
-    r"""Sensitive Data Encryption
+    r"""Sensitive data encryption
 
     """
 
     def __init__(self):
         r"""
-        :param _EncryptList: <p>When using the encryption service, fill in the field to be encrypted. This API can auto-fill one or more encrypted fields.</p>
+        :param _EncryptList: <p>When using the encryption service, enter the fields to be encrypted. In this API, you can enter one or more encrypted fields.</p>
         :type EncryptList: list of str
-        :param _CiphertextBlob: <p>Encrypted symmetric key. For key generation and use, see the <a href="https://www.tencentcloud.com/document/product/1007/47180?from_cn_redirect=1">data encryption</a> document.</p>
+        :param _CiphertextBlob: <p>Encrypted symmetric key. For key generation and usage, see the <a href="https://www.tencentcloud.com/document/product/1007/47180?from_cn_redirect=1">Data Encryption</a> documentation.</p>
         :type CiphertextBlob: str
-        :param _Iv: <p>Users with encryption requirements import the initial vector for CBC encryption (custom string, length 16 characters).</p>
+        :param _Iv: <p>For users with encryption requirements, pass in the CBC encryption initialization vector (a customer-defined string with a length of 16 characters).</p>
         :type Iv: str
-        :param _Algorithm: <p>Encryption algorithm (supports 'AES-256-CBC', 'SM4-GCM'), defaults to 'AES-256-CBC' if not passed.</p>
+        :param _Algorithm: <p>Algorithm used for encryption (supports &#39;AES-256-CBC&#39; and &#39;SM4-GCM&#39;). If not passed, the default is &#39;AES-256-CBC&#39;.</p>
         :type Algorithm: str
         :param _TagList: <p>Message digest generated by the SM4-GCM algorithm (used when verifying message integrity)</p>
         :type TagList: list of str
@@ -4732,7 +4870,7 @@ class Encryption(AbstractModel):
 
     @property
     def EncryptList(self):
-        r"""<p>When using the encryption service, fill in the field to be encrypted. This API can auto-fill one or more encrypted fields.</p>
+        r"""<p>When using the encryption service, enter the fields to be encrypted. In this API, you can enter one or more encrypted fields.</p>
         :rtype: list of str
         """
         return self._EncryptList
@@ -4743,7 +4881,7 @@ class Encryption(AbstractModel):
 
     @property
     def CiphertextBlob(self):
-        r"""<p>Encrypted symmetric key. For key generation and use, see the <a href="https://www.tencentcloud.com/document/product/1007/47180?from_cn_redirect=1">data encryption</a> document.</p>
+        r"""<p>Encrypted symmetric key. For key generation and usage, see the <a href="https://www.tencentcloud.com/document/product/1007/47180?from_cn_redirect=1">Data Encryption</a> documentation.</p>
         :rtype: str
         """
         return self._CiphertextBlob
@@ -4754,7 +4892,7 @@ class Encryption(AbstractModel):
 
     @property
     def Iv(self):
-        r"""<p>Users with encryption requirements import the initial vector for CBC encryption (custom string, length 16 characters).</p>
+        r"""<p>For users with encryption requirements, pass in the CBC encryption initialization vector (a customer-defined string with a length of 16 characters).</p>
         :rtype: str
         """
         return self._Iv
@@ -4765,7 +4903,7 @@ class Encryption(AbstractModel):
 
     @property
     def Algorithm(self):
-        r"""<p>Encryption algorithm (supports 'AES-256-CBC', 'SM4-GCM'), defaults to 'AES-256-CBC' if not passed.</p>
+        r"""<p>Algorithm used for encryption (supports &#39;AES-256-CBC&#39; and &#39;SM4-GCM&#39;). If not passed, the default is &#39;AES-256-CBC&#39;.</p>
         :rtype: str
         """
         return self._Algorithm
@@ -4803,20 +4941,20 @@ class Encryption(AbstractModel):
 
 
 class ExtraInfo(AbstractModel):
-    r"""Additional details
+    r"""Additional detailed information
 
     """
 
     def __init__(self):
         r"""
-        :param _RetrievalLivenessExtraInfo: Detailed information of the hit template, return only the template information with the highest similarity.
+        :param _RetrievalLivenessExtraInfo: Detailed information of the matched template. Only the template with the highest similarity is returned.
         :type RetrievalLivenessExtraInfo: list of RetrievalLivenessExtraInfo
         """
         self._RetrievalLivenessExtraInfo = None
 
     @property
     def RetrievalLivenessExtraInfo(self):
-        r"""Detailed information of the hit template, return only the template information with the highest similarity.
+        r"""Detailed information of the matched template. Only the template with the highest similarity is returned.
         :rtype: list of RetrievalLivenessExtraInfo
         """
         return self._RetrievalLivenessExtraInfo
@@ -4833,6 +4971,178 @@ class ExtraInfo(AbstractModel):
                 obj = RetrievalLivenessExtraInfo()
                 obj._deserialize(item)
                 self._RetrievalLivenessExtraInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtraRiskInfo(AbstractModel):
+    r"""ExtraRiskInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PersonId: <p>A stable and unique person identifier within the customer's business domain, used to correlate multiple location reports from the same person to determine whether abnormal displacement exists.</p><p>Input restrictions: Length ≤ 128 characters; Must not contain control characters (ASCII &lt; 0x20 or 0x7F); It is recommended to pass a desensitized identifier instead of a plaintext ID number or mobile number.</p>
+        :type PersonId: str
+        :param _Latitude: <p>Latitude at the time of device collection, in WGS84 decimal degrees    </p><p>Input restrictions: Must be paired with Longitude; Valid range: [-90, 90]; Must be a valid number, NaN/Inf not accepted; Pass as a string in JSON (e.g., &quot;22.5431&quot;)</p>
+        :type Latitude: str
+        :param _Longitude: <p>Longitude at the time of device collection, in WGS84 decimal degrees    </p><p>Input restrictions: Must be paired with Latitude; Valid range: [-180, 180]; Other restrictions are the same as above</p>
+        :type Longitude: str
+        :param _Ip: <p>Public egress IP of the device at the time of collection    </p><p>Input restrictions: Length ≤ 64; Must be a resolvable IPv4/IPv6 address; Private, loopback, link-local, and multicast addresses are considered non-locatable</p>
+        :type Ip: str
+        """
+        self._PersonId = None
+        self._Latitude = None
+        self._Longitude = None
+        self._Ip = None
+
+    @property
+    def PersonId(self):
+        r"""<p>A stable and unique person identifier within the customer's business domain, used to correlate multiple location reports from the same person to determine whether abnormal displacement exists.</p><p>Input restrictions: Length ≤ 128 characters; Must not contain control characters (ASCII &lt; 0x20 or 0x7F); It is recommended to pass a desensitized identifier instead of a plaintext ID number or mobile number.</p>
+        :rtype: str
+        """
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def Latitude(self):
+        r"""<p>Latitude at the time of device collection, in WGS84 decimal degrees    </p><p>Input restrictions: Must be paired with Longitude; Valid range: [-90, 90]; Must be a valid number, NaN/Inf not accepted; Pass as a string in JSON (e.g., &quot;22.5431&quot;)</p>
+        :rtype: str
+        """
+        return self._Latitude
+
+    @Latitude.setter
+    def Latitude(self, Latitude):
+        self._Latitude = Latitude
+
+    @property
+    def Longitude(self):
+        r"""<p>Longitude at the time of device collection, in WGS84 decimal degrees    </p><p>Input restrictions: Must be paired with Latitude; Valid range: [-180, 180]; Other restrictions are the same as above</p>
+        :rtype: str
+        """
+        return self._Longitude
+
+    @Longitude.setter
+    def Longitude(self, Longitude):
+        self._Longitude = Longitude
+
+    @property
+    def Ip(self):
+        r"""<p>Public egress IP of the device at the time of collection    </p><p>Input restrictions: Length ≤ 64; Must be a resolvable IPv4/IPv6 address; Private, loopback, link-local, and multicast addresses are considered non-locatable</p>
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+
+    def _deserialize(self, params):
+        self._PersonId = params.get("PersonId")
+        self._Latitude = params.get("Latitude")
+        self._Longitude = params.get("Longitude")
+        self._Ip = params.get("Ip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtraRiskResult(AbstractModel):
+    r"""ExtraRiskResult
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>Completion of the additional checks in this request, indicating whether the result can be trusted.</p><p>Valid values:</p><ul><li>Completed: Conclusions (matched or passed) have been given for all checks required by this request.</li><li>Partial: At least one check cannot reach a conclusion due to unavailable dependencies, insufficient data, or incomplete or invalid input parameters. The result is for reference only and does not indicate security.</li></ul>
+        :type Status: str
+        :param _RiskLevel: <p>Additional risk level, which may be an empty string.</p><p>Valid values:</p><ul><li>High: An effective risk match exists (RiskDetailList is not empty in this case).</li><li>Low: The check is completed and no match is confirmed.</li><li>&quot;&quot; (empty string): Unrecognized. No check in this request can reach a conclusion, or not all checks are completed. It indicates neither risk nor security.</li></ul>
+        :type RiskLevel: str
+        :param _BlackListResult: <p>List of matched risk items. An empty array [] is returned if no risk item is matched.</p>
+        :type BlackListResult: list of BlackListItem
+        :param _RiskDetailList: <p>Face blocklist match details. An empty array [] is returned if no match is found.</p>
+        :type RiskDetailList: list of RiskDetailItem
+        """
+        self._Status = None
+        self._RiskLevel = None
+        self._BlackListResult = None
+        self._RiskDetailList = None
+
+    @property
+    def Status(self):
+        r"""<p>Completion of the additional checks in this request, indicating whether the result can be trusted.</p><p>Valid values:</p><ul><li>Completed: Conclusions (matched or passed) have been given for all checks required by this request.</li><li>Partial: At least one check cannot reach a conclusion due to unavailable dependencies, insufficient data, or incomplete or invalid input parameters. The result is for reference only and does not indicate security.</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RiskLevel(self):
+        r"""<p>Additional risk level, which may be an empty string.</p><p>Valid values:</p><ul><li>High: An effective risk match exists (RiskDetailList is not empty in this case).</li><li>Low: The check is completed and no match is confirmed.</li><li>&quot;&quot; (empty string): Unrecognized. No check in this request can reach a conclusion, or not all checks are completed. It indicates neither risk nor security.</li></ul>
+        :rtype: str
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def BlackListResult(self):
+        r"""<p>List of matched risk items. An empty array [] is returned if no risk item is matched.</p>
+        :rtype: list of BlackListItem
+        """
+        return self._BlackListResult
+
+    @BlackListResult.setter
+    def BlackListResult(self, BlackListResult):
+        self._BlackListResult = BlackListResult
+
+    @property
+    def RiskDetailList(self):
+        r"""<p>Face blocklist match details. An empty array [] is returned if no match is found.</p>
+        :rtype: list of RiskDetailItem
+        """
+        return self._RiskDetailList
+
+    @RiskDetailList.setter
+    def RiskDetailList(self, RiskDetailList):
+        self._RiskDetailList = RiskDetailList
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RiskLevel = params.get("RiskLevel")
+        if params.get("BlackListResult") is not None:
+            self._BlackListResult = []
+            for item in params.get("BlackListResult"):
+                obj = BlackListItem()
+                obj._deserialize(item)
+                self._BlackListResult.append(obj)
+        if params.get("RiskDetailList") is not None:
+            self._RiskDetailList = []
+            for item in params.get("RiskDetailList"):
+                obj = RiskDetailItem()
+                obj._deserialize(item)
+                self._RiskDetailList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12979,17 +13289,17 @@ No charge result code
 
 
 class RetrievalLivenessExtraInfo(AbstractModel):
-    r"""Template retrieve detailed information
+    r"""Template retrieval details
 
     """
 
     def __init__(self):
         r"""
-        :param _HitGroup: <p>Hit template type, among them Common-public library; Auto-Auto Clustering Library; Owner-custom template library</p>
+        :param _HitGroup: <p>Type of the matched template. Common: public library; Auto: automatic clustering library; Owner: custom template library.</p>
         :type HitGroup: str
-        :param _SimilarityScore: <p>Similarity between the request image and the attack template hit. The similarity value ranges from 0 to 2. The smaller the value, the higher the probability of hitting the attack template. The default threshold is 0.6. When the SimilarityScore is ≥0.6, the judgment is as normal. When the SimilarityScore is <0.6, the judgment is an attack.</p>
+        :param _SimilarityScore: <p>Similarity between the request image and the matched attack template. The value range is [0,2]. A smaller value indicates a higher probability of matching an attack template. The default threshold is 0.6. A SimilarityScore ≥ 0.6 indicates normal, and a SimilarityScore &lt; 0.6 indicates an attack.</p>
         :type SimilarityScore: float
-        :param _HitTemplate: <p>Template id of the cache hit</p>
+        :param _HitTemplate: <p>id of the matched template</p>
         :type HitTemplate: str
         """
         self._HitGroup = None
@@ -12998,7 +13308,7 @@ class RetrievalLivenessExtraInfo(AbstractModel):
 
     @property
     def HitGroup(self):
-        r"""<p>Hit template type, among them Common-public library; Auto-Auto Clustering Library; Owner-custom template library</p>
+        r"""<p>Type of the matched template. Common: public library; Auto: automatic clustering library; Owner: custom template library.</p>
         :rtype: str
         """
         return self._HitGroup
@@ -13009,7 +13319,7 @@ class RetrievalLivenessExtraInfo(AbstractModel):
 
     @property
     def SimilarityScore(self):
-        r"""<p>Similarity between the request image and the attack template hit. The similarity value ranges from 0 to 2. The smaller the value, the higher the probability of hitting the attack template. The default threshold is 0.6. When the SimilarityScore is ≥0.6, the judgment is as normal. When the SimilarityScore is <0.6, the judgment is an attack.</p>
+        r"""<p>Similarity between the request image and the matched attack template. The value range is [0,2]. A smaller value indicates a higher probability of matching an attack template. The default threshold is 0.6. A SimilarityScore ≥ 0.6 indicates normal, and a SimilarityScore &lt; 0.6 indicates an attack.</p>
         :rtype: float
         """
         return self._SimilarityScore
@@ -13020,7 +13330,7 @@ class RetrievalLivenessExtraInfo(AbstractModel):
 
     @property
     def HitTemplate(self):
-        r"""<p>Template id of the cache hit</p>
+        r"""<p>id of the matched template</p>
         :rtype: str
         """
         return self._HitTemplate
@@ -13034,6 +13344,42 @@ class RetrievalLivenessExtraInfo(AbstractModel):
         self._HitGroup = params.get("HitGroup")
         self._SimilarityScore = params.get("SimilarityScore")
         self._HitTemplate = params.get("HitTemplate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RiskDetailItem(AbstractModel):
+    r"""RiskDetailItem
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>Risk item type.</p><p>Valid values:</p><ul><li>IpLocationMismatch: The country/region of the reported coordinates is inconsistent with the country/region of the IP address.</li><li>AbnormalLocationChange: The same person has physically impossible displacement within a short period of time.</li><li>BlacklistHit: A customer-created face blocklist is matched.</li></ul>
+        :type Type: str
+        """
+        self._Type = None
+
+    @property
+    def Type(self):
+        r"""<p>Risk item type.</p><p>Valid values:</p><ul><li>IpLocationMismatch: The country/region of the reported coordinates is inconsistent with the country/region of the IP address.</li><li>AbnormalLocationChange: The same person has physically impossible displacement within a short period of time.</li><li>BlacklistHit: A customer-created face blocklist is matched.</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

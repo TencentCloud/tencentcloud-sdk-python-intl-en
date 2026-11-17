@@ -838,7 +838,7 @@ class DtsClient(AbstractClient):
 
 
     def IsolateSubscribe(self, request):
-        r"""This API is used to isolate the subscription task. After calling, the subscription task will not be available. Pay-as-you-go tasks will stop billing, and monthly subscription tasks will refund automatically.
+        r"""This API is used to isolate the subscription task. After calling, the subscription task will not be available. Pay-as-you-go tasks will stop billing, and yearly/monthly subscription tasks will refund automatically.
 
         :param request: Request instance for IsolateSubscribe.
         :type request: :class:`tencentcloud.dts.v20211206.models.IsolateSubscribeRequest`
@@ -1091,7 +1091,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifySubscribeAutoRenewFlag(self, request):
-        r"""This API is used to modify the auto-renewal flag of your subscription instance. Only the monthly subscription modification task makes sense. After modifying, the pay-as-you-go task has no impact.
+        r"""This API is used to modify the auto-renewal flag of your subscription instance. Only the yearly/monthly subscription modification task makes sense. After modifying, the pay-as-you-go task has no impact.
 
         :param request: Request instance for ModifySubscribeAutoRenewFlag.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifySubscribeAutoRenewFlagRequest`

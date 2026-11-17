@@ -45,9 +45,9 @@ class AddressInfo(AbstractModel):
         :type LineTwo: str
         :param _LineThree: <p>Third line of the address bar</p>
         :type LineThree: str
-        :param _LineFour: <p>Fourth line of the address bar</p>
+        :param _LineFour: <p>Line 4 of the address bar</p>
         :type LineFour: str
-        :param _LineFive: <p>Fifth line of the address bar</p>
+        :param _LineFive: <p>Line 5 of the address bar</p>
         :type LineFive: str
         """
         self._Country = None
@@ -175,7 +175,7 @@ class AddressInfo(AbstractModel):
 
     @property
     def LineFour(self):
-        r"""<p>Fourth line of the address bar</p>
+        r"""<p>Line 4 of the address bar</p>
         :rtype: str
         """
         return self._LineFour
@@ -186,7 +186,7 @@ class AddressInfo(AbstractModel):
 
     @property
     def LineFive(self):
-        r"""<p>Fifth line of the address bar</p>
+        r"""<p>Line 5 of the address bar</p>
         :rtype: str
         """
         return self._LineFive
@@ -1860,6 +1860,132 @@ class BrazilRNMInfo(AbstractModel):
         
 
 
+class CardVerificationConfig(AbstractModel):
+    r"""Verification capacity switch configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableRecognition: <p>Whether to perform card field recognition, true by default</p>
+        :type EnableRecognition: bool
+        :param _EnableQualityCheck: <p>Whether to perform quality detection (blurry/reflective/incomplete border/obstruction). false by default</p>
+        :type EnableQualityCheck: bool
+        :param _EnableTamperCheck: <p>Whether to perform tampering detection (PS/synthesis/electronic). false by default</p>
+        :type EnableTamperCheck: bool
+        :param _EnableCopyCheck: <p>Whether to perform photocopy detection. false by default</p>
+        :type EnableCopyCheck: bool
+        :param _EnableRecaptureCheck: <p>Whether to perform rephotography detection. false by default</p>
+        :type EnableRecaptureCheck: bool
+        :param _EnableFormatCheck: <p>Whether to perform format validation (dependent recognition). false by default</p>
+        :type EnableFormatCheck: bool
+        :param _EnableConsistencyCheck: <p>Whether to perform both sides consistency check (dependent on recognition), false by default</p>
+        :type EnableConsistencyCheck: bool
+        """
+        self._EnableRecognition = None
+        self._EnableQualityCheck = None
+        self._EnableTamperCheck = None
+        self._EnableCopyCheck = None
+        self._EnableRecaptureCheck = None
+        self._EnableFormatCheck = None
+        self._EnableConsistencyCheck = None
+
+    @property
+    def EnableRecognition(self):
+        r"""<p>Whether to perform card field recognition, true by default</p>
+        :rtype: bool
+        """
+        return self._EnableRecognition
+
+    @EnableRecognition.setter
+    def EnableRecognition(self, EnableRecognition):
+        self._EnableRecognition = EnableRecognition
+
+    @property
+    def EnableQualityCheck(self):
+        r"""<p>Whether to perform quality detection (blurry/reflective/incomplete border/obstruction). false by default</p>
+        :rtype: bool
+        """
+        return self._EnableQualityCheck
+
+    @EnableQualityCheck.setter
+    def EnableQualityCheck(self, EnableQualityCheck):
+        self._EnableQualityCheck = EnableQualityCheck
+
+    @property
+    def EnableTamperCheck(self):
+        r"""<p>Whether to perform tampering detection (PS/synthesis/electronic). false by default</p>
+        :rtype: bool
+        """
+        return self._EnableTamperCheck
+
+    @EnableTamperCheck.setter
+    def EnableTamperCheck(self, EnableTamperCheck):
+        self._EnableTamperCheck = EnableTamperCheck
+
+    @property
+    def EnableCopyCheck(self):
+        r"""<p>Whether to perform photocopy detection. false by default</p>
+        :rtype: bool
+        """
+        return self._EnableCopyCheck
+
+    @EnableCopyCheck.setter
+    def EnableCopyCheck(self, EnableCopyCheck):
+        self._EnableCopyCheck = EnableCopyCheck
+
+    @property
+    def EnableRecaptureCheck(self):
+        r"""<p>Whether to perform rephotography detection. false by default</p>
+        :rtype: bool
+        """
+        return self._EnableRecaptureCheck
+
+    @EnableRecaptureCheck.setter
+    def EnableRecaptureCheck(self, EnableRecaptureCheck):
+        self._EnableRecaptureCheck = EnableRecaptureCheck
+
+    @property
+    def EnableFormatCheck(self):
+        r"""<p>Whether to perform format validation (dependent recognition). false by default</p>
+        :rtype: bool
+        """
+        return self._EnableFormatCheck
+
+    @EnableFormatCheck.setter
+    def EnableFormatCheck(self, EnableFormatCheck):
+        self._EnableFormatCheck = EnableFormatCheck
+
+    @property
+    def EnableConsistencyCheck(self):
+        r"""<p>Whether to perform both sides consistency check (dependent on recognition), false by default</p>
+        :rtype: bool
+        """
+        return self._EnableConsistencyCheck
+
+    @EnableConsistencyCheck.setter
+    def EnableConsistencyCheck(self, EnableConsistencyCheck):
+        self._EnableConsistencyCheck = EnableConsistencyCheck
+
+
+    def _deserialize(self, params):
+        self._EnableRecognition = params.get("EnableRecognition")
+        self._EnableQualityCheck = params.get("EnableQualityCheck")
+        self._EnableTamperCheck = params.get("EnableTamperCheck")
+        self._EnableCopyCheck = params.get("EnableCopyCheck")
+        self._EnableRecaptureCheck = params.get("EnableRecaptureCheck")
+        self._EnableFormatCheck = params.get("EnableFormatCheck")
+        self._EnableConsistencyCheck = params.get("EnableConsistencyCheck")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConfigAdvanced(AbstractModel):
     r"""Supports single attribute configuration for templates.
 
@@ -2990,11 +3116,11 @@ class GeneralCard(AbstractModel):
         :type MiddleName: str
         :param _MiddleNameLocal: <p>Localized middle name</p>
         :type MiddleNameLocal: str
-        :param _LastName: <p>Last name</p>
+        :param _LastName: <p>Surname</p>
         :type LastName: str
         :param _LastNameLocal: <p>Localized last name</p>
         :type LastNameLocal: str
-        :param _Sex: <p>Gender on the document</p><ul><li>M: man</li><li>F: woman</li><li>X: other gender identity</li></ul>
+        :param _Sex: <p>Gender on the document</p><ul><li>M: Man</li><li>F: Woman</li><li>X: Other gender identity</li></ul>
         :type Sex: str
         :param _Birthday: <p>Date of birth</p>
         :type Birthday: str
@@ -3004,7 +3130,7 @@ class GeneralCard(AbstractModel):
         :type IssuedDate: str
         :param _IssuedAuthority: <p>Issuing authority</p>
         :type IssuedAuthority: str
-        :param _IssuedPlace: <p>Place where the specified file is issued</p>
+        :param _IssuedPlace: <p>Place where the file is issued.</p>
         :type IssuedPlace: str
         :param _IssuedCountry: <p>Issuing country</p>
         :type IssuedCountry: str
@@ -3012,13 +3138,13 @@ class GeneralCard(AbstractModel):
         :type IssuedCountryCode: str
         :param _ExpirationDate: <p>Expiration date, in YYYY-MM-DD format</p>
         :type ExpirationDate: str
-        :param _MRZLine1: <p>Content of the single-line machine-readable zone (MRZ) on the document. The number represents the order in which the line appears in the MRZ</p>
+        :param _MRZLine1: <p>Content of the single-line machine-readable zone (MRZ) on the document. The number represents the line count in the order of the MRZ</p>
         :type MRZLine1: str
         :param _MRZLine2: <p>Content of the single-line machine-readable zone (MRZ) on the document. The number represents the line count in the order of the MRZ</p>
         :type MRZLine2: str
         :param _Nationality: <p>Document nationality, returned following the ISO 3166 country coding specification</p>
         :type Nationality: str
-        :param _Address: <p>Address information on the document</p>
+        :param _Address: <p>Document address information</p>
         :type Address: :class:`tencentcloud.ocr.v20181119.models.AddressInfo`
         :param _Religion: <p>Religious belief</p>
         :type Religion: str
@@ -3028,13 +3154,13 @@ class GeneralCard(AbstractModel):
         :type BloodType: str
         :param _Height: <p>Height</p>
         :type Height: str
-        :param _Weight: <p>Weight</p>
+        :param _Weight: <p>Weight.</p>
         :type Weight: str
         :param _VehicleClass: <p>Driver's license vehicle type (for example, A/B/C)</p>
         :type VehicleClass: str
-        :param _Restrictions: <p>Driver's license restriction condition</p>
+        :param _Restrictions: <p>Driver's license restrictions</p>
         :type Restrictions: str
-        :param _Endorsement: <p>Driver's license extra records</p>
+        :param _Endorsement: <p>Additional driver's license records</p>
         :type Endorsement: str
         :param _Others: <p>Additional field</p>
         :type Others: str
@@ -3042,12 +3168,14 @@ class GeneralCard(AbstractModel):
         :type PassportCodeFirst: str
         :param _PassportCodeSecond: <p>MRZ line 2 of the passport</p>
         :type PassportCodeSecond: str
-        :param _DueDate: <p>Validity date, in YYYY-MM-DD format</p>
+        :param _DueDate: <p>Validity period, in YYYY-MM-DD format</p>
         :type DueDate: str
         :param _Age: <p>Age. 0 means no valid info is obtained</p>
         :type Age: str
         :param _RegistrationNumber: <p>Registration number</p>
         :type RegistrationNumber: str
+        :param _DetectedCardType: <p>Complete enumeration of specific card types confirmed by server-side classification (for example, THA_ID_CARD). Wildcards are not returned.</p>
+        :type DetectedCardType: str
         """
         self._LicenseNumber = None
         self._PersonalNumber = None
@@ -3086,6 +3214,7 @@ class GeneralCard(AbstractModel):
         self._DueDate = None
         self._Age = None
         self._RegistrationNumber = None
+        self._DetectedCardType = None
 
     @property
     def LicenseNumber(self):
@@ -3177,7 +3306,7 @@ class GeneralCard(AbstractModel):
 
     @property
     def LastName(self):
-        r"""<p>Last name</p>
+        r"""<p>Surname</p>
         :rtype: str
         """
         return self._LastName
@@ -3199,7 +3328,7 @@ class GeneralCard(AbstractModel):
 
     @property
     def Sex(self):
-        r"""<p>Gender on the document</p><ul><li>M: man</li><li>F: woman</li><li>X: other gender identity</li></ul>
+        r"""<p>Gender on the document</p><ul><li>M: Man</li><li>F: Woman</li><li>X: Other gender identity</li></ul>
         :rtype: str
         """
         return self._Sex
@@ -3254,7 +3383,7 @@ class GeneralCard(AbstractModel):
 
     @property
     def IssuedPlace(self):
-        r"""<p>Place where the specified file is issued</p>
+        r"""<p>Place where the file is issued.</p>
         :rtype: str
         """
         return self._IssuedPlace
@@ -3298,7 +3427,7 @@ class GeneralCard(AbstractModel):
 
     @property
     def MRZLine1(self):
-        r"""<p>Content of the single-line machine-readable zone (MRZ) on the document. The number represents the order in which the line appears in the MRZ</p>
+        r"""<p>Content of the single-line machine-readable zone (MRZ) on the document. The number represents the line count in the order of the MRZ</p>
         :rtype: str
         """
         return self._MRZLine1
@@ -3331,7 +3460,7 @@ class GeneralCard(AbstractModel):
 
     @property
     def Address(self):
-        r"""<p>Address information on the document</p>
+        r"""<p>Document address information</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.AddressInfo`
         """
         return self._Address
@@ -3386,7 +3515,7 @@ class GeneralCard(AbstractModel):
 
     @property
     def Weight(self):
-        r"""<p>Weight</p>
+        r"""<p>Weight.</p>
         :rtype: str
         """
         return self._Weight
@@ -3408,7 +3537,7 @@ class GeneralCard(AbstractModel):
 
     @property
     def Restrictions(self):
-        r"""<p>Driver's license restriction condition</p>
+        r"""<p>Driver's license restrictions</p>
         :rtype: str
         """
         return self._Restrictions
@@ -3419,7 +3548,7 @@ class GeneralCard(AbstractModel):
 
     @property
     def Endorsement(self):
-        r"""<p>Driver's license extra records</p>
+        r"""<p>Additional driver's license records</p>
         :rtype: str
         """
         return self._Endorsement
@@ -3473,7 +3602,7 @@ class GeneralCard(AbstractModel):
     def DueDate(self):
         warnings.warn("parameter `DueDate` is deprecated", DeprecationWarning) 
 
-        r"""<p>Validity date, in YYYY-MM-DD format</p>
+        r"""<p>Validity period, in YYYY-MM-DD format</p>
         :rtype: str
         """
         return self._DueDate
@@ -3513,6 +3642,17 @@ class GeneralCard(AbstractModel):
         warnings.warn("parameter `RegistrationNumber` is deprecated", DeprecationWarning) 
 
         self._RegistrationNumber = RegistrationNumber
+
+    @property
+    def DetectedCardType(self):
+        r"""<p>Complete enumeration of specific card types confirmed by server-side classification (for example, THA_ID_CARD). Wildcards are not returned.</p>
+        :rtype: str
+        """
+        return self._DetectedCardType
+
+    @DetectedCardType.setter
+    def DetectedCardType(self, DetectedCardType):
+        self._DetectedCardType = DetectedCardType
 
 
     def _deserialize(self, params):
@@ -3555,6 +3695,7 @@ class GeneralCard(AbstractModel):
         self._DueDate = params.get("DueDate")
         self._Age = params.get("Age")
         self._RegistrationNumber = params.get("RegistrationNumber")
+        self._DetectedCardType = params.get("DetectedCardType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9035,6 +9176,281 @@ class RecognizeDetectCardCoordsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RecognizeGeneralCardVerificationRequest(AbstractModel):
+    r"""RecognizeGeneralCardVerification request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageBase64: Base64 value of the front document image. Supported formats: PNG, JPG, JPEG. The Base64 encoded size shall not exceed 7 MB. One of ImageUrl, ImageBase64, BackImageUrl, BackImageBase64 must be provided. If both URL and Base64 are passed, URL will be used preferentially. Image download timeout is 3 seconds.
+        :type ImageBase64: str
+        :param _ImageUrl: URL address of the front side image of the card. Refer to the description of ImageBase64 for image requirements.
+        :type ImageUrl: str
+        :param _BackImageBase64: Base64-encoded value of the back side image of the card. Refer to the description of ImageBase64 for image requirements.
+        :type BackImageBase64: str
+        :param _BackImageUrl: URL address of the back side image of the card. Refer to the description of ImageBase64 for image requirements.
+        :type BackImageUrl: str
+        :param _CardTypes: Specifies the target document type for this verification. Each element is a full card type enum in the format {CountryOrRegionCode}_{CardType}, such as THA_ID_CARD and PHL_UMID. For passports, use the single value PASSPORT regardless of the issuing country. Wildcards are supported: * indicates all supported card types, and {CountryCode}_* indicates all card types of a country/region, such as PHL_*. If this parameter is not specified or an empty array is passed, the server performs automatic classification across all supported card types. An unsupported card type returns InvalidParameterValueLimit, and the unsupported values are listed in the error message.
+        :type CardTypes: list of str
+        :param _ReturnHeadImage: Whether to return the Base64-encoded portrait image of the card. Default: false.
+        :type ReturnHeadImage: bool
+        :param _VerificationConfig: Card verification configuration.
+        :type VerificationConfig: :class:`tencentcloud.ocr.v20181119.models.CardVerificationConfig`
+        """
+        self._ImageBase64 = None
+        self._ImageUrl = None
+        self._BackImageBase64 = None
+        self._BackImageUrl = None
+        self._CardTypes = None
+        self._ReturnHeadImage = None
+        self._VerificationConfig = None
+
+    @property
+    def ImageBase64(self):
+        r"""Base64 value of the front document image. Supported formats: PNG, JPG, JPEG. The Base64 encoded size shall not exceed 7 MB. One of ImageUrl, ImageBase64, BackImageUrl, BackImageBase64 must be provided. If both URL and Base64 are passed, URL will be used preferentially. Image download timeout is 3 seconds.
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def ImageUrl(self):
+        r"""URL address of the front side image of the card. Refer to the description of ImageBase64 for image requirements.
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def BackImageBase64(self):
+        r"""Base64-encoded value of the back side image of the card. Refer to the description of ImageBase64 for image requirements.
+        :rtype: str
+        """
+        return self._BackImageBase64
+
+    @BackImageBase64.setter
+    def BackImageBase64(self, BackImageBase64):
+        self._BackImageBase64 = BackImageBase64
+
+    @property
+    def BackImageUrl(self):
+        r"""URL address of the back side image of the card. Refer to the description of ImageBase64 for image requirements.
+        :rtype: str
+        """
+        return self._BackImageUrl
+
+    @BackImageUrl.setter
+    def BackImageUrl(self, BackImageUrl):
+        self._BackImageUrl = BackImageUrl
+
+    @property
+    def CardTypes(self):
+        r"""Specifies the target document type for this verification. Each element is a full card type enum in the format {CountryOrRegionCode}_{CardType}, such as THA_ID_CARD and PHL_UMID. For passports, use the single value PASSPORT regardless of the issuing country. Wildcards are supported: * indicates all supported card types, and {CountryCode}_* indicates all card types of a country/region, such as PHL_*. If this parameter is not specified or an empty array is passed, the server performs automatic classification across all supported card types. An unsupported card type returns InvalidParameterValueLimit, and the unsupported values are listed in the error message.
+        :rtype: list of str
+        """
+        return self._CardTypes
+
+    @CardTypes.setter
+    def CardTypes(self, CardTypes):
+        self._CardTypes = CardTypes
+
+    @property
+    def ReturnHeadImage(self):
+        r"""Whether to return the Base64-encoded portrait image of the card. Default: false.
+        :rtype: bool
+        """
+        return self._ReturnHeadImage
+
+    @ReturnHeadImage.setter
+    def ReturnHeadImage(self, ReturnHeadImage):
+        self._ReturnHeadImage = ReturnHeadImage
+
+    @property
+    def VerificationConfig(self):
+        r"""Card verification configuration.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.CardVerificationConfig`
+        """
+        return self._VerificationConfig
+
+    @VerificationConfig.setter
+    def VerificationConfig(self, VerificationConfig):
+        self._VerificationConfig = VerificationConfig
+
+
+    def _deserialize(self, params):
+        self._ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._BackImageBase64 = params.get("BackImageBase64")
+        self._BackImageUrl = params.get("BackImageUrl")
+        self._CardTypes = params.get("CardTypes")
+        self._ReturnHeadImage = params.get("ReturnHeadImage")
+        if params.get("VerificationConfig") is not None:
+            self._VerificationConfig = CardVerificationConfig()
+            self._VerificationConfig._deserialize(params.get("VerificationConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeGeneralCardVerificationResponse(AbstractModel):
+    r"""RecognizeGeneralCardVerification response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FrontCardInfo: Recognition result of the front side of the card. Returned only when recognition is enabled (EnableRecognition=true) and succeeds.
+        :type FrontCardInfo: :class:`tencentcloud.ocr.v20181119.models.GeneralCard`
+        :param _BackCardInfo: Recognition result of the back side of the card. Returned only for double-sided card types when recognition is enabled. The structure is the same as that of FrontCardInfo.
+        :type BackCardInfo: :class:`tencentcloud.ocr.v20181119.models.GeneralCard`
+        :param _HeadImageBase64: Base64-encoded portrait image of the card. Returned only when ReturnHeadImage=true.
+        :type HeadImageBase64: str
+        :param _WarnCardInfos: Card Warning Information
+
+-9102 Alarm for photocopied certificate
+-9103 Alarm for photographed certificate
+-9104 Alarm for tamper certificate
+-9105 Alarm for an incomplete card border. 
+-9106 Alarm for a covered card. 
+-9107 Alarm for reflective certificate
+-9108 Alarm for blurry certificate 
+-8101 Alarm for document information format verification
+-8102 Alarm for document information consistency verification
+        :type WarnCardInfos: list of int
+        :param _ExecutedChecks: Check items actually executed. Valid values: Recognition, QualityCheck, TamperCheck, CopyCheck, RecaptureCheck, FormatCheck, ConsistencyCheck.
+        :type ExecutedChecks: list of str
+        :param _SkippedChecks: Check items that were skipped and the reasons.
+        :type SkippedChecks: list of SkippedCheck
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FrontCardInfo = None
+        self._BackCardInfo = None
+        self._HeadImageBase64 = None
+        self._WarnCardInfos = None
+        self._ExecutedChecks = None
+        self._SkippedChecks = None
+        self._RequestId = None
+
+    @property
+    def FrontCardInfo(self):
+        r"""Recognition result of the front side of the card. Returned only when recognition is enabled (EnableRecognition=true) and succeeds.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCard`
+        """
+        return self._FrontCardInfo
+
+    @FrontCardInfo.setter
+    def FrontCardInfo(self, FrontCardInfo):
+        self._FrontCardInfo = FrontCardInfo
+
+    @property
+    def BackCardInfo(self):
+        r"""Recognition result of the back side of the card. Returned only for double-sided card types when recognition is enabled. The structure is the same as that of FrontCardInfo.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCard`
+        """
+        return self._BackCardInfo
+
+    @BackCardInfo.setter
+    def BackCardInfo(self, BackCardInfo):
+        self._BackCardInfo = BackCardInfo
+
+    @property
+    def HeadImageBase64(self):
+        r"""Base64-encoded portrait image of the card. Returned only when ReturnHeadImage=true.
+        :rtype: str
+        """
+        return self._HeadImageBase64
+
+    @HeadImageBase64.setter
+    def HeadImageBase64(self, HeadImageBase64):
+        self._HeadImageBase64 = HeadImageBase64
+
+    @property
+    def WarnCardInfos(self):
+        r"""Card Warning Information
+
+-9102 Alarm for photocopied certificate
+-9103 Alarm for photographed certificate
+-9104 Alarm for tamper certificate
+-9105 Alarm for an incomplete card border. 
+-9106 Alarm for a covered card. 
+-9107 Alarm for reflective certificate
+-9108 Alarm for blurry certificate 
+-8101 Alarm for document information format verification
+-8102 Alarm for document information consistency verification
+        :rtype: list of int
+        """
+        return self._WarnCardInfos
+
+    @WarnCardInfos.setter
+    def WarnCardInfos(self, WarnCardInfos):
+        self._WarnCardInfos = WarnCardInfos
+
+    @property
+    def ExecutedChecks(self):
+        r"""Check items actually executed. Valid values: Recognition, QualityCheck, TamperCheck, CopyCheck, RecaptureCheck, FormatCheck, ConsistencyCheck.
+        :rtype: list of str
+        """
+        return self._ExecutedChecks
+
+    @ExecutedChecks.setter
+    def ExecutedChecks(self, ExecutedChecks):
+        self._ExecutedChecks = ExecutedChecks
+
+    @property
+    def SkippedChecks(self):
+        r"""Check items that were skipped and the reasons.
+        :rtype: list of SkippedCheck
+        """
+        return self._SkippedChecks
+
+    @SkippedChecks.setter
+    def SkippedChecks(self, SkippedChecks):
+        self._SkippedChecks = SkippedChecks
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("FrontCardInfo") is not None:
+            self._FrontCardInfo = GeneralCard()
+            self._FrontCardInfo._deserialize(params.get("FrontCardInfo"))
+        if params.get("BackCardInfo") is not None:
+            self._BackCardInfo = GeneralCard()
+            self._BackCardInfo._deserialize(params.get("BackCardInfo"))
+        self._HeadImageBase64 = params.get("HeadImageBase64")
+        self._WarnCardInfos = params.get("WarnCardInfos")
+        self._ExecutedChecks = params.get("ExecutedChecks")
+        if params.get("SkippedChecks") is not None:
+            self._SkippedChecks = []
+            for item in params.get("SkippedChecks"):
+                obj = SkippedCheck()
+                obj._deserialize(item)
+                self._SkippedChecks.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class RecognizeIndonesiaIDCardOCRRequest(AbstractModel):
     r"""RecognizeIndonesiaIDCardOCR request structure.
 
@@ -13139,6 +13555,57 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
         self._PortraitImage = params.get("PortraitImage")
         self._WarnCardInfos = params.get("WarnCardInfos")
         self._RequestId = params.get("RequestId")
+
+
+class SkippedCheck(AbstractModel):
+    r"""Skipped check items
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Check: <p>Detection item name</p>
+        :type Check: str
+        :param _Reason: <p>Skip reason: NotSupported (this card type does not support this detection item) / NotApplicable (prerequisite not met, for example, consistency check requires a back image)</p>
+        :type Reason: str
+        """
+        self._Check = None
+        self._Reason = None
+
+    @property
+    def Check(self):
+        r"""<p>Detection item name</p>
+        :rtype: str
+        """
+        return self._Check
+
+    @Check.setter
+    def Check(self, Check):
+        self._Check = Check
+
+    @property
+    def Reason(self):
+        r"""<p>Skip reason: NotSupported (this card type does not support this detection item) / NotApplicable (prerequisite not met, for example, consistency check requires a back image)</p>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._Check = params.get("Check")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SmartStructuralOCRV2Request(AbstractModel):
