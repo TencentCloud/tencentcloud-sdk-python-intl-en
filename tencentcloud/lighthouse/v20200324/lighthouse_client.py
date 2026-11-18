@@ -1544,10 +1544,10 @@ class LighthouseClient(AbstractClient):
 
 
     def ModifyInstancesBundle(self, request):
-        r"""This API is used change one or more Lighthouse instance bundles.
-        * Only `RUNNING` and `STOPPED` instances can be changed.
-        * Batch operations are supported. The maximum number of instances in each request is 30.
-        * This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.
+        r"""This API is used to change the bundle of one or more Lighthouse instances.
+        * Only instances in the RUNNING or STOPPED state can be operated through this API.
+        * Batch operations are supported. The maximum number of instances in each request is 15.
+        * This API is an async API. After a request is sent successfully, a RequestId is returned, but the operation is not completed immediately. You can call the <a href="https://www.tencentcloud.com/document/product/1207/47573?from_cn_redirect=1" target="_blank">DescribeInstances</a> API to query the instance operation result. If the latest operation state (LatestOperationState) of the instance is "SUCCESS", the operation is successful.
 
         :param request: Request instance for ModifyInstancesBundle.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyInstancesBundleRequest`

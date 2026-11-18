@@ -1451,6 +1451,87 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class Command(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: 
+        :type Content: str
+        :param _Timeout: 
+        :type Timeout: int
+        :param _WorkingDirectory: 
+        :type WorkingDirectory: str
+        :param _Username: 
+        :type Username: str
+        """
+        self._Content = None
+        self._Timeout = None
+        self._WorkingDirectory = None
+        self._Username = None
+
+    @property
+    def Content(self):
+        r"""
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Timeout(self):
+        r"""
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def WorkingDirectory(self):
+        r"""
+        :rtype: str
+        """
+        return self._WorkingDirectory
+
+    @WorkingDirectory.setter
+    def WorkingDirectory(self, WorkingDirectory):
+        self._WorkingDirectory = WorkingDirectory
+
+    @property
+    def Username(self):
+        r"""
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._Timeout = params.get("Timeout")
+        self._WorkingDirectory = params.get("WorkingDirectory")
+        self._Username = params.get("Username")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ContainerEnv(AbstractModel):
     r"""Container environment variable
 
@@ -1649,18 +1730,20 @@ class CreateDisksRequest(AbstractModel):
         :type DiskSize: int
         :param _DiskType: Cloud disk media type. Valid values: "CLOUD_PREMIUM" (premium cloud disk), "CLOUD_SSD" (SSD cloud disk).
         :type DiskType: str
-        :param _DiskChargePrepaid: Parameters of monthly subscribed cloud disks
+        :param _DiskChargePrepaid: Parameters of yearly/monthly subscribed cloud disks
         :type DiskChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.DiskChargePrepaid`
         :param _DiskName: Image name, which can contain up to 60 characters.
         :type DiskName: str
         :param _DiskCount: Number of cloud disks. Range: [1, 30]. Default value: 1.
         :type DiskCount: int
-        :param _DiskBackupQuota: Specify the quota of disk backups. No quota if it’s left empty. Only one quota is allowed.
+        :param _DiskBackupQuota: Specify the quota of disk backups. No quota if it's left empty. Only one quota is allowed.
         :type DiskBackupQuota: int
         :param _AutoVoucher: Whether to use the vouchers automatically. It defaults to No.
         :type AutoVoucher: bool
         :param _AutoMountConfiguration: Automatically mount and initialize the data disk.
         :type AutoMountConfiguration: :class:`tencentcloud.lighthouse.v20200324.models.AutoMountConfiguration`
+        :param _Tags: Tag key and tag value. If multiple tags are specified, they are created and bound to the specified resources at the same time. A tag key can have only one value on a given resource. If you attempt to add a tag with an existing key, its value is updated to the new value. Tags that do not exist are created automatically. The array supports a maximum of 10 elements.
+        :type Tags: list of Tag
         """
         self._Zone = None
         self._DiskSize = None
@@ -1671,6 +1754,7 @@ class CreateDisksRequest(AbstractModel):
         self._DiskBackupQuota = None
         self._AutoVoucher = None
         self._AutoMountConfiguration = None
+        self._Tags = None
 
     @property
     def Zone(self):
@@ -1707,7 +1791,7 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskChargePrepaid(self):
-        r"""Parameters of monthly subscribed cloud disks
+        r"""Parameters of yearly/monthly subscribed cloud disks
         :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DiskChargePrepaid`
         """
         return self._DiskChargePrepaid
@@ -1740,7 +1824,7 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskBackupQuota(self):
-        r"""Specify the quota of disk backups. No quota if it’s left empty. Only one quota is allowed.
+        r"""Specify the quota of disk backups. No quota if it's left empty. Only one quota is allowed.
         :rtype: int
         """
         return self._DiskBackupQuota
@@ -1771,6 +1855,17 @@ class CreateDisksRequest(AbstractModel):
     def AutoMountConfiguration(self, AutoMountConfiguration):
         self._AutoMountConfiguration = AutoMountConfiguration
 
+    @property
+    def Tags(self):
+        r"""Tag key and tag value. If multiple tags are specified, they are created and bound to the specified resources at the same time. A tag key can have only one value on a given resource. If you attempt to add a tag with an existing key, its value is updated to the new value. Tags that do not exist are created automatically. The array supports a maximum of 10 elements.
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -1786,6 +1881,12 @@ class CreateDisksRequest(AbstractModel):
         if params.get("AutoMountConfiguration") is not None:
             self._AutoMountConfiguration = AutoMountConfiguration()
             self._AutoMountConfiguration._deserialize(params.get("AutoMountConfiguration"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2047,11 +2148,11 @@ class CreateInstancesRequest(AbstractModel):
         :type BundleId: str
         :param _BlueprintId: Image ID. You can get it via the [DescribeBlueprints](https://intl.cloud.tencent.com/document/api/1207/47689?from_cn_redirect=1) API.
         :type BlueprintId: str
-        :param _InstanceChargePrepaid: Monthly subscription information for the instance, including the purchase period, setting of auto-renewal, etc.
+        :param _InstanceChargePrepaid: Yearly/monthly subscription information for the instance, including the purchase period, setting of auto-renewal, etc.
         :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
         :param _InstanceName: Instance display name.
         :type InstanceName: str
-        :param _InstanceCount: Number of the instances to purchase. For monthly subscribed instances, the value can be 1 to 30. The default value is `1`. Note that this number can not exceed the remaining quota under the current account.
+        :param _InstanceCount: Number of the instances to purchase. For yearly/monthly subscribed instances, the value can be 1 to 30. The default value is `1`. Note that this number can not exceed the remaining quota under the current account.
         :type InstanceCount: int
         :param _Zones: List of availability zones. A random AZ is selected by default.
         :type Zones: list of str
@@ -2063,12 +2164,22 @@ If the dry run succeeds, the RequestId will be returned.
         :type DryRun: bool
         :param _ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idem-potency of the request cannot be guaranteed.
         :type ClientToken: str
-        :param _LoginConfiguration: Login password of the instance. It’s only available for Windows instances. If it’s not specified, it means that the user choose to set the login password after the instance creation.
+        :param _LoginConfiguration: Login password of the instance. It's only available for Windows instances. If it's not specified, it means that the user choose to set the login password after the instance creation.
         :type LoginConfiguration: :class:`tencentcloud.lighthouse.v20200324.models.LoginConfiguration`
         :param _Containers: Configuration of the containers to create
         :type Containers: list of DockerContainerConfiguration
         :param _AutoVoucher: Whether to use the vouchers automatically. It defaults to No.
         :type AutoVoucher: bool
+        :param _FirewallTemplateId: Firewall template ID. If not specified, the default firewall policy is used.
+        :type FirewallTemplateId: str
+        :param _Tags: Tag key and tag value. If multiple tags are specified, they are created and bound to the specified resources at the same time. A tag key can have only one value on a given resource. If you attempt to add a tag with an existing key, its value is updated to the new value. Tags that do not exist are created automatically. The array supports a maximum of 10 elements.
+        :type Tags: list of Tag
+        :param _InitCommand: The command to be automatically executed after the instance is created.
+        :type InitCommand: :class:`tencentcloud.lighthouse.v20200324.models.Command`
+        :param _DomainName: The primary domain. Note: Once a domain is specified, only a single instance can be purchased (`InstanceCount` must be set to 1).
+        :type DomainName: str
+        :param _Subdomain: The subdomain. Note: Once a domain is specified, only a single instance can be purchased (`InstanceCount` must be set to 1).
+        :type Subdomain: str
         """
         self._BundleId = None
         self._BlueprintId = None
@@ -2081,6 +2192,11 @@ If the dry run succeeds, the RequestId will be returned.
         self._LoginConfiguration = None
         self._Containers = None
         self._AutoVoucher = None
+        self._FirewallTemplateId = None
+        self._Tags = None
+        self._InitCommand = None
+        self._DomainName = None
+        self._Subdomain = None
 
     @property
     def BundleId(self):
@@ -2106,7 +2222,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def InstanceChargePrepaid(self):
-        r"""Monthly subscription information for the instance, including the purchase period, setting of auto-renewal, etc.
+        r"""Yearly/monthly subscription information for the instance, including the purchase period, setting of auto-renewal, etc.
         :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -2128,7 +2244,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def InstanceCount(self):
-        r"""Number of the instances to purchase. For monthly subscribed instances, the value can be 1 to 30. The default value is `1`. Note that this number can not exceed the remaining quota under the current account.
+        r"""Number of the instances to purchase. For yearly/monthly subscribed instances, the value can be 1 to 30. The default value is `1`. Note that this number can not exceed the remaining quota under the current account.
         :rtype: int
         """
         return self._InstanceCount
@@ -2176,7 +2292,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def LoginConfiguration(self):
-        r"""Login password of the instance. It’s only available for Windows instances. If it’s not specified, it means that the user choose to set the login password after the instance creation.
+        r"""Login password of the instance. It's only available for Windows instances. If it's not specified, it means that the user choose to set the login password after the instance creation.
         :rtype: :class:`tencentcloud.lighthouse.v20200324.models.LoginConfiguration`
         """
         return self._LoginConfiguration
@@ -2207,6 +2323,61 @@ If the dry run succeeds, the RequestId will be returned.
     def AutoVoucher(self, AutoVoucher):
         self._AutoVoucher = AutoVoucher
 
+    @property
+    def FirewallTemplateId(self):
+        r"""Firewall template ID. If not specified, the default firewall policy is used.
+        :rtype: str
+        """
+        return self._FirewallTemplateId
+
+    @FirewallTemplateId.setter
+    def FirewallTemplateId(self, FirewallTemplateId):
+        self._FirewallTemplateId = FirewallTemplateId
+
+    @property
+    def Tags(self):
+        r"""Tag key and tag value. If multiple tags are specified, they are created and bound to the specified resources at the same time. A tag key can have only one value on a given resource. If you attempt to add a tag with an existing key, its value is updated to the new value. Tags that do not exist are created automatically. The array supports a maximum of 10 elements.
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def InitCommand(self):
+        r"""The command to be automatically executed after the instance is created.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.Command`
+        """
+        return self._InitCommand
+
+    @InitCommand.setter
+    def InitCommand(self, InitCommand):
+        self._InitCommand = InitCommand
+
+    @property
+    def DomainName(self):
+        r"""The primary domain. Note: Once a domain is specified, only a single instance can be purchased (`InstanceCount` must be set to 1).
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def Subdomain(self):
+        r"""The subdomain. Note: Once a domain is specified, only a single instance can be purchased (`InstanceCount` must be set to 1).
+        :rtype: str
+        """
+        return self._Subdomain
+
+    @Subdomain.setter
+    def Subdomain(self, Subdomain):
+        self._Subdomain = Subdomain
+
 
     def _deserialize(self, params):
         self._BundleId = params.get("BundleId")
@@ -2229,6 +2400,18 @@ If the dry run succeeds, the RequestId will be returned.
                 obj._deserialize(item)
                 self._Containers.append(obj)
         self._AutoVoucher = params.get("AutoVoucher")
+        self._FirewallTemplateId = params.get("FirewallTemplateId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("InitCommand") is not None:
+            self._InitCommand = Command()
+            self._InitCommand._deserialize(params.get("InitCommand"))
+        self._DomainName = params.get("DomainName")
+        self._Subdomain = params.get("Subdomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7437,7 +7620,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DiskChargePrepaid(AbstractModel):
-    r"""Parameter settings for the monthly subscribed cloud disk
+    r"""Parameter settings for the yearly/monthly subscribed cloud disk
 
     """
 
@@ -8899,11 +9082,11 @@ class InquirePriceCreateDisksRequest(AbstractModel):
         :type DiskSize: int
         :param _DiskType: Cloud disk media type. Valid values: "CLOUD_PREMIUM" (premium cloud storage), "CLOUD_SSD" (SSD cloud disk).
         :type DiskType: str
-        :param _DiskChargePrepaid: Parameter settings for purchasing the monthly subscribed cloud disk.
+        :param _DiskChargePrepaid: Parameter settings for purchasing the yearly/monthly subscribed cloud disk.
         :type DiskChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.DiskChargePrepaid`
         :param _DiskCount: Number of cloud disks. Default value: 1.
         :type DiskCount: int
-        :param _DiskBackupQuota: Specify the quota of disk backups. No quota if it’s left empty. Only one quota is allowed.
+        :param _DiskBackupQuota: Specify the quota of disk backups. No quota if it's left empty. Only one quota is allowed.
         :type DiskBackupQuota: int
         """
         self._DiskSize = None
@@ -8936,7 +9119,7 @@ class InquirePriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskChargePrepaid(self):
-        r"""Parameter settings for purchasing the monthly subscribed cloud disk.
+        r"""Parameter settings for purchasing the yearly/monthly subscribed cloud disk.
         :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DiskChargePrepaid`
         """
         return self._DiskChargePrepaid
@@ -8958,7 +9141,7 @@ class InquirePriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskBackupQuota(self):
-        r"""Specify the quota of disk backups. No quota if it’s left empty. Only one quota is allowed.
+        r"""Specify the quota of disk backups. No quota if it's left empty. Only one quota is allowed.
         :rtype: int
         """
         return self._DiskBackupQuota
@@ -9168,7 +9351,7 @@ class InquirePriceRenewDisksRequest(AbstractModel):
         r"""
         :param _DiskIds: List of cloud disk IDs.
         :type DiskIds: list of str
-        :param _RenewDiskChargePrepaid: Parameter settings for renewing the monthly subscribed cloud disk.
+        :param _RenewDiskChargePrepaid: Parameter settings for renewing the yearly/monthly subscribed cloud disk.
         :type RenewDiskChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.RenewDiskChargePrepaid`
         """
         self._DiskIds = None
@@ -9187,7 +9370,7 @@ class InquirePriceRenewDisksRequest(AbstractModel):
 
     @property
     def RenewDiskChargePrepaid(self):
-        r"""Parameter settings for renewing the monthly subscribed cloud disk.
+        r"""Parameter settings for renewing the yearly/monthly subscribed cloud disk.
         :rtype: :class:`tencentcloud.lighthouse.v20200324.models.RenewDiskChargePrepaid`
         """
         return self._RenewDiskChargePrepaid
@@ -11526,9 +11709,9 @@ class ModifyInstancesBundleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: IDs of target instances. You can get the IDs from the `InstanceId` parameter returned by the `DescribeInstances` API. Up to 15 instances can be specified at the same time.
+        :param _InstanceIds: List of instance IDs. One or more IDs of the instances to be operated. You can obtain the InstanceId from the value returned by the [DescribeInstances](https://www.tencentcloud.com/document/api/1207/47573?from_cn_redirect=1) API. The maximum number of instances in each request is 15.
         :type InstanceIds: list of str
-        :param _BundleId: ID of bundles to change. You can get the IDs from the `BundleId` returned by the [DescribeBundles](https://intl.cloud.tencent.com/document/api/1207/47575?from_cn_redirect=1).
+        :param _BundleId: ID of the target bundle. Note that it cannot be the same as the current bundle ID of the instance to be upgraded. You can obtain the BundleId from the value returned by the [DescribeBundles](https://www.tencentcloud.com/document/api/1207/47575?from_cn_redirect=1) API.
         :type BundleId: str
         :param _AutoVoucher: Whether to use existing vouchers under the current account automatically. Valid values: 
 `true`: Deduct from existing vouchers automatically 
@@ -11542,7 +11725,7 @@ Default value: `false`.
 
     @property
     def InstanceIds(self):
-        r"""IDs of target instances. You can get the IDs from the `InstanceId` parameter returned by the `DescribeInstances` API. Up to 15 instances can be specified at the same time.
+        r"""List of instance IDs. One or more IDs of the instances to be operated. You can obtain the InstanceId from the value returned by the [DescribeInstances](https://www.tencentcloud.com/document/api/1207/47573?from_cn_redirect=1) API. The maximum number of instances in each request is 15.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -11553,7 +11736,7 @@ Default value: `false`.
 
     @property
     def BundleId(self):
-        r"""ID of bundles to change. You can get the IDs from the `BundleId` returned by the [DescribeBundles](https://intl.cloud.tencent.com/document/api/1207/47575?from_cn_redirect=1).
+        r"""ID of the target bundle. Note that it cannot be the same as the current bundle ID of the instance to be upgraded. You can obtain the BundleId from the value returned by the [DescribeBundles](https://www.tencentcloud.com/document/api/1207/47575?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._BundleId
@@ -12063,7 +12246,7 @@ class RegionInfo(AbstractModel):
 
 
 class RenewDiskChargePrepaid(AbstractModel):
-    r"""Parameter settings for renewing the monthly subscribed cloud disk
+    r"""Parameter settings for renewing the yearly/monthly subscribed cloud disk
 
     """
 
@@ -12160,7 +12343,7 @@ class RenewDisksRequest(AbstractModel):
         r"""
         :param _DiskIds: IDs of cloud disks. The value can be obtained from the `DiskId` parameter returned by the [DescribeDisks](https://intl.cloud.tencent.com/document/product/1207/66093?from_cn_redirect=1) API. Up to 50 disks can be requested at a time.
         :type DiskIds: list of str
-        :param _RenewDiskChargePrepaid: Parameter settings for renewing the monthly subscribed cloud disk.
+        :param _RenewDiskChargePrepaid: Parameter settings for renewing the yearly/monthly subscribed cloud disk.
         :type RenewDiskChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.RenewDiskChargePrepaid`
         :param _AutoVoucher: Whether to use the vouchers automatically. It defaults to No.
         :type AutoVoucher: bool
@@ -12182,7 +12365,7 @@ class RenewDisksRequest(AbstractModel):
 
     @property
     def RenewDiskChargePrepaid(self):
-        r"""Parameter settings for renewing the monthly subscribed cloud disk.
+        r"""Parameter settings for renewing the yearly/monthly subscribed cloud disk.
         :rtype: :class:`tencentcloud.lighthouse.v20200324.models.RenewDiskChargePrepaid`
         """
         return self._RenewDiskChargePrepaid
@@ -12256,7 +12439,7 @@ class RenewInstancesRequest(AbstractModel):
         r"""
         :param _InstanceIds: IDs of one or more instances to be operated. The value can be obtained from the `InstanceId` parameter returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API. Up to 100 instances can be requested at a time.
         :type InstanceIds: list of str
-        :param _InstanceChargePrepaid: Prepaid mode, i.e., monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. It is required for prepaid instances.
+        :param _InstanceChargePrepaid: Prepaid mode, i.e., yearly/monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. It is required for prepaid instances.
         :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
         :param _RenewDataDisk: Whether to renew elastic data disks. Values: 
 `TRUE`: Renew the elastic data disks attached to the instance as well when the related instance is renewed.
@@ -12287,7 +12470,7 @@ Default: `FALSE`.
 
     @property
     def InstanceChargePrepaid(self):
-        r"""Prepaid mode, i.e., monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. It is required for prepaid instances.
+        r"""Prepaid mode, i.e., yearly/monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. It is required for prepaid instances.
         :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
