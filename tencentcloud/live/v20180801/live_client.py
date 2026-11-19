@@ -2857,6 +2857,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StopScreenshotTask(self, request):
+        r"""This API is used to terminate a screenshot task in advance. After the task is successfully terminated, it will not be started again.
+
+        :param request: Request instance for StopScreenshotTask.
+        :type request: :class:`tencentcloud.live.v20180801.models.StopScreenshotTaskRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.StopScreenshotTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopScreenshotTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopScreenshotTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UnBindLiveDomainCert(self, request):
         r"""This API is used to unbind a domain name certificate.
 

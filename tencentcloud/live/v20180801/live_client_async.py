@@ -2261,6 +2261,24 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def StopScreenshotTask(
+            self,
+            request: models.StopScreenshotTaskRequest,
+            opts: Dict = None,
+    ) -> models.StopScreenshotTaskResponse:
+        """
+        This API is used to terminate a screenshot task in advance. After the task is successfully terminated, it will not be started again.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StopScreenshotTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StopScreenshotTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def UnBindLiveDomainCert(
             self,
             request: models.UnBindLiveDomainCertRequest,

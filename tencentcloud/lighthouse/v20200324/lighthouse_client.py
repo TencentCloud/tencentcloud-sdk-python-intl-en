@@ -1570,7 +1570,7 @@ class LighthouseClient(AbstractClient):
 
 
     def ModifyInstancesRenewFlag(self, request):
-        r"""This API is used to change the auto-renewal setting of monthly-subscribed instances.
+        r"""This API is used to change the auto-renewal setting of yearly/monthly-subscribed instances.
 
         * Instances with auto-renewal enabled are automatically renewed on a monthly basis upon the expiration.
         * Batch operations are supported. Up to 100 instances per request is allowed.

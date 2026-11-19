@@ -9223,7 +9223,7 @@ class InquirePriceCreateInstancesRequest(AbstractModel):
         r"""
         :param _BundleId: Instance package ID.
         :type BundleId: str
-        :param _InstanceChargePrepaid: Parameter setting for prepaid mode. This parameter can specify the purchase period, whether to enable auto-renewal, and other attributes of the monthly subscribed instances.
+        :param _InstanceChargePrepaid: Parameter setting for prepaid mode. This parameter can specify the purchase period, whether to enable auto-renewal, and other attributes of the yearly/monthly subscribed instances.
         :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
         :param _InstanceCount: Number of instances to be created. Default value: 1.
         :type InstanceCount: int
@@ -9248,7 +9248,7 @@ class InquirePriceCreateInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
-        r"""Parameter setting for prepaid mode. This parameter can specify the purchase period, whether to enable auto-renewal, and other attributes of the monthly subscribed instances.
+        r"""Parameter setting for prepaid mode. This parameter can specify the purchase period, whether to enable auto-renewal, and other attributes of the yearly/monthly subscribed instances.
         :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -9449,7 +9449,7 @@ class InquirePriceRenewInstancesRequest(AbstractModel):
         r"""
         :param _InstanceIds: IDs of the instances to be renewed. Each request can contain up to 50 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.
         :type InstanceIds: list of str
-        :param _InstanceChargePrepaid: Parameter setting for prepaid mode. This parameter can specify the renewal period, whether to enable auto-renewal, and other attributes of the monthly subscribed instances.
+        :param _InstanceChargePrepaid: Parameter setting for prepaid mode. This parameter can specify the renewal period, whether to enable auto-renewal, and other attributes of the yearly/monthly subscribed instances.
         :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
         :param _RenewDataDisk: Whether to renew the data disk. Default: `false`.
         :type RenewDataDisk: bool
@@ -9474,7 +9474,7 @@ class InquirePriceRenewInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
-        r"""Parameter setting for prepaid mode. This parameter can specify the renewal period, whether to enable auto-renewal, and other attributes of the monthly subscribed instances.
+        r"""Parameter setting for prepaid mode. This parameter can specify the renewal period, whether to enable auto-renewal, and other attributes of the yearly/monthly subscribed instances.
         :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid

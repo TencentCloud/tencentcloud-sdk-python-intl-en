@@ -454,6 +454,11 @@ def test_import_lkeap_v20240522():
     from tencentcloud.lkeap.v20240522 import models
 
 
+def test_import_makers_v20261113():
+    from tencentcloud.makers.v20261113 import makers_client
+    from tencentcloud.makers.v20261113 import models
+
+
 def test_import_mariadb_v20170312():
     from tencentcloud.mariadb.v20170312 import mariadb_client
     from tencentcloud.mariadb.v20170312 import models
