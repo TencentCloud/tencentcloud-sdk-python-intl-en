@@ -44,9 +44,6 @@ FAILEDOPERATION_NOTABILITY = 'FailedOperation.NotAbility'
 # This operation is not allowed. submit a ticket to contact us.
 FAILEDOPERATION_NOTALLOWED = 'FailedOperation.NotAllowed'
 
-# RTMP is not enabled.
-FAILEDOPERATION_NOTRTMPFUNCTION = 'FailedOperation.NotRtmpFunction'
-
 # Query task failed
 FAILEDOPERATION_QUERYTASKINFOFAILED = 'FailedOperation.QueryTaskInfoFailed'
 
@@ -146,7 +143,7 @@ INVALIDPARAMETER_PAGESIZEOVERSIZE = 'InvalidParameter.PageSizeOversize'
 # Invalid tone.
 INVALIDPARAMETER_PITCH = 'InvalidParameter.Pitch'
 
-# 
+# Pronunciation correction dictionary entry parameter error
 INVALIDPARAMETER_PRONUNCIATIONDICT = 'InvalidParameter.PronunciationDict'
 
 # The query period exceeds the limit.
@@ -179,7 +176,7 @@ INVALIDPARAMETER_STARTTSOVERSIZE = 'InvalidParameter.StartTsOversize'
 # StrRoomId parameter error.
 INVALIDPARAMETER_STRROOMID = 'InvalidParameter.StrRoomId'
 
-# Invalid StreamUrl format
+# Stream url parameter verification failure.
 INVALIDPARAMETER_STREAMURL = 'InvalidParameter.StreamUrl'
 
 # TaskId parameter error.

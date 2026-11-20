@@ -17,7 +17,7 @@
 # Error with CAM signature/authentication.
 AUTHFAILURE = 'AuthFailure'
 
-# 
+# Invalid Uin in the request header.
 AUTHFAILURE_INVALIDHEADERUIN = 'AuthFailure.InvalidHeaderUin'
 
 # This region is not open yet. Please select another one.
@@ -68,7 +68,7 @@ FAILEDOPERATION_DESCRIBEDISKSRETURNABLEERROR = 'FailedOperation.DescribeDisksRet
 # Failed to query the CVM image list.
 FAILEDOPERATION_DESCRIBEIMAGESFAILED = 'FailedOperation.DescribeImagesFailed'
 
-# An error occurred when querying the instance status.
+# Failed to query the instance status.
 FAILEDOPERATION_DESCRIBEINSTANCESTATUS = 'FailedOperation.DescribeInstanceStatus'
 
 # Failed to query the instance configuration adjustment.
@@ -158,7 +158,7 @@ FAILEDOPERATION_UNABLETOSYNCBLUEPRINT = 'FailedOperation.UnableToSyncBlueprint'
 # Internal error.
 INTERNALERROR = 'InternalError'
 
-# Failed to query the instance status. Please try again later.
+# Failed to query the instance status. Try again later.
 INTERNALERROR_DESCRIBEINSTANCESTATUS = 'InternalError.DescribeInstanceStatus'
 
 # Failed to query whether the configuration of the instance can be modified.
@@ -185,7 +185,7 @@ INTERNALERROR_INVALIDACTIONNOTFOUND = 'InternalError.InvalidActionNotFound'
 # The package price is incorrect.
 INTERNALERROR_INVALIDBUNDLEPRICE = 'InternalError.InvalidBundlePrice'
 
-# The command is not found.
+# The command cannot be found.
 INTERNALERROR_INVALIDCOMMANDNOTFOUND = 'InternalError.InvalidCommandNotFound'
 
 # There was an error in the request.
@@ -212,7 +212,7 @@ INVALIDPARAMETER_CONFLICT = 'InvalidParameter.Conflict'
 # 
 INVALIDPARAMETER_CREATINGGAMEPORTALINSTANCENOTSUPPORTPARAMETER = 'InvalidParameter.CreatingGamePortalInstanceNotSupportParameter'
 
-# Invalid parameter: the number of `Values` in the `Filter` parameter exceeds the allowed maximum number.
+# Invalid parameter. The number of Values in the Filter parameter exceeds the maximum allowed.
 INVALIDPARAMETER_FILTERVALUELIMITEXCEEDED = 'InvalidParameter.FilterValueLimitExceeded'
 
 # Invalid parameter: the firewall rule is duplicated.
@@ -233,22 +233,22 @@ INVALIDPARAMETER_INSTANCEDISPLAYAREANOTSUPPORTPARAMETER = 'InvalidParameter.Inst
 # 
 INVALIDPARAMETER_INSTANCEOPERATIONUNSUPPORTEDPARAMETER = 'InvalidParameter.InstanceOperationUnsupportedParameter'
 
-# Invalid parameter: the `Filter` parameter is invalid.
+# Invalid parameter. The Filter parameter is invalid.
 INVALIDPARAMETER_INVALIDFILTER = 'InvalidParameter.InvalidFilter'
 
-# Invalid parameter: the value of `Name` in the `Filter` parameter is invalid.
+# Invalid parameter. The Name in the Filter parameter has an invalid value.
 INVALIDPARAMETER_INVALIDFILTERINVALIDKEY = 'InvalidParameter.InvalidFilterInvalidKey'
 
-# Invalid parameter: the value of `Name` in the `Filter` parameter is not a string.
+# Invalid parameter. The Name value in the Filter parameter is not a string.
 INVALIDPARAMETER_INVALIDFILTERINVALIDNAMENOTSTR = 'InvalidParameter.InvalidFilterInvalidNameNotStr'
 
-# Invalid parameter: the `Values` in the `Filter` parameter is not a list.
+# Invalid parameter. The Values in the Filter parameter is not a list.
 INVALIDPARAMETER_INVALIDFILTERINVALIDVALUESNOTLIST = 'InvalidParameter.InvalidFilterInvalidValuesNotList'
 
-# Invalid parameter: the `Filter` parameter is not a dictionary.
+# Invalid parameter. The Filter parameter is not a dictionary.
 INVALIDPARAMETER_INVALIDFILTERNOTDICT = 'InvalidParameter.InvalidFilterNotDict'
 
-# Invalid parameter: there are unsupported `Name` values in the `Filter` parameter.
+# Invalid parameter. The Filter parameter contains an unsupported Name.
 INVALIDPARAMETER_INVALIDFILTERNOTSUPPORTEDNAME = 'InvalidParameter.InvalidFilterNotSupportedName'
 
 # Please specify at least one attribute to modify.
@@ -257,7 +257,7 @@ INVALIDPARAMETER_MUSTSPECIFYONEATTRIBUTETOMODIFY = 'InvalidParameter.MustSpecify
 # Invalid parameter: only one attribute can be modified at a time.
 INVALIDPARAMETER_ONLYALLOWMODIFYONEATTRIBUTE = 'InvalidParameter.OnlyAllowModifyOneAttribute'
 
-# Invalid parameter: the parameters conflict.
+# Invalid parameter. Parameter conflict.
 INVALIDPARAMETER_PARAMETERCONFLICT = 'InvalidParameter.ParameterConflict'
 
 # Incorrect parameter value.
@@ -326,7 +326,7 @@ INVALIDPARAMETERVALUE_FIREWALLTEMPLATEIDMALFORMED = 'InvalidParameterValue.Firew
 # Invalid parameter value: the instance ID format is invalid.
 INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = 'InvalidParameterValue.InstanceIdMalformed'
 
-# Invalid parameter value: the length of the instance name exceeds the upper limit.
+# Invalid parameter value. The instance name exceeds the maximum allowed length.
 INVALIDPARAMETERVALUE_INSTANCENAMETOOLONG = 'InvalidParameterValue.InstanceNameTooLong'
 
 # The image ID is invalid.
@@ -365,7 +365,7 @@ INVALIDPARAMETERVALUE_INVALIDDISKTYPE = 'InvalidParameterValue.InvalidDiskType'
 # The image ID format is invalid.
 INVALIDPARAMETERVALUE_INVALIDIMAGEIDMALFORMED = 'InvalidParameterValue.InvalidImageIdMalformed'
 
-# Invalid parametric value: the IP address format is invalid.
+# Invalid parameter value. Invalid IP address format.
 INVALIDPARAMETERVALUE_INVALIDIPFORMAT = 'InvalidParameterValue.InvalidIpFormat'
 
 # Invalid parametric value.
@@ -389,7 +389,7 @@ INVALIDPARAMETERVALUE_INVALIDRESOURCEQUOTARESOURCENAME = 'InvalidParameterValue.
 # Invalid scene ID
 INVALIDPARAMETERVALUE_INVALIDSCENEIDMALFORMED = 'InvalidParameterValue.InvalidSceneIdMalformed'
 
-# Invalid `Zone` value.
+# Invalid value for the Zone parameter.
 INVALIDPARAMETERVALUE_INVALIDZONE = 'InvalidParameterValue.InvalidZone'
 
 # Invalid parametric value: the key pair ID format is invalid.
@@ -404,7 +404,7 @@ INVALIDPARAMETERVALUE_KEYPAIRPUBLICKEYMALFORMED = 'InvalidParameterValue.KeyPair
 # Invalid parametric value: the number of parameter values exceeds the upper limit.
 INVALIDPARAMETERVALUE_LIMITEXCEEDED = 'InvalidParameterValue.LimitExceeded'
 
-# Invalid parametric value: it cannot be negative.
+# Invalid parameter value. The value cannot be negative.
 INVALIDPARAMETERVALUE_NEGATIVE = 'InvalidParameterValue.Negative'
 
 # It is not allowed to change the OS type.
@@ -416,7 +416,7 @@ INVALIDPARAMETERVALUE_NOTSUPPORTCROSSBORDERSYNCBLUEPRINT = 'InvalidParameterValu
 # The bundle type of the instance bundle does not support changing to the new bundle.
 INVALIDPARAMETERVALUE_NOTSUPPORTMODIFYINSTANCEBUNDLETYPE = 'InvalidParameterValue.NotSupportModifyInstanceBundleType'
 
-# Invalid parametric value: it is not within the valid range.
+# Invalid parameter value. The value is not within the valid range.
 INVALIDPARAMETERVALUE_OUTOFRANGE = 'InvalidParameterValue.OutOfRange'
 
 # The instance OS does not support this file system.
@@ -494,7 +494,7 @@ MISSINGPARAMETER_BUNDLEMISSINGPARAMETERBLUEPRINTID = 'MissingParameter.BundleMis
 # `Period` or `CurInstanceDeadline` is required. 
 MISSINGPARAMETER_MISSINGPARAMETERPERIODCURINSTANCEDEADLINE = 'MissingParameter.MissingParameterPeriodCurInstanceDeadline'
 
-# 
+# When the `Order` parameter is specified, the `OrderField` parameter is required.
 MISSINGPARAMETER_ORDERFIELDREQUIRED = 'MissingParameter.OrderFieldRequired'
 
 # The image is being operated on. Try again later.
@@ -626,7 +626,7 @@ UNAUTHORIZEDOPERATION_MFAEXPIRED = 'UnauthorizedOperation.MFAExpired'
 # MFA does not exist.
 UNAUTHORIZEDOPERATION_MFANOTFOUND = 'UnauthorizedOperation.MFANotFound'
 
-# No permission.
+# You do not have permission.
 UNAUTHORIZEDOPERATION_NOPERMISSION = 'UnauthorizedOperation.NoPermission'
 
 # The payment failed because the account identity verification has not been completed.

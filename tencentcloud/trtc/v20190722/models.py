@@ -1406,25 +1406,19 @@ class CloudStorage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Vendor: The cloud storage provider.
-`0`: Tencent Cloud COS; `1`: AWS storage. Other vendors are not supported currently.
+        :param _Vendor: <p>Information about Tencent Cloud object storage COS and third-party cloud storage accounts<br>0: Tencent Cloud object storage COS<br>1: AWS<br>[Note] Currently, only AWS is supported for third-party cloud storage. More third-party cloud storage options are being added.</p>
         :type Vendor: int
-        :param _Region: [Region information](https://www.tencentcloud.com/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of tencent cloud object storage.
-Example value: cn-shanghai-1.
-
-[Region information](https://docs.AWS.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.
+        :param _Region: <p>[Region information](https://www.tencentcloud.com/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of Tencent Cloud object storage.<br>Example value: cn-shanghai-1</p><p>[Region information](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3</p>
         :type Region: str
-        :param _Bucket: The storage bucket.
+        :param _Bucket: <p>Cloud bucket name.</p>
         :type Bucket: str
-        :param _AccessKey: access_key account information of the cloud storage.
-To store files to tencent cloud object storage (COS), visit https://console.cloud.tencent.com/cam/capi to view or create the SecretId value corresponding to the key fields in the link.
+        :param _AccessKey: <p>access key account information for cloud storage.<br>To store files to tencent cloud Object Storage (COS), visit https://console.cloud.tencent.com/cam/capi to view or create the SecretId value corresponding to the key field in the link.</p>
         :type AccessKey: str
-        :param _SecretKey: secret_key account information of the cloud storage.
-To store files to tencent cloud object storage (COS), visit https://console.cloud.tencent.com/cam/capi to view or create the SecretKey value corresponding to the key fields in the link.
+        :param _SecretKey: <p>The secret_key account information for cloud storage.<br>To store files to Tencent Cloud Object Storage (COS), visit https://console.cloud.tencent.com/cam/capi to view or create the SecretKey value corresponding to the key fields in the link.</p>
         :type SecretKey: str
-        :param _FileNamePrefix: The specified position of the cloud storage bucket consists of an array of strings. valid values: az, az, 0-9, '_', and '-'. for example, the recording file xxx.m3u8 becomes prefix1/prefix2/TaskId/xxx.m3u8 under the function of ["prefix1", "prefix2"].
+        :param _FileNamePrefix: <p>The user-specified location in the cloud storage bucket consists of an array of strings. Valid string range: az, az, 0-9, '_' and '-'. For example, with ["prefix1", "prefix2"], the recording file xxx.m3u8 becomes prefix1/prefix2/TaskId/xxx.m3u8.</p>
         :type FileNamePrefix: list of str
-        :param _EndpointUrl: If specified, the client uses this S3-compatible endpoint override instead of the default AWS S3 endpoint. This is useful for S3-compatible storage services such as Cloudflare R2. Example: "account_id.r2.cloudflarestorage.com"
+        :param _EndpointUrl: <p>When this parameter is set up for an S3-compatible endpoint override (for example, Cloudflare R2), the client will use this endpoint rather than the default AWS S3 endpoint. Example: "account_id.R2.cloudflarestorage.com"</p>
         :type EndpointUrl: str
         """
         self._Vendor = None
@@ -1437,8 +1431,7 @@ To store files to tencent cloud object storage (COS), visit https://console.clou
 
     @property
     def Vendor(self):
-        r"""The cloud storage provider.
-`0`: Tencent Cloud COS; `1`: AWS storage. Other vendors are not supported currently.
+        r"""<p>Information about Tencent Cloud object storage COS and third-party cloud storage accounts<br>0: Tencent Cloud object storage COS<br>1: AWS<br>[Note] Currently, only AWS is supported for third-party cloud storage. More third-party cloud storage options are being added.</p>
         :rtype: int
         """
         return self._Vendor
@@ -1449,10 +1442,7 @@ To store files to tencent cloud object storage (COS), visit https://console.clou
 
     @property
     def Region(self):
-        r"""[Region information](https://www.tencentcloud.com/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of tencent cloud object storage.
-Example value: cn-shanghai-1.
-
-[Region information](https://docs.AWS.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.
+        r"""<p>[Region information](https://www.tencentcloud.com/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of Tencent Cloud object storage.<br>Example value: cn-shanghai-1</p><p>[Region information](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3</p>
         :rtype: str
         """
         return self._Region
@@ -1463,7 +1453,7 @@ Example value: cn-shanghai-1.
 
     @property
     def Bucket(self):
-        r"""The storage bucket.
+        r"""<p>Cloud bucket name.</p>
         :rtype: str
         """
         return self._Bucket
@@ -1474,8 +1464,7 @@ Example value: cn-shanghai-1.
 
     @property
     def AccessKey(self):
-        r"""access_key account information of the cloud storage.
-To store files to tencent cloud object storage (COS), visit https://console.cloud.tencent.com/cam/capi to view or create the SecretId value corresponding to the key fields in the link.
+        r"""<p>access key account information for cloud storage.<br>To store files to tencent cloud Object Storage (COS), visit https://console.cloud.tencent.com/cam/capi to view or create the SecretId value corresponding to the key field in the link.</p>
         :rtype: str
         """
         return self._AccessKey
@@ -1486,8 +1475,7 @@ To store files to tencent cloud object storage (COS), visit https://console.clou
 
     @property
     def SecretKey(self):
-        r"""secret_key account information of the cloud storage.
-To store files to tencent cloud object storage (COS), visit https://console.cloud.tencent.com/cam/capi to view or create the SecretKey value corresponding to the key fields in the link.
+        r"""<p>The secret_key account information for cloud storage.<br>To store files to Tencent Cloud Object Storage (COS), visit https://console.cloud.tencent.com/cam/capi to view or create the SecretKey value corresponding to the key fields in the link.</p>
         :rtype: str
         """
         return self._SecretKey
@@ -1498,7 +1486,7 @@ To store files to tencent cloud object storage (COS), visit https://console.clou
 
     @property
     def FileNamePrefix(self):
-        r"""The specified position of the cloud storage bucket consists of an array of strings. valid values: az, az, 0-9, '_', and '-'. for example, the recording file xxx.m3u8 becomes prefix1/prefix2/TaskId/xxx.m3u8 under the function of ["prefix1", "prefix2"].
+        r"""<p>The user-specified location in the cloud storage bucket consists of an array of strings. Valid string range: az, az, 0-9, '_' and '-'. For example, with ["prefix1", "prefix2"], the recording file xxx.m3u8 becomes prefix1/prefix2/TaskId/xxx.m3u8.</p>
         :rtype: list of str
         """
         return self._FileNamePrefix
@@ -1509,7 +1497,7 @@ To store files to tencent cloud object storage (COS), visit https://console.clou
 
     @property
     def EndpointUrl(self):
-        r"""If specified, the client uses this S3-compatible endpoint override instead of the default AWS S3 endpoint. This is useful for S3-compatible storage services such as Cloudflare R2. Example: "account_id.r2.cloudflarestorage.com"
+        r"""<p>When this parameter is set up for an S3-compatible endpoint override (for example, Cloudflare R2), the client will use this endpoint rather than the default AWS S3 endpoint. Example: "account_id.R2.cloudflarestorage.com"</p>
         :rtype: str
         """
         return self._EndpointUrl
@@ -1702,6 +1690,159 @@ class ControlAIConversationResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ControlVoiceConversationRequest(AbstractModel):
+    r"""ControlVoiceConversation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: The TRTC [SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid). It must be the same SdkAppId as the conversation room.
+        :type SdkAppId: int
+        :param _TaskId: Unique ID of the conversation task. Returned when the conversation task starts successfully.
+        :type TaskId: str
+        :param _Command: Control command.
+Valid values:
+
+- `Interrupt`: Force-interrupt the AI bot's current speech.
+- `invokellm`: Inject text into the current conversation context to trigger one LLM response. Not supported in `S2S` mode.
+- `invoketts`: Inject text into the current TTS so the AI bot broadcasts it. Not supported in `S2S` mode.
+        :type Command: str
+        :param _InvokeLLM: Configuration for injecting text into the LLM. Required when `Command` is `invokellm`.
+        :type InvokeLLM: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationInvokeLLM`
+        :param _InvokeTTS: Configuration for injecting text into TTS. Required when `Command` is `invoketts`.
+        :type InvokeTTS: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationInvokeTTS`
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+        self._Command = None
+        self._InvokeLLM = None
+        self._InvokeTTS = None
+
+    @property
+    def SdkAppId(self):
+        r"""The TRTC [SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid). It must be the same SdkAppId as the conversation room.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        r"""Unique ID of the conversation task. Returned when the conversation task starts successfully.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Command(self):
+        r"""Control command.
+Valid values:
+
+- `Interrupt`: Force-interrupt the AI bot's current speech.
+- `invokellm`: Inject text into the current conversation context to trigger one LLM response. Not supported in `S2S` mode.
+- `invoketts`: Inject text into the current TTS so the AI bot broadcasts it. Not supported in `S2S` mode.
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def InvokeLLM(self):
+        r"""Configuration for injecting text into the LLM. Required when `Command` is `invokellm`.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationInvokeLLM`
+        """
+        return self._InvokeLLM
+
+    @InvokeLLM.setter
+    def InvokeLLM(self, InvokeLLM):
+        self._InvokeLLM = InvokeLLM
+
+    @property
+    def InvokeTTS(self):
+        r"""Configuration for injecting text into TTS. Required when `Command` is `invoketts`.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationInvokeTTS`
+        """
+        return self._InvokeTTS
+
+    @InvokeTTS.setter
+    def InvokeTTS(self, InvokeTTS):
+        self._InvokeTTS = InvokeTTS
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        self._Command = params.get("Command")
+        if params.get("InvokeLLM") is not None:
+            self._InvokeLLM = VoiceConversationInvokeLLM()
+            self._InvokeLLM._deserialize(params.get("InvokeLLM"))
+        if params.get("InvokeTTS") is not None:
+            self._InvokeTTS = VoiceConversationInvokeTTS()
+            self._InvokeTTS._deserialize(params.get("InvokeTTS"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ControlVoiceConversationResponse(AbstractModel):
+    r"""ControlVoiceConversation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Unique ID of the conversation task.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Unique ID of the conversation task.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -2521,6 +2662,263 @@ class CreateCloudTranscriptionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateVoiceConversationRequest(AbstractModel):
+    r"""CreateVoiceConversation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: The TRTC [SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid). It must be the same SdkAppId as the conversation room.
+        :type SdkAppId: int
+        :param _RoomId: [Room ID](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#roomid) of the TRTC room where the conversation runs. Room IDs are numeric by default. If the room ID is a string, set RoomIdType to 1.
+        :type RoomId: str
+        :param _RoomIdType: Room ID type. It must match the room ID type of the conversation room. 0 is a numeric room ID, and 1 is a string room ID.
+Valid values:
+- 0: numeric room ID (Default)
+- 1: string room ID
+        :type RoomIdType: int
+        :param _AgentConfig: <p>Chatbot configuration.</p>
+        :type AgentConfig: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationConfig`
+        :param _ConversationMode: Conversation pipeline mode: `Cascade` (default, three-stage pipeline) or `S2S` (end-to-end speech-to-speech model).
+Valid values:
+- Cascade: three-stage pipeline (default). Speech recognition, a large language model, and text-to-speech.
+- S2S: end-to-end speech-to-speech model.
+Default: Cascade
+        :type ConversationMode: str
+        :param _S2SConfig: End-to-end speech-to-speech model configuration. Required only in `S2S` mode. Ignored in `Cascade` mode.
+        :type S2SConfig: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationS2SConfig`
+        :param _STTConfig: <p>Speech recognition configuration. <strong>Required only in <code>Cascade</code> mode</strong>; ignored in <code>S2S</code> mode.</p>
+        :type STTConfig: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationSTTConfig`
+        :param _LLMConfig: Large language model (LLM) configuration. Required only in `Cascade` mode. Ignored in `S2S` mode.
+        :type LLMConfig: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationLLMConfig`
+        :param _TTSConfig: <p>Text to speech configuration. <strong>Required only in <code>Cascade</code> mode</strong>; ignored in <code>S2S</code> mode.</p>
+        :type TTSConfig: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationTTSConfig`
+        :param _DialogConfig: Conversation control configuration. Not supported in `S2S` mode.
+        :type DialogConfig: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationDialogConfig`
+        :param _VisionConfig: Visual understanding configuration. Not supported in `S2S` mode.
+        :type VisionConfig: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationVisionConfig`
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._RoomIdType = None
+        self._AgentConfig = None
+        self._ConversationMode = None
+        self._S2SConfig = None
+        self._STTConfig = None
+        self._LLMConfig = None
+        self._TTSConfig = None
+        self._DialogConfig = None
+        self._VisionConfig = None
+
+    @property
+    def SdkAppId(self):
+        r"""The TRTC [SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid). It must be the same SdkAppId as the conversation room.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        r"""[Room ID](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#roomid) of the TRTC room where the conversation runs. Room IDs are numeric by default. If the room ID is a string, set RoomIdType to 1.
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def RoomIdType(self):
+        r"""Room ID type. It must match the room ID type of the conversation room. 0 is a numeric room ID, and 1 is a string room ID.
+Valid values:
+- 0: numeric room ID (Default)
+- 1: string room ID
+        :rtype: int
+        """
+        return self._RoomIdType
+
+    @RoomIdType.setter
+    def RoomIdType(self, RoomIdType):
+        self._RoomIdType = RoomIdType
+
+    @property
+    def AgentConfig(self):
+        r"""<p>Chatbot configuration.</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationConfig`
+        """
+        return self._AgentConfig
+
+    @AgentConfig.setter
+    def AgentConfig(self, AgentConfig):
+        self._AgentConfig = AgentConfig
+
+    @property
+    def ConversationMode(self):
+        r"""Conversation pipeline mode: `Cascade` (default, three-stage pipeline) or `S2S` (end-to-end speech-to-speech model).
+Valid values:
+- Cascade: three-stage pipeline (default). Speech recognition, a large language model, and text-to-speech.
+- S2S: end-to-end speech-to-speech model.
+Default: Cascade
+        :rtype: str
+        """
+        return self._ConversationMode
+
+    @ConversationMode.setter
+    def ConversationMode(self, ConversationMode):
+        self._ConversationMode = ConversationMode
+
+    @property
+    def S2SConfig(self):
+        r"""End-to-end speech-to-speech model configuration. Required only in `S2S` mode. Ignored in `Cascade` mode.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationS2SConfig`
+        """
+        return self._S2SConfig
+
+    @S2SConfig.setter
+    def S2SConfig(self, S2SConfig):
+        self._S2SConfig = S2SConfig
+
+    @property
+    def STTConfig(self):
+        r"""<p>Speech recognition configuration. <strong>Required only in <code>Cascade</code> mode</strong>; ignored in <code>S2S</code> mode.</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationSTTConfig`
+        """
+        return self._STTConfig
+
+    @STTConfig.setter
+    def STTConfig(self, STTConfig):
+        self._STTConfig = STTConfig
+
+    @property
+    def LLMConfig(self):
+        r"""Large language model (LLM) configuration. Required only in `Cascade` mode. Ignored in `S2S` mode.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationLLMConfig`
+        """
+        return self._LLMConfig
+
+    @LLMConfig.setter
+    def LLMConfig(self, LLMConfig):
+        self._LLMConfig = LLMConfig
+
+    @property
+    def TTSConfig(self):
+        r"""<p>Text to speech configuration. <strong>Required only in <code>Cascade</code> mode</strong>; ignored in <code>S2S</code> mode.</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationTTSConfig`
+        """
+        return self._TTSConfig
+
+    @TTSConfig.setter
+    def TTSConfig(self, TTSConfig):
+        self._TTSConfig = TTSConfig
+
+    @property
+    def DialogConfig(self):
+        r"""Conversation control configuration. Not supported in `S2S` mode.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationDialogConfig`
+        """
+        return self._DialogConfig
+
+    @DialogConfig.setter
+    def DialogConfig(self, DialogConfig):
+        self._DialogConfig = DialogConfig
+
+    @property
+    def VisionConfig(self):
+        r"""Visual understanding configuration. Not supported in `S2S` mode.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationVisionConfig`
+        """
+        return self._VisionConfig
+
+    @VisionConfig.setter
+    def VisionConfig(self, VisionConfig):
+        self._VisionConfig = VisionConfig
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        self._RoomIdType = params.get("RoomIdType")
+        if params.get("AgentConfig") is not None:
+            self._AgentConfig = VoiceConversationConfig()
+            self._AgentConfig._deserialize(params.get("AgentConfig"))
+        self._ConversationMode = params.get("ConversationMode")
+        if params.get("S2SConfig") is not None:
+            self._S2SConfig = VoiceConversationS2SConfig()
+            self._S2SConfig._deserialize(params.get("S2SConfig"))
+        if params.get("STTConfig") is not None:
+            self._STTConfig = VoiceConversationSTTConfig()
+            self._STTConfig._deserialize(params.get("STTConfig"))
+        if params.get("LLMConfig") is not None:
+            self._LLMConfig = VoiceConversationLLMConfig()
+            self._LLMConfig._deserialize(params.get("LLMConfig"))
+        if params.get("TTSConfig") is not None:
+            self._TTSConfig = VoiceConversationTTSConfig()
+            self._TTSConfig._deserialize(params.get("TTSConfig"))
+        if params.get("DialogConfig") is not None:
+            self._DialogConfig = VoiceConversationDialogConfig()
+            self._DialogConfig._deserialize(params.get("DialogConfig"))
+        if params.get("VisionConfig") is not None:
+            self._VisionConfig = VoiceConversationVisionConfig()
+            self._VisionConfig._deserialize(params.get("VisionConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVoiceConversationResponse(AbstractModel):
+    r"""CreateVoiceConversation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Unique ID of the conversation task, generated by the Tencent Cloud server. Later requests that query or control the task must include this TaskId.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Unique ID of the conversation task, generated by the Tencent Cloud server. Later requests that query or control the task must include this TaskId.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCloudModerationRequest(AbstractModel):
     r"""DeleteCloudModeration request structure.
 
@@ -2872,6 +3270,100 @@ class DeleteCloudTranscriptionResponse(AbstractModel):
     @property
     def TaskId(self):
         r"""Task ID of the service allocation for transcribing. The task ID is the unique identifier for a transcription lifecycle process and loses its meaning once the transcription is complete.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteVoiceConversationRequest(AbstractModel):
+    r"""DeleteVoiceConversation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: The TRTC [SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid). It must be the same SdkAppId as the conversation room.
+        :type SdkAppId: int
+        :param _TaskId: Unique ID of the conversation task. Returned when the conversation task starts successfully.
+        :type TaskId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+
+    @property
+    def SdkAppId(self):
+        r"""The TRTC [SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid). It must be the same SdkAppId as the conversation room.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        r"""Unique ID of the conversation task. Returned when the conversation task starts successfully.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVoiceConversationResponse(AbstractModel):
+    r"""DeleteVoiceConversation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Unique ID of the conversation task.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Unique ID of the conversation task.
         :rtype: str
         """
         return self._TaskId
@@ -6077,6 +6569,185 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeVoiceConversationRequest(AbstractModel):
+    r"""DescribeVoiceConversation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: The TRTC [SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid). It must be the same SdkAppId as the conversation room.
+        :type SdkAppId: int
+        :param _TaskId: Unique ID of the conversation task. Returned when the conversation task starts successfully.
+        :type TaskId: str
+        :param _DescribeType: Whether to include the conversation history.
+Valid values:
+- 0: Do not include the conversation history.
+- 1: Include the conversation history.
+
+Default: 0
+        :type DescribeType: int
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+        self._DescribeType = None
+
+    @property
+    def SdkAppId(self):
+        r"""The TRTC [SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid). It must be the same SdkAppId as the conversation room.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        r"""Unique ID of the conversation task. Returned when the conversation task starts successfully.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def DescribeType(self):
+        r"""Whether to include the conversation history.
+Valid values:
+- 0: Do not include the conversation history.
+- 1: Include the conversation history.
+
+Default: 0
+        :rtype: int
+        """
+        return self._DescribeType
+
+    @DescribeType.setter
+    def DescribeType(self, DescribeType):
+        self._DescribeType = DescribeType
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        self._DescribeType = params.get("DescribeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVoiceConversationResponse(AbstractModel):
+    r"""DescribeVoiceConversation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: <p>Task start time</p><p>Unit: ms</p>
+        :type StartTime: int
+        :param _Status: Conversation task status.
+Valid values:
+
+- `Idle`: The conversation task is idle.
+- `InProgress`: The conversation task is in progress.
+- `Exited`: The conversation task is exiting.
+        :type Status: str
+        :param _TaskId: Unique ID of the conversation task.
+        :type TaskId: str
+        :param _HistoryContents: Conversation history.
+        :type HistoryContents: list of VoiceConversationHistoryContent
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._StartTime = None
+        self._Status = None
+        self._TaskId = None
+        self._HistoryContents = None
+        self._RequestId = None
+
+    @property
+    def StartTime(self):
+        r"""<p>Task start time</p><p>Unit: ms</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Status(self):
+        r"""Conversation task status.
+Valid values:
+
+- `Idle`: The conversation task is idle.
+- `InProgress`: The conversation task is in progress.
+- `Exited`: The conversation task is exiting.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskId(self):
+        r"""Unique ID of the conversation task.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def HistoryContents(self):
+        r"""Conversation history.
+        :rtype: list of VoiceConversationHistoryContent
+        """
+        return self._HistoryContents
+
+    @HistoryContents.setter
+    def HistoryContents(self, HistoryContents):
+        self._HistoryContents = HistoryContents
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
+        if params.get("HistoryContents") is not None:
+            self._HistoryContents = []
+            for item in params.get("HistoryContents"):
+                obj = VoiceConversationHistoryContent()
+                obj._deserialize(item)
+                self._HistoryContents.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeWebRecordRequest(AbstractModel):
     r"""DescribeWebRecord request structure.
 
@@ -6634,6 +7305,57 @@ class InvokeLLM(AbstractModel):
     def _deserialize(self, params):
         self._Content = params.get("Content")
         self._Interrupt = params.get("Interrupt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KeyValueItem(AbstractModel):
+    r"""LLM custom data structure
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>Key</p>
+        :type Key: str
+        :param _Value: <p>Value</p>
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>Key</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>Value</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9875,6 +10597,166 @@ class ModifyCloudSliceTaskResponse(AbstractModel):
     @property
     def TaskId(self):
         r"""Unique ID of the slicing task, which is returned after the task is started.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyVoiceConversationRequest(AbstractModel):
+    r"""ModifyVoiceConversation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>The <a href="https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid">SdkAppId</a> of TRTC, which is the same as the SdkAppId corresponding to the conversation room.</p>
+        :type SdkAppId: int
+        :param _TaskId: Unique ID of the conversation task. Returned when the conversation task starts successfully.
+        :type TaskId: str
+        :param _SequenceNumber: For the same task, `SequenceNumber` must increase with each modification request. This prevents requests from being applied out of order.
+        :type SequenceNumber: int
+        :param _LLMConfig: Large language model (LLM) configuration. Applies only in `Cascade` mode. In `S2S` mode, the request returns an error.
+        :type LLMConfig: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationLLMConfig`
+        :param _S2SConfig: End-to-end speech-to-speech model configuration. Applies only in `S2S` mode. In `Cascade` mode, the request returns an error.
+        :type S2SConfig: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationS2SConfig`
+        :param _DialogConfig: Conversation control configuration. Applies only in `Cascade` mode.
+        :type DialogConfig: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationDialogConfig`
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+        self._SequenceNumber = None
+        self._LLMConfig = None
+        self._S2SConfig = None
+        self._DialogConfig = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>The <a href="https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid">SdkAppId</a> of TRTC, which is the same as the SdkAppId corresponding to the conversation room.</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        r"""Unique ID of the conversation task. Returned when the conversation task starts successfully.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SequenceNumber(self):
+        r"""For the same task, `SequenceNumber` must increase with each modification request. This prevents requests from being applied out of order.
+        :rtype: int
+        """
+        return self._SequenceNumber
+
+    @SequenceNumber.setter
+    def SequenceNumber(self, SequenceNumber):
+        self._SequenceNumber = SequenceNumber
+
+    @property
+    def LLMConfig(self):
+        r"""Large language model (LLM) configuration. Applies only in `Cascade` mode. In `S2S` mode, the request returns an error.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationLLMConfig`
+        """
+        return self._LLMConfig
+
+    @LLMConfig.setter
+    def LLMConfig(self, LLMConfig):
+        self._LLMConfig = LLMConfig
+
+    @property
+    def S2SConfig(self):
+        r"""End-to-end speech-to-speech model configuration. Applies only in `S2S` mode. In `Cascade` mode, the request returns an error.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationS2SConfig`
+        """
+        return self._S2SConfig
+
+    @S2SConfig.setter
+    def S2SConfig(self, S2SConfig):
+        self._S2SConfig = S2SConfig
+
+    @property
+    def DialogConfig(self):
+        r"""Conversation control configuration. Applies only in `Cascade` mode.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationDialogConfig`
+        """
+        return self._DialogConfig
+
+    @DialogConfig.setter
+    def DialogConfig(self, DialogConfig):
+        self._DialogConfig = DialogConfig
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        self._SequenceNumber = params.get("SequenceNumber")
+        if params.get("LLMConfig") is not None:
+            self._LLMConfig = VoiceConversationLLMConfig()
+            self._LLMConfig._deserialize(params.get("LLMConfig"))
+        if params.get("S2SConfig") is not None:
+            self._S2SConfig = VoiceConversationS2SConfig()
+            self._S2SConfig._deserialize(params.get("S2SConfig"))
+        if params.get("DialogConfig") is not None:
+            self._DialogConfig = VoiceConversationDialogConfig()
+            self._DialogConfig._deserialize(params.get("DialogConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVoiceConversationResponse(AbstractModel):
+    r"""ModifyVoiceConversation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Unique ID of the conversation task.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Unique ID of the conversation task.
         :rtype: str
         """
         return self._TaskId
@@ -15087,14 +15969,14 @@ class TranscriptionUserInfoParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserId: User ID.
+        :param _UserId: <p>uid.</p>
         :type UserId: str
         """
         self._UserId = None
 
     @property
     def UserId(self):
-        r"""User ID.
+        r"""<p>uid.</p>
         :rtype: str
         """
         return self._UserId
@@ -16665,6 +17547,1150 @@ class VoiceCloneResponse(AbstractModel):
     def _deserialize(self, params):
         self._VoiceId = params.get("VoiceId")
         self._RequestId = params.get("RequestId")
+
+
+class VoiceConversationConfig(AbstractModel):
+    r"""Task parameters for an AI conversation.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: [UserId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#userid) used by the conversation service in the TRTC room. It must not match a UserId already used by another TRTC user or by the conversation service. Include the room ID in the UserId.
+        :type UserId: str
+        :param _UserSig: [UserSig](https://www.tencentcloud.com/document/product/647/45910?from_cn_redirect=1#UserSig) for the conversation service to join the TRTC room. It is the authentication signature of this UserId and works like a login password. For how to calculate UserSig, see the linked topic.
+        :type UserSig: str
+        :param _TargetUserId: <p>UserId of the anchor whose audio the conversation service subscribes to. Specify one anchor only.</p>
+        :type TargetUserId: list of str
+        :param _TTSPushRoomParams: <p>Parameters of the bot that publishes TTS audio back to the room.</p>
+        :type TTSPushRoomParams: :class:`tencentcloud.trtc.v20190722.models.TranscriptionUserInfoParams`
+        :param _MaxIdleTime: <p>If an anchor in the conversation stays out of the TRTC room, or stays in the audience role, for longer than `MaxIdleTime`, the conversation task stops automatically. Valid range: 5 to 86400 (24 hours). Default: 30. Unit: seconds.</p>
+        :type MaxIdleTime: int
+        :param _FilterBracketsContent: Filters content returned by the LLM. Text inside the specified brackets is not played. If this parameter is not set, nothing is filtered. Valid range: 1 to 5. Example: 1. 
+Not supported in S2S mode.
+Valid values:
+- 1: Chinese parentheses 
+- 2: English parentheses
+- 3: Chinese square brackets
+- 4: English square brackets
+- 5: English curly braces
+        :type FilterBracketsContent: list of int non-negative
+        :param _SubtitleMode: Subtitle display mode. Not supported in S2S mode.
+Valid values:
+- 0: Show subtitles as soon as possible.
+- 1: Show subtitles sentence by sentence in real time.
+        :type SubtitleMode: int
+        :param _TurnDetectionMode: Controls how a new conversation turn starts. Default: `auto`. Not supported in S2S mode.
+Valid values:
+
+- `auto`: The backend detects the end of a sentence from the silence duration, and then calls the LLM.
+        :type TurnDetectionMode: str
+        """
+        self._UserId = None
+        self._UserSig = None
+        self._TargetUserId = None
+        self._TTSPushRoomParams = None
+        self._MaxIdleTime = None
+        self._FilterBracketsContent = None
+        self._SubtitleMode = None
+        self._TurnDetectionMode = None
+
+    @property
+    def UserId(self):
+        r"""[UserId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#userid) used by the conversation service in the TRTC room. It must not match a UserId already used by another TRTC user or by the conversation service. Include the room ID in the UserId.
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserSig(self):
+        r"""[UserSig](https://www.tencentcloud.com/document/product/647/45910?from_cn_redirect=1#UserSig) for the conversation service to join the TRTC room. It is the authentication signature of this UserId and works like a login password. For how to calculate UserSig, see the linked topic.
+        :rtype: str
+        """
+        return self._UserSig
+
+    @UserSig.setter
+    def UserSig(self, UserSig):
+        self._UserSig = UserSig
+
+    @property
+    def TargetUserId(self):
+        r"""<p>UserId of the anchor whose audio the conversation service subscribes to. Specify one anchor only.</p>
+        :rtype: list of str
+        """
+        return self._TargetUserId
+
+    @TargetUserId.setter
+    def TargetUserId(self, TargetUserId):
+        self._TargetUserId = TargetUserId
+
+    @property
+    def TTSPushRoomParams(self):
+        r"""<p>Parameters of the bot that publishes TTS audio back to the room.</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TranscriptionUserInfoParams`
+        """
+        return self._TTSPushRoomParams
+
+    @TTSPushRoomParams.setter
+    def TTSPushRoomParams(self, TTSPushRoomParams):
+        self._TTSPushRoomParams = TTSPushRoomParams
+
+    @property
+    def MaxIdleTime(self):
+        r"""<p>If an anchor in the conversation stays out of the TRTC room, or stays in the audience role, for longer than `MaxIdleTime`, the conversation task stops automatically. Valid range: 5 to 86400 (24 hours). Default: 30. Unit: seconds.</p>
+        :rtype: int
+        """
+        return self._MaxIdleTime
+
+    @MaxIdleTime.setter
+    def MaxIdleTime(self, MaxIdleTime):
+        self._MaxIdleTime = MaxIdleTime
+
+    @property
+    def FilterBracketsContent(self):
+        r"""Filters content returned by the LLM. Text inside the specified brackets is not played. If this parameter is not set, nothing is filtered. Valid range: 1 to 5. Example: 1. 
+Not supported in S2S mode.
+Valid values:
+- 1: Chinese parentheses 
+- 2: English parentheses
+- 3: Chinese square brackets
+- 4: English square brackets
+- 5: English curly braces
+        :rtype: list of int non-negative
+        """
+        return self._FilterBracketsContent
+
+    @FilterBracketsContent.setter
+    def FilterBracketsContent(self, FilterBracketsContent):
+        self._FilterBracketsContent = FilterBracketsContent
+
+    @property
+    def SubtitleMode(self):
+        r"""Subtitle display mode. Not supported in S2S mode.
+Valid values:
+- 0: Show subtitles as soon as possible.
+- 1: Show subtitles sentence by sentence in real time.
+        :rtype: int
+        """
+        return self._SubtitleMode
+
+    @SubtitleMode.setter
+    def SubtitleMode(self, SubtitleMode):
+        self._SubtitleMode = SubtitleMode
+
+    @property
+    def TurnDetectionMode(self):
+        r"""Controls how a new conversation turn starts. Default: `auto`. Not supported in S2S mode.
+Valid values:
+
+- `auto`: The backend detects the end of a sentence from the silence duration, and then calls the LLM.
+        :rtype: str
+        """
+        return self._TurnDetectionMode
+
+    @TurnDetectionMode.setter
+    def TurnDetectionMode(self, TurnDetectionMode):
+        self._TurnDetectionMode = TurnDetectionMode
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._UserSig = params.get("UserSig")
+        self._TargetUserId = params.get("TargetUserId")
+        if params.get("TTSPushRoomParams") is not None:
+            self._TTSPushRoomParams = TranscriptionUserInfoParams()
+            self._TTSPushRoomParams._deserialize(params.get("TTSPushRoomParams"))
+        self._MaxIdleTime = params.get("MaxIdleTime")
+        self._FilterBracketsContent = params.get("FilterBracketsContent")
+        self._SubtitleMode = params.get("SubtitleMode")
+        self._TurnDetectionMode = params.get("TurnDetectionMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationDialogConfig(AbstractModel):
+    r"""Configuration for AI conversation.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InterruptMode: Interrupt mode. Default: 0.
+Valid values:
+- 0: Automatic. When STT returns text, it interrupts TTS playback. Use this mode with InterruptSpeechDuration.
+- 1: Manual. The bot is interrupted only by the Interrupt command from the server or client API.
+- 2: Keyword.
+        :type InterruptMode: int
+        :param _InterruptSpeechDuration: Minimum duration of user speech that triggers an automatic interrupt. Default: 200. Unit: ms.
+        :type InterruptSpeechDuration: int
+        :param _InterruptKeywords: Preset keywords that interrupt the bot. Use them when the user must explicitly indicate the intent to interrupt. You can set up to 128 keywords. Applies only when `InterruptMode` is 2.
+        :type InterruptKeywords: list of str
+        :param _SilenceFollowUp: How long the user is silent before the bot asks a follow-up question. Valid range: 0 to 300. 0 turns this off. Default: 0. Unit: seconds.
+
+
+        :type SilenceFollowUp: int
+        :param _SilenceFollowUpText: <p>Text of the proactive follow-up question.</p>
+        :type SilenceFollowUpText: str
+        :param _WelcomeMessage: Welcome message the bot broadcasts when an anchor enters the room for the first time. It is broadcast again when the anchor leaves the room and enters again.
+        :type WelcomeMessage: str
+        """
+        self._InterruptMode = None
+        self._InterruptSpeechDuration = None
+        self._InterruptKeywords = None
+        self._SilenceFollowUp = None
+        self._SilenceFollowUpText = None
+        self._WelcomeMessage = None
+
+    @property
+    def InterruptMode(self):
+        r"""Interrupt mode. Default: 0.
+Valid values:
+- 0: Automatic. When STT returns text, it interrupts TTS playback. Use this mode with InterruptSpeechDuration.
+- 1: Manual. The bot is interrupted only by the Interrupt command from the server or client API.
+- 2: Keyword.
+        :rtype: int
+        """
+        return self._InterruptMode
+
+    @InterruptMode.setter
+    def InterruptMode(self, InterruptMode):
+        self._InterruptMode = InterruptMode
+
+    @property
+    def InterruptSpeechDuration(self):
+        r"""Minimum duration of user speech that triggers an automatic interrupt. Default: 200. Unit: ms.
+        :rtype: int
+        """
+        return self._InterruptSpeechDuration
+
+    @InterruptSpeechDuration.setter
+    def InterruptSpeechDuration(self, InterruptSpeechDuration):
+        self._InterruptSpeechDuration = InterruptSpeechDuration
+
+    @property
+    def InterruptKeywords(self):
+        r"""Preset keywords that interrupt the bot. Use them when the user must explicitly indicate the intent to interrupt. You can set up to 128 keywords. Applies only when `InterruptMode` is 2.
+        :rtype: list of str
+        """
+        return self._InterruptKeywords
+
+    @InterruptKeywords.setter
+    def InterruptKeywords(self, InterruptKeywords):
+        self._InterruptKeywords = InterruptKeywords
+
+    @property
+    def SilenceFollowUp(self):
+        r"""How long the user is silent before the bot asks a follow-up question. Valid range: 0 to 300. 0 turns this off. Default: 0. Unit: seconds.
+
+
+        :rtype: int
+        """
+        return self._SilenceFollowUp
+
+    @SilenceFollowUp.setter
+    def SilenceFollowUp(self, SilenceFollowUp):
+        self._SilenceFollowUp = SilenceFollowUp
+
+    @property
+    def SilenceFollowUpText(self):
+        r"""<p>Text of the proactive follow-up question.</p>
+        :rtype: str
+        """
+        return self._SilenceFollowUpText
+
+    @SilenceFollowUpText.setter
+    def SilenceFollowUpText(self, SilenceFollowUpText):
+        self._SilenceFollowUpText = SilenceFollowUpText
+
+    @property
+    def WelcomeMessage(self):
+        r"""Welcome message the bot broadcasts when an anchor enters the room for the first time. It is broadcast again when the anchor leaves the room and enters again.
+        :rtype: str
+        """
+        return self._WelcomeMessage
+
+    @WelcomeMessage.setter
+    def WelcomeMessage(self, WelcomeMessage):
+        self._WelcomeMessage = WelcomeMessage
+
+
+    def _deserialize(self, params):
+        self._InterruptMode = params.get("InterruptMode")
+        self._InterruptSpeechDuration = params.get("InterruptSpeechDuration")
+        self._InterruptKeywords = params.get("InterruptKeywords")
+        self._SilenceFollowUp = params.get("SilenceFollowUp")
+        self._SilenceFollowUpText = params.get("SilenceFollowUpText")
+        self._WelcomeMessage = params.get("WelcomeMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationHistoryContent(AbstractModel):
+    r"""Historical conversation content.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: <p>Conversation role.</p>
+        :type Role: str
+        :param _Content: <p>Conversation content.</p>
+        :type Content: str
+        """
+        self._Role = None
+        self._Content = None
+
+    @property
+    def Role(self):
+        r"""<p>Conversation role.</p>
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        r"""<p>Conversation content.</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationHistoryMessage(AbstractModel):
+    r"""Historical messages of AI conversations.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: <p>The Conversation role, for example, "user", "assistant", "system".</p>
+        :type Role: str
+        :param _Content: <p>Conversation content.</p>
+        :type Content: str
+        """
+        self._Role = None
+        self._Content = None
+
+    @property
+    def Role(self):
+        r"""<p>The Conversation role, for example, "user", "assistant", "system".</p>
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        r"""<p>Conversation content.</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationInvokeLLM(AbstractModel):
+    r"""The server proactively sends a request to the LLM.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: <p>The injected content.</p>
+        :type Content: str
+        :param _Priority: Priority. If no conversation is in progress, the injected content is sent to the LLM. Otherwise, the behavior depends on this value. Default: 0.
+Valid values:
+- 0: High. Interrupt the current conversation, clear the waiting queue, and send the injected content to the LLM.
+- 1: Medium. Do not interrupt the current conversation. Clear the waiting queue and queue the injected content. If no conversation is in progress, the injected content is still queued.
+- 2: Low. Discard the injected content.
+        :type Priority: int
+        """
+        self._Content = None
+        self._Priority = None
+
+    @property
+    def Content(self):
+        r"""<p>The injected content.</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Priority(self):
+        r"""Priority. If no conversation is in progress, the injected content is sent to the LLM. Otherwise, the behavior depends on this value. Default: 0.
+Valid values:
+- 0: High. Interrupt the current conversation, clear the waiting queue, and send the injected content to the LLM.
+- 1: Medium. Do not interrupt the current conversation. Clear the waiting queue and queue the injected content. If no conversation is in progress, the injected content is still queued.
+- 2: Low. Discard the injected content.
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationInvokeTTS(AbstractModel):
+    r"""The server proactively sends a request to TTS.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: <p>Content to inject.</p>
+        :type Content: str
+        :param _Priority: Priority. If no conversation is in progress, the injected content is sent to TTS. Otherwise, the behavior depends on this value. Default: 0.
+Valid values:
+- 0: High. Interrupt the current conversation, clear the waiting queue, and send the injected content to TTS.
+- 1: Medium. Do not interrupt the current conversation. Clear the waiting queue and queue the injected content. If no conversation is in progress, the injected content is still queued.
+- 2: Low. Discard the injected content.
+`InvokeLLM` and `InvokeTTS` share one queue. The queue can hold only one Invoke event.
+        :type Priority: int
+        """
+        self._Content = None
+        self._Priority = None
+
+    @property
+    def Content(self):
+        r"""<p>Content to inject.</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Priority(self):
+        r"""Priority. If no conversation is in progress, the injected content is sent to TTS. Otherwise, the behavior depends on this value. Default: 0.
+Valid values:
+- 0: High. Interrupt the current conversation, clear the waiting queue, and send the injected content to TTS.
+- 1: Medium. Do not interrupt the current conversation. Clear the waiting queue and queue the injected content. If no conversation is in progress, the injected content is still queued.
+- 2: Low. Discard the injected content.
+`InvokeLLM` and `InvokeTTS` share one queue. The queue can hold only one Invoke event.
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationLLMConfig(AbstractModel):
+    r"""LLM parameter configuration for AI conversation.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LLMType: <p>LLM API type, for example, openai (OpenAI-compatible API).</p>
+        :type LLMType: str
+        :param _Model: <p>Model name, for example, gpt-4o-mini</p>
+        :type Model: str
+        :param _APIUrl: <p>OpenAI-compatible endpoint.</p>
+        :type APIUrl: str
+        :param _APIKey: Provider API key.
+        :type APIKey: str
+        :param _SystemPrompt: <p>System prompt.</p>
+        :type SystemPrompt: str
+        :param _FailureMessage: <p>Text used to generate TTS audio when the LLM call fails.</p>
+        :type FailureMessage: str
+        :param _MaxTokens: <p>Maximum number of tokens in a single response. 0 means no limit. Default: 0. If the model outputs more tokens than MaxTokens, the response is truncated.</p>
+        :type MaxTokens: int
+        :param _ThinkingMode: <p>Whether to enable thinking mode. Availability depends on the model provider. Enabling thinking mode consumes output tokens.</p>
+        :type ThinkingMode: bool
+        :param _MaxHistory: <p>Number of conversation turns cached for the LLM. Valid range: 0 to 50. Recommended range: 10 to 30. The total number of tokens in this context must not exceed the LLM context limit.</p>
+        :type MaxHistory: int
+        :param _MaxToolRound: <p>Maximum rounds of MCP tool calls, ranging from 0 to 50. Default: 10.</p>
+        :type MaxToolRound: int
+        :param _Timeout: Timeout for a single request, in milliseconds. Valid range: 1000 to 60000. Default: 10000.
+        :type Timeout: int
+        :param _Temperature: <p>Sampling temperature, ranging from 0.0 to 2.0. Default: 1.0.</p>
+        :type Temperature: float
+        :param _TopP: <p>Top p nucleus sampling. Valid range: 0.0 to 1.0. Default: 1.0.</p>
+        :type TopP: float
+        :param _McpServer: <p>MCP Server parameters.</p>
+        :type McpServer: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationMcpServer`
+        :param _CustomHeaders: <p>Custom HTTP request headers.</p>
+        :type CustomHeaders: list of KeyValueItem
+        :param _CustomFields: Provider-specific parameters, such as DeepSeek's reasoning_effort and Hunyuan's enable_enhancement.
+        :type CustomFields: list of KeyValueItem
+        :param _HistoryMessages: <p>Initial conversation history. Each item uses this format: `{"Role": "user"/"assistant"/"system", "Content": "xxx"}`.</p>
+        :type HistoryMessages: list of VoiceConversationHistoryMessage
+        """
+        self._LLMType = None
+        self._Model = None
+        self._APIUrl = None
+        self._APIKey = None
+        self._SystemPrompt = None
+        self._FailureMessage = None
+        self._MaxTokens = None
+        self._ThinkingMode = None
+        self._MaxHistory = None
+        self._MaxToolRound = None
+        self._Timeout = None
+        self._Temperature = None
+        self._TopP = None
+        self._McpServer = None
+        self._CustomHeaders = None
+        self._CustomFields = None
+        self._HistoryMessages = None
+
+    @property
+    def LLMType(self):
+        r"""<p>LLM API type, for example, openai (OpenAI-compatible API).</p>
+        :rtype: str
+        """
+        return self._LLMType
+
+    @LLMType.setter
+    def LLMType(self, LLMType):
+        self._LLMType = LLMType
+
+    @property
+    def Model(self):
+        r"""<p>Model name, for example, gpt-4o-mini</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def APIUrl(self):
+        r"""<p>OpenAI-compatible endpoint.</p>
+        :rtype: str
+        """
+        return self._APIUrl
+
+    @APIUrl.setter
+    def APIUrl(self, APIUrl):
+        self._APIUrl = APIUrl
+
+    @property
+    def APIKey(self):
+        r"""Provider API key.
+        :rtype: str
+        """
+        return self._APIKey
+
+    @APIKey.setter
+    def APIKey(self, APIKey):
+        self._APIKey = APIKey
+
+    @property
+    def SystemPrompt(self):
+        r"""<p>System prompt.</p>
+        :rtype: str
+        """
+        return self._SystemPrompt
+
+    @SystemPrompt.setter
+    def SystemPrompt(self, SystemPrompt):
+        self._SystemPrompt = SystemPrompt
+
+    @property
+    def FailureMessage(self):
+        r"""<p>Text used to generate TTS audio when the LLM call fails.</p>
+        :rtype: str
+        """
+        return self._FailureMessage
+
+    @FailureMessage.setter
+    def FailureMessage(self, FailureMessage):
+        self._FailureMessage = FailureMessage
+
+    @property
+    def MaxTokens(self):
+        r"""<p>Maximum number of tokens in a single response. 0 means no limit. Default: 0. If the model outputs more tokens than MaxTokens, the response is truncated.</p>
+        :rtype: int
+        """
+        return self._MaxTokens
+
+    @MaxTokens.setter
+    def MaxTokens(self, MaxTokens):
+        self._MaxTokens = MaxTokens
+
+    @property
+    def ThinkingMode(self):
+        r"""<p>Whether to enable thinking mode. Availability depends on the model provider. Enabling thinking mode consumes output tokens.</p>
+        :rtype: bool
+        """
+        return self._ThinkingMode
+
+    @ThinkingMode.setter
+    def ThinkingMode(self, ThinkingMode):
+        self._ThinkingMode = ThinkingMode
+
+    @property
+    def MaxHistory(self):
+        r"""<p>Number of conversation turns cached for the LLM. Valid range: 0 to 50. Recommended range: 10 to 30. The total number of tokens in this context must not exceed the LLM context limit.</p>
+        :rtype: int
+        """
+        return self._MaxHistory
+
+    @MaxHistory.setter
+    def MaxHistory(self, MaxHistory):
+        self._MaxHistory = MaxHistory
+
+    @property
+    def MaxToolRound(self):
+        r"""<p>Maximum rounds of MCP tool calls, ranging from 0 to 50. Default: 10.</p>
+        :rtype: int
+        """
+        return self._MaxToolRound
+
+    @MaxToolRound.setter
+    def MaxToolRound(self, MaxToolRound):
+        self._MaxToolRound = MaxToolRound
+
+    @property
+    def Timeout(self):
+        r"""Timeout for a single request, in milliseconds. Valid range: 1000 to 60000. Default: 10000.
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def Temperature(self):
+        r"""<p>Sampling temperature, ranging from 0.0 to 2.0. Default: 1.0.</p>
+        :rtype: float
+        """
+        return self._Temperature
+
+    @Temperature.setter
+    def Temperature(self, Temperature):
+        self._Temperature = Temperature
+
+    @property
+    def TopP(self):
+        r"""<p>Top p nucleus sampling. Valid range: 0.0 to 1.0. Default: 1.0.</p>
+        :rtype: float
+        """
+        return self._TopP
+
+    @TopP.setter
+    def TopP(self, TopP):
+        self._TopP = TopP
+
+    @property
+    def McpServer(self):
+        r"""<p>MCP Server parameters.</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationMcpServer`
+        """
+        return self._McpServer
+
+    @McpServer.setter
+    def McpServer(self, McpServer):
+        self._McpServer = McpServer
+
+    @property
+    def CustomHeaders(self):
+        r"""<p>Custom HTTP request headers.</p>
+        :rtype: list of KeyValueItem
+        """
+        return self._CustomHeaders
+
+    @CustomHeaders.setter
+    def CustomHeaders(self, CustomHeaders):
+        self._CustomHeaders = CustomHeaders
+
+    @property
+    def CustomFields(self):
+        r"""Provider-specific parameters, such as DeepSeek's reasoning_effort and Hunyuan's enable_enhancement.
+        :rtype: list of KeyValueItem
+        """
+        return self._CustomFields
+
+    @CustomFields.setter
+    def CustomFields(self, CustomFields):
+        self._CustomFields = CustomFields
+
+    @property
+    def HistoryMessages(self):
+        r"""<p>Initial conversation history. Each item uses this format: `{"Role": "user"/"assistant"/"system", "Content": "xxx"}`.</p>
+        :rtype: list of VoiceConversationHistoryMessage
+        """
+        return self._HistoryMessages
+
+    @HistoryMessages.setter
+    def HistoryMessages(self, HistoryMessages):
+        self._HistoryMessages = HistoryMessages
+
+
+    def _deserialize(self, params):
+        self._LLMType = params.get("LLMType")
+        self._Model = params.get("Model")
+        self._APIUrl = params.get("APIUrl")
+        self._APIKey = params.get("APIKey")
+        self._SystemPrompt = params.get("SystemPrompt")
+        self._FailureMessage = params.get("FailureMessage")
+        self._MaxTokens = params.get("MaxTokens")
+        self._ThinkingMode = params.get("ThinkingMode")
+        self._MaxHistory = params.get("MaxHistory")
+        self._MaxToolRound = params.get("MaxToolRound")
+        self._Timeout = params.get("Timeout")
+        self._Temperature = params.get("Temperature")
+        self._TopP = params.get("TopP")
+        if params.get("McpServer") is not None:
+            self._McpServer = VoiceConversationMcpServer()
+            self._McpServer._deserialize(params.get("McpServer"))
+        if params.get("CustomHeaders") is not None:
+            self._CustomHeaders = []
+            for item in params.get("CustomHeaders"):
+                obj = KeyValueItem()
+                obj._deserialize(item)
+                self._CustomHeaders.append(obj)
+        if params.get("CustomFields") is not None:
+            self._CustomFields = []
+            for item in params.get("CustomFields"):
+                obj = KeyValueItem()
+                obj._deserialize(item)
+                self._CustomFields.append(obj)
+        if params.get("HistoryMessages") is not None:
+            self._HistoryMessages = []
+            for item in params.get("HistoryMessages"):
+                obj = VoiceConversationHistoryMessage()
+                obj._deserialize(item)
+                self._HistoryMessages.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationMcpServer(AbstractModel):
+    r"""MCP Sever parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>The unique mcp identifier.</p>
+        :type Name: str
+        :param _Url: <p>Endpoint URL.</p>
+        :type Url: str
+        :param _Timeout: <p>Request timeout in ms. Default: 5000. This value should not exceed 30000.</p>
+        :type Timeout: int
+        :param _Headers: <p>Custom request headers, such as authentication information.</p>
+        :type Headers: list of KeyValueItem
+        :param _ToolList: <p>Allowlist of tools that can be used.</p>
+        :type ToolList: list of str
+        """
+        self._Name = None
+        self._Url = None
+        self._Timeout = None
+        self._Headers = None
+        self._ToolList = None
+
+    @property
+    def Name(self):
+        r"""<p>The unique mcp identifier.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Url(self):
+        r"""<p>Endpoint URL.</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Timeout(self):
+        r"""<p>Request timeout in ms. Default: 5000. This value should not exceed 30000.</p>
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def Headers(self):
+        r"""<p>Custom request headers, such as authentication information.</p>
+        :rtype: list of KeyValueItem
+        """
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+    @property
+    def ToolList(self):
+        r"""<p>Allowlist of tools that can be used.</p>
+        :rtype: list of str
+        """
+        return self._ToolList
+
+    @ToolList.setter
+    def ToolList(self, ToolList):
+        self._ToolList = ToolList
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Url = params.get("Url")
+        self._Timeout = params.get("Timeout")
+        if params.get("Headers") is not None:
+            self._Headers = []
+            for item in params.get("Headers"):
+                obj = KeyValueItem()
+                obj._deserialize(item)
+                self._Headers.append(obj)
+        self._ToolList = params.get("ToolList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationS2SConfig(AbstractModel):
+    r"""Configuration parameters for the end-to-end large speech model of an AI conversation task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Provider: <p>S2S manufacturer identification, for example, "tencent".</p>
+        :type Provider: str
+        :param _Params: <p>Manufacturer exclusive parameter, JSON serialized string.</p>
+        :type Params: str
+        :param _WelcomeMessage: <p>The welcome message played when the host enters the room for the first time. It will play again if the host leaves and re-enters the room.</p>
+        :type WelcomeMessage: str
+        """
+        self._Provider = None
+        self._Params = None
+        self._WelcomeMessage = None
+
+    @property
+    def Provider(self):
+        r"""<p>S2S manufacturer identification, for example, "tencent".</p>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def Params(self):
+        r"""<p>Manufacturer exclusive parameter, JSON serialized string.</p>
+        :rtype: str
+        """
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+    @property
+    def WelcomeMessage(self):
+        r"""<p>The welcome message played when the host enters the room for the first time. It will play again if the host leaves and re-enters the room.</p>
+        :rtype: str
+        """
+        return self._WelcomeMessage
+
+    @WelcomeMessage.setter
+    def WelcomeMessage(self, WelcomeMessage):
+        self._WelcomeMessage = WelcomeMessage
+
+
+    def _deserialize(self, params):
+        self._Provider = params.get("Provider")
+        self._Params = params.get("Params")
+        self._WelcomeMessage = params.get("WelcomeMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationSTTConfig(AbstractModel):
+    r"""STT configuration parameters for the AI conversation task
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Provider: <p>ASR provider name: trtc (Tencent Self-developed) or third-party provider (for example, azure).</p>
+        :type Provider: str
+        :param _Params: <p>ASR manufacturer exclusive parameter. Fill in the JSON serialized string.</p>
+        :type Params: str
+        """
+        self._Provider = None
+        self._Params = None
+
+    @property
+    def Provider(self):
+        r"""<p>ASR provider name: trtc (Tencent Self-developed) or third-party provider (for example, azure).</p>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def Params(self):
+        r"""<p>ASR manufacturer exclusive parameter. Fill in the JSON serialized string.</p>
+        :rtype: str
+        """
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+
+    def _deserialize(self, params):
+        self._Provider = params.get("Provider")
+        self._Params = params.get("Params")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationTTSConfig(AbstractModel):
+    r"""TTS configuration for conversation tasks.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Provider: <p>TTS providers, such as trtc.</p>
+        :type Provider: str
+        :param _Params: <p>Manufacturer exclusive parameter, string after JSON serialization.</p>
+        :type Params: str
+        """
+        self._Provider = None
+        self._Params = None
+
+    @property
+    def Provider(self):
+        r"""<p>TTS providers, such as trtc.</p>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def Params(self):
+        r"""<p>Manufacturer exclusive parameter, string after JSON serialization.</p>
+        :rtype: str
+        """
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+
+    def _deserialize(self, params):
+        self._Provider = params.get("Provider")
+        self._Params = params.get("Params")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationVisionConfig(AbstractModel):
+    r"""Parameter configuration related to AI conversation visual understanding.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: <p>Whether to enable visual understanding.</p>
+        :type Enable: bool
+        :param _StorageType: <p>Storage type.</p><p>Enumeration values:</p><ul><li>0: Do not store.</li><li>1: Specify cloud storage. In such cases, the CloudStorage parameter is required.</li></ul><p>Default value: 0</p>
+        :type StorageType: int
+        :param _CloudStorage: <p>Third-party Cloud Storage archive configuration. After configuration, the backend will automatically upload I-frames received from the SDK to the designated cloud bucket for persistent storage.</p>
+        :type CloudStorage: :class:`tencentcloud.trtc.v20190722.models.CloudStorage`
+        """
+        self._Enable = None
+        self._StorageType = None
+        self._CloudStorage = None
+
+    @property
+    def Enable(self):
+        r"""<p>Whether to enable visual understanding.</p>
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def StorageType(self):
+        r"""<p>Storage type.</p><p>Enumeration values:</p><ul><li>0: Do not store.</li><li>1: Specify cloud storage. In such cases, the CloudStorage parameter is required.</li></ul><p>Default value: 0</p>
+        :rtype: int
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def CloudStorage(self):
+        r"""<p>Third-party Cloud Storage archive configuration. After configuration, the backend will automatically upload I-frames received from the SDK to the designated cloud bucket for persistent storage.</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CloudStorage`
+        """
+        return self._CloudStorage
+
+    @CloudStorage.setter
+    def CloudStorage(self, CloudStorage):
+        self._CloudStorage = CloudStorage
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._StorageType = params.get("StorageType")
+        if params.get("CloudStorage") is not None:
+            self._CloudStorage = CloudStorage()
+            self._CloudStorage._deserialize(params.get("CloudStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class VoicePrint(AbstractModel):

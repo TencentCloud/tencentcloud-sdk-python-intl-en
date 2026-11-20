@@ -43,6 +43,24 @@ class TrtcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ControlVoiceConversation(
+            self,
+            request: models.ControlVoiceConversationRequest,
+            opts: Dict = None,
+    ) -> models.ControlVoiceConversationResponse:
+        """
+        After a conversation task starts successfully, use this API to control it.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ControlVoiceConversation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ControlVoiceConversationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCloudModeration(
             self,
             request: models.CreateCloudModerationRequest,
@@ -136,6 +154,24 @@ class TrtcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateVoiceConversation(
+            self,
+            request: models.CreateVoiceConversationRequest,
+            opts: Dict = None,
+    ) -> models.CreateVoiceConversationResponse:
+        """
+        This API is used to create an AI conversation task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVoiceConversation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVoiceConversationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteCloudModeration(
             self,
             request: models.DeleteCloudModerationRequest,
@@ -203,6 +239,24 @@ class TrtcClient(AbstractClient):
         kwargs["action"] = "DeleteCloudTranscription"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteCloudTranscriptionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteVoiceConversation(
+            self,
+            request: models.DeleteVoiceConversationRequest,
+            opts: Dict = None,
+    ) -> models.DeleteVoiceConversationResponse:
+        """
+        After a conversation task starts successfully, use this API to stop it.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteVoiceConversation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteVoiceConversationResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -664,6 +718,24 @@ class TrtcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeVoiceConversation(
+            self,
+            request: models.DescribeVoiceConversationRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVoiceConversationResponse:
+        """
+        After a conversation task starts successfully, use this API to query the conversation status. It can be used only while the conversation task is in progress. Querying after the conversation task exits returns an error.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVoiceConversation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVoiceConversationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeWebRecord(
             self,
             request: models.DescribeWebRecordRequest,
@@ -767,6 +839,24 @@ class TrtcClient(AbstractClient):
         kwargs["action"] = "ModifyCloudSliceTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyCloudSliceTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyVoiceConversation(
+            self,
+            request: models.ModifyVoiceConversationRequest,
+            opts: Dict = None,
+    ) -> models.ModifyVoiceConversationResponse:
+        """
+        After a conversation task starts successfully, use this API to modify its configuration.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyVoiceConversation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyVoiceConversationResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

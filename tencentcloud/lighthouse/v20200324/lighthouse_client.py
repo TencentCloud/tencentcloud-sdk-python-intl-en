@@ -782,12 +782,12 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        r"""This API is used to query the details of one or multiple instances.
+        r"""This API is used to query the detailed information of one or more instances.
 
-        * You can query the details of an instance according to its ID, name, or private IP.
-        * For more information on filters, please see [Filters](https://intl.cloud.tencent.com/document/product/1207/47576?from_cn_redirect=1#Filter).
-        * If no parameter is defined, the status of a certain number of instances under the current account will be returned. The number is specified by `Limit` and is 20 by default.
-        * The latest operation (LatestOperation) and the latest operation status (LatestOperationState) of the instance can be queried.
+        * You can query the detailed information of instances by instance ID, instance name, or private IP of the instance.
+        * For detailed filter information, see [Filters](https://www.tencentcloud.com/document/product/1207/47576?from_cn_redirect=1#Filter).
+        * If the parameter is empty, a certain number of instances (the number specified by `Limit`, 20 by default) under the current user will be returned.
+        * You can query the latest operation (LatestOperation) and the latest operation state (LatestOperationState) of an instance.
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeInstancesRequest`

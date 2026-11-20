@@ -2589,6 +2589,154 @@ class ExtractDocMultiResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ExtractedFields(AbstractModel):
+    r"""Flattened extraction result of entry and exit records (recommended, with 2–3 levels directly reaching business fields)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Title: <p>Title, such as &quot;Exit and Entry Record Query Result of the National Immigration Administration (Electronic Document)&quot;</p>
+        :type Title: str
+        :param _QueryNo: <p>Query number</p>
+        :type QueryNo: str
+        :param _QueryDate: <p>Query date</p>
+        :type QueryDate: str
+        :param _GenerateDate: <p>Date of issue</p>
+        :type GenerateDate: str
+        :param _PersonInfo: <p>Information of the inquirer</p>
+        :type PersonInfo: :class:`tencentcloud.ocr.v20181119.models.PersonInfo`
+        :param _Records: <p>List of entry and exit records</p>
+        :type Records: list of Record
+        :param _QueryPeriodStart: <p>Start time of the query range</p>
+        :type QueryPeriodStart: str
+        :param _QueryPeriodEnd: <p>End time of the query range</p>
+        :type QueryPeriodEnd: str
+        """
+        self._Title = None
+        self._QueryNo = None
+        self._QueryDate = None
+        self._GenerateDate = None
+        self._PersonInfo = None
+        self._Records = None
+        self._QueryPeriodStart = None
+        self._QueryPeriodEnd = None
+
+    @property
+    def Title(self):
+        r"""<p>Title, such as &quot;Exit and Entry Record Query Result of the National Immigration Administration (Electronic Document)&quot;</p>
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def QueryNo(self):
+        r"""<p>Query number</p>
+        :rtype: str
+        """
+        return self._QueryNo
+
+    @QueryNo.setter
+    def QueryNo(self, QueryNo):
+        self._QueryNo = QueryNo
+
+    @property
+    def QueryDate(self):
+        r"""<p>Query date</p>
+        :rtype: str
+        """
+        return self._QueryDate
+
+    @QueryDate.setter
+    def QueryDate(self, QueryDate):
+        self._QueryDate = QueryDate
+
+    @property
+    def GenerateDate(self):
+        r"""<p>Date of issue</p>
+        :rtype: str
+        """
+        return self._GenerateDate
+
+    @GenerateDate.setter
+    def GenerateDate(self, GenerateDate):
+        self._GenerateDate = GenerateDate
+
+    @property
+    def PersonInfo(self):
+        r"""<p>Information of the inquirer</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.PersonInfo`
+        """
+        return self._PersonInfo
+
+    @PersonInfo.setter
+    def PersonInfo(self, PersonInfo):
+        self._PersonInfo = PersonInfo
+
+    @property
+    def Records(self):
+        r"""<p>List of entry and exit records</p>
+        :rtype: list of Record
+        """
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
+
+    @property
+    def QueryPeriodStart(self):
+        r"""<p>Start time of the query range</p>
+        :rtype: str
+        """
+        return self._QueryPeriodStart
+
+    @QueryPeriodStart.setter
+    def QueryPeriodStart(self, QueryPeriodStart):
+        self._QueryPeriodStart = QueryPeriodStart
+
+    @property
+    def QueryPeriodEnd(self):
+        r"""<p>End time of the query range</p>
+        :rtype: str
+        """
+        return self._QueryPeriodEnd
+
+    @QueryPeriodEnd.setter
+    def QueryPeriodEnd(self, QueryPeriodEnd):
+        self._QueryPeriodEnd = QueryPeriodEnd
+
+
+    def _deserialize(self, params):
+        self._Title = params.get("Title")
+        self._QueryNo = params.get("QueryNo")
+        self._QueryDate = params.get("QueryDate")
+        self._GenerateDate = params.get("GenerateDate")
+        if params.get("PersonInfo") is not None:
+            self._PersonInfo = PersonInfo()
+            self._PersonInfo._deserialize(params.get("PersonInfo"))
+        if params.get("Records") is not None:
+            self._Records = []
+            for item in params.get("Records"):
+                obj = Record()
+                obj._deserialize(item)
+                self._Records.append(obj)
+        self._QueryPeriodStart = params.get("QueryPeriodStart")
+        self._QueryPeriodEnd = params.get("QueryPeriodEnd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GeneralAccurateOCRRequest(AbstractModel):
     r"""GeneralAccurateOCR request structure.
 
@@ -7330,6 +7478,87 @@ class PermitOCRResponse(AbstractModel):
         self._Type = params.get("Type")
         self._WarnCardInfos = params.get("WarnCardInfos")
         self._RequestId = params.get("RequestId")
+
+
+class PersonInfo(AbstractModel):
+    r"""Information of the inquirer
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Name of the inquirer
+        :type Name: str
+        :param _Gender: Gender
+        :type Gender: str
+        :param _BirthDate: Date of birth
+        :type BirthDate: str
+        :param _IdCardNo: Citizen ID number
+        :type IdCardNo: str
+        """
+        self._Name = None
+        self._Gender = None
+        self._BirthDate = None
+        self._IdCardNo = None
+
+    @property
+    def Name(self):
+        r"""Name of the inquirer
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Gender(self):
+        r"""Gender
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def BirthDate(self):
+        r"""Date of birth
+        :rtype: str
+        """
+        return self._BirthDate
+
+    @BirthDate.setter
+    def BirthDate(self, BirthDate):
+        self._BirthDate = BirthDate
+
+    @property
+    def IdCardNo(self):
+        r"""Citizen ID number
+        :rtype: str
+        """
+        return self._IdCardNo
+
+    @IdCardNo.setter
+    def IdCardNo(self, IdCardNo):
+        self._IdCardNo = IdCardNo
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Gender = params.get("Gender")
+        self._BirthDate = params.get("BirthDate")
+        self._IdCardNo = params.get("IdCardNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Polygon(AbstractModel):
@@ -13557,6 +13786,213 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Record(AbstractModel):
+    r"""Single exit-entry record
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Index: Serial number.
+        :type Index: str
+        :param _Type: Exit/Entry
+        :type Type: str
+        :param _Date: Date of exit/entry
+        :type Date: str
+        :param _CertName: Document name
+        :type CertName: str
+        :param _CertId: Document number
+        :type CertId: str
+        :param _Port: Port of exit/entry
+        :type Port: str
+        """
+        self._Index = None
+        self._Type = None
+        self._Date = None
+        self._CertName = None
+        self._CertId = None
+        self._Port = None
+
+    @property
+    def Index(self):
+        r"""Serial number.
+        :rtype: str
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Type(self):
+        r"""Exit/Entry
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Date(self):
+        r"""Date of exit/entry
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def CertName(self):
+        r"""Document name
+        :rtype: str
+        """
+        return self._CertName
+
+    @CertName.setter
+    def CertName(self, CertName):
+        self._CertName = CertName
+
+    @property
+    def CertId(self):
+        r"""Document number
+        :rtype: str
+        """
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def Port(self):
+        r"""Port of exit/entry
+        :rtype: str
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+
+    def _deserialize(self, params):
+        self._Index = params.get("Index")
+        self._Type = params.get("Type")
+        self._Date = params.get("Date")
+        self._CertName = params.get("CertName")
+        self._CertId = params.get("CertId")
+        self._Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SignResult(AbstractModel):
+    r"""Signature verification conclusion
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VerifyStatus: <p>Signature verification status. 1 indicates that the signature verification is passed.</p>
+        :type VerifyStatus: int
+        :param _SignerName: <p>Signer name</p>
+        :type SignerName: str
+        :param _SignAlgorithm: <p>Signature algorithm, such as SHA256withRSA</p>
+        :type SignAlgorithm: str
+        :param _SignTime: <p>Signature time (Unix timestamp in milliseconds)</p>
+        :type SignTime: int
+        :param _CertSn: <p>Signature verification information</p>
+        :type CertSn: str
+        """
+        self._VerifyStatus = None
+        self._SignerName = None
+        self._SignAlgorithm = None
+        self._SignTime = None
+        self._CertSn = None
+
+    @property
+    def VerifyStatus(self):
+        r"""<p>Signature verification status. 1 indicates that the signature verification is passed.</p>
+        :rtype: int
+        """
+        return self._VerifyStatus
+
+    @VerifyStatus.setter
+    def VerifyStatus(self, VerifyStatus):
+        self._VerifyStatus = VerifyStatus
+
+    @property
+    def SignerName(self):
+        r"""<p>Signer name</p>
+        :rtype: str
+        """
+        return self._SignerName
+
+    @SignerName.setter
+    def SignerName(self, SignerName):
+        self._SignerName = SignerName
+
+    @property
+    def SignAlgorithm(self):
+        r"""<p>Signature algorithm, such as SHA256withRSA</p>
+        :rtype: str
+        """
+        return self._SignAlgorithm
+
+    @SignAlgorithm.setter
+    def SignAlgorithm(self, SignAlgorithm):
+        self._SignAlgorithm = SignAlgorithm
+
+    @property
+    def SignTime(self):
+        r"""<p>Signature time (Unix timestamp in milliseconds)</p>
+        :rtype: int
+        """
+        return self._SignTime
+
+    @SignTime.setter
+    def SignTime(self, SignTime):
+        self._SignTime = SignTime
+
+    @property
+    def CertSn(self):
+        r"""<p>Signature verification information</p>
+        :rtype: str
+        """
+        return self._CertSn
+
+    @CertSn.setter
+    def CertSn(self, CertSn):
+        self._CertSn = CertSn
+
+
+    def _deserialize(self, params):
+        self._VerifyStatus = params.get("VerifyStatus")
+        self._SignerName = params.get("SignerName")
+        self._SignAlgorithm = params.get("SignAlgorithm")
+        self._SignTime = params.get("SignTime")
+        self._CertSn = params.get("CertSn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SkippedCheck(AbstractModel):
     r"""Skipped check items
 
@@ -14080,6 +14516,104 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class VerifyPdfOcrRequest(AbstractModel):
+    r"""VerifyPdfOcr request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageBase64: <p>Base64-encoded content of the PDF file. The data:application/pdf;base64, prefix is supported (the server automatically strips it).</p>
+        :type ImageBase64: str
+        """
+        self._ImageBase64 = None
+
+    @property
+    def ImageBase64(self):
+        r"""<p>Base64-encoded content of the PDF file. The data:application/pdf;base64, prefix is supported (the server automatically strips it).</p>
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+
+    def _deserialize(self, params):
+        self._ImageBase64 = params.get("ImageBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VerifyPdfOcrResponse(AbstractModel):
+    r"""VerifyPdfOcr response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExtractedFields: <p>Flattened extraction result of exit-entry records (recommended)</p>
+        :type ExtractedFields: :class:`tencentcloud.ocr.v20181119.models.ExtractedFields`
+        :param _SignResult: <p>Signature verification conclusion (recommended)</p>
+        :type SignResult: :class:`tencentcloud.ocr.v20181119.models.SignResult`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ExtractedFields = None
+        self._SignResult = None
+        self._RequestId = None
+
+    @property
+    def ExtractedFields(self):
+        r"""<p>Flattened extraction result of exit-entry records (recommended)</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.ExtractedFields`
+        """
+        return self._ExtractedFields
+
+    @ExtractedFields.setter
+    def ExtractedFields(self, ExtractedFields):
+        self._ExtractedFields = ExtractedFields
+
+    @property
+    def SignResult(self):
+        r"""<p>Signature verification conclusion (recommended)</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.SignResult`
+        """
+        return self._SignResult
+
+    @SignResult.setter
+    def SignResult(self, SignResult):
+        self._SignResult = SignResult
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ExtractedFields") is not None:
+            self._ExtractedFields = ExtractedFields()
+            self._ExtractedFields._deserialize(params.get("ExtractedFields"))
+        if params.get("SignResult") is not None:
+            self._SignResult = SignResult()
+            self._SignResult._deserialize(params.get("SignResult"))
+        self._RequestId = params.get("RequestId")
 
 
 class VinOCRRequest(AbstractModel):

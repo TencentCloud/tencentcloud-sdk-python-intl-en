@@ -5233,48 +5233,62 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: Instance ID list. Each request can contain up to 100 instances at a time.
+        :param _InstanceIds: List of instance IDs. The maximum number of instances in each request is 100. You can obtain the instance IDs from the `InstanceId` field in the response of the [DescribeInstances](https://www.tencentcloud.com/document/api/1207/47573?from_cn_redirect=1) API.
         :type InstanceIds: list of str
-        :param _Filters: Filter list. 
-<li>instance-name</li>Filter by the **instance name**. 
-Type: String 
-Required: No 
-<li>private-ip-address</li>Filter by the **private IP of instance primary ENI**. 
-Type: String 
-Required: No 
-<li>public-ip-address</li>Filter by the **public IP of instance primary ENI**. 
-Type: String 
-Required: No 
-<li>zone</li>Filter by the availability zone. 
-Type: String 
-Required: No 
-<li>instance-state</li>Filter by the **instance status**. 
-Type: String 
-Required: No 
-<li>tag-key</li>Filter by the **tag key**. 
-Type: String 
-Required: No 
-<li>tag-value</li>Filter by the **tag value**. 
-Type: String 
-Required: No 
-<li> tag:tag-key</li>Filter by tag key-value pair. The `tag-key` should be replaced with a specific tag key. 
-Type: String 
-Required: No 
-Each request can contain up to 10 `Filters` and 100 `Filter.Values`. You cannot specify both `InstanceIds` and `Filters` at the same time.
+        :param _Filters: List of filters.
+<li>instance-name</li>Filters by instance name.
+Type: String
+Required: No
+<li>private-ip-address</li>Filters by the private IP of the primary ENI of the instance.
+Type: String
+Required: No
+<li>public-ip-address</li>Filters by the public IP of the primary ENI of the instance.
+Type: String
+Required: No
+<li>zone</li>Filters by AZ.
+Type: String
+Required: No
+<li>instance-state</li>Filters by instance state.
+Type: String
+Required: No
+<li>tag-key</li>Filters by tag key.
+Type: String
+Required: No
+<li>tag-value</li>Filters by tag value.
+Type: String
+Required: No
+<li> tag:tag-key</li>Filters by tag key-value pair. Replace tag-key with the specific tag key.
+Type: String
+Required: No
+<li>bundle-id</li>Filters by bundle ID.
+Type: String
+Required: No
+
+The maximum number of Filters per request is 10, and the maximum number of Filter.Values is 100. You cannot specify both InstanceIds and Filters at the same time.
         :type Filters: list of Filter
-        :param _Offset: Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
+        :param _Offset: Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/product/1207/47578?from_cn_redirect=1).
         :type Offset: int
-        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/product/1207/47578?from_cn_redirect=1).
         :type Limit: int
+        :param _OrderField: Specifies the field by which to sort. Valid values: "EXPIRED_TIME": Sorts by the expiration time of the instance. 
+ If this field is not passed in, instances with the status of "pending reclamation" are returned first, and the remaining instances are returned in descending order by creation time.
+        :type OrderField: str
+        :param _Order: The order in which the output instance list is sorted. Valid values:
+"ASC": Sorts in ascending order.
+"DESC": Sorts in descending order.
+By default, the list is sorted in ascending order. If this field is passed in, OrderField must be specified.
+        :type Order: str
         """
         self._InstanceIds = None
         self._Filters = None
         self._Offset = None
         self._Limit = None
+        self._OrderField = None
+        self._Order = None
 
     @property
     def InstanceIds(self):
-        r"""Instance ID list. Each request can contain up to 100 instances at a time.
+        r"""List of instance IDs. The maximum number of instances in each request is 100. You can obtain the instance IDs from the `InstanceId` field in the response of the [DescribeInstances](https://www.tencentcloud.com/document/api/1207/47573?from_cn_redirect=1) API.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -5285,32 +5299,36 @@ Each request can contain up to 10 `Filters` and 100 `Filter.Values`. You cannot 
 
     @property
     def Filters(self):
-        r"""Filter list. 
-<li>instance-name</li>Filter by the **instance name**. 
-Type: String 
-Required: No 
-<li>private-ip-address</li>Filter by the **private IP of instance primary ENI**. 
-Type: String 
-Required: No 
-<li>public-ip-address</li>Filter by the **public IP of instance primary ENI**. 
-Type: String 
-Required: No 
-<li>zone</li>Filter by the availability zone. 
-Type: String 
-Required: No 
-<li>instance-state</li>Filter by the **instance status**. 
-Type: String 
-Required: No 
-<li>tag-key</li>Filter by the **tag key**. 
-Type: String 
-Required: No 
-<li>tag-value</li>Filter by the **tag value**. 
-Type: String 
-Required: No 
-<li> tag:tag-key</li>Filter by tag key-value pair. The `tag-key` should be replaced with a specific tag key. 
-Type: String 
-Required: No 
-Each request can contain up to 10 `Filters` and 100 `Filter.Values`. You cannot specify both `InstanceIds` and `Filters` at the same time.
+        r"""List of filters.
+<li>instance-name</li>Filters by instance name.
+Type: String
+Required: No
+<li>private-ip-address</li>Filters by the private IP of the primary ENI of the instance.
+Type: String
+Required: No
+<li>public-ip-address</li>Filters by the public IP of the primary ENI of the instance.
+Type: String
+Required: No
+<li>zone</li>Filters by AZ.
+Type: String
+Required: No
+<li>instance-state</li>Filters by instance state.
+Type: String
+Required: No
+<li>tag-key</li>Filters by tag key.
+Type: String
+Required: No
+<li>tag-value</li>Filters by tag value.
+Type: String
+Required: No
+<li> tag:tag-key</li>Filters by tag key-value pair. Replace tag-key with the specific tag key.
+Type: String
+Required: No
+<li>bundle-id</li>Filters by bundle ID.
+Type: String
+Required: No
+
+The maximum number of Filters per request is 10, and the maximum number of Filter.Values is 100. You cannot specify both InstanceIds and Filters at the same time.
         :rtype: list of Filter
         """
         return self._Filters
@@ -5321,7 +5339,7 @@ Each request can contain up to 10 `Filters` and 100 `Filter.Values`. You cannot 
 
     @property
     def Offset(self):
-        r"""Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
+        r"""Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/product/1207/47578?from_cn_redirect=1).
         :rtype: int
         """
         return self._Offset
@@ -5332,7 +5350,7 @@ Each request can contain up to 10 `Filters` and 100 `Filter.Values`. You cannot 
 
     @property
     def Limit(self):
-        r"""Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
+        r"""Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/product/1207/47578?from_cn_redirect=1).
         :rtype: int
         """
         return self._Limit
@@ -5340,6 +5358,32 @@ Each request can contain up to 10 `Filters` and 100 `Filter.Values`. You cannot 
     @Limit.setter
     def Limit(self, Limit):
         self._Limit = Limit
+
+    @property
+    def OrderField(self):
+        r"""Specifies the field by which to sort. Valid values: "EXPIRED_TIME": Sorts by the expiration time of the instance. 
+ If this field is not passed in, instances with the status of "pending reclamation" are returned first, and the remaining instances are returned in descending order by creation time.
+        :rtype: str
+        """
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def Order(self):
+        r"""The order in which the output instance list is sorted. Valid values:
+"ASC": Sorts in ascending order.
+"DESC": Sorts in descending order.
+By default, the list is sorted in ascending order. If this field is passed in, OrderField must be specified.
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
 
 
     def _deserialize(self, params):
@@ -5352,6 +5396,8 @@ Each request can contain up to 10 `Filters` and 100 `Filter.Values`. You cannot 
                 self._Filters.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._OrderField = params.get("OrderField")
+        self._Order = params.get("Order")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5371,7 +5417,7 @@ class DescribeInstancesResponse(AbstractModel):
         r"""
         :param _TotalCount: Number of eligible instances.
         :type TotalCount: int
-        :param _InstanceSet: List of instance details
+        :param _InstanceSet: Detailed information list of instances.
         :type InstanceSet: list of Instance
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -5393,7 +5439,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
-        r"""List of instance details
+        r"""Detailed information list of instances.
         :rtype: list of Instance
         """
         return self._InstanceSet
@@ -8309,11 +8355,11 @@ class DockerContainerVolume(AbstractModel):
 
 
 class Filter(AbstractModel):
-    r""">Key-Value pair filter for conditional filtering queries, such as filtering name
-    > * If there are multiple `Filter` parameters, the relationship among them is the logical `AND`.
-    > * If there are multiple `Values` for the same `Filter`, the relationship among the `Values` is the logical `OR`.
+    r""">Describes key-value pair filters used for conditional filtering queries. For example, filter by name.
+    > * If there are multiple `Filter` parameters, the relationship between them is logical AND (`AND`).
+    > * If the same `Filter` has multiple `Values`, the relationship between the `Values` under the same `Filter` is logical OR (`OR`).
     >
-    > Taking the `Filter` in the `DescribeInstances` API as an example, you can use the following filters to query the instance whose name (`instance-name`) is `test` ***and*** private IP (`private-ip-address`) is 10.10.10.10:
+    > Take the `Filter` of the DescribeInstances API as an example. If you need to query instances whose instance name (`instance-name`) is test ***and*** private IP (`private-ip-address`) is 10.10.10.10, you can implement it as follows:
     ```
     Filters.0.Name=instance-name
     &Filters.0.Values.0=test
@@ -8325,9 +8371,9 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Field to be filtered.
+        :param _Name: Fields to be filtered.
         :type Name: str
-        :param _Values: Filter value of field.
+        :param _Values: Filter value of the field.
         :type Values: list of str
         """
         self._Name = None
@@ -8335,7 +8381,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        r"""Field to be filtered.
+        r"""Fields to be filtered.
         :rtype: str
         """
         return self._Name
@@ -8346,7 +8392,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        r"""Filter value of field.
+        r"""Filter value of the field.
         :rtype: list of str
         """
         return self._Values
@@ -9626,7 +9672,7 @@ class InquirePriceRenewInstancesResponse(AbstractModel):
 
 
 class Instance(AbstractModel):
-    r"""Instance information.
+    r"""Describes the instance information.
 
     """
 
@@ -9634,76 +9680,79 @@ class Instance(AbstractModel):
         r"""
         :param _InstanceId: Instance ID.
         :type InstanceId: str
-        :param _BundleId: Package ID.
+        :param _BundleId: Bundle ID.
         :type BundleId: str
         :param _BlueprintId: Image ID.
         :type BlueprintId: str
-        :param _CPU: Number of instance CPU cores.
+        :param _CPU: Number of CPU cores for the instance, in cores.
         :type CPU: int
-        :param _Memory: Instance memory capacity in GB.
+        :param _Memory: Instance memory capacity, in GB.
         :type Memory: int
         :param _InstanceName: Instance name.
         :type InstanceName: str
         :param _InstanceChargeType: Instance billing mode. Valid values: 
-PREPAID: prepaid (i.e., monthly subscription).
+PREPAID: prepaid, that is, monthly or yearly subscription.
         :type InstanceChargeType: str
         :param _SystemDisk: Instance system disk information.
         :type SystemDisk: :class:`tencentcloud.lighthouse.v20200324.models.SystemDisk`
-        :param _PrivateAddresses: Private IP of instance primary ENI. 
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _PrivateAddresses: Private IP of the instance's primary NIC. 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type PrivateAddresses: list of str
-        :param _PublicAddresses: Public IP of instance primary ENI. 
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _PublicAddresses: Public IP of the instance's primary NIC. 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type PublicAddresses: list of str
         :param _InternetAccessible: Instance bandwidth information.
         :type InternetAccessible: :class:`tencentcloud.lighthouse.v20200324.models.InternetAccessible`
-        :param _RenewFlag: Auto-Renewal flag. Valid values: 
-NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically  
-NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically.
+        :param _RenewFlag: Auto-renewal flag. Valid values: 
+NOTIFY_AND_MANUAL_RENEW: Notify when the subscription is about to expire, but do not renew automatically.  
+NOTIFY_AND_AUTO_RENEW: Notify when the subscription is about to expire and renew automatically. DISABLE_NOTIFY_AND_MANUAL_RENEW: Do not renew automatically or send notifications.
         :type RenewFlag: str
-        :param _LoginSettings: Instance login settings.
+        :param _LoginSettings: Instance login setting.
         :type LoginSettings: :class:`tencentcloud.lighthouse.v20200324.models.LoginSettings`
         :param _InstanceState: Instance status. Valid values: 
-<li>PENDING: Creating</li><li>LAUNCH_FAILED: Failed to create</li><li>RUNNING: Running</li><li>STOPPED: Shut down</li><li>STARTING: Starting up</li><li>STOPPING: Shutting down</li><li>REBOOTING: Restarting</li><li>SHUTDOWN: Shutdown and to be terminated</li><li>TERMINATING: Terminating</li><li>DELETING: Deleting</li><li>FREEZING: Frozen</li><li>ENTER_RESCUE_MODE: Entering the rescue mode</li><li>RESCUE_MODE: Rescue mode</li><li>EXIT_RESCUE_MODE: Exiting from the rescue mode</li>
+<li>PENDING: Creating</li><li>LAUNCH_FAILED: Failed to create</li><li>RUNNING: Running</li><li>STOPPED: Shut down</li><li>STARTING: Starting up</li><li>STOPPING: Shutting down</li><li>REBOOTING: Restarting</li><li>SHUTDOWN: Shutdown and to be terminated</li><li>TERMINATING: Terminating</li><li>DELETING: Deleting</li><li>FREEZING: Frozen</li><li>ENTER_RESCUE_MODE: Entering the rescue mode</li><li>RESCUE_MODE: Rescue mode</li><li>EXIT_RESCUE_MODE: Exiting the rescue mode</li>
         :type InstanceState: str
-        :param _Uuid: Globally unique ID of instance.
+        :param _Uuid: Globally unique ID of the instance.
         :type Uuid: str
-        :param _LatestOperation: Last instance operation, such as `StopInstances` and `ResetInstance`. Note: this field may return null, indicating that no valid values can be obtained.
+        :param _LatestOperation: Latest operation on the instance, such as StopInstances and ResetInstance. Note: This field may return null, indicating that no valid values can be obtained.
         :type LatestOperation: str
-        :param _LatestOperationState: Last instance operation status. Valid values: 
-SUCCESS: operation succeeded 
-OPERATING: the operation is being executed 
-FAILED: operation failed 
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _LatestOperationState: Status of the latest operation on the instance. Valid values: 
+SUCCESS: The operation succeeded. 
+OPERATING: The operation is in progress. 
+FAILED: The operation failed. 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type LatestOperationState: str
-        :param _LatestOperationRequestId: Unique request ID for the last operation of the instance. 
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _LatestOperationRequestId: Unique request ID of the latest operation on the instance. 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type LatestOperationRequestId: str
-        :param _IsolatedTime: Isolation time according to ISO 8601 standard. UTC time is used. 
+        :param _LatestOperationStartedTime: Start time of the latest operation on the instance.
+        :type LatestOperationStartedTime: str
+        :param _IsolatedTime: Isolation time in UTC, formatted according to the ISO 8601 standard. 
 Format: YYYY-MM-DDThh:mm:ssZ.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type IsolatedTime: str
-        :param _CreatedTime: Creation time according to ISO 8601 standard. UTC time is used. 
+        :param _CreatedTime: Creation time in UTC, formatted according to the ISO 8601 standard. 
 Format: YYYY-MM-DDThh:mm:ssZ.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedTime: str
-        :param _ExpiredTime: Expiration time according to ISO 8601 standard. UTC time is used. 
+        :param _ExpiredTime: Expiration time in UTC, formatted according to the ISO 8601 standard. 
 Format: YYYY-MM-DDThh:mm:ssZ.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type ExpiredTime: str
-        :param _PlatformType: OS type, such as LINUX_UNIX and WINDOWS.
+        :param _PlatformType: Operating system platform type, such as LINUX_UNIX and WINDOWS.
         :type PlatformType: str
-        :param _Platform: OS type.
+        :param _Platform: Operating system platform.
         :type Platform: str
-        :param _OsName: OS name.
+        :param _OsName: Operating system name.
         :type OsName: str
         :param _Zone: AZ.
         :type Zone: str
-        :param _Tags: The list of tags associated with the instance
+        :param _Tags: List of tags bound to the instance.
         :type Tags: list of Tag
-        :param _InstanceRestrictState: Obtain instance status
-<li>NORMAL: The instance is normal</li><li>NETWORK_RESTRICT: The instance is blocked from the network.</li>
+        :param _InstanceRestrictState: Instance ban status. Valid values:
+<li>NORMAL: The instance is normal.</li><li>NETWORK_RESTRICT: The instance is banned from network access.</li>
         :type InstanceRestrictState: str
+        :param _InitInvocationId: Invocation ID of the TAT command to be automatically executed after the instance is created.
+        :type InitInvocationId: str
+        :param _InstanceViolationDetail: Instance violation details.
+        :type InstanceViolationDetail: :class:`tencentcloud.lighthouse.v20200324.models.InstanceViolationDetail`
         """
         self._InstanceId = None
         self._BundleId = None
@@ -9723,6 +9772,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._LatestOperation = None
         self._LatestOperationState = None
         self._LatestOperationRequestId = None
+        self._LatestOperationStartedTime = None
         self._IsolatedTime = None
         self._CreatedTime = None
         self._ExpiredTime = None
@@ -9732,6 +9782,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._Zone = None
         self._Tags = None
         self._InstanceRestrictState = None
+        self._InitInvocationId = None
+        self._InstanceViolationDetail = None
 
     @property
     def InstanceId(self):
@@ -9746,7 +9798,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def BundleId(self):
-        r"""Package ID.
+        r"""Bundle ID.
         :rtype: str
         """
         return self._BundleId
@@ -9768,7 +9820,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CPU(self):
-        r"""Number of instance CPU cores.
+        r"""Number of CPU cores for the instance, in cores.
         :rtype: int
         """
         return self._CPU
@@ -9779,7 +9831,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Memory(self):
-        r"""Instance memory capacity in GB.
+        r"""Instance memory capacity, in GB.
         :rtype: int
         """
         return self._Memory
@@ -9802,7 +9854,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def InstanceChargeType(self):
         r"""Instance billing mode. Valid values: 
-PREPAID: prepaid (i.e., monthly subscription).
+PREPAID: prepaid, that is, monthly or yearly subscription.
         :rtype: str
         """
         return self._InstanceChargeType
@@ -9824,8 +9876,8 @@ PREPAID: prepaid (i.e., monthly subscription).
 
     @property
     def PrivateAddresses(self):
-        r"""Private IP of instance primary ENI. 
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Private IP of the instance's primary NIC. 
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: list of str
         """
         return self._PrivateAddresses
@@ -9836,8 +9888,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PublicAddresses(self):
-        r"""Public IP of instance primary ENI. 
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Public IP of the instance's primary NIC. 
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: list of str
         """
         return self._PublicAddresses
@@ -9859,9 +9911,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RenewFlag(self):
-        r"""Auto-Renewal flag. Valid values: 
-NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically  
-NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically.
+        r"""Auto-renewal flag. Valid values: 
+NOTIFY_AND_MANUAL_RENEW: Notify when the subscription is about to expire, but do not renew automatically.  
+NOTIFY_AND_AUTO_RENEW: Notify when the subscription is about to expire and renew automatically. DISABLE_NOTIFY_AND_MANUAL_RENEW: Do not renew automatically or send notifications.
         :rtype: str
         """
         return self._RenewFlag
@@ -9872,7 +9924,7 @@ NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically.
 
     @property
     def LoginSettings(self):
-        r"""Instance login settings.
+        r"""Instance login setting.
         :rtype: :class:`tencentcloud.lighthouse.v20200324.models.LoginSettings`
         """
         return self._LoginSettings
@@ -9884,7 +9936,7 @@ NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically.
     @property
     def InstanceState(self):
         r"""Instance status. Valid values: 
-<li>PENDING: Creating</li><li>LAUNCH_FAILED: Failed to create</li><li>RUNNING: Running</li><li>STOPPED: Shut down</li><li>STARTING: Starting up</li><li>STOPPING: Shutting down</li><li>REBOOTING: Restarting</li><li>SHUTDOWN: Shutdown and to be terminated</li><li>TERMINATING: Terminating</li><li>DELETING: Deleting</li><li>FREEZING: Frozen</li><li>ENTER_RESCUE_MODE: Entering the rescue mode</li><li>RESCUE_MODE: Rescue mode</li><li>EXIT_RESCUE_MODE: Exiting from the rescue mode</li>
+<li>PENDING: Creating</li><li>LAUNCH_FAILED: Failed to create</li><li>RUNNING: Running</li><li>STOPPED: Shut down</li><li>STARTING: Starting up</li><li>STOPPING: Shutting down</li><li>REBOOTING: Restarting</li><li>SHUTDOWN: Shutdown and to be terminated</li><li>TERMINATING: Terminating</li><li>DELETING: Deleting</li><li>FREEZING: Frozen</li><li>ENTER_RESCUE_MODE: Entering the rescue mode</li><li>RESCUE_MODE: Rescue mode</li><li>EXIT_RESCUE_MODE: Exiting the rescue mode</li>
         :rtype: str
         """
         return self._InstanceState
@@ -9895,7 +9947,7 @@ NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically.
 
     @property
     def Uuid(self):
-        r"""Globally unique ID of instance.
+        r"""Globally unique ID of the instance.
         :rtype: str
         """
         return self._Uuid
@@ -9906,7 +9958,7 @@ NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically.
 
     @property
     def LatestOperation(self):
-        r"""Last instance operation, such as `StopInstances` and `ResetInstance`. Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Latest operation on the instance, such as StopInstances and ResetInstance. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._LatestOperation
@@ -9917,11 +9969,11 @@ NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically.
 
     @property
     def LatestOperationState(self):
-        r"""Last instance operation status. Valid values: 
-SUCCESS: operation succeeded 
-OPERATING: the operation is being executed 
-FAILED: operation failed 
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Status of the latest operation on the instance. Valid values: 
+SUCCESS: The operation succeeded. 
+OPERATING: The operation is in progress. 
+FAILED: The operation failed. 
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._LatestOperationState
@@ -9932,8 +9984,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LatestOperationRequestId(self):
-        r"""Unique request ID for the last operation of the instance. 
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Unique request ID of the latest operation on the instance. 
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._LatestOperationRequestId
@@ -9943,10 +9995,20 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._LatestOperationRequestId = LatestOperationRequestId
 
     @property
+    def LatestOperationStartedTime(self):
+        r"""Start time of the latest operation on the instance.
+        :rtype: str
+        """
+        return self._LatestOperationStartedTime
+
+    @LatestOperationStartedTime.setter
+    def LatestOperationStartedTime(self, LatestOperationStartedTime):
+        self._LatestOperationStartedTime = LatestOperationStartedTime
+
+    @property
     def IsolatedTime(self):
-        r"""Isolation time according to ISO 8601 standard. UTC time is used. 
+        r"""Isolation time in UTC, formatted according to the ISO 8601 standard. 
 Format: YYYY-MM-DDThh:mm:ssZ.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._IsolatedTime
@@ -9957,9 +10019,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        r"""Creation time according to ISO 8601 standard. UTC time is used. 
+        r"""Creation time in UTC, formatted according to the ISO 8601 standard. 
 Format: YYYY-MM-DDThh:mm:ssZ.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CreatedTime
@@ -9970,9 +10031,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpiredTime(self):
-        r"""Expiration time according to ISO 8601 standard. UTC time is used. 
+        r"""Expiration time in UTC, formatted according to the ISO 8601 standard. 
 Format: YYYY-MM-DDThh:mm:ssZ.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ExpiredTime
@@ -9983,7 +10043,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PlatformType(self):
-        r"""OS type, such as LINUX_UNIX and WINDOWS.
+        r"""Operating system platform type, such as LINUX_UNIX and WINDOWS.
         :rtype: str
         """
         return self._PlatformType
@@ -9994,7 +10054,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Platform(self):
-        r"""OS type.
+        r"""Operating system platform.
         :rtype: str
         """
         return self._Platform
@@ -10005,7 +10065,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OsName(self):
-        r"""OS name.
+        r"""Operating system name.
         :rtype: str
         """
         return self._OsName
@@ -10027,7 +10087,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        r"""The list of tags associated with the instance
+        r"""List of tags bound to the instance.
         :rtype: list of Tag
         """
         return self._Tags
@@ -10038,8 +10098,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceRestrictState(self):
-        r"""Obtain instance status
-<li>NORMAL: The instance is normal</li><li>NETWORK_RESTRICT: The instance is blocked from the network.</li>
+        r"""Instance ban status. Valid values:
+<li>NORMAL: The instance is normal.</li><li>NETWORK_RESTRICT: The instance is banned from network access.</li>
         :rtype: str
         """
         return self._InstanceRestrictState
@@ -10047,6 +10107,28 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @InstanceRestrictState.setter
     def InstanceRestrictState(self, InstanceRestrictState):
         self._InstanceRestrictState = InstanceRestrictState
+
+    @property
+    def InitInvocationId(self):
+        r"""Invocation ID of the TAT command to be automatically executed after the instance is created.
+        :rtype: str
+        """
+        return self._InitInvocationId
+
+    @InitInvocationId.setter
+    def InitInvocationId(self, InitInvocationId):
+        self._InitInvocationId = InitInvocationId
+
+    @property
+    def InstanceViolationDetail(self):
+        r"""Instance violation details.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstanceViolationDetail`
+        """
+        return self._InstanceViolationDetail
+
+    @InstanceViolationDetail.setter
+    def InstanceViolationDetail(self, InstanceViolationDetail):
+        self._InstanceViolationDetail = InstanceViolationDetail
 
 
     def _deserialize(self, params):
@@ -10074,6 +10156,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._LatestOperation = params.get("LatestOperation")
         self._LatestOperationState = params.get("LatestOperationState")
         self._LatestOperationRequestId = params.get("LatestOperationRequestId")
+        self._LatestOperationStartedTime = params.get("LatestOperationStartedTime")
         self._IsolatedTime = params.get("IsolatedTime")
         self._CreatedTime = params.get("CreatedTime")
         self._ExpiredTime = params.get("ExpiredTime")
@@ -10088,6 +10171,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._InstanceRestrictState = params.get("InstanceRestrictState")
+        self._InitInvocationId = params.get("InitInvocationId")
+        if params.get("InstanceViolationDetail") is not None:
+            self._InstanceViolationDetail = InstanceViolationDetail()
+            self._InstanceViolationDetail._deserialize(params.get("InstanceViolationDetail"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10537,20 +10624,101 @@ class InstanceTrafficPackage(AbstractModel):
         
 
 
-class InternetAccessible(AbstractModel):
-    r"""This describes the internet accessibility of the instance created by a launch configuration and declares the internet usage billing method of the instance and the maximum bandwidth
+class InstanceViolationDetail(AbstractModel):
+    r"""Instance violation details.
 
     """
 
     def __init__(self):
         r"""
-        :param _InternetChargeType: Network billing mode. Valid values:
-<li>Bill by traffic package: TRAFFIC_POSTPAID_BY_HOUR</li>
-<li>Bill by bandwidth: BANDWIDTH_POSTPAID_BY_HOUR</li>
+        :param _Source:  Source: RESTRICT: Banned; FREEZW: Frozen.
+        :type Source: str
+        :param _State: Whether self-service unblocking is allowed. 1: Yes; 2: No.
+        :type State: str
+        :param _Reason: Violation type.
+        :type Reason: str
+        :param _Content: Violation content (URL and associated domain name).
+        :type Content: str
+        """
+        self._Source = None
+        self._State = None
+        self._Reason = None
+        self._Content = None
+
+    @property
+    def Source(self):
+        r""" Source: RESTRICT: Banned; FREEZW: Frozen.
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def State(self):
+        r"""Whether self-service unblocking is allowed. 1: Yes; 2: No.
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Reason(self):
+        r"""Violation type.
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Content(self):
+        r"""Violation content (URL and associated domain name).
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Source = params.get("Source")
+        self._State = params.get("State")
+        self._Reason = params.get("Reason")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InternetAccessible(AbstractModel):
+    r"""Describes the public network accessibility of instances created with the launch configuration, and declares the public network billing mode and maximum bandwidth of the instance.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InternetChargeType: Network billing type. Valid values:
+<li>Pay-as-you-go by traffic: TRAFFIC_POSTPAID_BY_HOUR</li>
+<li>Pay-as-you-go by bandwidth: BANDWIDTH_POSTPAID_BY_HOUR</li>
         :type InternetChargeType: str
-        :param _InternetMaxBandwidthOut: Public network outbound bandwidth cap in Mbps.
+        :param _InternetMaxBandwidthOut: Maximum outbound public bandwidth, in the unit of Mbps.
         :type InternetMaxBandwidthOut: int
-        :param _PublicIpAssigned: Whether to assign a public IP.
+        :param _PublicIpAssigned: Indicates whether a public IP is assigned.
         :type PublicIpAssigned: bool
         """
         self._InternetChargeType = None
@@ -10559,9 +10727,9 @@ class InternetAccessible(AbstractModel):
 
     @property
     def InternetChargeType(self):
-        r"""Network billing mode. Valid values:
-<li>Bill by traffic package: TRAFFIC_POSTPAID_BY_HOUR</li>
-<li>Bill by bandwidth: BANDWIDTH_POSTPAID_BY_HOUR</li>
+        r"""Network billing type. Valid values:
+<li>Pay-as-you-go by traffic: TRAFFIC_POSTPAID_BY_HOUR</li>
+<li>Pay-as-you-go by bandwidth: BANDWIDTH_POSTPAID_BY_HOUR</li>
         :rtype: str
         """
         return self._InternetChargeType
@@ -10572,7 +10740,7 @@ class InternetAccessible(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
-        r"""Public network outbound bandwidth cap in Mbps.
+        r"""Maximum outbound public bandwidth, in the unit of Mbps.
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -10583,7 +10751,7 @@ class InternetAccessible(AbstractModel):
 
     @property
     def PublicIpAssigned(self):
-        r"""Whether to assign a public IP.
+        r"""Indicates whether a public IP is assigned.
         :rtype: bool
         """
         return self._PublicIpAssigned
@@ -10952,20 +11120,20 @@ For Windows instances, the password must contain 12 to 30 characters of the foll
 
 
 class LoginSettings(AbstractModel):
-    r"""Describes login settings of an instance.
+    r"""Describe the instance login related configuration and information.
 
     """
 
     def __init__(self):
         r"""
-        :param _KeyIds: Key ID list. After a key is associated, you can use it to access the instance. Note: this field may return [], indicating that no valid values can be obtained.
+        :param _KeyIds: List of key IDs. After a key is associated, you can access the instance by using the corresponding private key. Note: This field may return [], indicating that no valid value can be obtained.
         :type KeyIds: list of str
         """
         self._KeyIds = None
 
     @property
     def KeyIds(self):
-        r"""Key ID list. After a key is associated, you can use it to access the instance. Note: this field may return [], indicating that no valid values can be obtained.
+        r"""List of key IDs. After a key is associated, you can access the instance by using the corresponding private key. Note: This field may return [], indicating that no valid value can be obtained.
         :rtype: list of str
         """
         return self._KeyIds
@@ -13833,7 +14001,7 @@ class SyncBlueprintResponse(AbstractModel):
 
 
 class SystemDisk(AbstractModel):
-    r"""Information on the block device where the operating system is installed, namely the system disk.
+    r"""Describes the information of the block device where the operating system resides, i.e., the system disk.
 
     """
 
@@ -13841,12 +14009,11 @@ class SystemDisk(AbstractModel):
         r"""
         :param _DiskType: System disk type.
 Valid values: 
-<li> LOCAL_BASIC: local disk</li><li> LOCAL_SSD: local SSD disk</li><li> CLOUD_BASIC: HDD cloud disk</li><li> CLOUD_SSD: SSD cloud disk</li><li> CLOUD_PREMIUM: Premium Cloud Storage</li>
+<li> LOCAL_BASIC: local disk</li><li> LOCAL_SSD: local SSD disk</li><li> CLOUD_BASIC: basic cloud disk</li><li> CLOUD_SSD: SSD cloud disk</li><li> CLOUD_PREMIUM: premium cloud disk</li>
         :type DiskType: str
-        :param _DiskSize: System disk size in GB.
+        :param _DiskSize: System disk size, in the unit of GB.
         :type DiskSize: int
         :param _DiskId: System disk ID.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type DiskId: str
         """
         self._DiskType = None
@@ -13857,7 +14024,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def DiskType(self):
         r"""System disk type.
 Valid values: 
-<li> LOCAL_BASIC: local disk</li><li> LOCAL_SSD: local SSD disk</li><li> CLOUD_BASIC: HDD cloud disk</li><li> CLOUD_SSD: SSD cloud disk</li><li> CLOUD_PREMIUM: Premium Cloud Storage</li>
+<li> LOCAL_BASIC: local disk</li><li> LOCAL_SSD: local SSD disk</li><li> CLOUD_BASIC: basic cloud disk</li><li> CLOUD_SSD: SSD cloud disk</li><li> CLOUD_PREMIUM: premium cloud disk</li>
         :rtype: str
         """
         return self._DiskType
@@ -13868,7 +14035,7 @@ Valid values:
 
     @property
     def DiskSize(self):
-        r"""System disk size in GB.
+        r"""System disk size, in the unit of GB.
         :rtype: int
         """
         return self._DiskSize
@@ -13880,7 +14047,6 @@ Valid values:
     @property
     def DiskId(self):
         r"""System disk ID.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._DiskId
@@ -13905,15 +14071,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class Tag(AbstractModel):
-    r"""Information on tags
+    r"""Tag.
 
     """
 
     def __init__(self):
         r"""
-        :param _Key: Tag key
+        :param _Key: Tag key.
         :type Key: str
-        :param _Value: Tag value
+        :param _Value: Tag value.
         :type Value: str
         """
         self._Key = None
@@ -13921,7 +14087,7 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
-        r"""Tag key
+        r"""Tag key.
         :rtype: str
         """
         return self._Key
@@ -13932,7 +14098,7 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
-        r"""Tag value
+        r"""Tag value.
         :rtype: str
         """
         return self._Value

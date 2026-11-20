@@ -49,6 +49,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ControlVoiceConversation(self, request):
+        r"""After a conversation task starts successfully, use this API to control it.
+
+        :param request: Request instance for ControlVoiceConversation.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.ControlVoiceConversationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.ControlVoiceConversationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ControlVoiceConversation", params, headers=headers)
+            response = json.loads(body)
+            model = models.ControlVoiceConversationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCloudModeration(self, request):
         r"""API description:
         This API is used to enable the cloud moderation feature to complete audio and video slicing, video frame extraction, and audio stream recording in the room, and submit them to the specified moderation supplier for completing the moderation.
@@ -162,6 +185,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateVoiceConversation(self, request):
+        r"""This API is used to create an AI conversation task.
+
+        :param request: Request instance for CreateVoiceConversation.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.CreateVoiceConversationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CreateVoiceConversationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVoiceConversation", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVoiceConversationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCloudModeration(self, request):
         r"""This API is used to stop submission for moderation after the cloud moderation task is successfully started.
 
@@ -245,6 +291,29 @@ class TrtcClient(AbstractClient):
             body = self.call("DeleteCloudTranscription", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCloudTranscriptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteVoiceConversation(self, request):
+        r"""After a conversation task starts successfully, use this API to stop it.
+
+        :param request: Request instance for DeleteVoiceConversation.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DeleteVoiceConversationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DeleteVoiceConversationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteVoiceConversation", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteVoiceConversationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -820,6 +889,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeVoiceConversation(self, request):
+        r"""After a conversation task starts successfully, use this API to query the conversation status. It can be used only while the conversation task is in progress. Querying after the conversation task exits returns an error.
+
+        :param request: Request instance for DescribeVoiceConversation.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeVoiceConversationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeVoiceConversationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVoiceConversation", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVoiceConversationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeWebRecord(self, request):
         r"""Queries the status of a web-page recording task
 
@@ -949,6 +1041,29 @@ class TrtcClient(AbstractClient):
             body = self.call("ModifyCloudSliceTask", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCloudSliceTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyVoiceConversation(self, request):
+        r"""After a conversation task starts successfully, use this API to modify its configuration.
+
+        :param request: Request instance for ModifyVoiceConversation.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.ModifyVoiceConversationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.ModifyVoiceConversationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyVoiceConversation", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyVoiceConversationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

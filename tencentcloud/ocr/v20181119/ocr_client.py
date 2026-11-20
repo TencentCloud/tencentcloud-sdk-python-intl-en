@@ -851,6 +851,29 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def VerifyPdfOcr(self, request):
+        r"""This API is used to recognize entry and exit record PDFs and verify electronic signatures, returning structured entry and exit records and signature verification conclusions.
+
+        :param request: Request instance for VerifyPdfOcr.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.VerifyPdfOcrRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.VerifyPdfOcrResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("VerifyPdfOcr", params, headers=headers)
+            response = json.loads(body)
+            model = models.VerifyPdfOcrResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def VinOCR(self, request):
         r"""This API is used to recognize the vehicle identification number (VIN) in an image.
 

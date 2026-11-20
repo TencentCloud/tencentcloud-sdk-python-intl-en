@@ -680,6 +680,24 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def VerifyPdfOcr(
+            self,
+            request: models.VerifyPdfOcrRequest,
+            opts: Dict = None,
+    ) -> models.VerifyPdfOcrResponse:
+        """
+        This API is used to recognize entry and exit record PDFs and verify electronic signatures, returning structured entry and exit records and signature verification conclusions.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "VerifyPdfOcr"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.VerifyPdfOcrResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def VinOCR(
             self,
             request: models.VinOCRRequest,
