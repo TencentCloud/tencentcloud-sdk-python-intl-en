@@ -133,6 +133,24 @@ class CarClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateMCPToken(
+            self,
+            request: models.CreateMCPTokenRequest,
+            opts: Dict = None,
+    ) -> models.CreateMCPTokenResponse:
+        """
+        This API is used to create an MCP token (issue a token).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMCPToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMCPTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateSession(
             self,
             request: models.CreateSessionRequest,
@@ -403,6 +421,24 @@ class CarClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMCPTokens(
+            self,
+            request: models.DescribeMCPTokensRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMCPTokensResponse:
+        """
+        This API is used to query the MCP Token list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMCPTokens"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMCPTokensResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DestroySession(
             self,
             request: models.DestroySessionRequest,
@@ -506,6 +542,24 @@ class CarClient(AbstractClient):
         kwargs["action"] = "ModifyMobileApplicationInfo"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyMobileApplicationInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RenewMCPToken(
+            self,
+            request: models.RenewMCPTokenRequest,
+            opts: Dict = None,
+    ) -> models.RenewMCPTokenResponse:
+        """
+        This API is used to renew an MCP Token.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RenewMCPToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RenewMCPTokenResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -386,6 +386,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCustomGroup(self, request):
+        r"""This API is used to create a custom group. A custom group is used to centrally manage a set of reusable matching entries. For example, you can save multiple JA3/JA4 TLS fingerprints as a TLS fingerprint group and directly reference the group in security rules, avoiding the need to maintain the same fingerprint list in multiple rules.
+
+        :param request: Request instance for CreateCustomGroup.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateCustomGroupRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateCustomGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCustomGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCustomGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCustomizeErrorPage(self, request):
         r"""This API is used to create a custom response page.
 
@@ -1289,6 +1312,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCustomGroup(self, request):
+        r"""This API is used to delete a specified custom group. If the group is referenced by a rule, deletion is not allowed. Remove the reference first.
+
+        :param request: Request instance for DeleteCustomGroup.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteCustomGroupRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteCustomGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCustomGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCustomGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteDnsRecords(self, request):
         r"""You can use this API to batch delete DNS records.
 
@@ -2148,6 +2194,75 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeCustomErrorPages", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCustomErrorPagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCustomGroup(self, request):
+        r"""This API is used to query the detailed information of a custom group, including all entries in the group (returned with pagination via Limit/Offset). The DescribeCustomGroups list API returns up to the first 500 entries for each group. To obtain all entries, use this API. The GroupId can be obtained from the response of CreateCustomGroup or by querying DescribeCustomGroups.
+
+        :param request: Request instance for DescribeCustomGroup.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeCustomGroupRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeCustomGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCustomGroupReferences(self, request):
+        r"""This API is used to obtain the security policy configuration that uses a custom group.
+
+        :param request: Request instance for DescribeCustomGroupReferences.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeCustomGroupReferencesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeCustomGroupReferencesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomGroupReferences", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomGroupReferencesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCustomGroups(self, request):
+        r"""This API is used to query the list of custom groups under a specified site. This API returns only the first 500 entries of each custom group. To query all entries in a group, use the DescribeSecurityCustomGroup API.
+
+        :param request: Request instance for DescribeCustomGroups.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeCustomGroupsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeCustomGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomGroupsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4434,6 +4549,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyCustomErrorPage", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCustomErrorPageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCustomGroup(self, request):
+        r"""This API is used to modify the content of a custom group. GroupType cannot be modified after creation. When modifying entries in the group, you can specify replacement, append, or removal operations through GroupItemOperation.
+
+        :param request: Request instance for ModifyCustomGroup.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyCustomGroupRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyCustomGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCustomGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCustomGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

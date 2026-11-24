@@ -310,6 +310,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCustomGroup(
+            self,
+            request: models.CreateCustomGroupRequest,
+            opts: Dict = None,
+    ) -> models.CreateCustomGroupResponse:
+        """
+        This API is used to create a custom group. A custom group is used to centrally manage a set of reusable matching entries. For example, you can save multiple JA3/JA4 TLS fingerprints as a TLS fingerprint group and directly reference the group in security rules, avoiding the need to maintain the same fingerprint list in multiple rules.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCustomGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCustomGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCustomizeErrorPage(
             self,
             request: models.CreateCustomizeErrorPageRequest,
@@ -1023,6 +1041,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteCustomGroup(
+            self,
+            request: models.DeleteCustomGroupRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCustomGroupResponse:
+        """
+        This API is used to delete a specified custom group. If the group is referenced by a rule, deletion is not allowed. Remove the reference first.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCustomGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCustomGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteDnsRecords(
             self,
             request: models.DeleteDnsRecordsRequest,
@@ -1701,6 +1737,60 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "DescribeCustomErrorPages"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCustomErrorPagesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCustomGroup(
+            self,
+            request: models.DescribeCustomGroupRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCustomGroupResponse:
+        """
+        This API is used to query the detailed information of a custom group, including all entries in the group (returned with pagination via Limit/Offset). The DescribeCustomGroups list API returns up to the first 500 entries for each group. To obtain all entries, use this API. The GroupId can be obtained from the response of CreateCustomGroup or by querying DescribeCustomGroups.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCustomGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCustomGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCustomGroupReferences(
+            self,
+            request: models.DescribeCustomGroupReferencesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCustomGroupReferencesResponse:
+        """
+        This API is used to obtain the security policy configuration that uses a custom group.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCustomGroupReferences"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCustomGroupReferencesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCustomGroups(
+            self,
+            request: models.DescribeCustomGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCustomGroupsResponse:
+        """
+        This API is used to query the list of custom groups under a specified site. This API returns only the first 500 entries of each custom group. To query all entries in a group, use the DescribeSecurityCustomGroup API.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCustomGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCustomGroupsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3497,6 +3587,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "ModifyCustomErrorPage"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyCustomErrorPageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCustomGroup(
+            self,
+            request: models.ModifyCustomGroupRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCustomGroupResponse:
+        """
+        This API is used to modify the content of a custom group. GroupType cannot be modified after creation. When modifying entries in the group, you can specify replacement, append, or removal operations through GroupItemOperation.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCustomGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCustomGroupResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

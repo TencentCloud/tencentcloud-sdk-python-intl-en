@@ -164,6 +164,29 @@ class CarClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMCPToken(self, request):
+        r"""This API is used to create an MCP token (issue a token).
+
+        :param request: Request instance for CreateMCPToken.
+        :type request: :class:`tencentcloud.car.v20220110.models.CreateMCPTokenRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.CreateMCPTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMCPToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMCPTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateSession(self, request):
         r"""This API is used to create a session. The timeout period of the API is 5 seconds.
 
@@ -509,6 +532,29 @@ class CarClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMCPTokens(self, request):
+        r"""This API is used to query the MCP Token list.
+
+        :param request: Request instance for DescribeMCPTokens.
+        :type request: :class:`tencentcloud.car.v20220110.models.DescribeMCPTokensRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.DescribeMCPTokensResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMCPTokens", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMCPTokensResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DestroySession(self, request):
         r"""This API is used to terminate a session. If cloud-based streaming has been enabled for this session, the cloud-based streaming will end upon session termination.
 
@@ -638,6 +684,29 @@ class CarClient(AbstractClient):
             body = self.call("ModifyMobileApplicationInfo", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyMobileApplicationInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RenewMCPToken(self, request):
+        r"""This API is used to renew an MCP Token.
+
+        :param request: Request instance for RenewMCPToken.
+        :type request: :class:`tencentcloud.car.v20220110.models.RenewMCPTokenRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.RenewMCPTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewMCPToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewMCPTokenResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
