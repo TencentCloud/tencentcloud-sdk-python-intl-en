@@ -104,6 +104,36 @@ class ApplicationConcurrentPackage(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ConcurrentId: <p>Concurrency pack ID</p>
+        :type ConcurrentId: str
+        """
+        self._ConcurrentId = None
+
+    @property
+    def ConcurrentId(self):
+        r"""<p>Concurrency pack ID</p>
+        :rtype: str
+        """
+        return self._ConcurrentId
+
+    @ConcurrentId.setter
+    def ConcurrentId(self, ConcurrentId):
+        self._ConcurrentId = ConcurrentId
+
+
+    def _deserialize(self, params):
+        self._ConcurrentId = params.get("ConcurrentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ApplicationProject(AbstractModel):
     r"""Cloud application project type.
@@ -112,47 +142,41 @@ class ApplicationProject(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: Project ID.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProjectId: <p>Project ID.</p>
         :type ProjectId: str
-        :param _Name: Project name.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Name: <p>Project name.</p>
         :type Name: str
-        :param _Description: Project description.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Description: <p>Project description.</p>
         :type Description: str
-        :param _Type: Concurrency type required for project operation.S1: concurrency for rendering small cloud applications.M1: concurrency for rendering medium cloud applications.L1: concurrency for rendering large cloud applications.L2: concurrency for rendering large cloud applications.XL2: concurrency for rendering extra large cloud applications.MM1_HD: concurrency for performance-based cloud ARM (HD).MM1_FHD: concurrency for performance-based cloud ARM (FHD).Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Type: <p>Concurrency type required for project operation.<br>S1: Small-scale cloud application rendering concurrency<br>M1: Medium cloud application rendering concurrency<br>L1: Large cloud application rendering concurrency<br>L2: Large cloud application rendering concurrency<br>XL2: Ultra-large cloud application rendering concurrency<br>MM1_HD: Performance Cloud ARM concurrency - high-definition<br>MM1_FHD: Performance Cloud ARM concurrency - ultra-high-definition</p>
         :type Type: str
-        :param _ApplicationId: Cloud application ID.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ApplicationId: <p>Cloud Application ID</p>
         :type ApplicationId: str
-        :param _IsPreload: Pre-launch.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _IsPreload: <p>Pre-launch</p>
         :type IsPreload: bool
-        :param _Amount: Number of concurrencies already configured.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Amount: <p>Configured concurrency</p>
         :type Amount: int
-        :param _Using: Number of concurrencies in use.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Using: <p>Number of concurrencies in use</p>
         :type Using: int
-        :param _ApplicationStatus: Application status. NoConcurrent: no concurrency pack configured; Online: activated. Cloud application status: applicationCreating: creating; applicationCreateFail: creation failed; applicationDeleting: deleting; applicationNoConfigured: startup parameters not configured.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ApplicationStatus: <p>Application status: NoConcurrent - no concurrency package configured, Online - launched, other statuses are cloud application status: applicationCreating - creating, applicationCreateFail - creation failed, applicationDeleting - deleting, applicationNoConfigured - startup parameter not configured</p>
         :type ApplicationStatus: str
-        :param _ApplicationParams: Application startup parameters.
-
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ApplicationParams: <p>Application startup parameter</p>
         :type ApplicationParams: str
-        :param _CreateTime: Creation time.
-
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CreateTime: <p>Creation time.</p>
         :type CreateTime: str
-        :param _ApplicationName: Application name.
-
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ApplicationName: <p>Application name</p>
         :type ApplicationName: str
-        :param _Resolution: Resolution, in the format of widthxheight, such as 1920x1080.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Resolution: <p>Resolution, format as "width x height", for example 1920x1080</p>
         :type Resolution: str
-        :param _ProjectType: Project type.SHARED: shared by all applications.EXCLUSIVE (default value): dedicated for one application.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProjectType: <p>Project type.<br>SHARED: Shared by all applications<br>EXCLUSIVE (default value): Dedicated for one application</p>
         :type ProjectType: str
-        :param _Purpose: Purpose.EXPERIENCE: Experience.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Purpose: <p>Purpose.<br>EXPERIENCE: Experience</p>
         :type Purpose: str
-        :param _ApplicationRegions: Application distribution area. Standard areas are as follows. ap-chinese-mainland: Chinese mainland; na-north-america: North America; eu-frankfurt: Frankfurt; ap-mumbai: Mumbai; ap-tokyo: Tokyo; ap-seoul: Seoul; ap-singapore: Singapore; ap-bangkok: Bangkok; ap-hongkong: Hong Kong (China). Fusion areas are as follows. me-middle-east-fusion: Middle East; na-north-america-fusion: North America; sa-south-america-fusion: South America; ap-tokyo-fusion: Tokyo; ap-seoul-fusion: Seoul; eu-frankfurt-fusion: Frankfurt; ap-singapore-fusion: Singapore; ap-hongkong-fusion: Hong Kong (China).Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ApplicationRegions: <p>Application distribution area (Standard zone: ap-chinese-mainland: Chinese mainland, na-north-america: North America, eu-frankfurt: Frankfurt, ap-mumbai: Mumbai, ap-tokyo: Tokyo, ap-seoul: Seoul, ap-singapore: Singapore, ap-bangkok: Bangkok, ap-hongkong: Hong Kong (China). Fusion region: me-middle-east-fusion: Middle East, na-north-america-fusion: North America, sa-south-america-fusion: South America, ap-tokyo-fusion: Tokyo, ap-seoul-fusion: Seoul, eu-frankfurt-fusion: Frankfurt, ap-singapore-fusion: Singapore, ap-hongkong-fusion: Hong Kong (China))</p>
         :type ApplicationRegions: list of str
-        :param _ConcurrentRegions: Concurrency area. Standard areas are as follows. ap-chinese-mainland: Chinese mainland; na-north-america: North America; eu-frankfurt: Frankfurt; ap-mumbai: Mumbai; ap-tokyo: Tokyo; ap-seoul: Seoul; ap-singapore: Singapore; ap-bangkok: Bangkok; ap-hongkong: Hong Kong (China). Fusion areas are as follows. me-middle-east-fusion: Middle East; na-north-america-fusion: North America; sa-south-america-fusion: South America; ap-tokyo-fusion: Tokyo; ap-seoul-fusion: Seoul; eu-frankfurt-fusion: Frankfurt; ap-singapore-fusion: Singapore; ap-hongkong-fusion: Hong Kong (China).Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ConcurrentRegions: <p>Concurrent region (Standard zone: ap-chinese-mainland: Chinese mainland, na-north-america: North America, eu-frankfurt: Frankfurt, ap-mumbai: Mumbai, ap-tokyo: Tokyo, ap-seoul: Seoul, ap-singapore: Singapore, ap-bangkok: Bangkok, ap-hongkong: Hong Kong (China), Fusion region: me-middle-east-fusion: Middle East, na-north-america-fusion: North America, sa-south-america-fusion: South America, ap-tokyo-fusion: Tokyo, ap-seoul-fusion: Seoul, eu-frankfurt-fusion: Frankfurt, ap-singapore-fusion: Singapore, ap-hongkong-fusion: Hong Kong (China))</p>
         :type ConcurrentRegions: list of str
-        :param _ProjectCategory: Project category.DESKTOP: desktop (default value).MOBILE: mobile.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProjectCategory: <p>Project category.<br>DESKTOP: On PC, default value<br>MOBILE: Mobile terminal</p>
         :type ProjectCategory: str
         """
         self._ProjectId = None
@@ -176,7 +200,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
-        r"""Project ID.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Project ID.</p>
         :rtype: str
         """
         return self._ProjectId
@@ -187,7 +211,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        r"""Project name.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Project name.</p>
         :rtype: str
         """
         return self._Name
@@ -198,7 +222,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        r"""Project description.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Project description.</p>
         :rtype: str
         """
         return self._Description
@@ -209,7 +233,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        r"""Concurrency type required for project operation.S1: concurrency for rendering small cloud applications.M1: concurrency for rendering medium cloud applications.L1: concurrency for rendering large cloud applications.L2: concurrency for rendering large cloud applications.XL2: concurrency for rendering extra large cloud applications.MM1_HD: concurrency for performance-based cloud ARM (HD).MM1_FHD: concurrency for performance-based cloud ARM (FHD).Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Concurrency type required for project operation.<br>S1: Small-scale cloud application rendering concurrency<br>M1: Medium cloud application rendering concurrency<br>L1: Large cloud application rendering concurrency<br>L2: Large cloud application rendering concurrency<br>XL2: Ultra-large cloud application rendering concurrency<br>MM1_HD: Performance Cloud ARM concurrency - high-definition<br>MM1_FHD: Performance Cloud ARM concurrency - ultra-high-definition</p>
         :rtype: str
         """
         return self._Type
@@ -220,7 +244,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationId(self):
-        r"""Cloud application ID.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Cloud Application ID</p>
         :rtype: str
         """
         return self._ApplicationId
@@ -231,7 +255,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsPreload(self):
-        r"""Pre-launch.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Pre-launch</p>
         :rtype: bool
         """
         return self._IsPreload
@@ -242,7 +266,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Amount(self):
-        r"""Number of concurrencies already configured.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Configured concurrency</p>
         :rtype: int
         """
         return self._Amount
@@ -253,7 +277,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Using(self):
-        r"""Number of concurrencies in use.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Number of concurrencies in use</p>
         :rtype: int
         """
         return self._Using
@@ -264,7 +288,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationStatus(self):
-        r"""Application status. NoConcurrent: no concurrency pack configured; Online: activated. Cloud application status: applicationCreating: creating; applicationCreateFail: creation failed; applicationDeleting: deleting; applicationNoConfigured: startup parameters not configured.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Application status: NoConcurrent - no concurrency package configured, Online - launched, other statuses are cloud application status: applicationCreating - creating, applicationCreateFail - creation failed, applicationDeleting - deleting, applicationNoConfigured - startup parameter not configured</p>
         :rtype: str
         """
         return self._ApplicationStatus
@@ -275,9 +299,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationParams(self):
-        r"""Application startup parameters.
-
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Application startup parameter</p>
         :rtype: str
         """
         return self._ApplicationParams
@@ -288,9 +310,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        r"""Creation time.
-
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Creation time.</p>
         :rtype: str
         """
         return self._CreateTime
@@ -301,9 +321,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationName(self):
-        r"""Application name.
-
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Application name</p>
         :rtype: str
         """
         return self._ApplicationName
@@ -314,7 +332,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Resolution(self):
-        r"""Resolution, in the format of widthxheight, such as 1920x1080.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Resolution, format as "width x height", for example 1920x1080</p>
         :rtype: str
         """
         return self._Resolution
@@ -325,7 +343,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectType(self):
-        r"""Project type.SHARED: shared by all applications.EXCLUSIVE (default value): dedicated for one application.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Project type.<br>SHARED: Shared by all applications<br>EXCLUSIVE (default value): Dedicated for one application</p>
         :rtype: str
         """
         return self._ProjectType
@@ -336,7 +354,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Purpose(self):
-        r"""Purpose.EXPERIENCE: Experience.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Purpose.<br>EXPERIENCE: Experience</p>
         :rtype: str
         """
         return self._Purpose
@@ -347,7 +365,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationRegions(self):
-        r"""Application distribution area. Standard areas are as follows. ap-chinese-mainland: Chinese mainland; na-north-america: North America; eu-frankfurt: Frankfurt; ap-mumbai: Mumbai; ap-tokyo: Tokyo; ap-seoul: Seoul; ap-singapore: Singapore; ap-bangkok: Bangkok; ap-hongkong: Hong Kong (China). Fusion areas are as follows. me-middle-east-fusion: Middle East; na-north-america-fusion: North America; sa-south-america-fusion: South America; ap-tokyo-fusion: Tokyo; ap-seoul-fusion: Seoul; eu-frankfurt-fusion: Frankfurt; ap-singapore-fusion: Singapore; ap-hongkong-fusion: Hong Kong (China).Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Application distribution area (Standard zone: ap-chinese-mainland: Chinese mainland, na-north-america: North America, eu-frankfurt: Frankfurt, ap-mumbai: Mumbai, ap-tokyo: Tokyo, ap-seoul: Seoul, ap-singapore: Singapore, ap-bangkok: Bangkok, ap-hongkong: Hong Kong (China). Fusion region: me-middle-east-fusion: Middle East, na-north-america-fusion: North America, sa-south-america-fusion: South America, ap-tokyo-fusion: Tokyo, ap-seoul-fusion: Seoul, eu-frankfurt-fusion: Frankfurt, ap-singapore-fusion: Singapore, ap-hongkong-fusion: Hong Kong (China))</p>
         :rtype: list of str
         """
         return self._ApplicationRegions
@@ -358,7 +376,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConcurrentRegions(self):
-        r"""Concurrency area. Standard areas are as follows. ap-chinese-mainland: Chinese mainland; na-north-america: North America; eu-frankfurt: Frankfurt; ap-mumbai: Mumbai; ap-tokyo: Tokyo; ap-seoul: Seoul; ap-singapore: Singapore; ap-bangkok: Bangkok; ap-hongkong: Hong Kong (China). Fusion areas are as follows. me-middle-east-fusion: Middle East; na-north-america-fusion: North America; sa-south-america-fusion: South America; ap-tokyo-fusion: Tokyo; ap-seoul-fusion: Seoul; eu-frankfurt-fusion: Frankfurt; ap-singapore-fusion: Singapore; ap-hongkong-fusion: Hong Kong (China).Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Concurrent region (Standard zone: ap-chinese-mainland: Chinese mainland, na-north-america: North America, eu-frankfurt: Frankfurt, ap-mumbai: Mumbai, ap-tokyo: Tokyo, ap-seoul: Seoul, ap-singapore: Singapore, ap-bangkok: Bangkok, ap-hongkong: Hong Kong (China), Fusion region: me-middle-east-fusion: Middle East, na-north-america-fusion: North America, sa-south-america-fusion: South America, ap-tokyo-fusion: Tokyo, ap-seoul-fusion: Seoul, eu-frankfurt-fusion: Frankfurt, ap-singapore-fusion: Singapore, ap-hongkong-fusion: Hong Kong (China))</p>
         :rtype: list of str
         """
         return self._ConcurrentRegions
@@ -369,7 +387,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectCategory(self):
-        r"""Project category.DESKTOP: desktop (default value).MOBILE: mobile.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Project category.<br>DESKTOP: On PC, default value<br>MOBILE: Mobile terminal</p>
         :rtype: str
         """
         return self._ProjectCategory
@@ -539,17 +557,13 @@ class BackgroundImage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _COSFileId: ID of the COS file.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _COSFileId: ID of the COS file.
         :type COSFileId: str
-        :param _URL: Download URL.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _URL: Download URL.
         :type URL: str
         :param _Name: Name
-
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Name: str
-        :param _CreateTime: Creation time.
-
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CreateTime: Creation Time
         :type CreateTime: str
         """
         self._COSFileId = None
@@ -559,7 +573,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def COSFileId(self):
-        r"""ID of the COS file.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""ID of the COS file.
         :rtype: str
         """
         return self._COSFileId
@@ -570,7 +584,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def URL(self):
-        r"""Download URL.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Download URL.
         :rtype: str
         """
         return self._URL
@@ -582,8 +596,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Name(self):
         r"""Name
-
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Name
@@ -594,9 +606,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        r"""Creation time.
-
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Creation Time
         :rtype: str
         """
         return self._CreateTime
@@ -4841,6 +4851,57 @@ class StopPublishStreamResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Tag(AbstractModel):
+    r"""Tag information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: <p>Tag key</p>
+        :type TagKey: str
+        :param _TagValue: <p>Tag value</p>
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        r"""<p>Tag key</p>
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""<p>Tag value</p>
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UnbindConcurrentPackagesFromProjectRequest(AbstractModel):
     r"""UnbindConcurrentPackagesFromProject request structure.
 
@@ -4928,10 +4989,8 @@ class UserApplicationFileInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _FilePath: Application file path.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type FilePath: str
-        :param _FileState: File status. NO_EXIST: The file does not exist; EXIST: The file exists.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FileState: File status. NO_EXIST: not EXIST; EXIST: exist.
         :type FileState: str
         """
         self._FilePath = None
@@ -4940,7 +4999,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def FilePath(self):
         r"""Application file path.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._FilePath
@@ -4951,8 +5009,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileState(self):
-        r"""File status. NO_EXIST: The file does not exist; EXIST: The file exists.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""File status. NO_EXIST: not EXIST; EXIST: exist.
         :rtype: str
         """
         return self._FileState
@@ -4982,34 +5039,36 @@ class UserApplicationInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: Application ID.
+        :param _ApplicationId: <p>Application Id</p>
         :type ApplicationId: str
-        :param _ApplicationName: Application name.
+        :param _ApplicationName: <p>Application name</p>
         :type ApplicationName: str
-        :param _ApplicationType: Application type (cloud 3D: Application3D; cloud XR: ApplicationXR; cloud Web: ApplicationWeb).
+        :param _ApplicationType: <p>Application type (Cloud 3D: Application3D, Cloud XR: ApplicationXR, Cloud Web: ApplicationWeb)</p>
         :type ApplicationType: str
-        :param _ApplicationExePath: Application program execution path.
+        :param _ApplicationExePath: <p>Program execution path</p>
         :type ApplicationExePath: str
-        :param _ApplicationInterList: Application process list.
+        :param _ApplicationInterList: <p>Application process list</p>
         :type ApplicationInterList: str
-        :param _ApplicationParams: Application startup parameters.
+        :param _ApplicationParams: <p>Application startup parameter</p>
         :type ApplicationParams: str
-        :param _ApplicationRunStatus: Application running status (ApplicationDeleting: application deletion in progress; ApplicationCreateFail: application creation failed; ApplicationCreating: application creation in progress; ApplicationRunning: normal running; ApplicationNoConfigured: main execution program path not configured).
+        :param _ApplicationRunStatus: <p>Application running status (ApplicationDeleting: application deletion in progress; ApplicationCreateFail: application creation failed; ApplicationCreating: application creation in progress; ApplicationRunning: normal running; ApplicationNoConfigured: main execution program path not configured).</p>
         :type ApplicationRunStatus: str
-        :param _ApplicationUpdateStatus: Application update status (ApplicationUpdateCreating: version creation in progress; ApplicationUpdateCreateFail: version creation failed; ApplicationUpdateNoReleased: version to be released; ApplicationUpdateReleased: version release completed; ApplicationUpdateNormal: none).
+        :param _ApplicationUpdateStatus: <p>Application update status (ApplicationUpdateCreating: version creation in progress; ApplicationUpdateCreateFail: version creation failed; ApplicationUpdateNoReleased: version to be released; ApplicationUpdateReleased: version release completed; ApplicationUpdateNormal: none)</p>
         :type ApplicationUpdateStatus: str
-        :param _ApplicationCreateTime: Application creation time.
+        :param _ApplicationCreateTime: <p>Application creation time</p>
         :type ApplicationCreateTime: str
-        :param _ApplicationVersions: List of application versions.
+        :param _ApplicationVersions: <p>Application version list</p>
         :type ApplicationVersions: list of UserApplicationVersion
-        :param _ApplicationBaseInfo: Application basic data.
+        :param _ApplicationBaseInfo: <p>Application basic data</p>
         :type ApplicationBaseInfo: :class:`tencentcloud.car.v20220110.models.ApplicationBaseInfo`
-        :param _ApplicationUpdateProgress: Application update progress.
+        :param _ApplicationUpdateProgress: <p>Application update progress</p>
         :type ApplicationUpdateProgress: int
-        :param _ApplicationNature: Application nature (PUBLIC: public application; PRIVATE: user application).
+        :param _ApplicationNature: <p>Application nature (PUBLIC: public application; PRIVATE: user application)</p>
         :type ApplicationNature: str
-        :param _ApplicationStores: Application repository list.
+        :param _ApplicationStores: <p>Application repository list</p>
         :type ApplicationStores: list of UserApplicationStore
+        :param _ApplicationTags: <p>Application tag</p>
+        :type ApplicationTags: list of Tag
         """
         self._ApplicationId = None
         self._ApplicationName = None
@@ -5025,10 +5084,11 @@ class UserApplicationInfo(AbstractModel):
         self._ApplicationUpdateProgress = None
         self._ApplicationNature = None
         self._ApplicationStores = None
+        self._ApplicationTags = None
 
     @property
     def ApplicationId(self):
-        r"""Application ID.
+        r"""<p>Application Id</p>
         :rtype: str
         """
         return self._ApplicationId
@@ -5039,7 +5099,7 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationName(self):
-        r"""Application name.
+        r"""<p>Application name</p>
         :rtype: str
         """
         return self._ApplicationName
@@ -5050,7 +5110,7 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationType(self):
-        r"""Application type (cloud 3D: Application3D; cloud XR: ApplicationXR; cloud Web: ApplicationWeb).
+        r"""<p>Application type (Cloud 3D: Application3D, Cloud XR: ApplicationXR, Cloud Web: ApplicationWeb)</p>
         :rtype: str
         """
         return self._ApplicationType
@@ -5061,7 +5121,7 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationExePath(self):
-        r"""Application program execution path.
+        r"""<p>Program execution path</p>
         :rtype: str
         """
         return self._ApplicationExePath
@@ -5072,7 +5132,7 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationInterList(self):
-        r"""Application process list.
+        r"""<p>Application process list</p>
         :rtype: str
         """
         return self._ApplicationInterList
@@ -5083,7 +5143,7 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationParams(self):
-        r"""Application startup parameters.
+        r"""<p>Application startup parameter</p>
         :rtype: str
         """
         return self._ApplicationParams
@@ -5094,7 +5154,7 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationRunStatus(self):
-        r"""Application running status (ApplicationDeleting: application deletion in progress; ApplicationCreateFail: application creation failed; ApplicationCreating: application creation in progress; ApplicationRunning: normal running; ApplicationNoConfigured: main execution program path not configured).
+        r"""<p>Application running status (ApplicationDeleting: application deletion in progress; ApplicationCreateFail: application creation failed; ApplicationCreating: application creation in progress; ApplicationRunning: normal running; ApplicationNoConfigured: main execution program path not configured).</p>
         :rtype: str
         """
         return self._ApplicationRunStatus
@@ -5105,7 +5165,7 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationUpdateStatus(self):
-        r"""Application update status (ApplicationUpdateCreating: version creation in progress; ApplicationUpdateCreateFail: version creation failed; ApplicationUpdateNoReleased: version to be released; ApplicationUpdateReleased: version release completed; ApplicationUpdateNormal: none).
+        r"""<p>Application update status (ApplicationUpdateCreating: version creation in progress; ApplicationUpdateCreateFail: version creation failed; ApplicationUpdateNoReleased: version to be released; ApplicationUpdateReleased: version release completed; ApplicationUpdateNormal: none)</p>
         :rtype: str
         """
         return self._ApplicationUpdateStatus
@@ -5116,7 +5176,7 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationCreateTime(self):
-        r"""Application creation time.
+        r"""<p>Application creation time</p>
         :rtype: str
         """
         return self._ApplicationCreateTime
@@ -5127,7 +5187,7 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationVersions(self):
-        r"""List of application versions.
+        r"""<p>Application version list</p>
         :rtype: list of UserApplicationVersion
         """
         return self._ApplicationVersions
@@ -5138,7 +5198,7 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationBaseInfo(self):
-        r"""Application basic data.
+        r"""<p>Application basic data</p>
         :rtype: :class:`tencentcloud.car.v20220110.models.ApplicationBaseInfo`
         """
         return self._ApplicationBaseInfo
@@ -5149,7 +5209,7 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationUpdateProgress(self):
-        r"""Application update progress.
+        r"""<p>Application update progress</p>
         :rtype: int
         """
         return self._ApplicationUpdateProgress
@@ -5160,7 +5220,7 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationNature(self):
-        r"""Application nature (PUBLIC: public application; PRIVATE: user application).
+        r"""<p>Application nature (PUBLIC: public application; PRIVATE: user application)</p>
         :rtype: str
         """
         return self._ApplicationNature
@@ -5171,7 +5231,7 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationStores(self):
-        r"""Application repository list.
+        r"""<p>Application repository list</p>
         :rtype: list of UserApplicationStore
         """
         return self._ApplicationStores
@@ -5179,6 +5239,17 @@ class UserApplicationInfo(AbstractModel):
     @ApplicationStores.setter
     def ApplicationStores(self, ApplicationStores):
         self._ApplicationStores = ApplicationStores
+
+    @property
+    def ApplicationTags(self):
+        r"""<p>Application tag</p>
+        :rtype: list of Tag
+        """
+        return self._ApplicationTags
+
+    @ApplicationTags.setter
+    def ApplicationTags(self, ApplicationTags):
+        self._ApplicationTags = ApplicationTags
 
 
     def _deserialize(self, params):
@@ -5208,6 +5279,12 @@ class UserApplicationInfo(AbstractModel):
                 obj = UserApplicationStore()
                 obj._deserialize(item)
                 self._ApplicationStores.append(obj)
+        if params.get("ApplicationTags") is not None:
+            self._ApplicationTags = []
+            for item in params.get("ApplicationTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ApplicationTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5306,32 +5383,29 @@ class UserApplicationStore(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CosBucket: COS bucket name.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CosBucket: <p>Cos bucket name</p>
         :type CosBucket: str
-        :param _CosRegion: COS bucket region.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CosRegion: <p>Cos Bucket Region</p>
         :type CosRegion: str
-        :param _StoreType: Repository type. LOG: application logs; ARCHIVE: application archive.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _StoreType: <p>Repository type. LOG: application logs; ARCHIVE: application archive.</p>
         :type StoreType: str
-        :param _StoreState: Repository status. ON: enabled; OFF: disabled.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _StoreState: <p>Repository status. ON: enabled; OFF: disabled.</p>
         :type StoreState: str
-        :param _StorePath: Repository path.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _StorePath: <p>Repository path</p><p>Primary path data. If StoreType is ARCHIVE and SubStorePaths is configured, the system default value will be used.</p>
         :type StorePath: str
+        :param _SubStorePaths: <p>Subpath list</p><p>Subpath data (multi-path pattern) supports only ARCHIVE StoreType; up to 25 data entries.</p>
+        :type SubStorePaths: list of str
         """
         self._CosBucket = None
         self._CosRegion = None
         self._StoreType = None
         self._StoreState = None
         self._StorePath = None
+        self._SubStorePaths = None
 
     @property
     def CosBucket(self):
-        r"""COS bucket name.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Cos bucket name</p>
         :rtype: str
         """
         return self._CosBucket
@@ -5342,8 +5416,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CosRegion(self):
-        r"""COS bucket region.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Cos Bucket Region</p>
         :rtype: str
         """
         return self._CosRegion
@@ -5354,8 +5427,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StoreType(self):
-        r"""Repository type. LOG: application logs; ARCHIVE: application archive.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Repository type. LOG: application logs; ARCHIVE: application archive.</p>
         :rtype: str
         """
         return self._StoreType
@@ -5366,8 +5438,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StoreState(self):
-        r"""Repository status. ON: enabled; OFF: disabled.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Repository status. ON: enabled; OFF: disabled.</p>
         :rtype: str
         """
         return self._StoreState
@@ -5378,8 +5449,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StorePath(self):
-        r"""Repository path.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Repository path</p><p>Primary path data. If StoreType is ARCHIVE and SubStorePaths is configured, the system default value will be used.</p>
         :rtype: str
         """
         return self._StorePath
@@ -5388,6 +5458,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def StorePath(self, StorePath):
         self._StorePath = StorePath
 
+    @property
+    def SubStorePaths(self):
+        r"""<p>Subpath list</p><p>Subpath data (multi-path pattern) supports only ARCHIVE StoreType; up to 25 data entries.</p>
+        :rtype: list of str
+        """
+        return self._SubStorePaths
+
+    @SubStorePaths.setter
+    def SubStorePaths(self, SubStorePaths):
+        self._SubStorePaths = SubStorePaths
+
 
     def _deserialize(self, params):
         self._CosBucket = params.get("CosBucket")
@@ -5395,6 +5476,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._StoreType = params.get("StoreType")
         self._StoreState = params.get("StoreState")
         self._StorePath = params.get("StorePath")
+        self._SubStorePaths = params.get("SubStorePaths")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5412,43 +5494,19 @@ class UserApplicationVersion(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationVersionId: Application version ID.
+        :param _ApplicationVersionId: <p>Application version Id</p>
         :type ApplicationVersionId: str
-        :param _ApplicationVersionSize: Application version size.
+        :param _ApplicationVersionSize: <p>Application version size</p>
         :type ApplicationVersionSize: int
-        :param _ApplicationVersionStatus: Application version status (Uploading: uploading; Creating: in creation; CreateFailed: creation failed; Deleting: deleting; Inuse: current version; Normal: to be released; Usable: available).
+        :param _ApplicationVersionStatus: <p>Application version status (Uploading: Creating, Creating: Creating, CreateFailed: Failed to create, Deleting: Deleting, Inuse: Current version, Normal: To be released, Usable: Available)</p>
         :type ApplicationVersionStatus: str
-        :param _ApplicationVersionName: Application version name.
+        :param _ApplicationVersionName: <p>Application version name</p>
         :type ApplicationVersionName: str
-        :param _CreateTime: Application version creation time.
+        :param _CreateTime: <p>Application version creation time</p>
         :type CreateTime: str
-        :param _ApplicationVersionRegions: Region for application version distribution (
-Standard zone:
-ap-chinese-mainland: Chinese mainland
-na-north-america: North America
-eu-frankfurt: Frankfurt
-ap-mumbai: Mumbai
-ap-tokyo: Tokyo
-ap-seoul: Seoul
-ap-singapore: Singapore
-ap-bangkok: Bangkok
-ap-hongkong: Hong Kong (China)
-Integration zone:
-me-middle-east-fusion: Middle East
-na-north-america-fusion: North America
-sa-south-america-fusion: South America
-ap-tokyo-fusion: Tokyo
-ap-seoul-fusion: Seoul
-eu-frankfurt-fusion: Frankfurt
-ap-singapore-fusion: Singapore
-ap-hongkong-fusion: Hong Kong (China)
-).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ApplicationVersionRegions: <p>Application version distribution regions (<br>Standard regions:<br>ap-chinese-mainland: Chinese mainland,<br>na-north-america: North America,<br>eu-frankfurt: Frankfurt,<br>ap-mumbai: Mumbai,<br>ap-tokyo: Tokyo,<br>ap-seoul: Seoul,<br>ap-singapore: Singapore,<br>ap-bangkok: Bangkok,<br>ap-hongkong: Hong Kong (China),<br>Fusion regions:<br>me-middle-east-fusion: Middle East<br>na-north-america-fusion: North America<br>sa-south-america-fusion: South America<br>ap-tokyo-fusion: Tokyo<br>ap-seoul-fusion: Seoul<br>eu-frankfurt-fusion: Frankfurt<br>ap-singapore-fusion: Singapore<br>ap-hongkong-fusion: Hong Kong (China)<br>)</p>
         :type ApplicationVersionRegions: list of str
-        :param _ApplicationVersionUpdateMode: Application version update method.
-FULL: full update.
-INCREMENT: incremental update.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ApplicationVersionUpdateMode: <p>Application version update mode: <br>FULL: Full update, <br>INCREMENT: Incremental update</p>
         :type ApplicationVersionUpdateMode: str
         """
         self._ApplicationVersionId = None
@@ -5461,7 +5519,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationVersionId(self):
-        r"""Application version ID.
+        r"""<p>Application version Id</p>
         :rtype: str
         """
         return self._ApplicationVersionId
@@ -5472,7 +5530,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationVersionSize(self):
-        r"""Application version size.
+        r"""<p>Application version size</p>
         :rtype: int
         """
         return self._ApplicationVersionSize
@@ -5483,7 +5541,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationVersionStatus(self):
-        r"""Application version status (Uploading: uploading; Creating: in creation; CreateFailed: creation failed; Deleting: deleting; Inuse: current version; Normal: to be released; Usable: available).
+        r"""<p>Application version status (Uploading: Creating, Creating: Creating, CreateFailed: Failed to create, Deleting: Deleting, Inuse: Current version, Normal: To be released, Usable: Available)</p>
         :rtype: str
         """
         return self._ApplicationVersionStatus
@@ -5494,7 +5552,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationVersionName(self):
-        r"""Application version name.
+        r"""<p>Application version name</p>
         :rtype: str
         """
         return self._ApplicationVersionName
@@ -5505,7 +5563,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        r"""Application version creation time.
+        r"""<p>Application version creation time</p>
         :rtype: str
         """
         return self._CreateTime
@@ -5516,28 +5574,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationVersionRegions(self):
-        r"""Region for application version distribution (
-Standard zone:
-ap-chinese-mainland: Chinese mainland
-na-north-america: North America
-eu-frankfurt: Frankfurt
-ap-mumbai: Mumbai
-ap-tokyo: Tokyo
-ap-seoul: Seoul
-ap-singapore: Singapore
-ap-bangkok: Bangkok
-ap-hongkong: Hong Kong (China)
-Integration zone:
-me-middle-east-fusion: Middle East
-na-north-america-fusion: North America
-sa-south-america-fusion: South America
-ap-tokyo-fusion: Tokyo
-ap-seoul-fusion: Seoul
-eu-frankfurt-fusion: Frankfurt
-ap-singapore-fusion: Singapore
-ap-hongkong-fusion: Hong Kong (China)
-).
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Application version distribution regions (<br>Standard regions:<br>ap-chinese-mainland: Chinese mainland,<br>na-north-america: North America,<br>eu-frankfurt: Frankfurt,<br>ap-mumbai: Mumbai,<br>ap-tokyo: Tokyo,<br>ap-seoul: Seoul,<br>ap-singapore: Singapore,<br>ap-bangkok: Bangkok,<br>ap-hongkong: Hong Kong (China),<br>Fusion regions:<br>me-middle-east-fusion: Middle East<br>na-north-america-fusion: North America<br>sa-south-america-fusion: South America<br>ap-tokyo-fusion: Tokyo<br>ap-seoul-fusion: Seoul<br>eu-frankfurt-fusion: Frankfurt<br>ap-singapore-fusion: Singapore<br>ap-hongkong-fusion: Hong Kong (China)<br>)</p>
         :rtype: list of str
         """
         return self._ApplicationVersionRegions
@@ -5548,10 +5585,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationVersionUpdateMode(self):
-        r"""Application version update method.
-FULL: full update.
-INCREMENT: incremental update.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Application version update mode: <br>FULL: Full update, <br>INCREMENT: Incremental update</p>
         :rtype: str
         """
         return self._ApplicationVersionUpdateMode
@@ -5586,22 +5620,24 @@ class UserMobileApplicationInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: Application ID.
+        :param _ApplicationId: <p>Application Id</p>
         :type ApplicationId: str
-        :param _ApplicationName: Application name.
+        :param _ApplicationName: <p>Application name</p>
         :type ApplicationName: str
-        :param _ApplicationType: Application type (cloud APK: application APK).
+        :param _ApplicationType: <p>App type (Cloud APK: ApplicationAPK)</p>
         :type ApplicationType: str
-        :param _ApplicationRunStatus: Application running status (ApplicationRunning: normal running; ApplicationNoPackage: no available package).
+        :param _ApplicationRunStatus: <p>Application running status (ApplicationRunning: normal running; ApplicationNoPackage: no available package)</p>
         :type ApplicationRunStatus: str
-        :param _ApplicationUpdateStatus: Application update status (ApplicationUpdateCreating: version creation in progress; ApplicationUpdateCreateFail: version creation failed; ApplicationUpdateNoReleased: version to be released; ApplicationUpdateReleased: version release completed; ApplicationUpdateNormal: none).
+        :param _ApplicationUpdateStatus: <p>Application update status (ApplicationUpdateCreating: version creation in progress; ApplicationUpdateCreateFail: version creation failed; ApplicationUpdateNoReleased: version to be released; ApplicationUpdateReleased: version release completed; ApplicationUpdateNormal: none)</p>
         :type ApplicationUpdateStatus: str
-        :param _ApplicationCreateTime: Application creation time.
+        :param _ApplicationCreateTime: <p>Application creation time</p>
         :type ApplicationCreateTime: str
-        :param _ApplicationVersions: List of application versions.
+        :param _ApplicationVersions: <p>Application version list</p>
         :type ApplicationVersions: list of UserApplicationVersion
-        :param _ApplicationNature: Application nature (PUBLIC: public application; PRIVATE: user application).
+        :param _ApplicationNature: <p>Application nature (PUBLIC: public application; PRIVATE: user application)</p>
         :type ApplicationNature: str
+        :param _ApplicationTags: <p>Application tag</p>
+        :type ApplicationTags: list of Tag
         """
         self._ApplicationId = None
         self._ApplicationName = None
@@ -5611,10 +5647,11 @@ class UserMobileApplicationInfo(AbstractModel):
         self._ApplicationCreateTime = None
         self._ApplicationVersions = None
         self._ApplicationNature = None
+        self._ApplicationTags = None
 
     @property
     def ApplicationId(self):
-        r"""Application ID.
+        r"""<p>Application Id</p>
         :rtype: str
         """
         return self._ApplicationId
@@ -5625,7 +5662,7 @@ class UserMobileApplicationInfo(AbstractModel):
 
     @property
     def ApplicationName(self):
-        r"""Application name.
+        r"""<p>Application name</p>
         :rtype: str
         """
         return self._ApplicationName
@@ -5636,7 +5673,7 @@ class UserMobileApplicationInfo(AbstractModel):
 
     @property
     def ApplicationType(self):
-        r"""Application type (cloud APK: application APK).
+        r"""<p>App type (Cloud APK: ApplicationAPK)</p>
         :rtype: str
         """
         return self._ApplicationType
@@ -5647,7 +5684,7 @@ class UserMobileApplicationInfo(AbstractModel):
 
     @property
     def ApplicationRunStatus(self):
-        r"""Application running status (ApplicationRunning: normal running; ApplicationNoPackage: no available package).
+        r"""<p>Application running status (ApplicationRunning: normal running; ApplicationNoPackage: no available package)</p>
         :rtype: str
         """
         return self._ApplicationRunStatus
@@ -5658,7 +5695,7 @@ class UserMobileApplicationInfo(AbstractModel):
 
     @property
     def ApplicationUpdateStatus(self):
-        r"""Application update status (ApplicationUpdateCreating: version creation in progress; ApplicationUpdateCreateFail: version creation failed; ApplicationUpdateNoReleased: version to be released; ApplicationUpdateReleased: version release completed; ApplicationUpdateNormal: none).
+        r"""<p>Application update status (ApplicationUpdateCreating: version creation in progress; ApplicationUpdateCreateFail: version creation failed; ApplicationUpdateNoReleased: version to be released; ApplicationUpdateReleased: version release completed; ApplicationUpdateNormal: none)</p>
         :rtype: str
         """
         return self._ApplicationUpdateStatus
@@ -5669,7 +5706,7 @@ class UserMobileApplicationInfo(AbstractModel):
 
     @property
     def ApplicationCreateTime(self):
-        r"""Application creation time.
+        r"""<p>Application creation time</p>
         :rtype: str
         """
         return self._ApplicationCreateTime
@@ -5680,7 +5717,7 @@ class UserMobileApplicationInfo(AbstractModel):
 
     @property
     def ApplicationVersions(self):
-        r"""List of application versions.
+        r"""<p>Application version list</p>
         :rtype: list of UserApplicationVersion
         """
         return self._ApplicationVersions
@@ -5691,7 +5728,7 @@ class UserMobileApplicationInfo(AbstractModel):
 
     @property
     def ApplicationNature(self):
-        r"""Application nature (PUBLIC: public application; PRIVATE: user application).
+        r"""<p>Application nature (PUBLIC: public application; PRIVATE: user application)</p>
         :rtype: str
         """
         return self._ApplicationNature
@@ -5699,6 +5736,17 @@ class UserMobileApplicationInfo(AbstractModel):
     @ApplicationNature.setter
     def ApplicationNature(self, ApplicationNature):
         self._ApplicationNature = ApplicationNature
+
+    @property
+    def ApplicationTags(self):
+        r"""<p>Application tag</p>
+        :rtype: list of Tag
+        """
+        return self._ApplicationTags
+
+    @ApplicationTags.setter
+    def ApplicationTags(self, ApplicationTags):
+        self._ApplicationTags = ApplicationTags
 
 
     def _deserialize(self, params):
@@ -5715,6 +5763,12 @@ class UserMobileApplicationInfo(AbstractModel):
                 obj._deserialize(item)
                 self._ApplicationVersions.append(obj)
         self._ApplicationNature = params.get("ApplicationNature")
+        if params.get("ApplicationTags") is not None:
+            self._ApplicationTags = []
+            for item in params.get("ApplicationTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ApplicationTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5732,14 +5786,14 @@ class VideoEncodeConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StreamPushGOPSeconds: Streaming GOP length, in seconds.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _StreamPushGOPSeconds: Push streaming GOP length, in seconds.
         :type StreamPushGOPSeconds: int
         """
         self._StreamPushGOPSeconds = None
 
     @property
     def StreamPushGOPSeconds(self):
-        r"""Streaming GOP length, in seconds.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Push streaming GOP length, in seconds.
         :rtype: int
         """
         return self._StreamPushGOPSeconds

@@ -23,15 +23,6 @@ DRYRUNOPERATION = 'DryRunOperation'
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
-# Billing - The account balance is insufficient.
-FAILEDOPERATION_CHARGENOBALANCE = 'FailedOperation.ChargeNoBalance'
-
-# Billing - The account doesn’t have the payment permission.
-FAILEDOPERATION_CHARGENOPAYRIGHT = 'FailedOperation.ChargeNoPayRight'
-
-# Billing - Invalid billing parameters.
-FAILEDOPERATION_CHARGEPARAMINVALID = 'FailedOperation.ChargeParamInvalid'
-
 # CLS call failed.
 FAILEDOPERATION_CLSCALLFAIL = 'FailedOperation.ClsCallFail'
 

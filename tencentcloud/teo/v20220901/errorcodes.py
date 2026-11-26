@@ -191,6 +191,9 @@ INVALIDPARAMETER_ADVANCEDORIGINROUTINGNOTSUPPORTCURRENTPLANORIGINWHITELIST = 'In
 # The current domain name does not support enabling advanced origin optimization and multi-layer architecture simultaneously.
 INVALIDPARAMETER_ADVANCEDORIGINROUTINGNOTSUPPORTMULTIPLYLAYER = 'InvalidParameter.AdvancedOriginRoutingNotSupportMultiplyLayer'
 
+# You cannot enable advanced origin optimization when adding a domain. Turn off advanced origin optimization and try again.
+INVALIDPARAMETER_ADVANCEDORIGINROUTINGNOTSUPPORTNEWLYADDEDHOST = 'InvalidParameter.AdvancedOriginRoutingNotSupportNewlyAddedHost'
+
 # The current domain name does not support enabling advanced origin optimization and OC switching simultaneously.
 INVALIDPARAMETER_ADVANCEDORIGINROUTINGNOTSUPPORTOCDIRECTORIGIN = 'InvalidParameter.AdvancedOriginRoutingNotSupportOCDirectOrigin'
 
@@ -223,6 +226,9 @@ INVALIDPARAMETER_CACHEKEYQUERYSTRINGTOOMANYVALUE = 'InvalidParameter.CacheKeyQue
 
 # Invalid edge HTTPS certificate configuration. The certificate does not match the domain name.
 INVALIDPARAMETER_CERTNOTMATCHDOMAIN = 'InvalidParameter.CertNotMatchDomain'
+
+# The total length of SAN domain names in the cert exceeds the limit (maximum 4096 bytes).
+INVALIDPARAMETER_CERTSANTOOLONG = 'InvalidParameter.CertSANTooLong'
 
 # Internal error.
 INVALIDPARAMETER_CERTSYSTEMERROR = 'InvalidParameter.CertSystemError'
@@ -464,7 +470,7 @@ INVALIDPARAMETER_INVALIDCONDITIONS = 'InvalidParameter.InvalidConditions'
 # Invalid origin-pull configuration. When the origin server type is COS, the origin server address must be a COS domain name.
 INVALIDPARAMETER_INVALIDCOSDOMAIN = 'InvalidParameter.InvalidCosDomain'
 
-# Invalid domain name. Check input parameters for non-existent domain names.
+# Invalid domain name. Check whether the input parameters contain a domain name that does not exist.
 INVALIDPARAMETER_INVALIDDOMAINS = 'InvalidParameter.InvalidDomains'
 
 # Invalid smart acceleration.
@@ -566,7 +572,7 @@ INVALIDPARAMETER_INVALIDPRIVATEACCESSPARAMS = 'InvalidParameter.InvalidPrivateAc
 # Specify the PrivateAccess parameter value as on/off.
 INVALIDPARAMETER_INVALIDPRIVATEACCESSSWITCH = 'InvalidParameter.InvalidPrivateAccessSwitch'
 
-# Invalid Layer 4 proxy. Check whether a non-existing proxy is passed in the input parameters.
+# Invalid Layer-4 proxy. Check whether the input parameters contain a proxy that does not exist.
 INVALIDPARAMETER_INVALIDPROXIES = 'InvalidParameter.InvalidProxies'
 
 # The package does not support Quic configuration.
@@ -818,7 +824,7 @@ INVALIDPARAMETER_SETTINGINVALIDPARAM = 'InvalidParameter.SettingInvalidParam'
 # The current domain name does not support enabling EdgeOne Shield and cache pre-refresh simultaneously.
 INVALIDPARAMETER_SHIELDNOTSUPPORTHOSTCACHEPREFRESH = 'InvalidParameter.ShieldNotSupportHostCachePrefresh'
 
-# The current domain name does not support enabling EdgeOne Shield and origin protection simultaneously.
+# The current domain name does not support enabling both EdgeOne Shield and origin protection at the same time.
 INVALIDPARAMETER_SHIELDNOTSUPPORTHOSTORIGINWHITELIST = 'InvalidParameter.ShieldNotSupportHostOriginWhitelist'
 
 # The current domain name does not support enabling EdgeOne Shield and smart acceleration simultaneously.
@@ -1034,6 +1040,9 @@ INVALIDPARAMETERVALUE_OWNERSHIPVERIFICATIONNOTPASSED = 'InvalidParameterValue.Ow
 # The page name already exists.
 INVALIDPARAMETERVALUE_PAGENAMEALREADYEXIST = 'InvalidParameterValue.PageNameAlreadyExist'
 
+# The same host record must contain at least one default parsing line. Ensure a default parsing line is enabled for the current host record and try again later.
+INVALIDPARAMETERVALUE_RECORDNEEDDEFAULTLOCATION = 'InvalidParameterValue.RecordNeedDefaultLocation'
+
 # Does not match the specified regular expression.
 INVALIDPARAMETERVALUE_REGEXMISMATCH = 'InvalidParameterValue.RegExMismatch'
 
@@ -1066,6 +1075,9 @@ INVALIDPARAMETERVALUE_TOPLEVELDOMAINNOTSUPPORT = 'InvalidParameterValue.TopLevel
 
 # Custom pages in the trial plan cannot be referenced.
 INVALIDPARAMETERVALUE_TRIALPLANRESPONSEPAGE = 'InvalidParameterValue.TrialPlanResponsePage'
+
+# When multiple resolution records with the same host record type exist, deletion of the only resolution record with a weight value of 0 is not allowed.
+INVALIDPARAMETERVALUE_UNSUPPORTDELETEWEIGHTRECORD = 'InvalidParameterValue.UnSupportDeleteWeightRecord'
 
 # Configuration item error.
 INVALIDPARAMETERVALUE_UNRECOGNIZABLEVALUE = 'InvalidParameterValue.UnrecognizableValue'
@@ -1409,19 +1421,25 @@ OPERATIONDENIED_SWITCHAREACDNPLATFORMREUSE = 'OperationDenied.SwitchAreaCdnPlatf
 # Origin protection configuration is being deployed. Switch the acceleration region after deployment.
 OPERATIONDENIED_SWITCHAREAORIGINPROTECTIONDEPLOYING = 'OperationDenied.SwitchAreaOriginProtectionDeploying'
 
+# Deleting the current accelerated domain will also delete the corresponding CNAME record, which can cause the current host record to lack a default line. Go to modify the resolution route to ensure the current host record has at least one default line, then try again.
+OPERATIONDENIED_UNSUPPORTDELETELOCATIONRECORD = 'OperationDenied.UnSupportDeleteLocationRecord'
+
+# Deleting the current accelerated domain will also delete its CNAME record. This can cause the remaining record weight sum of the current host to be 0. Go to modify the weight configuration and try again.
+OPERATIONDENIED_UNSUPPORTDELETEWEIGHTRECORD = 'OperationDenied.UnSupportDeleteWeightRecord'
+
 # Disabling the origin-pull mutual authentication is not supported now. To disable it, please change the edge HTTPS certificate configuration to 'none'.
 OPERATIONDENIED_UNSUPPORTTOCLOSEUPSTREAMMTLS = 'OperationDenied.UnSupportToCloseUpstreamMTLS'
 
-# Plan not supported.
+# The plan does not support this operation.
 OPERATIONDENIED_UNSUPPORTEDPLAN = 'OperationDenied.UnsupportedPlan'
 
-# Please first update the IP allowlist.
+# Update the IP allowlist first.
 OPERATIONDENIED_UPDATEIPWHITELISTFIRST = 'OperationDenied.UpdateIPWhitelistFirst'
 
 # To enable the origin-pull mutual authentication, please configure the edge HTTPS certificate first.
 OPERATIONDENIED_USEUPSTREAMMTLSNEEDOPENHTTPS = 'OperationDenied.UseUpstreamMTLSNeedOpenHttps'
 
-# A test version is in use. Release the test version to production or roll it back and try again.
+# A test version is in use. Publish the test version to the production environment or roll back the test version and try again.
 OPERATIONDENIED_VERSIONCONTROLISGRAYING = 'OperationDenied.VersionControlIsGraying'
 
 # Version management mode is applied. Operation not allowed.
@@ -1513,6 +1531,9 @@ RESOURCENOTFOUND = 'ResourceNotFound'
 
 # The domain name is not properly accessed via DNSPod. Please try again after DNSPod access.
 RESOURCENOTFOUND_DNSPODDOMAINNOTINACCOUNT = 'ResourceNotFound.DNSPodDomainNotInAccount'
+
+# The reasoning domain name does not exist.
+RESOURCENOTFOUND_INFERENCEDOMAIN = 'ResourceNotFound.InferenceDomain'
 
 # The reasoning service does not exist.
 RESOURCENOTFOUND_INFERENCESERVICE = 'ResourceNotFound.InferenceService'

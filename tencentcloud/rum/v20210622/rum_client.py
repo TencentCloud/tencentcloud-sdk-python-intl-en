@@ -26,79 +26,6 @@ class RumClient(AbstractClient):
     _service = 'rum'
 
 
-    def CreateLogExport(self, request):
-        r"""API domain name: `rum.tencentcloudapi.com`.
-
-        This API is used to create a log download task.
-
-        Default API request rate limit: 20 requests/sec.
-
-        :param request: Request instance for CreateLogExport.
-        :type request: :class:`tencentcloud.rum.v20210622.models.CreateLogExportRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.CreateLogExportResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateLogExport", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateLogExportResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def CreateOfflineLogConfig(self, request):
-        r"""This API is used to create an offline log listener to report offline logs of particular users.
-
-        :param request: Request instance for CreateOfflineLogConfig.
-        :type request: :class:`tencentcloud.rum.v20210622.models.CreateOfflineLogConfigRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.CreateOfflineLogConfigResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateOfflineLogConfig", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateOfflineLogConfigResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def CreateProject(self, request):
-        r"""This API is used to create a RUM application which belongs to a specific team.
-
-        :param request: Request instance for CreateProject.
-        :type request: :class:`tencentcloud.rum.v20210622.models.CreateProjectRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.CreateProjectResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateProject", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateProjectResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateReleaseFile(self, request):
         r"""This API is used to create a file record for the specified project.
 
@@ -145,29 +72,6 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateTawInstance(self, request):
-        r"""This API is used to create a RUM business system.
-
-        :param request: Request instance for CreateTawInstance.
-        :type request: :class:`tencentcloud.rum.v20210622.models.CreateTawInstanceRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.CreateTawInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateTawInstance", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateTawInstanceResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateWhitelist(self, request):
         r"""This API is used to create an allowlist.
 
@@ -205,79 +109,6 @@ class RumClient(AbstractClient):
             body = self.call("DeleteInstance", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteInstanceResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteLogExport(self, request):
-        r"""API domain name: `rum.tencentcloudapi.com`.
-
-        This API is used to delete a log download task.
-
-        Default API request rate limit: 20 requests/sec.
-
-        :param request: Request instance for DeleteLogExport.
-        :type request: :class:`tencentcloud.rum.v20210622.models.DeleteLogExportRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.DeleteLogExportResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteLogExport", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteLogExportResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteOfflineLogConfig(self, request):
-        r"""This API is used to delete an offline RUM log listener. Then, offline logs of particular users will not be reported.
-
-        :param request: Request instance for DeleteOfflineLogConfig.
-        :type request: :class:`tencentcloud.rum.v20210622.models.DeleteOfflineLogConfigRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.DeleteOfflineLogConfigResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteOfflineLogConfig", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteOfflineLogConfigResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteOfflineLogRecord(self, request):
-        r"""This API is used to delete an offline log record.
-
-        :param request: Request instance for DeleteOfflineLogRecord.
-        :type request: :class:`tencentcloud.rum.v20210622.models.DeleteOfflineLogRecordRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.DeleteOfflineLogRecordResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteOfflineLogRecord", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteOfflineLogRecordResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -724,29 +555,6 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeDataPerformanceProject(self, request):
-        r"""This API is used to get the PerformanceProject information.
-
-        :param request: Request instance for DescribeDataPerformanceProject.
-        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataPerformanceProjectRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataPerformanceProjectResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeDataPerformanceProject", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeDataPerformanceProjectResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeDataPvUrlInfo(self, request):
         r"""This API is used to get the PvUrlInfo information.
 
@@ -1108,125 +916,6 @@ class RumClient(AbstractClient):
             body = self.call("DescribeError", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeErrorResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeLogExports(self, request):
-        r"""API domain name: `rum.tencentcloudapi.com`.
-
-        This API is used to get the list of log download tasks.
-
-        Default API request rate limit: 20 requests/sec.
-
-        :param request: Request instance for DescribeLogExports.
-        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeLogExportsRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeLogExportsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeLogExports", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeLogExportsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeLogList(self, request):
-        r"""This API is used to get the log list. It has been deprecated. Use `DescribeRumLogList` instead.
-
-        :param request: Request instance for DescribeLogList.
-        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeLogListRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeLogListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeLogList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeLogListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeOfflineLogConfigs(self, request):
-        r"""This API is used to get the configuration of the set offline log listener and return the unique user ID.
-
-        :param request: Request instance for DescribeOfflineLogConfigs.
-        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeOfflineLogConfigsRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeOfflineLogConfigsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeOfflineLogConfigs", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeOfflineLogConfigsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeOfflineLogRecords(self, request):
-        r"""This API is used to get all (up to 100) offline log records.
-
-        :param request: Request instance for DescribeOfflineLogRecords.
-        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeOfflineLogRecordsRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeOfflineLogRecordsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeOfflineLogRecords", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeOfflineLogRecordsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeOfflineLogs(self, request):
-        r"""This API is used to get the specified offline log.
-
-        :param request: Request instance for DescribeOfflineLogs.
-        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeOfflineLogsRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeOfflineLogsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeOfflineLogs", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeOfflineLogsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

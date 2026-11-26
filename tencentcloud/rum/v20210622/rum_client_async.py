@@ -25,64 +25,6 @@ class RumClient(AbstractClient):
     _endpoint = 'rum.intl.tencentcloudapi.com'
     _service = 'rum'
 
-    async def CreateLogExport(
-            self,
-            request: models.CreateLogExportRequest,
-            opts: Dict = None,
-    ) -> models.CreateLogExportResponse:
-        """
-        API domain name: `rum.tencentcloudapi.com`.
-
-        This API is used to create a log download task.
-
-        Default API request rate limit: 20 requests/sec.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateLogExport"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateLogExportResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def CreateOfflineLogConfig(
-            self,
-            request: models.CreateOfflineLogConfigRequest,
-            opts: Dict = None,
-    ) -> models.CreateOfflineLogConfigResponse:
-        """
-        This API is used to create an offline log listener to report offline logs of particular users.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateOfflineLogConfig"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateOfflineLogConfigResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def CreateProject(
-            self,
-            request: models.CreateProjectRequest,
-            opts: Dict = None,
-    ) -> models.CreateProjectResponse:
-        """
-        This API is used to create a RUM application which belongs to a specific team.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateProject"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateProjectResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def CreateReleaseFile(
             self,
             request: models.CreateReleaseFileRequest,
@@ -119,24 +61,6 @@ class RumClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CreateTawInstance(
-            self,
-            request: models.CreateTawInstanceRequest,
-            opts: Dict = None,
-    ) -> models.CreateTawInstanceResponse:
-        """
-        This API is used to create a RUM business system.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateTawInstance"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateTawInstanceResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def CreateWhitelist(
             self,
             request: models.CreateWhitelistRequest,
@@ -168,64 +92,6 @@ class RumClient(AbstractClient):
         kwargs["action"] = "DeleteInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteInstanceResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteLogExport(
-            self,
-            request: models.DeleteLogExportRequest,
-            opts: Dict = None,
-    ) -> models.DeleteLogExportResponse:
-        """
-        API domain name: `rum.tencentcloudapi.com`.
-
-        This API is used to delete a log download task.
-
-        Default API request rate limit: 20 requests/sec.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteLogExport"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteLogExportResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteOfflineLogConfig(
-            self,
-            request: models.DeleteOfflineLogConfigRequest,
-            opts: Dict = None,
-    ) -> models.DeleteOfflineLogConfigResponse:
-        """
-        This API is used to delete an offline RUM log listener. Then, offline logs of particular users will not be reported.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteOfflineLogConfig"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteOfflineLogConfigResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteOfflineLogRecord(
-            self,
-            request: models.DeleteOfflineLogRecordRequest,
-            opts: Dict = None,
-    ) -> models.DeleteOfflineLogRecordResponse:
-        """
-        This API is used to delete an offline log record.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteOfflineLogRecord"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteOfflineLogRecordResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -573,24 +439,6 @@ class RumClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeDataPerformanceProject(
-            self,
-            request: models.DescribeDataPerformanceProjectRequest,
-            opts: Dict = None,
-    ) -> models.DescribeDataPerformanceProjectResponse:
-        """
-        This API is used to get the PerformanceProject information.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeDataPerformanceProject"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeDataPerformanceProjectResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeDataPvUrlInfo(
             self,
             request: models.DescribeDataPvUrlInfoRequest,
@@ -876,100 +724,6 @@ class RumClient(AbstractClient):
         kwargs["action"] = "DescribeError"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeErrorResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeLogExports(
-            self,
-            request: models.DescribeLogExportsRequest,
-            opts: Dict = None,
-    ) -> models.DescribeLogExportsResponse:
-        """
-        API domain name: `rum.tencentcloudapi.com`.
-
-        This API is used to get the list of log download tasks.
-
-        Default API request rate limit: 20 requests/sec.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeLogExports"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeLogExportsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeLogList(
-            self,
-            request: models.DescribeLogListRequest,
-            opts: Dict = None,
-    ) -> models.DescribeLogListResponse:
-        """
-        This API is used to get the log list. It has been deprecated. Use `DescribeRumLogList` instead.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeLogList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeLogListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeOfflineLogConfigs(
-            self,
-            request: models.DescribeOfflineLogConfigsRequest,
-            opts: Dict = None,
-    ) -> models.DescribeOfflineLogConfigsResponse:
-        """
-        This API is used to get the configuration of the set offline log listener and return the unique user ID.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeOfflineLogConfigs"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeOfflineLogConfigsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeOfflineLogRecords(
-            self,
-            request: models.DescribeOfflineLogRecordsRequest,
-            opts: Dict = None,
-    ) -> models.DescribeOfflineLogRecordsResponse:
-        """
-        This API is used to get all (up to 100) offline log records.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeOfflineLogRecords"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeOfflineLogRecordsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeOfflineLogs(
-            self,
-            request: models.DescribeOfflineLogsRequest,
-            opts: Dict = None,
-    ) -> models.DescribeOfflineLogsResponse:
-        """
-        This API is used to get the specified offline log.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeOfflineLogs"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeOfflineLogsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

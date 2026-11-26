@@ -27,17 +27,17 @@ class TeoClient(AbstractClient):
 
 
     def ApplyFreeCertificate(self, request):
-        r"""This API is used to apply for a free certificate. If you need to proceed with DNS delegated verification or file verification, you can call this API to initiate the certificate application and obtain the corresponding verification content based on the application method. The order for API calls is as follows:.
-        Step 1: Call ApplyFreeCertificate, specify the verification method for free certificate application, and obtain the verification content.
-        Step 2: Configure the corresponding domain as verification content.
-        Step 3: Call CheckFreeCertificateVerification to verify. After verification passes, the free certificate application is completed.
-        Step 4: Call ModifyHostsCertificate to issue a domain certificate configured to use the EdgeOne free certificate.
+        r"""When applying for a free certificate, if you need to apply through DNS delegation verification or file verification, you can call this API to initiate the certificate application and get the corresponding verification content based on the application method. The order in which to call the API is as follows:
+        Step 1: Call ApplyFreeCertificate to specify the verification method for the free certificate application and obtain the verification content.
+        Step 2: Configure the content for the corresponding domain as required for verification.
+        Step 3: Call CheckFreeCertificateVerification for verification. The free certificate application is completed after verification passes.
+        Step 4: Call ModifyHostsCertificate to configure the domain name certificate with an EdgeOne free certificate.
 
-        The application method introduction in the document: [Free Certificate Application Description](https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1).
-        description:
-        - Only CNAME access mode can call this API to specify the free certificate application method. NS/DNSPod hosting access modes use automatic validation to apply for free certificates with no need to call this API.
-        - If you need to switch the free certificate authentication method, you can call this API again by changing the VerificationMethod field to update it.
-        - A domain name can only apply for one free certificate. After calling this API, the backend will trigger the free certificate application task. You need to complete the domain name verification info configuration within 2 days, then finish certificate authentication.
+        For the introduction to application methods, see the referenced document: Free Certificate Application Description (https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1)
+        Description:
+        -Only the CNAME access mode can call this API to specify the free certificate application method. The NS/DNSPod hosting access mode uses automatic validation to apply for a free certificate, with no need to call this API.
+        -If you need to switch the verification method for a free certificate, you can call this API again to update it by changing the VerificationMethod field.
+        -A domain name can only apply for one free certificate. After calling this API, the backend will trigger the free certificate application task. You need to complete the domain name verification info configuration within 2 days, and then complete certificate authentication.
 
         :param request: Request instance for ApplyFreeCertificate.
         :type request: :class:`tencentcloud.teo.v20220901.models.ApplyFreeCertificateRequest`
@@ -60,7 +60,7 @@ class TeoClient(AbstractClient):
 
 
     def BindSecurityTemplateToEntity(self, request):
-        r"""This API is used to bind/unbind a domain name to/from a specific policy template.
+        r"""Operate a security policy template. This API is used to bind or rebind a domain name to a designated policy template, or unbind it from a designated policy template.
 
         :param request: Request instance for BindSecurityTemplateToEntity.
         :type request: :class:`tencentcloud.teo.v20220901.models.BindSecurityTemplateToEntityRequest`
@@ -83,7 +83,7 @@ class TeoClient(AbstractClient):
 
 
     def BindSharedCNAME(self, request):
-        r"""This API is used to bind/unbind a domain name to/from a shared CNAME. It is now only available to beta users.
+        r"""Used to bind or unbind a shared CNAME for an acceleration domain name. This feature is in beta test.
 
         :param request: Request instance for BindSharedCNAME.
         :type request: :class:`tencentcloud.teo.v20220901.models.BindSharedCNAMERequest`
@@ -106,7 +106,7 @@ class TeoClient(AbstractClient):
 
 
     def BindZoneToPlan(self, request):
-        r"""This API is used to bind a site to a plan.
+        r"""Bind the selected site not bound to a package to an existing package.
 
         :param request: Request instance for BindZoneToPlan.
         :type request: :class:`tencentcloud.teo.v20220901.models.BindZoneToPlanRequest`
@@ -129,8 +129,8 @@ class TeoClient(AbstractClient):
 
 
     def CheckCnameStatus(self, request):
-        r"""When the site access type is CNAME, all domain names under the site must configure CNAME records as specified by the CNAME domain assigned by EdgeOne.
-        You can obtain the designated CNAME domain name assigned by EdgeOne for the integration domain through this API, and validate the configuration status of the CNAME for the integration domain through this API.
+        r"""When the site access type is CNAME, all domain names under the site must complete CNAME record configuration as specified by the CNAME domain assigned by EdgeOne.
+        This API is used to obtain the CNAME domain name assigned by EdgeOne for the integrated domain name, and to validate the CNAME configuration status of the integrated domain name.
 
         :param request: Request instance for CheckCnameStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.CheckCnameStatusRequest`
@@ -153,8 +153,8 @@ class TeoClient(AbstractClient):
 
 
     def CheckFreeCertificateVerification(self, request):
-        r"""This API is used to verify a free certificate and obtain the application result. If verified, you can query the free certificate information for the corresponding domain name application through this API. If failed to apply, this API will return the corresponding verification failure message.
-        This API is used to check the free certificate application result after triggering the [ApplyFreeCertificate](https://www.tencentcloud.com/document/product/1552/124807?from_cn_redirect=1) . Once the application is successful, you need to configure through the [ModifyHostsCertificate](https://www.tencentcloud.com/document/product/1552/80764?from_cn_redirect=1) to deploy the free certificate to the acceleration domain.
+        r"""This API is used to verify a free certificate and obtain the application result. If verification is passed, you can query the free certificate information for the corresponding domain through this API. If the application failed, this API will return the corresponding failure description.
+        After triggering the free certificate application API (https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1), you can check the free certificate application result through this API. Once the free certificate application is successful, you need to configure it through the domain certificate configuration API (https://www.tencentcloud.com/document/product/1552/80764?from_cn_redirect=1) to deploy the free certificate to the acceleration domain.
 
         :param request: Request instance for CheckFreeCertificateVerification.
         :type request: :class:`tencentcloud.teo.v20220901.models.CheckFreeCertificateVerificationRequest`
@@ -177,7 +177,7 @@ class TeoClient(AbstractClient):
 
 
     def ConfirmMultiPathGatewayOriginACL(self, request):
-        r"""This API is used to confirm the latest origin IP range is updated to the origin server firewall when the multi-channel security acceleration gateway's origin IP range changes.
+        r"""This API is used to confirm that the latest origin-pull IP ranges have been updated to the origin server firewall when the origin-pull IP ranges of the multi-channel security acceleration gateway change.
 
         :param request: Request instance for ConfirmMultiPathGatewayOriginACL.
         :type request: :class:`tencentcloud.teo.v20220901.models.ConfirmMultiPathGatewayOriginACLRequest`
@@ -200,7 +200,7 @@ class TeoClient(AbstractClient):
 
 
     def ConfirmOriginACLUpdate(self, request):
-        r"""This API is used to confirm that the latest origin ACLs have been updated to the origin server firewall when the origin ACLs change. After confirming the update to the latest version, related change notifications will stop pushing.
+        r"""This API is used to confirm that the latest origin-pull IP ranges have been updated to the origin server firewall when the origin-pull IP ranges change. After confirming the update to the latest origin-pull IP ranges, related change notifications will stop being pushed.
 
         :param request: Request instance for ConfirmOriginACLUpdate.
         :type request: :class:`tencentcloud.teo.v20220901.models.ConfirmOriginACLUpdateRequest`
@@ -223,9 +223,9 @@ class TeoClient(AbstractClient):
 
 
     def CreateAccelerationDomain(self, request):
-        r"""This API is used to create an acceleration domain name.
+        r"""After creating a site, you can create an acceleration domain name through this API.
 
-        For sites connected via the CNAME, if you have not verified the ownership of the domain name, the ownership verification information of the domain name is returned. To verify your ownership of the domain name, see [Ownership Verification](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1).
+        In CNAME mode, if site ownership verification is ongoing, this API will return domain ownership verification info. You can verify domain ownership separately. For details, see [Site/Domain Name Ownership Verification](https://www.tencentcloud.com/document/product/1552/70789?from_cn_redirect=1).
 
         :param request: Request instance for CreateAccelerationDomain.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateAccelerationDomainRequest`
@@ -249,7 +249,7 @@ class TeoClient(AbstractClient):
 
     def CreateAliasDomain(self, request):
         r"""This API is used to create an alias domain name.
-        The feature is only supported by the enterprise plan and is currently in closed beta testing. If you need to use it, please [contact us](https://www.tencentcloud.com/contact-us).
+        This feature is only supported in the enterprise plan and is currently in beta test. To use it, please [contact us](https://www.tencentcloud.com/contact-us).
 
         :param request: Request instance for CreateAliasDomain.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateAliasDomainRequest`
@@ -272,7 +272,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateApplicationProxy(self, request):
-        r"""This API is on an earlier version. If you want to call it, please switch to the latest version [CreateL4Proxy] (https://intl.cloud.tencent.com/document/product/1552/103417?from_cn_redirect=1).
+        r"""This API is on an earlier version. If you want to call it, switch to the latest version to create layer 4 proxy instances (https://www.tencentcloud.com/document/product/1552/103417?from_cn_redirect=1).
 
         :param request: Request instance for CreateApplicationProxy.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateApplicationProxyRequest`
@@ -295,7 +295,8 @@ class TeoClient(AbstractClient):
 
 
     def CreateApplicationProxyRule(self, request):
-        r"""This API is on an earlier version. If you want to call it, please switch to the latest version. For details, see [CreateL4ProxyRules] (https://intl.cloud.tencent.com/document/product/1552/103416?from_cn_redirect=1).
+        r"""This API is on an earlier version. If you want to call it, switch to the latest version. For details, see [Create Layer 4 Proxy Forwarding Rule].
+        ](https://www.tencentcloud.com/document/product/1552/103416?from_cn_redirect=1) .
 
         :param request: Request instance for CreateApplicationProxyRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateApplicationProxyRuleRequest`
@@ -318,7 +319,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateCLSIndex(self, request):
-        r"""This API is used to create key-value indexes for relevant delivered log fields in the corresponding Tencent Cloud CLS log topic for a specified real-time log delivery task (task-id). If such indexes have been created in CLS, this API will append indexes through merging.
+        r"""This API is used to create key-value indexes for delivered log fields in the corresponding Tencent Cloud CLS log topic for a specified real-time log delivery task (task-id). If indexes have been created in CLS, this API will append indexes through merging.
 
         :param request: Request instance for CreateCLSIndex.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateCLSIndexRequest`
@@ -341,7 +342,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateConfigGroupVersion(self, request):
-        r"""In version management mode, this API is used to create a new version of the specified configuration group.
+        r"""In version management mode, this API is used to create a new version of a specified configuration group.
 
         :param request: Request instance for CreateConfigGroupVersion.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateConfigGroupVersionRequest`
@@ -364,7 +365,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateContentIdentifier(self, request):
-        r"""This API is used to create content identifiers, where you can set descriptions, tags, and other information. It is also necessary to bind an enterprise edition package for billing data statistics. A content identifier can only bind one billing package, while a billing package can bind multiple content identifiers. This feature is only available to the allowlist.
+        r"""This API is used to create a content identifier. You can set the description, tag, and other information. At the same time, you need to bind an enterprise package for billing data statistics. A content identifier can only be bound to one billing package, while a billing package can bind multiple content identifiers. This functionality is only available to allowlisted users.
 
         :param request: Request instance for CreateContentIdentifier.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateContentIdentifierRequest`
@@ -433,7 +434,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateDnsRecord(self, request):
-        r"""After creating a site and the site is accessed in NS mode, you can create DNS records through this API.
+        r"""After a site is created and accessed in NS mode, you can create DNS records through this API.
 
         :param request: Request instance for CreateDnsRecord.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateDnsRecordRequest`
@@ -456,7 +457,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateEdgeKVNamespace(self, request):
-        r"""This API is used to create a KV namespace in the specified site.
+        r"""This API is used to create a KV namespace at a specified site.
 
         :param request: Request instance for CreateEdgeKVNamespace.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateEdgeKVNamespaceRequest`
@@ -502,7 +503,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateFunctionReplica(self, request):
-        r"""This API is used to create copies of specified edge functions. After creating copies, when client requests match configured trigger rules or the default domain name, you can access specific function copies by adding EO-Function-Replica-Name:[copy name] to the request header. Each function supports creating two copies by default.
+        r"""This API is used to create copies of a specified edge function. After creating copies, when client requests match the configured trigger rules or default domain name, you can access a specific function copy by adding EO-Function-Replica-Name:[copy name] to the request header. Each function supports creating two copies by default.
 
         :param request: Request instance for CreateFunctionReplica.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateFunctionReplicaRequest`
@@ -525,7 +526,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateFunctionRule(self, request):
-        r"""This API is used to create trigger rules for edge functions. It supports determining whether to execute the function via customized filter conditions. When execution is required, it provides multiple ways to select the target function, including directly specifying, selecting based on client region, and selecting based on weight.
+        r"""Creates a trigger rule for an edge function. It supports customized filter conditions to determine whether to execute a function. When a function needs to be executed, multiple ways are provided to select the target function, including directly specifying, selecting based on the client's associated region, and weight-based selection.
 
         :param request: Request instance for CreateFunctionRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateFunctionRuleRequest`
@@ -548,7 +549,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateInferenceAPIToken(self, request):
-        r"""Create an inference API Token for authenticating access to the inference service. The Token content is returned only once when creating. Each site can create up to 100 tokens.
+        r"""Create an inference API Token for authentication when accessing the inference service. The Token content is returned only once when creating, and each site can create up to 100 tokens.
 
         :param request: Request instance for CreateInferenceAPIToken.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateInferenceAPITokenRequest`
@@ -570,8 +571,35 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateInferenceDomain(self, request):
+        r"""Create an inference service domain name for accessing the inference service through a custom domain name. An inference service supports creating a maximum of 5 custom domain names.
+        After successful creation, complete the following steps to make the domain name function normally for external access:
+        1. To validate the CNAME configuration status of a domain, see the CheckCnameStatus api.
+        2. To verify ownership, refer to the VerifyOwnership API (https://www.tencentcloud.com/document/api/1552/98879?from_cn_redirect=1);
+        3. To configure domain name certificates, refer to the ModifyHostsCertificate api.
+
+        :param request: Request instance for CreateInferenceDomain.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateInferenceDomainRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateInferenceDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInferenceDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateInferenceDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateInferenceService(self, request):
-        r"""This API is used to create an inference service. It allows setting the service name, listening port, container image configuration, and resource configuration. Once created successfully, an inference access address is provided.
+        r"""This API is used to create an inference service. You can set the service name, listening port, container image configuration, and resource configuration. An access address is provided after successful creation.
 
         :param request: Request instance for CreateInferenceService.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateInferenceServiceRequest`
@@ -594,9 +622,9 @@ class TeoClient(AbstractClient):
 
 
     def CreateJustInTimeTranscodeTemplate(self, request):
-        r"""JIT transcoding already provides preset transcoding templates to meet most needs. If there are personalized transcoding requirements, you can create custom transcoding templates through this API, with up to 100 custom transcoding templates allowed.
-        This API is used to ensure the consistency of JIT transcoding effect, avoid video output exceptions caused by EO cache or M3U8 sharding template changes during the process, and templates cannot be modified after creation.
-        This API is used to learn about the detailed capacity of JIT transcoding. EdgeOne video instant processing function introduction (https://www.tencentcloud.com/document/product/1552/111927?from_cn_redirect=1).
+        r"""JIT transcoding already provides preset transcoding templates to meet most needs. For personalized transcoding requirements, you can create custom transcoding templates through this API, with up to 100 custom templates.
+        To ensure consistency of JIT transcoding effects and avoid video output exceptions caused by template changes during EO cache or M3U8 sharding, the template cannot be modified after creation.
+        To learn about JIT transcoding capacity, see EdgeOne Video Instant Processing Function Introduction (https://www.tencentcloud.com/document/product/1552/111927?from_cn_redirect=1).
 
         :param request: Request instance for CreateJustInTimeTranscodeTemplate.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateJustInTimeTranscodeTemplateRequest`
@@ -619,7 +647,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateL4Proxy(self, request):
-        r"""This API is used to create Layer 4 proxy instances.
+        r"""This API is used to create a layer 4 proxy instance.
 
         :param request: Request instance for CreateL4Proxy.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateL4ProxyRequest`
@@ -642,7 +670,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateL4ProxyRules(self, request):
-        r"""This API is used to create Layer 4 proxy instance rules, supporting both individual and batch creation.
+        r"""This API is used to create Layer 4 proxy instance rules and supports individual and batch creation.
 
         :param request: Request instance for CreateL4ProxyRules.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateL4ProxyRulesRequest`
@@ -665,7 +693,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateL7AccRules(self, request):
-        r"""This API is used to create rules in the [rule engine](https://intl.cloud.tencent.com/document/product/1552/70901?from_cn_redirect=1). Batch creation is supported.
+        r"""This API is used to create rules in the [rule engine](https://www.tencentcloud.com/document/product/1552/70901?from_cn_redirect=1), with support for batch creation.
 
         :param request: Request instance for CreateL7AccRules.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateL7AccRulesRequest`
@@ -688,7 +716,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateLoadBalancer(self, request):
-        r"""This API is used to create a LoadBalancer. For details, see [Quickly Create Load Balancers](https://intl.cloud.tencent.com/document/product/1552/104223?from_cn_redirect=1). The load balancing feature is in beta test. If you need to use it, [contact us](https://www.tencentcloud.com/contact-us).
+        r"""This API is used to create a LoadBalancer. For details, see [Quickly Create Load Balancers](https://www.tencentcloud.com/document/product/1552/104223?from_cn_redirect=1). The load balancing feature is in beta test. If you need to use it, [contact us](https://www.tencentcloud.com/contact-us).
 
         :param request: Request instance for CreateLoadBalancer.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateLoadBalancerRequest`
@@ -711,11 +739,11 @@ class TeoClient(AbstractClient):
 
 
     def CreateLogAnalysisDownloadTask(self, request):
-        r"""This API is used to create a log analysis download task. After creation, you can query the download task via the DescribeLogAnalysisDownloadTasks API.
+        r"""This API is used to create a log analysis download task. After creation, you can query the download task through the DescribeLogAnalysisDownloadTasks API.
         Note:
         1. Supports up to 50 million log entries per download.
-        2. Log files are reserved for 3 days.
-        3. When multiple tasks exist at the same time, they are processed sequentially based on task creation time.
+        2. Log files will be retained for 3 days.
+        3. If multiple tasks exist at the same time, they will be processed sequentially based on task creation time.
 
         :param request: Request instance for CreateLogAnalysisDownloadTask.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateLogAnalysisDownloadTaskRequest`
@@ -738,7 +766,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateMultiPathGateway(self, request):
-        r"""Create a multi-channel security acceleration gateway via this API, including Cloud Gateway (gateway created and managed by Tencent Cloud) and private gateway (gateway deployed by users). Query the status using DescribeMultiPathGateway, and creation is successful if the status is online.
+        r"""This API is used to create a multi-channel security acceleration gateway, including Cloud Gateway and Private Gateway. Use the DescribeMultiPathGateway interface to query the status. If the status is online, the creation succeeded.
 
         :param request: Request instance for CreateMultiPathGateway.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateMultiPathGatewayRequest`
@@ -761,7 +789,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateMultiPathGatewayLine(self, request):
-        r"""This API is used to create lines integrated with the multi-channel security acceleration gateway, including EdgeOne Layer-4 proxy and custom lines.
+        r"""This API is used to create lines for integrating with the multi-channel security acceleration gateway, including EdgeOne Layer 4 proxy lines and custom lines.
 
         :param request: Request instance for CreateMultiPathGatewayLine.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateMultiPathGatewayLineRequest`
@@ -784,7 +812,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateMultiPathGatewaySecretKey(self, request):
-        r"""This API creates an access key for the multi-channel security acceleration gateway. Customers use the access key to sign requests for accessing the gateway. Each site can have only one key, which is applicable to all gateways under that site. Query the key via the DescribeMultiPathGatewaySecretKey API.
+        r"""This API is used to create a key for integrating with a multi-channel security acceleration gateway. Customers integrate with the multi-channel security acceleration gateway based on key signatures. Each site contains only one key, which can be used to integrate all gateways under the site. The key can be queried through the DescribeMultiPathGatewaySecretKey API.
 
         :param request: Request instance for CreateMultiPathGatewaySecretKey.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateMultiPathGatewaySecretKeyRequest`
@@ -807,7 +835,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateOriginGroup(self, request):
-        r"""This API is used to create an origin group for easy management. The created origin server group can be used for **adding acceleration domain names** and **layer-4 proxy configuration**.
+        r"""Create an origin server group to manage origin servers by group. The origin server group configured here can be referenced in features such as **adding an acceleration domain name** and **Layer 4 proxy**.
 
         :param request: Request instance for CreateOriginGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateOriginGroupRequest`
@@ -830,8 +858,8 @@ class TeoClient(AbstractClient):
 
 
     def CreatePlan(self, request):
-        r"""If you need to use the EdgeOne product, you must create a billing plan through this interface.
-        > After creating a plan, you need to complete the process of creating a site and binding the plan through [CreateZone](https://intl.cloud.tencent.com/document/product/1552/80719?from_cn_redirect=1), so that the EdgeOne can provide services properly.
+        r"""If you need to use the Edgeone product, you need to create a billing plan through this interface.
+        > After creating a package, you need to complete creating a site and binding the plan through [CreateZone](https://www.tencentcloud.com/document/product/1552/80719?from_cn_redirect=1) before Edgeone can provide services properly.
 
         :param request: Request instance for CreatePlan.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreatePlanRequest`
@@ -854,7 +882,7 @@ class TeoClient(AbstractClient):
 
 
     def CreatePlanForZone(self, request):
-        r"""This API is used to purchase a plan for a new site.
+        r"""Purchase a package for the selected site not bound to a package.
 
         :param request: Request instance for CreatePlanForZone.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreatePlanForZoneRequest`
@@ -877,7 +905,7 @@ class TeoClient(AbstractClient):
 
 
     def CreatePrefetchTask(self, request):
-        r"""This API is used to create a pre-warming task.
+        r"""This API is used to create a preheating task.
 
         :param request: Request instance for CreatePrefetchTask.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreatePrefetchTaskRequest`
@@ -900,9 +928,9 @@ class TeoClient(AbstractClient):
 
 
     def CreatePurgeTask(self, request):
-        r"""When there are resources updated on the origin with the TTL remaining valid, users cannot access the latest resources. In this case, you can purge the cache using this API. There are two methods: <li>Delete: This method deletes the node cache without verification and retrieves the latest resources from the origin when receiving a request.</li><li>Invalidate: This method marks the node cache as invalid and sends a request with the If-None-Match and If-Modified-Since headers to the origin. If the origin responses with 200, the latest resources are retrieved to be cached on the node. If a 304 response is returned, the latest resources are not cached on the node.
+        r"""When origin server resources update but the node cache TTL has not expired, users still access old resources. At this point, use this API to update node resources. The following two methods can trigger updates: <li>Direct deletion: Delete the node cache without any validation. User requests trigger origin-pull.</li><li>Mark expiration: Mark node resources as expired. User requests trigger back-to-origin validation, which sends HTTP conditional requests with If-None-Match and If-Modified-Since headers. If the origin server responds with 200, the node fetches new resources from the origin and updates the cache. If the origin server responds with 304, the cache will not be updated.</li>
 
-        </li>For more details, see [Cache Purge](https://intl.cloud.tencent.com/document/product/1552/70759?from_cn_redirect=1). </li>
+        For details on purging cache tasks, see [Purge Cache](https://www.tencentcloud.com/document/product/1552/70759?from_cn_redirect=1).
 
         :param request: Request instance for CreatePurgeTask.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreatePurgeTaskRequest`
@@ -965,7 +993,8 @@ class TeoClient(AbstractClient):
 
 
     def CreateRule(self, request):
-        r"""This interface is the old version of the rule engine creation interface. EdgeOne has fully upgraded the rule engine related interfaces on January 21, 2025. For details on the new version of the seven-layer acceleration rule creation interface, please refer to [CreateL7AccRules](https://intl.cloud.tencent.com/document/product/1552/115822?from_cn_redirect=1).<p style="color: red;">Note: Starting from January 21, 2025, the old version of the interface will stop updating and iteration. Subsequent new features will only be provided in the new version of the interface, and the original capabilities supported by the old version of the interface will not be affected. To avoid data field conflicts when using the old version of the interface, it is recommended that you migrate to the new version of the rule engine interface as soon as possible. </p>
+        r"""This API is on an earlier version for creating rule engine APIs. EdgeOne comprehensively upgraded the rule engine APIs on January 21, 2025. For details on the new API for creating layer-7 acceleration rules, refer to [CreateL7AccRules](https://www.tencentcloud.com/document/product/1552/115822?from_cn_redirect=1).
+        <p style="color: red;">Note: Starting from January 21, 2025, the old version APIs will stop update and iteration. New features will only be provided by the latest version interface. The existing capacity supported by the old version APIs will not be affected. To avoid data field conflicts when using the old version APIs, migrate to the new version rule engine APIs as soon as possible.</p>
 
         :param request: Request instance for CreateRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateRuleRequest`
@@ -988,7 +1017,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateSecurityAPIResource(self, request):
-        r"""This API is used to create an API resource.
+        r"""Used to create API resources.
 
         :param request: Request instance for CreateSecurityAPIResource.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateSecurityAPIResourceRequest`
@@ -1011,7 +1040,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateSecurityAPIService(self, request):
-        r"""This API is used to create an API service.
+        r"""Used to create an API service.
 
         :param request: Request instance for CreateSecurityAPIService.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateSecurityAPIServiceRequest`
@@ -1034,7 +1063,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateSecurityClientAttester(self, request):
-        r"""This API is used to create client authentication options.
+        r"""Create client authentication options.
 
         :param request: Request instance for CreateSecurityClientAttester.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateSecurityClientAttesterRequest`
@@ -1057,7 +1086,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateSecurityIPGroup(self, request):
-        r"""This API is used to create a security IP group.
+        r"""Create a security IP group
 
         :param request: Request instance for CreateSecurityIPGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateSecurityIPGroupRequest`
@@ -1080,7 +1109,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateSecurityJSInjectionRule(self, request):
-        r"""This API is used to create a JavaScript injection rule.
+        r"""This API is used to create JavaScript injection rules.
 
         :param request: Request instance for CreateSecurityJSInjectionRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateSecurityJSInjectionRuleRequest`
@@ -1103,7 +1132,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateSharedCNAME(self, request):
-        r"""This API is used to create a shared CNAME. It is now only available to beta users.
+        r"""Used to create a shared CNAME. This feature is in beta test.
 
         :param request: Request instance for CreateSharedCNAME.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateSharedCNAMERequest`
@@ -1126,7 +1155,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateWebSecurityTemplate(self, request):
-        r"""This API is used to create a security policy configuration template.
+        r"""Create a security policy configuration template
 
         :param request: Request instance for CreateWebSecurityTemplate.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateWebSecurityTemplateRequest`
@@ -1149,9 +1178,9 @@ class TeoClient(AbstractClient):
 
 
     def CreateZone(self, request):
-        r"""This API is used to create a site. After you create the site, you can connect it to EdgeOne via the CNAME or NS (see [Quick Start](https://intl.cloud.tencent.com/document/product/1552/87601?from_cn_redirect=1)), or connect it without a domain name (see [Quick Access to L4 Proxy Service](https://intl.cloud.tencent.com/document/product/1552/96051?from_cn_redirect=1)).
+        r"""EdgeOne offers three access methods: CNAME, NS, and domainless access. You need to finalize site creation through this API first. For CNAME and NS connected site scenarios, see [Quickly access EdgeOne from scratch](https://www.tencentcloud.com/document/product/1552/87601?from_cn_redirect=1). For domainless access scenarios, see [Quickly enable layer 4 proxy service](https://www.tencentcloud.com/document/product/1552/96051?from_cn_redirect=1).
 
-        If there are already EdgeOne plans under the current account, it is recommended to pass in the `PlanId` to bind the site with the plan directly. If `PlanId` is not passed in, the created site is not activated. You need to call [BindZoneToPlan](https://intl.cloud.tencent.com/document/product/1552/83042?from_cn_redirect=1) to bind the site with a plan. To purchase a plan, please go to the EdgeOne console.
+        > It is recommended to call this API to create a site when a package already exists under the account. Please input `PlanId` in the parameter to directly bind the site to the package. If `PlanId` is not input, the created site will be inactive and unable to provide normal services. You need to complete package binding through [BindZoneToPlan](https://www.tencentcloud.com/document/product/1552/83042?from_cn_redirect=1) before the site can provide services normally. If you currently have no bindable package, go to the console to purchase a package to finalize site creation.
 
         :param request: Request instance for CreateZone.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateZoneRequest`
@@ -1174,7 +1203,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteAccelerationDomains(self, request):
-        r"""This API is used to batch remove accelerated domain names.
+        r"""Delete acceleration domain names in batches.
 
         :param request: Request instance for DeleteAccelerationDomains.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteAccelerationDomainsRequest`
@@ -1197,8 +1226,8 @@ class TeoClient(AbstractClient):
 
 
     def DeleteAliasDomain(self, request):
-        r"""This API is used to delete an alias domain name.
-        The feature is only supported by the enterprise plan and is currently in closed beta testing. If you need to use it, [Contact Us](https://www.tencentcloud.com/contact-us).
+        r"""Delete an alias domain name.
+        This feature is only supported in the enterprise plan and is currently in beta test. To use it, please [contact us](https://www.tencentcloud.com/contact-us).
 
         :param request: Request instance for DeleteAliasDomain.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteAliasDomainRequest`
@@ -1221,7 +1250,8 @@ class TeoClient(AbstractClient):
 
 
     def DeleteApplicationProxy(self, request):
-        r"""This API is on an earlier version. If you want to call it, please switch to the latest version. For details, see [DeleteL4Proxy] (https://intl.cloud.tencent.com/document/product/1552/103415?from_cn_redirect=1).
+        r"""This API is on an earlier version. If you want to call it, switch to the latest version. For details, see Deleting a Layer 4 Proxy Instance.
+        ](https://www.tencentcloud.com/document/product/1552/103415?from_cn_redirect=1) .
 
         :param request: Request instance for DeleteApplicationProxy.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteApplicationProxyRequest`
@@ -1244,7 +1274,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteApplicationProxyRule(self, request):
-        r"""This API is on an earlier version. If you want to call it, please switch to the latest version. For details, see [DeleteL4ProxyRules] (https://intl.cloud.tencent.com/document/product/1552/103414?from_cn_redirect=1).
+        r"""This API is on an earlier version. If you want to call it, switch to the latest version. For details, see Deleting L4 Proxy Rules (https://www.tencentcloud.com/document/product/1552/103414?from_cn_redirect=1).
 
         :param request: Request instance for DeleteApplicationProxyRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteApplicationProxyRuleRequest`
@@ -1267,7 +1297,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteContentIdentifier(self, request):
-        r"""Delete the specified content identifier. This feature is only available to the allowlist.
+        r"""Delete the specified content identifier. The feature is open only in the allowlist.
 
         :param request: Request instance for DeleteContentIdentifier.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteContentIdentifierRequest`
@@ -1336,7 +1366,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteDnsRecords(self, request):
-        r"""You can use this API to batch delete DNS records.
+        r"""You can use this API to delete DNS records in batches.
 
         :param request: Request instance for DeleteDnsRecords.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteDnsRecordsRequest`
@@ -1359,7 +1389,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteEdgeKVNamespace(self, request):
-        r"""This API is used to delete specified KV namespace. Once deleted, all keys in namespace will be cleared and cannot be recovered. If the namespace is being referred by edge function, you need to unbind relationship before it can only be deleted.
+        r"""This API is used to delete a specified KV namespace. After deletion, all key-value pair data in the namespace will be cleared and cannot be recovered. If the namespace is referenced by an edge function, unbind the relationship before deletion.
 
         :param request: Request instance for DeleteEdgeKVNamespace.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteEdgeKVNamespaceRequest`
@@ -1382,7 +1412,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteFunction(self, request):
-        r"""This API is used to delete an edge function. Once deleted, the function cannot be recovered, and associated trigger rules are also deleted.
+        r"""This API is used to delete an edge function. Once deleted, the function cannot be recovered, and associated trigger rules, environment variables, and replicas are also deleted.
 
         :param request: Request instance for DeleteFunction.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteFunctionRequest`
@@ -1405,7 +1435,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteFunctionReplica(self, request):
-        r"""This API is used to delete specified edge function replicas.
+        r"""This API is used to delete a specified edge function replica.
 
         :param request: Request instance for DeleteFunctionReplica.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteFunctionReplicaRequest`
@@ -1451,7 +1481,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteInferenceAPIToken(self, request):
-        r"""This API is used to delete an inference API Token. Once deleted, the Token will expire immediately, and requests for accessing the inference service using it will no longer be accessible.
+        r"""Delete an inference API Token. Once deleted, the Token expires immediately, and requests using it to access the inference service will not pass authentication.
 
         :param request: Request instance for DeleteInferenceAPIToken.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteInferenceAPITokenRequest`
@@ -1474,7 +1504,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteJustInTimeTranscodeTemplates(self, request):
-        r"""This API is used to delete the appropriate just in time transcoding template based on the unique template identifier under the site ID.
+        r"""Delete a just in time transcoding template based on the unique template identifier under the site ID.
 
         :param request: Request instance for DeleteJustInTimeTranscodeTemplates.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteJustInTimeTranscodeTemplatesRequest`
@@ -1497,7 +1527,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteL4Proxy(self, request):
-        r"""This API is used to delete a Layer 4 proxy instance.
+        r"""This API is used to delete a layer 4 proxy instance.
 
         :param request: Request instance for DeleteL4Proxy.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteL4ProxyRequest`
@@ -1520,7 +1550,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteL4ProxyRules(self, request):
-        r"""This API is used to delete Layer 4 proxy forwarding rules, supporting both individual and batch operation.
+        r"""This API is used to delete l4 proxy rules and supports both individual and batch operation.
 
         :param request: Request instance for DeleteL4ProxyRules.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteL4ProxyRulesRequest`
@@ -1543,7 +1573,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteL7AccRules(self, request):
-        r"""This API is used to delete rules of the [rule engine](https://intl.cloud.tencent.com/document/product/1552/70901?from_cn_redirect=1), supporting batch deletion.
+        r"""This API is used to delete rules from the rule engine (https://www.tencentcloud.com/document/product/1552/70901?from_cn_redirect=1). Batch deletion supported.
 
         :param request: Request instance for DeleteL7AccRules.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteL7AccRulesRequest`
@@ -1566,7 +1596,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteLoadBalancer(self, request):
-        r"""This API is used to delete a LoadBalancer. If the LoadBalancer is referenced by other services (for example, Layer-4 proxy), the LoadBalancer cannot be deleted until the reference relationship is removed. The load balancing feature is in beta test. If you need to use it, [contact us](https://www.tencentcloud.com/contact-us).
+        r"""This API is used to delete a load balancing instance. If the load balancing instance is referenced by other services, such as a Layer 4 proxy, it cannot be deleted. Remove the reference relationship first. The load balancer feature is in beta test. If you need to use it, contact us (https://www.tencentcloud.com/online?from_cn_redirect=1-service).
 
         :param request: Request instance for DeleteLoadBalancer.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteLoadBalancerRequest`
@@ -1589,7 +1619,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteMultiPathGateway(self, request):
-        r"""This API is used to delete a multi-channel security acceleration gateway, including private gateways and Cloud Gateways.
+        r"""This API is used to delete multi-channel security acceleration gateways, including private gateways and Cloud Gateways.
 
         :param request: Request instance for DeleteMultiPathGateway.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteMultiPathGatewayRequest`
@@ -1612,7 +1642,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteMultiPathGatewayLine(self, request):
-        r"""This API is used to delete lines integrated with the multi-channel security acceleration gateway. Only custom lines support deletion.
+        r"""This API is used to delete lines integrated with multi-channel security acceleration gateways. Only custom lines support deletion.
 
         :param request: Request instance for DeleteMultiPathGatewayLine.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteMultiPathGatewayLineRequest`
@@ -1635,7 +1665,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteOriginGroup(self, request):
-        r"""This API is used to delete an origin group. Note that an origin group can not be deleted if it is referenced by services (e.g. L4 Proxy, domain name service, load balancing, rule engines).
+        r"""Delete an origin group. If the origin group is still referenced by a service (for example, Layer 4 proxy, DNS, load balancing, or a rule), deletion is not allowed.
 
         :param request: Request instance for DeleteOriginGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteOriginGroupRequest`
@@ -1681,7 +1711,8 @@ class TeoClient(AbstractClient):
 
 
     def DeleteRules(self, request):
-        r"""This interface is the old version of the rule engine deletion interface. EdgeOne has fully upgraded the rule engine related interfaces on January 21, 2025. For details on the new version of the seven-layer acceleration rule deletion interface, please refer to [DeleteL7AccRules](https://intl.cloud.tencent.com/document/product/1552/115821?from_cn_redirect=1).<0>Note: Starting from January 21, 2025, the earlier version API will no longer be updated. Subsequent new features will only be provided in the latest version interface. The original capabilities supported by the earlier version API will not be affected. To avoid field conflicts when using the earlier version API, it is recommended that you migrate to the new version rule engine API as soon as possible.</0>.
+        r"""This API is on an earlier version for deleting rule engine APIs. EdgeOne completed a comprehensive upgrade of rule engine APIs on January 21, 2025. For details on the new API for deleting L7 acceleration rules, see [DeleteL7AccRules](https://www.tencentcloud.com/document/product/1552/115821?from_cn_redirect=1).
+        <p style="color: red;">Note: Starting from January 21, 2025, the old version API will stop update and iteration. New features will only be provided in the new version API, and the existing capabilities supported by the old version API will not be affected. To avoid data field conflicts when using the old version API, migrate to the new version rule engine API as soon as possible.</p>
 
         :param request: Request instance for DeleteRules.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteRulesRequest`
@@ -1704,7 +1735,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteSecurityAPIResource(self, request):
-        r"""This API is used to delete API resources.
+        r"""Used to delete API resources.
 
         :param request: Request instance for DeleteSecurityAPIResource.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityAPIResourceRequest`
@@ -1727,7 +1758,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteSecurityAPIService(self, request):
-        r"""This API is used to delete the API service.
+        r"""Used to delete an API service.
 
         :param request: Request instance for DeleteSecurityAPIService.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityAPIServiceRequest`
@@ -1750,7 +1781,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteSecurityClientAttester(self, request):
-        r"""This API is used to delete client authentication options.
+        r"""Delete client authentication options.
 
         :param request: Request instance for DeleteSecurityClientAttester.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityClientAttesterRequest`
@@ -1773,7 +1804,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteSecurityIPGroup(self, request):
-        r"""This API is used to delete a specified security IP group. Note that the security IP group cannot be deleted if it is referenced in a rule.
+        r"""Delete a specified IP group. If a rule references the IP group, deletion is not allowed.
 
         :param request: Request instance for DeleteSecurityIPGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityIPGroupRequest`
@@ -1819,7 +1850,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteSharedCNAME(self, request):
-        r"""This API is used to delete a shared CNAME. It is now only available to beta users.
+        r"""Used to delete a shared CNAME. This feature is in beta test.
 
         :param request: Request instance for DeleteSharedCNAME.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteSharedCNAMERequest`
@@ -1842,7 +1873,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteWebSecurityTemplate(self, request):
-        r"""This API is used to delete a security policy configuration template.
+        r"""Delete a security policy configuration template
 
         :param request: Request instance for DeleteWebSecurityTemplate.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteWebSecurityTemplateRequest`
@@ -1865,7 +1896,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteZone(self, request):
-        r"""This API is used to delete a site.
+        r"""Delete a site.
 
         :param request: Request instance for DeleteZone.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteZoneRequest`
@@ -1888,7 +1919,7 @@ class TeoClient(AbstractClient):
 
 
     def DeployConfigGroupVersion(self, request):
-        r"""This API is used to release versions in version management mode. Users can deploy the version to either the testing environment or the production environment by specifying the EnvId parameter. The version management feature is currently undergoing beta testing and is accessible only to users on the whitelist.
+        r"""In version management mode, this API is used for version release. You can release a version to the testing environment or production environment by EnvId. The version management feature is in beta test and currently only available to the allowlist.
 
         :param request: Request instance for DeployConfigGroupVersion.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeployConfigGroupVersionRequest`
@@ -1911,7 +1942,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeAccelerationDomains(self, request):
-        r"""This API is used to query domain name information of a site, including the acceleration domain name, origin, and domain name status. You can query the information of all domain names, or specific domain names by specifying filters information.
+        r"""This API is used to view domain information under a site, including acceleration domain names, origin servers, and domain name status. You can view information of all domains under a site, or specify filter conditions to query specific domain information.
 
         :param request: Request instance for DescribeAccelerationDomains.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeAccelerationDomainsRequest`
@@ -1934,8 +1965,8 @@ class TeoClient(AbstractClient):
 
 
     def DescribeAliasDomains(self, request):
-        r"""This API is used to query the alias domain name information list.
-        The feature is only supported in the enterprise plan and is currently in closed beta testing. If you need to use it, [Contact Us](https://www.tencentcloud.com/contact-us).
+        r"""Query the list of alias domain names.
+        This feature is only supported in the enterprise plan and is currently in beta test. To use it, please [contact us](https://www.tencentcloud.com/contact-us).
 
         :param request: Request instance for DescribeAliasDomains.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeAliasDomainsRequest`
@@ -1958,7 +1989,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeApplicationProxies(self, request):
-        r"""This API is on an earlier version. If you want to call it, please switch to the latest version. In the latest version, this API has been split into two APIs: one for querying the Layer 4 proxy instance list and the other for querying Layer 4 forwarding rules. For details, see [DescribeL4Proxy] (https://intl.cloud.tencent.com/document/product/1552/103413?from_cn_redirect=1) and [DescribeL4ProxyRules] (https://intl.cloud.tencent.com/document/product/1552/103412?from_cn_redirect=1).
+        r"""This API is on an earlier version. If you want to call it, switch to the latest version. The latest version splits into two APIs: one for querying the Layer 4 proxy instance list and the other for querying Layer 4 forwarding rules. For details, see [Query Layer 4 Proxy Instance List](https://www.tencentcloud.com/document/product/1552/103413?from_cn_redirect=1) and [Query Layer 4 Proxy Forwarding Rule List](https://www.tencentcloud.com/document/product/1552/103412?from_cn_redirect=1).
 
         :param request: Request instance for DescribeApplicationProxies.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeApplicationProxiesRequest`
@@ -1981,7 +2012,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeAvailableCustomActionsForRuleEngine(self, request):
-        r"""This API is used to query the list of available custom configurations for rule engine operations on a site.
+        r"""Queries the list of available custom configurations for site rule engine operations.
 
         :param request: Request instance for DescribeAvailableCustomActionsForRuleEngine.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeAvailableCustomActionsForRuleEngineRequest`
@@ -2043,7 +2074,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeAvailablePlans(self, request):
-        r"""This API is used to query plan options available for purchase.
+        r"""Query the list of available package information for the current account.
 
         :param request: Request instance for DescribeAvailablePlans.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeAvailablePlansRequest`
@@ -2066,7 +2097,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeBillingData(self, request):
-        r"""This API is used to query billing data.
+        r"""Query billing data via this API.
 
         :param request: Request instance for DescribeBillingData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeBillingDataRequest`
@@ -2089,7 +2120,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeConfigGroupVersionDetail(self, request):
-        r"""This API is used to obtain detailed information about a version in version management mode. The response includes the version ID, description, status, creation time, configuration group information, and the content of the version configuration file. The version management feature is currently undergoing beta testing and is accessible only to users on the whitelist.
+        r"""In version management mode, this API is used to obtain detailed version information, including version ID, description, status, creation time, associated configuration group information, and the content of the version configuration file. The version management feature is in beta test and currently only available to the allowlist.
 
         :param request: Request instance for DescribeConfigGroupVersionDetail.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeConfigGroupVersionDetailRequest`
@@ -2112,7 +2143,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeConfigGroupVersions(self, request):
-        r"""This API is used to query the version list for the specified configuration group in version management mode. The version management feature is currently undergoing beta testing and is accessible only to users on the whitelist.
+        r"""In version management mode, this API is used to query the version list of a specified configuration group. The version management feature is in beta test and currently only available to the allowlist.
 
         :param request: Request instance for DescribeConfigGroupVersions.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeConfigGroupVersionsRequest`
@@ -2135,7 +2166,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeContentIdentifiers(self, request):
-        r"""Batch query content identifiers, which can be filtered by ID, description, status, or Tag. Deleted content identifiers queried by status are retained for only three months. This feature is only open to the allowlist.
+        r"""This API is used to query content identifiers in batches. They can be filtered by ID, description, status, or tags. Deleted content identifiers queried by status are only retained for three months. This feature is only open in the allowlist.
 
         :param request: Request instance for DescribeContentIdentifiers.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeContentIdentifiersRequest`
@@ -2158,7 +2189,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeContentQuota(self, request):
-        r"""This API is used to query content management quotas.
+        r"""Query the content management API quota
 
         :param request: Request instance for DescribeContentQuota.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeContentQuotaRequest`
@@ -2181,7 +2212,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeCustomErrorPages(self, request):
-        r"""This API is used to query the custom response page list.
+        r"""This API is used to query the custom error page list.
 
         :param request: Request instance for DescribeCustomErrorPages.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeCustomErrorPagesRequest`
@@ -2273,7 +2304,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDDoSAttackData(self, request):
-        r"""This API is used to query the time-series data of DDoS attacks.
+        r"""This API is used to query DDoS attack time-series data.
 
         :param request: Request instance for DescribeDDoSAttackData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDDoSAttackDataRequest`
@@ -2296,7 +2327,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDDoSAttackEvent(self, request):
-        r"""This API is used to query DDoS attack events.
+        r"""This API is used to query the list of DDoS attack events.
 
         :param request: Request instance for DescribeDDoSAttackEvent.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDDoSAttackEventRequest`
@@ -2319,7 +2350,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDDoSAttackTopData(self, request):
-        r"""This API is used to query the top-ranked DDoS attack data.
+        r"""This API is used to query Top-ranked data of DDoS attacks.
 
         :param request: Request instance for DescribeDDoSAttackTopData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDDoSAttackTopDataRequest`
@@ -2342,7 +2373,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDDoSProtection(self, request):
-        r"""This API is used to search for site exclusive Anti-DDoS information.
+        r"""This API is used to query exclusive DDoS protection info of a site.
 
         :param request: Request instance for DescribeDDoSProtection.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDDoSProtectionRequest`
@@ -2365,7 +2396,8 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDefaultCertificates(self, request):
-        r"""This API is used to query a list of default certificates.
+        r"""Query the default certificate list
+        <p style="color: red;">Note: This earlier version interface is no longer updated. New features will only be provided in the latest version interface. Existing capacities supported by the earlier version interface will not be affected. To query the cert configured for a domain name, please use DescribeAccelerationDomains.</p>
 
         :param request: Request instance for DescribeDefaultCertificates.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDefaultCertificatesRequest`
@@ -2388,7 +2420,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDeployHistory(self, request):
-        r"""This API is used to query the release history of versions in the production or test environment in version management mode. The version management feature is currently undergoing beta testing and is accessible only to users on the whitelist.
+        r"""In version management mode, this API is used to query the version release history of production/test environments. The version management feature is in beta test and currently only available to the allowlist.
 
         :param request: Request instance for DescribeDeployHistory.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDeployHistoryRequest`
@@ -2411,7 +2443,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDnsRecords(self, request):
-        r"""This API is used to view DNS record information under a site, including DNS record name, record type, and record content. It supports querying specific DNS record information by specifying filter conditions.
+        r"""This API is used to view DNS records under a site, including DNS record names, record types, and record content. It supports specifying filter conditions to query specific DNS records.
 
         :param request: Request instance for DescribeDnsRecords.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDnsRecordsRequest`
@@ -2434,7 +2466,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeEdgeKVNamespaces(self, request):
-        r"""This API is used to query the KV namespace list of a specified site, supporting pagination, sorting and conditional filtering. It returns the basic info, capacity utilization and reference relationship of namespaces. If data not found, return an empty array.
+        r"""Queries the KV namespace list under a specified site. Supports pagination, sorting, and conditional filtering. Returns basic namespace info, storage capacity utilization, and reference relationships. If no data is found, an empty array is returned.
 
         :param request: Request instance for DescribeEdgeKVNamespaces.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeEdgeKVNamespacesRequest`
@@ -2457,7 +2489,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeEnvironments(self, request):
-        r"""This API is used to query environment information in version management mode. The response includes the environment ID, type, and current effective version. The version management feature is currently undergoing beta testing and is accessible only to users on the whitelist.
+        r"""In version management mode, this API is used to query environment information, including the environment ID, type, and current effective version. The version management feature is in beta test and currently only available to the allowlist.
 
         :param request: Request instance for DescribeEnvironments.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeEnvironmentsRequest`
@@ -2480,7 +2512,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeFunctionComponentBindings(self, request):
-        r"""This API is used to query the component binding list of a specified edge function. It supports pagination and conditional filtering, and returns detailed information such as bound component types, variable names, and configuration parameters. Currently supported bound component types include KV namespace (kv_namespace).
+        r"""This API is used to query the component binding list of a specified edge function. It supports pagination and conditional filtering, and returns detailed information such as the bound component type, variable name, and configuration parameters. The currently supported binding component type is KV namespace (kv_namespace).
 
         :param request: Request instance for DescribeFunctionComponentBindings.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeFunctionComponentBindingsRequest`
@@ -2595,7 +2627,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeHostsSetting(self, request):
-        r"""This API is an old version. EdgeOne has fully upgraded the APIs related to the rule engine. You can obtain detailed configurations of domain names through [DescribeL7AccSetting](https://intl.cloud.tencent.com/document/product/1552/115819?from_cn_redirect=1) and [DescribeL7AccRules](https://intl.cloud.tencent.com/document/product/1552/115820?from_cn_redirect=1).
+        r"""This API is on an earlier version. EdgeOne has completed a comprehensive upgrade of rule engine APIs. You can use [DescribeL7AccSetting](https://www.tencentcloud.com/document/product/1552/115819?from_cn_redirect=1) and [DescribeL7AccRules](https://www.tencentcloud.com/document/product/1552/115820?from_cn_redirect=1) to obtain detailed configuration of a domain.
 
         :param request: Request instance for DescribeHostsSetting.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeHostsSettingRequest`
@@ -2618,7 +2650,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeIPGroupReferences(self, request):
-        r"""This API is used to query policy configurations that reference a specified IP group.
+        r"""This API is used to obtain policy settings that use IP grouping.
 
         :param request: Request instance for DescribeIPGroupReferences.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeIPGroupReferencesRequest`
@@ -2641,7 +2673,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeIPRegion(self, request):
-        r"""This API is used to check if the IP is an EdgeOne IP.
+        r"""This API is used to query if the IP is an EdgeOne IP.
 
         :param request: Request instance for DescribeIPRegion.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeIPRegionRequest`
@@ -2664,7 +2696,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeIdentifications(self, request):
-        r"""This API is used to query the verification information of a site.
+        r"""Queries verification information of a site.
 
         :param request: Request instance for DescribeIdentifications.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeIdentificationsRequest`
@@ -2687,7 +2719,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeInferenceAPITokens(self, request):
-        r"""This API is used to query the list of reasoning API Tokens, return the ID, name, content, and creation time of the Tokens, and support paging query.
+        r"""Queries the list of reasoning API tokens and returns the Token ID, name, content, and creation time. Paging query is supported.
 
         :param request: Request instance for DescribeInferenceAPITokens.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceAPITokensRequest`
@@ -2709,8 +2741,31 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInferenceDomains(self, request):
+        r"""This API is used to query the inference service domain name list and return the Cname address, ownership verification, and certificate information of the domain.
+
+        :param request: Request instance for DescribeInferenceDomains.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceDomainsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInferenceDomains", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInferenceDomainsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInferenceHardwareSpecifications(self, request):
-        r"""This API is used to query the reasoning hardware specification list, returning configurations such as CPU, memory, GPU, and memory for each specification. You can select the required specification during service creation.
+        r"""This API is used to query the inference hardware specification list and return the CPU, memory, GPU, and video memory configurations of each specification. You can select the required specification from the list when creating a service.
 
         :param request: Request instance for DescribeInferenceHardwareSpecifications.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceHardwareSpecificationsRequest`
@@ -2733,7 +2788,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeInferenceServiceDeploymentLogs(self, request):
-        r"""This API is used to query the logs of a designated deployment of an inference service, return log content and generation time, and support time-based range search, pagination, and sorting.
+        r"""This API is used to query the logs of a specified deployment of an inference service, return log content and generation time, and support time range search, pagination, and sorting.
 
         :param request: Request instance for DescribeInferenceServiceDeploymentLogs.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceServiceDeploymentLogsRequest`
@@ -2756,7 +2811,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeInferenceServiceDeploymentRecords(self, request):
-        r"""This API is used to query the deployment history list of inference services, returning the operation type, status, duration, configuration snapshot, and whether it is the currently effective configuration for each deployment, with support for pagination and sorting.
+        r"""This API is used to query the deployment history list of an inference service. It returns the operation type, status, duration, configuration snapshot, and whether it is the currently effective configuration for each deployment. Pagination and sorting are supported.
 
         :param request: Request instance for DescribeInferenceServiceDeploymentRecords.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceServiceDeploymentRecordsRequest`
@@ -2779,7 +2834,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeInferenceServiceMonitorData(self, request):
-        r"""This API is used to query service monitoring data for reasoning, supporting indicators such as CPU, memory, GPU, video memory utilization, and instance count. You can specify the time range and aggregation granularity, and query data for up to the most recent 30 days.
+        r"""This API is used to query the monitoring data of inference services, supporting indicators such as CPU, memory, GPU, video memory utilization, and instance count. You can specify the time range and aggregation granularity, and query data from the most recent 30 days.
 
         :param request: Request instance for DescribeInferenceServiceMonitorData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceServiceMonitorDataRequest`
@@ -2802,7 +2857,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeInferenceServices(self, request):
-        r"""This API is used to query the service list for reasoning, supporting filtering by service name, service ID, and status. It returns information such as service configuration, running state, number of instances, and reasoning access address.
+        r"""This API is used to query the inference service list, support filtering by service name, service ID, and status, and return the service configuration, running state, number of instances, and inference access address.
 
         :param request: Request instance for DescribeInferenceServices.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceServicesRequest`
@@ -2825,7 +2880,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeJustInTimeTranscodeTemplates(self, request):
-        r"""This API is used to search the transcoding template detail list according to the name, template type, or unique identifier of the just-in-time transcoding template. The returned results include all eligible custom templates and preset templates.
+        r"""This API is used to retrieve the transcoding template detail list based on the just in time transcoding template name, template type, or unique ID. The returned results include all eligible custom templates and preset templates.
 
         :param request: Request instance for DescribeJustInTimeTranscodeTemplates.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeJustInTimeTranscodeTemplatesRequest`
@@ -2848,7 +2903,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeL4Proxy(self, request):
-        r"""This API is used to query a Layer 4 proxy instance list.
+        r"""This API is used to query the layer 4 proxy instance list.
 
         :param request: Request instance for DescribeL4Proxy.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeL4ProxyRequest`
@@ -2894,7 +2949,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeL7AccRules(self, request):
-        r"""This API is used to query the rule list of the rule engine (https://intl.cloud.tencent.com/document/product/1552/70901?from_cn_redirect=1).
+        r"""This API is used to query the rule list of the [rule engine](https://www.tencentcloud.com/document/product/1552/70901?from_cn_redirect=1).
 
         :param request: Request instance for DescribeL7AccRules.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeL7AccRulesRequest`
@@ -2917,7 +2972,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeL7AccSetting(self, request):
-        r"""This API is used to query the global configuration of [Site Acceleration](https://intl.cloud.tencent.com/document/product/1552/96193?from_cn_redirect=1).
+        r"""This API is used to query the global configuration of site acceleration.
 
         :param request: Request instance for DescribeL7AccSetting.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeL7AccSettingRequest`
@@ -2940,7 +2995,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeLoadBalancerList(self, request):
-        r"""This API is used to query the LoadBalancer list. The load balancing feature is in beta test. If you need to use it, [contact us](https://www.tencentcloud.com/contact-us).
+        r"""This API is used to query the load balancing instance list. The load balancer feature is in beta test. If you need to use it, [contact us](https://www.tencentcloud.com/contact-us).
 
         :param request: Request instance for DescribeLoadBalancerList.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeLoadBalancerListRequest`
@@ -2963,7 +3018,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeLogAnalysisDetail(self, request):
-        r"""This API is used to query the log analysis details. The data comes from the log data of the real-time log push task with the destination "log_analysis" under the site.
+        r"""This API is used to query log analysis details. The data comes from the log data pushed by real-time log push tasks under the site with the destination "log-analysis".
 
         :param request: Request instance for DescribeLogAnalysisDetail.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeLogAnalysisDetailRequest`
@@ -3008,8 +3063,31 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLogAnalysisStatistics(self, request):
+        r"""This API is used to query log analysis statistics results. Users append an SQL aggregation statement after the query statement ([retrieval condition] | [SQL statement]). The backend executes the aggregation and returns columnar statistics results (column definition + data row).
+
+        :param request: Request instance for DescribeLogAnalysisStatistics.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeLogAnalysisStatisticsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeLogAnalysisStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogAnalysisStatistics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogAnalysisStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMultiPathGateway(self, request):
-        r"""This API is used to query multi-channel security acceleration gateway details such as name, Gateway ID, IP, port and type.
+        r"""This API is used to query details of a multi-channel security acceleration gateway, such as name, Gateway ID, IP, port, and type.
 
         :param request: Request instance for DescribeMultiPathGateway.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayRequest`
@@ -3032,7 +3110,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeMultiPathGatewayLine(self, request):
-        r"""Use this API to query the lines integrated with the multi-channel security acceleration gateway, including direct connection lines, EdgeOne Layer-4 proxy lines, and custom lines.
+        r"""This API is used to query lines connected to the multi-channel security acceleration gateway, including direct connections, EdgeOne Layer 4 proxy lines, and custom lines.
 
         :param request: Request instance for DescribeMultiPathGatewayLine.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayLineRequest`
@@ -3055,7 +3133,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeMultiPathGatewayOriginACL(self, request):
-        r"""This API is used to query the binding relationship between a multi-channel security acceleration gateway instance and the origin server IP range, as well as the IP range details. If the MultiPathGatewayNextOriginACL field has a return value, the latest origin server IP range must be synchronized to the origin server firewall configuration.
+        r"""This API is used to query the binding relationship between a multi-channel security acceleration gateway instance and origin IP ranges, as well as origin IP range details. If the MultiPathGatewayNextOriginACL field has a return value, synchronize the latest origin IP ranges to the origin server firewall settings.
 
         :param request: Request instance for DescribeMultiPathGatewayOriginACL.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayOriginACLRequest`
@@ -3078,7 +3156,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeMultiPathGatewayRegions(self, request):
-        r"""This API is used to query the list of available regions for user-created multi-channel security acceleration gateways (Cloud Gateway).
+        r"""This API is used to query the available region list of user-created multi-channel security acceleration gateways.
 
         :param request: Request instance for DescribeMultiPathGatewayRegions.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayRegionsRequest`
@@ -3124,7 +3202,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeMultiPathGateways(self, request):
-        r"""Query the multi-channel security acceleration gateway list created by the user through this interface. Supports pagination.
+        r"""This API is used to query the list of user-created multi-channel security acceleration gateways. Pagination is supported.
 
         :param request: Request instance for DescribeMultiPathGateways.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewaysRequest`
@@ -3147,7 +3225,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeOriginACL(self, request):
-        r"""This API is used to query the binding relationship between L7 acceleration domains/L4 proxy instances and origin ACLs under a site, as well as IP range details. If you want to periodically obtain the latest version of origin IP ranges through an automation script, you can poll this API at a low-frequency (recommended every three days). If the NextOriginACL field has a return value, synchronize the latest origin IP ranges to the origin server firewall configuration.
+        r"""This API is used to query the binding relationship between L7 acceleration domains/L4 proxy instances and origin IP ranges under a site, as well as origin IP range details. If you want to periodically get the latest version of origin IP ranges through an automation script, you can poll this API at a low frequency (once every three days is recommended). If the NextOriginACL field has a return value, synchronize the latest origin IP ranges to the origin server firewall configuration.
 
         :param request: Request instance for DescribeOriginACL.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeOriginACLRequest`
@@ -3170,7 +3248,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeOriginGroup(self, request):
-        r"""This API is used to obtain a list of origin groups.
+        r"""This API is used to query the origin server group list.
 
         :param request: Request instance for DescribeOriginGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeOriginGroupRequest`
@@ -3193,7 +3271,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeOriginGroupHealthStatus(self, request):
-        r"""This API is used to query the health status of origin server groups under a LoadBalancer. The load balancing feature is in beta test. If you need to use it, [contact us](https://www.tencentcloud.com/contact-us).
+        r"""This API is used to query the health status of origin server groups under a load balancing instance. The load balancer feature is in beta test. If you need to use it, [contact us](https://www.tencentcloud.com/contact-us).
 
         :param request: Request instance for DescribeOriginGroupHealthStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeOriginGroupHealthStatusRequest`
@@ -3216,9 +3294,9 @@ class TeoClient(AbstractClient):
 
 
     def DescribeOriginProtection(self, request):
-        r"""This API is used to query origin protection on an earlier version. EdgeOne comprehensively upgraded relevant APIs for origin protection on June 27, 2025. For details on the new version, see [DescribeOriginACL](https://intl.cloud.tencent.com/document/product/1552/120408?from_cn_redirect=1).
+        r"""This API is on an earlier version for origin protection queries. EdgeOne comprehensively upgraded the origin protection APIs on June 27, 2025. For details on the new version of the origin protection query API, refer to [DescribeOriginACL](https://www.tencentcloud.com/document/product/1552/120408?from_cn_redirect=1).
 
-        Note: Starting from June 27, 2025, the legacy version APIs will stop updating. New features will only be provided in the latest version APIs. To avoid data field conflicts when using legacy version APIs, it is recommended to migrate to the new version origin protection APIs as soon as possible.
+        <p style="color: red;">Note: Starting from June 27, 2025, earlier version APIs will stop update and iteration, and new features will only be provided in the new version of APIs. To avoid data field conflicts when using earlier version APIs, migrate to the new version of origin protection APIs as soon as possible.</p>
 
         :param request: Request instance for DescribeOriginProtection.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeOriginProtectionRequest`
@@ -3241,7 +3319,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeOverviewL7Data(self, request):
-        r"""This API is used to query the time sequence traffic data of the monitoring category in L7. This API is to be discarded. Please use the API <a href="https://intl.cloud.tencent.com/document/product/1552/80648?from_cn_redirect=1">DescribeTimingL7AnalysisData</a>.
+        r"""This API is used to query layer-7 monitoring time series traffic Data. This API is to be deprecated. Please use the <a href="https://www.tencentcloud.com/document/product/1552/80648?from_cn_redirect=1">DescribeTimingL7AnalysisData</a> API.
 
         :param request: Request instance for DescribeOverviewL7Data.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeOverviewL7DataRequest`
@@ -3264,7 +3342,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribePlans(self, request):
-        r"""This API is used to query package information list with pagination support.
+        r"""Query the package information list with pagination.
 
         :param request: Request instance for DescribePlans.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribePlansRequest`
@@ -3287,7 +3365,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribePrefetchOriginLimit(self, request):
-        r"""This API is used to query the origin speed limit. This feature is in closed beta testing.
+        r"""This API is used to query origin-pull rate limits. This feature is in beta test for allowlisted users.
 
         :param request: Request instance for DescribePrefetchOriginLimit.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribePrefetchOriginLimitRequest`
@@ -3310,7 +3388,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribePrefetchTasks(self, request):
-        r"""DescribePrefetchTasks is used to query the submission history and execution progress of preheating tasks. This interface can be used to query the tasks submitted by the CreatePrefetchTasks interface.
+        r"""This API is used to query the commit history and execution progress of preheating tasks. Tasks submitted via the CreatePrefetchTasks API can be queried through this API.
 
         :param request: Request instance for DescribePrefetchTasks.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribePrefetchTasksRequest`
@@ -3333,7 +3411,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribePurgeTasks(self, request):
-        r"""DescribePurgeTasks is used to query the submitted URL refreshing and directory refreshing records and execution progress. This interface can be used to query the tasks submitted by the CreatePurgeTasks API.
+        r"""This API is used to query submitted URL refresh and directory refresh records and task progress. All tasks submitted via the CreatePurgeTasks API can be queried through this API.
 
         :param request: Request instance for DescribePurgeTasks.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribePurgeTasksRequest`
@@ -3356,7 +3434,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeRealtimeLogDeliveryTasks(self, request):
-        r"""This API is used to query the real-time log delivery task list.
+        r"""This API is used to query real-time log delivery task list.
 
         :param request: Request instance for DescribeRealtimeLogDeliveryTasks.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeRealtimeLogDeliveryTasksRequest`
@@ -3379,8 +3457,8 @@ class TeoClient(AbstractClient):
 
 
     def DescribeRules(self, request):
-        r"""This API is on an earlier version to query engine rules. EdgeOne has comprehensively upgraded relevant APIs of the rule engine on January 21, 2025. For details about the new version API to query layer-7 acceleration rules, see DescribeL7AccRules(https://intl.cloud.tencent.com/document/product/1552/115820?from_cn_redirect=1).
-        <p style="color: red;">Note: Starting from January 21, 2025, the old version of the interface will stop updating and iteration. Subsequent new features will only be provided in the new version of the interface, and the original capabilities supported by the old version of the interface will not be affected. To avoid data field conflicts when using the old version of the interface, it is recommended that you migrate to the new version of the rule engine interface as soon as possible. </p>
+        r"""This API is on an earlier version for querying rule engine rules. EdgeOne comprehensively upgraded the rule engine APIs on January 21, 2025. For details on the new version API for querying L7 acceleration rules, see [DescribeL7AccRules](https://www.tencentcloud.com/document/product/1552/115820?from_cn_redirect=1).
+        <p style="color: red;">Note: Starting from January 21, 2025, the legacy version API will stop update and iteration. New features will only be provided in the new version API. The existing capacity supported by the legacy version API will not be affected. To avoid data field conflicts when using the legacy version API, migrate to the new version rule engine API as soon as possible.</p>
 
         :param request: Request instance for DescribeRules.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeRulesRequest`
@@ -3403,7 +3481,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeRulesSetting(self, request):
-        r"""This API is an older version. EdgeOne has fully upgraded the APIs related to the rule engine. For details, please refer to [RuleEngineAction](https://intl.cloud.tencent.com/document/product/1552/80721?from_cn_redirect=1#RuleEngineAction).
+        r"""This API is on an earlier version. EdgeOne has completed a comprehensive upgrade of rule engine APIs. For details, see [RuleEngineAction](https://www.tencentcloud.com/document/product/1552/80721?from_cn_redirect=1#RuleEngineAction).
 
         :param request: Request instance for DescribeRulesSetting.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeRulesSettingRequest`
@@ -3426,7 +3504,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityAPIResource(self, request):
-        r"""This API is used to query API resources under a site.
+        r"""Query API resources under a site.
 
         :param request: Request instance for DescribeSecurityAPIResource.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityAPIResourceRequest`
@@ -3449,7 +3527,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityAPIService(self, request):
-        r"""This API is used to query API services under a site.
+        r"""Query API services under a site.
 
         :param request: Request instance for DescribeSecurityAPIService.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityAPIServiceRequest`
@@ -3472,7 +3550,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityClientAttester(self, request):
-        r"""This API is used to query client authentication option configuration.
+        r"""Query client authentication option configurations.
 
         :param request: Request instance for DescribeSecurityClientAttester.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityClientAttesterRequest`
@@ -3495,7 +3573,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityIPGroup(self, request):
-        r"""This API is used to query the configuration information of a security IP group, including the ID, name and content of the security IP group. The query result of this API only returns up to 2000 IPs or CIDR blocks for each IP group. If there is a very large IP group exceeding 2000 IPs or CIDR blocks, call DescribeSecurityIPGroupContent to perform a paging query.
+        r"""This API is used to query the configuration information of a security IP group, including its ID, name, and content. In the query result of this API, each IP group returns up to 2,000 IPs or CIDR blocks. If an ultra-large IP group exceeds 2,000 IPs or CIDR blocks, call DescribeSecurityIPGroupContent for paging query.
 
         :param request: Request instance for DescribeSecurityIPGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityIPGroupRequest`
@@ -3518,7 +3596,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityIPGroupContent(self, request):
-        r"""This API is used to perform a paging query for the IP address list in a designated IP group. When the number of IP addresses in the group exceeds 2000, you can use this API to perform a paging query to obtain the complete IP address list.
+        r"""This API is used to query the IP address list in a specified IP group by page. When the number of IP addresses in an IP group exceeds 2000, you can use this API to perform a paging query to obtain the complete IP address list.
 
         :param request: Request instance for DescribeSecurityIPGroupContent.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityIPGroupContentRequest`
@@ -3541,8 +3619,8 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityIPGroupInfo(self, request):
-        r"""The API is deprecated and will be discontinued on June 30, 2024. Please use the API [DescribeSecurityIPGroup
-        ](https://intl.cloud.tencent.com/document/product/1552/105866?from_cn_redirect=1).
+        r"""This API is deprecated and will be discontinued on June 30, 2024. Please use the API for querying security IP groups.
+        ](https://www.tencentcloud.com/document/product/1552/105866?from_cn_redirect=1).
 
         This API is used to query the configuration information of an IP group, including the IP group name, IP group content, and the site the IP group belongs to.
 
@@ -3590,7 +3668,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityPolicy(self, request):
-        r"""This API is used to query the web and security protection configurations.
+        r"""Query security protection configuration details.
 
         :param request: Request instance for DescribeSecurityPolicy.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityPolicyRequest`
@@ -3613,7 +3691,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityTemplateBindings(self, request):
-        r"""This API is used to query bindings of a policy template.
+        r"""This API is used to query the binding relationship list of a specified policy template.
 
         :param request: Request instance for DescribeSecurityTemplateBindings.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityTemplateBindingsRequest`
@@ -3636,7 +3714,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSharedCNAME(self, request):
-        r"""Query the shared CNAME list, support fuzzy search, paginate, and sort.
+        r"""This API is used to query the shared CNAME list, supporting fuzzy search, pagination, and sorting.
 
         :param request: Request instance for DescribeSharedCNAME.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSharedCNAMERequest`
@@ -3682,7 +3760,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTimingL4Data(self, request):
-        r"""<p>This API is used to query time series monitoring data for L4 proxy instences.</p>
+        r"""<p>This API is used to query the L4 time series Data list.</p>
 
         :param request: Request instance for DescribeTimingL4Data.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTimingL4DataRequest`
@@ -3705,10 +3783,10 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTimingL7AnalysisData(self, request):
-        r"""This API is used to query time-series data for Layer 7 domain services.
-        Notes:
-        1. Data queried by this API has a latency of approximately 10 minutes. It is recommended to pull data from at least 10 minutes prior to the current time.
-        2. By default, this API returns post-protection traffic request data. Users can customize queries for mitigated data by using `Filters.mitigatedByWebSecurity`.
+        r"""This API is used to query time series data of the L7 domain name business.
+        Note:
+        1. This API queries data with a delay of about 10 minutes. It is advisable to pull data from 10 minutes before the current time.
+        2. This interface returns post-protection traffic request data by default. Users can use `Filters.mitigatedByWebSecurity` to custom query defended data.
 
         :param request: Request instance for DescribeTimingL7AnalysisData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTimingL7AnalysisDataRequest`
@@ -3731,7 +3809,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTimingL7CacheData(self, request):
-        r"""This API is used to query the time series traffic data of the L7 cache analysis. It will be deprecated. Use the <a href="https://intl.cloud.tencent.com/document/product/1552/80648?from_cn_redirect=1">DescribeTimingL7AnalysisData</a> API instead.
+        r"""This API is used to query L7 cache analysis time series traffic data. This API is to be deprecated. Please use the <a href="https://www.tencentcloud.com/document/product/1552/80648?from_cn_redirect=1">DescribeTimingL7AnalysisData</a> API.
 
         :param request: Request instance for DescribeTimingL7CacheData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTimingL7CacheDataRequest`
@@ -3754,8 +3832,8 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTimingL7OriginPullData(self, request):
-        r"""This API is used to query time series data of the layer-7 domain name business.
-        You can choose to perform grouping queries by specifying the query dimension <code>DimensionName</code>, returning multiple groups of time series data. For detailed directions and usage limits, see [How to Implement Group Query in a Single Call Using API](https://www.tencentcloud.com/document/product/1552/127501?from_cn_redirect=1).
+        r"""This API is used to query the origin-pull time series data of an L7 domain.
+        You can choose to group queries by specifying the query dimension <code>DimensionName</code>, which returns multiple groups of time series data. For detailed directions and usage limits, see [How to Use APIs to Implement Group Query in a Single Call](https://www.tencentcloud.com/document/product/1552/127501?from_cn_redirect=1).
 
         :param request: Request instance for DescribeTimingL7OriginPullData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTimingL7OriginPullDataRequest`
@@ -3802,9 +3880,9 @@ class TeoClient(AbstractClient):
 
     def DescribeTopL7AnalysisData(self, request):
         r"""This API is used to query the top N data of the L7 domain name business by specified dimension.
-        Create and bind policy Query instance Reset instance access password.
-        This API is used to query data with a delay of about 10 minutes. It is recommended to pull data from at least 10 minutes before the current time.
-        This API is used to return post-protection traffic request data by default. Users can query defended data in `Filters.mitigatedByWebSecurity`.
+        Note:
+        1. This API queries data with a delay of about 10 minutes. It is recommended to pull data from 10 minutes before the current time.
+        2. This interface returns post-protection traffic request data by default. Users can use `Filters.mitigatedByWebSecurity` to custom query defended data.
 
         :param request: Request instance for DescribeTopL7AnalysisData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTopL7AnalysisDataRequest`
@@ -3827,7 +3905,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTopL7CacheData(self, request):
-        r"""This API is used to query the top N data of the L7 cache analysis. It will be deprecated. Use the <a href="https://intl.cloud.tencent.com/document/product/1552/80646?from_cn_redirect=1"> DescribeTopL7AnalysisData</a> API instead.
+        r"""This API is used to query L7 cache analysis topN data. This API is to be deprecated. Please use the <a href="https://www.tencentcloud.com/document/product/1552/80646?from_cn_redirect=1"> DescribeTopL7AnalysisData</a> API.
 
         :param request: Request instance for DescribeTopL7CacheData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTopL7CacheDataRequest`
@@ -3850,7 +3928,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeWebSecurityTemplate(self, request):
-        r"""This API is used to query security policy configuration template details.
+        r"""Queries security policy configuration template details
 
         :param request: Request instance for DescribeWebSecurityTemplate.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeWebSecurityTemplateRequest`
@@ -3873,7 +3951,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeWebSecurityTemplates(self, request):
-        r"""This API is used to query the security policy configuration template list.
+        r"""Queries the security policy configuration template list.
 
         :param request: Request instance for DescribeWebSecurityTemplates.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeWebSecurityTemplatesRequest`
@@ -3896,7 +3974,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeZoneConfigImportResult(self, request):
-        r"""This API is used to query the results of site configuration import via API (ImportZoneConfig). This feature only supports the sites in the plans of the Standard Edition and the Enterprise Edition.
+        r"""This API is used to query the results of site configuration item import via the site configuration import API.
 
         :param request: Request instance for DescribeZoneConfigImportResult.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeZoneConfigImportResultRequest`
@@ -3944,7 +4022,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeZoneSetting(self, request):
-        r"""This API is an old version. EdgeOne has fully upgraded the APIs related to the rule engine. For details, please refer to [DescribeL7AccSetting](https://intl.cloud.tencent.com/document/product/1552/115819?from_cn_redirect=1).
+        r"""This API is on an earlier version. EdgeOne has completed a comprehensive upgrade of rule engine APIs. For details, see [DescribeL7AccSetting](https://www.tencentcloud.com/document/product/1552/115819?from_cn_redirect=1).
 
         :param request: Request instance for DescribeZoneSetting.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeZoneSettingRequest`
@@ -3967,7 +4045,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeZones(self, request):
-        r"""This API is used to query the information of sites that you have access to. You can filter sites based on different query criteria.
+        r"""This API is used to query site information you have permission to access. You can filter sites based on different query conditions.
 
         :param request: Request instance for DescribeZones.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeZonesRequest`
@@ -3990,14 +4068,14 @@ class TeoClient(AbstractClient):
 
 
     def DestroyPlan(self, request):
-        r"""To stop billing for your EdgeOne plan, you can use this interface to terminate the billing plan.
-        > Terminating a billing plan requires the following conditions:
-            1. The plan has expired (except for the Enterprise Edition Plan);
-            2. All sites under the plan have been either shut down or deleted.
+        r"""This API is used to terminate a billing plan when you need to stop billing for an Edgeone plan.
+        > The following conditions must be met to terminate a billing plan:
+        1. The plan has expired (except for the Enterprise Edition Plan);
+        2. All sites under the package have been shut down or deleted.
 
-        > The site status can be queried through the [Query Site List](https://www.tencentcloud.com/zh/document/product/1145/50481) interface.
-        A site can be deactivated by switching the site to a closed status through the [Switch Site Status](https://intl.cloud.tencent.com/document/product/1552/80707?from_cn_redirect=1) interface.
-        A site can be deleted by using the [Delete Site](https://intl.cloud.tencent.com/document/product/1552/80717?from_cn_redirect=1) interface.
+        > The site status can be queried through the [Query Site List](https://www.tencentcloud.com/document/product/1552/80713?from_cn_redirect=1) interface.
+        A site can be deactivated by switching the site to a closed status through the [Switch Site Status](https://www.tencentcloud.com/document/product/1552/80707?from_cn_redirect=1) interface.
+        A site can be deleted by using the Delete Site API.
 
         :param request: Request instance for DestroyPlan.
         :type request: :class:`tencentcloud.teo.v20220901.models.DestroyPlanRequest`
@@ -4020,7 +4098,7 @@ class TeoClient(AbstractClient):
 
 
     def DisableOriginACL(self, request):
-        r"""This API is used to disable 'Origin Protection' of a site. Once disabled, resources related to it will no longer use only the origin ACLs provided by "origin protection" to request your origin, and stops sending update notifications on the origin ACLs.
+        r"""This API is used to disable origin protection for a site. Once disabled, resources related to the origin will no longer use only the origin IP range provided by origin protection to request your origin, and update notifications on origin IP ranges will stop simultaneously.
 
         :param request: Request instance for DisableOriginACL.
         :type request: :class:`tencentcloud.teo.v20220901.models.DisableOriginACLRequest`
@@ -4043,7 +4121,8 @@ class TeoClient(AbstractClient):
 
 
     def DownloadL4Logs(self, request):
-        r"""This API is used to download L4 logs.
+        r"""This API is used to obtain the offline log download link for a Layer 4 proxy business.
+        **Note:** EO stores offline logs and provides a download service only when the offline log feature is enabled. For specific features, see the [document](https://www.tencentcloud.com/document/product/1552/73660?from_cn_redirect=1).
 
         :param request: Request instance for DownloadL4Logs.
         :type request: :class:`tencentcloud.teo.v20220901.models.DownloadL4LogsRequest`
@@ -4066,7 +4145,8 @@ class TeoClient(AbstractClient):
 
 
     def DownloadL7Logs(self, request):
-        r"""This API is used to download L7 logs.
+        r"""This API is used to obtain the offline log download link for an L7 domain.
+        **Note:** EO stores offline logs and provides a download service only when the offline log feature is enabled. For specific features, see the [document](https://www.tencentcloud.com/document/product/1552/73660?from_cn_redirect=1).
 
         :param request: Request instance for DownloadL7Logs.
         :type request: :class:`tencentcloud.teo.v20220901.models.DownloadL7LogsRequest`
@@ -4088,8 +4168,31 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DummyParseZoneFullConfig(self, request):
+        r"""This API is used to define the structure of a complete site configuration for reference only. Note: This API does not return actual data.
+
+        :param request: Request instance for DummyParseZoneFullConfig.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DummyParseZoneFullConfigRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DummyParseZoneFullConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DummyParseZoneFullConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DummyParseZoneFullConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def EdgeKVDelete(self, request):
-        r"""This API is used to delete one or more key-value pair data in the specified namespace, with batch deletion supported. Data cannot be recovered after deletion.
+        r"""This API is used to delete one or more key-value pair data in a specified namespace. Batch deletion supported. Data cannot be recovered after deletion.
 
         :param request: Request instance for EdgeKVDelete.
         :type request: :class:`tencentcloud.teo.v20220901.models.EdgeKVDeleteRequest`
@@ -4112,7 +4215,7 @@ class TeoClient(AbstractClient):
 
 
     def EdgeKVGet(self, request):
-        r"""This API is used to batch read key values from a specified namespace, supporting a single query of up to 20 keys.
+        r"""This API is used to batch read key values from a specified namespace. It supports querying up to 20 keys in a single query.
 
         :param request: Request instance for EdgeKVGet.
         :type request: :class:`tencentcloud.teo.v20220901.models.EdgeKVGetRequest`
@@ -4135,7 +4238,7 @@ class TeoClient(AbstractClient):
 
 
     def EdgeKVList(self, request):
-        r"""This API is used to list all keys in the specified namespace with prefix filtering support. It implements cursor traversal through Cursor and returns the next cursor to proceed with querying. Suitable for traversal of all keys in the namespace.
+        r"""This API is used to list all keys in the specified namespace, with prefix filtering supported. Cursor-based traversal is implemented, and the next cursor is returned for continued querying. It is suitable for traversing all keys in a namespace.
 
         :param request: Request instance for EdgeKVList.
         :type request: :class:`tencentcloud.teo.v20220901.models.EdgeKVListRequest`
@@ -4158,7 +4261,7 @@ class TeoClient(AbstractClient):
 
 
     def EdgeKVPut(self, request):
-        r"""This API is used to write key-value pair data to a specified namespace and supports setting expiration time. If the key already exists, it overwrites the original value. If Not Exist, it creates a new key-value pair.
+        r"""This API is used to write key-value pair data to a specified namespace, with support for setting expiration time. If the key already exists, the original value is overwritten. If not, a new key-value pair is created.
 
         :param request: Request instance for EdgeKVPut.
         :type request: :class:`tencentcloud.teo.v20220901.models.EdgeKVPutRequest`
@@ -4181,11 +4284,17 @@ class TeoClient(AbstractClient):
 
 
     def EnableOriginACL(self, request):
-        r"""This API is used to enable origin protection for a site for the first time. Enabled, EdgeOne will use specific origin-pull IP ranges for L7 acceleration domains/L4 proxy instances. The maximum quantity of L7 acceleration domains supported in a single submission is 200, and the maximum quantity of L4 proxy instances is 100. It supports composite submission of L7 acceleration domains/L4 proxy instances, with a maximum total number of instances of 200. To enable exceeding 200 resources, you can first enable the maximum allowed number via specified resources, and enable the remaining resources via the ModifyOriginACL API. Subsequent addition of L7 acceleration domains/L4 proxy instances should be configured via the ModifyOriginACL API. When enabling simultaneously, allowlisted accounts support selecting other origin-pull IP range versions, such as simplified edition, to achieve origin-pull effect with fewer IP ranges.
+        r"""This API is used to enable origin protection for a site for the first time. After it is enabled, EdgeOne will use specific origin-pull IP ranges to pull from the origin for layer-7 acceleration domains/layer-4 proxy instances.
+        This API supports two modes: **Automatic Protection Mode** and **Specified Protection Mode**. <li>When **Automatic Protection Mode** is used (L7EnableMode/L4EnableMode is set to all), the acceleration domain list and layer-4 proxy instances under the site will be automatically added to the origin protection list in real time without manual intervention;</li><li>When **Specified Protection Mode** is used (L7EnableMode/L4EnableMode is set to specific), you need to manually specify the resources to be added to origin protection. Unspecified resources will not be added to the origin protection list. If resource adjustment is required, you need to actively call the ModifyOriginACL API to make adjustments.</li>
+
+        Instructions for using the Specified Protection Mode:
+        <li>The maximum number of layer-7 acceleration domains that can be submitted at a time is 200, and the maximum number of layer-4 proxy instances is 100. Mixed submission of layer-7 acceleration domains/layer-4 proxy instances is supported, with a maximum total of 200 instances;</li>
+        <li>When more than 200 resources need to be enabled, you need to first configure the resources of the first shard through this API, and then configure the remaining shards through the ModifyOriginACL API. For example, if 500 layer-7 acceleration domains need to be added, first use this API to set 200 domains, and then use the ModifyOriginACL API to configure the remaining 300 domains in two batches, with no more than 200 domains per batch.</li>
 
         Note:
-        - Calling this API is deemed as agreement to [the special agreement for origin protection enablement](https://www.tencentcloud.com/document/product/1552/120141?from_cn_redirect=1);
-        - The origin IP range may change irregularly. EdgeOne will trigger notifications via Message Center, SMS, or email 14 days, 7 days, 3 days, and 1 day before the change. To ensure you receive the origin IP range change notification, please ensure you have selected the edge security acceleration platform EO product services relevant message notification and configured the correct message recipients in the [Tencent Cloud Message Center Console](https://console.cloud.tencent.com/message). For the setting method, refer to [Message Subscription Management](https://www.tencentcloud.com/document/product/567/43476?from_cn_redirect=1).
+        - When enabling, accounts on the allowlist can select other origin-pull IP range versions, such as the simplified version, to achieve the effect of pulling from the origin with fewer IP ranges.
+        - Calling this API is deemed as your agreement to the [Special Agreement on Enabling Origin Protection](https://www.tencentcloud.com/document/product/1552/120141?from_cn_redirect=1);
+        - Origin-pull IP ranges are subject to change from time to time. EdgeOne will send notifications 14 days, 7 days, 3 days, and 1 day before the change through one or more methods such as in-site messages, SMS, and emails. To ensure that you can receive notifications of origin-pull IP range changes, make sure that you have selected message notifications related to the EdgeOne product in the [Tencent Cloud Message Center Console](https://console.cloud.tencent.com/message) and configured the correct message recipients. For configuration methods, refer to [Message Subscription Management](https://www.tencentcloud.com/document/product/567/43476?from_cn_redirect=1).
 
         :param request: Request instance for EnableOriginACL.
         :type request: :class:`tencentcloud.teo.v20220901.models.EnableOriginACLRequest`
@@ -4208,7 +4317,7 @@ class TeoClient(AbstractClient):
 
 
     def ExportZoneConfig(self, request):
-        r"""This API is used to export site configuration based on desired configuration items. The exported configuration is used for import via the site configuration import API.
+        r"""This API is used to export site configuration by users based on desired configuration items. The exported configuration is used for import via the site configuration import API.
 
         :param request: Request instance for ExportZoneConfig.
         :type request: :class:`tencentcloud.teo.v20220901.models.ExportZoneConfigRequest`
@@ -4232,7 +4341,7 @@ class TeoClient(AbstractClient):
 
     def HandleFunctionRuntimeEnvironment(self, request):
         r"""This API is used to operate the runtime environment of an edge function. It supports related settings for environment variables.
-        After the environment variables are set, they can be used in the function code. For details, see [Edge Functions Referencing Environment Variables](https://intl.cloud.tencent.com/document/product/1552/109151?from_cn_redirect=1#0151fd9a-8b0e-407b-ae37-54553a60ded6).
+        After the environment variables are set, they can be used in the function code and function replica code. For details, see [Edge Functions Referencing Environment Variables](https://www.tencentcloud.com/document/product/1552/109151?from_cn_redirect=1#0151fd9a-8b0e-407b-ae37-54553a60ded6).
 
         :param request: Request instance for HandleFunctionRuntimeEnvironment.
         :type request: :class:`tencentcloud.teo.v20220901.models.HandleFunctionRuntimeEnvironmentRequest`
@@ -4255,7 +4364,7 @@ class TeoClient(AbstractClient):
 
 
     def IdentifyZone(self, request):
-        r"""This API is used to verify ownership of the site.
+        r"""Used to verify site ownership.
 
         :param request: Request instance for IdentifyZone.
         :type request: :class:`tencentcloud.teo.v20220901.models.IdentifyZoneRequest`
@@ -4278,7 +4387,7 @@ class TeoClient(AbstractClient):
 
 
     def ImportZoneConfig(self, request):
-        r"""This API is used to quickly import site configuration files. After the import is initiated, the API will return the corresponding task ID. Users need to use the site configuration import result query API to obtain the execution result of this import task.
+        r"""This API is used to quickly import site configuration files. After the import is initiated, the API will return the corresponding task ID (TaskId). Users need to use the site configuration import result query API to obtain the results of this import task.
 
         :param request: Request instance for ImportZoneConfig.
         :type request: :class:`tencentcloud.teo.v20220901.models.ImportZoneConfigRequest`
@@ -4301,7 +4410,7 @@ class TeoClient(AbstractClient):
 
 
     def IncreasePlanQuota(self, request):
-        r"""When the number of sites bound to your plan, the number of rules under "Web Protection - Custom Rules - Precision Matching Policy", or the number of rules under "Web Protection - Rate Limiting - Precision Rate Limiting Module" reaches the plan's quota, you can use this interface to purchase additional quotas.
+        r"""This API is used to purchase additional quotas when the number of sites bound to your plan, the number of rules under "Web Protection - Custom Rules - Precision Matching Policy", or the rules under "Web Protection - Rate Limiting - Precision Rate Limiting Module" reach the plan's quota limit.
         > This interface only supports the Enterprise Edition Plan.
 
         :param request: Request instance for IncreasePlanQuota.
@@ -4325,7 +4434,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyAccelerationDomain(self, request):
-        r"""This API is used to modify an accelerated domain name.
+        r"""Modify acceleration domain name information
 
         :param request: Request instance for ModifyAccelerationDomain.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyAccelerationDomainRequest`
@@ -4348,7 +4457,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyAccelerationDomainStatuses(self, request):
-        r"""This API is used to batch modify the status of accelerated domains.
+        r"""Batch modify accelerated domain status
 
         :param request: Request instance for ModifyAccelerationDomainStatuses.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyAccelerationDomainStatusesRequest`
@@ -4371,8 +4480,8 @@ class TeoClient(AbstractClient):
 
 
     def ModifyAliasDomain(self, request):
-        r"""This API is used to modify an alias domain name.
-        The feature is only supported in the enterprise plan and is currently in closed beta testing. If you need to use it, [contact us](https://www.tencentcloud.com/contact-us).
+        r"""Modify an alias domain name.
+        This feature is only supported in the enterprise plan and is currently in beta test. To use it, please [contact us](https://www.tencentcloud.com/contact-us).
 
         :param request: Request instance for ModifyAliasDomain.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyAliasDomainRequest`
@@ -4395,8 +4504,8 @@ class TeoClient(AbstractClient):
 
 
     def ModifyAliasDomainStatus(self, request):
-        r"""This API is used to modify the status of an alias domain name.
-        The feature is only supported in the enterprise plan and is currently in closed beta testing. If you need to use it, [Contact Us](https://www.tencentcloud.com/contact-us).
+        r"""Modify the status of an alias domain name.
+        This feature is only supported in the enterprise plan and is currently in beta test. To use it, please [contact us](https://www.tencentcloud.com/contact-us).
 
         :param request: Request instance for ModifyAliasDomainStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyAliasDomainStatusRequest`
@@ -4419,8 +4528,8 @@ class TeoClient(AbstractClient):
 
 
     def ModifyApplicationProxy(self, request):
-        r"""This API is on an earlier version. If you want to call it, please switch to the latest version. For details, see [ModifyL4Proxy
-        ] (https://intl.cloud.tencent.com/document/product/1552/103411?from_cn_redirect=1).
+        r"""This API is on an earlier version. If you want to call it, switch to the latest version. For details, refer to [Modify Layer 4 Proxy Instance].
+        ](https://www.tencentcloud.com/document/product/1552/103411?from_cn_redirect=1) .
 
         :param request: Request instance for ModifyApplicationProxy.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyApplicationProxyRequest`
@@ -4443,7 +4552,8 @@ class TeoClient(AbstractClient):
 
 
     def ModifyApplicationProxyRule(self, request):
-        r"""This API is on an earlier version. If you want to call it, please switch to the latest version. For details, see [ModifyL4ProxyRules] (https://intl.cloud.tencent.com/document/product/1552/103410?from_cn_redirect=1).
+        r"""This API is on an earlier version. If you want to call it, switch to the latest version. For details, see Modifying Layer 4 Proxy Forwarding Rules.
+        ](https://www.tencentcloud.com/document/product/1552/103410?from_cn_redirect=1) .
 
         :param request: Request instance for ModifyApplicationProxyRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyApplicationProxyRuleRequest`
@@ -4466,8 +4576,8 @@ class TeoClient(AbstractClient):
 
 
     def ModifyApplicationProxyRuleStatus(self, request):
-        r"""This API is on an earlier version. If you want to call it, please switch to the latest version. For details, see [ModifyL4ProxyRulesStatus
-        ] (https://intl.cloud.tencent.com/document/product/1552/103409?from_cn_redirect=1).
+        r"""This API is on an earlier version. If you want to call it, switch to the latest version. For details, see Modifying Layer 4 Proxy Forwarding Rule Status.
+        ](https://www.tencentcloud.com/document/product/1552/103409?from_cn_redirect=1) .
 
         :param request: Request instance for ModifyApplicationProxyRuleStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyApplicationProxyRuleStatusRequest`
@@ -4490,7 +4600,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyApplicationProxyStatus(self, request):
-        r"""This API is on an earlier version. If you want to call it, please switch to the latest version. For details, see [ModifyL4ProxyStatus] (https://intl.cloud.tencent.com/document/product/1552/103408?from_cn_redirect=1).
+        r"""This API is on an earlier version. If you want to call it, switch to the latest version. For details, see [modify layer 4 proxy instance status](https://www.tencentcloud.com/document/product/1552/103408?from_cn_redirect=1).
 
         :param request: Request instance for ModifyApplicationProxyStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyApplicationProxyStatusRequest`
@@ -4513,7 +4623,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyContentIdentifier(self, request):
-        r"""Modify content identifier, only description modification is supported. This feature is only open to the allowlist.
+        r"""Modification content identifier. Only description modification is supported. The feature is open in the allowlist only.
 
         :param request: Request instance for ModifyContentIdentifier.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyContentIdentifierRequest`
@@ -4582,7 +4692,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyDDoSProtection(self, request):
-        r"""This API is used to modify site exclusive Anti-DDoS protection.
+        r"""Modify exclusive DDoS protection for a site.
 
         :param request: Request instance for ModifyDDoSProtection.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyDDoSProtectionRequest`
@@ -4605,7 +4715,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyDnsRecords(self, request):
-        r"""This API is used to bulk modify DNS records.
+        r"""You can use this API to batch modify DNS records.
 
         :param request: Request instance for ModifyDnsRecords.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyDnsRecordsRequest`
@@ -4628,7 +4738,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyDnsRecordsStatus(self, request):
-        r"""You can batch modify the status of DNS records through this API, enabling and disabling records in bulk.
+        r"""You can use this API to batch modify the status of DNS records and enable or disable records in batches.
 
         :param request: Request instance for ModifyDnsRecordsStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyDnsRecordsStatusRequest`
@@ -4651,7 +4761,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyEdgeKVNamespace(self, request):
-        r"""This API is used to modify the attribute information of a specified KV namespace. Currently supported is namespace description modification.
+        r"""This API is used to modify the attribute information of a specified KV namespace. Currently, only namespace description modification is supported.
 
         :param request: Request instance for ModifyEdgeKVNamespace.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyEdgeKVNamespaceRequest`
@@ -4697,7 +4807,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyFunctionComponentBindings(self, request):
-        r"""This API is used to modify the binding relationship between edge functions and components, supporting four operation modes: bind, bind-override, unbind, and rebind. By specifying the operation type and component list, you can manage the component binding of functions.
+        r"""Modify the binding relationship between edge functions and components. Four operation modes are supported: bind, bind-override, unbind, and rebind. Manage function component binding relationships by specifying the operation type and component list.
 
         :param request: Request instance for ModifyFunctionComponentBindings.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyFunctionComponentBindingsRequest`
@@ -4743,7 +4853,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyFunctionRule(self, request):
-        r"""This API is used to modify a trigger rule for an edge function. It supports modifying rule conditions, execution functions, and description. You can first use the DescribeFunctionRules API to get the RuleId of the rule that needs to be modified, then input the modified rule content. The original rule content will be overwritten.
+        r"""This API is used to modify a trigger rule for an edge function. It supports modifying rule conditions, execution functions, and description. You can first use the DescribeFunctionRules API to get the RuleId of the rule to be modified, then input the modified rule content. The original rule content will be overwritten.
 
         :param request: Request instance for ModifyFunctionRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyFunctionRuleRequest`
@@ -4789,8 +4899,9 @@ class TeoClient(AbstractClient):
 
 
     def ModifyHostsCertificate(self, request):
-        r"""This API is used to configure the certificate of a site. You can use your own certificate or [apply for a free certificate](https://intl.cloud.tencent.com/document/product/1552/90437?from_cn_redirect=1).
-        To use an external certificate, upload the certificate to [SSL Certificates Console](https://console.cloud.tencent.com/certoview) first, and then input the certificate ID in this API. For details, see [Deploying Own Certificates to EdgeOne Domains](https://intl.cloud.tencent.com/document/product/1552/88874?from_cn_redirect=1).
+        r"""After domain name creation is completed, you can configure a self-owned certificate for the domain name, or alternatively use the free certificate (https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1) offered by EdgeOne.
+        If you need to configure a self-owned certificate, upload the certificate to the [SSL certificate console](https://console.cloud.tencent.com/certoverview) first, then import the corresponding certificate ID in this API. For details, see [Deploy self-owned certificates to EdgeOne domain names].
+        ](https://www.tencentcloud.com/document/product/1552/88874?from_cn_redirect=1).
 
         :param request: Request instance for ModifyHostsCertificate.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyHostsCertificateRequest`
@@ -4813,7 +4924,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyInferenceService(self, request):
-        r"""This API is used to modify the inference service, supporting updates to the listening port, request path, container image, resource configuration, and description. Only the passed parameters are modified, while others remain unchanged.
+        r"""Modify an inference service to support updates to the listening port, request path, container image, resource configuration, and description. Only passed parameters will be modified, while unpassed parameters remain unchanged.
 
         :param request: Request instance for ModifyInferenceService.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyInferenceServiceRequest`
@@ -4836,7 +4947,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyL4Proxy(self, request):
-        r"""This API is used to modify the configuration of a Layer 4 proxy instance.
+        r"""This API is used to modify the configuration of a layer 4 proxy instance.
 
         :param request: Request instance for ModifyL4Proxy.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyRequest`
@@ -4882,7 +4993,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyL4ProxyRulesStatus(self, request):
-        r"""This API is used to start or stop Layer 4 proxy forwarding rules, supporting both individual and batch operation.
+        r"""This API is used to enable or disable the status of layer-4 proxy rules, supporting both individual and batch operation.
 
         :param request: Request instance for ModifyL4ProxyRulesStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyRulesStatusRequest`
@@ -4905,7 +5016,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyL4ProxyStatus(self, request):
-        r"""This API is used to enable or disable a Layer 4 proxy instance.
+        r"""This API is used to enable or disable an L4 proxy instance.
 
         :param request: Request instance for ModifyL4ProxyStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyStatusRequest`
@@ -4928,7 +5039,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyL7AccRule(self, request):
-        r"""This API is used to modify rules in the [rule engine](https://intl.cloud.tencent.com/document/product/1552/70901?from_cn_redirect=1), supporting only one rule modification per request.
+        r"""This API is used to modify a rule in the [rule engine](https://www.tencentcloud.com/document/product/1552/70901?from_cn_redirect=1). Only one rule can be modified at a time.
 
         :param request: Request instance for ModifyL7AccRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL7AccRuleRequest`
@@ -4951,7 +5062,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyL7AccRulePriority(self, request):
-        r"""This interface is used to modify the priority of the rule list in the [Rule Engine](https://intl.cloud.tencent.com/document/product/1552/70901?from_cn_redirect=1). This interface requires the complete rule ID list under the site ID to be passed in. The rule ID list can be obtained through the [Query Seven-Layer Acceleration Rules](https://intl.cloud.tencent.com/document/product/1552/115820?from_cn_redirect=1) interface. The final priority order will be adjusted to the order of the rule ID list, and will be executed from front to back.
+        r"""This API is used to modify the priority of the rule list in the rule engine (https://www.tencentcloud.com/document/product/1552/70901?from_cn_redirect=1). It requires the input of the complete rule ID list under the site ID. The rule ID list can be obtained through the API for querying layer-7 acceleration rules (https://www.tencentcloud.com/document/product/1552/115820?from_cn_redirect=1). The final priority order will be adjusted to the order of the rule ID list, executed from front to back.
 
         :param request: Request instance for ModifyL7AccRulePriority.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL7AccRulePriorityRequest`
@@ -4974,7 +5085,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyL7AccSetting(self, request):
-        r"""This API is used to modify the global configuration of [Site Acceleration](https://intl.cloud.tencent.com/document/product/1552/96193?from_cn_redirect=1).
+        r"""This API is used to modify the global configuration of site acceleration.
 
         :param request: Request instance for ModifyL7AccSetting.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL7AccSettingRequest`
@@ -5020,7 +5131,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyMultiPathGateway(self, request):
-        r"""This API is used to modify multi-channel security acceleration gateway information, such as name, gateway ID, IP and port.
+        r"""This API is used to modify multi-channel security acceleration gateway information, such as name, gateway ID, IP, and port.
 
         :param request: Request instance for ModifyMultiPathGateway.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewayRequest`
@@ -5043,7 +5154,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyMultiPathGatewayLine(self, request):
-        r"""This API is used to modify the access lines of the multi-channel security acceleration gateway, including EdgeOne Layer-4 proxy lines and custom lines.
+        r"""This API is used to modify the configuration for connecting lines to the multi-channel security acceleration gateway, including EdgeOne Layer 4 proxy lines and custom lines.
 
         :param request: Request instance for ModifyMultiPathGatewayLine.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewayLineRequest`
@@ -5066,7 +5177,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyMultiPathGatewaySecretKey(self, request):
-        r"""This API is used to modify the access key for the multi-channel security acceleration gateway.The access key is used by customers to sign requests for gateway access. The original key becomes invalid after modification.
+        r"""This API is used to modify the key for integrating a multi-channel security acceleration gateway. Customers sign with the integration key to access the multi-channel security acceleration gateway. After modification, the original key becomes invalid.
 
         :param request: Request instance for ModifyMultiPathGatewaySecretKey.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewaySecretKeyRequest`
@@ -5089,7 +5200,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyMultiPathGatewayStatus(self, request):
-        r"""This API is used to update the status of a multi-channel security gateway.
+        r"""This API is used to update the multi-channel security gateway status.
 
         :param request: Request instance for ModifyMultiPathGatewayStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewayStatusRequest`
@@ -5112,7 +5223,11 @@ class TeoClient(AbstractClient):
 
 
     def ModifyOriginACL(self, request):
-        r"""This API is used to enable or disable specific origin IP ranges for L7 acceleration domains or L4 proxy instances. The maximum quantity for single submission is 200 L7 acceleration domains or 100 L4 proxy instances, with mixed submissions supported up to a total of 200 instances. If changes are needed for submissions exceeding 200 instances, please submit in batches via this interface. Meanwhile, allowlisted customers can switch to other available origin protection IP range versions such as the simplified edition, which can reduce origin IP ranges.
+        r"""This API is used to modify the origin protection configuration of a site. The following operations are supported: <li>**Resource addition and deletion**: enable or disable origin-pull from specific origin IP ranges for layer-7 accelerated domains/layer-4 proxy instances. This applies to resource adjustment in **specified protection mode**, and unspecified resources will not change;</li><li>**Mode switching**: adjust the origin protection mode of layer-7 accelerated domains/layer-4 proxy instances. After switching to all, the list of accelerated domains or layer-4 proxy instances under the site will be automatically added to the origin protection list in real time, and subsequent resource changes will also be automatically adjusted without manual intervention; after switching to specific, only the mode is changed, and resources already included in protection remain unchanged;</li><li>**IP range version switching**: for whitelisted customers, it supports switching to other available origin protection IP range versions, such as the simplified version, to reduce origin-pull IP ranges.</li>
+
+        Instructions for specified protection mode:
+        <li>The maximum number of layer-7 accelerated domains that can be submitted at a time is 200, and the maximum number of layer-4 proxy instances is 100. Mixed submission of layer-7 accelerated domains/layer-4 proxy instances is supported, with a maximum total of 200 instances;</li>
+        <li>When more than 200 resources need to be changed, submit them in batches through this API. For example, to add 500 layer-7 accelerated domains, first submit 200 domains through this API, and then submit the remaining 300 domains in two batches, with no more than 200 domains each time.</li>
 
         :param request: Request instance for ModifyOriginACL.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyOriginACLRequest`
@@ -5135,7 +5250,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyOriginGroup(self, request):
-        r"""This API is used to modify the configuration of an origin group. The original configuration will be overwritten.
+        r"""Modify origin group configuration. Newly submitted origin records will overwrite the original origin records in the origin group.
 
         :param request: Request instance for ModifyOriginGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyOriginGroupRequest`
@@ -5181,8 +5296,8 @@ class TeoClient(AbstractClient):
 
 
     def ModifyPrefetchOriginLimit(self, request):
-        r"""This API is used to configure the origin speed limit. This feature is in beta test.
-        This API is used to create, modify and delete preheating origin speed limit restrictions. Each account supports up to 100 restrictions.
+        r"""This API is used to configure origin-pull rate limiting. This feature is in allowlist beta test.
+        This API is used to create, modify, and delete preheated origin-pull rate limits. Each account supports up to 100 limits.
 
         :param request: Request instance for ModifyPrefetchOriginLimit.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyPrefetchOriginLimitRequest`
@@ -5234,8 +5349,8 @@ class TeoClient(AbstractClient):
 
 
     def ModifyRule(self, request):
-        r"""This API is on an earlier version. EdgeOne has comprehensively upgraded the relevant APIs of the rule engine on January 21, 2025. For details about the new version of the API for modifying layer-7 acceleration rules, see ModifyL7AccRule(https://intl.cloud.tencent.com/document/product/1552/115818?from_cn_redirect=1).
-        <p style="color: red;">Note: Starting from January 21, 2025, the old version of the interface will stop updating and iteration. Subsequent new features will only be provided in the new version of the interface, and the original capabilities supported by the old version of the interface will not be affected. To avoid data field conflicts when using the old version of the interface, it is recommended that you migrate to the new version of the rule engine interface as soon as possible. </p>
+        r"""This API is on an earlier version for modifying rule engine APIs. EdgeOne comprehensively upgraded rule engine-related APIs on January 21, 2025. For details on the new version API for modifying layer-7 acceleration rules, refer to [ModifyL7AccRule](https://www.tencentcloud.com/document/product/1552/115818?from_cn_redirect=1).
+        <p style="color: red;">Note: Starting from January 21, 2025, the legacy version API will stop update and iteration. New features will only be provided in the latest version API. The existing capacity supported by the legacy version API will not be affected. To avoid data field conflict when using the legacy version API, migrate to the latest version rule engine API as soon as possible.</p>
 
         :param request: Request instance for ModifyRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyRuleRequest`
@@ -5258,7 +5373,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifySecurityAPIResource(self, request):
-        r"""This API is used to modify an API resource.
+        r"""This API is used to modify API resources.
 
         :param request: Request instance for ModifySecurityAPIResource.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifySecurityAPIResourceRequest`
@@ -5281,7 +5396,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifySecurityAPIService(self, request):
-        r"""This API is used to modify an API service.
+        r"""This API is used to modify API services.
 
         :param request: Request instance for ModifySecurityAPIService.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifySecurityAPIServiceRequest`
@@ -5304,7 +5419,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifySecurityClientAttester(self, request):
-        r"""This API is used to modify client authentication options.
+        r"""Modify client authentication options.
 
         :param request: Request instance for ModifySecurityClientAttester.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifySecurityClientAttesterRequest`
@@ -5327,7 +5442,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifySecurityIPGroup(self, request):
-        r"""This API is used to modify a security IP group.
+        r"""Modifies a security IP group.
 
         :param request: Request instance for ModifySecurityIPGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifySecurityIPGroupRequest`
@@ -5373,7 +5488,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifySecurityPolicy(self, request):
-        r"""This API is used to modify the web and bot security configurations.
+        r"""Modify Web & Bot security configuration.
 
         :param request: Request instance for ModifySecurityPolicy.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifySecurityPolicyRequest`
@@ -5396,7 +5511,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifySharedCNAME(self, request):
-        r"""This API is used to modify a shared CNAME. Currently only support modifying the description of a shared CNAME and setting the associated IP SSL domain name of a shared CNAME with IP SSL type. The shared CNAME itself cannot be modified after creation. This feature is in beta test.
+        r"""This API is used to modify a shared CNAME. Currently, it only supports modifying the description and settings of a shared CNAME, and associating an IP SSL domain name with an IP SSL shared CNAME. Once created, a shared CNAME itself cannot be modified. This feature is in beta test.
 
         :param request: Request instance for ModifySharedCNAME.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifySharedCNAMERequest`
@@ -5419,7 +5534,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyWebSecurityTemplate(self, request):
-        r"""This API is used to modify the security policy configuration template.
+        r"""Modifies a security policy configuration template
 
         :param request: Request instance for ModifyWebSecurityTemplate.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyWebSecurityTemplateRequest`
@@ -5442,7 +5557,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyZone(self, request):
-        r"""This API is used to modify a site.
+        r"""Modifies site information.
 
         :param request: Request instance for ModifyZone.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyZoneRequest`
@@ -5467,7 +5582,7 @@ class TeoClient(AbstractClient):
     def ModifyZoneCustomVariables(self, request):
         r"""This API is used to manage site-level custom variables, supporting the creation, modification, and deletion of variable definitions and variable operations. The submitted list will override the corresponding existing configuration. To clear the configuration, pass in an empty list. Configuration items not passed in remain unchanged. The default values for variable definitions and variable operations are both empty.
 
-        For operations related to rule-level custom variables, call the CreateL7AccRules or ModifyL7AccRule API.
+        For rule-level custom variable related operations, call the CreateL7AccRules or ModifyL7AccRule API.
 
         :param request: Request instance for ModifyZoneCustomVariables.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyZoneCustomVariablesRequest`
@@ -5490,7 +5605,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyZoneSetting(self, request):
-        r"""This API is an older version. EdgeOne has fully upgraded the APIs related to the rule engine. For details, please refer to [ModifyL7AccSetting](https://intl.cloud.tencent.com/document/product/1552/115817?from_cn_redirect=1).
+        r"""This API is on an earlier version. EdgeOne has completed a comprehensive upgrade of rule engine APIs. For details, see [ModifyL7AccSetting](https://www.tencentcloud.com/document/product/1552/115817?from_cn_redirect=1).
 
         :param request: Request instance for ModifyZoneSetting.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyZoneSettingRequest`
@@ -5513,7 +5628,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyZoneStatus(self, request):
-        r"""This API is used to change the site status.
+        r"""Used to enable or disable a site.
 
         :param request: Request instance for ModifyZoneStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyZoneStatusRequest`
@@ -5536,7 +5651,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyZoneWorkMode(self, request):
-        r"""This API is used to modify the working mode of configuration modules under a site. Configuration modules can enable version management mode or immediate effect mode by configuration group dimension. For details, refer to [version management](https://www.tencentcloud.com/document/product/1145/67719).
+        r"""This API is used to modify the working mode of each configuration module under a site. Each configuration module of a site can enable version management mode or immediate effect mode by configuration group dimension. For details, see Version Management (https://www.tencentcloud.com/document/product/1552/113690?from_cn_redirect=1).
 
         :param request: Request instance for ModifyZoneWorkMode.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyZoneWorkModeRequest`
@@ -5558,8 +5673,31 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def OperateInferenceDomain(self, request):
+        r"""Operate an inference service domain name. You can stop, enable, and delete it. Resources cannot be recovered after deletion.
+
+        :param request: Request instance for OperateInferenceDomain.
+        :type request: :class:`tencentcloud.teo.v20220901.models.OperateInferenceDomainRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OperateInferenceDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OperateInferenceDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.OperateInferenceDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def OperateInferenceService(self, request):
-        r"""This API is used to operate an inference service, support stopping, starting up, and deleting the inference service. Once deleted, resources cannot be recovered.
+        r"""Operate an inference service. You can stop, start, and delete it. Resources cannot be recovered after deletion.
 
         :param request: Request instance for OperateInferenceService.
         :type request: :class:`tencentcloud.teo.v20220901.models.OperateInferenceServiceRequest`
@@ -5582,7 +5720,7 @@ class TeoClient(AbstractClient):
 
 
     def RefreshMultiPathGatewaySecretKey(self, request):
-        r"""This API is used to refresh keys for multi-channel security acceleration gateways. Customers access multi-channel security acceleration gateways based on integration key signatures. Each site has only one access key, which applies to all gateways under that site. After refreshing the key, the original key becomes invalid.
+        r"""This API is used to refresh the key of a multi-channel security acceleration gateway. Customers integrate with the multi-channel security acceleration gateway based on key signatures. Each site contains only one key, which can be used to integrate all gateways under the site. After the key is refreshed, the original key becomes invalid.
 
         :param request: Request instance for RefreshMultiPathGatewaySecretKey.
         :type request: :class:`tencentcloud.teo.v20220901.models.RefreshMultiPathGatewaySecretKeyRequest`
@@ -5605,8 +5743,8 @@ class TeoClient(AbstractClient):
 
 
     def RenewPlan(self, request):
-        r"""When your plan needs to be extended, you can use this interface to renew it. Plan renewal is only supported for the Personal, Basic, and Standard Editions.
-        > For cost details, refer to [Plan Fees](https://intl.cloud.tencent.com/document/product/1552/94158?from_cn_redirect=1).
+        r"""When your plan needs to be extended, you can use this API to renew it. Plan renewal is only supported for the Personal, Basic, and Standard Editions.
+        > For cost details, refer to [Plan Cost](https://www.tencentcloud.com/document/product/1552/94158?from_cn_redirect=1).
 
         :param request: Request instance for RenewPlan.
         :type request: :class:`tencentcloud.teo.v20220901.models.RenewPlanRequest`
@@ -5630,9 +5768,9 @@ class TeoClient(AbstractClient):
 
     def UpgradePlan(self, request):
         r"""When you need features available only in higher-tier plans, you can upgrade your plan through this interface. Upgrades are only supported for Personal and Basic Edition Plans.
-        > For differences between EdgeOne billing plans, refer to [Comparison of EdgeOne Plans](https://intl.cloud.tencent.com/document/product/1552/94165?from_cn_redirect=1).
-        For EdgeOne plan upgrade rules and pricing details, refer to [EdgeOne Plan Upgrade Guide](https://intl.cloud.tencent.com/document/product/1552/95291?from_cn_redirect=1).
-        If your plan needs to upgrade to the Enterprise Edition, [Contact Us](https://www.tencentcloud.com/contact-us).
+        > For differences between different types of Edgeone billing plans, see Edgeone billing plan comparison (https://www.tencentcloud.com/document/product/1552/94165?from_cn_redirect=1)
+        For billing package upgrade rules and pricing details, see Edgeone billing package upgrade instructions (https://www.tencentcloud.com/document/product/1552/95291?from_cn_redirect=1)
+        If your plan needs to upgrade to the Enterprise Edition, please [contact us](https://www.tencentcloud.com/contact-us).
 
         :param request: Request instance for UpgradePlan.
         :type request: :class:`tencentcloud.teo.v20220901.models.UpgradePlanRequest`
@@ -5655,9 +5793,9 @@ class TeoClient(AbstractClient):
 
 
     def VerifyOwnership(self, request):
-        r"""This API is used to verify your ownership of a site or domain name. It's required in the CNAME access mode. After a site is verified, you don't need to verify the ownership again for domain names added to it in the future. For details, see [Ownership Verification](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1).
+        r"""In CNAME access mode, you need to verify the ownership of the site or domain name. This API is used to trigger the verification. If the site passes ownership verification, no need to verify again when adding domains subsequently. For details, see [Site/Domain Name Ownership Verification](https://www.tencentcloud.com/document/product/1552/70789?from_cn_redirect=1).
 
-        For sites connected via the NS, you can query whether the NS is successfully switched through this API. For details, see [Modifying DNS Servers](https://intl.cloud.tencent.com/document/product/1552/90452?from_cn_redirect=1).
+        In NS access mode, you can also query through this API whether the NS server switch is successful. For details, see [Modify DNS Server](https://www.tencentcloud.com/document/product/1552/90452?from_cn_redirect=1).
 
         :param request: Request instance for VerifyOwnership.
         :type request: :class:`tencentcloud.teo.v20220901.models.VerifyOwnershipRequest`
