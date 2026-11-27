@@ -20,11 +20,26 @@ AUTHFAILURE = 'AuthFailure'
 # Failed to get the CFS service role.
 AUTHFAILURE_GETROLEFAILED = 'AuthFailure.GetRoleFailed'
 
+# Authentication token expired.
+AUTHFAILURE_TOKENFAILURE = 'AuthFailure.TokenFailure'
+
 # Request unauthorized.
 AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
 
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
+
+# An auto-deletion policy already exists for this file system.
+FAILEDOPERATION_AUTODELETEPOLICYALREADYEXIST = 'FailedOperation.AutoDeletePolicyAlreadyExist'
+
+# The auto-deletion policy is disabled.
+FAILEDOPERATION_AUTODELETEPOLICYDISABLED = 'FailedOperation.AutoDeletePolicyDisabled'
+
+# The auto-deletion policy is already enabled.
+FAILEDOPERATION_AUTODELETEPOLICYENABLED = 'FailedOperation.AutoDeletePolicyEnabled'
+
+# The auto-deletion policy is being processed. Please wait.
+FAILEDOPERATION_AUTODELETEPOLICYPROCESSING = 'FailedOperation.AutoDeletePolicyProcessing'
 
 # Failed to bind the resource pack to the file system.
 FAILEDOPERATION_BINDRESOURCEPKGFAILED = 'FailedOperation.BindResourcePkgFailed'
@@ -34,6 +49,12 @@ FAILEDOPERATION_CLIENTTOKENINUSE = 'FailedOperation.ClientTokenInUse'
 
 # 
 FAILEDOPERATION_COSMULTIVERSIONDISABLED = 'FailedOperation.CosMultiVersionDisabled'
+
+# The retrieval task is in progress.
+FAILEDOPERATION_DATARETRIEVALTASKRUNNING = 'FailedOperation.DataRetrievalTaskRunning'
+
+# The file system contains S3 nodes. Delete the S3 nodes before deleting the file system.
+FAILEDOPERATION_FILESYSTEMHASS3ENDPOINT = 'FailedOperation.FileSystemHasS3Endpoint'
 
 # There are mount targets on the file system.
 FAILEDOPERATION_MOUNTTARGETEXISTS = 'FailedOperation.MountTargetExists'
@@ -59,11 +80,20 @@ INTERNALERROR_CREATEFSFAILED = 'InternalError.CreateFsFailed'
 # Failed to get the payment status of the user.
 INTERNALERROR_GETACCOUNTSTATUSFAILED = 'InternalError.GetAccountStatusFailed'
 
+# InternalError.InternalError
+INTERNALERROR_INTERNALERROR = 'InternalError.InternalError'
+
 # Timed out.
 INTERNALERROR_TIMEOUT = 'InternalError.Timeout'
 
 # Invalid parameter.
 INVALIDPARAMETER = 'InvalidParameter'
+
+# Invalid path format. The path is not an absolute path.
+INVALIDPARAMETER_AUTODELETEPATHINVALID = 'InvalidParameter.AutoDeletePathInvalid'
+
+# The path must start with /cfs/.
+INVALIDPARAMETER_AUTODELETEPATHPREFIXINVALID = 'InvalidParameter.AutoDeletePathPrefixInvalid'
 
 # The snapshot policy was not found.
 INVALIDPARAMETER_AUTOPOLICYNOTFOUND = 'InvalidParameter.AutoPolicyNotFound'
@@ -77,6 +107,9 @@ INVALIDPARAMETER_INVALIDPARAMDAYOFWEEK = 'InvalidParameter.InvalidParamDayofWeek
 # The value of the scheduled hour parameter is incorrect.
 INVALIDPARAMETER_INVALIDPARAMHOUR = 'InvalidParameter.InvalidParamHour'
 
+# InvalidParameter.InvalidParameter
+INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
+
 # The snapshot policy is invalid.
 INVALIDPARAMETER_INVALIDSNAPPOLICYSTATUS = 'InvalidParameter.InvalidSnapPolicyStatus'
 
@@ -86,10 +119,10 @@ INVALIDPARAMETER_INVALIDSNAPSHOTNAME = 'InvalidParameter.InvalidSnapshotName'
 # The file system snapshot policy name is invalid.
 INVALIDPARAMETER_INVALIDSNAPSHOTPOLICYNAME = 'InvalidParameter.InvalidSnapshotPolicyName'
 
-# 
+# ListPath and TaskPath are both specified or both empty.
 INVALIDPARAMETER_LISTPATHANDTASKPATHCONFLICT = 'InvalidParameter.ListPathAndTaskPathConflict'
 
-# 
+# The manifest path must start with /cfs.
 INVALIDPARAMETER_LISTPATHINVALIDPREFIX = 'InvalidParameter.ListPathInvalidPrefix'
 
 # The policy parameter is missing.
@@ -104,6 +137,12 @@ INVALIDPARAMETER_SNAPSHOTPOLICYNAMELIMITEXCEEDED = 'InvalidParameter.SnapshotPol
 # The parameter value is incorrect.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
+# The number of paths exceeds the upper limit of 20.
+INVALIDPARAMETERVALUE_AUTODELETEPATHCOUNTEXCEED = 'InvalidParameterValue.AutoDeletePathCountExceed'
+
+# Clean up nested directory paths.
+INVALIDPARAMETERVALUE_AUTODELETEPATHNESTED = 'InvalidParameterValue.AutoDeletePathNested'
+
 # Auto scale-out policy does not exist.
 INVALIDPARAMETERVALUE_AUTOPOLICYNOTFOUND = 'InvalidParameterValue.AutoPolicyNotFound'
 
@@ -115,6 +154,9 @@ INVALIDPARAMETERVALUE_CFSPATH = 'InvalidParameterValue.CfsPath'
 
 # The length of the string used to ensure the idempotency of the request exceeds the upper limit of 64 bytes.
 INVALIDPARAMETERVALUE_CLIENTTOKENLIMITEXCEEDED = 'InvalidParameterValue.ClientTokenLimitExceeded'
+
+# Data retrieval schedule rule conflict.
+INVALIDPARAMETERVALUE_DATARETRIEVALSCHEDULECONFLICT = 'InvalidParameterValue.DataRetrievalScheduleConflict'
 
 # The permission group name already exists.
 INVALIDPARAMETERVALUE_DUPLICATEDPGROUPNAME = 'InvalidParameterValue.DuplicatedPgroupName'
@@ -142,6 +184,9 @@ INVALIDPARAMETERVALUE_INVALIDAUTHCLIENTIP = 'InvalidParameterValue.InvalidAuthCl
 
 # Invalid scaling policy parameters.
 INVALIDPARAMETERVALUE_INVALIDAUTOSCALEUPPARAMS = 'InvalidParameterValue.InvalidAutoScaleUpParams'
+
+# The specified cfsversion value is invalid.
+INVALIDPARAMETERVALUE_INVALIDCFSVERSIONVALUE = 'InvalidParameterValue.InvalidCfsVersionValue'
 
 # The string used to ensure the idempotency of the request is incorrect.
 INVALIDPARAMETERVALUE_INVALIDCLIENTTOKEN = 'InvalidParameterValue.InvalidClientToken'
@@ -211,6 +256,9 @@ INVALIDPARAMETERVALUE_INVALIDPARAMISMODIFYREALTIMESYNC = 'InvalidParameterValue.
 
 # 
 INVALIDPARAMETERVALUE_INVALIDPARAMISSYNCDELETE = 'InvalidParameterValue.InvalidParamIsSyncDelete'
+
+# InvalidParameterValue.InvalidParameterValue
+INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = 'InvalidParameterValue.InvalidParameterValue'
 
 # The permission group is not under this user.
 INVALIDPARAMETERVALUE_INVALIDPGROUP = 'InvalidParameterValue.InvalidPgroup'
@@ -290,10 +338,10 @@ INVALIDPARAMETERVALUE_INVALIDZONEID = 'InvalidParameterValue.InvalidZoneId'
 # Invalid AZ or AZ ID.
 INVALIDPARAMETERVALUE_INVALIDZONEORZONEID = 'InvalidParameterValue.InvalidZoneOrZoneId'
 
-# 
+# Invalid manifest file format. Specify a full file path starting with /cfs/.
 INVALIDPARAMETERVALUE_LISTPATHFILEINVALID = 'InvalidParameterValue.ListPathFileInvalid'
 
-# 
+# The manifest file specified by ListPath does not exist in CFS.
 INVALIDPARAMETERVALUE_LISTPATHFILENOTFOUND = 'InvalidParameterValue.ListPathFileNotFound'
 
 # `FileSystemId` is missing.
@@ -392,11 +440,20 @@ INVALIDPARAMETERVALUE_ZONEIDREGIONNOTMATCH = 'InvalidParameterValue.ZoneIdRegion
 # Missing parameter.
 MISSINGPARAMETER = 'MissingParameter'
 
+# MissingParameter.MissingParameter
+MISSINGPARAMETER_MISSINGPARAMETER = 'MissingParameter.MissingParameter'
+
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
 
 # The resource is in use.
 RESOURCEINUSE = 'ResourceInUse'
+
+# ResourceInUse.DataRetrievalHasTask
+RESOURCEINUSE_DATARETRIEVALHASTASK = 'ResourceInUse.DataRetrievalHasTask'
+
+# The task is running. No other operations can be performed.
+RESOURCEINUSE_DATARETRIEVALTASKRUNNING = 'ResourceInUse.DataRetrievalTaskRunning'
 
 # Insufficient resources: the number of data flows exceeds the limit.
 RESOURCEINSUFFICIENT_DATAFLOWLIMITEXCEEDED = 'ResourceInsufficient.DataFlowLimitExceeded'
@@ -440,6 +497,12 @@ RESOURCEINSUFFICIENT_TURBOSPECIALCAPACITYFILESYSTEMCOUNTLIMIT = 'ResourceInsuffi
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
 
+# The auto-deletion policy does not exist.
+RESOURCENOTFOUND_AUTODELETEPOLICYNOTEXIST = 'ResourceNotFound.AutoDeletePolicyNotExist'
+
+# ResourceNotFound.DataRetrievalNotFound
+RESOURCENOTFOUND_DATARETRIEVALNOTFOUND = 'ResourceNotFound.DataRetrievalNotFound'
+
 # The file system does not exist.
 RESOURCENOTFOUND_FILESYSTEMNOTFOUND = 'ResourceNotFound.FileSystemNotFound'
 
@@ -461,14 +524,20 @@ RESOURCENOTFOUND_RULENOTFOUND = 'ResourceNotFound.RuleNotFound'
 # The snapshot ID does not exist.
 RESOURCENOTFOUND_SNAPSHOTNOTFOUND = 'ResourceNotFound.SnapshotNotFound'
 
-# 
+# Resources have been sold out.
 RESOURCESSOLDOUT = 'ResourcesSoldOut'
 
 # Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
+# UnauthorizedOperation.UnauthorizedOperation
+UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = 'UnauthorizedOperation.UnauthorizedOperation'
+
 # Unsupported operation.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# The file system type does not support auto-deletion policies.
+UNSUPPORTEDOPERATION_AUTODELETEFSTYPENOTSUPPORTED = 'UnsupportedOperation.AutoDeleteFsTypeNotSupported'
 
 # This AZ does not support the basic network.
 UNSUPPORTEDOPERATION_BASICNETINTERFACENOTSUPPORTED = 'UnsupportedOperation.BasicNetInterfaceNotSupported'

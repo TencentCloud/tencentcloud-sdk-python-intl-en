@@ -362,10 +362,10 @@ RESOURCENOTFOUND_EKYCWEBHOOKCONFIG = 'ResourceNotFound.EKYCWebhookConfig'
 # Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
-# Service activation exception.
+# Service activation error.
 UNAUTHORIZEDOPERATION_ACTIVATEERROR = 'UnauthorizedOperation.ActivateError'
 
-# Activating the service.
+# The service is being activated.
 UNAUTHORIZEDOPERATION_ACTIVATING = 'UnauthorizedOperation.Activating'
 
 # The account is in arrears.
@@ -374,7 +374,7 @@ UNAUTHORIZEDOPERATION_ARREARS = 'UnauthorizedOperation.Arrears'
 # The billing status is abnormal.
 UNAUTHORIZEDOPERATION_CHARGESTATUSEXCEPTION = 'UnauthorizedOperation.ChargeStatusException'
 
-# Identity verification has not been completed for the account.
+# The account is not verified.
 UNAUTHORIZEDOPERATION_NONAUTHORIZE = 'UnauthorizedOperation.NonAuthorize'
 
 # The service is not activated.

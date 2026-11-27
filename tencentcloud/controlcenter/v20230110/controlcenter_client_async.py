@@ -67,7 +67,7 @@ class ControlcenterClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ListAccountFactoryBaselineItemsResponse:
         """
-        This API is used to obtain account factory system baseline items.
+        This API is used to obtain Account Factory system baseline items.
         """
         
         kwargs = {}

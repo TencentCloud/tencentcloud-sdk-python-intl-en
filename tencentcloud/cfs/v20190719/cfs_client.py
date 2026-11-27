@@ -72,6 +72,29 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAutoDeletePolicy(self, request):
+        r"""This API is used to create an automatic data deletion policy for a specified CFS file system.
+
+        :param request: Request instance for CreateAutoDeletePolicy.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.CreateAutoDeletePolicyRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.CreateAutoDeletePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAutoDeletePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAutoDeletePolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAutoSnapshotPolicy(self, request):
         r"""This API is used to create a scheduled snapshot policy.
 
@@ -210,6 +233,29 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDataRetrieval(self, request):
+        r"""This API is used to create data retrieval.
+
+        :param request: Request instance for CreateDataRetrieval.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.CreateDataRetrievalRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.CreateDataRetrievalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDataRetrieval", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDataRetrievalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateLifecycleDataTask(self, request):
         r"""Support proactive settlement/preheat API.
 
@@ -293,6 +339,29 @@ class CfsClient(AbstractClient):
             body = self.call("CreateMigrationTask", params, headers=headers)
             response = json.loads(body)
             model = models.CreateMigrationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAutoDeletePolicy(self, request):
+        r"""This API is used to delete a specified automatic deletion policy.
+
+        :param request: Request instance for DeleteAutoDeletePolicy.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteAutoDeletePolicyRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.DeleteAutoDeletePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAutoDeletePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAutoDeletePolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -440,6 +509,31 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteDataRetrieval(self, request):
+        r"""This API is used to delete data retrieval.
+
+        This API is used to delete a specified data retrieval configuration. Deletion is not allowed when associated tasks exist. After this API is called, if the corresponding data retrieval cannot be found through the DescribeDataRetrieval API, the deletion is successful.
+
+        :param request: Request instance for DeleteDataRetrieval.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteDataRetrievalRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.DeleteDataRetrievalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDataRetrieval", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDataRetrievalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteLifecyclePolicy(self, request):
         r"""Delete a lifecycle management policy.
 
@@ -477,6 +571,29 @@ class CfsClient(AbstractClient):
             body = self.call("DeleteMigrationTask", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteMigrationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAutoDeletePolicies(self, request):
+        r"""This API is used to query the list of automatic data deletion policies.
+
+        :param request: Request instance for DescribeAutoDeletePolicies.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeAutoDeletePoliciesRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.DescribeAutoDeletePoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAutoDeletePolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAutoDeletePoliciesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -869,6 +986,29 @@ class CfsClient(AbstractClient):
             body = self.call("DoDirectoryOperation", params, headers=headers)
             response = json.loads(body)
             model = models.DoDirectoryOperationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAutoDeletePolicy(self, request):
+        r"""This API is used to modify the name or cleanup path of an automatic deletion policy.
+
+        :param request: Request instance for ModifyAutoDeletePolicy.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.ModifyAutoDeletePolicyRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.ModifyAutoDeletePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAutoDeletePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAutoDeletePolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

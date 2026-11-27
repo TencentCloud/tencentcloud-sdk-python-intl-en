@@ -73,7 +73,7 @@ class ControlcenterClient(AbstractClient):
 
 
     def ListAccountFactoryBaselineItems(self, request):
-        r"""This API is used to obtain account factory system baseline items.
+        r"""This API is used to obtain Account Factory system baseline items.
 
         :param request: Request instance for ListAccountFactoryBaselineItems.
         :type request: :class:`tencentcloud.controlcenter.v20230110.models.ListAccountFactoryBaselineItemsRequest`

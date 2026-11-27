@@ -73,7 +73,7 @@ class FaceidClient(AbstractClient):
 
 
     def ApplyWebVerificationBizTokenIntl(self, request):
-        r"""This API is used to obtain a BizToken before each call to the Web verification service. Save the BizToken to initiate the verification process and retrieve the result upon completion. The BizToken is valid for 10 minutes.
+        r"""Before each call to the Web verification service, you need to call this API to obtain a BizToken and save it for initiating the verification process. After the verification is completed, the BizToken is used to obtain the result information. The BizToken is valid for 10 minutes.
 
         :param request: Request instance for ApplyWebVerificationBizTokenIntl.
         :type request: :class:`tencentcloud.faceid.v20180301.models.ApplyWebVerificationBizTokenIntlRequest`

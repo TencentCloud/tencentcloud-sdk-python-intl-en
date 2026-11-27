@@ -61,6 +61,24 @@ class CfsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAutoDeletePolicy(
+            self,
+            request: models.CreateAutoDeletePolicyRequest,
+            opts: Dict = None,
+    ) -> models.CreateAutoDeletePolicyResponse:
+        """
+        This API is used to create an automatic data deletion policy for a specified CFS file system.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAutoDeletePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAutoDeletePolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAutoSnapshotPolicy(
             self,
             request: models.CreateAutoSnapshotPolicyRequest,
@@ -169,6 +187,24 @@ class CfsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDataRetrieval(
+            self,
+            request: models.CreateDataRetrievalRequest,
+            opts: Dict = None,
+    ) -> models.CreateDataRetrievalResponse:
+        """
+        This API is used to create data retrieval.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDataRetrieval"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDataRetrievalResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateLifecycleDataTask(
             self,
             request: models.CreateLifecycleDataTaskRequest,
@@ -236,6 +272,24 @@ class CfsClient(AbstractClient):
         kwargs["action"] = "CreateMigrationTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateMigrationTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteAutoDeletePolicy(
+            self,
+            request: models.DeleteAutoDeletePolicyRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAutoDeletePolicyResponse:
+        """
+        This API is used to delete a specified automatic deletion policy.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAutoDeletePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAutoDeletePolicyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -349,6 +403,26 @@ class CfsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteDataRetrieval(
+            self,
+            request: models.DeleteDataRetrievalRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDataRetrievalResponse:
+        """
+        This API is used to delete data retrieval.
+
+        This API is used to delete a specified data retrieval configuration. Deletion is not allowed when associated tasks exist. After this API is called, if the corresponding data retrieval cannot be found through the DescribeDataRetrieval API, the deletion is successful.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDataRetrieval"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDataRetrievalResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteLifecyclePolicy(
             self,
             request: models.DeleteLifecyclePolicyRequest,
@@ -380,6 +454,24 @@ class CfsClient(AbstractClient):
         kwargs["action"] = "DeleteMigrationTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteMigrationTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAutoDeletePolicies(
+            self,
+            request: models.DescribeAutoDeletePoliciesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAutoDeletePoliciesResponse:
+        """
+        This API is used to query the list of automatic data deletion policies.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAutoDeletePolicies"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAutoDeletePoliciesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -687,6 +779,24 @@ class CfsClient(AbstractClient):
         kwargs["action"] = "DoDirectoryOperation"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DoDirectoryOperationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAutoDeletePolicy(
+            self,
+            request: models.ModifyAutoDeletePolicyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAutoDeletePolicyResponse:
+        """
+        This API is used to modify the name or cleanup path of an automatic deletion policy.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAutoDeletePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAutoDeletePolicyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
